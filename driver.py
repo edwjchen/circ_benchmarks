@@ -4,11 +4,119 @@ import os
 import argparse
 import subprocess
 
+# installation variables
 ABY_SOURCE = "./modules/ABY"
 HYCC_SOURCE = "./modules/HyCC"
 ABY_HYCC = HYCC_SOURCE+"/aby-hycc"
 ABY_HYCC_DIR = ABY_SOURCE +"/src/examples/aby-hycc/"
 ABY_CMAKE = ABY_SOURCE + "/src/examples/CMakeLists.txt"
+
+# benchmark variables
+TMP_PATH = "./tmp/"
+PARENT_DIR = "../"
+CBMC_GC = HYCC_SOURCE + "/bin/cbmc-gc"
+CIRCUIT_SIM = HYCC_SOURCE + "/bin/circuit-sim"
+ABY_CBMC_GC = ABY_SOURCE + "/build/bin/aby-hycc"
+MPC_CIRC = "mpc_main.circ"
+MINIMIZATION_TIME = 10
+
+def test():
+    test_path = PARENT_DIR + HYCC_SOURCE + "/examples/benchmarks/biomatch/biomatch.c"
+    spec_file = "tests/hycc/biomatch_1.spec"
+    args = []
+    # build_mpc_circuit(test_path, args)
+    # run_sim(spec_file)
+    run_aby_sim(spec_file)
+
+def make_tmp():
+    subprocess.run(["mkdir", "-p", "tmp"])
+
+def remove_tmp():
+    subprocess.run(["rm", "-rf", "tmp"])
+
+def build_mpc_circuit(test_path, args=[]):
+    os.chdir(TMP_PATH)
+    cmd = [PARENT_DIR+CBMC_GC, test_path, "--minimization-time-limit", str(MINIMIZATION_TIME)] + args
+    subprocess.run(cmd, check=True)
+    os.chdir(PARENT_DIR)
+
+def build_mpc_all(test_path):
+    build_mpc_circuit(test_path, ["--all-variants"])
+
+def build_mpc_all_out(test_path):
+    build_mpc_circuit(test_path, ["--all-variants", "--outline"])
+
+def run_sim(spec_file):
+    cmd = [CIRCUIT_SIM, TMP_PATH+MPC_CIRC, "--spec-file", spec_file]
+    result = subprocess.run(cmd, check=True, capture_output=True, text=True)
+    assert("is valid" in result.stdout)
+
+def run_aby_sim(spec_file):
+    # subprocess.run([ABY_CBMC_GC, TMP_PATH+MPC_CIRC, "--spec-file", spec_file] + ["-r", "0"] + [ABY_CBMC_GC, TMP_PATH+MPC_CIRC, "--spec-file", spec_file] + ["-r", "1"])
+    cmd = [ABY_CBMC_GC, TMP_PATH+MPC_CIRC, "--spec-file", spec_file]
+    server_cmd = cmd + ["-r", "0"]
+    client_cmd = cmd + ["-r", "1"]
+
+    server_proc = subprocess.Popen(server_cmd, stdout=subprocess.PIPE)
+    client_proc = subprocess.Popen(client_cmd, stdout=subprocess.PIPE)
+    server_outs, server_errs = server_proc.communicate()
+    client_outs, client_errs = client_proc.communicate()
+    print(server_outs, server_errs)
+    print(client_outs, client_errs)
+
+def run_aby(spec_file, args=[]):
+    cmd = [ABY_CBMC_GC, "--spec-file", spec_file] + args
+    server_cmd = cmd + ["-r", "0"]
+    client_cmd = cmd + ["-r", "1"]
+    final_cmd = server_cmd + ["&"] + client_cmd
+    result = subprocess.run(final_cmd, check=True, capture_output=True, text=True)
+    assert("is valid" in result.stdout)
+
+def run_yaoonly(spec_file):
+    run_aby(spec_file, ["-c", TMP_PATH+"yaoonly.cmb"])
+
+def run_yaohybrid(spec_file):
+    run_aby(spec_file, ["-c", TMP_PATH+"yaohybrid.cmb"])
+
+def run_gmwonly(spec_file):
+    run_aby(spec_file, ["-c", TMP_PATH+"gmwonly.cmb"])
+
+def run_gmwhyrbid(spec_file):
+    run_aby(spec_file, ["-c", TMP_PATH+"gmwhybrid.cmb"])
+
+def clean_circ(test_dir):
+    subprocess.run(["rm", "-f", test_dir+"/*.circ"])
+
+def benchmark_hycc_biomatch():
+    make_tmp()
+
+    test_path = PARENT_DIR + HYCC_SOURCE + "/examples/benchmarks/biomatch/biomatch.c"
+    spec_file = "tests/hycc/biomatch_1.spec"
+
+    # build cbmc-gc benchmarks 
+    build_mpc_circuit(test_path, args)
+    run_sim(spec_file)
+    run_aby_sim(spec_file)
+
+     
+    
+    # build all
+
+    # build yao-only
+
+    # build yao-hybrid
+
+    # build gmw-only
+
+    # build gmw-hybrid
+
+    # build optimized 
+
+
+    pass
+
+
+#####################################################################
 
 def install():
     def verify_path_empty(path) -> bool:
@@ -40,13 +148,10 @@ def build():
     # build aby
     subprocess.run(["./scripts/build_aby.zsh"], check=True)
 
-def test():
+def benchmark():
     build()
 
-    # test HyCC biomatch
-
-
-def benchmark():
+    benchmark_hycc_biomatch()
     pass
 
 def clean():

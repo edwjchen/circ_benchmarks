@@ -4,3 +4,6 @@
 [submodule "modules/ABY"]
 	path = modules/ABY
 	url = https://github.com/encryptogroup/ABY.git
+[submodule "modules/circ"]
+	path = modules/circ
+	url = https://github.com/circify/circ.git
