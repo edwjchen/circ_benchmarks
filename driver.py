@@ -55,10 +55,12 @@ def run_aby(spec_file, args=[]):
     client_cmd = cmd + ["-r", "1"]
     server_proc = subprocess.Popen(server_cmd, stdout=subprocess.PIPE)
     client_proc = subprocess.Popen(client_cmd, stdout=subprocess.PIPE)
-    server_outs, _server_errs = server_proc.communicate()
-    client_outs, _client_errs = client_proc.communicate()
-    print(server_outs.decode("utf-8"))
-    print(client_outs.decode("utf-8"))
+    _server_out, _server_errs = server_proc.communicate()
+    _client_out, _client_errs = client_proc.communicate()
+
+    server_out = _server_out.decode("utf-8")
+    client_out = _client_out.decode("utf-8")
+
     os.chdir(PARENT_DIR)
 
 def run_aby_sim(spec_file):
