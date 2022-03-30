@@ -4,3 +4,6 @@
 [submodule "modules/circ"]
 	path = modules/circ
 	url = https://github.com/circify/circ.git
+[submodule "modules/HyCC"]
+	path = modules/HyCC
+	url = https://gitlab.com/edwjchen/HyCC.git
