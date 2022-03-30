@@ -1,10 +1,33 @@
 #!/usr/bin/env python3
 import argparse
+<<<<<<< HEAD
 import time
 from util import *
 from benchmark import *
 
 # ad hoc testing
+=======
+import subprocess
+
+# installation variables
+ABY_SOURCE = "./modules/ABY"
+HYCC_SOURCE = "./modules/HyCC"
+ABY_HYCC = HYCC_SOURCE+"/aby-hycc"
+ABY_HYCC_DIR = ABY_SOURCE +"/src/examples/aby-hycc/"
+ABY_CMAKE = ABY_SOURCE + "/src/examples/CMakeLists.txt"
+
+# benchmark variables
+TMP_PATH = "./tmp/"
+PARENT_DIR = "../"
+CBMC_GC = HYCC_SOURCE + "/bin/cbmc-gc"
+CIRCUIT_SIM = HYCC_SOURCE + "/bin/circuit-sim"
+ABY_CBMC_GC = ABY_SOURCE + "/build/bin/aby-hycc"
+MPC_CIRC = "mpc_main.circ"
+MINIMIZATION_TIME = 0
+MODULE_BUNDLE=HYCC_SOURCE+"/src/circuit-utils/py/module_bundle.py"
+SELECTION=HYCC_SOURCE+"/src/circuit-utils/py/selection.py"
+COSTS=HYCC_SOURCE+"/src/circuit-utils/py/costs.json"
+>>>>>>> dffa5aa... updated driver to run ABY tests
 
 
 def test():
@@ -19,6 +42,7 @@ def test():
     result = subprocess.run(cmd, check=True, capture_output=True, text=True)
     os.chdir(PARENT_DIR)
 
+<<<<<<< HEAD
     os.chdir(TMP_PATH)
     cmd = [PARENT_DIR+CIRCUIT_SIM, MPC_CIRC,
            "--spec-file", PARENT_DIR+spec_file]
@@ -26,6 +50,104 @@ def test():
     os.chdir(PARENT_DIR)
 
     print(result.stdout)
+=======
+def optimize_selection(costs_path=COSTS):
+    os.chdir(TMP_PATH)
+    subprocess.run(["python3", PARENT_DIR+MODULE_BUNDLE, "."], check=True)
+    subprocess.run(["python3", PARENT_DIR+SELECTION, ".", PARENT_DIR+costs_path], check=True)
+    os.chdir(PARENT_DIR)
+
+def run_sim(spec_file):
+    os.chdir(TMP_PATH)
+    cmd = [PARENT_DIR+CIRCUIT_SIM, MPC_CIRC, "--spec-file", PARENT_DIR+spec_file]
+    result = subprocess.run(cmd, check=True, capture_output=True, text=True)
+    assert("is valid" in result.stdout)
+    os.chdir(PARENT_DIR)
+    
+def run_aby(spec_file, args=[]):
+    os.chdir(TMP_PATH)
+    cmd = [PARENT_DIR+ABY_CBMC_GC, "--spec-file", PARENT_DIR+spec_file] + args
+    server_cmd = cmd + ["-r", "0"]
+    client_cmd = cmd + ["-r", "1"]
+    server_proc = subprocess.Popen(server_cmd, stdout=subprocess.PIPE)
+    client_proc = subprocess.Popen(client_cmd, stdout=subprocess.PIPE)
+    server_outs, _server_errs = server_proc.communicate()
+    client_outs, _client_errs = client_proc.communicate()
+    print(server_outs.decode("utf-8"))
+    print(client_outs.decode("utf-8"))
+    os.chdir(PARENT_DIR)
+
+def run_aby_sim(spec_file):
+    run_aby(spec_file, [MPC_CIRC])
+
+def run_yaoonly(spec_file):
+    run_aby(spec_file, ["-c", "yaoonly.cmb"])
+
+def run_yaohybrid(spec_file):
+    run_aby(spec_file, ["-c", "yaohybrid.cmb"])
+
+def run_gmwonly(spec_file):
+    run_aby(spec_file, ["-c", "gmwonly.cmb"])
+
+def run_gmwhyrbid(spec_file):
+    run_aby(spec_file, ["-c", "gmwhybrid.cmb"])
+
+def run_optimized(spec_file):
+    run_aby(spec_file, ["-c", "ps_optimized.cmb"])
+
+def run_benchmark(test_path, spec_file, args=[]):
+    make_tmp()
+
+    # build benchmarks 
+    build_mpc_circuit(test_path, args)
+
+    # run benchmarks
+    run_sim(spec_file)
+    run_aby_sim(spec_file)
+
+    remove_tmp()
+
+def run_all_benchmarks(test_path, spec_file, args=[]):
+    make_tmp()
+
+    # build benchmarks
+    build_mpc_circuit(test_path, args)
+    optimize_selection()
+
+    # run benchmarks 
+    run_yaoonly(spec_file)
+    run_yaohybrid(spec_file)
+    run_gmwonly(spec_file)
+    run_gmwhyrbid(spec_file)
+    run_optimized(spec_file)
+
+    remove_tmp()
+
+def benchmark_hycc_biomatch():
+    test_path = PARENT_DIR + HYCC_SOURCE + "/examples/benchmarks/biomatch/biomatch.c"
+    spec_file = "tests/hycc/biomatch_1.spec"
+
+    # benchmark cbmc-gc benchmarks 
+    run_benchmark(test_path, spec_file)
+
+    # benchmark cbmc-gc benchmarks 
+    args=["--all-variants"]
+    run_all_benchmarks(test_path, spec_file, args)
+
+    args=["--all-variants", "--outline"]
+    run_all_benchmarks(test_path, spec_file, args)
+
+# ad hoc testing 
+def test():
+    make_tmp()
+    test_path = PARENT_DIR + HYCC_SOURCE + "/examples/benchmarks/biomatch/biomatch.c"
+    spec_file = "tests/hycc/biomatch_1.spec"
+    args = ["--all-variants"]
+    build_mpc_circuit(test_path, args)
+    optimize_selection()
+    run_yaoonly(spec_file)
+    remove_tmp()
+>>>>>>> dffa5aa... updated driver to run ABY tests
 
 #####################################################################
 
@@ -139,6 +261,11 @@ def set_features(features):
     print("Feature set:", sorted(list(features)))
     return features
 
+<<<<<<< HEAD
+=======
+    # run hycc benchmarks
+    benchmark_hycc_biomatch()
+>>>>>>> dffa5aa... updated driver to run ABY tests
 
 def clean():
     print("cleaning")
@@ -150,7 +277,6 @@ def delete():
     print("fresh install!")
     subprocess.run(["rm", "-rf", "modules/ABY"])
     subprocess.run(["rm", "-rf", "modules/HyCC"])
-
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
