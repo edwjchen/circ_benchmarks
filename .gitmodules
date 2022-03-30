@@ -1,6 +1,3 @@
-[submodule "modules/HyCC"]
-	path = modules/HyCC
-	url = https://gitlab.com/securityengineering/HyCC.git
 [submodule "modules/ABY"]
 	path = modules/ABY
 	url = https://github.com/encryptogroup/ABY.git
