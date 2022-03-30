@@ -18,15 +18,10 @@ CBMC_GC = HYCC_SOURCE + "/bin/cbmc-gc"
 CIRCUIT_SIM = HYCC_SOURCE + "/bin/circuit-sim"
 ABY_CBMC_GC = ABY_SOURCE + "/build/bin/aby-hycc"
 MPC_CIRC = "mpc_main.circ"
-MINIMIZATION_TIME = 10
-
-def test():
-    test_path = PARENT_DIR + HYCC_SOURCE + "/examples/benchmarks/biomatch/biomatch.c"
-    spec_file = "tests/hycc/biomatch_1.spec"
-    args = []
-    # build_mpc_circuit(test_path, args)
-    # run_sim(spec_file)
-    run_aby_sim(spec_file)
+MINIMIZATION_TIME = 0
+MODULE_BUNDLE=HYCC_SOURCE+"/src/circuit-utils/py/module_bundle.py"
+SELECTION=HYCC_SOURCE+"/src/circuit-utils/py/selection.py"
+COSTS=HYCC_SOURCE+"/src/circuit-utils/py/costs.json"
 
 def make_tmp():
     subprocess.run(["mkdir", "-p", "tmp"])
@@ -40,81 +35,106 @@ def build_mpc_circuit(test_path, args=[]):
     subprocess.run(cmd, check=True)
     os.chdir(PARENT_DIR)
 
-def build_mpc_all(test_path):
-    build_mpc_circuit(test_path, ["--all-variants"])
-
-def build_mpc_all_out(test_path):
-    build_mpc_circuit(test_path, ["--all-variants", "--outline"])
+def optimize_selection(costs_path=COSTS):
+    os.chdir(TMP_PATH)
+    subprocess.run(["python3", PARENT_DIR+MODULE_BUNDLE, "."], check=True)
+    subprocess.run(["python3", PARENT_DIR+SELECTION, ".", PARENT_DIR+costs_path], check=True)
+    os.chdir(PARENT_DIR)
 
 def run_sim(spec_file):
-    cmd = [CIRCUIT_SIM, TMP_PATH+MPC_CIRC, "--spec-file", spec_file]
+    os.chdir(TMP_PATH)
+    cmd = [PARENT_DIR+CIRCUIT_SIM, MPC_CIRC, "--spec-file", PARENT_DIR+spec_file]
     result = subprocess.run(cmd, check=True, capture_output=True, text=True)
     assert("is valid" in result.stdout)
-
-def run_aby_sim(spec_file):
-    # subprocess.run([ABY_CBMC_GC, TMP_PATH+MPC_CIRC, "--spec-file", spec_file] + ["-r", "0"] + [ABY_CBMC_GC, TMP_PATH+MPC_CIRC, "--spec-file", spec_file] + ["-r", "1"])
-    cmd = [ABY_CBMC_GC, TMP_PATH+MPC_CIRC, "--spec-file", spec_file]
+    os.chdir(PARENT_DIR)
+    
+def run_aby(spec_file, args=[]):
+    os.chdir(TMP_PATH)
+    cmd = [PARENT_DIR+ABY_CBMC_GC, "--spec-file", PARENT_DIR+spec_file] + args
     server_cmd = cmd + ["-r", "0"]
     client_cmd = cmd + ["-r", "1"]
-
     server_proc = subprocess.Popen(server_cmd, stdout=subprocess.PIPE)
     client_proc = subprocess.Popen(client_cmd, stdout=subprocess.PIPE)
-    server_outs, server_errs = server_proc.communicate()
-    client_outs, client_errs = client_proc.communicate()
-    print(server_outs, server_errs)
-    print(client_outs, client_errs)
+    server_outs, _server_errs = server_proc.communicate()
+    client_outs, _client_errs = client_proc.communicate()
+    print(server_outs.decode("utf-8"))
+    print(client_outs.decode("utf-8"))
+    os.chdir(PARENT_DIR)
 
-def run_aby(spec_file, args=[]):
-    cmd = [ABY_CBMC_GC, "--spec-file", spec_file] + args
-    server_cmd = cmd + ["-r", "0"]
-    client_cmd = cmd + ["-r", "1"]
-    final_cmd = server_cmd + ["&"] + client_cmd
-    result = subprocess.run(final_cmd, check=True, capture_output=True, text=True)
-    assert("is valid" in result.stdout)
+def run_aby_sim(spec_file):
+    run_aby(spec_file, [MPC_CIRC])
 
 def run_yaoonly(spec_file):
-    run_aby(spec_file, ["-c", TMP_PATH+"yaoonly.cmb"])
+    run_aby(spec_file, ["-c", "yaoonly.cmb"])
 
 def run_yaohybrid(spec_file):
-    run_aby(spec_file, ["-c", TMP_PATH+"yaohybrid.cmb"])
+    run_aby(spec_file, ["-c", "yaohybrid.cmb"])
 
 def run_gmwonly(spec_file):
-    run_aby(spec_file, ["-c", TMP_PATH+"gmwonly.cmb"])
+    run_aby(spec_file, ["-c", "gmwonly.cmb"])
 
 def run_gmwhyrbid(spec_file):
-    run_aby(spec_file, ["-c", TMP_PATH+"gmwhybrid.cmb"])
+    run_aby(spec_file, ["-c", "gmwhybrid.cmb"])
 
-def clean_circ(test_dir):
-    subprocess.run(["rm", "-f", test_dir+"/*.circ"])
+def run_optimized(spec_file):
+    run_aby(spec_file, ["-c", "ps_optimized.cmb"])
 
-def benchmark_hycc_biomatch():
+def run_benchmark(test_path, spec_file, args=[]):
     make_tmp()
 
-    test_path = PARENT_DIR + HYCC_SOURCE + "/examples/benchmarks/biomatch/biomatch.c"
-    spec_file = "tests/hycc/biomatch_1.spec"
-
-    # build cbmc-gc benchmarks 
+    # build benchmarks 
     build_mpc_circuit(test_path, args)
+
+    # run benchmarks
     run_sim(spec_file)
     run_aby_sim(spec_file)
 
-     
-    
-    # build all
+    remove_tmp()
 
-    # build yao-only
+def run_all_benchmarks(test_path, spec_file, args=[]):
+    make_tmp()
 
-    # build yao-hybrid
+    # build benchmarks
+    try: 
+        # compilation to arithmetic circuits is not always possible
+        build_mpc_circuit(test_path, args)
+        optimize_selection()
 
-    # build gmw-only
+        # run benchmarks 
+        run_yaoonly(spec_file)
+        run_yaohybrid(spec_file)
+        run_gmwonly(spec_file)
+        run_gmwhyrbid(spec_file)
+        run_optimized(spec_file)
+    except: 
+        print("Compilation of all_benchmarks failed with args: " + ", ".join(args))
 
-    # build gmw-hybrid
+    remove_tmp()
 
-    # build optimized 
+def benchmark_hycc_biomatch():
+    test_path = PARENT_DIR + HYCC_SOURCE + "/examples/benchmarks/biomatch/biomatch.c"
+    spec_file = "tests/hycc/biomatch_1.spec"
 
+    # benchmark cbmc-gc benchmarks 
+    run_benchmark(test_path, spec_file)
 
-    pass
+    # benchmark cbmc-gc benchmarks 
+    args=["--all-variants"]
+    run_all_benchmarks(test_path, spec_file, args)
 
+    args=["--all-variants", "--outline"]
+    run_all_benchmarks(test_path, spec_file, args)
+
+# ad hoc testing 
+def test():
+    make_tmp()
+    test_path = PARENT_DIR + HYCC_SOURCE + "/examples/benchmarks/biomatch/biomatch.c"
+    spec_file = "tests/hycc/biomatch_1.spec"
+    args = ["--all-variants"]
+    build_mpc_circuit(test_path, args)
+    optimize_selection()
+    run_yaoonly(spec_file)
+    remove_tmp()
 
 #####################################################################
 
@@ -151,8 +171,8 @@ def build():
 def benchmark():
     build()
 
+    # run hycc benchmarks
     benchmark_hycc_biomatch()
-    pass
 
 def clean():
     print("cleaning")
@@ -163,7 +183,6 @@ def delete():
     print("fresh install!")
     subprocess.run(["rm", "-rf", "modules/ABY"])
     subprocess.run(["rm", "-rf", "modules/HyCC"])
-
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
