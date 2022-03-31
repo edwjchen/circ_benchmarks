@@ -4,6 +4,8 @@ import os
 import argparse
 import subprocess
 
+from prompt_toolkit import VERSION
+
 # installation variables
 ABY_SOURCE = "./modules/ABY"
 HYCC_SOURCE = "./modules/HyCC"
@@ -23,6 +25,12 @@ MODULE_BUNDLE=HYCC_SOURCE+"/src/circuit-utils/py/module_bundle.py"
 SELECTION=HYCC_SOURCE+"/src/circuit-utils/py/selection.py"
 COSTS=HYCC_SOURCE+"/src/circuit-utils/py/costs.json"
 
+# logging variables
+VERSION_NUM = 0
+LOG_PATH = ""
+RUN_PATH = ""
+DELIMITER = "\n====================================\n"
+
 def make_tmp():
     subprocess.run(["mkdir", "-p", "tmp"])
 
@@ -32,8 +40,10 @@ def remove_tmp():
 def build_mpc_circuit(test_path, args=[]):
     os.chdir(TMP_PATH)
     cmd = [PARENT_DIR+CBMC_GC, test_path, "--minimization-time-limit", str(MINIMIZATION_TIME)] + args
-    subprocess.run(cmd, check=True)
+    result = subprocess.run(cmd, check=True, capture_output=True, text=True)
     os.chdir(PARENT_DIR)
+    write_output_to_log(result.stdout)
+    write_to_run(result.stdout)
 
 def optimize_selection(costs_path=COSTS):
     os.chdir(TMP_PATH)
@@ -42,13 +52,16 @@ def optimize_selection(costs_path=COSTS):
     os.chdir(PARENT_DIR)
 
 def run_sim(spec_file):
+    write_to_log("Using CIRCUIT-SIM")
     os.chdir(TMP_PATH)
     cmd = [PARENT_DIR+CIRCUIT_SIM, MPC_CIRC, "--spec-file", PARENT_DIR+spec_file]
     result = subprocess.run(cmd, check=True, capture_output=True, text=True)
-    assert("is valid" in result.stdout)
     os.chdir(PARENT_DIR)
+    write_output_to_log(result.stdout)
+    write_to_run(result.stdout)
     
 def run_aby(spec_file, args=[]):
+    write_to_log("Using ABY-HYCC")
     os.chdir(TMP_PATH)
     cmd = [PARENT_DIR+ABY_CBMC_GC, "--spec-file", PARENT_DIR+spec_file] + args
     server_cmd = cmd + ["-r", "0"]
@@ -63,22 +76,32 @@ def run_aby(spec_file, args=[]):
 
     os.chdir(PARENT_DIR)
 
+    write_output_to_log(server_out)
+    write_to_run(server_out)
+    write_output_to_log(client_out)
+    write_to_run(client_out)
+
 def run_aby_sim(spec_file):
     run_aby(spec_file, [MPC_CIRC])
 
 def run_yaoonly(spec_file):
+    write_to_both("Running yaonly")
     run_aby(spec_file, ["-c", "yaoonly.cmb"])
 
 def run_yaohybrid(spec_file):
+    write_to_both("Running yaohybrid")
     run_aby(spec_file, ["-c", "yaohybrid.cmb"])
 
 def run_gmwonly(spec_file):
+    write_to_both("Running gmwonly")
     run_aby(spec_file, ["-c", "gmwonly.cmb"])
 
 def run_gmwhyrbid(spec_file):
+    write_to_both("Running gmwhybrid")
     run_aby(spec_file, ["-c", "gmwhybrid.cmb"])
 
 def run_optimized(spec_file):
+    write_to_both("Running ps_optimized")
     run_aby(spec_file, ["-c", "ps_optimized.cmb"])
 
 def run_benchmark(test_path, spec_file, args=[]):
@@ -109,34 +132,91 @@ def run_all_benchmarks(test_path, spec_file, args=[]):
         run_gmwhyrbid(spec_file)
         run_optimized(spec_file)
     except: 
-        print("Compilation of all_benchmarks failed with args: " + ", ".join(args))
-
+        if os.getcwd().endswith("tmp"):
+            os.chdir(PARENT_DIR)
+        write_to_both("Compilation of all_benchmarks failed with args: {}".format(args))
     remove_tmp()
 
 def benchmark_hycc_biomatch():
     test_path = PARENT_DIR + HYCC_SOURCE + "/examples/benchmarks/biomatch/biomatch.c"
     spec_file = "tests/hycc/biomatch_1.spec"
+    make_test_results()
+
+    write_to_both("TEST PATH: {}".format(test_path))
+    write_to_both("SPEC_FILE: {}".format(spec_file))
+    write_to_both("MINIMIZATION TIME: {}".format(MINIMIZATION_TIME))
+    write_to_both(DELIMITER)
 
     # benchmark cbmc-gc benchmarks 
     run_benchmark(test_path, spec_file)
+    write_to_both(DELIMITER)
 
     # benchmark cbmc-gc benchmarks 
     args=["--all-variants"]
+    write_to_both("Running with args: {}".format(args))
     run_all_benchmarks(test_path, spec_file, args)
+    write_to_both(DELIMITER)
 
     args=["--all-variants", "--outline"]
+    write_to_both("Running with args: {}".format(args))
     run_all_benchmarks(test_path, spec_file, args)
+    write_to_both(DELIMITER)
 
 # ad hoc testing 
 def test():
-    make_tmp()
     test_path = PARENT_DIR + HYCC_SOURCE + "/examples/benchmarks/biomatch/biomatch.c"
     spec_file = "tests/hycc/biomatch_1.spec"
-    args = ["--all-variants"]
+    args = []
+
+    # make_test_results()
+    make_tmp()
     build_mpc_circuit(test_path, args)
-    optimize_selection()
-    run_yaoonly(spec_file)
+    # optimize_selection()
+
     remove_tmp()
+
+#####################################################################
+
+# Logging results
+def make_test_results():
+    subprocess.run(["mkdir", "-p", "test_results"])
+
+    for _base, _dirs, files in os.walk("./test_results"):
+        VERSION_NUM = len(files) // 2
+
+    global LOG_PATH
+    global RUN_PATH
+    LOG_PATH = "test_results/log_{}.txt".format(VERSION_NUM)
+    RUN_PATH = "test_results/run_{}.txt".format(VERSION_NUM)
+    subprocess.run(["touch", LOG_PATH])
+    subprocess.run(["touch", RUN_PATH])
+
+def write_output_to_log(text):
+    lines = text.split("\n")
+    for line in lines:
+        clean_line = line.strip()
+        if clean_line.startswith("LOG:"):
+            write_to_log(clean_line)
+
+def write_to_log(text):
+    if os.path.exists(LOG_PATH):
+        with open(LOG_PATH, "a") as f:
+            f.write(text + "\n")
+    else:
+        print("pwd: {}".format(os.getcwd()))
+        raise Exception("Path not found: {}".format(LOG_PATH))
+
+def write_to_run(text):
+    if os.path.exists(RUN_PATH):
+        with open(RUN_PATH, "a") as f:
+            f.write(text + "\n")
+    else:
+        print("pwd: {}".format(os.getcwd()))
+        raise Exception("Path not found: {}".format(RUN_PATH))
+
+def write_to_both(text):
+    write_to_log(text)
+    write_to_run(text)
 
 #####################################################################
 
@@ -165,14 +245,13 @@ def build():
     if not os.path.isdir(ABY_HYCC_DIR):
         subprocess.run(["cp", "-r", ABY_HYCC, ABY_HYCC_DIR], check=True)
         with open(ABY_CMAKE,'a') as f:
-            print("add_subdirectory(aby-hycc)",file=f)
+            print("add_subdirectory(aby-hycc)", file=f)
 
     # build aby
     subprocess.run(["./scripts/build_aby.zsh"], check=True)
 
 def benchmark():
     build()
-
     # run hycc benchmarks
     benchmark_hycc_biomatch()
 

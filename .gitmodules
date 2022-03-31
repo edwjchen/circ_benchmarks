@@ -1,3 +1,9 @@
 [submodule "modules/circ"]
 	path = modules/circ
 	url = https://github.com/circify/circ.git
+[submodule "modules/HyCC"]
+	path = modules/HyCC
+	url = https://gitlab.com/edwjchen/HyCC
+[submodule "modules/ABY"]
+	path = modules/ABY
+	url = https://github.com/encryptogroup/ABY.git
