@@ -1,10 +1,9 @@
 #!/usr/bin/env python3
 
-import os
 import argparse
+import os
 import subprocess
-
-from prompt_toolkit import VERSION
+import time
 
 # installation variables
 ABY_SOURCE = "./modules/ABY"
@@ -20,10 +19,12 @@ CBMC_GC = HYCC_SOURCE + "/bin/cbmc-gc"
 CIRCUIT_SIM = HYCC_SOURCE + "/bin/circuit-sim"
 ABY_CBMC_GC = ABY_SOURCE + "/build/bin/aby-hycc"
 MPC_CIRC = "mpc_main.circ"
-MINIMIZATION_TIME = 0
 MODULE_BUNDLE=HYCC_SOURCE+"/src/circuit-utils/py/module_bundle.py"
 SELECTION=HYCC_SOURCE+"/src/circuit-utils/py/selection.py"
 COSTS=HYCC_SOURCE+"/src/circuit-utils/py/costs.json"
+
+MINIMIZATION_TIME = 0
+RERUN = 3
 
 # logging variables
 VERSION_NUM = 0
@@ -52,34 +53,39 @@ def optimize_selection(costs_path=COSTS):
     os.chdir(PARENT_DIR)
 
 def run_sim(spec_file):
-    write_to_log("Using CIRCUIT-SIM")
-    os.chdir(TMP_PATH)
-    cmd = [PARENT_DIR+CIRCUIT_SIM, MPC_CIRC, "--spec-file", PARENT_DIR+spec_file]
-    result = subprocess.run(cmd, check=True, capture_output=True, text=True)
-    os.chdir(PARENT_DIR)
-    write_output_to_log(result.stdout)
-    write_to_run(result.stdout)
+    for i in range(RERUN):
+        write_to_log("Using CIRCUIT-SIM")
+        write_to_log("RERUN: {}".format(i))
+        os.chdir(TMP_PATH)
+        cmd = [PARENT_DIR+CIRCUIT_SIM, MPC_CIRC, "--spec-file", PARENT_DIR+spec_file]
+        result = subprocess.run(cmd, check=True, capture_output=True, text=True)
+        os.chdir(PARENT_DIR)
+
+        write_output_to_log(result.stdout)
+        write_to_run(result.stdout)
     
 def run_aby(spec_file, args=[]):
-    write_to_log("Using ABY-HYCC")
-    os.chdir(TMP_PATH)
-    cmd = [PARENT_DIR+ABY_CBMC_GC, "--spec-file", PARENT_DIR+spec_file] + args
-    server_cmd = cmd + ["-r", "0"]
-    client_cmd = cmd + ["-r", "1"]
-    server_proc = subprocess.Popen(server_cmd, stdout=subprocess.PIPE)
-    client_proc = subprocess.Popen(client_cmd, stdout=subprocess.PIPE)
-    _server_out, _server_errs = server_proc.communicate()
-    _client_out, _client_errs = client_proc.communicate()
+    for i in range(RERUN):
+        write_to_log("Using ABY-HYCC")
+        write_to_log("RERUN: {}".format(i))
+        os.chdir(TMP_PATH)
+        cmd = [PARENT_DIR+ABY_CBMC_GC, "--spec-file", PARENT_DIR+spec_file] + args
+        server_cmd = cmd + ["-r", "0"]
+        client_cmd = cmd + ["-r", "1"]
+        server_proc = subprocess.Popen(server_cmd, stdout=subprocess.PIPE)
+        client_proc = subprocess.Popen(client_cmd, stdout=subprocess.PIPE)
+        _server_out, _server_errs = server_proc.communicate()
+        _client_out, _client_errs = client_proc.communicate()
 
-    server_out = _server_out.decode("utf-8")
-    client_out = _client_out.decode("utf-8")
+        server_out = _server_out.decode("utf-8")
+        client_out = _client_out.decode("utf-8")
 
-    os.chdir(PARENT_DIR)
+        os.chdir(PARENT_DIR)
 
-    write_output_to_log(server_out)
-    write_to_run(server_out)
-    write_output_to_log(client_out)
-    write_to_run(client_out)
+        write_output_to_log(server_out)
+        write_to_run(server_out)
+        write_output_to_log(client_out)
+        write_to_run(client_out)
 
 def run_aby_sim(spec_file):
     run_aby(spec_file, [MPC_CIRC])
@@ -168,12 +174,17 @@ def test():
     spec_file = "tests/hycc/biomatch_1.spec"
     args = []
 
-    # make_test_results()
-    make_tmp()
-    build_mpc_circuit(test_path, args)
-    # optimize_selection()
+    os.chdir(TMP_PATH)
+    cmd = [PARENT_DIR+CBMC_GC, test_path, "--minimization-time-limit", str(MINIMIZATION_TIME)] + args
+    result = subprocess.run(cmd, check=True, capture_output=True, text=True)
+    os.chdir(PARENT_DIR)
 
-    remove_tmp()
+    os.chdir(TMP_PATH)
+    cmd = [PARENT_DIR+CIRCUIT_SIM, MPC_CIRC, "--spec-file", PARENT_DIR+spec_file]
+    result = subprocess.run(cmd, check=True, capture_output=True, text=True)
+    os.chdir(PARENT_DIR)
+    
+    print(result.stdout)
 
 #####################################################################
 
@@ -226,11 +237,11 @@ def install():
 
     if verify_path_empty(ABY_SOURCE):
         subprocess.run(["git", "submodule", "init", "modules/ABY"])
-        subprocess.run(["git", "submodule", "update"])
+        subprocess.run(["git", "submodule", "update", "--remote", "modules/ABY"])
 
     if verify_path_empty(HYCC_SOURCE):
         subprocess.run(["git", "submodule", "init", "modules/HyCC"])
-        subprocess.run(["git", "submodule", "update"])
+        subprocess.run(["git", "submodule", "update", "--remote", "modules/HyCC"])
 
     # install python requirements
     subprocess.run(["pip3", "install", "-r", "requirements.txt"])
@@ -253,7 +264,13 @@ def build():
 def benchmark():
     build()
     # run hycc benchmarks
+    start = time.time()
     benchmark_hycc_biomatch()
+    end = time.time()
+    
+    line = "Total benchmark time: {}".format(end-start)
+    print(line)
+    write_to_both(line)
 
 def clean():
     print("cleaning")
