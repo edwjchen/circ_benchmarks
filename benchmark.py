@@ -150,10 +150,11 @@ def benchmark_hycc_biomatch():
 
 def benchmark_boolean_only():
     # benchmark boolean only
+    print("Running CirC boolean only")
     write_to_both("Running CirC boolean only")
     os.chdir(CIRC_SOURCE)
     subprocess.run(["python3", "driver.py", "-F", "aby", "c"], check=True)
-    result = subprocess.run(["python3", "driver.py", "--benchmark", str(RERUN), COST_MODEL, "b"], check=True)
+    result = subprocess.run(["python3", "driver.py", "--benchmark", str(RERUN), COST_MODEL, "b"], check=True, capture_output=True, text=True)
     os.chdir(PARENT_DIR+PARENT_DIR)
     write_output_to_log(result.stdout)
     write_to_run(result.stdout)
@@ -161,60 +162,66 @@ def benchmark_boolean_only():
 
 def benchmark_yao_only():
     # benchmark yao only
+    print("Running CirC yao only")
     write_to_both("Running CirC yao only")
     os.chdir(CIRC_SOURCE)
     subprocess.run(["python3", "driver.py", "-F", "aby", "c"], check=True)
-    result = subprocess.run(["python3", "driver.py", "--benchmark", str(RERUN), COST_MODEL, "y"], check=True)
+    result = subprocess.run(["python3", "driver.py", "--benchmark", str(RERUN), COST_MODEL, "y"], check=True, capture_output=True, text=True)
     os.chdir(PARENT_DIR+PARENT_DIR)
     write_output_to_log(result.stdout)
     write_to_run(result.stdout)
 
 def benchmark_arithmetic_and_boolean():
     # benchmark a+b 
+    print("Running CirC a+b")
     write_to_both("Running CirC a+b")
     os.chdir(CIRC_SOURCE)
     subprocess.run(["python3", "driver.py", "-F", "aby", "c"], check=True)
-    result = subprocess.run(["python3", "driver.py", "--benchmark", str(RERUN), COST_MODEL, "a+b"], check=True)
+    result = subprocess.run(["python3", "driver.py", "--benchmark", str(RERUN), COST_MODEL, "a+b"], check=True, capture_output=True, text=True)
     os.chdir(PARENT_DIR+PARENT_DIR)
     write_output_to_log(result.stdout)
     write_to_run(result.stdout)
 
 def benchmark_arithmetic_and_yao():
     # benchmark a+y
+    print("Running CirC a+y")
     write_to_both("Running CirC a+y")
     os.chdir(CIRC_SOURCE)
     subprocess.run(["python3", "driver.py", "-F", "aby", "c"], check=True)
-    result = subprocess.run(["python3", "driver.py", "--benchmark", str(RERUN), COST_MODEL, "a+y"], check=True)
+    result = subprocess.run(["python3", "driver.py", "--benchmark", str(RERUN), COST_MODEL, "a+y"], check=True, capture_output=True, text=True)
     os.chdir(PARENT_DIR+PARENT_DIR)
     write_output_to_log(result.stdout)
     write_to_run(result.stdout)
 
 def benchmark_greedy():
     # benchmark greedy
+    print("Running CirC greedy")
     write_to_both("Running CirC greedy")
     os.chdir(CIRC_SOURCE)
     subprocess.run(["python3", "driver.py", "-F", "aby", "c"], check=True)
-    result = subprocess.run(["python3", "driver.py", "--benchmark", str(RERUN), COST_MODEL, "greedy"], check=True)
+    result = subprocess.run(["python3", "driver.py", "--benchmark", str(RERUN), COST_MODEL, "greedy"], check=True, capture_output=True, text=True)
     os.chdir(PARENT_DIR+PARENT_DIR)
     write_output_to_log(result.stdout)
     write_to_run(result.stdout)
 
 def benchmark_lp():
     # benchmark LP
+    print("Running CirC LP")
     write_to_both("Running CirC LP")
     os.chdir(CIRC_SOURCE)
     subprocess.run(["python3", "driver.py", "-F", "aby", "c", "lp"], check=True)
-    result = subprocess.run(["python3", "driver.py", "--benchmark", str(RERUN), COST_MODEL, "lp"], check=True)
+    result = subprocess.run(["python3", "driver.py", "--benchmark", str(RERUN), COST_MODEL, "lp"], check=True, capture_output=True, text=True)
     os.chdir(PARENT_DIR+PARENT_DIR)
     write_output_to_log(result.stdout)
     write_to_run(result.stdout)
 
 def benchmark_glp():
     # benchmark global LP
+    print("Running CirC global LP")
     write_to_both("Running CirC global LP")
     os.chdir(CIRC_SOURCE)
     subprocess.run(["python3", "driver.py", "-F", "aby", "c", "lp"], check=True)
-    result = subprocess.run(["python3", "driver.py", "--benchmark", str(RERUN), COST_MODEL, "glp"], check=True)
+    result = subprocess.run(["python3", "driver.py", "--benchmark", str(RERUN), COST_MODEL, "glp"], check=True, capture_output=True, text=True)
     os.chdir(PARENT_DIR+PARENT_DIR)
     write_output_to_log(result.stdout)
     write_to_run(result.stdout)
