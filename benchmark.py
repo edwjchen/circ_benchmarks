@@ -20,8 +20,8 @@ def optimize_selection(costs_path=COSTS):
 
 def run_sim(spec_file):
     for i in range(RERUN):
-        write_to_log("Using HyCC CIRCUIT-SIM")
-        write_to_log("RERUN: {}".format(i))
+        write_to_both("Using HyCC CIRCUIT-SIM")
+        write_to_both("RERUN: {}".format(i))
         os.chdir(TMP_PATH)
         cmd = [PARENT_DIR+CIRCUIT_SIM, MPC_CIRC, "--spec-file", PARENT_DIR+spec_file]
         result = subprocess.run(cmd, check=True, capture_output=True, text=True)
@@ -32,8 +32,8 @@ def run_sim(spec_file):
     
 def run_aby(spec_file, args=[]):
     for i in range(RERUN):
-        write_to_log("Using ABY-HYCC")
-        write_to_log("RERUN: {}".format(i))
+        write_to_both("Using ABY-HYCC")
+        write_to_both("RERUN: {}".format(i))
         os.chdir(TMP_PATH)
         cmd = [PARENT_DIR+ABY_CBMC_GC, "--spec-file", PARENT_DIR+spec_file] + args
         server_cmd = cmd + ["-r", "0"]
@@ -148,90 +148,65 @@ def benchmark_hycc_biomatch():
 ################################################################################
 
 
+def run_circ_benchmark(name):
+    print("Running CirC {}".format(name))
+    write_to_both("Running CirC {}".format(name))
+    for i in range(RERUN):
+        write_to_both("RERUN: {}".format(i))
+        os.chdir(CIRC_SOURCE)
+        result = subprocess.run(["./scripts/build_mpc_c_benchmark.zsh", COST_MODEL, name], check=True, capture_output=True, text=True)
+        os.chdir(PARENT_DIR+PARENT_DIR)
+        write_output_to_log(result.stdout)
+        write_to_run(result.stdout)
+
+        os.chdir(CIRC_SOURCE)
+        result = subprocess.run(["python3", "./scripts/aby_tests/c_benchmark_aby.py"], check=True, capture_output=True, text=True)
+        os.chdir(PARENT_DIR+PARENT_DIR)
+        write_output_to_log(result.stdout)
+        write_to_run(result.stdout)
+    write_to_both("\n")
+
+
 def benchmark_boolean_only():
     # benchmark boolean only
-    print("Running CirC boolean only")
-    write_to_both("Running CirC boolean only")
-    os.chdir(CIRC_SOURCE)
-    subprocess.run(["python3", "driver.py", "-F", "aby", "c"], check=True)
-    result = subprocess.run(["python3", "driver.py", "--benchmark", str(RERUN), COST_MODEL, "b"], check=True, capture_output=True, text=True)
-    os.chdir(PARENT_DIR+PARENT_DIR)
-    write_output_to_log(result.stdout)
-    write_to_run(result.stdout)
+    run_circ_benchmark("b")
 
 
 def benchmark_yao_only():
     # benchmark yao only
-    print("Running CirC yao only")
-    write_to_both("Running CirC yao only")
-    os.chdir(CIRC_SOURCE)
-    subprocess.run(["python3", "driver.py", "-F", "aby", "c"], check=True)
-    result = subprocess.run(["python3", "driver.py", "--benchmark", str(RERUN), COST_MODEL, "y"], check=True, capture_output=True, text=True)
-    os.chdir(PARENT_DIR+PARENT_DIR)
-    write_output_to_log(result.stdout)
-    write_to_run(result.stdout)
+    run_circ_benchmark("y")
 
 def benchmark_arithmetic_and_boolean():
     # benchmark a+b 
-    print("Running CirC a+b")
-    write_to_both("Running CirC a+b")
-    os.chdir(CIRC_SOURCE)
-    subprocess.run(["python3", "driver.py", "-F", "aby", "c"], check=True)
-    result = subprocess.run(["python3", "driver.py", "--benchmark", str(RERUN), COST_MODEL, "a+b"], check=True, capture_output=True, text=True)
-    os.chdir(PARENT_DIR+PARENT_DIR)
-    write_output_to_log(result.stdout)
-    write_to_run(result.stdout)
+    run_circ_benchmark("a+b")
 
 def benchmark_arithmetic_and_yao():
     # benchmark a+y
-    print("Running CirC a+y")
-    write_to_both("Running CirC a+y")
-    os.chdir(CIRC_SOURCE)
-    subprocess.run(["python3", "driver.py", "-F", "aby", "c"], check=True)
-    result = subprocess.run(["python3", "driver.py", "--benchmark", str(RERUN), COST_MODEL, "a+y"], check=True, capture_output=True, text=True)
-    os.chdir(PARENT_DIR+PARENT_DIR)
-    write_output_to_log(result.stdout)
-    write_to_run(result.stdout)
+    run_circ_benchmark("a+y")
 
 def benchmark_greedy():
     # benchmark greedy
-    print("Running CirC greedy")
-    write_to_both("Running CirC greedy")
-    os.chdir(CIRC_SOURCE)
-    subprocess.run(["python3", "driver.py", "-F", "aby", "c"], check=True)
-    result = subprocess.run(["python3", "driver.py", "--benchmark", str(RERUN), COST_MODEL, "greedy"], check=True, capture_output=True, text=True)
-    os.chdir(PARENT_DIR+PARENT_DIR)
-    write_output_to_log(result.stdout)
-    write_to_run(result.stdout)
+    run_circ_benchmark("greedy")
 
 def benchmark_lp():
     # benchmark LP
-    print("Running CirC LP")
-    write_to_both("Running CirC LP")
-    os.chdir(CIRC_SOURCE)
-    subprocess.run(["python3", "driver.py", "-F", "aby", "c", "lp"], check=True)
-    result = subprocess.run(["python3", "driver.py", "--benchmark", str(RERUN), COST_MODEL, "lp"], check=True, capture_output=True, text=True)
-    os.chdir(PARENT_DIR+PARENT_DIR)
-    write_output_to_log(result.stdout)
-    write_to_run(result.stdout)
+    run_circ_benchmark("lp")
 
 def benchmark_glp():
     # benchmark global LP
-    print("Running CirC global LP")
-    write_to_both("Running CirC global LP")
-    os.chdir(CIRC_SOURCE)
-    subprocess.run(["python3", "driver.py", "-F", "aby", "c", "lp"], check=True)
-    result = subprocess.run(["python3", "driver.py", "--benchmark", str(RERUN), COST_MODEL, "glp"], check=True, capture_output=True, text=True)
-    os.chdir(PARENT_DIR+PARENT_DIR)
-    write_output_to_log(result.stdout)
-    write_to_run(result.stdout)
+    run_circ_benchmark("glp")
 
 def benchmark_circ_biomatch():    
     write_to_both(DELIMITER)
     write_to_both("Benchmarking CirC")
     write_to_both(DELIMITER)
 
-    # TODO: modularize test path 
+    # build benchmarks
+    os.environ['ABY_SOURCE'] = "../ABY"
+    os.chdir(CIRC_SOURCE)
+    subprocess.run(["python3", "driver.py", "-F", "aby", "c", "lp"], check=True)
+    subprocess.run(["python3", "driver.py", "--benchmark"], check=True)
+    os.chdir(PARENT_DIR+PARENT_DIR)
 
     # run benchmarks
     benchmark_boolean_only()

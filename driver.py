@@ -59,26 +59,29 @@ def build(features):
 
 
 def benchmark(features):
+    build(features)
+
     make_test_results()
 
     if "hycc" in features:
+        print("Running hycc Benchmarks")
         # run hycc benchmarks
         start = time.time()
         benchmark_hycc_biomatch()
         end = time.time()
         
-        line = "Total benchmark time: {}".format(end-start)
+        line = "Total hycc benchmark time: {}".format(end-start)
         print(line)
         write_to_both(line)
 
     if "circ" in features:
+        print("Running circ Benchmarks")
+        # run circ benchmarks
         start = time.time()
-        
-        # TODO: run circ benchmarks
         benchmark_circ_biomatch()
-
         end = time.time()
-        line = "Total benchmark time: {}".format(end-start)
+
+        line = "Total circ benchmark time: {}".format(end-start)
         print(line)
         write_to_both(line)
 
@@ -109,14 +112,13 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("-i", "--install", action="store_true", help="install all dependencies")
     parser.add_argument("-b", "--build", action="store_true", help="build depedencies")
-    parser.add_argument("-t", "--test", action="store_true", help="test")
-    parser.add_argument("--benchmark", action="store_true", help="benchmark hycc")
+    parser.add_argument("-t", "--test", action="store_true", help="adhoc test")
+    parser.add_argument("--benchmark", action="store_true", help="run benchmark")
     parser.add_argument("-f", "--features", nargs="+", help="set features <circ, hycc>, reset features with -F none")
     parser.add_argument("-l", "--list", action="store_true", help="list features")
     parser.add_argument("-c", "--clean", action="store_true", help="remove all generated files")
     parser.add_argument("--delete", action="store_true", help="Reinstall submodules")
     args = parser.parse_args()
-
 
     def verify_single_action(args: argparse.Namespace):
         actions = [k for k, v in vars(args).items() if (type(v) is bool or k in ["features"]) and bool(v)]
