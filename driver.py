@@ -28,10 +28,13 @@ def install(features):
     def verify_path_empty(path) -> bool:
         return not os.path.isdir(path) or (os.path.isdir(path) and not os.listdir(path)) 
 
-    if "hycc" in features:
-        if verify_path_empty(ABY_SOURCE):
-            subprocess.run(["git", "submodule", "update", "--init", "--remote", "modules/ABY"])
+    if verify_path_empty(ABY_SOURCE):
+        subprocess.run(["git", "submodule", "update", "--init", "--remote", "modules/ABY"])
 
+    if verify_path_empty(KAHIP_SOURCE):
+        subprocess.run(["git", "submodule", "update", "--init", "--remote", "modules/KaHIP"])
+
+    if "hycc" in features:
         if verify_path_empty(HYCC_SOURCE):
             subprocess.run(["git", "submodule", "update", "--init", "--remote", "modules/HyCC"])
 
@@ -56,6 +59,9 @@ def build(features):
 
     # build aby
     subprocess.run(["./scripts/build_aby.zsh"], check=True)
+
+    # build kahip
+    subprocess.run(["./scripts/build_kahip.zsh"], check=True)
 
 
 def benchmark(features):

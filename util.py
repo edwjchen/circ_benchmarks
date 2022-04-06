@@ -8,10 +8,12 @@ valid_features = {"circ", "hycc"}
 # installation variables
 ABY_SOURCE = "./modules/ABY"
 HYCC_SOURCE = "./modules/HyCC"
+CIRC_SOURCE = "./modules/circ"
+KAHIP_SOURCE = "./modules/KaHIP"
+
 ABY_HYCC = HYCC_SOURCE+"/aby-hycc"
 ABY_HYCC_DIR = ABY_SOURCE +"/src/examples/aby-hycc/"
 ABY_CMAKE = ABY_SOURCE + "/src/examples/CMakeLists.txt"
-CIRC_SOURCE = "./modules/circ"
 
 # benchmark variables
 TMP_PATH = "./tmp/"
