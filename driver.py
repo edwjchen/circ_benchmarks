@@ -4,6 +4,8 @@ import argparse
 import os
 import subprocess
 import time
+from test_suite import *
+from datetime import datetime
 
 # installation variables
 ABY_SOURCE = "./modules/ABY"
@@ -23,7 +25,7 @@ MODULE_BUNDLE=HYCC_SOURCE+"/src/circuit-utils/py/module_bundle.py"
 SELECTION=HYCC_SOURCE+"/src/circuit-utils/py/selection.py"
 COSTS=HYCC_SOURCE+"/src/circuit-utils/py/costs.json"
 
-MINIMIZATION_TIME = 0
+MINIMIZATION_TIME = 60
 RERUN = 3
 
 # logging variables
@@ -66,26 +68,31 @@ def run_sim(spec_file):
     
 def run_aby(spec_file, args=[]):
     for i in range(RERUN):
-        write_to_log("Using ABY-HYCC")
-        write_to_log("RERUN: {}".format(i))
-        os.chdir(TMP_PATH)
-        cmd = [PARENT_DIR+ABY_CBMC_GC, "--spec-file", PARENT_DIR+spec_file] + args
-        server_cmd = cmd + ["-r", "0"]
-        client_cmd = cmd + ["-r", "1"]
-        server_proc = subprocess.Popen(server_cmd, stdout=subprocess.PIPE)
-        client_proc = subprocess.Popen(client_cmd, stdout=subprocess.PIPE)
-        _server_out, _server_errs = server_proc.communicate()
-        _client_out, _client_errs = client_proc.communicate()
+        try:
+            write_to_log("Using ABY-HYCC")
+            write_to_log("RERUN: {}".format(i))
+            os.chdir(TMP_PATH)
+            cmd = [PARENT_DIR+ABY_CBMC_GC, "--spec-file", PARENT_DIR+spec_file] + args
+            server_cmd = cmd + ["-r", "0"]
+            client_cmd = cmd + ["-r", "1"]
+            server_proc = subprocess.Popen(server_cmd, stdout=subprocess.PIPE)
+            client_proc = subprocess.Popen(client_cmd, stdout=subprocess.PIPE)
+            _server_out, _server_errs = server_proc.communicate(timeout = 300)
+            _client_out, _client_errs = client_proc.communicate(timeout = 300)
 
-        server_out = _server_out.decode("utf-8")
-        client_out = _client_out.decode("utf-8")
+            server_out = _server_out.decode("utf-8")
+            client_out = _client_out.decode("utf-8")
 
-        os.chdir(PARENT_DIR)
+            os.chdir(PARENT_DIR)
 
-        write_output_to_log(server_out)
-        write_to_run(server_out)
-        write_output_to_log(client_out)
-        write_to_run(client_out)
+            write_output_to_log(server_out)
+            write_to_run(server_out)
+            write_output_to_log(client_out)
+            write_to_run(client_out)
+        except Exception as e:
+            write_output_to_log("Trial "+str(i)+" failed: ")
+            write_output_to_log(e)
+
 
 def run_aby_sim(spec_file):
     run_aby(spec_file, [MPC_CIRC])
@@ -132,9 +139,9 @@ def run_all_benchmarks(test_path, spec_file, args=[]):
         optimize_selection()
 
         # run benchmarks 
-        run_yaoonly(spec_file)
+        # run_yaoonly(spec_file)
         run_yaohybrid(spec_file)
-        run_gmwonly(spec_file)
+        # run_gmwonly(spec_file)
         run_gmwhyrbid(spec_file)
         run_optimized(spec_file)
     except: 
@@ -144,29 +151,30 @@ def run_all_benchmarks(test_path, spec_file, args=[]):
     remove_tmp()
 
 def benchmark_hycc_biomatch():
-    test_path = PARENT_DIR + HYCC_SOURCE + "/examples/benchmarks/biomatch/biomatch.c"
-    spec_file = "tests/hycc/biomatch_1.spec"
-    make_test_results()
+    for test in biomatch_tests:
+        test_path = PARENT_DIR + HYCC_SOURCE + "/examples/benchmarks/" + test + "/biomatch.c"
+        spec_file = "tests/hycc/biomatch/" + test + ".spec"
+        make_test_results()
 
-    write_to_both("TEST PATH: {}".format(test_path))
-    write_to_both("SPEC_FILE: {}".format(spec_file))
-    write_to_both("MINIMIZATION TIME: {}".format(MINIMIZATION_TIME))
-    write_to_both(DELIMITER)
+        write_to_both("TEST PATH: {}".format(test_path))
+        write_to_both("SPEC_FILE: {}".format(spec_file))
+        write_to_both("MINIMIZATION TIME: {}".format(MINIMIZATION_TIME))
+        write_to_both(DELIMITER)
 
-    # benchmark cbmc-gc benchmarks 
-    run_benchmark(test_path, spec_file)
-    write_to_both(DELIMITER)
+        # benchmark cbmc-gc benchmarks 
+        # run_benchmark(test_path, spec_file)
+        # write_to_both(DELIMITER)
 
-    # benchmark cbmc-gc benchmarks 
-    args=["--all-variants"]
-    write_to_both("Running with args: {}".format(args))
-    run_all_benchmarks(test_path, spec_file, args)
-    write_to_both(DELIMITER)
+        # benchmark cbmc-gc benchmarks 
+        args=["--all-variants"]
+        write_to_both("Running with args: {}".format(args))
+        run_all_benchmarks(test_path, spec_file, args)
+        write_to_both(DELIMITER)
 
-    args=["--all-variants", "--outline"]
-    write_to_both("Running with args: {}".format(args))
-    run_all_benchmarks(test_path, spec_file, args)
-    write_to_both(DELIMITER)
+        # args=["--all-variants", "--outline"]
+        # write_to_both("Running with args: {}".format(args))
+        # run_all_benchmarks(test_path, spec_file, args)
+        # write_to_both(DELIMITER)
 
 # ad hoc testing 
 def test():
@@ -197,8 +205,9 @@ def make_test_results():
 
     global LOG_PATH
     global RUN_PATH
-    LOG_PATH = "test_results/log_{}.txt".format(VERSION_NUM)
-    RUN_PATH = "test_results/run_{}.txt".format(VERSION_NUM)
+    dt = datetime.now()
+    LOG_PATH = "test_results/log_{}_{}.txt".format(VERSION_NUM, str(dt))
+    RUN_PATH = "test_results/run_{}_{}.txt".format(VERSION_NUM, str(dt))
     subprocess.run(["touch", LOG_PATH])
     subprocess.run(["touch", RUN_PATH])
 
