@@ -6,8 +6,8 @@ from benchmark import *
 
 # ad hoc testing 
 def test():
-    test_path = PARENT_DIR + HYCC_SOURCE + "/examples/benchmarks/biomatch/biomatch.c"
-    spec_file = "tests/hycc/biomatch_1.spec"
+    test_path = PARENT_DIR + HYCC_SOURCE + "/examples/benchmarks/biomatch/biomatch_{}.c".format(SIZE)
+    spec_file = "tests/hycc/biomatch_{}.spec".format(SIZE)
     args = []
 
     os.chdir(TMP_PATH)
@@ -134,7 +134,7 @@ if __name__ == "__main__":
     verify_single_action(args)
 
     features = load_features()
-    assert len(features == 1), "Only 1 feature at a time, features: {}".format(features)
+    assert len(features) == 1, "Only 1 feature at a time, features: {}".format(features)
 
     if args.install:
         install(features)
