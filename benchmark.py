@@ -200,6 +200,10 @@ def benchmark_lp():
     # benchmark LP
     run_circ_benchmark("lp")
 
+def benchmark_lp():
+    # benchmark LP
+    run_circ_benchmark("lp+nm")
+
 def benchmark_glp():
     # benchmark global LP
     run_circ_benchmark("glp")
@@ -223,6 +227,7 @@ def benchmark_circ_biomatch():
     benchmark_arithmetic_and_yao()
     benchmark_greedy()
     benchmark_lp()
+    benchmark_lp_nm()
     benchmark_glp()
 
     write_to_both(DELIMITER)
