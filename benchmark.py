@@ -200,7 +200,7 @@ def benchmark_lp():
     # benchmark LP
     run_circ_benchmark("lp")
 
-def benchmark_lp():
+def benchmark_lp_nm():
     # benchmark LP
     run_circ_benchmark("lp+nm")
 
