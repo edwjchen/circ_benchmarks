@@ -78,7 +78,7 @@ def make_version(features):
         VERSION = "{}_biomatch_is-{}_mt-{}_cm-{}".format("hycc", SIZE, MINIMIZATION_TIME, COST_MODEL)
 
     if "circ" in features:
-        VERSION = "{}_biomatch_is-{}_np-{}_ml-{}_mss-{}_cm-{}".format("circ", NUM_PARTS, MUT_LEVEL, MUT_STEP_SIZE, COST_MODEL)
+        VERSION = "{}_biomatch_is-{}_np-{}_ml-{}_mss-{}_cm-{}".format("circ", SIZE, NUM_PARTS, MUT_LEVEL, MUT_STEP_SIZE, COST_MODEL)
 
 def write_output_to_log(text):
     lines = text.split("\n")
