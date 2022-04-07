@@ -224,3 +224,7 @@ def benchmark_circ_biomatch():
     benchmark_glp()
 
     write_to_both(DELIMITER)
+
+    global VERSION
+    log_path = format("test_results/log_{}.txt".format(VERSION))
+    parse_circ_log(log_path)
