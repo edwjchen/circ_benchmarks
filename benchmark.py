@@ -147,13 +147,6 @@ def benchmark_hycc_biomatch():
 # Benchmark circ
 ################################################################################
 
-SIZE = 256
-NUM_PARTS = 3
-MUT_LEVEL = 4
-MUT_STEP_SIZE = 1
-TEST_FILE = "./examples/C/mpc/benchmarks/biomatch/2pc_biomatch_" + str(SIZE) + ".c"
-TEST_NAME = "biomatch"
-
 def run_circ_benchmark(name):
     print("Running CirC {}".format(name))
     write_to_both("Running CirC {}".format(name))

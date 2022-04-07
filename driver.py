@@ -68,6 +68,7 @@ def benchmark(features):
     build(features)
 
     make_test_results()
+    make_version(features)
 
     if "hycc" in features:
         print("Running hycc Benchmarks")
