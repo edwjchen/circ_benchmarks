@@ -30,7 +30,7 @@ SIZE = 256
 RERUN = 3
 
 # hycc parameters
-MINIMIZATION_TIME = 0
+MINIMIZATION_TIME = 600
 COST_MODEL = "hycc" # opa
 
 # circ parameters
@@ -210,5 +210,83 @@ def parse_circ_log(path):
         df["avg_partition_size"] = df.avg_partition_size.apply(lambda x: avg_partition_size if pd.isna(x) else x)
         df = df.fillna(0)
 
-        csv_path = "csvs/{}.csv".format(path.split(".")[0])
+        csv_path = "csvs/{}.csv".format(path.split("/")[-1].split(".")[0])
+        df.to_csv(csv_path)
+
+    
+def parse_hycc_log(path):
+    with open(path, "r") as f:
+        log = f.read()
+
+        test_name = ""
+        minimization_time = 0
+        input_size = 0
+        cost_model = ""
+        variant = ""
+        module_bundle_time = 0
+        selection_time = 0
+        
+        results = []
+        data = {}
+        for line in log.split("\n"):
+            if line.startswith("Using"):
+                data["test_case"] = test_name
+                data["minimization_time"] = minimization_time 
+                data["input_size"] = input_size
+                data["cost_model"] = cost_model
+                data["variant"] = variant
+                data["module_bundle_time"] = module_bundle_time
+                data["selection_time"] = selection_time
+
+            if not line:
+                if data and "server_load_time" in data:
+                    results.append(copy.deepcopy(data))
+                    data = {}
+            elif line.startswith("Running HyCC"):
+                data["selection_scheme"] = get_last_elem(line)
+            elif line.startswith("TEST PATH:"):
+                test_case = get_last_elem(line).split("/")[-1].split(".")[0]
+                name = test_case.split("_")[0]
+                data["test_case"] = name
+                test_name = data["test_case"]
+            elif line.startswith("Running with args:"):
+                data["variant"] = get_last_elem(line)
+                variant = data["variant"]
+            elif line.startswith("Using"):
+                data["runner"] = get_last_elem(line)
+            elif "RERUN:" in line:
+                run = int(get_last_elem(line))
+                if "run" in data and run != data["run"]:
+                    results.append(copy.deepcopy(data))
+                data["run"] = run
+            elif "MINIMIZATION TIME:" in line:
+                data["minimization_time"] = int(get_last_elem(line))
+                minimization_time = data["minimization_time"]
+            elif "SIZE:" in line:
+                data["input_size"] = int(get_last_elem(line))
+                input_size = data["input_size"]
+            elif "COST MODEL:" in line:
+                data["cost_model"] = get_last_elem(line)
+                cost_model = data["cost_model"]
+            elif "Server load time:" in line:
+                data["server_load_time"] = float(get_last_elem(line))
+            elif "Server exec time:" in line:
+                data["server_exec_time"] = float(get_last_elem(line))
+            elif "Client load time:" in line:
+                data["client_load_time"] = float(get_last_elem(line))
+            elif "Client exec time:" in line:
+                data["client_exec_time"] = float(get_last_elem(line))
+            elif "Load time:" in line:
+                data["server_load_time"] = float(get_last_elem(line))
+            elif "Exec time:" in line:
+                data["server_exec_time"] = float(get_last_elem(line))
+            elif "Module bundle time:" in line:
+                data["module_bundle_time"] = float(get_last_elem(line))
+                module_bundle_time = data["module_bundle_time"] 
+            elif "Selection time:" in line:
+                data["selection_time"] = float(get_last_elem(line))
+                selection_time = data["selection_time"] 
+                
+        df = pd.DataFrame(results)
+        csv_path = "csvs/{}.csv".format(path.split("/")[-1].split(".")[0])
         df.to_csv(csv_path)
