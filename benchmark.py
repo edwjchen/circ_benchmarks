@@ -147,20 +147,28 @@ def benchmark_hycc_biomatch():
 # Benchmark circ
 ################################################################################
 
+SIZE = 256
+PARTITION_SIZE = 3000
+MUT_LEVEL = 4
+MUT_STEP_SIZE = 1
+TEST_FILE = "./examples/C/mpc/benchmarks/biomatch/2pc_biomatch_" + str(SIZE) + ".c"
+TEST_NAME = "biomatch"
 
 def run_circ_benchmark(name):
     print("Running CirC {}".format(name))
     write_to_both("Running CirC {}".format(name))
+    write_to_both("Test cases {}".format(TEST_NAME))
+    write_to_both("Parameters: {}, {}, {}, {}".format(SIZE, PARTITION_SIZE, MUT_LEVEL, MUT_STEP_SIZE))
     for i in range(RERUN):
         write_to_both("RERUN: {}".format(i))
         os.chdir(CIRC_SOURCE)
-        result = subprocess.run(["./scripts/build_mpc_c_benchmark.zsh", COST_MODEL, name], check=True, capture_output=True, text=True)
+        result = subprocess.run(["./scripts/build_mpc_c_benchmark_f.zsh", TEST_FILE, COST_MODEL, name, str(PARTITION_SIZE), str(MUT_LEVEL), str(MUT_STEP_SIZE)], check=True, capture_output=True, text=True)
         os.chdir(PARENT_DIR+PARENT_DIR)
         write_output_to_log(result.stdout)
         write_to_run(result.stdout)
 
         os.chdir(CIRC_SOURCE)
-        result = subprocess.run(["python3", "./scripts/aby_tests/c_benchmark_aby.py"], check=True, capture_output=True, text=True)
+        result = subprocess.run(["python3", "./scripts/aby_tests/c_benchmark_aby.py", "-t", TEST_NAME, "-s", str(SIZE)], check=True, capture_output=True, text=True)
         os.chdir(PARENT_DIR+PARENT_DIR)
         write_output_to_log(result.stdout)
         write_to_run(result.stdout)
