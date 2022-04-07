@@ -108,3 +108,107 @@ def write_to_run(text):
 def write_to_both(text):
     write_to_log(text)
     write_to_run(text)
+
+
+####################
+# to csv
+####################
+import copy
+import pandas as pd
+
+def get_last_elem(line):
+    return line.split()[-1]
+
+def standardize_time(t):
+    if t.endswith("ms"):
+        return float(t[:-2]) / 1000
+    else:
+        return float(t[:-1])
+
+def parse_circ_log(path):
+    with open(path, "r") as f:
+        log = f.read()
+        results = []
+        data = {}
+        for line in log.split("\n"):
+            if not line:
+                if data:
+                    results.append(copy.deepcopy(data))
+                data = {}
+            elif line.startswith("Running"):
+                data["selection_scheme"] = get_last_elem(line)
+            elif line.startswith("Test"):
+                test_case = line.split()[-1]
+                data["test_case"] = test_case
+            elif line.startswith("Parameters"):
+                params = [int(l) for l in line.split(":")[-1].split(",")]
+                data["input_size"] = params[0]
+                data["num_parts"] = params[1]
+                data["mutation_level"] = params[2]
+                data["mutation_step_size"] = params[3]
+            elif "RERUN:" in line:
+                run = int(get_last_elem(line))
+                if "run" in data and run != data["run"]:
+                    results.append(copy.deepcopy(data))
+                data["run"] = run
+
+            elif "Cost model:" in line:
+                data["cost_model"] = get_last_elem(line)
+            elif "Cost of assignment total:" in line:
+                data["ilp_cost"] = float(get_last_elem(line))
+            elif "Cost of assignment node:" in line:
+                data["op_cost"] = float(get_last_elem(line))
+            elif "Cost of assignment conv:" in line:
+                data["conv_cost"] = float(get_last_elem(line))
+            elif "Compile cost:" in line:
+                t = get_last_elem(line)
+                t = standardize_time(t)
+                data["compile_time"] = t
+            elif "Server load time:" in line:
+                data["server_load_time"] = float(get_last_elem(line))
+            elif "Server exec time:" in line:
+                data["server_exec_time"] = float(get_last_elem(line))
+            elif "Server total time:" in line:
+                data["server_total_time"] = float(get_last_elem(line))
+            elif "Client load time:" in line:
+                data["client_load_time"] = float(get_last_elem(line))
+            elif "Client exec time:" in line:
+                data["client_exec_time"] = float(get_last_elem(line))
+            elif "Client total time:" in line:
+                data["client_total_time"] = float(get_last_elem(line))
+            elif "Mutation+ILP time:" in line:
+                t = get_last_elem(line)
+                t = standardize_time(t)
+                data["ilp_time"] = t
+            elif "ILP time:" in line:
+                t = get_last_elem(line)
+                t = standardize_time(t)
+                data["ilp_time"] = t
+            elif "Comb time:" in line:
+                t = get_last_elem(line)
+                t = standardize_time(t)
+                data["comb_time"] = t
+            elif "Part time:" in line:
+                t = get_last_elem(line)
+                t = standardize_time(t)
+                data["part_time"] = t
+            elif "num_nodes:" in line:
+                data["num_nodes"] = int(get_last_elem(line))
+            elif "avg_partition_size:" in line:
+                data["avg_partition_size"] = float(get_last_elem(line))
+                
+        df = pd.DataFrame(results)
+
+        #clean values 
+        num_nodes = [n for n in df.num_nodes.unique() if not pd.isna(n)]
+        assert(len(num_nodes) == 1)
+        num_nodes = num_nodes[0]
+        avg_partition_size = [n for n in df.avg_partition_size.unique() if not pd.isna(n)]
+        assert(len(avg_partition_size) == 1)
+        avg_partition_size = avg_partition_size[0]
+        df["num_nodes"] = df.num_nodes.apply(lambda x: num_nodes if pd.isna(x) else x)
+        df["avg_partition_size"] = df.avg_partition_size.apply(lambda x: avg_partition_size if pd.isna(x) else x)
+        df = df.fillna(0)
+
+        csv_path = "csvs/{}.csv".format(path.split(".")[0])
+        df.to_csv(csv_path)
