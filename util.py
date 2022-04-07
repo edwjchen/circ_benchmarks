@@ -1,4 +1,3 @@
-import datetime
 import subprocess
 import os
 
@@ -61,8 +60,14 @@ def remove_tmp():
 
 def make_test_results():
     subprocess.run(["mkdir", "-p", "test_results"])
+
+def make_version(features):
     global VERSION
-    VERSION = str(datetime.datetime.now())
+    if "hycc" in features:
+        VERSION = "{}_biomatch_is-{}_mt-{}_cm-{}".format("hycc", )
+
+    elif "circ" in features:
+        VERSION = "{}_biomatch_is-{}_mt-{}_cm-{}".format("circ", )
 
 def write_output_to_log(text):
     lines = text.split("\n")

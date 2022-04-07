@@ -133,6 +133,7 @@ if __name__ == "__main__":
     verify_single_action(args)
 
     features = load_features()
+    assert len(features == 1), "Only 1 feature at a time, features: {}".format(features)
 
     if args.install:
         install(features)
