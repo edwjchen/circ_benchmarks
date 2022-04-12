@@ -27,10 +27,10 @@ COSTS=HYCC_SOURCE+"/src/circuit-utils/py/costs.json"
 
 # joint parameters
 SIZE = 256
+RERUN = 3
 
 # hycc parameters
 MINIMIZATION_TIME = 0
-RERUN = 3
 COST_MODEL = "hycc" # opa
 
 # circ parameters
