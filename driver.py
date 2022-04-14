@@ -71,6 +71,12 @@ def benchmark(features):
     make_version(features)
 
     if "hycc" in features:
+        VERSION = "{}_biomatch_is-{}_mt-{}_cm-{}".format("hycc", SIZE, MINIMIZATION_TIME, COST_MODEL)
+        log_path = format("test_results/log_{}.txt".format(VERSION))
+        if os.path.exists(log_path):
+            print("Benchmark already ran: {}".format(log_path))
+            return 
+
         print("Running hycc Benchmarks")
         # run hycc benchmarks
         start = time.time()
@@ -81,7 +87,15 @@ def benchmark(features):
         print(line)
         write_to_both(line)
 
+        parse_hycc_log(log_path)
+
     if "circ" in features:
+        VERSION = "{}_biomatch_is-{}_np-{}_ml-{}_mss-{}_cm-{}".format("circ", SIZE, NUM_PARTS, MUT_LEVEL, MUT_STEP_SIZE, COST_MODEL)
+        log_path = format("test_results/log_{}.txt".format(VERSION))
+        if os.path.exists(log_path):
+            print("Benchmark already ran: {}".format(log_path))
+            return 
+
         print("Running circ Benchmarks")
         # run circ benchmarks
         start = time.time()
@@ -91,6 +105,8 @@ def benchmark(features):
         line = "Total circ benchmark time: {}".format(end-start)
         print(line)
         write_to_both(line)
+
+        parse_circ_log(log_path)
 
 def set_features(features):
     if "none" in features:

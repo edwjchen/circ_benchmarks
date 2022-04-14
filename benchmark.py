@@ -13,10 +13,20 @@ def build_mpc_circuit(test_path, args=[]):
     write_to_run(result.stdout)
 
 def optimize_selection(costs_path=COSTS):
+    import time
     os.chdir(TMP_PATH)
+    start = time.time()
     subprocess.run(["python3", PARENT_DIR+MODULE_BUNDLE, "."], check=True)
-    subprocess.run(["python3", PARENT_DIR+SELECTION, ".", PARENT_DIR+costs_path], check=True)
+    end = time.time()
     os.chdir(PARENT_DIR)
+    write_to_both("Module bundle time: {}".format(end-start))
+
+    os.chdir(TMP_PATH)
+    start = time.time()
+    subprocess.run(["python3", PARENT_DIR+SELECTION, ".", PARENT_DIR+costs_path], check=True)
+    end = time.time()
+    os.chdir(PARENT_DIR)
+    write_to_both("Selection time: {}".format(end-start))
 
 def run_sim(spec_file):
     for i in range(RERUN):
@@ -119,12 +129,14 @@ def benchmark_hycc_biomatch():
     write_to_both("Benchmarking HyCC")
     write_to_both(DELIMITER)
 
-    test_path = PARENT_DIR + HYCC_SOURCE + "/examples/benchmarks/biomatch/biomatch.c"
-    spec_file = "tests/hycc/biomatch_1.spec"
+    test_path = PARENT_DIR + HYCC_SOURCE + "/examples/benchmarks/biomatch/biomatch_{}.c".format(SIZE)
+    spec_file = "tests/hycc/biomatch_{}.spec".format(SIZE)
 
     write_to_both("TEST PATH: {}".format(test_path))
     write_to_both("SPEC_FILE: {}".format(spec_file))
     write_to_both("MINIMIZATION TIME: {}".format(MINIMIZATION_TIME))
+    write_to_both("SIZE: {}".format(SIZE))
+    write_to_both("COST MODEL: {}".format(COST_MODEL))
     write_to_both(DELIMITER)
 
     # benchmark cbmc-gc benchmarks 
