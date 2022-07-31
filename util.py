@@ -32,6 +32,7 @@ COSTS = HYCC_SOURCE+"/src/circuit-utils/py/costs.json"
 
 # joint parameters
 RERUN = 3
+SIZE = 256
 
 # hycc parameters
 MINIMIZATION_TIME = 0
