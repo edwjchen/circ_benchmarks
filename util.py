@@ -1,9 +1,14 @@
+import pandas as pd
+import copy
 import subprocess
 import os
+import time
 
 feature_path = ".features.txt"
 valid_features = {"circ", "hycc"}
 
+# command variables
+TIME = "/usr/bin/time --format='%e seconds %M kB'"
 # installation variables
 ABY_SOURCE = "./modules/ABY"
 HYCC_SOURCE = "./modules/HyCC"
@@ -11,7 +16,7 @@ CIRC_SOURCE = "./modules/circ"
 KAHIP_SOURCE = "./modules/KaHIP"
 
 ABY_HYCC = HYCC_SOURCE+"/aby-hycc"
-ABY_HYCC_DIR = ABY_SOURCE +"/src/examples/aby-hycc/"
+ABY_HYCC_DIR = ABY_SOURCE + "/src/examples/aby-hycc/"
 ABY_CMAKE = ABY_SOURCE + "/src/examples/CMakeLists.txt"
 
 # benchmark variables
@@ -21,38 +26,36 @@ CBMC_GC = HYCC_SOURCE + "/bin/cbmc-gc"
 CIRCUIT_SIM = HYCC_SOURCE + "/bin/circuit-sim"
 ABY_CBMC_GC = ABY_SOURCE + "/build/bin/aby-hycc"
 MPC_CIRC = "mpc_main.circ"
-MODULE_BUNDLE=HYCC_SOURCE+"/src/circuit-utils/py/module_bundle.py"
-SELECTION=HYCC_SOURCE+"/src/circuit-utils/py/selection.py"
-COSTS=HYCC_SOURCE+"/src/circuit-utils/py/costs.json"
+MODULE_BUNDLE = HYCC_SOURCE+"/src/circuit-utils/py/module_bundle.py"
+SELECTION = HYCC_SOURCE+"/src/circuit-utils/py/selection.py"
+COSTS = HYCC_SOURCE+"/src/circuit-utils/py/costs.json"
 
 # joint parameters
-SIZE = 256
 RERUN = 3
 
 # hycc parameters
-<<<<<<< HEAD
 MINIMIZATION_TIME = 0
-=======
-MINIMIZATION_TIME = 600
->>>>>>> 9ac2fd268849605401bf6d3810398adf179919b9
-COST_MODEL = "hycc" # opa
+COST_MODEL = "hycc"  # opa
 
 # circ parameters
 NUM_PARTS = 3
 MUT_LEVEL = 4
 MUT_STEP_SIZE = 1
-TEST_FILE = "./examples/C/mpc/benchmarks/biomatch/2pc_biomatch_" + str(SIZE) + ".c"
+TEST_FILE = "./examples/C/mpc/benchmarks/biomatch/2pc_biomatch_" + \
+    str(SIZE) + ".c"
 TEST_NAME = "biomatch"
 
 # logging variables
 DELIMITER = "\n====================================\n"
 VERSION = ""
 
+
 def save_features(features):
     """ Save features to file """
     with open(feature_path, 'w') as f:
         feature_str = "\n".join(features)
         f.write(feature_str)
+
 
 def load_features():
     """ Load features from file """
@@ -63,8 +66,10 @@ def load_features():
     else:
         return set()
 
+
 def make_tmp():
     subprocess.run(["mkdir", "-p", "tmp"])
+
 
 def remove_tmp():
     subprocess.run(["rm", "-rf", "tmp"])
@@ -73,16 +78,21 @@ def remove_tmp():
 # Logging
 ###############################################################################
 
+
 def make_test_results():
     subprocess.run(["mkdir", "-p", "test_results"])
+
 
 def make_version(features):
     global VERSION
     if "hycc" in features:
-        VERSION = "{}_biomatch_is-{}_mt-{}_cm-{}".format("hycc", SIZE, MINIMIZATION_TIME, COST_MODEL)
+        VERSION = "{}_biomatch_is-{}_mt-{}_cm-{}".format(
+            "hycc", SIZE, MINIMIZATION_TIME, COST_MODEL)
 
     if "circ" in features:
-        VERSION = "{}_biomatch_is-{}_np-{}_ml-{}_mss-{}_cm-{}".format("circ", SIZE, NUM_PARTS, MUT_LEVEL, MUT_STEP_SIZE, COST_MODEL)
+        VERSION = "{}_biomatch_is-{}_np-{}_ml-{}_mss-{}_cm-{}".format(
+            "circ", SIZE, NUM_PARTS, MUT_LEVEL, MUT_STEP_SIZE, COST_MODEL)
+
 
 def write_output_to_log(text):
     lines = text.split("\n")
@@ -90,6 +100,7 @@ def write_output_to_log(text):
         clean_line = line.strip()
         if clean_line.startswith("LOG:"):
             write_to_log(clean_line)
+
 
 def write_to_log(text):
     global VERSION
@@ -100,6 +111,7 @@ def write_to_log(text):
     with open(log_path, "a") as f:
         f.write(text + "\n")
 
+
 def write_to_run(text):
     global VERSION
     run_path = format("test_results/run_{}.txt".format(VERSION))
@@ -109,6 +121,7 @@ def write_to_run(text):
     with open(run_path, "a") as f:
         f.write(text + "\n")
 
+
 def write_to_both(text):
     write_to_log(text)
     write_to_run(text)
@@ -117,17 +130,18 @@ def write_to_both(text):
 ####################
 # to csv
 ####################
-import copy
-import pandas as pd
+
 
 def get_last_elem(line):
     return line.split()[-1]
+
 
 def standardize_time(t):
     if t.endswith("ms"):
         return float(t[:-2]) / 1000
     else:
         return float(t[:-1])
+
 
 def parse_circ_log(path):
     with open(path, "r") as f:
@@ -200,24 +214,27 @@ def parse_circ_log(path):
                 data["num_nodes"] = int(get_last_elem(line))
             elif "avg_partition_size:" in line:
                 data["avg_partition_size"] = float(get_last_elem(line))
-                
+
         df = pd.DataFrame(results)
 
-        #clean values 
+        # clean values
         num_nodes = [n for n in df.num_nodes.unique() if not pd.isna(n)]
         assert(len(num_nodes) == 1)
         num_nodes = num_nodes[0]
-        avg_partition_size = [n for n in df.avg_partition_size.unique() if not pd.isna(n)]
+        avg_partition_size = [
+            n for n in df.avg_partition_size.unique() if not pd.isna(n)]
         assert(len(avg_partition_size) == 1)
         avg_partition_size = avg_partition_size[0]
-        df["num_nodes"] = df.num_nodes.apply(lambda x: num_nodes if pd.isna(x) else x)
-        df["avg_partition_size"] = df.avg_partition_size.apply(lambda x: avg_partition_size if pd.isna(x) else x)
+        df["num_nodes"] = df.num_nodes.apply(
+            lambda x: num_nodes if pd.isna(x) else x)
+        df["avg_partition_size"] = df.avg_partition_size.apply(
+            lambda x: avg_partition_size if pd.isna(x) else x)
         df = df.fillna(0)
 
         csv_path = "csvs/{}.csv".format(path.split("/")[-1].split(".")[0])
         df.to_csv(csv_path)
 
-    
+
 def parse_hycc_log(path):
     with open(path, "r") as f:
         log = f.read()
@@ -229,13 +246,13 @@ def parse_hycc_log(path):
         variant = ""
         module_bundle_time = 0
         selection_time = 0
-        
+
         results = []
         data = {}
         for line in log.split("\n"):
             if line.startswith("Using"):
                 data["test_case"] = test_name
-                data["minimization_time"] = minimization_time 
+                data["minimization_time"] = minimization_time
                 data["input_size"] = input_size
                 data["cost_model"] = cost_model
                 data["variant"] = variant
@@ -288,11 +305,11 @@ def parse_hycc_log(path):
                 data["server_exec_time"] = float(get_last_elem(line))
             elif "Module bundle time:" in line:
                 data["module_bundle_time"] = float(get_last_elem(line))
-                module_bundle_time = data["module_bundle_time"] 
+                module_bundle_time = data["module_bundle_time"]
             elif "Selection time:" in line:
                 data["selection_time"] = float(get_last_elem(line))
-                selection_time = data["selection_time"] 
-                
+                selection_time = data["selection_time"]
+
         df = pd.DataFrame(results)
         csv_path = "csvs/{}.csv".format(path.split("/")[-1].split(".")[0])
         df.to_csv(csv_path)
