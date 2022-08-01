@@ -2,13 +2,12 @@ import pandas as pd
 import copy
 import subprocess
 import os
-import time
 
 feature_path = ".features.txt"
 valid_features = {"circ", "hycc"}
 
-# command variables
-TIME = "/usr/bin/time --format='%e seconds %M kB'"
+TIMEOUT = 1000
+
 # installation variables
 ABY_SOURCE = "./modules/ABY"
 HYCC_SOURCE = "./modules/HyCC"
@@ -31,7 +30,7 @@ SELECTION = HYCC_SOURCE+"/src/circuit-utils/py/selection.py"
 COSTS = HYCC_SOURCE+"/src/circuit-utils/py/costs.json"
 
 # joint parameters
-RERUN = 3
+RERUN = 1
 SIZE = 256
 
 # hycc parameters
@@ -47,7 +46,7 @@ TEST_FILE = "./examples/C/mpc/benchmarks/biomatch/2pc_biomatch_" + \
 TEST_NAME = "biomatch"
 
 # logging variables
-DELIMITER = "\n====================================\n"
+DELIMITER = "\nLOG: ====================================\n"
 VERSION = ""
 
 
@@ -79,43 +78,96 @@ def remove_tmp():
 # Logging
 ###############################################################################
 
+def wrap_cmd(cmd):
+    time_cmd = "/usr/bin/time --format='%e seconds %M kB'"
+    return " ".join([time_cmd] + cmd)
+
+
+def run_cmds(server_cmd, client_cmd, name, version):
+    write_log("LOG: Test: {}".format(name), version)
+    os.chdir(TMP_PATH)
+    server_cmd = wrap_cmd(server_cmd)
+    client_cmd = wrap_cmd(client_cmd)
+    print(server_cmd)
+    server_proc = subprocess.Popen(server_cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    client_proc = subprocess.Popen(client_cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    server_stdout, server_stderr = server_proc.communicate(timeout=TIMEOUT)
+    client_stdout, client_stderr = client_proc.communicate(timeout=TIMEOUT)
+    os.chdir(PARENT_DIR)
+
+    if server_proc.returncode: 
+        write_log("LOG: Error: Process returned with status code {}".format(server_proc.returncode), version)
+        write_log("LOG: Error message: {}".format(" ".join(server_stderr.decode("utf-8").split("\n"))), version)
+        return
+    
+    if client_proc.returncode: 
+        write_log("LOG: Error: Process returned with status code {}".format(client_proc.returncode), version)
+        write_log("LOG: Error message: {}".format(" ".join(client_stderr.decode("utf-8").split("\n"))), version)
+        return 
+
+    # record server
+    server_out = server_stdout.decode("utf-8")
+    write_log(server_out, version)
+
+    server_err = server_stderr.decode("utf-8")
+    last_line = [l for l in server_err.split("\n") if l][-1]
+    memory_output = "LOG: Server Time / Memory: {}".format(last_line)
+    write_log(memory_output, version)
+
+    # record client 
+    client_out = client_stdout.decode("utf-8")
+    write_log(client_out, version)
+
+    client_err = client_stderr.decode("utf-8")
+    last_line = [l for l in client_err.split("\n") if l][-1]
+    memory_output = "LOG: Client Time / Memory: {}".format(last_line)
+    write_log(memory_output, version)
+
+
+def run_cmd(cmd, name, version):
+    write_log("LOG: Test: {}".format(name), version)
+    os.chdir(TMP_PATH)
+    cmd = wrap_cmd(cmd)
+    print(cmd)
+    proc = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    stdout, stderr = proc.communicate(timeout=TIMEOUT)
+    os.chdir(PARENT_DIR)
+
+    if proc.returncode: 
+        write_log("LOG: Error: Process returned with status code {}".format(proc.returncode), version)
+        write_log("LOG: Error message: {}".format(" ".join(stderr.decode("utf-8").split("\n"))), version)
+        raise RuntimeError
+
+    # record stdout
+    out = stdout.decode("utf-8")
+    write_log(out, version)
+
+    # record stderr
+    err = stderr.decode("utf-8")
+    last_line = [l for l in err.split("\n") if l][-1]
+    memory_output = "LOG: Time / Memory: {}".format(last_line)
+    write_log(memory_output, version)
+
 
 def make_test_results():
     subprocess.run(["mkdir", "-p", "test_results"])
 
 
-def make_version(features):
-    global VERSION
-    if "hycc" in features:
-        VERSION = "{}_biomatch_is-{}_mt-{}_cm-{}".format(
-            "hycc", SIZE, MINIMIZATION_TIME, COST_MODEL)
+def write_to_log(text, version):
+    log_path = format("test_results/log_{}.txt".format(version))
+    if not os.path.exists(log_path):
+        subprocess.run(["touch", log_path])
 
-    if "circ" in features:
-        VERSION = "{}_biomatch_is-{}_np-{}_ml-{}_mss-{}_cm-{}".format(
-            "circ", SIZE, NUM_PARTS, MUT_LEVEL, MUT_STEP_SIZE, COST_MODEL)
-
-
-def write_output_to_log(text):
     lines = text.split("\n")
     for line in lines:
         clean_line = line.strip()
         if clean_line.startswith("LOG:"):
-            write_to_log(clean_line)
+            with open(log_path, "a") as f:
+                f.write(clean_line + "\n")
 
 
-def write_to_log(text):
-    global VERSION
-    log_path = format("test_results/log_{}.txt".format(VERSION))
-    if not os.path.exists(log_path):
-        subprocess.run(["touch", log_path])
-
-    with open(log_path, "a") as f:
-        f.write(text + "\n")
-
-
-def write_to_run(text):
-    global VERSION
-    run_path = format("test_results/run_{}.txt".format(VERSION))
+def write_to_run(text, version):
+    run_path = format("test_results/run_{}.txt".format(version))
     if not os.path.exists(run_path):
         subprocess.run(["touch", run_path])
 
@@ -123,9 +175,9 @@ def write_to_run(text):
         f.write(text + "\n")
 
 
-def write_to_both(text):
-    write_to_log(text)
-    write_to_run(text)
+def write_log(text, version):
+    write_to_log(text, version)
+    write_to_run(text, version)
 
 
 ####################

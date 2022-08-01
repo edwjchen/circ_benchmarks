@@ -1,185 +1,201 @@
 from util import *
+from subprocess import Popen, PIPE
 
 ################################################################################
 # Benchmark hycc
 ################################################################################
 
 
-def build_mpc_circuit(test_path, args=[]):
-    os.chdir(TMP_PATH)
-    cmd = [TIME, PARENT_DIR+CBMC_GC, test_path,
+def build_mpc_circuit(test_path, version, args=[]):
+    write_log(DELIMITER, version)
+    cmd = [PARENT_DIR+CBMC_GC, test_path,
            "--minimization-time-limit", str(MINIMIZATION_TIME)] + args
-    result = subprocess.run(cmd, check=True, capture_output=True, text=True)
-    os.chdir(PARENT_DIR)
-    write_output_to_log(result.stdout)
-    write_to_run(result.stdout)
+    run_cmd(cmd, "Build circuit time", version)
+
+def bundle_modules(version):
+    write_log(DELIMITER, version)
+    cmd = ["python3", PARENT_DIR+MODULE_BUNDLE, "."]
+    run_cmd(cmd, "Module bundle time", version)
 
 
-def optimize_selection(costs_path=COSTS):
-    import time
-    os.chdir(TMP_PATH)
-    start = time.time()
-    subprocess.run(["python3", PARENT_DIR+MODULE_BUNDLE, "."], check=True)
-    end = time.time()
-    os.chdir(PARENT_DIR)
-    write_to_both("Module bundle time: {}".format(end-start))
-
-    os.chdir(TMP_PATH)
-    start = time.time()
-    subprocess.run(["python3", PARENT_DIR+SELECTION, ".",
-                   PARENT_DIR+costs_path], check=True)
-    end = time.time()
-    os.chdir(PARENT_DIR)
-    write_to_both("Selection time: {}".format(end-start))
+def optimize_selection(version, costs_path=COSTS):
+    write_log(DELIMITER, version)
+    cmd = ["python3", PARENT_DIR+SELECTION, ".", PARENT_DIR+costs_path]
+    run_cmd(cmd, "Selection time", version)
 
 
-def run_sim(spec_file):
+def run_sim(spec_file, version):
+    write_log(DELIMITER, version)
     for i in range(RERUN):
-        write_to_both("Using HyCC CIRCUIT-SIM")
-        write_to_both("RERUN: {}".format(i))
-        os.chdir(TMP_PATH)
         cmd = [PARENT_DIR+CIRCUIT_SIM, MPC_CIRC,
                "--spec-file", PARENT_DIR+spec_file]
-        result = subprocess.run(
-            cmd, check=True, capture_output=True, text=True)
-        os.chdir(PARENT_DIR)
-
-        write_output_to_log(result.stdout)
-        write_to_run(result.stdout)
+        run_cmd(cmd, "CIRCUIT-SIM RERUN {}:".format(i), version)
 
 
-def run_aby(spec_file, args=[]):
+def run_aby(spec_file, name, version, args=[]):
+    write_log(DELIMITER, version)
     for i in range(RERUN):
-        write_to_both("Using ABY-HYCC")
-        write_to_both("RERUN: {}".format(i))
-        os.chdir(TMP_PATH)
         cmd = [PARENT_DIR+ABY_CBMC_GC, "--spec-file",
                PARENT_DIR+spec_file] + args
         server_cmd = cmd + ["-r", "0"]
         client_cmd = cmd + ["-r", "1"]
-        server_proc = subprocess.Popen(server_cmd, stdout=subprocess.PIPE)
-        client_proc = subprocess.Popen(client_cmd, stdout=subprocess.PIPE)
-        _server_out, _server_errs = server_proc.communicate()
-        _client_out, _client_errs = client_proc.communicate()
-
-        server_out = _server_out.decode("utf-8")
-        client_out = _client_out.decode("utf-8")
-
-        os.chdir(PARENT_DIR)
-
-        write_output_to_log(server_out)
-        write_to_run(server_out)
-        write_output_to_log(client_out)
-        write_to_run(client_out)
+        run_cmds(server_cmd, client_cmd, "{} RERUN {}:".format(name, i), version)
 
 
-def run_aby_sim(spec_file):
-    run_aby(spec_file, [MPC_CIRC])
+def run_aby_sim(spec_file, version):
+    run_aby(spec_file, "ABY-SIM", version, [MPC_CIRC])
+
+def run_yaoonly(spec_file, version):
+    if os.path.exists("tmp/yaoonly.cmb"):
+        run_aby(spec_file, "yaoonly", version, ["-c", "yaoonly.cmb"])
+    else:
+        write_log(DELIMITER, version)
+        write_log("LOG: Missing: yaoonly.cmb", version)
 
 
-def run_yaoonly(spec_file):
-    write_to_both(DELIMITER)
-    write_to_both("Running HyCC yaonly")
-    run_aby(spec_file, ["-c", "yaoonly.cmb"])
+def run_yaohybrid(spec_file, version):
+    if os.path.exists("tmp/yaohybrid.cmb"):
+        run_aby(spec_file, "yaohybrid", version, ["-c", "yaohybrid.cmb"])
+    else:
+        write_log(DELIMITER, version)
+        write_log("LOG: Missing: yaohybrid.cmb", version)
 
 
-def run_yaohybrid(spec_file):
-    write_to_both(DELIMITER)
-    write_to_both("Running HyCC yaohybrid")
-    run_aby(spec_file, ["-c", "yaohybrid.cmb"])
+def run_gmwonly(spec_file, version):
+    if os.path.exists("tmp/gmwonly.cmb"):
+        run_aby(spec_file, "gmwonly", version, ["-c", "gmwonly.cmb"])
+    else:
+        write_log(DELIMITER, version)
+        write_log("LOG: Missing: gmwonly.cmb", version)
 
 
-def run_gmwonly(spec_file):
-    write_to_both(DELIMITER)
-    write_to_both("Running HyCC gmwonly")
-    run_aby(spec_file, ["-c", "gmwonly.cmb"])
+def run_gmwhyrbid(spec_file, version):
+    if os.path.exists("tmp/gmwhybrid.cmb"):
+        run_aby(spec_file, "gmwhybrid", version, ["-c", "gmwhybrid.cmb"])
+    else:
+        write_log(DELIMITER, version)
+        write_log("LOG: Missing: gmwhybrid.cmb", version)
 
 
-def run_gmwhyrbid(spec_file):
-    write_to_both(DELIMITER)
-    write_to_both("Running HyCC gmwhybrid")
-    run_aby(spec_file, ["-c", "gmwhybrid.cmb"])
+def run_optimized(spec_file, version):
+    if os.path.exists("tmp/ps_optimized.cmb"):
+        run_aby(spec_file, "ps_optimized", version, ["-c", "ps_optimized.cmb"])
+    else:
+        write_log(DELIMITER, version)
+        write_log("LOG: Missing: ps_optimized.cmb", version)
 
 
-def run_optimized(spec_file):
-    write_to_both(DELIMITER)
-    write_to_both("Running HyCC ps_optimized")
-    run_aby(spec_file, ["-c", "ps_optimized.cmb"])
-
-
-def run_benchmark(test_path, spec_file, args=[]):
+def run_simulation(test_path, spec_file, version, args=[]):
+    remove_tmp()
     make_tmp()
+    try:
+        # build benchmarks
+        build_mpc_circuit(test_path, version, args)
 
-    # build benchmarks
-    build_mpc_circuit(test_path, args)
-
-    # run benchmarks
-    run_sim(spec_file)
-    run_aby_sim(spec_file)
-
+        # run benchmarks
+        run_sim(spec_file, version)
+        run_aby_sim(spec_file, version)
+    except Exception as e:
+        if os.getcwd().endswith("tmp"):
+            os.chdir(PARENT_DIR)
+        write_log("LOG: Failed simulating circuit with args: {}, exception: {}".format(args, e), version)
     remove_tmp()
 
 
-def run_all_benchmarks(test_path, spec_file, args=[]):
+def run_all_hycc_benchmarks(test_path, spec_file, version, args=[]):
+    remove_tmp()
     make_tmp()
-
     # build benchmarks
     try:
         # compilation to arithmetic circuits is not always possible
-        build_mpc_circuit(test_path, args)
-        optimize_selection()
-
-        # run benchmarks
-        run_yaoonly(spec_file)
-        run_yaohybrid(spec_file)
-        run_gmwonly(spec_file)
-        run_gmwhyrbid(spec_file)
-        run_optimized(spec_file)
-    except:
+        build_mpc_circuit(test_path, version, args)
+        bundle_modules(version)
+    except Exception as e:
         if os.getcwd().endswith("tmp"):
             os.chdir(PARENT_DIR)
-        write_to_both(
-            "Compilation of all_benchmarks failed with args: {}".format(args))
+        write_log("LOG: Failed building circuit with args: {}, exception: {}".format(args, e), version)
+
+    # run benchmarks
+    try:
+        run_yaoonly(spec_file, version)
+    except Exception as e:
+        if os.getcwd().endswith("tmp"):
+            os.chdir(PARENT_DIR)
+        write_log("LOG: Failed yaoonly with args: {}, exception: {}".format(args, e), version)
+
+    try:
+        run_yaohybrid(spec_file, version)
+    except Exception as e:
+        if os.getcwd().endswith("tmp"):
+            os.chdir(PARENT_DIR)
+        write_log("LOG: Failed yaohybrid with args: {}, exception: {}".format(args, e), version)
+
+    try:
+        run_gmwonly(spec_file, version)
+    except Exception as e:
+        if os.getcwd().endswith("tmp"):
+            os.chdir(PARENT_DIR)
+        write_log("LOG: Failed gmwonly with args: {}, exception: {}".format(args, e), version)
+
+    try:
+        run_gmwhyrbid(spec_file, version)
+    except Exception as e:
+        if os.getcwd().endswith("tmp"):
+            os.chdir(PARENT_DIR)
+        write_log("LOG: Failed gmwhybrid with args: {}, exception: {}".format(args, e), version)
+
+    # ps optimized
+    try:
+        optimize_selection(version)
+    except Exception as e:
+        if os.getcwd().endswith("tmp"):
+            os.chdir(PARENT_DIR)
+        write_log("LOG: Failed optimize_selection with args: {}, exception: {}".format(args, e), version)
+
+    try:
+        run_optimized(spec_file, version)
+    except Exception as e:
+        if os.getcwd().endswith("tmp"):
+            os.chdir(PARENT_DIR)
+        write_log("LOG: Failed run_optimized with args: {}, exception: {}".format(args, e), version)
     remove_tmp()
 
 
 def benchmark_hycc(name, path):
-    start = time.time()
-    VERSION = "{}_{}_mt-{}_cm-{}".format(
+    version = "{}_{}_mt-{}_cm-{}".format(
         "hycc", name, MINIMIZATION_TIME, COST_MODEL)
-    log_path = format("test_results/log_{}.txt".format(VERSION))
+    log_path = format("test_results/log_{}.txt".format(version))
     if os.path.exists(log_path):
         print("Benchmark already ran: {}".format(log_path))
         return
 
-    write_to_both(DELIMITER)
-    write_to_both("Benchmarking HyCC")
-    write_to_both(DELIMITER)
+    write_log(DELIMITER, version)
+    write_log("LOG: Benchmarking HyCC", version)
+    write_log(DELIMITER, version)
 
     test_path = PARENT_DIR + HYCC_SOURCE + \
         "/examples/benchmarks/{}".format(path)
     spec_file = "tests/hycc/{}.spec".format(name)
 
-    write_to_both("TEST PATH: {}".format(test_path))
-    write_to_both("SPEC_FILE: {}".format(spec_file))
-    write_to_both("MINIMIZATION TIME: {}".format(MINIMIZATION_TIME))
-    write_to_both("COST MODEL: {}".format(COST_MODEL))
-    write_to_both(DELIMITER)
+    write_log("LOG: TEST PATH: {}".format(test_path), version)
+    write_log("LOG: SPEC_FILE: {}".format(spec_file), version)
+    write_log("LOG: MINIMIZATION TIME: {}".format(MINIMIZATION_TIME), version)
+    write_log("LOG: COST MODEL: {}".format(COST_MODEL), version)
 
-    # benchmark cbmc-gc benchmarks
-    run_benchmark(test_path, spec_file)
-    write_to_both(DELIMITER)
+    # # benchmark cbmc-gc benchmarks
+    # run_simulation(test_path, spec_file, version)
+    # write_log(DELIMITER, version)
 
     # benchmark cbmc-gc benchmarks
     args = ["--all-variants"]
-    write_to_both("Running with args: {}".format(args))
-    run_all_benchmarks(test_path, spec_file, args)
-    write_to_both(DELIMITER)
+    write_log("LOG: Running with args: {}".format(args), version)
+    run_all_hycc_benchmarks(test_path, spec_file, version, args)
+    write_log(DELIMITER, version)
 
     args = ["--all-variants", "--outline"]
-    write_to_both("Running with args: {}".format(args))
-    run_all_benchmarks(test_path, spec_file, args)
-    write_to_both(DELIMITER)
+    write_log("LOG: Running with args: {}".format(args), version)
+    run_all_hycc_benchmarks(test_path, spec_file, version, args)
+    write_log(DELIMITER, version)
 
 
 ################################################################################
@@ -188,26 +204,24 @@ def benchmark_hycc(name, path):
 
 def run_circ_benchmark(name):
     print("Running CirC {}".format(name))
-    write_to_both("Running CirC {}".format(name))
-    write_to_both("Test cases {}".format(TEST_NAME))
-    write_to_both("Parameters: {}, {}, {}".format(
+    write_log("LOG: Running CirC {}".format(name))
+    write_log("LOG: Test cases {}".format(TEST_NAME))
+    write_log("LOG: Parameters: {}, {}, {}".format(
         NUM_PARTS, MUT_LEVEL, MUT_STEP_SIZE))
     for i in range(RERUN):
-        write_to_both("RERUN: {}".format(i))
+        write_log("RERUN: {}".format(i))
         os.chdir(CIRC_SOURCE)
         result = subprocess.run(["./scripts/build_mpc_c_benchmark.zsh", TEST_FILE, COST_MODEL, name, str(
             NUM_PARTS), str(MUT_LEVEL), str(MUT_STEP_SIZE)], check=True, capture_output=True, text=True)
         os.chdir(PARENT_DIR+PARENT_DIR)
-        write_output_to_log(result.stdout)
-        write_to_run(result.stdout)
+        write_log(result.stdout)
 
         os.chdir(CIRC_SOURCE)
         result = subprocess.run(["python3", "./scripts/aby_tests/c_benchmark_aby.py",
                                 "-t", TEST_NAME], check=True, capture_output=True, text=True)
         os.chdir(PARENT_DIR+PARENT_DIR)
-        write_output_to_log(result.stdout)
-        write_to_run(result.stdout)
-    write_to_both("\n")
+        write_log(result.stdout)
+    write_log("\n")
 
 
 def benchmark_boolean_only():
@@ -251,9 +265,9 @@ def benchmark_glp():
 
 
 def benchmark_circ_biomatch():
-    write_to_both(DELIMITER)
-    write_to_both("Benchmarking CirC")
-    write_to_both(DELIMITER)
+    write_log(DELIMITER)
+    write_log("LOG: Benchmarking CirC")
+    write_log(DELIMITER)
 
     # build benchmarks
     os.environ['ABY_SOURCE'] = "../ABY"
@@ -273,4 +287,4 @@ def benchmark_circ_biomatch():
     benchmark_lp_nm()
     benchmark_glp()
 
-    write_to_both(DELIMITER)
+    write_log(DELIMITER)

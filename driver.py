@@ -9,22 +9,23 @@ from benchmark import *
 
 def test():
     test_path = PARENT_DIR + HYCC_SOURCE + \
-        "/examples/benchmarks/biomatch/biomatch_{}.c".format(SIZE)
-    spec_file = "tests/hycc/biomatch_{}.spec".format(SIZE)
+        "/examples/benchmarks/mnist/mnist.c"
+    spec_file = "tests/hycc/mnist.spec"
     args = []
 
-    os.chdir(TMP_PATH)
-    cmd = [PARENT_DIR+CBMC_GC, test_path,
-           "--minimization-time-limit", str(MINIMIZATION_TIME)] + args
-    result = subprocess.run(cmd, check=True, capture_output=True, text=True)
-    os.chdir(PARENT_DIR)
+    # os.chdir(TMP_PATH)
+    # cmd = [PARENT_DIR+CBMC_GC, test_path,
+    #        "--minimization-time-limit", str(MINIMIZATION_TIME)] + args
+    # print(" ".join(cmd))
+    # result = subprocess.run(cmd, check=True, capture_output=True, text=True)
+    # os.chdir(PARENT_DIR)
 
     os.chdir(TMP_PATH)
     cmd = [PARENT_DIR+CIRCUIT_SIM, MPC_CIRC,
            "--spec-file", PARENT_DIR+spec_file]
+    print(" ".join(cmd))
     result = subprocess.run(cmd, check=True, capture_output=True, text=True)
     os.chdir(PARENT_DIR)
-
     print(result.stdout)
 
 #####################################################################
@@ -77,35 +78,31 @@ def build(features):
 
 def benchmark(features):
     build(features)
-
     make_test_results()
-    make_version(features)
-
     if "hycc" in features:
         print("Running hycc Benchmarks")
         start = time.time()
         test_cases = [
             ("biomatch", "biomatch/biomatch.c"),
             ("kmeans", "kmeans/kmeans.c"),
-            # ("gauss", "gauss/gauss.c"),
-            # ("db_join", "db/db_join.c"),
-            # ("db_join2", "db/db_join2.c"),
-            # ("db_merge", "db/db_merge.c"),
-            # ("mnist", "mnist/mnist.c"),
+            ("gauss", "gauss/gauss.c"),
+            ("db_join", "db/db_join.c"),
+            ("db_join2", "db/db_join2.c"),
+            ("db_merge", "db/db_merge.c"),
+            ("mnist", "mnist/mnist.c"),
             # ("mnist_decomp_main", "mnist/mnist_decomp_main.c"),
             # ("mnist_decomp_convolution", "mnist/mnist_decomp_convolution.c"),
-            # ("cryptonets", "cryptonets/cryptonets.c"),
+            ("cryptonets", "cryptonets/cryptonets.c"),
         ]
         # run hycc benchmarks
         for (name, path) in test_cases:
             benchmark_hycc(name, path)
         end = time.time()
-        line = "Total hycc benchmark time: {}".format(end-start)
-        print(line)
-        write_to_both(line)
-        parse_hycc_log(log_path)
+        line = "LOG: Total hycc benchmark time: {}".format(end-start)
+        write_log(line, "hycc_total_time")
 
     if "circ" in features:
+        global VERSION
         VERSION = "{}_biomatch_is-{}_np-{}_ml-{}_mss-{}_cm-{}".format(
             "circ", SIZE, NUM_PARTS, MUT_LEVEL, MUT_STEP_SIZE, COST_MODEL)
         log_path = format("test_results/log_{}.txt".format(VERSION))
@@ -179,8 +176,7 @@ if __name__ == "__main__":
     verify_single_action(args)
 
     features = load_features()
-    assert len(features) == 1, "Only 1 feature at a time, features: {}".format(
-        features)
+    assert args.features or args.list or len(features) == 1, "Only 1 feature at a time, features: {}".format(features)
 
     if args.install:
         install(features)

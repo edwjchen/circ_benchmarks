@@ -1,8 +1,8 @@
 tmp
-<<<<<<< HEAD
 test_results
 .vscode
 __py*
 .features.txt
-=======
->>>>>>> dffa5aa... updated driver to run ABY tests
+*.pem
+aws_benchmark/aws.sh
+
