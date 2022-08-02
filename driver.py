@@ -66,6 +66,8 @@ def build(features):
     subprocess.run(["./scripts/build_hycc.zsh"], check=True)
 
     # install hycc aby dependency
+    print(os.path.isdir(ABY_HYCC_DIR))
+    exit(0)
     if not os.path.isdir(ABY_HYCC_DIR):
         subprocess.run(["cp", "-r", ABY_HYCC, ABY_HYCC_DIR], check=True)
         with open(ABY_CMAKE, 'a') as f:
