@@ -77,6 +77,14 @@ def build(features):
     # build kahip
     subprocess.run(["./scripts/build_kahip.zsh"], check=True)
 
+    # build circ 
+    os.environ['ABY_SOURCE'] = "../ABY"
+    os.environ['CIRC_SOURCE'] = CIRC_SOURCE
+    os.chdir(CIRC_SOURCE)
+    subprocess.run(["python3", "driver.py", "-F", "aby", "c", "lp", "bench"], check=True)
+    subprocess.run(["python3", "driver.py", "--build_benchmark"], check=True)
+    os.chdir(CIRC_BENCHMARK_SOURCE)
+
 
 def benchmark(features):
     build(features)
@@ -85,45 +93,29 @@ def benchmark(features):
     if "hycc" in features:
         print("Running hycc Benchmarks")
         start = time.time()
-        test_cases = [
-            ("biomatch", "biomatch/biomatch.c"),
-            ("kmeans", "kmeans/kmeans.c"),
-            # ("gauss", "gauss/gauss.c"),
-            # ("db_join", "db/db_join.c"),
-            # ("db_join2", "db/db_join2.c"),
-            # ("db_merge", "db/db_merge.c"),
-            # ("mnist", "mnist/mnist.c"),
-            # ("mnist_decomp_main", "mnist/mnist_decomp_main.c"),
-            # ("mnist_decomp_convolution", "mnist/mnist_decomp_convolution.c"),
-            # ("cryptonets", "cryptonets/cryptonets.c"),
-        ]
+
         # run hycc benchmarks
-        for (name, path) in test_cases:
+        for (name, path) in HYCC_TEST_CASES:
             benchmark_hycc(name, path)
         end = time.time()
         line = "LOG: Total hycc benchmark time: {}".format(end-start)
         write_log(line, "hycc_total_time")
 
     if "circ" in features:
-        global VERSION
-        VERSION = "{}_biomatch_is-{}_np-{}_ml-{}_mss-{}_cm-{}".format(
-            "circ", SIZE, NUM_PARTS, MUT_LEVEL, MUT_STEP_SIZE, COST_MODEL)
-        log_path = format("test_results/log_{}.txt".format(VERSION))
-        if os.path.exists(log_path):
-            print("Benchmark already ran: {}".format(log_path))
-            return
-
         print("Running circ Benchmarks")
+        
         # run circ benchmarks
         start = time.time()
-        benchmark_circ_biomatch()
+
+        for name in CIRC_TEST_CASES:
+            benchmark_circ(name)
+
         end = time.time()
 
-        line = "Total circ benchmark time: {}".format(end-start)
-        print(line)
-        write_to_both(line)
-
-        parse_circ_log(log_path)
+        line = "LOG: Total circ benchmark time: {}".format(end-start)
+        write_log(line, "circ_total_time")
+        
+        # parse_circ_log(log_path)
 
 
 def set_features(features):
@@ -179,7 +171,6 @@ if __name__ == "__main__":
     verify_single_action(args)
 
     features = load_features()
-    assert args.features or args.list or len(features) == 1, "Only 1 feature at a time, features: {}".format(features)
 
     if args.install:
         install(features)

@@ -25,19 +25,17 @@ def optimize_selection(version, costs_path=COSTS):
 
 def run_sim(spec_file, version):
     write_log(DELIMITER, version)
+    cmd = [CIRCUIT_SIM, MPC_CIRC, "--spec-file", spec_file]
     for i in range(RERUN):
-        cmd = [CIRCUIT_SIM, MPC_CIRC,
-               "--spec-file", spec_file]
         run_cmd(cmd, "CIRCUIT-SIM RERUN {}:".format(i), version)
 
 
 def run_aby(spec_file, name, version, args=[]):
     write_log(DELIMITER, version)
+    cmd = [ABY_CBMC_GC, "--spec-file", spec_file] + args
+    server_cmd = cmd + ["-r", "0"]
+    client_cmd = cmd + ["-r", "1"]
     for i in range(RERUN):
-        cmd = [ABY_CBMC_GC, "--spec-file",
-               spec_file] + args
-        server_cmd = cmd + ["-r", "0"]
-        client_cmd = cmd + ["-r", "1"]
         run_cmds(server_cmd, client_cmd, "{} RERUN {}:".format(name, i), version)
 
 
@@ -192,89 +190,66 @@ def benchmark_hycc(name, path):
 # Benchmark circ
 ################################################################################
 
-def run_circ_benchmark(name):
-    print("Running CirC {}".format(name))
-    write_log("LOG: Running CirC {}".format(name))
-    write_log("LOG: Test cases {}".format(TEST_NAME))
-    write_log("LOG: Parameters: {}, {}, {}".format(
-        NUM_PARTS, MUT_LEVEL, MUT_STEP_SIZE))
+def compile_circ_benchmarks(name, version, ss, np, ml, mss, cm):
+    write_log(DELIMITER, version)
+    cmd = [CIRC_TARGET, 
+        "--parties", "2", 
+        get_circ_build_path(name), "mpc", 
+        "--cost-model", cm, 
+        "--selection-scheme", ss]
     for i in range(RERUN):
-        write_log("RERUN: {}".format(i))
-        os.chdir(CIRC_SOURCE)
-        result = subprocess.run(["./scripts/build_mpc_c_benchmark.zsh", TEST_FILE, COST_MODEL, name, str(
-            NUM_PARTS), str(MUT_LEVEL), str(MUT_STEP_SIZE)], check=True, capture_output=True, text=True)
-        os.chdir(CIRC_BENCHMARK_SOURCE)
-        write_log(result.stdout)
+        run_cmd(cmd, "RERUN {}:".format(i), version)
 
-        os.chdir(CIRC_SOURCE)
-        result = subprocess.run(["python3", "./scripts/aby_tests/c_benchmark_aby.py",
-                                "-t", TEST_NAME], check=True, capture_output=True, text=True)
-        os.chdir(CIRC_BENCHMARK_SOURCE)
-        write_log(result.stdout)
-    write_log("\n")
+def run_circ_benchmark(name, version, address="127.0.0.1"):
+    write_log(DELIMITER, version)
+    cmd = [ABY_INTERPRETER, 
+        "-m", "mpc", 
+        "-f", get_circ_test_path(name), 
+        "-t", get_circ_input_path(name), 
+        "--address", address]
+    server_cmd = cmd + ["-r", "0"]
+    client_cmd = cmd + ["-r", "1"]
+    for i in range(RERUN):
+        run_cmds(server_cmd, client_cmd, "{} RERUN {}:".format(name, i), version)
 
-
-def benchmark_boolean_only():
-    # benchmark boolean only
-    run_circ_benchmark("b")
-
-
-def benchmark_yao_only():
-    # benchmark yao only
-    run_circ_benchmark("y")
-
-
-def benchmark_arithmetic_and_boolean():
-    # benchmark a+b
-    run_circ_benchmark("a+b")
-
-
-def benchmark_arithmetic_and_yao():
-    # benchmark a+y
-    run_circ_benchmark("a+y")
-
-
-def benchmark_greedy():
-    # benchmark greedy
-    run_circ_benchmark("greedy")
-
-
-def benchmark_lp():
-    # benchmark LP
-    run_circ_benchmark("lp")
-
-
-def benchmark_lp_nm():
-    # benchmark LP
-    run_circ_benchmark("lp+nm")
-
-
-def benchmark_glp():
-    # benchmark global LP
-    run_circ_benchmark("glp")
-
-
-def benchmark_circ_biomatch():
-    write_log(DELIMITER)
-    write_log("LOG: Benchmarking CirC")
-    write_log(DELIMITER)
-
-    # build benchmarks
-    os.environ['ABY_SOURCE'] = "../ABY"
+def benchmark_circ(name):
     os.chdir(CIRC_SOURCE)
-    subprocess.run(["python3", "driver.py", "-F",
-                   "aby", "c", "lp"], check=True)
-    subprocess.run(["python3", "driver.py", "--benchmark"], check=True)
-    os.chdir(CIRC_BENCHMARK_SOURCE)
+    
+    versions = []
+    for ss in SELECTION_SCHEMES:
+        for np in NUM_PARTS:
+            for ml in MUT_LEVELS:
+                for mss in MUT_STEP_SIZES:
+                    for cm in COST_MODELS:
+                        version = "{}_ss-{}_np-{}_ml-{}_mss-{}_cm-{}".format("circ", ss, np, ml, mss, cm)
+                        params = [ss, np, ml, mss, cm]
+                        versions.append((version, params))
 
-    # run benchmarks
-    benchmark_boolean_only()
-    benchmark_yao_only()
-    benchmark_arithmetic_and_boolean()
-    benchmark_arithmetic_and_yao()
-    benchmark_greedy()
-    benchmark_lp()
-    benchmark_lp_nm()
-    benchmark_glp()
+    for (version, params) in versions:
+        log_path = format("{}test_results/log_{}.txt".format(CIRC_BENCHMARK_SOURCE, version))
+        if os.path.exists(log_path):
+            print("Benchmark already ran: {}".format(log_path))
+            continue
 
-    write_log(DELIMITER)
+        ss = params[0]
+        np = params[1]
+        ml = params[2]
+        mss = params[3]
+        cm = params[4]
+
+        # write header 
+        write_log(DELIMITER, version)
+        write_log("LOG: Benchmarking CirC", version)
+        write_log(DELIMITER, version)
+        write_log("LOG: Test: {}".format(name), version)
+        write_log("LOG: SELECTION_SCHEME: {}".format(ss), version)
+        write_log("LOG: NUM_PARTS: {}".format(np), version)
+        write_log("LOG: MUTATION_LEVEL: {}".format(ml), version)
+        write_log("LOG: MUTATION_STEP_SIZE: {}".format(mss), version)
+        write_log("LOG: COST_MODEL: {}".format(cm), version)
+
+        # compile benchmark 
+        compile_circ_benchmarks(name, version, ss, np, ml, mss, cm)
+
+        # run benchmarks
+        run_circ_benchmark(name, version)

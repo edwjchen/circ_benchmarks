@@ -29,6 +29,9 @@ MODULE_BUNDLE = HYCC_SOURCE+"/src/circuit-utils/py/module_bundle.py"
 SELECTION = HYCC_SOURCE+"/src/circuit-utils/py/selection.py"
 COSTS = HYCC_SOURCE+"/src/circuit-utils/py/costs.json"
 
+CIRC_TARGET = CIRC_SOURCE + "/target/release/examples/circ"
+ABY_INTERPRETER = ABY_SOURCE + "/build/bin/aby_interpreter"
+
 # joint parameters
 RERUN = 1
 SIZE = 256
@@ -36,14 +39,40 @@ SIZE = 256
 # hycc parameters
 MINIMIZATION_TIME = 0
 COST_MODEL = "hycc"  # opa
+COST_MODELS = ["hycc"]
+HYCC_TEST_CASES = [
+    ("biomatch", "biomatch/biomatch.c"),
+    ("kmeans", "kmeans/kmeans.c"),
+    # ("gauss", "gauss/gauss.c"),
+    # ("db_join", "db/db_join.c"),
+    # ("db_join2", "db/db_join2.c"),
+    # ("db_merge", "db/db_merge.c"),
+    # ("mnist", "mnist/mnist.c"),
+    # ("mnist_decomp_main", "mnist/mnist_decomp_main.c"),
+    # ("mnist_decomp_convolution", "mnist/mnist_decomp_convolution.c"),
+    # ("cryptonets", "cryptonets/cryptonets.c"),
+    # TODO: add histogram
+]
 
 # circ parameters
-NUM_PARTS = 3
-MUT_LEVEL = 4
-MUT_STEP_SIZE = 1
-TEST_FILE = "./examples/C/mpc/benchmarks/biomatch/2pc_biomatch_" + \
-    str(SIZE) + ".c"
-TEST_NAME = "biomatch"
+SELECTION_SCHEMES = ["b", "y", "a+b", "a+y", "greedy", "lp", "lp+nm", "glp"]
+NUM_PARTS = [3]
+MUT_LEVELS = [4]
+MUT_STEP_SIZES = [1]
+CIRC_TEST_CASES = [
+    "biomatch",
+    # "kmeans",
+    # "gauss",
+    # "db_join",
+    # "db_join2",
+    # "db_merge",
+    # "mnist",
+    # "mnist_decomp_main",
+    # "mnist_decomp_convolution",
+    # "cryptonets",
+    # "histogram",
+]
+
 
 # logging variables
 DELIMITER = "\nLOG: ====================================\n"
@@ -80,15 +109,15 @@ def make_test_results():
 # Logging
 ###############################################################################
 
-def wrap_cmd(cmd):
+def wrap_time(cmd):
     time_cmd = "/usr/bin/time --format='%e seconds %M kB'"
     return " ".join([time_cmd] + cmd)
 
 
 def run_cmds(server_cmd, client_cmd, name, version):
     write_log("LOG: Test: {}".format(name), version)
-    server_cmd = wrap_cmd(server_cmd)
-    client_cmd = wrap_cmd(client_cmd)
+    server_cmd = wrap_time(server_cmd)
+    client_cmd = wrap_time(client_cmd)
     print(server_cmd)
     server_proc = subprocess.Popen(server_cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     client_proc = subprocess.Popen(client_cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
@@ -126,7 +155,7 @@ def run_cmds(server_cmd, client_cmd, name, version):
 
 def run_cmd(cmd, name, version):
     write_log("LOG: Test: {}".format(name), version)
-    cmd = wrap_cmd(cmd)
+    cmd = wrap_time(cmd)
     print(cmd)
     proc = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     stdout, stderr = proc.communicate(timeout=TIMEOUT)
@@ -172,11 +201,76 @@ def write_log(text, version):
     write_to_log(text, version)
     write_to_run(text, version)
 
+####################
+# CirC Helpers
+####################
+
+def get_circ_build_path(name):
+    if name == "biomatch":
+        return "{}/examples/C/mpc/benchmarks/biomatch/biomatch.c".format(CIRC_SOURCE)
+    if name == "kmeans":
+        return "{}/examples/C/mpc/benchmarks/kmeans/2pc_kmeans_.c".format(CIRC_SOURCE)
+    if name == "gauss":
+        return "{}/examples/C/mpc/benchmarks/gauss/2pc_gauss_inline.c".format(CIRC_SOURCE)
+    if name == "db_join":
+        return "{}/examples/C/mpc/benchmarks/db/db_join.c".format(CIRC_SOURCE)
+    if name == "db_join2":
+        return "{}/examples/C/mpc/benchmarks/db/db_join2.c".format(CIRC_SOURCE)
+    if name == "db_merge":
+        return "{}/examples/C/mpc/benchmarks/db/db_merge.c".format(CIRC_SOURCE)
+    if name == "mnist":
+        return "{}/examples/C/mpc/benchmarks/mnist/mnist.c".format(CIRC_SOURCE)
+    if name == "cryptonets":
+        return "{}/examples/C/mpc/benchmarks/cryptonets/cryptonets.c".format(CIRC_SOURCE)
+    if name == "histogram":
+        return "{}/examples/C/mpc/benchmarks/histogram/histogram.c".format(CIRC_SOURCE)
+    raise RuntimeError("Could not find test: {}".format(name))
+
+def get_circ_test_path(name):
+    if name == "biomatch":
+        return "{}/scripts/aby_tests/tests/biomatch_c".format(CIRC_SOURCE)
+    if name == "kmeans":
+        return "{}/scripts/aby_tests/tests/2pc_kmeans__c".format(CIRC_SOURCE)
+    if name == "gauss":
+        return "{}/scripts/aby_tests/tests/2pc_gauss_inline_c".format(CIRC_SOURCE)
+    if name == "db_join":
+        return "{}/scripts/aby_tests/tests/db_join_c".format(CIRC_SOURCE)
+    if name == "db_join2":
+        return "{}/scripts/aby_tests/tests/db_join2_c".format(CIRC_SOURCE)
+    if name == "db_merge":
+        return "{}/scripts/aby_tests/tests/db_merge_c".format(CIRC_SOURCE)
+    if name == "mnist":
+        return "{}/scripts/aby_tests/tests/mnist_c".format(CIRC_SOURCE)
+    if name == "cryptonets":
+        return "{}/scripts/aby_tests/tests/cryptonets_c".format(CIRC_SOURCE)
+    if name == "histogram":
+        return "{}/scripts/aby_tests/tests/histogram_c".format(CIRC_SOURCE)
+    raise RuntimeError("Could not find test: {}".format(name))
+
+def get_circ_input_path(name):
+    if name == "biomatch":
+        return "{}/scripts/aby_tests/test_inputs/biomatch_1.txt".format(CIRC_SOURCE)
+    if name == "kmeans":
+        return "{}/scripts/aby_tests/test_inputs/kmeans.txt".format(CIRC_SOURCE)
+    if name == "gauss":
+        return "{}/scripts/aby_tests/test_inputs/gauss.txt".format(CIRC_SOURCE)
+    if name == "db_join":
+        return "{}/scripts/aby_tests/test_inputs/db_join.txt".format(CIRC_SOURCE)
+    if name == "db_join2":
+        return "{}/scripts/aby_tests/test_inputs/join2.txt".format(CIRC_SOURCE)
+    if name == "db_merge":
+        return "{}/scripts/aby_tests/test_inputs/merge.txt".format(CIRC_SOURCE)
+    if name == "mnist":
+        return "{}/scripts/aby_tests/test_inputs/mnist.txt".format(CIRC_SOURCE)
+    if name == "cryptonets":
+        return "{}/scripts/aby_tests/test_inputs/cryptonets.txt".format(CIRC_SOURCE)
+    if name == "histogram":
+        return "{}/scripts/aby_tests/test_inputs/histogram.txt".format(CIRC_SOURCE)
+    raise RuntimeError("Could not find test: {}".format(name))
 
 ####################
 # to csv
 ####################
-
 
 def get_last_elem(line):
     return line.split()[-1]
