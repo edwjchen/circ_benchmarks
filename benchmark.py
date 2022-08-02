@@ -11,6 +11,7 @@ def build_mpc_circuit(test_path, version, args=[]):
            "--minimization-time-limit", str(MINIMIZATION_TIME)] + args
     run_cmd(cmd, "Build circuit time", version)
 
+
 def bundle_modules(version):
     write_log(DELIMITER, version)
     cmd = ["python3", MODULE_BUNDLE, "."]
@@ -19,7 +20,7 @@ def bundle_modules(version):
 
 def optimize_selection(version, costs_path=COSTS):
     write_log(DELIMITER, version)
-    cmd = ["python3",SELECTION, ".", costs_path]
+    cmd = ["python3", SELECTION, ".", costs_path]
     run_cmd(cmd, "Selection time", version)
 
 
@@ -27,7 +28,7 @@ def run_sim(spec_file, version):
     write_log(DELIMITER, version)
     cmd = [CIRCUIT_SIM, MPC_CIRC, "--spec-file", spec_file]
     for i in range(RERUN):
-        run_cmd(cmd, "CIRCUIT-SIM RERUN {}:".format(i), version)
+        run_cmd(cmd, "RERUN {}: CIRCUIT-SIM".format(i), version)
 
 
 def run_aby(spec_file, name, version, args=[]):
@@ -36,11 +37,13 @@ def run_aby(spec_file, name, version, args=[]):
     server_cmd = cmd + ["-r", "0"]
     client_cmd = cmd + ["-r", "1"]
     for i in range(RERUN):
-        run_cmds(server_cmd, client_cmd, "{} RERUN {}:".format(name, i), version)
+        run_cmds(server_cmd, client_cmd,
+                 "RERUN {}: {}".format(i, name), version)
 
 
 def run_aby_sim(spec_file, version):
     run_aby(spec_file, "ABY-SIM", version, [MPC_CIRC])
+
 
 def run_yaoonly(spec_file, version):
     if os.path.exists("yaoonly.cmb"):
@@ -95,7 +98,8 @@ def run_simulation(test_path, spec_file, version, args=[]):
         run_sim(spec_file, version)
         run_aby_sim(spec_file, version)
     except Exception as e:
-        write_log("LOG: Failed simulating circuit with args: {}, exception: {}".format(args, e), version)
+        write_log("LOG: Failed simulating circuit with args: {}, exception: {}".format(
+            args, e), version)
 
 
 def run_all_hycc_benchmarks(test_path, spec_file, version, args=[]):
@@ -109,45 +113,53 @@ def run_all_hycc_benchmarks(test_path, spec_file, version, args=[]):
         build_mpc_circuit(test_path, version, args)
         bundle_modules(version)
     except Exception as e:
-        write_log("LOG: Failed building circuit with args: {}, exception: {}".format(args, e), version)
+        write_log("LOG: Failed building circuit with args: {}, exception: {}".format(
+            args, e), version)
 
     # run benchmarks
     try:
         os.chdir(circuit_dir)
         run_yaoonly(spec_file, version)
     except Exception as e:
-        write_log("LOG: Failed yaoonly with args: {}, exception: {}".format(args, e), version)
+        write_log("LOG: Failed yaoonly with args: {}, exception: {}".format(
+            args, e), version)
 
     try:
         os.chdir(circuit_dir)
         run_yaohybrid(spec_file, version)
     except Exception as e:
-        write_log("LOG: Failed yaohybrid with args: {}, exception: {}".format(args, e), version)
+        write_log("LOG: Failed yaohybrid with args: {}, exception: {}".format(
+            args, e), version)
 
     try:
         os.chdir(circuit_dir)
         run_gmwonly(spec_file, version)
     except Exception as e:
-        write_log("LOG: Failed gmwonly with args: {}, exception: {}".format(args, e), version)
+        write_log("LOG: Failed gmwonly with args: {}, exception: {}".format(
+            args, e), version)
 
     try:
         os.chdir(circuit_dir)
         run_gmwhyrbid(spec_file, version)
     except Exception as e:
-        write_log("LOG: Failed gmwhybrid with args: {}, exception: {}".format(args, e), version)
+        write_log("LOG: Failed gmwhybrid with args: {}, exception: {}".format(
+            args, e), version)
 
     # ps optimized
     try:
         os.chdir(circuit_dir)
         optimize_selection(version)
     except Exception as e:
-        write_log("LOG: Failed optimize_selection with args: {}, exception: {}".format(args, e), version)
+        write_log("LOG: Failed optimize_selection with args: {}, exception: {}".format(
+            args, e), version)
 
     try:
         os.chdir(circuit_dir)
         run_optimized(spec_file, version)
     except Exception as e:
-        write_log("LOG: Failed run_optimized with args: {}, exception: {}".format(args, e), version)
+        write_log("LOG: Failed run_optimized with args: {}, exception: {}".format(
+            args, e), version)
+
 
 def benchmark_hycc(name, path):
     version = "{}_{}_mt-{}_cm-{}".format(
@@ -192,41 +204,52 @@ def benchmark_hycc(name, path):
 
 def compile_circ_benchmarks(name, version, ss, np, ml, mss, cm):
     write_log(DELIMITER, version)
-    cmd = [CIRC_TARGET, 
-        "--parties", "2", 
-        get_circ_build_path(name), "mpc", 
-        "--cost-model", cm, 
-        "--selection-scheme", ss]
+    cmd = [CIRC_TARGET,
+           "--parties", "2",
+           get_circ_build_path(name), "mpc",
+           "--cost-model", cm,
+           "--selection-scheme", ss]
     for i in range(RERUN):
-        run_cmd(cmd, "RERUN {}:".format(i), version)
+        try:
+            run_cmd(cmd, "RERUN {}: {}".format(i, name), version)
+        except Exception as e:
+            write_log("LOG: Failed to build, exception: {}".format(e), version)
+
 
 def run_circ_benchmark(name, version, address="127.0.0.1"):
     write_log(DELIMITER, version)
-    cmd = [ABY_INTERPRETER, 
-        "-m", "mpc", 
-        "-f", get_circ_test_path(name), 
-        "-t", get_circ_input_path(name), 
-        "--address", address]
+    cmd = [ABY_INTERPRETER,
+           "-m", "mpc",
+           "-f", get_circ_test_path(name),
+           "-t", get_circ_input_path(name),
+           "--address", address]
     server_cmd = cmd + ["-r", "0"]
     client_cmd = cmd + ["-r", "1"]
     for i in range(RERUN):
-        run_cmds(server_cmd, client_cmd, "{} RERUN {}:".format(name, i), version)
+        try:
+            run_cmds(server_cmd, client_cmd,
+                     "RERUN {}: {} ".format(i, name), version)
+        except Exception as e:
+            write_log("LOG: Failed to run, exception: {}".format(e), version)
+
 
 def benchmark_circ(name):
     os.chdir(CIRC_SOURCE)
-    
+
     versions = []
     for ss in SELECTION_SCHEMES:
         for np in NUM_PARTS:
             for ml in MUT_LEVELS:
                 for mss in MUT_STEP_SIZES:
                     for cm in COST_MODELS:
-                        version = "{}_ss-{}_np-{}_ml-{}_mss-{}_cm-{}".format("circ", ss, np, ml, mss, cm)
+                        version = "{}_test-{}_ss-{}_np-{}_ml-{}_mss-{}_cm-{}".format(
+                            "circ", name, ss, np, ml, mss, cm)
                         params = [ss, np, ml, mss, cm]
                         versions.append((version, params))
 
     for (version, params) in versions:
-        log_path = format("{}test_results/log_{}.txt".format(CIRC_BENCHMARK_SOURCE, version))
+        log_path = format(
+            "{}test_results/log_{}.txt".format(CIRC_BENCHMARK_SOURCE, version))
         if os.path.exists(log_path):
             print("Benchmark already ran: {}".format(log_path))
             continue
@@ -237,7 +260,7 @@ def benchmark_circ(name):
         mss = params[3]
         cm = params[4]
 
-        # write header 
+        # write header
         write_log(DELIMITER, version)
         write_log("LOG: Benchmarking CirC", version)
         write_log(DELIMITER, version)
@@ -248,7 +271,7 @@ def benchmark_circ(name):
         write_log("LOG: MUTATION_STEP_SIZE: {}".format(mss), version)
         write_log("LOG: COST_MODEL: {}".format(cm), version)
 
-        # compile benchmark 
+        # compile benchmark
         compile_circ_benchmarks(name, version, ss, np, ml, mss, cm)
 
         # run benchmarks

@@ -77,11 +77,12 @@ def build(features):
     # build kahip
     subprocess.run(["./scripts/build_kahip.zsh"], check=True)
 
-    # build circ 
+    # build circ
     os.environ['ABY_SOURCE'] = "../ABY"
     os.environ['CIRC_SOURCE'] = CIRC_SOURCE
     os.chdir(CIRC_SOURCE)
-    subprocess.run(["python3", "driver.py", "-F", "aby", "c", "lp", "bench"], check=True)
+    subprocess.run(["python3", "driver.py", "-F", "aby",
+                   "c", "lp", "bench"], check=True)
     subprocess.run(["python3", "driver.py", "--build_benchmark"], check=True)
     os.chdir(CIRC_BENCHMARK_SOURCE)
 
@@ -103,7 +104,7 @@ def benchmark(features):
 
     if "circ" in features:
         print("Running circ Benchmarks")
-        
+
         # run circ benchmarks
         start = time.time()
 
@@ -114,7 +115,7 @@ def benchmark(features):
 
         line = "LOG: Total circ benchmark time: {}".format(end-start)
         write_log(line, "circ_total_time")
-        
+
         # parse_circ_log(log_path)
 
 
@@ -142,6 +143,7 @@ def delete():
     print("fresh install!")
     subprocess.run(["rm", "-rf", "modules/ABY"])
     subprocess.run(["rm", "-rf", "modules/HyCC"])
+
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
