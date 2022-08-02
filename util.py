@@ -10,7 +10,7 @@ TIMEOUT = 300
 
 # installation variables
 # TODO: update CIRC_BENCHMARK_SOURCE path
-CIRC_BENCHMARK_SOURCE = os.path.expanduser("~/code/circ_benchmarks/")
+CIRC_BENCHMARK_SOURCE = os.path.expanduser("~/ejchen/circ_benchmarks/")
 ABY_SOURCE = CIRC_BENCHMARK_SOURCE+"modules/ABY"
 HYCC_SOURCE = CIRC_BENCHMARK_SOURCE+"modules/HyCC"
 CIRC_SOURCE = CIRC_BENCHMARK_SOURCE+"modules/circ"

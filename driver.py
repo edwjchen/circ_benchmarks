@@ -34,6 +34,8 @@ def test():
 
 
 def install(features):
+    subprocess.run(["git", "pull", "--recurse-submodules"])
+
     def verify_path_empty(path) -> bool:
         return not os.path.isdir(path) or (os.path.isdir(path) and not os.listdir(path))
 
@@ -55,6 +57,16 @@ def install(features):
             subprocess.run(["git", "submodule", "update",
                            "--init", "--remote", "modules/circ"])
 
+    
+    # set git branches
+    os.chdir(ABY_SOURCE)
+    subprocess.run(["git", "checkout", "functions"])
+    os.chdir(CIRC_BENCHMARK_SOURCE)
+
+    os.chdir(CIRC_SOURCE)
+    subprocess.run(["git", "checkout", "function_calls"])
+    os.chdir(CIRC_BENCHMARK_SOURCE)
+
     # install python requirements
     # subprocess.run(["pip3", "install", "-r", "requirements.txt"])
 
@@ -62,14 +74,15 @@ def install(features):
 def build(features):
     install(features)
 
-    # build hycc
-    subprocess.run(["./scripts/build_hycc.zsh"], check=True)
+    if "hycc" in features:
+        # build hycc
+        subprocess.run(["./scripts/build_hycc.zsh"], check=True)
 
-    # install hycc aby dependency
-    if not os.path.isdir(ABY_HYCC_DIR):
-        subprocess.run(["cp", "-r", ABY_HYCC, ABY_HYCC_DIR], check=True)
-        with open(ABY_CMAKE, 'a') as f:
-            print("add_subdirectory(aby-hycc)", file=f)
+        # install hycc aby dependency
+        if not os.path.isdir(ABY_HYCC_DIR):
+            subprocess.run(["cp", "-r", ABY_HYCC, ABY_HYCC_DIR], check=True)
+            with open(ABY_CMAKE, 'a') as f:
+                print("add_subdirectory(aby-hycc)", file=f)
 
     # build aby
     subprocess.run(["./scripts/build_aby.zsh"], check=True)
@@ -77,14 +90,15 @@ def build(features):
     # build kahip
     subprocess.run(["./scripts/build_kahip.zsh"], check=True)
 
-    # build circ
-    os.environ['ABY_SOURCE'] = "../ABY"
-    os.environ['CIRC_SOURCE'] = CIRC_SOURCE
-    os.chdir(CIRC_SOURCE)
-    subprocess.run(["python3", "driver.py", "-F", "aby",
-                   "c", "lp", "bench"], check=True)
-    subprocess.run(["python3", "driver.py", "--build_benchmark"], check=True)
-    os.chdir(CIRC_BENCHMARK_SOURCE)
+    if "circ" in features:
+        # build circ
+        os.environ['ABY_SOURCE'] = "../ABY"
+        os.environ['CIRC_SOURCE'] = CIRC_SOURCE
+        os.chdir(CIRC_SOURCE)
+        subprocess.run(["python3", "driver.py", "-F", "aby",
+                    "c", "lp", "bench"], check=True)
+        subprocess.run(["python3", "driver.py", "--build_benchmark"], check=True)
+        os.chdir(CIRC_BENCHMARK_SOURCE)
 
 
 def benchmark(features):
