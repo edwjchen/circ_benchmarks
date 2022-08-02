@@ -8,25 +8,27 @@ from benchmark import *
 
 
 def test():
-    test_path = PARENT_DIR + HYCC_SOURCE + \
+    test_path = HYCC_SOURCE + \
         "/examples/benchmarks/mnist/mnist.c"
-    spec_file = "tests/hycc/mnist.spec"
+    spec_file = CIRC_BENCHMARK_SOURCE+"specs/mnist.spec"
     args = []
 
-    # os.chdir(TMP_PATH)
-    # cmd = [PARENT_DIR+CBMC_GC, test_path,
-    #        "--minimization-time-limit", str(MINIMIZATION_TIME)] + args
-    # print(" ".join(cmd))
-    # result = subprocess.run(cmd, check=True, capture_output=True, text=True)
-    # os.chdir(PARENT_DIR)
-
-    os.chdir(TMP_PATH)
-    cmd = [PARENT_DIR+CIRCUIT_SIM, MPC_CIRC,
-           "--spec-file", PARENT_DIR+spec_file]
+    make_dir("tmp")
+    os.chdir("tmp")
+    cmd = [CBMC_GC, test_path,
+           "--minimization-time-limit", str(MINIMIZATION_TIME)] + args
     print(" ".join(cmd))
     result = subprocess.run(cmd, check=True, capture_output=True, text=True)
-    os.chdir(PARENT_DIR)
+    os.chdir("..")
+
+    os.chdir("tmp")
+    cmd = [CIRCUIT_SIM, MPC_CIRC,
+           "--spec-file", spec_file]
+    print(" ".join(cmd))
+    result = subprocess.run(cmd, check=True, capture_output=True, text=True)
+    os.chdir("..")
     print(result.stdout)
+    remove_tmp()
 
 #####################################################################
 
@@ -79,20 +81,21 @@ def build(features):
 def benchmark(features):
     build(features)
     make_test_results()
+    make_dir(HYCC_CIRCUIT_PATH)
     if "hycc" in features:
         print("Running hycc Benchmarks")
         start = time.time()
         test_cases = [
             ("biomatch", "biomatch/biomatch.c"),
             ("kmeans", "kmeans/kmeans.c"),
-            ("gauss", "gauss/gauss.c"),
-            ("db_join", "db/db_join.c"),
-            ("db_join2", "db/db_join2.c"),
-            ("db_merge", "db/db_merge.c"),
-            ("mnist", "mnist/mnist.c"),
+            # ("gauss", "gauss/gauss.c"),
+            # ("db_join", "db/db_join.c"),
+            # ("db_join2", "db/db_join2.c"),
+            # ("db_merge", "db/db_merge.c"),
+            # ("mnist", "mnist/mnist.c"),
             # ("mnist_decomp_main", "mnist/mnist_decomp_main.c"),
             # ("mnist_decomp_convolution", "mnist/mnist_decomp_convolution.c"),
-            ("cryptonets", "cryptonets/cryptonets.c"),
+            # ("cryptonets", "cryptonets/cryptonets.c"),
         ]
         # run hycc benchmarks
         for (name, path) in test_cases:

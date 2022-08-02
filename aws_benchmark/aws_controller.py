@@ -5,7 +5,6 @@ import multiprocessing
 import paramiko
 import subprocess
 import sys
-import time
 
 NUM_INSTANCES = 1
 INSTANCE_TYPE = "t2.micro"

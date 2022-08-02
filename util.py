@@ -6,21 +6,21 @@ import os
 feature_path = ".features.txt"
 valid_features = {"circ", "hycc"}
 
-TIMEOUT = 1000
+TIMEOUT = 300
 
 # installation variables
-ABY_SOURCE = "./modules/ABY"
-HYCC_SOURCE = "./modules/HyCC"
-CIRC_SOURCE = "./modules/circ"
-KAHIP_SOURCE = "./modules/KaHIP"
+CIRC_BENCHMARK_SOURCE = "~/circ_benchmarks/"
+ABY_SOURCE = CIRC_BENCHMARK_SOURCE+"modules/ABY"
+HYCC_SOURCE = CIRC_BENCHMARK_SOURCE+"modules/HyCC"
+CIRC_SOURCE = CIRC_BENCHMARK_SOURCE+"modules/circ"
+KAHIP_SOURCE = CIRC_BENCHMARK_SOURCE+"modules/KaHIP"
 
 ABY_HYCC = HYCC_SOURCE+"/aby-hycc"
 ABY_HYCC_DIR = ABY_SOURCE + "/src/examples/aby-hycc/"
 ABY_CMAKE = ABY_SOURCE + "/src/examples/CMakeLists.txt"
 
 # benchmark variables
-TMP_PATH = "./tmp/"
-PARENT_DIR = "../"
+HYCC_CIRCUIT_PATH = "./hycc_circuit_dir/"
 CBMC_GC = HYCC_SOURCE + "/bin/cbmc-gc"
 CIRCUIT_SIM = HYCC_SOURCE + "/bin/circuit-sim"
 ABY_CBMC_GC = ABY_SOURCE + "/build/bin/aby-hycc"
@@ -67,12 +67,14 @@ def load_features():
         return set()
 
 
-def make_tmp():
-    subprocess.run(["mkdir", "-p", "tmp"])
-
+def make_dir(path):
+    subprocess.run(["mkdir", "-p", path])
 
 def remove_tmp():
     subprocess.run(["rm", "-rf", "tmp"])
+
+def make_test_results():
+    subprocess.run(["mkdir", "-p", "test_results"])
 
 ###############################################################################
 # Logging
@@ -147,11 +149,6 @@ def run_cmd(cmd, name, version):
     last_line = [l for l in err.split("\n") if l][-1]
     memory_output = "LOG: Time / Memory: {}".format(last_line)
     write_log(memory_output, version)
-
-
-def make_test_results():
-    subprocess.run(["mkdir", "-p", "test_results"])
-
 
 def write_to_log(text, version):
     log_path = format("test_results/log_{}.txt".format(version))

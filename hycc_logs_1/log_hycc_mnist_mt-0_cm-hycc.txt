@@ -1,0 +1,49 @@
+LOG: ====================================
+LOG: Benchmarking HyCC
+LOG: ====================================
+LOG: TEST PATH: .././modules/HyCC/examples/benchmarks/mnist/mnist.c
+LOG: SPEC_FILE: tests/hycc/mnist.spec
+LOG: MINIMIZATION TIME: 0
+LOG: COST MODEL: hycc
+LOG: Running with args: ['--all-variants']
+LOG: ====================================
+LOG: Test: Build circuit time
+LOG: Failed building circuit with args: ['--all-variants'], exception: Command '/usr/bin/time --format='%e seconds %M kB' .././modules/HyCC/bin/cbmc-gc .././modules/HyCC/examples/benchmarks/mnist/mnist.c --minimization-time-limit 0 --all-variants' timed out after 1000 seconds
+LOG: ====================================
+LOG: Missing: yaoonly.cmb
+LOG: ====================================
+LOG: Missing: yaohybrid.cmb
+LOG: ====================================
+LOG: Missing: gmwonly.cmb
+LOG: ====================================
+LOG: Missing: gmwhybrid.cmb
+LOG: ====================================
+LOG: Test: Selection time
+LOG: Error: Process returned with status code 1
+LOG: Error message: Traceback (most recent call last):   File ".././modules/HyCC/src/circuit-utils/py/selection.py", line 371, in <module>     analyzer.read_folder(args.circuit)   File ".././modules/HyCC/src/circuit-utils/py/selection.py", line 100, in read_folder     self.read_circ(os.path.join(folder, file))   File ".././modules/HyCC/src/circuit-utils/py/selection.py", line 84, in read_circ     module = Module(path)   File ".././modules/HyCC/src/circuit-utils/py/selection.py", line 21, in __init__     self.circuit.read()   File "/home/ubuntu/mpc_benchmarks/circ_benchmarks/modules/HyCC/src/circuit-utils/py/reader.py", line 164, in read     self.read_gates(num_gates)   File "/home/ubuntu/mpc_benchmarks/circ_benchmarks/modules/HyCC/src/circuit-utils/py/reader.py", line 288, in read_gates     raise NotImplementedError("not implemented: " + hex(data)) NotImplementedError: not implemented: 0x9d Command exited with non-zero status 1 209.46 seconds 12011232 kB
+LOG: Failed optimize_selection with args: ['--all-variants'], exception:
+LOG: ====================================
+LOG: Missing: ps_optimized.cmb
+LOG: ====================================
+LOG: Running with args: ['--all-variants', '--outline']
+LOG: ====================================
+LOG: Test: Build circuit time
+LOG: Error: Process returned with status code 134
+LOG: Error message: <command-line>: warning: "__STDC_VERSION__" redefined <built-in>: note: this is the location of the previous definition <command-line>: warning: "__STDC_VERSION__" redefined <built-in>: note: this is the location of the previous definition terminate called after throwing an instance of 'std::runtime_error'   what():  Unknown literal: 1611009. Did you forget to return a value or assign a value to a OUTPUT variable? Command terminated by signal 6 3.57 seconds 1317912 kB
+LOG: Failed building circuit with args: ['--all-variants', '--outline'], exception:
+LOG: ====================================
+LOG: Missing: yaoonly.cmb
+LOG: ====================================
+LOG: Missing: yaohybrid.cmb
+LOG: ====================================
+LOG: Missing: gmwonly.cmb
+LOG: ====================================
+LOG: Missing: gmwhybrid.cmb
+LOG: ====================================
+LOG: Test: Selection time
+LOG: Error: Process returned with status code 1
+LOG: Error message: Traceback (most recent call last):   File ".././modules/HyCC/src/circuit-utils/py/selection.py", line 371, in <module>     analyzer.read_folder(args.circuit)   File ".././modules/HyCC/src/circuit-utils/py/selection.py", line 100, in read_folder     self.read_circ(os.path.join(folder, file))   File ".././modules/HyCC/src/circuit-utils/py/selection.py", line 84, in read_circ     module = Module(path)   File ".././modules/HyCC/src/circuit-utils/py/selection.py", line 21, in __init__     self.circuit.read()   File "/home/ubuntu/mpc_benchmarks/circ_benchmarks/modules/HyCC/src/circuit-utils/py/reader.py", line 164, in read     self.read_gates(num_gates)   File "/home/ubuntu/mpc_benchmarks/circ_benchmarks/modules/HyCC/src/circuit-utils/py/reader.py", line 295, in read_gates     fanin = id_to_endpoint[self.reader.read_uint32()]   File "/home/ubuntu/mpc_benchmarks/circ_benchmarks/modules/HyCC/src/circuit-utils/py/reader.py", line 18, in read_uint32     return self.unpack('<I', 4)   File "/home/ubuntu/mpc_benchmarks/circ_benchmarks/modules/HyCC/src/circuit-utils/py/reader.py", line 12, in unpack     return struct.unpack(fmt, self.stream.read(length))[0] struct.error: unpack requires a buffer of 4 bytes Command exited with non-zero status 1 0.14 seconds 34516 kB
+LOG: Failed optimize_selection with args: ['--all-variants', '--outline'], exception:
+LOG: ====================================
+LOG: Missing: ps_optimized.cmb
+LOG: ====================================
