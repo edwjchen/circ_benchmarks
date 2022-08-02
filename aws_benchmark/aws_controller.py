@@ -7,8 +7,9 @@ import subprocess
 import sys
 import time
 
-instance_type = "t2.micro"
-# instance_type = "c5.large"
+NUM_INSTANCES = 1
+INSTANCE_TYPE = "t2.micro"
+# INSTANCE_TYPE = "c5.large"
 
 ec2_resource = boto3.resource("ec2",
                               aws_access_key_id=os.environ["AWS_ACCESS_KEY_ID"],
@@ -17,8 +18,8 @@ ec2_resource = boto3.resource("ec2",
 
 
 def create_instances(num):
-    instances = ec2_resource.create_instances(ImageId="ami-05b63781e32145c7f",
-                                              InstanceType=instance_type,
+    instances = ec2_resource.create_instances(ImageId="ami-02f3416038bdb17fb",
+                                              InstanceType=INSTANCE_TYPE,
                                               KeyName="the-key-to-her-heart",
                                               MinCount=1,
                                               MaxCount=num,
@@ -243,19 +244,19 @@ if __name__ == "__main__":
             print("Misc: \tstats hosts")
             print("Quit: \tquit q")
         elif cmd_type == "create":
-            create_instances(2)
+            create_instances(NUM_INSTANCES)
         elif cmd_type == "start":
-            start_instances(2)
+            start_instances(NUM_INSTANCES)
         elif cmd_type == "setup":
             print("=== will stop instances after setup ===")
-            setup_instances(2)
-            stop_instances(2)
+            setup_instances(NUM_INSTANCES)
+            stop_instances(NUM_INSTANCES)
         elif cmd_type == "run":
-            run_benchmarks(2)
+            run_benchmarks(NUM_INSTANCES)
         elif cmd_type == "stop":
-            stop_instances(2)
+            stop_instances(NUM_INSTANCES)
         elif cmd_type == "terminate":
-            terminate_instances(2)
+            terminate_instances(NUM_INSTANCES)
         elif cmd_type == "stats":
             stats()
         elif cmd_type == "hosts":
