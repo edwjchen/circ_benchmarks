@@ -77,7 +77,7 @@ def run_gmwhyrbid(spec_file, version):
 
 
 def run_optimized(spec_file, version):
-    if os.path.exists("{}{}/ps_optimized.cmb".format(HYCC_CIRCUIT_PATH, version)):
+    if os.path.exists("ps_optimized.cmb"):
         run_aby(spec_file, "ps_optimized", version, ["-c", "ps_optimized.cmb"])
     else:
         write_log(DELIMITER, version)
@@ -97,7 +97,6 @@ def run_simulation(test_path, spec_file, version, args=[]):
         run_sim(spec_file, version)
         run_aby_sim(spec_file, version)
     except Exception as e:
-        os.chdir(CIRC_BENCHMARK_SOURCE)
         write_log("LOG: Failed simulating circuit with args: {}, exception: {}".format(args, e), version)
 
 
@@ -112,7 +111,6 @@ def run_all_hycc_benchmarks(test_path, spec_file, version, args=[]):
         build_mpc_circuit(test_path, version, args)
         bundle_modules(version)
     except Exception as e:
-        os.chdir(CIRC_BENCHMARK_SOURCE)
         write_log("LOG: Failed building circuit with args: {}, exception: {}".format(args, e), version)
 
     # run benchmarks
@@ -120,28 +118,24 @@ def run_all_hycc_benchmarks(test_path, spec_file, version, args=[]):
         os.chdir(circuit_dir)
         run_yaoonly(spec_file, version)
     except Exception as e:
-        os.chdir(CIRC_BENCHMARK_SOURCE)
         write_log("LOG: Failed yaoonly with args: {}, exception: {}".format(args, e), version)
 
     try:
         os.chdir(circuit_dir)
         run_yaohybrid(spec_file, version)
     except Exception as e:
-        os.chdir(CIRC_BENCHMARK_SOURCE)
         write_log("LOG: Failed yaohybrid with args: {}, exception: {}".format(args, e), version)
 
     try:
         os.chdir(circuit_dir)
         run_gmwonly(spec_file, version)
     except Exception as e:
-        os.chdir(CIRC_BENCHMARK_SOURCE)
         write_log("LOG: Failed gmwonly with args: {}, exception: {}".format(args, e), version)
 
     try:
         os.chdir(circuit_dir)
         run_gmwhyrbid(spec_file, version)
     except Exception as e:
-        os.chdir(CIRC_BENCHMARK_SOURCE)
         write_log("LOG: Failed gmwhybrid with args: {}, exception: {}".format(args, e), version)
 
     # ps optimized
@@ -149,14 +143,12 @@ def run_all_hycc_benchmarks(test_path, spec_file, version, args=[]):
         os.chdir(circuit_dir)
         optimize_selection(version)
     except Exception as e:
-        os.chdir(CIRC_BENCHMARK_SOURCE)
         write_log("LOG: Failed optimize_selection with args: {}, exception: {}".format(args, e), version)
 
     try:
         os.chdir(circuit_dir)
         run_optimized(spec_file, version)
     except Exception as e:
-        os.chdir(CIRC_BENCHMARK_SOURCE)
         write_log("LOG: Failed run_optimized with args: {}, exception: {}".format(args, e), version)
 
 def benchmark_hycc(name, path):

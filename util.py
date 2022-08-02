@@ -9,7 +9,7 @@ valid_features = {"circ", "hycc"}
 TIMEOUT = 300
 
 # installation variables
-CIRC_BENCHMARK_SOURCE = "~/circ_benchmarks/"
+CIRC_BENCHMARK_SOURCE = os.path.expanduser("~/circ_benchmarks/")
 ABY_SOURCE = CIRC_BENCHMARK_SOURCE+"modules/ABY"
 HYCC_SOURCE = CIRC_BENCHMARK_SOURCE+"modules/HyCC"
 CIRC_SOURCE = CIRC_BENCHMARK_SOURCE+"modules/circ"
@@ -20,7 +20,7 @@ ABY_HYCC_DIR = ABY_SOURCE + "/src/examples/aby-hycc/"
 ABY_CMAKE = ABY_SOURCE + "/src/examples/CMakeLists.txt"
 
 # benchmark variables
-HYCC_CIRCUIT_PATH = "./hycc_circuit_dir/"
+HYCC_CIRCUIT_PATH = CIRC_BENCHMARK_SOURCE+"hycc_circuit_dir/"
 CBMC_GC = HYCC_SOURCE + "/bin/cbmc-gc"
 CIRCUIT_SIM = HYCC_SOURCE + "/bin/circuit-sim"
 ABY_CBMC_GC = ABY_SOURCE + "/build/bin/aby-hycc"
@@ -87,7 +87,6 @@ def wrap_cmd(cmd):
 
 def run_cmds(server_cmd, client_cmd, name, version):
     write_log("LOG: Test: {}".format(name), version)
-    os.chdir(TMP_PATH)
     server_cmd = wrap_cmd(server_cmd)
     client_cmd = wrap_cmd(client_cmd)
     print(server_cmd)
@@ -95,7 +94,6 @@ def run_cmds(server_cmd, client_cmd, name, version):
     client_proc = subprocess.Popen(client_cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     server_stdout, server_stderr = server_proc.communicate(timeout=TIMEOUT)
     client_stdout, client_stderr = client_proc.communicate(timeout=TIMEOUT)
-    os.chdir(PARENT_DIR)
 
     if server_proc.returncode: 
         write_log("LOG: Error: Process returned with status code {}".format(server_proc.returncode), version)
@@ -128,12 +126,10 @@ def run_cmds(server_cmd, client_cmd, name, version):
 
 def run_cmd(cmd, name, version):
     write_log("LOG: Test: {}".format(name), version)
-    os.chdir(TMP_PATH)
     cmd = wrap_cmd(cmd)
     print(cmd)
     proc = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     stdout, stderr = proc.communicate(timeout=TIMEOUT)
-    os.chdir(PARENT_DIR)
 
     if proc.returncode: 
         write_log("LOG: Error: Process returned with status code {}".format(proc.returncode), version)
@@ -151,7 +147,7 @@ def run_cmd(cmd, name, version):
     write_log(memory_output, version)
 
 def write_to_log(text, version):
-    log_path = format("test_results/log_{}.txt".format(version))
+    log_path = format("{}test_results/log_{}.txt".format(CIRC_BENCHMARK_SOURCE, version))
     if not os.path.exists(log_path):
         subprocess.run(["touch", log_path])
 
@@ -164,7 +160,7 @@ def write_to_log(text, version):
 
 
 def write_to_run(text, version):
-    run_path = format("test_results/run_{}.txt".format(version))
+    run_path = format("{}test_results/run_{}.txt".format(CIRC_BENCHMARK_SOURCE, version))
     if not os.path.exists(run_path):
         subprocess.run(["touch", run_path])
 
