@@ -1,0 +1,30 @@
+LOG: ====================================
+LOG: Benchmarking CirC
+LOG: ====================================
+LOG: Test: biomatch
+LOG: SELECTION_SCHEME: b
+LOG: NUM_PARTS: 3
+LOG: MUTATION_LEVEL: 4
+LOG: MUTATION_STEP_SIZE: 1
+LOG: COST_MODEL: hycc
+LOG: ====================================
+LOG: Test: RERUN 0: biomatch
+LOG: Frontend: 45.101386ms
+LOG: Optimizations: 114.678971ms
+LOG: Assignment main: 335.05µs
+LOG: Assignment match_decomposed: 974.789µs
+LOG: Assignment match_fix: 3.567µs
+LOG: Assignment min: 259.926µs
+LOG: Lowering: 19.79096ms
+LOG: Compile: 179.606614ms
+LOG: Time / Memory: 0.18 seconds 37992 kB
+LOG: ====================================
+LOG: Test: RERUN 0: biomatch
+LOG: Server exec time: 2.67073
+LOG: Server load time: 1.14156
+LOG: Server total time: 3.81229
+LOG: Server Time / Memory: 3.82 seconds 633348 kB
+LOG: Client exec time: 2.65539
+LOG: Client load time: 1.15464
+LOG: Client total time: 3.81003
+LOG: Client Time / Memory: 3.82 seconds 632552 kB

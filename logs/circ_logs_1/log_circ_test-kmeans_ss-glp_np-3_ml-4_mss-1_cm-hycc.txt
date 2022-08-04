@@ -1,0 +1,32 @@
+LOG: ====================================
+LOG: Benchmarking CirC
+LOG: ====================================
+LOG: Test: kmeans
+LOG: SELECTION_SCHEME: glp
+LOG: NUM_PARTS: 3
+LOG: MUTATION_LEVEL: 4
+LOG: MUTATION_STEP_SIZE: 1
+LOG: COST_MODEL: hycc
+LOG: ====================================
+LOG: Test: RERUN 0: kmeans
+LOG: Frontend: 35.70793ms
+LOG: Optimizations: 97.171712ms
+LOG: Assignment dist2: 6.290596ms
+LOG: Assignment iteration_unrolled_inner_depth: 44.631044ms
+LOG: Assignment iteration_unrolled_outer: 50.389514ms
+LOG: Assignment kmeans: 8.676098ms
+LOG: Assignment main: 5.447814ms
+LOG: Assignment min_with_aux: 4.225599ms
+LOG: Lowering: 123.254357ms
+LOG: Compile: 256.167793ms
+LOG: Time / Memory: 0.26 seconds 28852 kB
+LOG: ====================================
+LOG: Test: RERUN 0: kmeans
+LOG: Server exec time: 0.817759
+LOG: Server load time: 0.322883
+LOG: Server total time: 1.14064
+LOG: Server Time / Memory: 1.15 seconds 193520 kB
+LOG: Client exec time: 0.82092
+LOG: Client load time: 0.317985
+LOG: Client total time: 1.13891
+LOG: Client Time / Memory: 1.14 seconds 190188 kB

@@ -1,0 +1,32 @@
+LOG: ====================================
+LOG: Benchmarking HyCC
+LOG: ====================================
+LOG: TEST PATH: /home/ubuntu/ejchen/circ_benchmarks/modules/HyCC/examples/benchmarks/mnist/mnist.c
+LOG: SPEC_FILE: /home/ubuntu/ejchen/circ_benchmarks/specs/mnist.spec
+LOG: MINIMIZATION TIME: 600
+LOG: COST MODEL: hycc
+LOG: Running with args: ['--all-variants']
+LOG: ====================================
+LOG: Test: Build circuit time
+LOG: Compile time: 7460.4
+LOG: Time / Memory: 7461.84 seconds 42314944 kB
+LOG: ====================================
+LOG: Test: Module bundle time
+LOG: Time / Memory: 0.03 seconds 10092 kB
+LOG: ====================================
+LOG: Test: RERUN 0: yaohybrid
+LOG: Error: Process returned with status code 139
+LOG: Error message: Command terminated by signal 11 4333.06 seconds 6089424 kB
+LOG: ====================================
+LOG: Test: RERUN 0: gmwhybrid
+LOG: Error: Process returned with status code 139
+LOG: Error message: Command terminated by signal 11 528.06 seconds 5378740 kB
+LOG: ====================================
+LOG: Running with args: ['--all-variants', '--outline']
+LOG: ====================================
+LOG: Test: Build circuit time
+LOG: Error: Process returned with status code 134
+LOG: Error message: <command-line>: warning: "__STDC_VERSION__" redefined <built-in>: note: this is the location of the previous definition <command-line>: warning: "__STDC_VERSION__" redefined <built-in>: note: this is the location of the previous definition terminate called after throwing an instance of 'std::runtime_error'   what():  Unknown literal: 1611009. Did you forget to return a value or assign a value to a OUTPUT variable? Command terminated by signal 6 3.84 seconds 1319840 kB
+LOG: Failed building circuit with args: ['--all-variants', '--outline'], exception:
+LOG: ====================================
+LOG: Test: RERUN 0: yaohybrid

@@ -1,0 +1,64 @@
+LOG: ====================================
+LOG: Benchmarking HyCC
+LOG: ====================================
+LOG: TEST PATH: .././modules/HyCC/examples/benchmarks/cryptonets/cryptonets.c
+LOG: SPEC_FILE: tests/hycc/cryptonets.spec
+LOG: MINIMIZATION TIME: 0
+LOG: COST MODEL: hycc
+LOG: Running with args: ['--all-variants']
+LOG: ====================================
+LOG: Test: Build circuit time
+LOG: Compile time: 347.728
+LOG: Time / Memory: 348.04 seconds 13114496 kB
+LOG: ====================================
+LOG: Test: Module bundle time
+LOG: Time / Memory: 0.03 seconds 10032 kB
+LOG: ====================================
+LOG: Test: yaoonly RERUN 0:
+LOG: Error: Process returned with status code 134
+LOG: Error message: terminate called after throwing an instance of 'std::runtime_error'   what():  Unknown gate kind Command terminated by signal 6 6.23 seconds 5292040 kB
+LOG: ====================================
+LOG: Test: yaohybrid RERUN 0:
+LOG: Error: Process returned with status code 134
+LOG: Error message: terminate called after throwing an instance of 'std::runtime_error'   what():  Unknown gate kind Command terminated by signal 6 0.25 seconds 86560 kB
+LOG: ====================================
+LOG: Test: gmwonly RERUN 0:
+LOG: Failed gmwonly with args: ['--all-variants'], exception: Command '/usr/bin/time --format='%e seconds %M kB' .././modules/ABY/build/bin/aby-hycc --spec-file ../tests/hycc/cryptonets.spec -c gmwonly.cmb -r 1' timed out after 1000 seconds
+LOG: ====================================
+LOG: Test: gmwhybrid RERUN 0:
+LOG: Server load time: 2.20502
+LOG: Server exec time: 1.03989
+LOG: Server Time / Memory: 4.11 seconds 476904 kB
+LOG: Client load time: 2.38708
+LOG: Client exec time: 0.857632
+LOG: Client Time / Memory: 3.99 seconds 460132 kB
+LOG: ====================================
+LOG: Test: Selection time
+LOG: Error: Process returned with status code 1
+LOG: Error message: Traceback (most recent call last):   File ".././modules/HyCC/src/circuit-utils/py/selection.py", line 371, in <module>     analyzer.read_folder(args.circuit)   File ".././modules/HyCC/src/circuit-utils/py/selection.py", line 100, in read_folder     self.read_circ(os.path.join(folder, file))   File ".././modules/HyCC/src/circuit-utils/py/selection.py", line 84, in read_circ     module = Module(path)   File ".././modules/HyCC/src/circuit-utils/py/selection.py", line 21, in __init__     self.circuit.read()   File "/home/ubuntu/mpc_benchmarks/circ_benchmarks/modules/HyCC/src/circuit-utils/py/reader.py", line 164, in read     self.read_gates(num_gates)   File "/home/ubuntu/mpc_benchmarks/circ_benchmarks/modules/HyCC/src/circuit-utils/py/reader.py", line 288, in read_gates     raise NotImplementedError("not implemented: " + hex(data)) NotImplementedError: not implemented: 0x9d Command exited with non-zero status 1 85.49 seconds 3033060 kB
+LOG: Failed optimize_selection with args: ['--all-variants'], exception:
+LOG: ====================================
+LOG: Missing: ps_optimized.cmb
+LOG: ====================================
+LOG: Running with args: ['--all-variants', '--outline']
+LOG: ====================================
+LOG: Test: Build circuit time
+LOG: Error: Process returned with status code 134
+LOG: Error message: <command-line>: warning: "__STDC_VERSION__" redefined <built-in>: note: this is the location of the previous definition <command-line>: warning: "__STDC_VERSION__" redefined <built-in>: note: this is the location of the previous definition terminate called after throwing an instance of 'std::runtime_error'   what():  Array size must be a constant expression Command terminated by signal 6 2.12 seconds 71032 kB
+LOG: Failed building circuit with args: ['--all-variants', '--outline'], exception:
+LOG: ====================================
+LOG: Missing: yaoonly.cmb
+LOG: ====================================
+LOG: Missing: yaohybrid.cmb
+LOG: ====================================
+LOG: Missing: gmwonly.cmb
+LOG: ====================================
+LOG: Missing: gmwhybrid.cmb
+LOG: ====================================
+LOG: Test: Selection time
+LOG: Error: Process returned with status code 1
+LOG: Error message: Traceback (most recent call last):   File ".././modules/HyCC/src/circuit-utils/py/selection.py", line 371, in <module>     analyzer.read_folder(args.circuit)   File ".././modules/HyCC/src/circuit-utils/py/selection.py", line 100, in read_folder     self.read_circ(os.path.join(folder, file))   File ".././modules/HyCC/src/circuit-utils/py/selection.py", line 84, in read_circ     module = Module(path)   File ".././modules/HyCC/src/circuit-utils/py/selection.py", line 21, in __init__     self.circuit.read()   File "/home/ubuntu/mpc_benchmarks/circ_benchmarks/modules/HyCC/src/circuit-utils/py/reader.py", line 164, in read     self.read_gates(num_gates)   File "/home/ubuntu/mpc_benchmarks/circ_benchmarks/modules/HyCC/src/circuit-utils/py/reader.py", line 295, in read_gates     fanin = id_to_endpoint[self.reader.read_uint32()]   File "/home/ubuntu/mpc_benchmarks/circ_benchmarks/modules/HyCC/src/circuit-utils/py/reader.py", line 18, in read_uint32     return self.unpack('<I', 4)   File "/home/ubuntu/mpc_benchmarks/circ_benchmarks/modules/HyCC/src/circuit-utils/py/reader.py", line 12, in unpack     return struct.unpack(fmt, self.stream.read(length))[0] struct.error: unpack requires a buffer of 4 bytes Command exited with non-zero status 1 0.18 seconds 34636 kB
+LOG: Failed optimize_selection with args: ['--all-variants', '--outline'], exception:
+LOG: ====================================
+LOG: Missing: ps_optimized.cmb
+LOG: ====================================

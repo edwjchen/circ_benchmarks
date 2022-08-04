@@ -1,0 +1,81 @@
+LOG: ====================================
+LOG: Benchmarking HyCC
+LOG: ====================================
+LOG: TEST PATH: .././modules/HyCC/examples/benchmarks/biomatch/biomatch.c
+LOG: SPEC_FILE: tests/hycc/biomatch.spec
+LOG: MINIMIZATION TIME: 0
+LOG: COST MODEL: hycc
+LOG: Running with args: ['--all-variants']
+LOG: ====================================
+LOG: Test: Build circuit time
+LOG: Compile time: 5.45951
+LOG: Time / Memory: 5.47 seconds 79596 kB
+LOG: ====================================
+LOG: Test: Module bundle time
+LOG: Time / Memory: 0.03 seconds 10096 kB
+LOG: ====================================
+LOG: Test: yaoonly RERUN 0:
+LOG: Server load time: 20.2242
+LOG: Server exec time: 1.19104
+LOG: Server Time / Memory: 24.12 seconds 2452820 kB
+LOG: Client load time: 19.8974
+LOG: Client exec time: 1.51456
+LOG: Client Time / Memory: 24.19 seconds 2474284 kB
+LOG: ====================================
+LOG: Test: yaohybrid RERUN 0:
+LOG: Server load time: 0.375141
+LOG: Server exec time: 0.354348
+LOG: Server Time / Memory: 0.79 seconds 111492 kB
+LOG: Client load time: 0.395557
+LOG: Client exec time: 0.33096
+LOG: Client Time / Memory: 0.79 seconds 113004 kB
+LOG: ====================================
+LOG: Test: gmwonly RERUN 0:
+LOG: Server load time: 20.8272
+LOG: Server exec time: 3.25687
+LOG: Server Time / Memory: 26.89 seconds 2451484 kB
+LOG: Client load time: 21.3899
+LOG: Client exec time: 2.69213
+LOG: Client Time / Memory: 26.29 seconds 2452364 kB
+LOG: ====================================
+LOG: Test: gmwhybrid RERUN 0:
+LOG: Server load time: 0.458932
+LOG: Server exec time: 0.345593
+LOG: Server Time / Memory: 0.86 seconds 120044 kB
+LOG: Client load time: 0.428011
+LOG: Client exec time: 0.371615
+LOG: Client Time / Memory: 0.85 seconds 120788 kB
+LOG: ====================================
+LOG: Test: Selection time
+LOG: Time / Memory: 2.91 seconds 94076 kB
+LOG: ====================================
+LOG: Test: ps_optimized RERUN 0:
+LOG: Server load time: 0.715629
+LOG: Server exec time: 0.357058
+LOG: Server Time / Memory: 1.22 seconds 157884 kB
+LOG: Client load time: 0.66236
+LOG: Client exec time: 0.406263
+LOG: Client Time / Memory: 1.18 seconds 158556 kB
+LOG: ====================================
+LOG: Running with args: ['--all-variants', '--outline']
+LOG: ====================================
+LOG: Test: Build circuit time
+LOG: Error: Process returned with status code 134
+LOG: Error message: <command-line>: warning: "__STDC_VERSION__" redefined <built-in>: note: this is the location of the previous definition <command-line>: warning: "__STDC_VERSION__" redefined <built-in>: note: this is the location of the previous definition terminate called after throwing an instance of 'std::runtime_error'   what():  No reaching definitions analysis result available Command terminated by signal 6 0.98 seconds 67772 kB
+LOG: Failed building circuit with args: ['--all-variants', '--outline'], exception:
+LOG: ====================================
+LOG: Missing: yaoonly.cmb
+LOG: ====================================
+LOG: Missing: yaohybrid.cmb
+LOG: ====================================
+LOG: Missing: gmwonly.cmb
+LOG: ====================================
+LOG: Missing: gmwhybrid.cmb
+LOG: ====================================
+LOG: Test: Selection time
+LOG: Time / Memory: 0.04 seconds 12128 kB
+LOG: ====================================
+LOG: Test: ps_optimized RERUN 0:
+LOG: Error: Process returned with status code 134
+LOG: Error message: terminate called after throwing an instance of 'std::runtime_error'   what():  You must specify at least one circuit file Command terminated by signal 6 0.16 seconds 5584 kB
+LOG: ====================================

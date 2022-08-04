@@ -1,0 +1,39 @@
+LOG: ====================================
+LOG: Benchmarking HyCC
+LOG: ====================================
+LOG: TEST PATH: /home/ubuntu/ejchen/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db_merge.c
+LOG: SPEC_FILE: /home/ubuntu/ejchen/circ_benchmarks/specs/db_merge.spec
+LOG: MINIMIZATION TIME: 600
+LOG: COST MODEL: hycc
+LOG: Running with args: ['--all-variants']
+LOG: ====================================
+LOG: Test: Build circuit time
+LOG: Compile time: 1825.49
+LOG: Time / Memory: 1825.70 seconds 4096156 kB
+LOG: ====================================
+LOG: Test: Module bundle time
+LOG: Time / Memory: 0.03 seconds 10100 kB
+LOG: ====================================
+LOG: Test: RERUN 0: yaohybrid
+LOG: Error: Process returned with status code 134
+LOG: Error message: terminate called after throwing an instance of 'std::out_of_range'   what():  _Map_base::at Command terminated by signal 6 2.71 seconds 593872 kB
+LOG: ====================================
+LOG: Test: RERUN 0: gmwhybrid
+LOG: Error: Process returned with status code 134
+LOG: Error message: terminate called after throwing an instance of 'std::out_of_range'   what():  _Map_base::at Command terminated by signal 6 3.13 seconds 637652 kB
+LOG: ====================================
+LOG: Running with args: ['--all-variants', '--outline']
+LOG: ====================================
+LOG: Test: Build circuit time
+LOG: Error: Process returned with status code 134
+LOG: Error message: <command-line>: warning: "__STDC_VERSION__" redefined <built-in>: note: this is the location of the previous definition <command-line>: warning: "__STDC_VERSION__" redefined <built-in>: note: this is the location of the previous definition if   * type: bool   0: >=       * type: bool       * #source_location:          * file: /home/ubuntu/ejchen/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h         * line: 63         * function: mean_with_abort         * working_directory: /home/ubuntu/ejchen/circ_benchmarks/hycc_circuit_dir/hycc_db_merge_mt-600_cm-hycc       0: dereference           * type: signedbv               * width: 32               * #typedef: DT               * #c_type: signed_int           * #source_location:              * file: /home/ubuntu/ejchen/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h             * line: 63             * function: mean_with_abort             * working_directory: /home/ubuntu/ejchen/circ_benchmarks/hycc_circuit_dir/hycc_db_merge_mt-600_cm-hycc           * #lvalue: 1           0: +               * type: pointer                   * width: 64                   * #source_location:                      * file: /home/ubuntu/ejchen/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h                     * line: 60                     * function:                      * working_directory: /home/ubuntu/ejchen/circ_benchmarks/hycc_circuit_dir/hycc_db_merge_mt-600_cm-hycc                   0: signedbv                       * width: 32                       * #typedef: DT                       * #c_type: signed_int               0: symbol                   * type: pointer                       * width: 64                       * #source_location:                          * file: /home/ubuntu/ejchen/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h                         * line: 60                         * function:                          * working_directory: /home/ubuntu/ejchen/circ_benchmarks/hycc_circuit_dir/hycc_db_merge_mt-600_cm-hycc                       0: signedbv                           * width: 32                           * #typedef: DT                           * #c_type: signed_int                   * identifier: mean_with_abort::db                   * #source_location:                      * file: /home/ubuntu/ejchen/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h                     * line: 63                     * function: mean_with_abort                     * working_directory: /home/ubuntu/ejchen/circ_benchmarks/hycc_circuit_dir/hycc_db_merge_mt-600_cm-hycc                   * #lvalue: 1               1: typecast                   * type: signedbv                       * width: 64                       * #c_type: signed_long_int                   0: symbol                       * type: signedbv                           * width: 32                           * #c_type: signed_int                       * identifier: mean_with_abort::1::i                       * #source_location:                          * file: /home/ubuntu/ejchen/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h                         * line: 63                         * function: mean_with_abort                         * working_directory: /home/ubuntu/ejchen/circ_benchmarks/hycc_circuit_dir/hycc_db_merge_mt-600_cm-hycc                       * #lvalue: 1       1: constant           * type: signedbv               * width: 32               * #c_type: signed_int           * value: 00000000000000000000000000000000           * #source_location:              * file: /home/ubuntu/ejchen/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h             * line: 63             * function: mean_with_abort             * working_directory: /home/ubuntu/ejchen/circ_benchmarks/hycc_circuit_dir/hycc_db_merge_mt-600_cm-hycc           * #base: 10   1: constant       * type: bool       * value: true   2: constant       * type: bool       * value: false terminate called after throwing an instance of 'std::runtime_error'   what():  Unsupported expression: if Command terminated by signal 6 0.93 seconds 68052 kB
+LOG: Failed building circuit with args: ['--all-variants', '--outline'], exception:
+LOG: ====================================
+LOG: Test: RERUN 0: yaohybrid
+LOG: Error: Process returned with status code 134
+LOG: Error message: terminate called after throwing an instance of 'std::out_of_range'   what():  _Map_base::at Command terminated by signal 6 2.77 seconds 594248 kB
+LOG: ====================================
+LOG: Test: RERUN 0: gmwhybrid
+LOG: Error: Process returned with status code 134
+LOG: Error message: terminate called after throwing an instance of 'std::out_of_range'   what():  _Map_base::at Command terminated by signal 6 3.04 seconds 637564 kB
+LOG: ====================================

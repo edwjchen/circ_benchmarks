@@ -1,0 +1,68 @@
+
+LOG: ====================================
+
+LOG: Benchmarking CirC
+
+LOG: ====================================
+
+LOG: Test: kmeans
+LOG: SELECTION_SCHEME: a+y
+LOG: NUM_PARTS: 3
+LOG: MUTATION_LEVEL: 4
+LOG: MUTATION_STEP_SIZE: 1
+LOG: COST_MODEL: hycc
+
+LOG: ====================================
+
+LOG: Test: RERUN 0: kmeans
+Options { path: "/home/ubuntu/ejchen/circ_benchmarks/modules/circ/examples/C/mpc/benchmarks/kmeans/2pc_kmeans_.c", frontend: FrontendOptions { language: Auto, value_threshold: None }, parties: 2, backend: Mpc { cost_model: "hycc", selection_scheme: "a+y" } }
+LOG: Frontend: 31.316011ms
+LOG: Optimizations: 96.983998ms
+Done with IR optimization
+Converting to aby
+Cost model: hycc
+Selection scheme: a+y
+LOG: Assignment dist2: 1.669232ms
+LOG: Assignment iteration_unrolled_inner_depth: 1.677062ms
+LOG: Assignment iteration_unrolled_outer: 1.861598ms
+LOG: Assignment kmeans: 1.694567ms
+LOG: Assignment main: 1.642441ms
+LOG: Assignment min_with_aux: 1.618533ms
+LOG: Lowering: 14.710515ms
+LOG: Compile: 143.048877ms
+
+LOG: Time / Memory: 0.15 seconds 27776 kB
+
+LOG: ====================================
+
+LOG: Test: RERUN 0: kmeans 
+LOG: Server exec time: 2.72431
+2
+3
+7
+8
+10
+11
+13
+14
+17
+18
+LOG: Server load time: 1.00926
+LOG: Server total time: 3.73356
+
+LOG: Server Time / Memory: 3.74 seconds 729024 kB
+LOG: Client exec time: 2.67229
+2
+3
+7
+8
+10
+11
+13
+14
+17
+18
+LOG: Client load time: 1.06321
+LOG: Client total time: 3.7355
+
+LOG: Client Time / Memory: 3.74 seconds 758320 kB

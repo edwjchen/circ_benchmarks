@@ -6,7 +6,7 @@ import os
 feature_path = ".features.txt"
 valid_features = {"circ", "hycc"}
 
-TIMEOUT = 300
+TIME_CMD = "/usr/bin/time --format='%e seconds %M kB'"
 
 # installation variables
 # TODO: update CIRC_BENCHMARK_SOURCE path
@@ -28,22 +28,21 @@ ABY_CBMC_GC = ABY_SOURCE + "/build/bin/aby-hycc"
 MPC_CIRC = "mpc_main.circ"
 MODULE_BUNDLE = HYCC_SOURCE+"/src/circuit-utils/py/module_bundle.py"
 SELECTION = HYCC_SOURCE+"/src/circuit-utils/py/selection.py"
-COSTS = HYCC_SOURCE+"/src/circuit-utils/py/costs.json"
 
 CIRC_TARGET = CIRC_SOURCE + "/target/release/examples/circ"
 ABY_INTERPRETER = ABY_SOURCE + "/build/bin/aby_interpreter"
 
 # joint parameters
 RERUN = 1
-SIZE = 256
+COST_MODELS = ["hycc"]
+# TODO: if more cost models are added, need to give hycc the path to the json
+COSTS = HYCC_SOURCE+"/src/circuit-utils/py/costs.json"
+
 
 # hycc parameters
-MINIMIZATION_TIME = 0
-COST_MODEL = "hycc"  # opa
-COST_MODELS = ["hycc"]
 HYCC_TEST_CASES = [
     ("biomatch", "biomatch/biomatch.c"),
-    ("kmeans", "kmeans/kmeans.c"),
+    # ("kmeans", "kmeans/kmeans.c"),
     # ("gauss", "gauss/gauss.c"),
     # ("db_join", "db/db_join.c"),
     # ("db_join2", "db/db_join2.c"),
@@ -54,9 +53,12 @@ HYCC_TEST_CASES = [
     # ("cryptonets", "cryptonets/cryptonets.c"),
     # TODO: add histogram
 ]
+MINIMIZATION_TIMES = [0]
+HYCC_SELECTION_SCHEMES = ["yaoonly", "yaohybrid", "gmwonly", "gmwhybrid", "ps_optimized"]
+HYCC_COMPILE_ARGUMENTS = [["--all-variants"], ["--all-variants", "--outline"]]
 
 # circ parameters
-SELECTION_SCHEMES = ["b", "y", "a+b", "a+y", "greedy", "lp", "glp"]
+CIRC_SELECTION_SCHEMES = ["b", "y", "a+b", "a+y", "greedy", "lp", "glp"]
 NUM_PARTS = [3]
 MUT_LEVELS = [4]
 MUT_STEP_SIZES = [1]
@@ -114,8 +116,7 @@ def make_test_results():
 
 
 def wrap_time(cmd):
-    time_cmd = "/usr/bin/time --format='%e seconds %M kB'"
-    return " ".join([time_cmd] + cmd)
+    return " ".join([TIME_CMD] + cmd)
 
 
 def run_cmds(server_cmd, client_cmd, name, version):
@@ -127,8 +128,8 @@ def run_cmds(server_cmd, client_cmd, name, version):
         server_cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     client_proc = subprocess.Popen(
         client_cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-    server_stdout, server_stderr = server_proc.communicate(timeout=TIMEOUT)
-    client_stdout, client_stderr = client_proc.communicate(timeout=TIMEOUT)
+    server_stdout, server_stderr = server_proc.communicate()
+    client_stdout, client_stderr = client_proc.communicate()
 
     if server_proc.returncode:
         write_log("LOG: Error: Process returned with status code {}".format(
@@ -169,7 +170,7 @@ def run_cmd(cmd, name, version):
     print(cmd)
     proc = subprocess.Popen(
         cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-    stdout, stderr = proc.communicate(timeout=TIMEOUT)
+    stdout, stderr = proc.communicate()
 
     if proc.returncode:
         write_log("LOG: Error: Process returned with status code {}".format(

@@ -1,0 +1,77 @@
+LOG: ====================================
+LOG: Benchmarking HyCC
+LOG: ====================================
+LOG: TEST PATH: .././modules/HyCC/examples/benchmarks/gauss/gauss.c
+LOG: SPEC_FILE: tests/hycc/gauss.spec
+LOG: MINIMIZATION TIME: 0
+LOG: COST MODEL: hycc
+LOG: Running with args: ['--all-variants']
+LOG: ====================================
+LOG: Test: Build circuit time
+LOG: Compile time: 8.79078
+LOG: Time / Memory: 8.80 seconds 70884 kB
+LOG: ====================================
+LOG: Test: Module bundle time
+LOG: Time / Memory: 0.03 seconds 9960 kB
+LOG: ====================================
+LOG: Test: yaoonly RERUN 0:
+LOG: Server load time: 0.818854
+LOG: Server exec time: 0.360235
+LOG: Server Time / Memory: 1.32 seconds 213216 kB
+LOG: Client load time: 0.880914
+LOG: Client exec time: 0.29691
+LOG: Client Time / Memory: 1.29 seconds 213528 kB
+LOG: ====================================
+LOG: Test: yaohybrid RERUN 0:
+LOG: Server load time: 0.885046
+LOG: Server exec time: 0.31816
+LOG: Server Time / Memory: 1.34 seconds 209428 kB
+LOG: Client load time: 0.791707
+LOG: Client exec time: 0.4108
+LOG: Client Time / Memory: 1.31 seconds 210636 kB
+LOG: ====================================
+LOG: Test: gmwonly RERUN 0:
+LOG: Server load time: 0.985591
+LOG: Server exec time: 1.06914
+LOG: Server Time / Memory: 2.21 seconds 243424 kB
+LOG: Client load time: 0.887753
+LOG: Client exec time: 1.16404
+LOG: Client Time / Memory: 2.22 seconds 243556 kB
+LOG: ====================================
+LOG: Test: gmwhybrid RERUN 0:
+LOG: Server load time: 0.856929
+LOG: Server exec time: 1.09716
+LOG: Server Time / Memory: 2.12 seconds 258436 kB
+LOG: Client load time: 0.963056
+LOG: Client exec time: 0.990275
+LOG: Client Time / Memory: 2.07 seconds 258708 kB
+LOG: ====================================
+LOG: Test: Selection time
+LOG: Error: Process returned with status code 1
+LOG: Error message: Traceback (most recent call last):   File ".././modules/HyCC/src/circuit-utils/py/selection.py", line 371, in <module>     analyzer.read_folder(args.circuit)   File ".././modules/HyCC/src/circuit-utils/py/selection.py", line 100, in read_folder     self.read_circ(os.path.join(folder, file))   File ".././modules/HyCC/src/circuit-utils/py/selection.py", line 84, in read_circ     module = Module(path)   File ".././modules/HyCC/src/circuit-utils/py/selection.py", line 21, in __init__     self.circuit.read()   File "/home/ubuntu/mpc_benchmarks/circ_benchmarks/modules/HyCC/src/circuit-utils/py/reader.py", line 164, in read     self.read_gates(num_gates)   File "/home/ubuntu/mpc_benchmarks/circ_benchmarks/modules/HyCC/src/circuit-utils/py/reader.py", line 295, in read_gates     fanin = id_to_endpoint[self.reader.read_uint32()]   File "/home/ubuntu/mpc_benchmarks/circ_benchmarks/modules/HyCC/src/circuit-utils/py/reader.py", line 18, in read_uint32     return self.unpack('<I', 4)   File "/home/ubuntu/mpc_benchmarks/circ_benchmarks/modules/HyCC/src/circuit-utils/py/reader.py", line 12, in unpack     return struct.unpack(fmt, self.stream.read(length))[0] struct.error: unpack requires a buffer of 4 bytes Command exited with non-zero status 1 0.39 seconds 52352 kB
+LOG: Failed optimize_selection with args: ['--all-variants'], exception:
+LOG: ====================================
+LOG: Missing: ps_optimized.cmb
+LOG: ====================================
+LOG: Running with args: ['--all-variants', '--outline']
+LOG: ====================================
+LOG: Test: Build circuit time
+LOG: Error: Process returned with status code 134
+LOG: Error message: <command-line>: warning: "__STDC_VERSION__" redefined <built-in>: note: this is the location of the previous definition <command-line>: warning: "__STDC_VERSION__" redefined <built-in>: note: this is the location of the previous definition fixedpt_div: (fixedpt_div::a, fixedpt_div::b) -> (fixedpt_div#return_value) 0:        %0 = (signed int)24     %1 = (signed int)32     %fixedpt_div::a = named_addr<fixedpt *> fixedpt_div::a     %2 = load<fixedpt> %fixedpt_div::a     %3 = cast<fixedptd> %2     %4 = sub<signed int> (signed int)32 (signed int)24     %5 = shl<fixedptd> %3 %4     %fixedpt_div::b = named_addr<fixedpt *> fixedpt_div::b     %6 = load<fixedpt> %fixedpt_div::b     %7 = cast<signed long int> %6     %8 = div<fixedptd> %5 %7     %9 = cast<fixedpt> %8     %fixedpt_div#return_value = named_addr<fixedpt *> fixedpt_div#return_value     store %fixedpt_div#return_value %9 terminate called after throwing an instance of 'std::runtime_error'   what():  IR validation failed for function 'fixedpt_div' Command terminated by signal 6 0.98 seconds 70552 kB
+LOG: Failed building circuit with args: ['--all-variants', '--outline'], exception:
+LOG: ====================================
+LOG: Missing: yaoonly.cmb
+LOG: ====================================
+LOG: Missing: yaohybrid.cmb
+LOG: ====================================
+LOG: Missing: gmwonly.cmb
+LOG: ====================================
+LOG: Missing: gmwhybrid.cmb
+LOG: ====================================
+LOG: Test: Selection time
+LOG: Time / Memory: 0.04 seconds 12144 kB
+LOG: ====================================
+LOG: Test: ps_optimized RERUN 0:
+LOG: Error: Process returned with status code 134
+LOG: Error message: terminate called after throwing an instance of 'std::runtime_error'   what():  You must specify at least one circuit file Command terminated by signal 6 0.15 seconds 5412 kB
+LOG: ====================================

@@ -5,19 +5,6 @@ from util import *
 ################################################################################
 
 
-def build_mpc_circuit(test_path, version, args=[]):
-    write_log(DELIMITER, version)
-    cmd = [CBMC_GC, test_path,
-           "--minimization-time-limit", str(MINIMIZATION_TIME)] + args
-    run_cmd(cmd, "Build circuit time", version)
-
-
-def bundle_modules(version):
-    write_log(DELIMITER, version)
-    cmd = ["python3", MODULE_BUNDLE, "."]
-    run_cmd(cmd, "Module bundle time", version)
-
-
 def optimize_selection(version, costs_path=COSTS):
     write_log(DELIMITER, version)
     cmd = ["python3", SELECTION, ".", costs_path]
@@ -45,46 +32,6 @@ def run_aby_sim(spec_file, version):
     run_aby(spec_file, "ABY-SIM", version, [MPC_CIRC])
 
 
-def run_yaoonly(spec_file, version):
-    if os.path.exists("yaoonly.cmb"):
-        run_aby(spec_file, "yaoonly", version, ["-c", "yaoonly.cmb"])
-    else:
-        write_log(DELIMITER, version)
-        write_log("LOG: Missing: yaoonly.cmb", version)
-
-
-def run_yaohybrid(spec_file, version):
-    if os.path.exists("yaohybrid.cmb"):
-        run_aby(spec_file, "yaohybrid", version, ["-c", "yaohybrid.cmb"])
-    else:
-        write_log(DELIMITER, version)
-        write_log("LOG: Missing: yaohybrid.cmb", version)
-
-
-def run_gmwonly(spec_file, version):
-    if os.path.exists("gmwonly.cmb"):
-        run_aby(spec_file, "gmwonly", version, ["-c", "gmwonly.cmb"])
-    else:
-        write_log(DELIMITER, version)
-        write_log("LOG: Missing: gmwonly.cmb", version)
-
-
-def run_gmwhyrbid(spec_file, version):
-    if os.path.exists("gmwhybrid.cmb"):
-        run_aby(spec_file, "gmwhybrid", version, ["-c", "gmwhybrid.cmb"])
-    else:
-        write_log(DELIMITER, version)
-        write_log("LOG: Missing: gmwhybrid.cmb", version)
-
-
-def run_optimized(spec_file, version):
-    if os.path.exists("ps_optimized.cmb"):
-        run_aby(spec_file, "ps_optimized", version, ["-c", "ps_optimized.cmb"])
-    else:
-        write_log(DELIMITER, version)
-        write_log("LOG: Missing: ps_optimized.cmb", version)
-
-
 def run_simulation(test_path, spec_file, version, args=[]):
     circuit_dir = "{}{}".format(HYCC_CIRCUIT_PATH, version)
     make_dir(circuit_dir)
@@ -100,102 +47,107 @@ def run_simulation(test_path, spec_file, version, args=[]):
     except Exception as e:
         write_log("LOG: Failed simulating circuit with args: {}, exception: {}".format(
             args, e), version)
+  
+
+def run_hycc_benchmark(version, params, spec_file):
+        args = params["a"]
+        if not args:
+            return
+
+        ss = params["ss"]
+        ss_file = "{}.cmb".format(ss)
+        if ss == "ps_optimized":
+            try: 
+                optimize_selection(version)
+            except Exception as e:
+                write_log("LOG: Failed optimize_selection with args: {}, exception: {}".format(
+                    " ".join(args), e), version)
+        try:
+            if os.path.exists(ss_file):
+                run_aby(spec_file, ss, version, ["-c", ss_file])
+            else:
+                write_log("LOG: Missing: {}".format(ss_file), version)
+        except Exception as e:
+            args = params["a"]
+            write_log("LOG: Failed {} with args: {}, exception: {}".format(
+                ss, " ".join(args), e), version)
 
 
-def run_all_hycc_benchmarks(test_path, spec_file, version, args=[]):
-    circuit_dir = "{}{}".format(HYCC_CIRCUIT_PATH, version)
-    make_dir(circuit_dir)
-
-    # build benchmarks
+def compile_hycc_benchmark(version, test_path, params):
+    args = params["a"]
     try:
-        # compilation to arithmetic circuits is not always possible
-        os.chdir(circuit_dir)
-        build_mpc_circuit(test_path, version, args)
-        bundle_modules(version)
-    except Exception as e:
-        write_log("LOG: Failed building circuit with args: {}, exception: {}".format(
-            args, e), version)
+        # compile
+        cmd = [CBMC_GC, test_path,
+            "--minimization-time-limit", str(params["mt"])] + args
+        run_cmd(cmd, "Build circuit time", version)
 
-    # run benchmarks
-    try:
-        os.chdir(circuit_dir)
-        run_yaoonly(spec_file, version)
+        #bundle modules
+        write_log(DELIMITER, version)
+        cmd = ["python3", MODULE_BUNDLE, "."]
+        run_cmd(cmd, "Module bundle time", version)
+        return True
     except Exception as e:
-        write_log("LOG: Failed yaoonly with args: {}, exception: {}".format(
-            args, e), version)
-
-    try:
-        os.chdir(circuit_dir)
-        run_yaohybrid(spec_file, version)
-    except Exception as e:
-        write_log("LOG: Failed yaohybrid with args: {}, exception: {}".format(
-            args, e), version)
-
-    try:
-        os.chdir(circuit_dir)
-        run_gmwonly(spec_file, version)
-    except Exception as e:
-        write_log("LOG: Failed gmwonly with args: {}, exception: {}".format(
-            args, e), version)
-
-    try:
-        os.chdir(circuit_dir)
-        run_gmwhyrbid(spec_file, version)
-    except Exception as e:
-        write_log("LOG: Failed gmwhybrid with args: {}, exception: {}".format(
-            args, e), version)
-
-    # ps optimized
-    try:
-        os.chdir(circuit_dir)
-        optimize_selection(version)
-    except Exception as e:
-        write_log("LOG: Failed optimize_selection with args: {}, exception: {}".format(
-            args, e), version)
-
-    try:
-        os.chdir(circuit_dir)
-        run_optimized(spec_file, version)
-    except Exception as e:
-        write_log("LOG: Failed run_optimized with args: {}, exception: {}".format(
-            args, e), version)
-
+        write_log("LOG: Failed simulating circuit with args: {}, exception: {}".format(
+            " ".join(args), e), version)
+        return False
+    
 
 def benchmark_hycc(name, path):
-    version = "{}_{}_mt-{}_cm-{}".format(
-        "hycc", name, MINIMIZATION_TIME, COST_MODEL)
-    log_path = format("test_results/log_{}.txt".format(version))
-    if os.path.exists(log_path):
-        print("Benchmark already ran: {}".format(log_path))
-        return
-
-    write_log(DELIMITER, version)
-    write_log("LOG: Benchmarking HyCC", version)
-    write_log(DELIMITER, version)
-
     test_path = HYCC_SOURCE + \
-        "/examples/benchmarks/{}".format(path)
+                    "/examples/benchmarks/{}".format(path)
     spec_file = "{}specs/{}.spec".format(CIRC_BENCHMARK_SOURCE, name)
 
-    write_log("LOG: TEST PATH: {}".format(test_path), version)
-    write_log("LOG: SPEC_FILE: {}".format(spec_file), version)
-    write_log("LOG: MINIMIZATION TIME: {}".format(MINIMIZATION_TIME), version)
-    write_log("LOG: COST MODEL: {}".format(COST_MODEL), version)
+    versions = []
+    for cm in COST_MODELS:
+        for mt in MINIMIZATION_TIMES:
+            for a in HYCC_COMPILE_ARGUMENTS: 
+                params = {}
+                params["mt"] = mt
+                params["a"] = a
 
-    # # benchmark simulation
-    # run_simulation(test_path, spec_file, version)
-    # write_log(DELIMITER, version)
+                version = "{}_{}_mt-{}_args-{}".format("hycc", name, mt, "".join(a))
+                if version not in versions:
+                    versions.append((version, params))
+                
 
-    # benchmark cbmc-gc benchmarks
-    args = ["--all-variants"]
-    write_log("LOG: Running with args: {}".format(args), version)
-    run_all_hycc_benchmarks(test_path, spec_file, version, args)
-    write_log(DELIMITER, version)
+    # make circuit directories    
+    for (version, params) in versions:
+        circuit_dir = "{}{}".format(HYCC_CIRCUIT_PATH, version)
+        make_dir(circuit_dir)
 
-    args = ["--all-variants", "--outline"]
-    write_log("LOG: Running with args: {}".format(args), version)
-    run_all_hycc_benchmarks(test_path, spec_file, version, args)
-    write_log(DELIMITER, version)
+        compile_version = "compile_{}".format(version)
+        compile_log_path = format(
+            "{}test_results/log_{}.txt".format(CIRC_BENCHMARK_SOURCE, compile_version))
+        
+        if not os.path.exists(compile_log_path):
+            # compile HyCC benchmark
+            os.chdir(circuit_dir)
+            compile_hycc_benchmark(compile_version, test_path, params)
+
+        for ss in HYCC_SELECTION_SCHEMES:
+            for cm in COST_MODELS:
+                params["ss"] = ss
+                params["cm"] = cm
+                run_version = "{}_ss-{}_cm-{}".format(version, ss, cm)
+                log_path = format("test_results/log_{}.txt".format(run_version))
+                if not os.path.exists(log_path):
+                    # run HyCC benchmark
+                    os.chdir(circuit_dir)
+                    write_log(DELIMITER, run_version)
+                    write_log("LOG: Benchmarking HyCC", run_version)
+                    write_log(DELIMITER, run_version)
+
+                    write_log("LOG: TEST PATH: {}".format(test_path), run_version)
+                    write_log("LOG: SPEC_FILE: {}".format(spec_file), run_version)
+                    write_log("LOG: MINIMIZATION TIME: {}".format(params["mt"]), run_version)
+                    write_log("LOG: COST MODEL: {}".format(params["cm"]), run_version)
+                    write_log("LOG: ARGUMENTS: {}".format(params["a"]), run_version)
+
+                    run_hycc_benchmark(run_version, params, spec_file)
+                else:
+                    print("Benchmark already ran: {}".format(log_path))
+
+    os.chdir(CIRC_BENCHMARK_SOURCE)
 
 
 ################################################################################
@@ -237,7 +189,7 @@ def benchmark_circ(name):
     os.chdir(CIRC_SOURCE)
 
     versions = []
-    for ss in SELECTION_SCHEMES:
+    for ss in CIRC_SELECTION_SCHEMES:
         for np in NUM_PARTS:
             for ml in MUT_LEVELS:
                 for mss in MUT_STEP_SIZES:

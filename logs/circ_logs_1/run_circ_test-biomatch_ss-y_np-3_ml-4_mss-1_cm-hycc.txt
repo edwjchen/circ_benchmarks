@@ -1,0 +1,48 @@
+
+LOG: ====================================
+
+LOG: Benchmarking CirC
+
+LOG: ====================================
+
+LOG: Test: biomatch
+LOG: SELECTION_SCHEME: y
+LOG: NUM_PARTS: 3
+LOG: MUTATION_LEVEL: 4
+LOG: MUTATION_STEP_SIZE: 1
+LOG: COST_MODEL: hycc
+
+LOG: ====================================
+
+LOG: Test: RERUN 0: biomatch
+Options { path: "/home/ubuntu/ejchen/circ_benchmarks/modules/circ/examples/C/mpc/benchmarks/biomatch/biomatch.c", frontend: FrontendOptions { language: Auto, value_threshold: None }, parties: 2, backend: Mpc { cost_model: "hycc", selection_scheme: "y" } }
+LOG: Frontend: 56.071283ms
+LOG: Optimizations: 142.528891ms
+Done with IR optimization
+Converting to aby
+Cost model: hycc
+Selection scheme: y
+LOG: Assignment main: 355.86µs
+LOG: Assignment match_decomposed: 1.031164ms
+LOG: Assignment match_fix: 4.366µs
+LOG: Assignment min: 268.492µs
+LOG: Lowering: 21.504774ms
+LOG: Compile: 220.147463ms
+
+LOG: Time / Memory: 0.22 seconds 38248 kB
+
+LOG: ====================================
+
+LOG: Test: RERUN 0: biomatch 
+LOG: Server exec time: 1.85963
+14
+LOG: Server load time: 0.922915
+LOG: Server total time: 2.78255
+
+LOG: Server Time / Memory: 2.79 seconds 659440 kB
+LOG: Client exec time: 1.86428
+14
+LOG: Client load time: 0.913215
+LOG: Client total time: 2.77749
+
+LOG: Client Time / Memory: 2.78 seconds 695184 kB

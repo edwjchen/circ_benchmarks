@@ -1,0 +1,55 @@
+
+LOG: ====================================
+
+LOG: Benchmarking CirC
+
+LOG: ====================================
+
+LOG: Test: gauss
+LOG: SELECTION_SCHEME: b
+LOG: NUM_PARTS: 3
+LOG: MUTATION_LEVEL: 4
+LOG: MUTATION_STEP_SIZE: 1
+LOG: COST_MODEL: hycc
+
+LOG: ====================================
+
+LOG: Test: RERUN 0: gauss
+Options { path: "/home/ubuntu/ejchen/circ_benchmarks/modules/circ/examples/C/mpc/benchmarks/gauss/2pc_gauss_inline.c", frontend: FrontendOptions { language: Auto, value_threshold: None }, parties: 2, backend: Mpc { cost_model: "hycc", selection_scheme: "b" } }
+LOG: Frontend: 25.013422ms
+LOG: Optimizations: 93.000722ms
+Done with IR optimization
+Converting to aby
+Cost model: hycc
+Selection scheme: b
+LOG: Assignment fixedpt_div: 1.98µs
+LOG: Assignment fixedpt_mul: 989ns
+LOG: Assignment fixedpt_mul_inner: 405ns
+LOG: Assignment gaussj_D: 191.104µs
+LOG: Assignment identity: 4.962µs
+LOG: Assignment main: 7.789µs
+LOG: Assignment solve_backtracking: 12.513µs
+LOG: Lowering: 2.08895ms
+LOG: Compile: 120.132635ms
+
+LOG: Time / Memory: 0.12 seconds 27080 kB
+
+LOG: ====================================
+
+LOG: Test: RERUN 0: gauss 
+LOG: Server exec time: 0.586243
+-1194
+0
+1536
+LOG: Server load time: 0.0651766
+LOG: Server total time: 0.65142
+
+LOG: Server Time / Memory: 0.65 seconds 64736 kB
+LOG: Client exec time: 0.574845
+-1194
+0
+1536
+LOG: Client load time: 0.0741912
+LOG: Client total time: 0.649036
+
+LOG: Client Time / Memory: 0.65 seconds 64168 kB

@@ -1,0 +1,25 @@
+LOG: ====================================
+LOG: Benchmarking CirC
+LOG: ====================================
+LOG: Test: gauss
+LOG: SELECTION_SCHEME: greedy
+LOG: NUM_PARTS: 3
+LOG: MUTATION_LEVEL: 4
+LOG: MUTATION_STEP_SIZE: 1
+LOG: COST_MODEL: hycc
+LOG: ====================================
+LOG: Test: RERUN 0: gauss
+LOG: Frontend: 27.362992ms
+LOG: Optimizations: 100.760885ms
+LOG: Assignment fixedpt_div: 1.721973ms
+LOG: Assignment fixedpt_mul: 1.676306ms
+LOG: Assignment fixedpt_mul_inner: 1.676818ms
+LOG: Assignment gaussj_D: 1.970214ms
+LOG: Assignment identity: 1.690152ms
+LOG: Assignment main: 1.685502ms
+LOG: Assignment solve_backtracking: 1.707332ms
+LOG: Lowering: 14.540896ms
+LOG: Compile: 142.698204ms
+LOG: Time / Memory: 0.15 seconds 26772 kB
+LOG: ====================================
+LOG: Test: RERUN 0: gauss
