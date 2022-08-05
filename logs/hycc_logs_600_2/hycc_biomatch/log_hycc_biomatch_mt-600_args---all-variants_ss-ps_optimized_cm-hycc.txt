@@ -1,0 +1,18 @@
+LOG: ====================================
+LOG: Benchmarking HyCC
+LOG: ====================================
+LOG: TEST PATH: /home/ubuntu/ejchen/circ_benchmarks/modules/HyCC/examples/benchmarks/biomatch/biomatch.c
+LOG: SPEC_FILE: /home/ubuntu/ejchen/circ_benchmarks/specs/biomatch.spec
+LOG: MINIMIZATION TIME: 600
+LOG: COST MODEL: hycc
+LOG: ARGUMENTS: ['--all-variants']
+LOG: ====================================
+LOG: Test: Selection time
+LOG: Time / Memory: 2.79 seconds 93968 kB
+LOG: ====================================
+LOG: Test: RERUN 0: ps_optimized
+LOG: Client load time: 0.589903
+LOG: Server load time: 0.665025
+LOG: Server exec time: 0.361097
+LOG: Client exec time: 0.437805
+LOG: Time / Memory: 1.16 seconds 157076 kB

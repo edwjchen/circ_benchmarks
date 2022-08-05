@@ -1,0 +1,6 @@
+LOG: Test: Build circuit time
+LOG: Compile time: 2606.67
+LOG: Time / Memory: 2607.66 seconds 33977928 kB
+LOG: ====================================
+LOG: Test: Module bundle time
+LOG: Time / Memory: 0.03 seconds 10076 kB

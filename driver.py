@@ -3,10 +3,9 @@ import argparse
 import time
 from util import *
 from benchmark import *
+from parser import *
 
 # ad hoc testing
-
-
 def test():
     test_path = HYCC_SOURCE + \
         "/examples/benchmarks/mnist/mnist.c"
@@ -111,27 +110,34 @@ def benchmark(features):
 
         # run hycc benchmarks
         for (name, path) in HYCC_TEST_CASES:
+            make_dir("test_results/hycc_{}".format(name))
             benchmark_hycc(name, path)
         end = time.time()
         line = "LOG: Total hycc benchmark time: {}".format(end-start)
-        write_log(line, "hycc_total_time")
+        p = subprocess.Popen("echo \"{}\" >> {}/test_results/hycc_total_time.txt".format(line, CIRC_BENCHMARK_SOURCE), shell=True)
+        p.communicate(timeout=10)
 
     if "circ" in features:
         print("Running circ Benchmarks")
-
-        # run circ benchmarks
         start = time.time()
 
+        # run circ benchmarks
         for name in CIRC_TEST_CASES:
+            make_dir("test_results/circ_{}".format(name))
             benchmark_circ(name)
-
         end = time.time()
-
         line = "LOG: Total circ benchmark time: {}".format(end-start)
-        write_log(line, "circ_total_time")
+        p = subprocess.Popen("echo \"{}\" >> {}/test_results/circ_total_time.txt".format(line, CIRC_BENCHMARK_SOURCE), shell=True)
+        p.communicate(timeout=10)
 
-        # parse_circ_log(log_path)
+def parse(features):
+    if "hycc" in features:
+        print("Parsing hycc logs")
+        # parse_hycc_logs()
 
+    if "circ" in features:
+        print("Parsing circ logs")
+        parse_circ_logs()
 
 def set_features(features):
     if "none" in features:
@@ -168,6 +174,8 @@ if __name__ == "__main__":
     parser.add_argument("-t", "--test", action="store_true", help="adhoc test")
     parser.add_argument("--benchmark", action="store_true",
                         help="run benchmark")
+    parser.add_argument("--parse", action="store_true",
+                        help="run parser")
     parser.add_argument("-f", "--features", nargs="+",
                         help="set features <circ, hycc>, reset features with -F none")
     parser.add_argument("-l", "--list", action="store_true",
@@ -199,6 +207,9 @@ if __name__ == "__main__":
 
     if args.benchmark:
         benchmark(features)
+
+    if args.parse:
+        parse(features)
 
     if args.features:
         features = set_features(args.features)

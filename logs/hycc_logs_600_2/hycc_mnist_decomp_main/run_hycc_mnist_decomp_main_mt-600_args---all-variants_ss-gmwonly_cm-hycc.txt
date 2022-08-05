@@ -1,0 +1,18 @@
+
+LOG: ====================================
+
+LOG: Benchmarking HyCC
+
+LOG: ====================================
+
+LOG: TEST PATH: /home/ubuntu/ejchen/circ_benchmarks/modules/HyCC/examples/benchmarks/mnist/mnist_decomp_main.c
+LOG: SPEC_FILE: /home/ubuntu/ejchen/circ_benchmarks/specs/mnist_decomp_main.spec
+LOG: MINIMIZATION TIME: 600
+LOG: COST MODEL: hycc
+LOG: ARGUMENTS: ['--all-variants']
+
+LOG: ====================================
+
+LOG: Test: RERUN 0: gmwonly
+LOG: Error: Process returned with status code 134
+LOG: Error message: terminate called after throwing an instance of 'std::runtime_error'   what():  Failed to open file: /home/ubuntu/ejchen/circ_benchmarks/specs/mnist_decomp_main.spec terminate called after throwing an instance of 'std::runtime_error'   what():  Failed to open file: /home/ubuntu/ejchen/circ_benchmarks/specs/mnist_decomp_main.spec Command terminated by signal 6 0.15 seconds 5308 kB Aborted (core dumped) 

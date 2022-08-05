@@ -1,0 +1,14 @@
+LOG: ====================================
+LOG: Benchmarking HyCC
+LOG: ====================================
+LOG: TEST PATH: /home/ubuntu/ejchen/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db_merge.c
+LOG: SPEC_FILE: /home/ubuntu/ejchen/circ_benchmarks/specs/db_merge.spec
+LOG: MINIMIZATION TIME: 600
+LOG: COST MODEL: hycc
+LOG: ARGUMENTS: ['--all-variants']
+LOG: ====================================
+LOG: Test: Selection time
+LOG: Error: Process returned with status code 1
+LOG: Error message: Traceback (most recent call last):   File "/home/ubuntu/ejchen/circ_benchmarks/modules/HyCC/src/circuit-utils/py/selection.py", line 390, in <module>     results = protocol_selection.run(modules)   File "/home/ubuntu/ejchen/circ_benchmarks/modules/HyCC/src/circuit-utils/py/selection.py", line 291, in run     execution_cost[(module, variant)] = self.cost(variants[variant])   File "/home/ubuntu/ejchen/circ_benchmarks/modules/HyCC/src/circuit-utils/py/selection.py", line 231, in cost     raise Exception('Unknown gate kind: {}'.format(gate)) Exception: Unknown gate kind: one Command exited with non-zero status 1 5.35 seconds 359524 kB
+LOG: Failed optimize_selection with args: --all-variants, exception:
+LOG: Missing: ps_optimized.cmb

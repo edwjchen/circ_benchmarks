@@ -1,0 +1,5 @@
+,Test,SELECTION_SCHEME,NUM_PARTS,MUTATION_LEVEL,MUTATION_STEP_SIZE,COST_MODEL,RERUN compile,Frontend,Optimizations,Assignment,Lowering,Compile,Total_time_0_compile,Total_memory_0_compile,Client exec time,Server exec time,Server load time,Server total time,Client load time,Client total time,Total_time_0_running,Total_memory_0_running
+main,biomatch,a+y,3,4,1,hycc,0,0.04893601,0.12184906,0.001779035,0.026289376,0.197116629,0.2,0.038456,1.7297,1.749,0.92379,2.672,0.94294,2.6727,2.68,0.698444
+match_decomposed,biomatch,a+y,3,4,1,hycc,0,0.04893601,0.12184906,0.002476099,0.026289376,0.197116629,0.2,0.038456,1.7297,1.749,0.92379,2.672,0.94294,2.6727,2.68,0.698444
+match_fix,biomatch,a+y,3,4,1,hycc,0,0.04893601,0.12184906,0.001363309,0.026289376,0.197116629,0.2,0.038456,1.7297,1.749,0.92379,2.672,0.94294,2.6727,2.68,0.698444
+min,biomatch,a+y,3,4,1,hycc,0,0.04893601,0.12184906,0.001665156,0.026289376,0.197116629,0.2,0.038456,1.7297,1.749,0.92379,2.672,0.94294,2.6727,2.68,0.698444

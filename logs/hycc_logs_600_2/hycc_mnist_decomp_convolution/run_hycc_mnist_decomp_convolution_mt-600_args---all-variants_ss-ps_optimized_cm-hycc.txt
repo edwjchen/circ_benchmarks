@@ -1,0 +1,162 @@
+
+LOG: ====================================
+
+LOG: Benchmarking HyCC
+
+LOG: ====================================
+
+LOG: TEST PATH: /home/ubuntu/ejchen/circ_benchmarks/modules/HyCC/examples/benchmarks/mnist/mnist_decomp_convolution.c
+LOG: SPEC_FILE: /home/ubuntu/ejchen/circ_benchmarks/specs/mnist_decomp_convolution.spec
+LOG: MINIMIZATION TIME: 600
+LOG: COST MODEL: hycc
+LOG: ARGUMENTS: ['--all-variants']
+
+LOG: ====================================
+
+LOG: Test: Selection time
+Directory: /home/ubuntu/ejchen/circ_benchmarks/hycc_circuit_dir/hycc_mnist_decomp_convolution_mt-600_args---all-variants
+Modules: 5
+
+mpc_main
+  Possible sharings: arith bool_depth bool_size
+  Calls:
+    convolution_naive_outputs<uint32[784],uint32[400],uint32[9216],uint32<28>,uint32<5>,uint32<16>,uint32<1>,uint32<24>> x 1
+    convolution_naive_outputs<uint32[144],uint32[400],uint32[1024],uint32<12>,uint32<5>,uint32<16>,uint32<1>,uint32<8>> x 1
+
+convolution_naive_outputs<uint32[784],uint32[400],uint32[9216],uint32<28>,uint32<5>,uint32<16>,uint32<1>,uint32<24>>
+  Possible sharings: arith bool_depth bool_size
+  Calls:
+    convolution_naive<uint32[784],uint32[25],uint32[576],uint32<28>,uint32<5>,uint32<1>,uint32<24>> x 16
+
+convolution_naive<uint32[144],uint32[25],uint32[64],uint32<12>,uint32<5>,uint32<1>,uint32<8>>
+  Possible sharings: arith bool_depth bool_size
+  Calls:
+
+convolution_naive<uint32[784],uint32[25],uint32[576],uint32<28>,uint32<5>,uint32<1>,uint32<24>>
+  Possible sharings: arith bool_depth bool_size
+  Calls:
+
+convolution_naive_outputs<uint32[144],uint32[400],uint32[1024],uint32<12>,uint32<5>,uint32<16>,uint32<1>,uint32<8>>
+  Possible sharings: arith bool_depth bool_size
+  Calls:
+    convolution_naive<uint32[144],uint32[25],uint32[64],uint32<12>,uint32<5>,uint32<1>,uint32<8>> x 16
+
+Subgraphs:
+  {'convolution_naive_outputs<uint32[784],uint32[400],uint32[9216],uint32<28>,uint32<5>,uint32<16>,uint32<1>,uint32<24>>', 'convolution_naive<uint32[784],uint32[25],uint32[576],uint32<28>,uint32<5>,uint32<1>,uint32<24>>'}
+  {'convolution_naive_outputs<uint32[144],uint32[400],uint32[1024],uint32<12>,uint32<5>,uint32<16>,uint32<1>,uint32<8>>', 'convolution_naive<uint32[144],uint32[25],uint32[64],uint32<12>,uint32<5>,uint32<1>,uint32<8>>'}
+
+== Protocol selection ==
+
+Cost: 15306648459
+  convolution_naive<uint32[144],uint32[25],uint32[64],uint32<12>,uint32<5>,uint32<1>,uint32<8>>: Sharing.bool_size
+  convolution_naive<uint32[784],uint32[25],uint32[576],uint32<28>,uint32<5>,uint32<1>,uint32<24>>: Sharing.bool_size
+  convolution_naive_outputs<uint32[144],uint32[400],uint32[1024],uint32<12>,uint32<5>,uint32<16>,uint32<1>,uint32<8>>: Sharing.bool_size
+  convolution_naive_outputs<uint32[784],uint32[400],uint32[9216],uint32<28>,uint32<5>,uint32<16>,uint32<1>,uint32<24>>: Sharing.bool_size
+  mpc_main: Sharing.bool_size
+
+Cost: 12926320672
+  convolution_naive<uint32[144],uint32[25],uint32[64],uint32<12>,uint32<5>,uint32<1>,uint32<8>>: Sharing.bool_size
+  convolution_naive<uint32[784],uint32[25],uint32[576],uint32<28>,uint32<5>,uint32<1>,uint32<24>>: Sharing.bool_depth
+  convolution_naive_outputs<uint32[144],uint32[400],uint32[1024],uint32<12>,uint32<5>,uint32<16>,uint32<1>,uint32<8>>: Sharing.bool_size
+  convolution_naive_outputs<uint32[784],uint32[400],uint32[9216],uint32<28>,uint32<5>,uint32<16>,uint32<1>,uint32<24>>: Sharing.bool_size
+  mpc_main: Sharing.bool_size
+
+Cost: 12900886534
+  convolution_naive<uint32[144],uint32[25],uint32[64],uint32<12>,uint32<5>,uint32<1>,uint32<8>>: Sharing.bool_size
+  convolution_naive<uint32[784],uint32[25],uint32[576],uint32<28>,uint32<5>,uint32<1>,uint32<24>>: Sharing.bool_depth
+  convolution_naive_outputs<uint32[144],uint32[400],uint32[1024],uint32<12>,uint32<5>,uint32<16>,uint32<1>,uint32<8>>: Sharing.bool_size
+  convolution_naive_outputs<uint32[784],uint32[400],uint32[9216],uint32<28>,uint32<5>,uint32<16>,uint32<1>,uint32<24>>: Sharing.bool_depth
+  mpc_main: Sharing.bool_size
+
+Cost: 12726606455
+  convolution_naive<uint32[144],uint32[25],uint32[64],uint32<12>,uint32<5>,uint32<1>,uint32<8>>: Sharing.bool_size
+  convolution_naive<uint32[784],uint32[25],uint32[576],uint32<28>,uint32<5>,uint32<1>,uint32<24>>: Sharing.bool_depth
+  convolution_naive_outputs<uint32[144],uint32[400],uint32[1024],uint32<12>,uint32<5>,uint32<16>,uint32<1>,uint32<8>>: Sharing.bool_size
+  convolution_naive_outputs<uint32[784],uint32[400],uint32[9216],uint32<28>,uint32<5>,uint32<16>,uint32<1>,uint32<24>>: Sharing.bool_depth
+  mpc_main: Sharing.bool_depth
+
+Cost: 1545555522
+  convolution_naive<uint32[144],uint32[25],uint32[64],uint32<12>,uint32<5>,uint32<1>,uint32<8>>: Sharing.bool_size
+  convolution_naive<uint32[784],uint32[25],uint32[576],uint32<28>,uint32<5>,uint32<1>,uint32<24>>: Sharing.arith
+  convolution_naive_outputs<uint32[144],uint32[400],uint32[1024],uint32<12>,uint32<5>,uint32<16>,uint32<1>,uint32<8>>: Sharing.bool_size
+  convolution_naive_outputs<uint32[784],uint32[400],uint32[9216],uint32<28>,uint32<5>,uint32<16>,uint32<1>,uint32<24>>: Sharing.bool_size
+  mpc_main: Sharing.bool_size
+
+Cost: 1544725374
+  convolution_naive<uint32[144],uint32[25],uint32[64],uint32<12>,uint32<5>,uint32<1>,uint32<8>>: Sharing.bool_size
+  convolution_naive<uint32[784],uint32[25],uint32[576],uint32<28>,uint32<5>,uint32<1>,uint32<24>>: Sharing.arith
+  convolution_naive_outputs<uint32[144],uint32[400],uint32[1024],uint32<12>,uint32<5>,uint32<16>,uint32<1>,uint32<8>>: Sharing.bool_size
+  convolution_naive_outputs<uint32[784],uint32[400],uint32[9216],uint32<28>,uint32<5>,uint32<16>,uint32<1>,uint32<24>>: Sharing.arith
+  mpc_main: Sharing.bool_size
+
+Cost: 1293729518
+  convolution_naive<uint32[144],uint32[25],uint32[64],uint32<12>,uint32<5>,uint32<1>,uint32<8>>: Sharing.bool_depth
+  convolution_naive<uint32[784],uint32[25],uint32[576],uint32<28>,uint32<5>,uint32<1>,uint32<24>>: Sharing.arith
+  convolution_naive_outputs<uint32[144],uint32[400],uint32[1024],uint32<12>,uint32<5>,uint32<16>,uint32<1>,uint32<8>>: Sharing.bool_size
+  convolution_naive_outputs<uint32[784],uint32[400],uint32[9216],uint32<28>,uint32<5>,uint32<16>,uint32<1>,uint32<24>>: Sharing.bool_size
+  mpc_main: Sharing.bool_size
+
+Cost: 1292899370
+  convolution_naive<uint32[144],uint32[25],uint32[64],uint32<12>,uint32<5>,uint32<1>,uint32<8>>: Sharing.bool_depth
+  convolution_naive<uint32[784],uint32[25],uint32[576],uint32<28>,uint32<5>,uint32<1>,uint32<24>>: Sharing.arith
+  convolution_naive_outputs<uint32[144],uint32[400],uint32[1024],uint32<12>,uint32<5>,uint32<16>,uint32<1>,uint32<8>>: Sharing.bool_size
+  convolution_naive_outputs<uint32[784],uint32[400],uint32[9216],uint32<28>,uint32<5>,uint32<16>,uint32<1>,uint32<24>>: Sharing.arith
+  mpc_main: Sharing.bool_size
+
+Cost: 1282372136
+  convolution_naive<uint32[144],uint32[25],uint32[64],uint32<12>,uint32<5>,uint32<1>,uint32<8>>: Sharing.bool_depth
+  convolution_naive<uint32[784],uint32[25],uint32[576],uint32<28>,uint32<5>,uint32<1>,uint32<24>>: Sharing.arith
+  convolution_naive_outputs<uint32[144],uint32[400],uint32[1024],uint32<12>,uint32<5>,uint32<16>,uint32<1>,uint32<8>>: Sharing.bool_depth
+  convolution_naive_outputs<uint32[784],uint32[400],uint32[9216],uint32<28>,uint32<5>,uint32<16>,uint32<1>,uint32<24>>: Sharing.bool_size
+  mpc_main: Sharing.bool_size
+
+Cost: 1255938597
+  convolution_naive<uint32[144],uint32[25],uint32[64],uint32<12>,uint32<5>,uint32<1>,uint32<8>>: Sharing.bool_depth
+  convolution_naive<uint32[784],uint32[25],uint32[576],uint32<28>,uint32<5>,uint32<1>,uint32<24>>: Sharing.arith
+  convolution_naive_outputs<uint32[144],uint32[400],uint32[1024],uint32<12>,uint32<5>,uint32<16>,uint32<1>,uint32<8>>: Sharing.bool_depth
+  convolution_naive_outputs<uint32[784],uint32[400],uint32[9216],uint32<28>,uint32<5>,uint32<16>,uint32<1>,uint32<24>>: Sharing.bool_depth
+  mpc_main: Sharing.bool_depth
+
+Cost: 1255108449
+  convolution_naive<uint32[144],uint32[25],uint32[64],uint32<12>,uint32<5>,uint32<1>,uint32<8>>: Sharing.bool_depth
+  convolution_naive<uint32[784],uint32[25],uint32[576],uint32<28>,uint32<5>,uint32<1>,uint32<24>>: Sharing.arith
+  convolution_naive_outputs<uint32[144],uint32[400],uint32[1024],uint32<12>,uint32<5>,uint32<16>,uint32<1>,uint32<8>>: Sharing.bool_depth
+  convolution_naive_outputs<uint32[784],uint32[400],uint32[9216],uint32<28>,uint32<5>,uint32<16>,uint32<1>,uint32<24>>: Sharing.arith
+  mpc_main: Sharing.bool_depth
+
+Cost: 16958239
+  convolution_naive<uint32[144],uint32[25],uint32[64],uint32<12>,uint32<5>,uint32<1>,uint32<8>>: Sharing.arith
+  convolution_naive<uint32[784],uint32[25],uint32[576],uint32<28>,uint32<5>,uint32<1>,uint32<24>>: Sharing.arith
+  convolution_naive_outputs<uint32[144],uint32[400],uint32[1024],uint32<12>,uint32<5>,uint32<16>,uint32<1>,uint32<8>>: Sharing.bool_size
+  convolution_naive_outputs<uint32[784],uint32[400],uint32[9216],uint32<28>,uint32<5>,uint32<16>,uint32<1>,uint32<24>>: Sharing.bool_size
+  mpc_main: Sharing.bool_size
+
+Cost: 16128091
+  convolution_naive<uint32[144],uint32[25],uint32[64],uint32<12>,uint32<5>,uint32<1>,uint32<8>>: Sharing.arith
+  convolution_naive<uint32[784],uint32[25],uint32[576],uint32<28>,uint32<5>,uint32<1>,uint32<24>>: Sharing.arith
+  convolution_naive_outputs<uint32[144],uint32[400],uint32[1024],uint32<12>,uint32<5>,uint32<16>,uint32<1>,uint32<8>>: Sharing.bool_size
+  convolution_naive_outputs<uint32[784],uint32[400],uint32[9216],uint32<28>,uint32<5>,uint32<16>,uint32<1>,uint32<24>>: Sharing.arith
+  mpc_main: Sharing.bool_size
+
+Cost: 15757396
+  convolution_naive<uint32[144],uint32[25],uint32[64],uint32<12>,uint32<5>,uint32<1>,uint32<8>>: Sharing.arith
+  convolution_naive<uint32[784],uint32[25],uint32[576],uint32<28>,uint32<5>,uint32<1>,uint32<24>>: Sharing.arith
+  convolution_naive_outputs<uint32[144],uint32[400],uint32[1024],uint32<12>,uint32<5>,uint32<16>,uint32<1>,uint32<8>>: Sharing.arith
+  convolution_naive_outputs<uint32[784],uint32[400],uint32[9216],uint32<28>,uint32<5>,uint32<16>,uint32<1>,uint32<24>>: Sharing.arith
+  mpc_main: Sharing.bool_size
+
+Cost: 8453017
+  convolution_naive<uint32[144],uint32[25],uint32[64],uint32<12>,uint32<5>,uint32<1>,uint32<8>>: Sharing.arith
+  convolution_naive<uint32[784],uint32[25],uint32[576],uint32<28>,uint32<5>,uint32<1>,uint32<24>>: Sharing.arith
+  convolution_naive_outputs<uint32[144],uint32[400],uint32[1024],uint32<12>,uint32<5>,uint32<16>,uint32<1>,uint32<8>>: Sharing.arith
+  convolution_naive_outputs<uint32[784],uint32[400],uint32[9216],uint32<28>,uint32<5>,uint32<16>,uint32<1>,uint32<24>>: Sharing.arith
+  mpc_main: Sharing.arith
+
+
+LOG: Time / Memory: 476.68 seconds 23537484 kB
+
+LOG: ====================================
+
+LOG: Test: RERUN 0: ps_optimized
+LOG: Error: Process returned with status code 134
+LOG: Error message: terminate called after throwing an instance of 'std::runtime_error'   what():  Failed to open file: /home/ubuntu/ejchen/circ_benchmarks/specs/mnist_decomp_convolution.spec terminate called after throwing an instance of 'std::runtime_error'   what():  Failed to open file: /home/ubuntu/ejchen/circ_benchmarks/specs/mnist_decomp_convolution.spec Aborted (core dumped) Command terminated by signal 6 0.20 seconds 5428 kB 

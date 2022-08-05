@@ -1,0 +1,15 @@
+LOG: ====================================
+LOG: Benchmarking HyCC
+LOG: ====================================
+LOG: TEST PATH: /home/ubuntu/ejchen/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db_join2.c
+LOG: SPEC_FILE: /home/ubuntu/ejchen/circ_benchmarks/specs/db_join2.spec
+LOG: MINIMIZATION TIME: 600
+LOG: COST MODEL: hycc
+LOG: ARGUMENTS: ['--all-variants']
+LOG: ====================================
+LOG: Test: RERUN 0: yaoonly
+LOG: Server load time: 49.5115
+LOG: Client load time: 50.9484
+LOG: Server exec time: 2.69302
+LOG: Client exec time: 1.25641
+LOG: Time / Memory: 56.24 seconds 4001576 kB
