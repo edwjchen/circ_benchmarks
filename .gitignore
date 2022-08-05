@@ -5,4 +5,5 @@ __py*
 .features.txt
 *.pem
 aws_benchmark/aws.sh
+hycc_circuit_dir
 

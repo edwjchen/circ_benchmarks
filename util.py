@@ -53,8 +53,14 @@ HYCC_TEST_CASES = [
     # ("cryptonets", "cryptonets/cryptonets.c"),
     # TODO: add histogram
 ]
-MINIMIZATION_TIMES = [0]
-HYCC_SELECTION_SCHEMES = ["yaoonly", "yaohybrid", "gmwonly", "gmwhybrid", "ps_optimized"]
+MINIMIZATION_TIMES = [600]
+HYCC_SELECTION_SCHEMES = [
+    "yaoonly", 
+    "yaohybrid", 
+    "gmwonly", 
+    "gmwhybrid", 
+    "ps_optimized"
+]
 HYCC_COMPILE_ARGUMENTS = [["--all-variants"], ["--all-variants", "--outline"]]
 
 # circ parameters
@@ -123,13 +129,15 @@ def run_cmds(server_cmd, client_cmd, name, version):
     write_log("LOG: Test: {}".format(name), version)
     server_cmd = wrap_time(server_cmd)
     client_cmd = wrap_time(client_cmd)
+    print(os.getcwd())
     print(server_cmd)
+    print(client_cmd)
     server_proc = subprocess.Popen(
         server_cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     client_proc = subprocess.Popen(
         client_cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-    server_stdout, server_stderr = server_proc.communicate()
-    client_stdout, client_stderr = client_proc.communicate()
+    server_stdout, server_stderr = server_proc.communicate(timeout=100)
+    client_stdout, client_stderr = client_proc.communicate(timeout=100)
 
     if server_proc.returncode:
         write_log("LOG: Error: Process returned with status code {}".format(
