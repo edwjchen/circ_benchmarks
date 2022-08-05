@@ -16,7 +16,7 @@ def test():
     make_dir("tmp")
     os.chdir("tmp")
     cmd = [CBMC_GC, test_path,
-           "--minimization-time-limit", str(MINIMIZATION_TIME)] + args
+           "--minimization-time-limit", str(0)] + args
     print(" ".join(cmd))
     result = subprocess.run(cmd, check=True, capture_output=True, text=True)
     os.chdir("..")
@@ -64,7 +64,7 @@ def install(features):
     os.chdir(CIRC_BENCHMARK_SOURCE)
 
     os.chdir(CIRC_SOURCE)
-    subprocess.run(["git", "checkout", "function_calls"])
+    subprocess.run(["git", "checkout", "mpc_aws"])
     os.chdir(CIRC_BENCHMARK_SOURCE)
 
     # install python requirements

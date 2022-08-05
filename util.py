@@ -10,7 +10,7 @@ TIME_CMD = "/usr/bin/time --format='%e seconds %M kB'"
 
 # installation variables
 # TODO: update CIRC_BENCHMARK_SOURCE path
-CIRC_BENCHMARK_SOURCE = os.path.expanduser("~/ejchen/circ_benchmarks/")
+CIRC_BENCHMARK_SOURCE = os.getcwd() + "/"
 ABY_SOURCE = CIRC_BENCHMARK_SOURCE+"modules/ABY"
 HYCC_SOURCE = CIRC_BENCHMARK_SOURCE+"modules/HyCC"
 CIRC_SOURCE = CIRC_BENCHMARK_SOURCE+"modules/circ"
