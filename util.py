@@ -42,15 +42,15 @@ COSTS = HYCC_SOURCE+"/src/circuit-utils/py/costs.json"
 # hycc parameters
 HYCC_TEST_CASES = [
     ("biomatch", "biomatch/biomatch.c"),
-    # ("kmeans", "kmeans/kmeans.c"),
+    ("kmeans", "kmeans/kmeans.c"),
     # ("gauss", "gauss/gauss.c"),
     # ("db_join", "db/db_join.c"),
-    # ("db_join2", "db/db_join2.c"),
-    # ("db_merge", "db/db_merge.c"),
-    # ("mnist", "mnist/mnist.c"),
-    # ("mnist_decomp_main", "mnist/mnist_decomp_main.c"),
-    # ("mnist_decomp_convolution", "mnist/mnist_decomp_convolution.c"),
-    # ("cryptonets", "cryptonets/cryptonets.c"),
+    ("db_join2", "db/db_join2.c"),
+    ("db_merge", "db/db_merge.c"),
+    ("mnist", "mnist/mnist.c"),
+    ("mnist_decomp_main", "mnist/mnist_decomp_main.c"),
+    ("mnist_decomp_convolution", "mnist/mnist_decomp_convolution.c"),
+    ("cryptonets", "cryptonets/cryptonets.c"),
     # TODO: add histogram
 ]
 MINIMIZATION_TIMES = [600]
@@ -73,16 +73,16 @@ MUT_LEVELS = [4]
 MUT_STEP_SIZES = [1]
 CIRC_TEST_CASES = [
     "biomatch",
-    # "kmeans",
-    # "gauss",
-    # "db_join",
-    # "db_join2",
-    # "db_merge",
-    # "mnist",
-    # "mnist_decomp_main",
-    # "mnist_decomp_convolution",
-    # "cryptonets",
-    # "histogram",
+    "kmeans",
+    "gauss",
+    "db_join",
+    "db_join2",
+    "db_merge",
+    "mnist",
+    "mnist_decomp_main",
+    "mnist_decomp_convolution",
+    "cryptonets",
+    "histogram",
 ]
 
 
@@ -131,6 +131,7 @@ def wrap_time(cmd):
 def run_cmds(server_cmd, client_cmd, name, params):
     write_log("LOG: {}".format(name), params)
     cmd = "{} & {}".format(" ".join(server_cmd), " ".join(client_cmd))
+    print(cmd)
     cmd = wrap_time(cmd)
     proc = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     stdout, stderr = proc.communicate()
@@ -175,6 +176,10 @@ def run_cmd(cmd, name, params):
 
 
 def write_to_log(text, params):
+    dir_path = "{}test_results/{}_{}/".format(CIRC_BENCHMARK_SOURCE, params["system"], params["name"])
+    if not os.path.exists(dir_path):
+        os.makedirs(dir_path)
+
     log_path = "{}test_results/{}_{}/log_{}.txt".format(CIRC_BENCHMARK_SOURCE, params["system"], params["name"], params["version"])
     if not os.path.exists(log_path):
         subprocess.run(["touch", log_path])
@@ -188,6 +193,10 @@ def write_to_log(text, params):
 
 
 def write_to_run(text, params):
+    dir_path = "{}test_results/{}_{}/".format(CIRC_BENCHMARK_SOURCE, params["system"], params["name"])
+    if not os.path.exists(dir_path):
+        os.makedirs(dir_path)
+
     run_path = "{}test_results/{}_{}/run_{}.txt".format(CIRC_BENCHMARK_SOURCE, params["system"], params["name"], params["version"])
     if not os.path.exists(run_path):
         subprocess.run(["touch", run_path])
