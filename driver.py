@@ -133,7 +133,7 @@ def benchmark(features):
 def parse(features):
     if "hycc" in features:
         print("Parsing hycc logs")
-        # parse_hycc_logs()
+        parse_hycc_logs()
 
     if "circ" in features:
         print("Parsing circ logs")
