@@ -23,7 +23,7 @@ def run_aby(spec_file, params, instance_metadata):
         run_cmd(cmd, "RERUN: {}".format(i), params)
 
 
-def run_aby_local(spec_file, params, instance_metadata):
+def run_aby_local(spec_file, params):
     write_log(DELIMITER, params)
     cmd = [ABY_CBMC_GC, "--spec-file", spec_file, "-c", params["ss_file"]]
     server_cmd = cmd + ["-r", "0"]
@@ -68,7 +68,7 @@ def run_hycc_benchmark(spec_file, params, instance_metadata):
             if "role" in instance_metadata:
                 run_aby(spec_file, params, instance_metadata)
             else:
-                run_aby_local(spec_file, params, instance_metadata)
+                run_aby_local(spec_file, params)
         else:
             write_log("LOG: Missing: {}".format(ss_file), params)
     except Exception as e:
