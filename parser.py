@@ -1,7 +1,5 @@
-from ast import Raise
 from util import *
 import pandas as pd
-
 
 
 def standardize_time(t):
@@ -12,30 +10,37 @@ def standardize_time(t):
     else:
         return float(t[:-1])
 
+
 def parse_time_memory(tm):
     seconds = float(tm.split()[0])
     memory = float(tm.split()[2]) / 1000000
     return seconds, memory
 
+
 def get_log_paths(system):
     assert system == "circ" or system == "hycc"
     test_results_path = "{}test_results/".format(CIRC_BENCHMARK_SOURCE)
-    circ_paths = [os.path.join(test_results_path, f) for f in os.listdir(test_results_path) if f.startswith(system)]
+    circ_paths = [os.path.join(test_results_path, f) for f in os.listdir(
+        test_results_path) if f.startswith(system)]
     log_paths = []
     for p in circ_paths:
         if os.path.isdir(p):
             test_dir_path = p
-            log_paths += [os.path.join(test_dir_path, f) for f in os.listdir(test_dir_path) if f.startswith("log")]
+            log_paths += [os.path.join(test_dir_path, f)
+                          for f in os.listdir(test_dir_path) if f.startswith("log")]
         else:
             # parsing total time
             pass
     return log_paths
 
+
 def clean_log(log):
     log = log.replace("LOG: ", "")
     log = log.replace("====================================", "")
-    log = "\n".join([l for l in log.split("\n") if not l.startswith("Benchmarking") and l])
+    log = "\n".join([l for l in log.split(
+        "\n") if not l.startswith("Benchmarking") and l])
     return log
+
 
 def parse_hycc_log(log):
     log = clean_log(log)
@@ -57,7 +62,8 @@ def parse_hycc_log(log):
         elif line[0] == "MINIMIZATION_TIME":
             data[line[0]] = int(line[1])
         elif line[0] == "ARGUMENTS":
-            data[line[0]] = [l for l in line[1].replace("['", " ").replace("']", " ").replace(",", " ").split() if l]
+            data[line[0]] = [l for l in line[1].replace(
+                "['", " ").replace("']", " ").replace(",", " ").split() if l]
         elif line[0] == "COST_MODEL":
             data[line[0]] = line[1]
         elif line[0] == "MODE":
@@ -79,6 +85,7 @@ def parse_hycc_log(log):
             raise RuntimeError("Unknown key: {}".format(line[0]))
     return data
 
+
 def parse_circ_log(log):
     log = clean_log(log)
     data = {}
@@ -90,7 +97,7 @@ def parse_circ_log(log):
 
         line[0] = line[0].strip()
         line[1] = line[1].strip()
-        
+
         if line[0] == "TEST":
             data[line[0]] = line[1]
         elif line[0] == "SELECTION_SCHEME":
@@ -140,6 +147,7 @@ def parse_circ_log(log):
 
     return data
 
+
 def write_csv(df, log_path):
     header = "{}csvs/".format(CIRC_BENCHMARK_SOURCE)
     log_path = log_path.split("/")
@@ -166,22 +174,23 @@ def parse_hycc_logs():
             log = f.read()
             data = parse_hycc_log(log)
             datas.append(data)
-        
+
     # write compile data
     compile_data = [d for d in datas if "SELECTION_SCHEME" not in d][0]
     write_csv(pd.DataFrame(compile_data), compile_path)
 
     # clean run_path
     run_data = [d for d in datas if "SELECTION_SCHEME" in d]
-    run_path = "/".join(run_path.split("/")[:-1]) + "/" + run_path.split("/")[-1].split("_ss-")[0] + ".txt"
+    run_path = "/".join(run_path.split("/")[:-1]) + "/" + \
+        run_path.split("/")[-1].split("_ss-")[0] + ".txt"
     merged_data = {}
     for d in run_data:
-        for (k,v) in d.items():
+        for (k, v) in d.items():
             if k not in merged_data:
                 merged_data[k] = []
             merged_data[k].append(v)
     write_csv(pd.DataFrame(merged_data), run_path)
-    
+
 
 def parse_circ_logs():
     log_paths = get_log_paths("circ")
@@ -191,14 +200,14 @@ def parse_circ_logs():
             log = f.read()
             data = parse_circ_log(log)
             datas.append(data)
-    
+
     merged_data = {}
     for d in datas:
-        for (k,v) in d.items():
+        for (k, v) in d.items():
             if k not in merged_data:
                 merged_data[k] = []
             merged_data[k].append(v)
 
-    run_path = "/".join(log_path.split("/")[:-1]) + "/" + log_path.split("/")[-1].split("_ss-")[0] + "_" + "_".join(log_path.split("/")[-1].split("_ss-")[1].split("_")[1:]) + ".txt"
+    run_path = "/".join(log_path.split("/")[:-1]) + "/" + log_path.split("/")[-1].split("_ss-")[
+        0] + "_" + "_".join(log_path.split("/")[-1].split("_ss-")[1].split("_")[1:]) + ".txt"
     write_csv(pd.DataFrame(merged_data), run_path)
-            

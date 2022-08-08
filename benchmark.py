@@ -13,6 +13,16 @@ from util import *
 
 
 def run_aby(spec_file, params):
+    address = params.get("address", "127.0.0.1")
+    write_log(DELIMITER, params)
+    cmd = [ABY_CBMC_GC, "--spec-file", spec_file, "-c", params["ss_file"]]
+    cmd = cmd + ["--address", address] + ["-r", "0"]
+    for i in range(RERUN):
+        run_cmd(cmd, "RERUN: {}".format(i), params)
+
+
+def run_aby_local(spec_file, params):
+    address = params.get("address", "127.0.0.1")
     write_log(DELIMITER, params)
     cmd = [ABY_CBMC_GC, "--spec-file", spec_file, "-c", params["ss_file"]]
     server_cmd = cmd + ["-r", "0"]
@@ -40,7 +50,7 @@ def run_aby(spec_file, params):
 #     except Exception as e:
 #         write_log("LOG: Failed simulating circuit with args: {}, exception: {}".format(
 #             args, e), version)
-  
+
 
 def run_hycc_benchmark(spec_file, params):
     print("running: ", params["version"])
@@ -54,7 +64,10 @@ def run_hycc_benchmark(spec_file, params):
 
     try:
         if os.path.exists(ss_file):
-            run_aby(spec_file, params)
+            if params["address"] == "127.0.0.1":
+                run_aby_local(spec_file, params)
+            else:
+                run_aby(spec_file, params)
         else:
             write_log("LOG: Missing: {}".format(ss_file), params)
     except Exception as e:
@@ -68,18 +81,18 @@ def compile_hycc_benchmark(test_path, params):
     try:
         # compile
         cmd = [CBMC_GC, test_path,
-            "--minimization-time-limit", str(params["mt"])] + args
+               "--minimization-time-limit", str(params["mt"])] + args
         print(" ".join(cmd))
         run_cmd(cmd, "MODE: compile", params)
 
-        #bundle modules
+        # bundle modules
         write_log(DELIMITER, params)
         cmd = ["python3", MODULE_BUNDLE, "."]
         print(" ".join(cmd))
         run_cmd(cmd, "MODE: bundle", params)
 
         write_log(DELIMITER, params)
-        cmd = ["python3", SELECTION, ".", COSTS] # TODO: update cost model
+        cmd = ["python3", SELECTION, ".", COSTS]  # TODO: update cost model
         print(" ".join(cmd))
         run_cmd(cmd, "MODE: selection", params)
         return True
@@ -87,27 +100,28 @@ def compile_hycc_benchmark(test_path, params):
         write_log("LOG: Failed compiling circuit with args: {}, exception: {}".format(
             " ".join(args), e), params)
         return False
-    
 
-def benchmark_hycc(name, path):
+
+def benchmark_hycc(name, path, address):
     test_path = HYCC_SOURCE + \
-                    "/examples/benchmarks/{}".format(path)
+        "/examples/benchmarks/{}".format(path)
     spec_file = "{}specs/{}.spec".format(CIRC_BENCHMARK_SOURCE, name)
 
     versions = []
     for cm in COST_MODELS:
         for mt in MINIMIZATION_TIMES:
-            for a in HYCC_COMPILE_ARGUMENTS: 
+            for a in HYCC_COMPILE_ARGUMENTS:
                 params = {}
                 params["mt"] = mt
                 params["a"] = a
                 params["cm"] = cm
-                version = "{}_{}_mt-{}_args-{}_cm-{}".format("hycc", name, mt, "".join(a), cm)
+                params["address"] = address
+                version = "{}_{}_mt-{}_args-{}_cm-{}".format(
+                    "hycc", name, mt, "".join(a), cm)
                 if version not in versions:
                     versions.append((version, params))
-                
 
-    # make circuit directories    
+    # make circuit directories
     for (version, params) in versions:
         params["system"] = "hycc"
         params["name"] = name
@@ -118,7 +132,7 @@ def benchmark_hycc(name, path):
         compile_version = "compile_{}".format(version)
         compile_log_path = format(
             "{}test_results/{}_{}/log_{}.txt".format(CIRC_BENCHMARK_SOURCE, params["system"], name, compile_version))
-        
+
         if not os.path.exists(compile_log_path):
             # compile HyCC benchmark
             os.chdir(circuit_dir)
@@ -129,7 +143,8 @@ def benchmark_hycc(name, path):
             write_log(DELIMITER, params)
 
             write_log("LOG: TEST: {}".format(name), params)
-            write_log("LOG: MINIMIZATION_TIME: {}".format(params["mt"]), params)
+            write_log("LOG: MINIMIZATION_TIME: {}".format(
+                params["mt"]), params)
             write_log("LOG: COST_MODEL: {}".format(params["cm"]), params)
             write_log("LOG: ARGUMENTS: {}".format(params["a"]), params)
             compile_hycc_benchmark(test_path, params)
@@ -138,7 +153,8 @@ def benchmark_hycc(name, path):
             params["ss"] = ss
             run_version = "{}_ss-{}".format(version, ss)
             params["version"] = run_version
-            log_path = format("{}test_results/{}_{}/log_{}.txt".format(CIRC_BENCHMARK_SOURCE, params["system"], name, run_version))
+            log_path = format("{}test_results/{}_{}/log_{}.txt".format(
+                CIRC_BENCHMARK_SOURCE, params["system"], name, run_version))
             if not os.path.exists(log_path):
                 # run HyCC benchmark
                 os.chdir(circuit_dir)
@@ -148,7 +164,8 @@ def benchmark_hycc(name, path):
 
                 write_log("LOG: TEST: {}".format(name), params)
                 write_log("LOG: SELECTION_SCHEME: {}".format(ss), params)
-                write_log("LOG: MINIMIZATION_TIME: {}".format(params["mt"]), params)
+                write_log("LOG: MINIMIZATION_TIME: {}".format(
+                    params["mt"]), params)
                 write_log("LOG: COST_MODEL: {}".format(params["cm"]), params)
                 write_log("LOG: ARGUMENTS: {}".format(params["a"]), params)
 
@@ -163,24 +180,42 @@ def benchmark_hycc(name, path):
 # Benchmark circ
 ################################################################################
 
-def run_circ_benchmark(params):
+def run_circ_benchmark(params, instance_metadata):
     print("running: ", params["version"])
     name = params["name"]
-    address = params.get("address", "127.0.0.1")
+    address = instance_metadata.get("address", "127.0.0.1")
+    print(address)
 
-    write_log(DELIMITER, params)
-    cmd = [ABY_INTERPRETER,
-           "-m", "mpc",
-           "-f", get_circ_test_path(name),
-           "-t", get_circ_input_path(name),
-           "--address", address]
-    server_cmd = cmd + ["-r", "0"]
-    client_cmd = cmd + ["-r", "1"]
-    for i in range(RERUN):
-        try:
-            run_cmds(server_cmd, client_cmd, "RERUN: {}".format(i), params)
-        except Exception as e:
-            write_log("LOG: Failed to run, exception: {}".format(e), params)
+    if "role" in instance_metadata:
+        role = instance_metadata["role"]
+        assert(role == "0" or role == "1")
+        write_log(DELIMITER, params)
+        cmd = [ABY_INTERPRETER,
+               "-m", "mpc",
+               "-f", get_circ_test_path(name),
+               "-t", get_circ_input_path(name),
+               "--address", address,
+               "--role", role]
+        for i in range(RERUN):
+            try:
+                run_cmd(cmd, "RERUN: {}".format(i), params)
+            except Exception as e:
+                write_log("LOG: Failed to run, exception: {}".format(e), params)
+    else:
+        print("Running test locally")
+        write_log(DELIMITER, params)
+        cmd = [ABY_INTERPRETER,
+               "-m", "mpc",
+               "-f", get_circ_test_path(name),
+               "-t", get_circ_input_path(name),
+               "--address", address]
+        server_cmd = cmd + ["-r", "0"]
+        client_cmd = cmd + ["-r", "1"]
+        for i in range(RERUN):
+            try:
+                run_cmds(server_cmd, client_cmd, "RERUN: {}".format(i), params)
+            except Exception as e:
+                write_log("LOG: Failed to run, exception: {}".format(e), params)
 
 
 def compile_circ_benchmarks(params):
@@ -198,11 +233,11 @@ def compile_circ_benchmarks(params):
     for i in range(RERUN):
         try:
             run_cmd(cmd, "RERUN: {}".format(i), params)
-        except Exception as e: 
+        except Exception as e:
             write_log("LOG: Failed to build, exception: {}".format(e), params)
 
 
-def benchmark_circ(name):
+def benchmark_circ(name, instance_metadata):
     os.chdir(CIRC_SOURCE)
 
     versions = []
@@ -247,4 +282,4 @@ def benchmark_circ(name):
         compile_circ_benchmarks(params)
 
         # run benchmarks
-        run_circ_benchmark(params)
+        run_circ_benchmark(params, instance_metadata)

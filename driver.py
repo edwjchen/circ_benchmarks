@@ -6,6 +6,8 @@ from benchmark import *
 from parser import *
 
 # ad hoc testing
+
+
 def test():
     test_path = HYCC_SOURCE + \
         "/examples/benchmarks/mnist/mnist.c"
@@ -56,14 +58,14 @@ def install(features):
             subprocess.run(["git", "submodule", "update",
                            "--init", "--remote", "modules/circ"])
 
-    
     # set git branches
     os.chdir(ABY_SOURCE)
     subprocess.run(["git", "checkout", "functions"])
     os.chdir(CIRC_BENCHMARK_SOURCE)
 
     os.chdir(CIRC_SOURCE)
-    subprocess.run(["git", "checkout", "mpc_aws"])
+    # subprocess.run(["git", "checkout", "mpc_aws"])
+    subprocess.run(["git", "checkout", "function_calls"])
     os.chdir(CIRC_BENCHMARK_SOURCE)
 
     # install python requirements
@@ -95,12 +97,13 @@ def build(features):
         os.environ['CIRC_SOURCE'] = CIRC_SOURCE
         os.chdir(CIRC_SOURCE)
         subprocess.run(["python3", "driver.py", "-F", "aby",
-                    "c", "lp", "bench"], check=True)
-        subprocess.run(["python3", "driver.py", "--build_benchmark"], check=True)
+                        "c", "lp", "bench"], check=True)
+        subprocess.run(
+            ["python3", "driver.py", "--build_benchmark"], check=True)
         os.chdir(CIRC_BENCHMARK_SOURCE)
 
 
-def benchmark(features):
+def benchmark(features, instance_metadata):
     build(features)
     make_test_results()
     make_dir(HYCC_CIRCUIT_PATH)
@@ -111,10 +114,11 @@ def benchmark(features):
         # run hycc benchmarks
         for (name, path) in HYCC_TEST_CASES:
             make_dir("test_results/hycc_{}".format(name))
-            benchmark_hycc(name, path)
+            benchmark_hycc(name, path, instance_metadata)
         end = time.time()
         line = "LOG: Total hycc benchmark time: {}".format(end-start)
-        p = subprocess.Popen("echo \"{}\" >> {}/test_results/hycc_total_time.txt".format(line, CIRC_BENCHMARK_SOURCE), shell=True)
+        p = subprocess.Popen("echo \"{}\" >> {}/test_results/hycc_total_time.txt".format(
+            line, CIRC_BENCHMARK_SOURCE), shell=True)
         p.communicate(timeout=10)
 
     if "circ" in features:
@@ -124,11 +128,13 @@ def benchmark(features):
         # run circ benchmarks
         for name in CIRC_TEST_CASES:
             make_dir("test_results/circ_{}".format(name))
-            benchmark_circ(name)
+            benchmark_circ(name, instance_metadata)
         end = time.time()
         line = "LOG: Total circ benchmark time: {}".format(end-start)
-        p = subprocess.Popen("echo \"{}\" >> {}/test_results/circ_total_time.txt".format(line, CIRC_BENCHMARK_SOURCE), shell=True)
+        p = subprocess.Popen("echo \"{}\" >> {}/test_results/circ_total_time.txt".format(
+            line, CIRC_BENCHMARK_SOURCE), shell=True)
         p.communicate(timeout=10)
+
 
 def parse(features):
     if "hycc" in features:
@@ -138,6 +144,7 @@ def parse(features):
     if "circ" in features:
         print("Parsing circ logs")
         parse_circ_logs()
+
 
 def set_features(features):
     if "none" in features:
@@ -184,17 +191,22 @@ if __name__ == "__main__":
                         help="remove all generated files")
     parser.add_argument("--delete", action="store_true",
                         help="Reinstall submodules")
+    parser.add_argument("--address",
+                        help="AWS Instance addresses")
+    parser.add_argument("--role",
+                        help="AWS Instance role")
     args = parser.parse_args()
 
     def verify_single_action(args: argparse.Namespace):
         actions = [k for k, v in vars(args).items() if (
-            type(v) is bool or k in ["features"]) and bool(v)]
+            type(v) is bool or k in ["address", "role", "features"]) and bool(v)]
         if len(actions) != 1:
             parser.error(
                 "parser error: only one action can be specified. got: " + " ".join(actions))
     verify_single_action(args)
 
     features = load_features()
+    instance_metadata = load_instance_metadata()
 
     if args.install:
         install(features)
@@ -206,7 +218,7 @@ if __name__ == "__main__":
         test()
 
     if args.benchmark:
-        benchmark(features)
+        benchmark(features, instance_metadata)
 
     if args.parse:
         parse(features)
@@ -214,8 +226,20 @@ if __name__ == "__main__":
     if args.features:
         features = set_features(args.features)
 
+    if args.address:
+        instance_metadata["address"] = args.address
+        save_instance_metadata(instance_metadata)
+
+    if args.role:
+        instance_metadata["role"] = args.role
+        save_instance_metadata(instance_metadata)
+
     if args.list:
         print("Features:", sorted(list(features)))
+        if instance_metadata:
+            print("==== Metadata ====")
+            for (k, v) in instance_metadata.items():
+                print(k, ":", v)
 
     if args.clean:
         clean()
