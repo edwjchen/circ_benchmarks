@@ -12,17 +12,18 @@ from util import *
 #         run_cmd(cmd, "RERUN {}: CIRCUIT-SIM".format(i), version)
 
 
-def run_aby(spec_file, params):
-    address = params.get("address", "127.0.0.1")
+def run_aby(spec_file, params, instance_metadata):
     write_log(DELIMITER, params)
+    address = instance_metadata.get("address", "127.0.0.1")
+    role = instance_metadata["role"]
+    assert(role == "0" or role == "1")
     cmd = [ABY_CBMC_GC, "--spec-file", spec_file, "-c", params["ss_file"]]
-    cmd = cmd + ["--address", address] + ["-r", "0"]
+    cmd = cmd + ["-a", address] + ["-r", role]
     for i in range(RERUN):
         run_cmd(cmd, "RERUN: {}".format(i), params)
 
 
-def run_aby_local(spec_file, params):
-    address = params.get("address", "127.0.0.1")
+def run_aby_local(spec_file, params, instance_metadata):
     write_log(DELIMITER, params)
     cmd = [ABY_CBMC_GC, "--spec-file", spec_file, "-c", params["ss_file"]]
     server_cmd = cmd + ["-r", "0"]
@@ -52,7 +53,7 @@ def run_aby_local(spec_file, params):
 #             args, e), version)
 
 
-def run_hycc_benchmark(spec_file, params):
+def run_hycc_benchmark(spec_file, params, instance_metadata):
     print("running: ", params["version"])
     args = params["a"]
     ss = params["ss"]
@@ -64,10 +65,10 @@ def run_hycc_benchmark(spec_file, params):
 
     try:
         if os.path.exists(ss_file):
-            if params["address"] == "127.0.0.1":
-                run_aby_local(spec_file, params)
+            if "role" in instance_metadata:
+                run_aby(spec_file, params, instance_metadata)
             else:
-                run_aby(spec_file, params)
+                run_aby_local(spec_file, params, instance_metadata)
         else:
             write_log("LOG: Missing: {}".format(ss_file), params)
     except Exception as e:
@@ -102,7 +103,7 @@ def compile_hycc_benchmark(test_path, params):
         return False
 
 
-def benchmark_hycc(name, path, address):
+def benchmark_hycc(name, path, instance_metadata):
     test_path = HYCC_SOURCE + \
         "/examples/benchmarks/{}".format(path)
     spec_file = "{}specs/{}.spec".format(CIRC_BENCHMARK_SOURCE, name)
@@ -115,7 +116,6 @@ def benchmark_hycc(name, path, address):
                 params["mt"] = mt
                 params["a"] = a
                 params["cm"] = cm
-                params["address"] = address
                 version = "{}_{}_mt-{}_args-{}_cm-{}".format(
                     "hycc", name, mt, "".join(a), cm)
                 if version not in versions:
@@ -169,7 +169,7 @@ def benchmark_hycc(name, path, address):
                 write_log("LOG: COST_MODEL: {}".format(params["cm"]), params)
                 write_log("LOG: ARGUMENTS: {}".format(params["a"]), params)
 
-                run_hycc_benchmark(spec_file, params)
+                run_hycc_benchmark(spec_file, params, instance_metadata)
             else:
                 print("Benchmark already ran: {}".format(log_path))
 
@@ -184,7 +184,6 @@ def run_circ_benchmark(params, instance_metadata):
     print("running: ", params["version"])
     name = params["name"]
     address = instance_metadata.get("address", "127.0.0.1")
-    print(address)
 
     if "role" in instance_metadata:
         role = instance_metadata["role"]
