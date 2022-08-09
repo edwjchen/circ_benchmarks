@@ -7,82 +7,88 @@ import subprocess
 import sys
 
 NUM_INSTANCES = 1
-INSTANCE_TYPE = "t2.micro"
+# INSTANCE_TYPE = "t2.micro"
 # INSTANCE_TYPE = "c5.large"
+INSTANCE_TYPE = "c5.large"
 
-ec2_resource = boto3.resource("ec2",
-                              aws_access_key_id=os.environ["AWS_ACCESS_KEY_ID"],
-                              aws_secret_access_key=os.environ["AWS_SECRET_ACCESS_KEY"],
-                              region_name="us-east-2")
+ec2_east = boto3.resource("ec2",
+                          aws_access_key_id=os.environ["AWS_ACCESS_KEY_ID"],
+                          aws_secret_access_key=os.environ["AWS_SECRET_ACCESS_KEY"],
+                          region_name="us-east-2")
+
+ec2_west = boto3.resource("ec2",
+                          aws_access_key_id=os.environ["AWS_ACCESS_KEY_ID"],
+                          aws_secret_access_key=os.environ["AWS_SECRET_ACCESS_KEY"],
+                          region_name="us-west-2")
 
 
 def create_instances(num):
-    instances = ec2_resource.create_instances(ImageId="ami-02f3416038bdb17fb",
-                                              InstanceType=INSTANCE_TYPE,
-                                              KeyName="the-key-to-her-heart",
-                                              MinCount=1,
-                                              MaxCount=num,
-                                              Monitoring={"Enabled": False},
-                                              SecurityGroups=[
+    instances = ec2_east.create_instances(ImageId="ami-02f3416038bdb17fb",
+                                          InstanceType=INSTANCE_TYPE,
+                                          KeyName="aws_east",
+                                          MinCount=1,
+                                          MaxCount=num,
+                                          Monitoring={"Enabled": False},
+                                          SecurityGroups=[
                                                   "circ4mpc"]
-                                              )
+                                          )
     print("Created {} instances".format(num))
 
 
 def start_instances(num):
-    stopped_instances = list(ec2_resource.instances.filter(
+    stopped_instances = list(ec2_east.instances.filter(
         Filters=[{"Name": "instance-state-name", "Values": ["stopped"]}]))
     count = 0
     num = min(num, len(stopped_instances))
     for i in range(num):
         instance = stopped_instances[i]
-        ec2_resource.instances.filter(InstanceIds=[instance.id]).start()
+        ec2_east.instances.filter(InstanceIds=[instance.id]).start()
         count += 1
     print("Started {} instances".format(count))
 
 
 def stop_instances(num):
-    running_instances = list(ec2_resource.instances.filter(
+    running_instances = list(ec2_east.instances.filter(
         Filters=[{"Name": "instance-state-name", "Values": ["running"]}]))
     count = 0
     num = min(num, len(running_instances))
     for i in range(num):
         instance = running_instances[i]
         print("Stopping", instance.public_dns_name)
-        ec2_resource.instances.filter(InstanceIds=[instance.id]).stop()
+        ec2_east.instances.filter(InstanceIds=[instance.id]).stop()
         count += 1
     print("Stopped {} instances".format(count))
 
 
 def terminate_instances(num):
-    instances = list(ec2_resource.instances.filter(
+    instances = list(ec2_east.instances.filter(
         Filters=[{"Name": "instance-state-name", "Values": ["running", "stopped"]}]))
     count = 0
     num = min(num, len(instances))
     for i in range(num):
         instance = instances[i]
         count += 1
-        ec2_resource.instances.filter(InstanceIds=[instance.id]).terminate()
+        ec2_east.instances.filter(InstanceIds=[instance.id]).terminate()
     print("Terminated {} instances".format(count))
 
 
 def stats():
     stats = {}
-    stats["total"] = len(list(ec2_resource.instances.filter(Filters=[
+    stats["total"] = len(list(ec2_east.instances.filter(Filters=[
                          {"Name": "instance-state-name", "Values": ["running", "stopped", "pending", "stopping"]}])))
-    stats["running"] = len(list(ec2_resource.instances.filter(
+    stats["running"] = len(list(ec2_east.instances.filter(
         Filters=[{"Name": "instance-state-name", "Values": ["running"]}])))
-    stats["stopped"] = len(list(ec2_resource.instances.filter(
+    stats["stopped"] = len(list(ec2_east.instances.filter(
         Filters=[{"Name": "instance-state-name", "Values": ["stopped"]}])))
-    stats["pending"] = len(list(ec2_resource.instances.filter(
+    stats["pending"] = len(list(ec2_east.instances.filter(
         Filters=[{"Name": "instance-state-name", "Values": ["pending"]}])))
-    stats["stopping"] = len(list(ec2_resource.instances.filter(
+    stats["stopping"] = len(list(ec2_east.instances.filter(
         Filters=[{"Name": "instance-state-name", "Values": ["stopping"]}])))
     print(json.dumps(stats, indent=4))
 
 
 def hosts():
-    running_instances = list(ec2_resource.instances.filter(
+    running_instances = list(ec2_east.instances.filter(
         Filters=[{"Name": "instance-state-name", "Values": ["running"]}]))
     running_instance_ips = [
         instance.public_dns_name for instance in running_instances]
@@ -92,7 +98,7 @@ def hosts():
 
 
 def setup_instances(num):
-    running_instances = list(ec2_resource.instances.filter(
+    running_instances = list(ec2_east.instances.filter(
         Filters=[{"Name": "instance-state-name", "Values": ["running"]}]))
     if len(running_instances) < num:
         print("Not all instances are up yet!")
@@ -135,7 +141,7 @@ def compile_benchmarks(num):
 
 def run_benchmarks(num):
     assert(num == 2)
-    running_instances = list(ec2_resource.instances.filter(
+    running_instances = list(ec2_east.instances.filter(
         Filters=[{"Name": "instance-state-name", "Values": ["running"]}]))
     if len(running_instances) < num:
         print("Not all instances are up yet!")
@@ -169,7 +175,7 @@ def benchmark_worker(ip, connect_ip, role):
 
 
 def refresh_instances():
-    running_instances = list(ec2_resource.instances.filter(
+    running_instances = list(ec2_east.instances.filter(
         Filters=[{"Name": "instance-state-name", "Values": ["running"]}]))
     running_instance_ips = [
         instance.public_dns_name for instance in running_instances]
@@ -194,7 +200,7 @@ def refresh_worker(ip):
 
 
 def logs():
-    running_instances = list(ec2_resource.instances.filter(
+    running_instances = list(ec2_east.instances.filter(
         Filters=[{"Name": "instance-state-name", "Values": ["running"]}]))
     running_instance_ips = [
         instance.public_dns_name for instance in running_instances]

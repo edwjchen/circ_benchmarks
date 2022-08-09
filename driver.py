@@ -103,6 +103,26 @@ def build(features):
         os.chdir(CIRC_BENCHMARK_SOURCE)
 
 
+def compile(features):
+    assert(features == set(["hycc"]))
+    build(features)
+    make_test_results()
+    make_dir(HYCC_CIRCUIT_PATH)
+    if "hycc" in features:
+        print("Running hycc Benchmarks")
+        start = time.time()
+
+        # run hycc benchmarks
+        for (name, path) in HYCC_TEST_CASES:
+            make_dir("test_results/hycc_{}".format(name))
+            compile_hycc(name, path)
+        end = time.time()
+        line = "LOG: Total hycc compile time: {}".format(end-start)
+        p = subprocess.Popen("echo \"{}\" >> {}/test_results/hycc_total_compile_time.txt".format(
+            line, CIRC_BENCHMARK_SOURCE), shell=True)
+        p.communicate(timeout=10)
+
+
 def benchmark(features, instance_metadata):
     build(features)
     make_test_results()
@@ -179,6 +199,8 @@ if __name__ == "__main__":
     parser.add_argument("-b", "--build", action="store_true",
                         help="build depedencies")
     parser.add_argument("-t", "--test", action="store_true", help="adhoc test")
+    parser.add_argument("--compile", action="store_true",
+                        help="compile benchmarks")
     parser.add_argument("--benchmark", action="store_true",
                         help="run benchmark")
     parser.add_argument("--parse", action="store_true",
@@ -216,6 +238,9 @@ if __name__ == "__main__":
 
     if args.test:
         test()
+
+    if args.compile:
+        compile(features)
 
     if args.benchmark:
         benchmark(features, instance_metadata)
