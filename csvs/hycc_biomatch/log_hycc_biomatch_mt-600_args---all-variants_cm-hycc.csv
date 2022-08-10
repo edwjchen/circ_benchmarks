@@ -1,6 +1,0 @@
-,TEST,SELECTION_SCHEME,MINIMIZATION_TIME,COST_MODEL,ARGUMENTS,RERUN running,Server load time,Client load time,Server exec time,Client exec time,Total_time_0_running,Total_memory_0_running
-0,biomatch,gmwhybrid,600,hycc,['--all-variants'],0,0.39273,0.43631,0.40433,0.36093,0.86,0.119632
-1,biomatch,gmwonly,600,hycc,['--all-variants'],0,18.16,17.638,1.99,2.5136,22.6,2.210708
-2,biomatch,ps_optimized,600,hycc,['--all-variants'],0,0.64817,0.6454,0.35614,0.36047,1.11,0.1572
-3,biomatch,yaohybrid,600,hycc,['--all-variants'],0,0.37346,0.35422,0.32892,0.3502,0.75,0.111512
-4,biomatch,yaoonly,600,hycc,['--all-variants'],0,19.233,19.511,1.4003,1.1237,23.0,2.4483

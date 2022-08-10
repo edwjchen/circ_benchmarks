@@ -44,7 +44,6 @@ def parse_hycc_log(log):
     phase = ""
     for line in log.split("\n"):
         line = line.split(":")
-        assert(len(line) == 2)
 
         line[0] = line[0].strip()
         line[1] = line[1].strip()
@@ -75,8 +74,19 @@ def parse_hycc_log(log):
         elif line[0].endswith("time"):
             phase = "compile" if "Compile" in line[0] else "running"
             data[line[0]] = standardize_time(line[1])
+        elif line[0] == "Missing":
+            data["MISSING"] = "missing"
+        elif "Error" in line[0]:
+            if "ERROR" not in data:
+                data["ERROR"] = []
+            data["ERROR"].append(" ".join(line[1:]))
+        elif "Failed" in line[0]:
+            if "FAIL" not in data:
+                data["FAIL"] = []
+            data["FAIL"].append(" ".join(line[1:]))
         else:
-            raise RuntimeError("Unknown key: {}".format(line[0]))
+            print(line)
+            # raise RuntimeError("Unknown key")
     return data
 
 def parse_circ_log(log):
@@ -149,38 +159,57 @@ def write_csv(df, log_path):
 
     version = log_path[-1].split(".")[0]+".csv"
     csv_path = os.path.join(dir_path, version)
+    print(csv_path)
     df.to_csv(csv_path)
+
+def clean_data(data):
+    merged_data = {}
+    all_keys = []
+    for d in data:
+        for k in d.keys():
+            if k not in all_keys:
+                all_keys.append(k)
+
+    for k in all_keys:
+        for d in data:
+            if k not in merged_data:
+                merged_data[k] = []
+            if k in d:
+                merged_data[k].append(d[k])
+            else:
+                merged_data[k].append("")
+    return merged_data
 
 
 def parse_hycc_logs():
     log_paths = get_log_paths("hycc")
-    datas = []
-    compile_path = ""
-    run_path = ""
+    compile_datas = []
+    run_datas = []
     for log_path in log_paths:
-        if "log_compile" in log_path:
-            compile_path = log_path
-        else:
-            run_path = log_path
+        print(log_path)
+        data = {}
         with open(log_path, "r") as f:
             log = f.read()
             data = parse_hycc_log(log)
-            datas.append(data)
+           
+        if "log_compile" in log_path:
+            compile_datas.append(data)
+        else:
+            run_datas.append(data)
         
+    # clean compile data
+    compile_data = clean_data(compile_datas)
+
     # write compile data
-    compile_data = [d for d in datas if "SELECTION_SCHEME" not in d][0]
+    compile_path = CIRC_BENCHMARK_SOURCE + "csvs/hycc/compile_data.txt"
     write_csv(pd.DataFrame(compile_data), compile_path)
 
+    # clean run data
+    run_data = clean_data(run_datas)
+
     # clean run_path
-    run_data = [d for d in datas if "SELECTION_SCHEME" in d]
-    run_path = "/".join(run_path.split("/")[:-1]) + "/" + run_path.split("/")[-1].split("_ss-")[0] + ".txt"
-    merged_data = {}
-    for d in run_data:
-        for (k,v) in d.items():
-            if k not in merged_data:
-                merged_data[k] = []
-            merged_data[k].append(v)
-    write_csv(pd.DataFrame(merged_data), run_path)
+    run_path = CIRC_BENCHMARK_SOURCE + "csvs/hycc/run_data.txt"
+    write_csv(pd.DataFrame(run_data), run_path)
     
 
 def parse_circ_logs():

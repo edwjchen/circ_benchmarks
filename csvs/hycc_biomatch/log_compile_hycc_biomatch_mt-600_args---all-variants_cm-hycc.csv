@@ -1,2 +1,0 @@
-,TEST,MINIMIZATION_TIME,COST_MODEL,ARGUMENTS,Compile time,Total_time_0_compile,Total_memory_0_compile,Total_time_0_bundle,Total_memory_0_bundle,Total_time_0_selection,Total_memory_0_selection
-0,biomatch,600,hycc,--all-variants,69.365,69.4,0.52258,0.03,0.010108,2.88,0.093924
