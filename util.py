@@ -1,10 +1,10 @@
-import pandas as pd
-import copy
+import json
 import subprocess
 import os
 
 feature_path = ".features.txt"
 valid_features = {"circ", "hycc"}
+instance_metadata_path = ".instance_metadata.txt"
 
 TIME_CMD = "/usr/bin/time --format='%e seconds %M kB'"
 
@@ -54,15 +54,16 @@ HYCC_TEST_CASES = [
     # TODO: add histogram
 ]
 MINIMIZATION_TIMES = [0]
+
 HYCC_SELECTION_SCHEMES = [
-    "yaoonly", 
-    "yaohybrid", 
-    "gmwonly", 
-    "gmwhybrid", 
+    "yaoonly",
+    "yaohybrid",
+    "gmwonly",
+    "gmwhybrid",
     "ps_optimized"
 ]
 HYCC_COMPILE_ARGUMENTS = [
-    ["--all-variants"], 
+    ["--all-variants"],
     # ["--all-variants", "--outline"]
 ]
 
@@ -73,22 +74,21 @@ MUT_LEVELS = [4]
 MUT_STEP_SIZES = [1]
 CIRC_TEST_CASES = [
     "biomatch",
-    "kmeans",
-    "gauss",
-    "db_join",
-    "db_join2",
-    "db_merge",
-    "mnist",
-    "mnist_decomp_main",
-    "mnist_decomp_convolution",
-    "cryptonets",
-    "histogram",
+    # "kmeans",
+    # "gauss",
+    # "db_join",
+    # "db_join2",
+    # "db_merge",
+    # "mnist",
+    # "mnist_decomp_main",
+    # "mnist_decomp_convolution",
+    # "cryptonets",
+    # "histogram",
 ]
 
 
 # logging variables
 DELIMITER = "\nLOG: ====================================\n"
-VERSION = ""
 
 
 def save_features(features):
@@ -106,6 +106,21 @@ def load_features():
             return set(features)
     else:
         return set()
+
+
+def save_instance_metadata(data):
+    """ Save address to file """
+    with open(instance_metadata_path, 'w') as f:
+        json.dump(data, f)
+
+
+def load_instance_metadata():
+    """ Load features from file """
+    if os.path.exists(instance_metadata_path):
+        with open(instance_metadata_path, 'r') as f:
+            return json.load(f)
+    else:
+        return {}
 
 
 def make_dir(path):
@@ -133,12 +148,15 @@ def run_cmds(server_cmd, client_cmd, name, params):
     cmd = "{} & {}".format(" ".join(server_cmd), " ".join(client_cmd))
     print(cmd)
     cmd = wrap_time(cmd)
-    proc = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    proc = subprocess.Popen(
+        cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     stdout, stderr = proc.communicate()
 
     if proc.returncode:
-        write_log("LOG: Error: Process returned with status code {}".format(proc.returncode), params)
-        write_log("LOG: Error message: {}".format(" ".join(stderr.decode("utf-8").split("\n"))), params)
+        write_log("LOG: Error: Process returned with status code {}".format(
+            proc.returncode), params)
+        write_log("LOG: Error message: {}".format(
+            " ".join(stderr.decode("utf-8").split("\n"))), params)
         return
 
     # record server
@@ -149,6 +167,7 @@ def run_cmds(server_cmd, client_cmd, name, params):
     last_line = [l for l in err.split("\n") if l][-1]
     memory_output = "LOG: Time / Memory: {}".format(last_line)
     write_log(memory_output, params)
+
 
 def run_cmd(cmd, name, params):
     write_log("LOG: {}".format(name), params)
@@ -176,11 +195,13 @@ def run_cmd(cmd, name, params):
 
 
 def write_to_log(text, params):
-    dir_path = "{}test_results/{}_{}/".format(CIRC_BENCHMARK_SOURCE, params["system"], params["name"])
+    dir_path = "{}test_results/{}_{}/".format(
+        CIRC_BENCHMARK_SOURCE, params["system"], params["name"])
     if not os.path.exists(dir_path):
         os.makedirs(dir_path)
 
-    log_path = "{}test_results/{}_{}/log_{}.txt".format(CIRC_BENCHMARK_SOURCE, params["system"], params["name"], params["version"])
+    log_path = "{}test_results/{}_{}/log_{}.txt".format(
+        CIRC_BENCHMARK_SOURCE, params["system"], params["name"], params["version"])
     if not os.path.exists(log_path):
         subprocess.run(["touch", log_path])
 
@@ -193,11 +214,13 @@ def write_to_log(text, params):
 
 
 def write_to_run(text, params):
-    dir_path = "{}test_results/{}_{}/".format(CIRC_BENCHMARK_SOURCE, params["system"], params["name"])
+    dir_path = "{}test_results/{}_{}/".format(
+        CIRC_BENCHMARK_SOURCE, params["system"], params["name"])
     if not os.path.exists(dir_path):
         os.makedirs(dir_path)
 
-    run_path = "{}test_results/{}_{}/run_{}.txt".format(CIRC_BENCHMARK_SOURCE, params["system"], params["name"], params["version"])
+    run_path = "{}test_results/{}_{}/run_{}.txt".format(
+        CIRC_BENCHMARK_SOURCE, params["system"], params["name"], params["version"])
     if not os.path.exists(run_path):
         subprocess.run(["touch", run_path])
 
@@ -212,6 +235,7 @@ def write_log(text, params):
 ####################
 # CirC Helpers
 ####################
+
 
 def get_circ_build_path(name):
     if name == "biomatch":
