@@ -9,3 +9,4 @@ aws_benchmark/aws.sh
 hycc_circuit_dir
 circ_circuit_dir
 aws
+modules/kahypar

@@ -48,6 +48,9 @@ def install(features):
         subprocess.run(["git", "submodule", "update",
                        "--init", "--remote", "modules/KaHIP"])
 
+    if verify_path_empty(KAHYPAR_SOURCE):
+        subprocess.call("cd {}modules && rm -rf kahypar && git clone --recursive https://github.com/kahypar/kahypar.git && cd kahypar && mkdir build && cd build && cmake .. -DCMAKE_BUILD_TYPE=RELEASE && make".format(CIRC_BENCHMARK_SOURCE), shell=True)
+
     if "hycc" in features:
         if verify_path_empty(HYCC_SOURCE):
             subprocess.run(["git", "submodule", "update",
@@ -60,13 +63,19 @@ def install(features):
 
     # set git branches
     os.chdir(ABY_SOURCE)
-    subprocess.run(["git", "checkout", "functions"])
+    # subprocess.run(["git", "checkout", "functions"])
+    subprocess.run(["git", "checkout", "no_array"])
     os.chdir(CIRC_BENCHMARK_SOURCE)
 
     os.chdir(CIRC_SOURCE)
-    # subprocess.run(["git", "checkout", "mpc_aws"])
-    subprocess.run(["git", "checkout", "function_calls"])
+    subprocess.run(["git", "checkout", "mpc_aws"])
+    # subprocess.run(["git", "checkout", "function_calls"])
     os.chdir(CIRC_BENCHMARK_SOURCE)
+
+    # export env variables
+    os.environ["ABY_SOURCE"] = ABY_SOURCE
+    os.environ["KAHIP_SOURCE"] = KAHIP_SOURCE
+    os.environ["KAHYPAR_SOURCE"] = KAHYPAR_SOURCE
 
     # install python requirements
     # subprocess.run(["pip3", "install", "-r", "requirements.txt"])
@@ -117,9 +126,8 @@ def compile(features):
             compile_hycc(name, path)
         end = time.time()
         line = "LOG: Total hycc compile time: {}".format(end-start)
-        p = subprocess.Popen("echo \"{}\" >> {}/test_results/hycc_total_compile_time.txt".format(
+        subprocess.call("echo \"{}\" >> {}/test_results/hycc_total_compile_time.txt".format(
             line, CIRC_BENCHMARK_SOURCE), shell=True)
-        p.communicate(timeout=10)
 
     if "circ" in features:
         print("Compiling CirC Benchmarks")
@@ -132,9 +140,8 @@ def compile(features):
             compile_circ(name)
         end = time.time()
         line = "LOG: Total circ compile time: {}".format(end-start)
-        p = subprocess.Popen("echo \"{}\" >> {}/test_results/circ_total_compile_time.txt".format(
+        subprocess.call("echo \"{}\" >> {}/test_results/circ_total_compile_time.txt".format(
             line, CIRC_BENCHMARK_SOURCE), shell=True)
-        p.communicate(timeout=10)
 
 
 def benchmark(features, instance_metadata):

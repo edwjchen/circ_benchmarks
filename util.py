@@ -15,6 +15,8 @@ ABY_SOURCE = CIRC_BENCHMARK_SOURCE+"modules/ABY"
 HYCC_SOURCE = CIRC_BENCHMARK_SOURCE+"modules/HyCC"
 CIRC_SOURCE = CIRC_BENCHMARK_SOURCE+"modules/circ"
 KAHIP_SOURCE = CIRC_BENCHMARK_SOURCE+"modules/KaHIP"
+KAHYPAR_SOURCE = CIRC_BENCHMARK_SOURCE+"modules/kahypar"
+
 
 ABY_HYCC = HYCC_SOURCE+"/aby-hycc"
 ABY_HYCC_DIR = ABY_SOURCE + "/src/examples/aby-hycc/"
@@ -68,13 +70,29 @@ HYCC_COMPILE_ARGUMENTS = [
 ]
 
 # circ parameters
-CIRC_SELECTION_SCHEMES = ["b", "y", "a+b", "a+y", "greedy", "lp", "glp"]
-NUM_PARTS = [3]
-MUT_LEVELS = [4]
-MUT_STEP_SIZES = [1]
+CIRC_NO_PARTITION_SELECTION_SCHEMES = [
+    "b",
+    "y",
+    "a+b",
+    "a+y",
+    "greedy",
+]
+
+CIRC_PARTITION_SELECTION_SCHEMES = [
+    "css",
+    "smart_lp",
+    "smart_glp",
+    # "lp",
+    # "glp"
+]
+
+PARTITIONERS = [0, 1]
+PARTITION_SIZES = [1000, 3000, 5000]
+MUT_LEVELS = [1, 2, 4]
+MUT_STEP_SIZES = [1, 2, 4]
 CIRC_TEST_CASES = [
     "biomatch",
-    "kmeans",
+    # "kmeans",
     # "gauss",
     # "db_join",
     # "db_join2",
