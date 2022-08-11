@@ -15,6 +15,8 @@ ABY_SOURCE = CIRC_BENCHMARK_SOURCE+"modules/ABY"
 HYCC_SOURCE = CIRC_BENCHMARK_SOURCE+"modules/HyCC"
 CIRC_SOURCE = CIRC_BENCHMARK_SOURCE+"modules/circ"
 KAHIP_SOURCE = CIRC_BENCHMARK_SOURCE+"modules/KaHIP"
+KAHYPAR_SOURCE = CIRC_BENCHMARK_SOURCE+"modules/kahypar"
+
 
 ABY_HYCC = HYCC_SOURCE+"/aby-hycc"
 ABY_HYCC_DIR = ABY_SOURCE + "/src/examples/aby-hycc/"
@@ -29,6 +31,7 @@ MPC_CIRC = "mpc_main.circ"
 MODULE_BUNDLE = HYCC_SOURCE+"/src/circuit-utils/py/module_bundle.py"
 SELECTION = HYCC_SOURCE+"/src/circuit-utils/py/selection.py"
 
+CIRC_CIRCUIT_PATH = CIRC_BENCHMARK_SOURCE+"circ_circuit_dir/"
 CIRC_TARGET = CIRC_SOURCE + "/target/release/examples/circ"
 ABY_INTERPRETER = ABY_SOURCE + "/build/bin/aby_interpreter"
 
@@ -68,10 +71,24 @@ HYCC_COMPILE_ARGUMENTS = [
 ]
 
 # circ parameters
-CIRC_SELECTION_SCHEMES = ["b", "y", "a+b", "a+y", "greedy", "lp", "glp"]
-NUM_PARTS = [3]
-MUT_LEVELS = [4]
-MUT_STEP_SIZES = [1]
+CIRC_NO_PARTITION_SELECTION_SCHEMES = [
+    "b",
+    "y",
+    "a+b",
+    "a+y",
+    "greedy",
+    "smart_glp",
+]
+
+CIRC_PARTITION_SELECTION_SCHEMES = [
+    "css",
+    "smart_lp",
+]
+
+PARTITIONERS = [0, 1]
+PARTITION_SIZES = [1000, 3000, 5000]
+MUT_LEVELS = [1, 2, 4]
+MUT_STEP_SIZES = [1, 2, 4]
 CIRC_TEST_CASES = [
     "biomatch",
     # "kmeans",
@@ -259,7 +276,7 @@ def get_circ_build_path(name):
     raise RuntimeError("Could not find test: {}".format(name))
 
 
-def get_circ_test_path(name):
+def get_circ_bytecode_path(name):
     if name == "biomatch":
         return "{}/scripts/aby_tests/tests/biomatch_c".format(CIRC_SOURCE)
     if name == "kmeans":
@@ -300,4 +317,26 @@ def get_circ_input_path(name):
         return "{}/scripts/aby_tests/test_inputs/cryptonets.txt".format(CIRC_SOURCE)
     if name == "histogram":
         return "{}/scripts/aby_tests/test_inputs/histogram.txt".format(CIRC_SOURCE)
+    raise RuntimeError("Could not find test: {}".format(name))
+
+
+def get_circ_test_path(name, version):
+    if name == "biomatch":
+        return "{}/{}/biomatch_c".format(CIRC_CIRCUIT_PATH, version)
+    if name == "kmeans":
+        return "{}/{}/2pc_kmeans__c".format(CIRC_CIRCUIT_PATH, version)
+    if name == "gauss":
+        return "{}/{}/2pc_gauss_inline_c".format(CIRC_CIRCUIT_PATH, version)
+    if name == "db_join":
+        return "{}/{}/db_join_c".format(CIRC_CIRCUIT_PATH, version)
+    if name == "db_join2":
+        return "{}/{}/db_join2_c".format(CIRC_CIRCUIT_PATH, version)
+    if name == "db_merge":
+        return "{}/{}/db_merge_c".format(CIRC_CIRCUIT_PATH, version)
+    if name == "mnist":
+        return "{}/{}/mnist_c".format(CIRC_CIRCUIT_PATH, version)
+    if name == "cryptonets":
+        return "{}/{}/cryptonets_c".format(CIRC_CIRCUIT_PATH, version)
+    if name == "histogram":
+        return "{}/{}/histogram_c".format(CIRC_CIRCUIT_PATH, version)
     raise RuntimeError("Could not find test: {}".format(name))

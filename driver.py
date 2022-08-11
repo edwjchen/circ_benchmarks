@@ -48,6 +48,9 @@ def install(features):
         subprocess.run(["git", "submodule", "update",
                        "--init", "--remote", "modules/KaHIP"])
 
+    if verify_path_empty(KAHYPAR_SOURCE):
+        subprocess.call("cd {}modules && rm -rf kahypar && git clone --recursive https://github.com/kahypar/kahypar.git && cd kahypar && mkdir build && cd build && cmake .. -DCMAKE_BUILD_TYPE=RELEASE && make".format(CIRC_BENCHMARK_SOURCE), shell=True)
+
     if "hycc" in features:
         if verify_path_empty(HYCC_SOURCE):
             subprocess.run(["git", "submodule", "update",
@@ -60,13 +63,19 @@ def install(features):
 
     # set git branches
     os.chdir(ABY_SOURCE)
-    subprocess.run(["git", "checkout", "functions"])
+    # subprocess.run(["git", "checkout", "functions"])
+    subprocess.run(["git", "checkout", "no_array"])
     os.chdir(CIRC_BENCHMARK_SOURCE)
 
     os.chdir(CIRC_SOURCE)
-    # subprocess.run(["git", "checkout", "mpc_aws"])
-    subprocess.run(["git", "checkout", "function_calls"])
+    subprocess.run(["git", "checkout", "mpc_aws"])
+    # subprocess.run(["git", "checkout", "function_calls"])
     os.chdir(CIRC_BENCHMARK_SOURCE)
+
+    # export env variables
+    os.environ["ABY_SOURCE"] = ABY_SOURCE
+    os.environ["KAHIP_SOURCE"] = KAHIP_SOURCE
+    os.environ["KAHYPAR_SOURCE"] = KAHYPAR_SOURCE
 
     # install python requirements
     # subprocess.run(["pip3", "install", "-r", "requirements.txt"])
@@ -104,13 +113,12 @@ def build(features):
 
 
 def compile(features):
-    assert(features == set(["hycc"]))
     build(features)
     make_test_results()
-    make_dir(HYCC_CIRCUIT_PATH)
     if "hycc" in features:
-        print("Running hycc Benchmarks")
+        print("Compiling HyCC Benchmarks")
         start = time.time()
+        make_dir(HYCC_CIRCUIT_PATH)
 
         # run hycc benchmarks
         for (name, path) in HYCC_TEST_CASES:
@@ -118,17 +126,31 @@ def compile(features):
             compile_hycc(name, path)
         end = time.time()
         line = "LOG: Total hycc compile time: {}".format(end-start)
-        p = subprocess.Popen("echo \"{}\" >> {}/test_results/hycc_total_compile_time.txt".format(
+        subprocess.call("echo \"{}\" >> {}/test_results/hycc_total_compile_time.txt".format(
             line, CIRC_BENCHMARK_SOURCE), shell=True)
-        p.communicate(timeout=10)
+
+    if "circ" in features:
+        print("Compiling CirC Benchmarks")
+        start = time.time()
+        make_dir(CIRC_CIRCUIT_PATH)
+
+        # run circ benchmarks
+        for name in CIRC_TEST_CASES:
+            make_dir("test_results/circ_{}".format(name))
+            compile_circ(name)
+        end = time.time()
+        line = "LOG: Total circ compile time: {}".format(end-start)
+        subprocess.call("echo \"{}\" >> {}/test_results/circ_total_compile_time.txt".format(
+            line, CIRC_BENCHMARK_SOURCE), shell=True)
 
 
 def benchmark(features, instance_metadata):
     build(features)
+    compile(features)
     make_test_results()
     make_dir(HYCC_CIRCUIT_PATH)
     if "hycc" in features:
-        print("Running hycc Benchmarks")
+        print("Running HyCC Benchmarks")
         start = time.time()
 
         # run hycc benchmarks
@@ -142,7 +164,7 @@ def benchmark(features, instance_metadata):
         p.communicate(timeout=10)
 
     if "circ" in features:
-        print("Running circ Benchmarks")
+        print("Running CirC Benchmarks")
         start = time.time()
 
         # run circ benchmarks

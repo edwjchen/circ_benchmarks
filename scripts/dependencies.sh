@@ -2,6 +2,7 @@
 sudo apt-get update
 sudo apt-get install -y bison
 sudo apt-get install -y build-essential
+sudo apt-get install -y clang
 sudo apt-get install -y cmake
 sudo apt-get install -y coinor-cbc 
 sudo apt-get install -y coinor-libcbc-dev

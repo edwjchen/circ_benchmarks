@@ -256,7 +256,7 @@ def refresh_worker(ip, key_file):
     client.close()
 
 
-def compile_hycc_benchmarks():
+def compile_benchmarks():
     # start west instance
     stopped_instances = list(ec2_west.instances.filter(
         Filters=[{"Name": "instance-state-name", "Values": ["stopped"]}]))
@@ -280,7 +280,7 @@ def compile_hycc_benchmarks():
     client.connect(hostname=ip, username="ubuntu", pkey=key)
 
     _, stdout, _ = client.exec_command(
-        "cd ~/circ_benchmarks && python3 driver.py -f hycc && python3 driver.py --compile")
+        "cd ~/circ_benchmarks && python3 driver.py -f hycc circ && python3 driver.py --compile")
     if stdout.channel.recv_exit_status():
         print(ip, " failed compiles")
 
@@ -295,6 +295,8 @@ def compile_hycc_benchmarks():
 
     subprocess.call(
         "rsync -avz -e \"ssh -o StrictHostKeyChecking=no -i aws-west.pem\" --progress ubuntu@{}:~/circ_benchmarks/hycc_circuit_dir ./aws/{}".format(ip, id), shell=True)
+    subprocess.call(
+        "rsync -avz -e \"ssh -o StrictHostKeyChecking=no -i aws-west.pem\" --progress ubuntu@{}:~/circ_benchmarks/circ_circuit_dir ./aws/{}".format(ip, id), shell=True)
     subprocess.call(
         "rsync -avz -e \"ssh -o StrictHostKeyChecking=no -i aws-west.pem\" --progress ubuntu@{}:~/circ_benchmarks/test_results ./aws/{}".format(ip, id), shell=True)
 
@@ -325,6 +327,8 @@ def compile_scp_worker(ip, id):
     client.connect(hostname=ip, username="ubuntu", pkey=key)
     subprocess.call(
         "rsync -avz -e \"ssh -o StrictHostKeyChecking=no -i aws-east.pem\" --progress ./aws/{}/hycc_circuit_dir/ ubuntu@{}:~/circ_benchmarks/hycc_circuit_dir".format(id, ip), shell=True)
+    subprocess.call(
+        "rsync -avz -e \"ssh -o StrictHostKeyChecking=no -i aws-east.pem\" --progress ./aws/{}/circ_circuit_dir/ ubuntu@{}:~/circ_benchmarks/circ_circuit_dir".format(id, ip), shell=True)
     subprocess.call(
         "rsync -avz -e \"ssh -o StrictHostKeyChecking=no -i aws-east.pem\" --progress ./aws/{}/test_results/ ubuntu@{}:~/circ_benchmarks/test_results".format(id, ip), shell=True)
 
@@ -542,7 +546,7 @@ if __name__ == "__main__":
             setup_instances()
             stop_instances()
         elif cmd_type == "compile":
-            compile_hycc_benchmarks()
+            compile_benchmarks()
         elif cmd_type == "run":
             run_benchmarks(setting)
         elif cmd_type == "stop":

@@ -17,6 +17,25 @@ def parse_time_memory(tm):
     return seconds, memory
 
 
+def clean_data(data):
+    merged_data = {}
+    all_keys = []
+    for d in data:
+        for k in d.keys():
+            if k not in all_keys:
+                all_keys.append(k)
+
+    for k in all_keys:
+        for d in data:
+            if k not in merged_data:
+                merged_data[k] = []
+            if k in d:
+                merged_data[k].append(d[k])
+            else:
+                merged_data[k].append("")
+    return merged_data
+
+
 def get_log_paths(system):
     assert system == "circ" or system == "hycc"
     test_results_path = "{}test_results/".format(CIRC_BENCHMARK_SOURCE)
@@ -45,8 +64,6 @@ def clean_log(log):
 def parse_hycc_log(log):
     log = clean_log(log)
     data = {}
-    run = 0
-    phase = ""
     for line in log.split("\n"):
         line = line.split(":")
 
@@ -57,7 +74,6 @@ def parse_hycc_log(log):
             data[line[0]] = line[1]
         elif line[0] == "SELECTION_SCHEME":
             data[line[0]] = line[1]
-            phase = "running"
         elif line[0] == "MINIMIZATION_TIME":
             data[line[0]] = int(line[1])
         elif line[0] == "ARGUMENTS":
@@ -66,19 +82,22 @@ def parse_hycc_log(log):
         elif line[0] == "COST_MODEL":
             data[line[0]] = line[1]
         elif line[0] == "MODE":
-            phase = line[1]
+            if line[0] not in data:
+                data[line[0]] = []
+            data[line[0]].append(line[1])
         elif line[0] == "RERUN":
-            # requires phase
-            line[0] = "{} {}".format(line[0], phase)
-            data[line[0]] = int(line[1])
-            run = int(line[1])
+            if line[0] not in data:
+                data[line[0]] = []
+            data[line[0]].append(int(line[1]))
         elif line[0] == "Time / Memory":
-            # requires phase
             seconds, memory = parse_time_memory(line[1])
-            data["Total_time_{}_{}".format(run, phase)] = seconds
-            data["Total_memory_{}_{}".format(run, phase)] = memory
+            if "Total_time" not in data:
+                data["Total_time"] = []
+            if "Total_memory" not in data:
+                data["Total_memory"] = []
+            data["Total_time"].append(seconds)
+            data["Total_memory"].append(memory)
         elif line[0].endswith("time"):
-            phase = "compile" if "Compile" in line[0] else "running"
             data[line[0]] = standardize_time(line[1])
         elif line[0] == "Missing":
             data["MISSING"] = "missing"
@@ -92,15 +111,13 @@ def parse_hycc_log(log):
             data["FAIL"].append(" ".join(line[1:]))
         else:
             print(line)
-            # raise RuntimeError("Unknown key")
+            raise RuntimeError("Unknown key")
     return data
 
 
 def parse_circ_log(log):
     log = clean_log(log)
     data = {}
-    phase = "compile"
-    run = 0
     for line in log.split("\n"):
         line = line.split(":")
         assert(len(line) == 2)
@@ -120,11 +137,12 @@ def parse_circ_log(log):
             data[line[0]] = line[1]
         elif line[0] == "COST_MODEL":
             data[line[0]] = line[1]
+        elif line[0] == "MODE":
+            continue
         elif line[0] == "RERUN":
-            # requires phase
-            line[0] = "{} {}".format(line[0], phase)
-            data[line[0]] = int(line[1])
-            run = int(line[1])
+            if line[0] not in data:
+                data[line[0]] = []
+            data[line[0]].append(int(line[1]))
         elif line[0] == "Frontend":
             data[line[0]] = standardize_time(line[1])
         elif line[0] == "Optimizations":
@@ -143,14 +161,17 @@ def parse_circ_log(log):
         elif line[0] == "Time / Memory":
             # requires phase
             seconds, memory = parse_time_memory(line[1])
-            data["Total_time_{}_{}".format(run, phase)] = seconds
-            data["Total_memory_{}_{}".format(run, phase)] = memory
+            if "Total_time" not in data:
+                data["Total_time"] = []
+            if "Total_memory" not in data:
+                data["Total_memory"] = []
+            data["Total_time"].append(seconds)
+            data["Total_memory"].append(memory)
         elif line[0] == "Lowering":
             data[line[0]] = standardize_time(line[1])
         elif line[0] == "Compile":
             data[line[0]] = standardize_time(line[1])
         elif line[0].endswith("time"):
-            phase = "running"
             data[line[0]] = standardize_time(line[1])
         else:
             raise RuntimeError("Unknown key: {}".format(line[0]))
@@ -194,17 +215,15 @@ def parse_hycc_logs():
     compile_datas = []
     run_datas = []
     for log_path in log_paths:
-        print(log_path)
         data = {}
         with open(log_path, "r") as f:
             log = f.read()
             data = parse_hycc_log(log)
-           
         if "log_compile" in log_path:
             compile_datas.append(data)
         else:
             run_datas.append(data)
-        
+
     # clean compile data
     compile_data = clean_data(compile_datas)
 
@@ -222,20 +241,30 @@ def parse_hycc_logs():
 
 def parse_circ_logs():
     log_paths = get_log_paths("circ")
-    datas = []
+    compile_datas = []
+    run_datas = []
     for log_path in log_paths:
         with open(log_path, "r") as f:
-            log = f.read()
-            data = parse_circ_log(log)
-            datas.append(data)
+            data = {}
+            with open(log_path, "r") as f:
+                log = f.read()
+                data = parse_circ_log(log)
 
-    merged_data = {}
-    for d in datas:
-        for (k, v) in d.items():
-            if k not in merged_data:
-                merged_data[k] = []
-            merged_data[k].append(v)
+            if "log_compile" in log_path:
+                compile_datas.append(data)
+            else:
+                run_datas.append(data)
 
-    run_path = "/".join(log_path.split("/")[:-1]) + "/" + log_path.split("/")[-1].split("_ss-")[
-        0] + "_" + "_".join(log_path.split("/")[-1].split("_ss-")[1].split("_")[1:]) + ".txt"
-    write_csv(pd.DataFrame(merged_data), run_path)
+   # clean compile data
+    compile_data = clean_data(compile_datas)
+
+    # write compile data
+    compile_path = CIRC_BENCHMARK_SOURCE + "csvs/circ/compile_data.txt"
+    write_csv(pd.DataFrame(compile_data), compile_path)
+
+    # clean run data
+    run_data = clean_data(run_datas)
+
+    # clean run_path
+    run_path = CIRC_BENCHMARK_SOURCE + "csvs/circ/run_data.txt"
+    write_csv(pd.DataFrame(run_data), run_path)

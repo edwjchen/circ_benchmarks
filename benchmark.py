@@ -55,18 +55,15 @@ def compile_hycc_benchmark(test_path, params):
         # compile
         cmd = [CBMC_GC, test_path,
                "--minimization-time-limit", str(params["mt"])] + args
-        print(" ".join(cmd))
         run_cmd(cmd, "MODE: compile", params)
 
         # bundle modules
         write_log(DELIMITER, params)
         cmd = ["python3", MODULE_BUNDLE, "."]
-        print(" ".join(cmd))
         run_cmd(cmd, "MODE: bundle", params)
 
         write_log(DELIMITER, params)
         cmd = ["python3", SELECTION, ".", COSTS]  # TODO: update cost model
-        print(" ".join(cmd))
         run_cmd(cmd, "MODE: selection", params)
         return True
     except Exception as e:
@@ -202,6 +199,7 @@ def benchmark_hycc(name, path, instance_metadata):
 def run_circ_benchmark(params, instance_metadata):
     print("running: ", params["version"])
     name = params["name"]
+    bytecode_path = params["bytecode_path"]
     address = instance_metadata.get("address", "127.0.0.1")
 
     if "role" in instance_metadata:
@@ -210,7 +208,7 @@ def run_circ_benchmark(params, instance_metadata):
         write_log(DELIMITER, params)
         cmd = [ABY_INTERPRETER,
                "-m", "mpc",
-               "-f", get_circ_test_path(name),
+               "-f", get_circ_test_path(name, bytecode_path),
                "-t", get_circ_input_path(name),
                "--address", address,
                "--role", role]
@@ -218,13 +216,14 @@ def run_circ_benchmark(params, instance_metadata):
             try:
                 run_cmd(cmd, "RERUN: {}".format(i), params)
             except Exception as e:
+                print("Failed to run")
                 write_log("LOG: Failed to run, exception: {}".format(e), params)
     else:
         print("Running test locally")
         write_log(DELIMITER, params)
         cmd = [ABY_INTERPRETER,
                "-m", "mpc",
-               "-f", get_circ_test_path(name),
+               "-f", get_circ_test_path(name, bytecode_path),
                "-t", get_circ_input_path(name),
                "--address", address]
         server_cmd = cmd + ["-r", "0"]
@@ -233,6 +232,7 @@ def run_circ_benchmark(params, instance_metadata):
             try:
                 run_cmds(server_cmd, client_cmd, "RERUN: {}".format(i), params)
             except Exception as e:
+                print("Failed to run locally")
                 write_log("LOG: Failed to run, exception: {}".format(e), params)
 
 
@@ -248,31 +248,67 @@ def compile_circ_benchmarks(params):
            get_circ_build_path(name), "mpc",
            "--cost-model", cm,
            "--selection-scheme", ss]
-    for i in range(RERUN):
-        try:
-            run_cmd(cmd, "RERUN: {}".format(i), params)
-        except Exception as e:
-            write_log("LOG: Failed to build, exception: {}".format(e), params)
+
+    # partition scheme
+    if "ps" in params:
+        cmd += ["--part-size", str(params["ps"])]
+    if "ml" in params:
+        cmd += ["--mut-level", str(params["ml"])]
+    if "mss" in params:
+        cmd += ["--mut-step-size", str(params["mss"])]
+    if "gt" in params:
+        cmd += ["--graph-type", str(params["gt"])]
+
+    try:
+        run_cmd(cmd, "MODE: compile", params)
+
+        # copy file to test directory
+        compile_path = CIRC_CIRCUIT_PATH+params["bytecode_path"]
+        make_dir(compile_path)
+
+        bytecode_path = get_circ_bytecode_path(name)
+        subprocess.call("mv {} {}".format(bytecode_path,
+                        compile_path), shell=True)
+
+    except Exception as e:
+        print("Failed to compile")
+        write_log("LOG: Failed to build, exception: {}".format(e), params)
 
 
 def compile_circ(name):
     os.chdir(CIRC_SOURCE)
 
     versions = []
-    for ss in CIRC_SELECTION_SCHEMES:
-        for np in NUM_PARTS:
+    for ss in CIRC_PARTITION_SELECTION_SCHEMES:
+        for ps in PARTITION_SIZES:
             for ml in MUT_LEVELS:
                 for mss in MUT_STEP_SIZES:
-                    for cm in COST_MODELS:
-                        version = "{}_test-{}_ss-{}_np-{}_ml-{}_mss-{}_cm-{}".format(
-                            "circ", name, ss, np, ml, mss, cm)
-                        params = {}
-                        params["ss"] = ss
-                        params["np"] = np
-                        params["ml"] = ml
-                        params["mss"] = mss
-                        params["cm"] = cm
-                        versions.append((version, params))
+                    for gt in PARTITIONERS:
+                        for cm in COST_MODELS:
+                            version = "compile_{}_test-{}_ss-{}_ps-{}_ml-{}_mss-{}_gt-{}_cm-{}".format(
+                                "circ", name, ss, ps, ml, mss, gt, cm)
+                            bytecode_path = "{}_test-{}_ss-{}_ps-{}_ml-{}_mss-{}_gt-{}_cm-{}".format(
+                                "circ", name, ss, ps, ml, mss, gt, cm)
+                            params = {}
+                            params["ss"] = ss
+                            params["ps"] = ps
+                            params["ml"] = ml
+                            params["mss"] = mss
+                            params["gt"] = gt
+                            params["cm"] = cm
+                            params["bytecode_path"] = bytecode_path
+                            versions.append((version, params))
+    for ss in CIRC_NO_PARTITION_SELECTION_SCHEMES:
+        for cm in COST_MODELS:
+            version = "compile_{}_test-{}_ss-{}_cm-{}".format(
+                "circ", name, ss, cm)
+            bytecode_path = "{}_test-{}_ss-{}_cm-{}".format(
+                "circ", name, ss, cm)
+            params = {}
+            params["ss"] = ss
+            params["cm"] = cm
+            params["bytecode_path"] = bytecode_path
+            versions.append((version, params))
 
     for (version, params) in versions:
         params["system"] = "circ"
@@ -291,10 +327,17 @@ def compile_circ(name):
         write_log(DELIMITER, params)
         write_log("LOG: TEST: {}".format(name), params)
         write_log("LOG: SELECTION_SCHEME: {}".format(params["ss"]), params)
-        write_log("LOG: NUM_PARTS: {}".format(params["np"]), params)
-        write_log("LOG: MUTATION_LEVEL: {}".format(params["ml"]), params)
-        write_log("LOG: MUTATION_STEP_SIZE: {}".format(params["mss"]), params)
         write_log("LOG: COST_MODEL: {}".format(params["cm"]), params)
+        if "ps" in params:
+            write_log("LOG: PARTITION_SIZE: {}".format(params["ps"]), params)
+        if "ml" in params:
+            write_log("LOG: MUTATION_LEVEL: {}".format(params["ml"]), params)
+        if "mss" in params:
+            write_log("LOG: MUTATION_STEP_SIZE: {}".format(
+                params["mss"]), params)
+        if "gt" in params:
+            write_log("LOG: GRAPH_TYPE: {}".format(
+                "KaHIP" if not params["gt"] else "KaHyPar"), params)
 
         # compile benchmark
         compile_circ_benchmarks(params)
@@ -304,20 +347,36 @@ def benchmark_circ(name, instance_metadata):
     os.chdir(CIRC_SOURCE)
 
     versions = []
-    for ss in CIRC_SELECTION_SCHEMES:
-        for np in NUM_PARTS:
+    for ss in CIRC_PARTITION_SELECTION_SCHEMES:
+        for ps in PARTITION_SIZES:
             for ml in MUT_LEVELS:
                 for mss in MUT_STEP_SIZES:
-                    for cm in COST_MODELS:
-                        version = "{}_test-{}_ss-{}_np-{}_ml-{}_mss-{}_cm-{}".format(
-                            "circ", name, ss, np, ml, mss, cm)
-                        params = {}
-                        params["ss"] = ss
-                        params["np"] = np
-                        params["ml"] = ml
-                        params["mss"] = mss
-                        params["cm"] = cm
-                        versions.append((version, params))
+                    for gt in PARTITIONERS:
+                        for cm in COST_MODELS:
+                            version = "run_{}_test-{}_ss-{}_ps-{}_ml-{}_mss-{}_gt-{}_cm-{}".format(
+                                "circ", name, ss, ps, ml, mss, gt, cm)
+                            bytecode_path = "{}_test-{}_ss-{}_ps-{}_ml-{}_mss-{}_gt-{}_cm-{}".format(
+                                "circ", name, ss, ps, ml, mss, gt, cm)
+                            params = {}
+                            params["ss"] = ss
+                            params["ps"] = ps
+                            params["ml"] = ml
+                            params["mss"] = mss
+                            params["gt"] = gt
+                            params["cm"] = cm
+                            params["bytecode_path"] = bytecode_path
+                            versions.append((version, params))
+    for ss in CIRC_NO_PARTITION_SELECTION_SCHEMES:
+        for cm in COST_MODELS:
+            version = "run_{}_test-{}_ss-{}_cm-{}".format(
+                "circ", name, ss, cm)
+            bytecode_path = "{}_test-{}_ss-{}_cm-{}".format(
+                "circ", name, ss, cm)
+            params = {}
+            params["ss"] = ss
+            params["cm"] = cm
+            params["bytecode_path"] = bytecode_path
+            versions.append((version, params))
 
     for (version, params) in versions:
         params["system"] = "circ"
@@ -336,13 +395,17 @@ def benchmark_circ(name, instance_metadata):
         write_log(DELIMITER, params)
         write_log("LOG: TEST: {}".format(name), params)
         write_log("LOG: SELECTION_SCHEME: {}".format(params["ss"]), params)
-        write_log("LOG: NUM_PARTS: {}".format(params["np"]), params)
-        write_log("LOG: MUTATION_LEVEL: {}".format(params["ml"]), params)
-        write_log("LOG: MUTATION_STEP_SIZE: {}".format(params["mss"]), params)
         write_log("LOG: COST_MODEL: {}".format(params["cm"]), params)
-
-        # compile benchmark
-        compile_circ_benchmarks(params)
+        if "ps" in params:
+            write_log("LOG: PARTITION_SIZE: {}".format(params["ps"]), params)
+        if "ml" in params:
+            write_log("LOG: MUTATION_LEVEL: {}".format(params["ml"]), params)
+        if "mss" in params:
+            write_log("LOG: MUTATION_STEP_SIZE: {}".format(
+                params["mss"]), params)
+        if "gt" in params:
+            write_log("LOG: GRAPH_TYPE: {}".format(
+                "KaHIP" if not params["gt"] else "KaHyPar"), params)
 
         # run benchmarks
         run_circ_benchmark(params, instance_metadata)

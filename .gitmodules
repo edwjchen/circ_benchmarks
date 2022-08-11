@@ -4,9 +4,9 @@
 [submodule "modules/HyCC"]
 	path = modules/HyCC
 	url = https://gitlab.com/edwjchen/HyCC
-[submodule "modules/KaHIP"]
-	path = modules/KaHIP
-	url = https://github.com/edwjchen/KaHIP.git
 [submodule "modules/ABY"]
 	path = modules/ABY
 	url = https://github.com/edwjchen/ABY.git
+[submodule "modules/KaHIP"]
+	path = modules/KaHIP
+	url = https://github.com/edwjchen/KaHIP.git
