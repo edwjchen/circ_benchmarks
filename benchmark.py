@@ -279,18 +279,6 @@ def compile_circ(name):
     os.chdir(CIRC_SOURCE)
 
     versions = []
-    for ss in CIRC_NO_PARTITION_SELECTION_SCHEMES:
-        for cm in COST_MODELS:
-            version = "compile_{}_test-{}_ss-{}_cm-{}".format(
-                "circ", name, ss, cm)
-            bytecode_path = "{}_test-{}_ss-{}_cm-{}".format(
-                "circ", name, ss, cm)
-            params = {}
-            params["ss"] = ss
-            params["cm"] = cm
-            params["bytecode_path"] = bytecode_path
-            versions.append((version, params))
-
     for ss in CIRC_PARTITION_SELECTION_SCHEMES:
         for ps in PARTITION_SIZES:
             for ml in MUT_LEVELS:
@@ -310,6 +298,17 @@ def compile_circ(name):
                             params["cm"] = cm
                             params["bytecode_path"] = bytecode_path
                             versions.append((version, params))
+    for ss in CIRC_NO_PARTITION_SELECTION_SCHEMES:
+        for cm in COST_MODELS:
+            version = "compile_{}_test-{}_ss-{}_cm-{}".format(
+                "circ", name, ss, cm)
+            bytecode_path = "{}_test-{}_ss-{}_cm-{}".format(
+                "circ", name, ss, cm)
+            params = {}
+            params["ss"] = ss
+            params["cm"] = cm
+            params["bytecode_path"] = bytecode_path
+            versions.append((version, params))
 
     for (version, params) in versions:
         params["system"] = "circ"
@@ -317,7 +316,7 @@ def compile_circ(name):
         params["version"] = version
 
         log_path = format(
-            "{}test_results/circ_{}/log_compile_{}.txt".format(CIRC_BENCHMARK_SOURCE, name, version))
+            "{}test_results/circ_{}/log_{}.txt".format(CIRC_BENCHMARK_SOURCE, name, version))
         if os.path.exists(log_path):
             print("Benchmark already ran: {}".format(log_path))
             continue
@@ -348,28 +347,16 @@ def benchmark_circ(name, instance_metadata):
     os.chdir(CIRC_SOURCE)
 
     versions = []
-    for ss in CIRC_NO_PARTITION_SELECTION_SCHEMES:
-        for cm in COST_MODELS:
-            version = "compile_{}_test-{}_ss-{}_cm-{}".format(
-                "circ", name, ss, cm)
-            bytecode_path = "{}_test-{}_ss-{}_cm-{}".format(
-                "circ", name, ss, cm)
-            params = {}
-            params["ss"] = ss
-            params["cm"] = cm
-            params["bytecode_path"] = bytecode_path
-            versions.append((version, params))
-
     for ss in CIRC_PARTITION_SELECTION_SCHEMES:
         for ps in PARTITION_SIZES:
             for ml in MUT_LEVELS:
                 for mss in MUT_STEP_SIZES:
                     for gt in PARTITIONERS:
                         for cm in COST_MODELS:
-                            version = "compile_{}_test-{}_ss-{}_ps-{}_ml-{}_mss-{}_gt-{}_cm-{}".format(
-                                "circ", name, ss, ps, ml, mss, cm)
+                            version = "run_{}_test-{}_ss-{}_ps-{}_ml-{}_mss-{}_gt-{}_cm-{}".format(
+                                "circ", name, ss, ps, ml, mss, gt, cm)
                             bytecode_path = "{}_test-{}_ss-{}_ps-{}_ml-{}_mss-{}_gt-{}_cm-{}".format(
-                                "circ", name, ss, ps, ml, mss, cm)
+                                "circ", name, ss, ps, ml, mss, gt, cm)
                             params = {}
                             params["ss"] = ss
                             params["ps"] = ps
@@ -379,6 +366,17 @@ def benchmark_circ(name, instance_metadata):
                             params["cm"] = cm
                             params["bytecode_path"] = bytecode_path
                             versions.append((version, params))
+    for ss in CIRC_NO_PARTITION_SELECTION_SCHEMES:
+        for cm in COST_MODELS:
+            version = "run_{}_test-{}_ss-{}_cm-{}".format(
+                "circ", name, ss, cm)
+            bytecode_path = "{}_test-{}_ss-{}_cm-{}".format(
+                "circ", name, ss, cm)
+            params = {}
+            params["ss"] = ss
+            params["cm"] = cm
+            params["bytecode_path"] = bytecode_path
+            versions.append((version, params))
 
     for (version, params) in versions:
         params["system"] = "circ"
@@ -386,7 +384,7 @@ def benchmark_circ(name, instance_metadata):
         params["version"] = version
 
         log_path = format(
-            "{}test_results/circ_{}/log_run_{}.txt".format(CIRC_BENCHMARK_SOURCE, name, version))
+            "{}test_results/circ_{}/log_{}.txt".format(CIRC_BENCHMARK_SOURCE, name, version))
         if os.path.exists(log_path):
             print("Benchmark already ran: {}".format(log_path))
             continue

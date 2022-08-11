@@ -45,7 +45,7 @@ COSTS = HYCC_SOURCE+"/src/circuit-utils/py/costs.json"
 # hycc parameters
 HYCC_TEST_CASES = [
     ("biomatch", "biomatch/biomatch.c"),
-    ("kmeans", "kmeans/kmeans.c"),
+    # ("kmeans", "kmeans/kmeans.c"),
     # ("gauss", "gauss/gauss.c"),
     # ("db_join", "db/db_join.c"),
     # ("db_join2", "db/db_join2.c"),
@@ -76,14 +76,12 @@ CIRC_NO_PARTITION_SELECTION_SCHEMES = [
     "a+b",
     "a+y",
     "greedy",
+    "smart_glp",
 ]
 
 CIRC_PARTITION_SELECTION_SCHEMES = [
     "css",
     "smart_lp",
-    "smart_glp",
-    # "lp",
-    # "glp"
 ]
 
 PARTITIONERS = [0, 1]
