@@ -64,8 +64,6 @@ def clean_log(log):
 def parse_hycc_log(log):
     log = clean_log(log)
     data = {}
-    run = 0
-    phase = ""
     for line in log.split("\n"):
         line = line.split(":")
 
@@ -76,7 +74,6 @@ def parse_hycc_log(log):
             data[line[0]] = line[1]
         elif line[0] == "SELECTION_SCHEME":
             data[line[0]] = line[1]
-            phase = "running"
         elif line[0] == "MINIMIZATION_TIME":
             data[line[0]] = int(line[1])
         elif line[0] == "ARGUMENTS":
@@ -85,19 +82,22 @@ def parse_hycc_log(log):
         elif line[0] == "COST_MODEL":
             data[line[0]] = line[1]
         elif line[0] == "MODE":
-            phase = line[1]
+            if line[0] not in data:
+                data[line[0]] = []
+            data[line[0]].append(line[1])
         elif line[0] == "RERUN":
-            # requires phase
-            line[0] = "{} {}".format(line[0], phase)
-            data[line[0]] = int(line[1])
-            run = int(line[1])
+            if line[0] not in data:
+                data[line[0]] = []
+            data[line[0]].append(int(line[1]))
         elif line[0] == "Time / Memory":
-            # requires phase
             seconds, memory = parse_time_memory(line[1])
-            data["Total_time_{}_{}".format(run, phase)] = seconds
-            data["Total_memory_{}_{}".format(run, phase)] = memory
+            if "Total_time" not in data:
+                data["Total_time"] = []
+            if "Total_memory" not in data:
+                data["Total_memory"] = []
+            data["Total_time"].append(seconds)
+            data["Total_memory"].append(memory)
         elif line[0].endswith("time"):
-            phase = "compile" if "Compile" in line[0] else "running"
             data[line[0]] = standardize_time(line[1])
         elif line[0] == "Missing":
             data["MISSING"] = "missing"
@@ -110,16 +110,13 @@ def parse_hycc_log(log):
                 data["FAIL"] = []
             data["FAIL"].append(" ".join(line[1:]))
         else:
-            print(line)
-            # raise RuntimeError("Unknown key")
+            raise RuntimeError("Unknown key")
     return data
 
 
 def parse_circ_log(log):
     log = clean_log(log)
     data = {}
-    phase = "compile"
-    run = 0
     for line in log.split("\n"):
         line = line.split(":")
         assert(len(line) == 2)
@@ -140,12 +137,11 @@ def parse_circ_log(log):
         elif line[0] == "COST_MODEL":
             data[line[0]] = line[1]
         elif line[0] == "MODE":
-            phase = line[1]
+            continue
         elif line[0] == "RERUN":
-            # requires phase
-            line[0] = "{} {}".format(line[0], phase)
-            data[line[0]] = int(line[1])
-            run = int(line[1])
+            if line[0] not in data:
+                data[line[0]] = []
+            data[line[0]].append(int(line[1]))
         elif line[0] == "Frontend":
             data[line[0]] = standardize_time(line[1])
         elif line[0] == "Optimizations":
@@ -164,14 +160,17 @@ def parse_circ_log(log):
         elif line[0] == "Time / Memory":
             # requires phase
             seconds, memory = parse_time_memory(line[1])
-            data["Total_time_{}_{}".format(run, phase)] = seconds
-            data["Total_memory_{}_{}".format(run, phase)] = memory
+            if "Total_time" not in data:
+                data["Total_time"] = []
+            if "Total_memory" not in data:
+                data["Total_memory"] = []
+            data["Total_time"].append(seconds)
+            data["Total_memory"].append(memory)
         elif line[0] == "Lowering":
             data[line[0]] = standardize_time(line[1])
         elif line[0] == "Compile":
             data[line[0]] = standardize_time(line[1])
         elif line[0].endswith("time"):
-            phase = "running"
             data[line[0]] = standardize_time(line[1])
         else:
             raise RuntimeError("Unknown key: {}".format(line[0]))
@@ -197,7 +196,6 @@ def parse_hycc_logs():
     compile_datas = []
     run_datas = []
     for log_path in log_paths:
-        print(log_path)
         data = {}
         with open(log_path, "r") as f:
             log = f.read()

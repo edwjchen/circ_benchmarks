@@ -1,11 +1,11 @@
-,TEST,SELECTION_SCHEME,MINIMIZATION_TIME,COST_MODEL,ARGUMENTS,RERUN running,Server load time,Client load time,Server exec time,Client exec time,Total_time_0_running,Total_memory_0_running,ERROR,MISSING
-0,biomatch,yaohybrid,0,hycc,['--all-variants'],0,0.27304,0.2737,0.17198,0.17155,0.47,0.111776,,
-1,biomatch,ps_optimized,0,hycc,['--all-variants'],0,0.50967,0.50629,0.20032,0.20376,0.79,0.158084,,
-2,biomatch,yaoonly,0,hycc,['--all-variants'],0,16.429,16.148,0.69762,0.97903,18.79,2.450728,,
-3,biomatch,gmwhybrid,0,hycc,['--all-variants'],0,0.3062,0.30255,0.21742,0.22118,0.55,0.120276,,
-4,biomatch,gmwonly,0,hycc,['--all-variants'],0,17.23,17.344,1.8926,1.7843,20.57,2.443316,,
-5,kmeans,yaohybrid,0,hycc,['--all-variants'],0,,,,,,,"['Process returned with status code 134', ""terminate called after throwing an instance of 'std  out_of_range'   what()   _Map_base  at terminate called after throwing an instance of 'std  out_of_range'   what()   _Map_base  at Command terminated by signal 6 52.82 seconds 3900000 kB Aborted (core dumped)""]",
-6,kmeans,yaoonly,0,hycc,['--all-variants'],0,,,,,,,"['Process returned with status code 137', 'Killed Command terminated by signal 9 150.28 seconds 23350208 kB']",
-7,kmeans,gmwonly,0,hycc,['--all-variants'],0,,,,,,,"['Process returned with status code 137', 'Command terminated by signal 9 72.29 seconds 11690200 kB Killed']",
-8,kmeans,gmwhybrid,0,hycc,['--all-variants'],0,,,,,,,"['Process returned with status code 134', ""terminate called after throwing an instance of 'std  out_of_range'   what()   _Map_base  at terminate called after throwing an instance of 'std  out_of_range'   what()   _Map_base  at Aborted (core dumped) Command terminated by signal 6 54.61 seconds 4066092 kB""]",
+,TEST,SELECTION_SCHEME,MINIMIZATION_TIME,COST_MODEL,ARGUMENTS,RERUN,Server load time,Client load time,Server exec time,Client exec time,Total_time,Total_memory,ERROR,MISSING
+0,biomatch,yaohybrid,0,hycc,['--all-variants'],[0],0.27304,0.2737,0.17198,0.17155,[0.47],[0.111776],,
+1,biomatch,ps_optimized,0,hycc,['--all-variants'],[0],0.50967,0.50629,0.20032,0.20376,[0.79],[0.158084],,
+2,biomatch,yaoonly,0,hycc,['--all-variants'],[0],16.429,16.148,0.69762,0.97903,[18.79],[2.450728],,
+3,biomatch,gmwhybrid,0,hycc,['--all-variants'],[0],0.3062,0.30255,0.21742,0.22118,[0.55],[0.120276],,
+4,biomatch,gmwonly,0,hycc,['--all-variants'],[0],17.23,17.344,1.8926,1.7843,[20.57],[2.443316],,
+5,kmeans,yaohybrid,0,hycc,['--all-variants'],[0],,,,,,,"['Process returned with status code 134', ""terminate called after throwing an instance of 'std  out_of_range'   what()   _Map_base  at terminate called after throwing an instance of 'std  out_of_range'   what()   _Map_base  at Command terminated by signal 6 52.82 seconds 3900000 kB Aborted (core dumped)""]",
+6,kmeans,yaoonly,0,hycc,['--all-variants'],[0],,,,,,,"['Process returned with status code 137', 'Killed Command terminated by signal 9 150.28 seconds 23350208 kB']",
+7,kmeans,gmwonly,0,hycc,['--all-variants'],[0],,,,,,,"['Process returned with status code 137', 'Command terminated by signal 9 72.29 seconds 11690200 kB Killed']",
+8,kmeans,gmwhybrid,0,hycc,['--all-variants'],[0],,,,,,,"['Process returned with status code 134', ""terminate called after throwing an instance of 'std  out_of_range'   what()   _Map_base  at terminate called after throwing an instance of 'std  out_of_range'   what()   _Map_base  at Aborted (core dumped) Command terminated by signal 6 54.61 seconds 4066092 kB""]",
 9,kmeans,ps_optimized,0,hycc,['--all-variants'],,,,,,,,,missing
