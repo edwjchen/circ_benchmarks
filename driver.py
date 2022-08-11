@@ -104,13 +104,12 @@ def build(features):
 
 
 def compile(features):
-    assert(features == set(["hycc"]))
     build(features)
     make_test_results()
-    make_dir(HYCC_CIRCUIT_PATH)
     if "hycc" in features:
-        print("Running hycc Benchmarks")
+        print("Compiling HyCC Benchmarks")
         start = time.time()
+        make_dir(HYCC_CIRCUIT_PATH)
 
         # run hycc benchmarks
         for (name, path) in HYCC_TEST_CASES:
@@ -122,13 +121,29 @@ def compile(features):
             line, CIRC_BENCHMARK_SOURCE), shell=True)
         p.communicate(timeout=10)
 
+    if "circ" in features:
+        print("Compiling CirC Benchmarks")
+        start = time.time()
+        make_dir(CIRC_CIRCUIT_PATH)
+
+        # run circ benchmarks
+        for name in CIRC_TEST_CASES:
+            make_dir("test_results/circ_{}".format(name))
+            compile_circ(name)
+        end = time.time()
+        line = "LOG: Total circ compile time: {}".format(end-start)
+        p = subprocess.Popen("echo \"{}\" >> {}/test_results/circ_total_compile_time.txt".format(
+            line, CIRC_BENCHMARK_SOURCE), shell=True)
+        p.communicate(timeout=10)
+
 
 def benchmark(features, instance_metadata):
     build(features)
+    compile(features)
     make_test_results()
     make_dir(HYCC_CIRCUIT_PATH)
     if "hycc" in features:
-        print("Running hycc Benchmarks")
+        print("Running HyCC Benchmarks")
         start = time.time()
 
         # run hycc benchmarks
@@ -142,7 +157,7 @@ def benchmark(features, instance_metadata):
         p.communicate(timeout=10)
 
     if "circ" in features:
-        print("Running circ Benchmarks")
+        print("Running CirC Benchmarks")
         start = time.time()
 
         # run circ benchmarks

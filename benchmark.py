@@ -202,6 +202,7 @@ def benchmark_hycc(name, path, instance_metadata):
 def run_circ_benchmark(params, instance_metadata):
     print("running: ", params["version"])
     name = params["name"]
+    bytecode_path = params["bytecode_path"]
     address = instance_metadata.get("address", "127.0.0.1")
 
     if "role" in instance_metadata:
@@ -210,7 +211,7 @@ def run_circ_benchmark(params, instance_metadata):
         write_log(DELIMITER, params)
         cmd = [ABY_INTERPRETER,
                "-m", "mpc",
-               "-f", get_circ_test_path(name),
+               "-f", get_circ_test_path(name, bytecode_path),
                "-t", get_circ_input_path(name),
                "--address", address,
                "--role", role]
@@ -224,7 +225,7 @@ def run_circ_benchmark(params, instance_metadata):
         write_log(DELIMITER, params)
         cmd = [ABY_INTERPRETER,
                "-m", "mpc",
-               "-f", get_circ_test_path(name),
+               "-f", get_circ_test_path(name, bytecode_path),
                "-t", get_circ_input_path(name),
                "--address", address]
         server_cmd = cmd + ["-r", "0"]
@@ -248,11 +249,19 @@ def compile_circ_benchmarks(params):
            get_circ_build_path(name), "mpc",
            "--cost-model", cm,
            "--selection-scheme", ss]
-    for i in range(RERUN):
-        try:
-            run_cmd(cmd, "RERUN: {}".format(i), params)
-        except Exception as e:
-            write_log("LOG: Failed to build, exception: {}".format(e), params)
+    try:
+        run_cmd(cmd, "MODE: compile", params)
+
+        # copy file to test directory
+        compile_path = CIRC_CIRCUIT_PATH+params["bytecode_path"]
+        make_dir(compile_path)
+
+        bytecode_path = get_circ_bytecode_path(name)
+        subprocess.call("mv {} {}".format(bytecode_path,
+                        compile_path), shell=True)
+
+    except Exception as e:
+        write_log("LOG: Failed to build, exception: {}".format(e), params)
 
 
 def compile_circ(name):
@@ -264,7 +273,9 @@ def compile_circ(name):
             for ml in MUT_LEVELS:
                 for mss in MUT_STEP_SIZES:
                     for cm in COST_MODELS:
-                        version = "{}_test-{}_ss-{}_np-{}_ml-{}_mss-{}_cm-{}".format(
+                        version = "compile_{}_test-{}_ss-{}_np-{}_ml-{}_mss-{}_cm-{}".format(
+                            "circ", name, ss, np, ml, mss, cm)
+                        bytecode_path = "{}_test-{}_ss-{}_np-{}_ml-{}_mss-{}_cm-{}".format(
                             "circ", name, ss, np, ml, mss, cm)
                         params = {}
                         params["ss"] = ss
@@ -272,6 +283,7 @@ def compile_circ(name):
                         params["ml"] = ml
                         params["mss"] = mss
                         params["cm"] = cm
+                        params["bytecode_path"] = bytecode_path
                         versions.append((version, params))
 
     for (version, params) in versions:
@@ -280,7 +292,7 @@ def compile_circ(name):
         params["version"] = version
 
         log_path = format(
-            "{}test_results/circ_{}/log_{}.txt".format(CIRC_BENCHMARK_SOURCE, name, version))
+            "{}test_results/circ_{}/log_compile_{}.txt".format(CIRC_BENCHMARK_SOURCE, name, version))
         if os.path.exists(log_path):
             print("Benchmark already ran: {}".format(log_path))
             continue
@@ -309,7 +321,9 @@ def benchmark_circ(name, instance_metadata):
             for ml in MUT_LEVELS:
                 for mss in MUT_STEP_SIZES:
                     for cm in COST_MODELS:
-                        version = "{}_test-{}_ss-{}_np-{}_ml-{}_mss-{}_cm-{}".format(
+                        version = "run_{}_test-{}_ss-{}_np-{}_ml-{}_mss-{}_cm-{}".format(
+                            "circ", name, ss, np, ml, mss, cm)
+                        bytecode_path = "{}_test-{}_ss-{}_np-{}_ml-{}_mss-{}_cm-{}".format(
                             "circ", name, ss, np, ml, mss, cm)
                         params = {}
                         params["ss"] = ss
@@ -317,6 +331,7 @@ def benchmark_circ(name, instance_metadata):
                         params["ml"] = ml
                         params["mss"] = mss
                         params["cm"] = cm
+                        params["bytecode_path"] = bytecode_path
                         versions.append((version, params))
 
     for (version, params) in versions:
@@ -325,7 +340,7 @@ def benchmark_circ(name, instance_metadata):
         params["version"] = version
 
         log_path = format(
-            "{}test_results/circ_{}/log_{}.txt".format(CIRC_BENCHMARK_SOURCE, name, version))
+            "{}test_results/circ_{}/log_run_{}.txt".format(CIRC_BENCHMARK_SOURCE, name, version))
         if os.path.exists(log_path):
             print("Benchmark already ran: {}".format(log_path))
             continue
@@ -340,9 +355,6 @@ def benchmark_circ(name, instance_metadata):
         write_log("LOG: MUTATION_LEVEL: {}".format(params["ml"]), params)
         write_log("LOG: MUTATION_STEP_SIZE: {}".format(params["mss"]), params)
         write_log("LOG: COST_MODEL: {}".format(params["cm"]), params)
-
-        # compile benchmark
-        compile_circ_benchmarks(params)
 
         # run benchmarks
         run_circ_benchmark(params, instance_metadata)

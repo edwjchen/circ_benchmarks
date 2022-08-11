@@ -29,6 +29,7 @@ MPC_CIRC = "mpc_main.circ"
 MODULE_BUNDLE = HYCC_SOURCE+"/src/circuit-utils/py/module_bundle.py"
 SELECTION = HYCC_SOURCE+"/src/circuit-utils/py/selection.py"
 
+CIRC_CIRCUIT_PATH = CIRC_BENCHMARK_SOURCE+"circ_circuit_dir/"
 CIRC_TARGET = CIRC_SOURCE + "/target/release/examples/circ"
 ABY_INTERPRETER = ABY_SOURCE + "/build/bin/aby_interpreter"
 
@@ -73,7 +74,7 @@ MUT_LEVELS = [4]
 MUT_STEP_SIZES = [1]
 CIRC_TEST_CASES = [
     "biomatch",
-    # "kmeans",
+    "kmeans",
     # "gauss",
     # "db_join",
     # "db_join2",
@@ -258,7 +259,7 @@ def get_circ_build_path(name):
     raise RuntimeError("Could not find test: {}".format(name))
 
 
-def get_circ_test_path(name):
+def get_circ_bytecode_path(name):
     if name == "biomatch":
         return "{}/scripts/aby_tests/tests/biomatch_c".format(CIRC_SOURCE)
     if name == "kmeans":
@@ -299,4 +300,26 @@ def get_circ_input_path(name):
         return "{}/scripts/aby_tests/test_inputs/cryptonets.txt".format(CIRC_SOURCE)
     if name == "histogram":
         return "{}/scripts/aby_tests/test_inputs/histogram.txt".format(CIRC_SOURCE)
+    raise RuntimeError("Could not find test: {}".format(name))
+
+
+def get_circ_test_path(name, version):
+    if name == "biomatch":
+        return "{}/{}/biomatch_c".format(CIRC_CIRCUIT_PATH, version)
+    if name == "kmeans":
+        return "{}/{}/2pc_kmeans__c".format(CIRC_CIRCUIT_PATH, version)
+    if name == "gauss":
+        return "{}/{}/2pc_gauss_inline_c".format(CIRC_CIRCUIT_PATH, version)
+    if name == "db_join":
+        return "{}/{}/db_join_c".format(CIRC_CIRCUIT_PATH, version)
+    if name == "db_join2":
+        return "{}/{}/db_join2_c".format(CIRC_CIRCUIT_PATH, version)
+    if name == "db_merge":
+        return "{}/{}/db_merge_c".format(CIRC_CIRCUIT_PATH, version)
+    if name == "mnist":
+        return "{}/{}/mnist_c".format(CIRC_CIRCUIT_PATH, version)
+    if name == "cryptonets":
+        return "{}/{}/cryptonets_c".format(CIRC_CIRCUIT_PATH, version)
+    if name == "histogram":
+        return "{}/{}/histogram_c".format(CIRC_CIRCUIT_PATH, version)
     raise RuntimeError("Could not find test: {}".format(name))
