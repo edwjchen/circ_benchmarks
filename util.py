@@ -252,10 +252,10 @@ def write_log(text, params):
     write_to_log(text, params)
     write_to_run(text, params)
 
+
 ####################
 # CirC Helpers
 ####################
-
 
 def get_circ_build_path(name):
     if name == "biomatch":
@@ -272,6 +272,10 @@ def get_circ_build_path(name):
         return "{}/examples/C/mpc/benchmarks/db/db_merge.c".format(CIRC_SOURCE)
     if name == "mnist":
         return "{}/examples/C/mpc/benchmarks/mnist/mnist.c".format(CIRC_SOURCE)
+    if name == "mnist_decomp_main":
+        return "{}/examples/C/mpc/benchmarks/mnist/mnist_decomp_main.c".format(CIRC_SOURCE)
+    if name == "mnist_decomp_convolution":
+        return "{}/examples/C/mpc/benchmarks/mnist/mnist_decomp_convolution.c".format(CIRC_SOURCE)
     if name == "cryptonets":
         return "{}/examples/C/mpc/benchmarks/cryptonets/cryptonets.c".format(CIRC_SOURCE)
     if name == "histogram":
@@ -294,6 +298,10 @@ def get_circ_bytecode_path(name):
         return "{}/scripts/aby_tests/tests/db_merge_c".format(CIRC_SOURCE)
     if name == "mnist":
         return "{}/scripts/aby_tests/tests/mnist_c".format(CIRC_SOURCE)
+    if name == "mnist_decomp_main":
+        return "{}/scripts/aby_tests/tests/mnist_decomp_main_c".format(CIRC_SOURCE)
+    if name == "mnist_decomp_convolution":
+        return "{}/scripts/aby_tests/tests/mnist_decomp_convolution_c".format(CIRC_SOURCE)
     if name == "cryptonets":
         return "{}/scripts/aby_tests/tests/cryptonets_c".format(CIRC_SOURCE)
     if name == "histogram":
@@ -316,6 +324,10 @@ def get_circ_input_path(name):
         return "{}/scripts/aby_tests/test_inputs/merge.txt".format(CIRC_SOURCE)
     if name == "mnist":
         return "{}/scripts/aby_tests/test_inputs/mnist.txt".format(CIRC_SOURCE)
+    if name == "mnist_decomp_main":
+        return "{}/scripts/aby_tests/test_inputs/mnist_decomp_main.txt".format(CIRC_SOURCE)
+    if name == "mnist_decomp_convolution":
+        return "{}/scripts/aby_tests/test_inputs/mnist_decomp_convolution.txt".format(CIRC_SOURCE)
     if name == "cryptonets":
         return "{}/scripts/aby_tests/test_inputs/cryptonets.txt".format(CIRC_SOURCE)
     if name == "histogram":
@@ -338,6 +350,10 @@ def get_circ_test_path(name, version):
         return "{}/{}/db_merge_c".format(CIRC_CIRCUIT_PATH, version)
     if name == "mnist":
         return "{}/{}/mnist_c".format(CIRC_CIRCUIT_PATH, version)
+    if name == "mnist_decomp_main":
+        return "{}/{}/mnist_decomp_main_c".format(CIRC_CIRCUIT_PATH, version)
+    if name == "mnist_decomp_convolution":
+        return "{}/{}/mnist_decomp_convolution_c".format(CIRC_CIRCUIT_PATH, version)
     if name == "cryptonets":
         return "{}/{}/cryptonets_c".format(CIRC_CIRCUIT_PATH, version)
     if name == "histogram":

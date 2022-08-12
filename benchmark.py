@@ -46,6 +46,11 @@ def run_hycc_benchmark(spec_file, params, instance_metadata):
     except Exception as e:
         write_log("LOG: Failed {} with args: {}, exception: {}".format(
             ss, " ".join(args), e), params)
+        log_path = "{}test_results/{}_{}/log_{}.txt".format(
+                CIRC_BENCHMARK_SOURCE, params["system"], params["name"], params["version"])
+        failed_path = "{}test_results/{}_{}/failed_log_{}.txt".format(
+                CIRC_BENCHMARK_SOURCE, params["system"], params["name"], params["version"])
+        subprocess.call("mv {} {}".format(log_path, failed_path), shell=True)
 
 
 def compile_hycc_benchmark(test_path, params):
@@ -73,6 +78,12 @@ def compile_hycc_benchmark(test_path, params):
     except Exception as e:
         write_log("LOG: Failed compiling circuit with args: {}, exception: {}".format(
             " ".join(args), e), params)
+        
+        log_path = "{}test_results/{}_{}/log_{}.txt".format(
+                CIRC_BENCHMARK_SOURCE, params["system"], params["name"], params["version"])
+        failed_path = "{}test_results/{}_{}/failed_log_{}.txt".format(
+                CIRC_BENCHMARK_SOURCE, params["system"], params["name"], params["version"])
+        subprocess.call("mv {} {}".format(log_path, failed_path), shell=True)
         return False
 
 
@@ -222,6 +233,11 @@ def run_circ_benchmark(params, instance_metadata):
             except Exception as e:
                 print("Failed to run")
                 write_log("LOG: Failed to run, exception: {}".format(e), params)
+                log_path = "{}test_results/{}_{}/log_{}.txt".format(
+                        CIRC_BENCHMARK_SOURCE, params["system"], params["name"], params["version"])
+                failed_path = "{}test_results/{}_{}/failed_log_{}.txt".format(
+                        CIRC_BENCHMARK_SOURCE, params["system"], params["name"], params["version"])
+                subprocess.call("mv {} {}".format(log_path, failed_path), shell=True)
     else:
         print("Running test locally")
         write_log(DELIMITER, params)
@@ -238,6 +254,12 @@ def run_circ_benchmark(params, instance_metadata):
             except Exception as e:
                 print("Failed to run locally")
                 write_log("LOG: Failed to run, exception: {}".format(e), params)
+
+                log_path = "{}test_results/{}_{}/log_{}.txt".format(
+                        CIRC_BENCHMARK_SOURCE, params["system"], params["name"], params["version"])
+                failed_path = "{}test_results/{}_{}/failed_log_{}.txt".format(
+                        CIRC_BENCHMARK_SOURCE, params["system"], params["name"], params["version"])
+                subprocess.call("mv {} {}".format(log_path, failed_path), shell=True)
 
 
 def compile_circ_benchmarks(params):
@@ -277,12 +299,28 @@ def compile_circ_benchmarks(params):
     except Exception as e:
         print("Failed to compile")
         write_log("LOG: Failed to build, exception: {}".format(e), params)
+        log_path = "{}test_results/{}_{}/log_{}.txt".format(
+                CIRC_BENCHMARK_SOURCE, params["system"], params["name"], params["version"])
+        failed_path = "{}test_results/{}_{}/failed_log_{}.txt".format(
+                CIRC_BENCHMARK_SOURCE, params["system"], params["name"], params["version"])
+        subprocess.call("mv {} {}".format(log_path, failed_path), shell=True)
 
 
 def compile_circ(name):
     os.chdir(CIRC_SOURCE)
 
     versions = []
+    for ss in CIRC_NO_PARTITION_SELECTION_SCHEMES:
+        for cm in COST_MODELS:
+            version = "compile_{}_test-{}_ss-{}_cm-{}".format(
+                "circ", name, ss, cm)
+            bytecode_path = "{}_test-{}_ss-{}_cm-{}".format(
+                "circ", name, ss, cm)
+            params = {}
+            params["ss"] = ss
+            params["cm"] = cm
+            params["bytecode_path"] = bytecode_path
+            versions.append((version, params))
     for ss in CIRC_PARTITION_SELECTION_SCHEMES:
         for ps in PARTITION_SIZES:
             for ml in MUT_LEVELS:
@@ -302,17 +340,6 @@ def compile_circ(name):
                             params["cm"] = cm
                             params["bytecode_path"] = bytecode_path
                             versions.append((version, params))
-    for ss in CIRC_NO_PARTITION_SELECTION_SCHEMES:
-        for cm in COST_MODELS:
-            version = "compile_{}_test-{}_ss-{}_cm-{}".format(
-                "circ", name, ss, cm)
-            bytecode_path = "{}_test-{}_ss-{}_cm-{}".format(
-                "circ", name, ss, cm)
-            params = {}
-            params["ss"] = ss
-            params["cm"] = cm
-            params["bytecode_path"] = bytecode_path
-            versions.append((version, params))
 
     for (version, params) in versions:
         params["system"] = "circ"
@@ -321,7 +348,9 @@ def compile_circ(name):
 
         log_path = format(
             "{}test_results/circ_{}/log_{}.txt".format(CIRC_BENCHMARK_SOURCE, name, version))
-        if os.path.exists(log_path):
+        failed_path = format(
+            "{}test_results/circ_{}/failed_log_{}.txt".format(CIRC_BENCHMARK_SOURCE, name, version))
+        if os.path.exists(log_path) or os.path.exists(failed_path):
             print("Benchmark already ran: {}".format(log_path))
             continue
 
@@ -389,7 +418,9 @@ def benchmark_circ(name, instance_metadata):
 
         log_path = format(
             "{}test_results/circ_{}/log_{}.txt".format(CIRC_BENCHMARK_SOURCE, name, version))
-        if os.path.exists(log_path):
+        failed_path = format(
+            "{}test_results/circ_{}/failed_log_{}.txt".format(CIRC_BENCHMARK_SOURCE, name, version))
+        if os.path.exists(log_path) or os.path.exists(failed_path):
             print("Benchmark already ran: {}".format(log_path))
             continue
 

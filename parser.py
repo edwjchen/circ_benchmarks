@@ -99,6 +99,13 @@ def parse_hycc_log(log):
             data["Total_memory"].append(memory)
         elif line[0].endswith("time"):
             data[line[0]] = standardize_time(line[1])
+        elif line[0] == "Total number of gates":
+            data[line[0]] = int(line[1])
+        elif line[0] == "Total depth":
+            data[line[0]] = int(line[1])
+        elif "Timing" in line[0]:
+            key = line[0].split()[1] + " Time"
+            data[key] = standardize_time(line[1])
         elif line[0] == "Missing":
             data["MISSING"] = "missing"
         elif "Error" in line[0]:
@@ -177,6 +184,13 @@ def parse_circ_log(log):
             data[line[0]] = standardize_time(line[1])
         elif line[0].endswith("time"):
             data[line[0]] = standardize_time(line[1])
+        elif line[0] == "Total number of gates":
+            data[line[0]] = int(line[1])
+        elif line[0] == "Total depth":
+            data[line[0]] = int(line[1])
+        elif "Timing" in line[0]:
+            key = line[0].split()[1] + " Time"
+            data[key] = standardize_time(line[1])
         else:
             raise RuntimeError("Unknown key: {}".format(line[0]))
 
