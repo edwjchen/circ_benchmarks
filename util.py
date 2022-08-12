@@ -44,20 +44,20 @@ COSTS = HYCC_SOURCE+"/src/circuit-utils/py/costs.json"
 
 # hycc parameters
 HYCC_TEST_CASES = [
-    # ("biomatch", "biomatch/biomatch.c"),
+    ("biomatch", "biomatch/biomatch.c"),
     # ("kmeans", "kmeans/kmeans.c"),
     # ("gauss", "gauss/gauss.c"),
     # ("db_join", "db/db_join.c"),
     # ("db_join2", "db/db_join2.c"),
     # ("db_merge", "db/db_merge.c"),
-    ("mnist", "mnist/mnist.c"),
+    # ("mnist", "mnist/mnist.c"),
     # ("mnist_decomp_main", "mnist/mnist_decomp_main.c"),
     # ("mnist_decomp_convolution", "mnist/mnist_decomp_convolution.c"),
     # ("cryptonets", "cryptonets/cryptonets.c"),
     # TODO: add histogram
 ]
-MINIMIZATION_TIMES = [1]
 
+MINIMIZATION_TIMES = [0]
 HYCC_SELECTION_SCHEMES = [
     "yaoonly",
     "yaohybrid",
@@ -71,24 +71,6 @@ HYCC_COMPILE_ARGUMENTS = [
 ]
 
 # circ parameters
-CIRC_NO_PARTITION_SELECTION_SCHEMES = [
-    "b",
-    "y",
-    "a+b",
-    "a+y",
-    "greedy",
-    "smart_glp",
-]
-
-CIRC_PARTITION_SELECTION_SCHEMES = [
-    "css",
-    "smart_lp",
-]
-
-PARTITIONERS = [0, 1]
-PARTITION_SIZES = [1000, 3000, 5000]
-MUT_LEVELS = [1, 2, 4]
-MUT_STEP_SIZES = [1, 2, 4]
 CIRC_TEST_CASES = [
     "biomatch",
     # "kmeans",
@@ -102,6 +84,27 @@ CIRC_TEST_CASES = [
     # "cryptonets",
     # "histogram",
 ]
+
+CIRC_NO_PARTITION_SELECTION_SCHEMES = [
+    "b",
+    "y",
+    "a+b",
+    "a+y",
+    "greedy",
+    "smart_glp",
+]
+CIRC_PARTITION_SELECTION_SCHEMES = [
+    "css",
+    "smart_lp",
+]
+PARTITIONERS = [
+    0, # KaHIP
+    # 1 # KaHyPar
+]
+PARTITION_SIZES = [1000, 3000, 5000]
+MUT_LEVELS = [1, 2, 4]
+MUT_STEP_SIZES = [1, 2, 4]
+
 
 
 # logging variables

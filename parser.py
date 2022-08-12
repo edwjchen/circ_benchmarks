@@ -129,14 +129,18 @@ def parse_circ_log(log):
             data[line[0]] = line[1]
         elif line[0] == "SELECTION_SCHEME":
             data[line[0]] = line[1]
-        elif line[0] == "NUM_PARTS":
+        elif line[0] == "PARTITION_SIZE":
             data[line[0]] = line[1]
         elif line[0] == "MUTATION_LEVEL":
             data[line[0]] = line[1]
         elif line[0] == "MUTATION_STEP_SIZE":
             data[line[0]] = line[1]
+        elif line[0] == "GRAPH_TYPE":
+            data[line[0]] = "KaHIP" if line[1].strip() == "0" else "KaHyPar"
         elif line[0] == "COST_MODEL":
             data[line[0]] = line[1]
+        elif line[0] == "Number of Partitions":
+            data["NUM_PARTS"] = line[1]
         elif line[0] == "MODE":
             continue
         elif line[0] == "RERUN":
@@ -148,14 +152,14 @@ def parse_circ_log(log):
         elif line[0] == "Optimizations":
             data[line[0]] = standardize_time(line[1])
         elif "Assignment" in line[0]:
-            if "Assignment" not in data:
-                data["Assignment"] = {}
-            assignment = line[0].split()
-            if len(assignment) == 1:
-                data["Assignment"]["total_"] = standardize_time(line[1])
-            elif len(assignment) == 2:
-                fname = assignment[1]
-                data["Assignment"][fname] = standardize_time(line[1])
+            if line[0] == "Assignment cost of partition":
+                # cost per partition ilp
+                if "assignment_cost" not in data:
+                    data["assignment_cost"] = []
+                data["assignment_cost"].append(float(line[1]))
+            elif line[0] == "Assignment time":
+                # total solving time 
+                data["assignment_time"] = standardize_time(line[1])
             else:
                 raise RuntimeError("Assignment mismatch: {}".format(line[0]))
         elif line[0] == "Time / Memory":
