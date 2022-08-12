@@ -53,8 +53,11 @@ def compile_hycc_benchmark(test_path, params):
     args = params["a"]
     try:
         # compile
-        cmd = [CBMC_GC, test_path,
-               "--minimization-time-limit", str(params["mt"])] + args
+        cmd = [CBMC_GC, test_path] + args
+        if params["mt"] == 0:
+            cmd += ["--no-minimization"]
+        else:
+            cmd += ["--minimization-time-limit", str(params["mt"])]
         run_cmd(cmd, "MODE: compile", params)
 
         # bundle modules
@@ -64,6 +67,7 @@ def compile_hycc_benchmark(test_path, params):
 
         write_log(DELIMITER, params)
         cmd = ["python3", SELECTION, ".", COSTS]  # TODO: update cost model
+        print(" ".join(cmd))
         run_cmd(cmd, "MODE: selection", params)
         return True
     except Exception as e:

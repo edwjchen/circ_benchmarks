@@ -44,13 +44,6 @@ def install(features):
         subprocess.run(["git", "submodule", "update",
                        "--init", "--remote", "modules/ABY"])
 
-    if verify_path_empty(KAHIP_SOURCE):
-        subprocess.run(["git", "submodule", "update",
-                       "--init", "--remote", "modules/KaHIP"])
-
-    if verify_path_empty(KAHYPAR_SOURCE):
-        subprocess.call("cd {}modules && rm -rf kahypar && git clone --recursive https://github.com/kahypar/kahypar.git && cd kahypar && mkdir build && cd build && cmake .. -DCMAKE_BUILD_TYPE=RELEASE && make".format(CIRC_BENCHMARK_SOURCE), shell=True)
-
     if "hycc" in features:
         if verify_path_empty(HYCC_SOURCE):
             subprocess.run(["git", "submodule", "update",
@@ -60,6 +53,13 @@ def install(features):
         if verify_path_empty(CIRC_SOURCE):
             subprocess.run(["git", "submodule", "update",
                            "--init", "--remote", "modules/circ"])
+
+        if verify_path_empty(KAHIP_SOURCE):
+            subprocess.run(["git", "submodule", "update",
+                            "--init", "--remote", "modules/KaHIP"])
+
+        if verify_path_empty(KAHYPAR_SOURCE):
+            subprocess.call("cd {}modules && rm -rf kahypar && git clone --recursive https://github.com/kahypar/kahypar.git && cd kahypar && mkdir build && cd build && cmake .. -DCMAKE_BUILD_TYPE=RELEASE && make".format(CIRC_BENCHMARK_SOURCE), shell=True)
 
     # set git branches
     os.chdir(ABY_SOURCE)
