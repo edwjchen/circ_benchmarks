@@ -11,7 +11,7 @@ import time
 # instance_type = "t2.micro"
 # instance_type = "c5.large"
 # COMPILE_INSTANCE_TYPE = "c5.large"
-COMPILE_INSTANCE_TYPE = "r6a.16xlarge"
+COMPILE_INSTANCE_TYPE = "m5.12xlarge"
 
 LAN = "LAN"
 WAN = "WAN"
@@ -19,12 +19,12 @@ EAST = "east"
 WEST = "west"
 
 ec2_east = boto3.resource("ec2",
-                          aws_access_key_id=os.environ["AWS_ACCESS_KEY_ID"],
-                          aws_secret_access_key=os.environ["AWS_SECRET_ACCESS_KEY"],
+                          aws_access_key_id=os.environ.get("AWS_ACCESS_KEY_ID", ""),
+                          aws_secret_access_key=os.environ.get("AWS_SECRET_ACCESS_KEY", ""),
                           region_name="us-east-2")
 ec2_west = boto3.resource("ec2",
-                          aws_access_key_id=os.environ["AWS_ACCESS_KEY_ID"],
-                          aws_secret_access_key=os.environ["AWS_SECRET_ACCESS_KEY"],
+                          aws_access_key_id=os.environ.get("AWS_ACCESS_KEY_ID", ""),
+                          aws_secret_access_key=os.environ.get("AWS_SECRET_ACCESS_KEY", ""),
                           region_name="us-west-2")
 
 
@@ -683,12 +683,12 @@ def setup_hycc_worker(ip, key_file):
     _, stdout, _ = client.exec_command("cd ~/circ_benchmarks")
     if stdout.channel.recv_exit_status():
         _, stdout, _ = client.exec_command(
-            "cd ~ && git clone https://github.com/edwjchen/circ_benchmarks.git && cd ~/circ_benchmarks && ./scripts/dependencies.sh && pip3 install pandas && python3 driver.py -f hycc && python3 driver.py -b")
+            "cd ~ && git clone https://github.com/edwjchen/circ_benchmarks.git && cd ~/circ_benchmarks && ./scripts/dependencies.sh && pip3 install requirements.txt && python3 driver.py -f hycc && python3 driver.py -b")
         if stdout.channel.recv_exit_status():
             print(ip, " failed setup")
     else:
         _, stdout, _ = client.exec_command(
-            "cd ~/circ_benchmarks && ./scripts/dependencies.sh && pip3 install pandas && python3 driver.py -f hycc && python3 driver.py -b")
+            "cd ~/circ_benchmarks && ./scripts/dependencies.sh && pip3 install requirements.txt && python3 driver.py -f hycc && python3 driver.py -b")
         if stdout.channel.recv_exit_status():
             print(ip, " failed setup 2")
 
@@ -756,8 +756,9 @@ def compile_hycc_aws(all_param_strs):
     [instance.start() for instance in stopped_east_instances]
     [instance.wait_until_running() for instance in stopped_east_instances]
     [instance.load() for instance in stopped_east_instances]
-    
+
     # compile benchmarks on all instances 
+    print("Compiling hycc test cases")
     all_instances = created_instances + stopped_east_instances
     compile_instance_ips = [instance.public_dns_name for instance in all_instances]
     compile_keys = ["aws-east.pem" for _ in all_instances]
