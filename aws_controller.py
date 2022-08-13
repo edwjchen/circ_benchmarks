@@ -8,8 +8,9 @@ import sys
 import time
 
 # instance_type = "t2.micro"
-instance_type = "c5.large"
-# instance_type = "r6a.16xlarge"
+# instance_type = "c5.large"
+instance_type = "r6a.16xlarge"
+
 
 LAN = "LAN"
 WAN = "WAN"
