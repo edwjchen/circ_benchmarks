@@ -7,6 +7,7 @@ valid_features = {"circ", "hycc"}
 instance_metadata_path = ".instance_metadata.txt"
 
 TIME_CMD = "/usr/bin/time --format='%e seconds %M kB'"
+TIMEOUT = 60 * 60 * 24 # one day 
 
 # installation variables
 # TODO: update CIRC_BENCHMARK_SOURCE path
@@ -57,7 +58,7 @@ HYCC_TEST_CASES = [
     # TODO: add histogram
 ]
 
-MINIMIZATION_TIMES = [0]
+MINIMIZATION_TIMES = [0, 600]
 HYCC_SELECTION_SCHEMES = [
     "yaoonly",
     "yaohybrid",
@@ -194,7 +195,7 @@ def run_cmd(cmd, name, params):
     cmd = wrap_time(" ".join(cmd))
     proc = subprocess.Popen(
         cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-    stdout, stderr = proc.communicate()
+    stdout, stderr = proc.communicate(timeout=TIMEOUT)
 
     if proc.returncode:
         write_log("LOG: Error: Process returned with status code {}".format(

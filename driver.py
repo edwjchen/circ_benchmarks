@@ -6,8 +6,6 @@ from benchmark import *
 from parser import *
 
 # ad hoc testing
-
-
 def test():
     test_path = HYCC_SOURCE + \
         "/examples/benchmarks/mnist/mnist.c"
@@ -97,10 +95,10 @@ def build(features):
     # build aby
     subprocess.run(["./scripts/build_aby.zsh"], check=True)
 
-    # build kahip
-    subprocess.run(["./scripts/build_kahip.zsh"], check=True)
-
     if "circ" in features:
+        # build kahip
+        subprocess.run(["./scripts/build_kahip.zsh"], check=True)
+
         # build circ
         os.environ['ABY_SOURCE'] = "../ABY"
         os.environ['CIRC_SOURCE'] = CIRC_SOURCE
@@ -112,36 +110,60 @@ def build(features):
         os.chdir(CIRC_BENCHMARK_SOURCE)
 
 
-def compile(features):
-    build(features)
+def compile_aws(params):
     make_test_results()
-    if "hycc" in features:
+    if "hycc" == params["system"]:
+        compile_hycc_local(params)
+
+
         print("Compiling HyCC Benchmarks")
-        start = time.time()
         make_dir(HYCC_CIRCUIT_PATH)
 
         # run hycc benchmarks
-        for (name, path) in HYCC_TEST_CASES:
-            make_dir("test_results/hycc_{}".format(name))
-            compile_hycc(name, path)
-        end = time.time()
-        line = "LOG: Total hycc compile time: {}".format(end-start)
-        subprocess.call("echo \"{}\" >> {}/test_results/hycc_total_compile_time.txt".format(
-            line, CIRC_BENCHMARK_SOURCE), shell=True)
+        make_dir("test_results/hycc_{}".format(params["name"]))
+        compile_hycc(params["name"], params["test_path"])
 
     if "circ" in features:
         print("Compiling CirC Benchmarks")
-        start = time.time()
         make_dir(CIRC_CIRCUIT_PATH)
 
         # run circ benchmarks
-        for name in CIRC_TEST_CASES:
-            make_dir("test_results/circ_{}".format(name))
-            compile_circ(name)
-        end = time.time()
-        line = "LOG: Total circ compile time: {}".format(end-start)
-        subprocess.call("echo \"{}\" >> {}/test_results/circ_total_compile_time.txt".format(
-            line, CIRC_BENCHMARK_SOURCE), shell=True)
+        make_dir("test_results/circ_{}".format(name))
+        compile_circ(name)
+
+
+def compile(features):
+    make_test_results()
+    if "hycc" in features:
+        compile_hycc()
+    if "circ" in features:
+        pass
+
+    # if "hycc" in features:
+    #     print("Compiling HyCC Benchmarks")
+    #     start = time.time()
+    #     make_dir(HYCC_CIRCUIT_PATH)
+
+    #     # compile hycc benchmarks
+    #     compile_hycc()
+    #     end = time.time()
+    #     line = "LOG: Total hycc compile time: {}".format(end-start)
+    #     subprocess.call("echo \"{}\" >> {}/test_results/hycc_total_compile_time.txt".format(
+    #         line, CIRC_BENCHMARK_SOURCE), shell=True)
+
+    # if "circ" in features:
+    #     print("Compiling CirC Benchmarks")
+    #     start = time.time()
+    #     make_dir(CIRC_CIRCUIT_PATH)
+
+    #     # compile circ benchmarks
+    #     for name in CIRC_TEST_CASES:
+    #         make_dir("test_results/circ_{}".format(name))
+    #         compile_circ(name)
+    #     end = time.time()
+    #     line = "LOG: Total circ compile time: {}".format(end-start)
+    #     subprocess.call("echo \"{}\" >> {}/test_results/circ_total_compile_time.txt".format(
+    #         line, CIRC_BENCHMARK_SOURCE), shell=True)
 
 
 def benchmark(features, instance_metadata):
@@ -223,6 +245,10 @@ if __name__ == "__main__":
     parser.add_argument("-t", "--test", action="store_true", help="adhoc test")
     parser.add_argument("--compile", action="store_true",
                         help="compile benchmarks")
+    parser.add_argument("--compile_aws", nargs=1,
+                        help="compile benchmarks on aws")
+    parser.add_argument("--run_aws", nargs=1,
+                        help="run benchmarks on aws")
     parser.add_argument("--benchmark", action="store_true",
                         help="run benchmark")
     parser.add_argument("--parse", action="store_true",
@@ -243,7 +269,7 @@ if __name__ == "__main__":
 
     def verify_single_action(args: argparse.Namespace):
         actions = [k for k, v in vars(args).items() if (
-            type(v) is bool or k in ["address", "role", "features"]) and bool(v)]
+            type(v) is bool or k in ["address", "role", "features", "compile_aws"]) and bool(v)]
         if len(actions) != 1:
             parser.error(
                 "parser error: only one action can be specified. got: " + " ".join(actions))
@@ -293,3 +319,11 @@ if __name__ == "__main__":
 
     if args.delete:
         delete()
+
+    if args.compile_aws:
+        params = json.loads(args.compile_aws)
+        compile_aws(params)
+
+    if args.run_aws:
+        params = json.loads(args.compile_aws)
+        run_aws(params)

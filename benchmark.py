@@ -1,4 +1,5 @@
 from util import *
+from aws_controller import compile_hycc_aws
 
 ################################################################################
 # Benchmark hycc
@@ -53,9 +54,14 @@ def run_hycc_benchmark(spec_file, params, instance_metadata):
         subprocess.call("mv {} {}".format(log_path, failed_path), shell=True)
 
 
-def compile_hycc_benchmark(test_path, params):
+def compile_hycc_local(params):
+    print("Compiling HyCC Benchmarks")
+    make_dir(HYCC_CIRCUIT_PATH)
+    make_dir("test_results/hycc_{}".format(params["name"]))
+
     print("compile: ", params["version"])
     args = params["a"]
+    test_path = params["test_path"]
     try:
         # compile
         cmd = [CBMC_GC, test_path] + args
@@ -87,51 +93,79 @@ def compile_hycc_benchmark(test_path, params):
         return False
 
 
-def compile_hycc(name, path):
-    test_path = HYCC_SOURCE + \
-        "/examples/benchmarks/{}".format(path)
+def compile_hycc():
+    all_param_strs = []
+    for (name, path) in HYCC_TEST_CASES:
+        for cm in COST_MODELS:
+            for mt in MINIMIZATION_TIMES:
+                for a in HYCC_COMPILE_ARGUMENTS:
+                    make_dir("test_results/hycc_{}".format(name))
+                    params = {}
+                    params["name"] = name
+                    test_path = HYCC_SOURCE + "/examples/benchmarks/{}".format(path)
+                    params["test_path"] = test_path
+                    params["system"] = "hycc"
+                    params["mt"] = mt
+                    params["a"] = a
+                    params["cm"] = cm
+                    version = "{}_{}_mt-{}_args-{}_cm-{}".format("hycc", name, mt, "".join(a), cm)
+                    compile_version = "compile_{}".format(version)
+                    params["version"] = compile_version
+                    compile_log_path = format("{}test_results/{}_{}/log_{}.txt".format(CIRC_BENCHMARK_SOURCE, params["system"], name, compile_version))
+                    if not os.path.exists(compile_log_path):
+                        param_str = json.dumps(params)
+                        all_param_strs.append(param_str)
+    compile_hycc_aws(all_param_strs)
 
-    versions = []
-    for cm in COST_MODELS:
-        for mt in MINIMIZATION_TIMES:
-            for a in HYCC_COMPILE_ARGUMENTS:
-                params = {}
-                params["mt"] = mt
-                params["a"] = a
-                params["cm"] = cm
-                version = "{}_{}_mt-{}_args-{}_cm-{}".format(
-                    "hycc", name, mt, "".join(a), cm)
-                if version not in versions:
-                    versions.append((version, params))
 
-    # make circuit directories
-    for (version, params) in versions:
-        params["system"] = "hycc"
-        params["name"] = name
 
-        circuit_dir = "{}{}".format(HYCC_CIRCUIT_PATH, version)
-        make_dir(circuit_dir)
 
-        compile_version = "compile_{}".format(version)
-        compile_log_path = format(
-            "{}test_results/{}_{}/log_{}.txt".format(CIRC_BENCHMARK_SOURCE, params["system"], name, compile_version))
 
-        if not os.path.exists(compile_log_path):
-            # compile HyCC benchmark
-            os.chdir(circuit_dir)
-            params["version"] = compile_version
+# def compile_hycc(name, path):
+#     test_path = HYCC_SOURCE + \
+#         "/examples/benchmarks/{}".format(path)
 
-            write_log(DELIMITER, params)
-            write_log("LOG: Benchmarking HyCC", params)
-            write_log(DELIMITER, params)
+#     versions = []
+#     for cm in COST_MODELS:
+#         for mt in MINIMIZATION_TIMES:
+#             for a in HYCC_COMPILE_ARGUMENTS:
+#                 params = {}
+#                 params["mt"] = mt
+#                 params["a"] = a
+#                 params["cm"] = cm
+#                 version = "{}_{}_mt-{}_args-{}_cm-{}".format(
+#                     "hycc", name, mt, "".join(a), cm)
+#                 if version not in versions:
+#                     versions.append((version, params))
 
-            write_log("LOG: TEST: {}".format(name), params)
-            write_log("LOG: MINIMIZATION_TIME: {}".format(
-                params["mt"]), params)
-            write_log("LOG: COST_MODEL: {}".format(params["cm"]), params)
-            write_log("LOG: ARGUMENTS: {}".format(params["a"]), params)
-            compile_hycc_benchmark(test_path, params)
-    os.chdir(CIRC_BENCHMARK_SOURCE)
+#     # make circuit directories
+#     for (version, params) in versions:
+#         params["system"] = "hycc"
+#         params["name"] = name
+
+#         circuit_dir = "{}{}".format(HYCC_CIRCUIT_PATH, version)
+#         make_dir(circuit_dir)
+
+#         compile_version = "compile_{}".format(version)
+#         compile_log_path = format(
+#             "{}test_results/{}_{}/log_{}.txt".format(CIRC_BENCHMARK_SOURCE, params["system"], name, compile_version))
+
+#         if not os.path.exists(compile_log_path):
+#             # compile HyCC benchmark
+#             os.chdir(circuit_dir)
+#             params["version"] = compile_version
+
+#             write_log(DELIMITER, params)
+#             write_log("LOG: Benchmarking HyCC", params)
+#             write_log(DELIMITER, params)
+
+#             write_log("LOG: TEST: {}".format(name), params)
+#             write_log("LOG: MINIMIZATION_TIME: {}".format(
+#                 params["mt"]), params)
+#             write_log("LOG: COST_MODEL: {}".format(params["cm"]), params)
+#             write_log("LOG: ARGUMENTS: {}".format(params["a"]), params)
+#             compile_hycc_benchmark(test_path, params)
+#     os.chdir(CIRC_BENCHMARK_SOURCE)
 
 
 def benchmark_hycc(name, path, instance_metadata):

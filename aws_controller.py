@@ -1,3 +1,4 @@
+from concurrent.futures import ThreadPoolExecutor
 import boto3
 import json
 import os
@@ -8,11 +9,14 @@ import sys
 import time
 
 # instance_type = "t2.micro"
-instance_type = "c5.large"
-# instance_type = "r6a.16xlarge"
+# instance_type = "c5.large"
+# COMPILE_INSTANCE_TYPE = "c5.large"
+COMPILE_INSTANCE_TYPE = "r6a.16xlarge"
 
 LAN = "LAN"
 WAN = "WAN"
+EAST = "east"
+WEST = "west"
 
 ec2_east = boto3.resource("ec2",
                           aws_access_key_id=os.environ["AWS_ACCESS_KEY_ID"],
@@ -60,6 +64,40 @@ def create_instances():
                                   )
     print("Created {} west instances".format(num_west_instance_to_create))
 
+
+def create_instances(location, num, instance_type):
+    instances = []
+    if location == EAST:
+        while len(instances) < num:
+            instances += ec2_east.create_instances(ImageId="ami-05b63781e32145c7f",
+                                        InstanceType=instance_type,
+                                        KeyName="aws-east",
+                                        MinCount=1,
+                                        MaxCount=num - len(instances),
+                                        Monitoring={
+                                            "Enabled": False},
+                                        SecurityGroups=[
+                                            "circ4mpc"]
+                                        )
+        
+        print("Created {} east instances".format(num))
+    else:
+        # create one AWS West Instance if they haven't been made
+        while len(instances) < num:
+            instances += ec2_east.create_instances(ImageId="ami-05b63781e32145c7f",
+                                        InstanceType=instance_type,
+                                        KeyName="aws-east",
+                                        MinCount=1,
+                                        MaxCount=num - len(instances),
+                                        Monitoring={
+                                            "Enabled": False},
+                                        SecurityGroups=[
+                                            "circ4mpc"]
+                                        )
+        print("Created {} west instances".format(num))
+    [instance.wait_until_running() for instance in instances]
+    [instance.load() for instance in instances]
+    return instances
 
 def start_instances():
     stopped_instances = list(ec2_east.instances.filter(
@@ -193,29 +231,6 @@ def setup_instances():
     print("Setting up:")
     pool = multiprocessing.Pool(len(running_instance_ips))
     pool.starmap(setup_worker, zip(running_instance_ips, keys))
-
-
-def setup_worker(ip, key_file):
-    print("ip:", ip, "\nkey:", key_file)
-    key = paramiko.Ed25519Key.from_private_key_file(key_file)
-    client = paramiko.SSHClient()
-    client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
-    client.connect(hostname=ip, username="ubuntu", pkey=key)
-
-    _, stdout, _ = client.exec_command("cd ~/circ_benchmarks")
-    if stdout.channel.recv_exit_status():
-        _, stdout, _ = client.exec_command(
-            "cd ~ && git clone https://github.com/edwjchen/circ_benchmarks.git && cd ~/circ_benchmarks && ./scripts/dependencies.sh && pip3 install pandas && python3 driver.py -f hycc circ && python3 driver.py -b")
-        if stdout.channel.recv_exit_status():
-            print(ip, " failed setup")
-    else:
-        _, stdout, _ = client.exec_command(
-            "cd ~/circ_benchmarks && ./scripts/dependencies.sh && pip3 install pandas && python3 driver.py -f hycc circ && python3 driver.py -b")
-        if stdout.channel.recv_exit_status():
-            print(ip, " failed setup 2")
-
-    print("Set up:", ip)
-    client.close()
 
 
 def refresh_instances():
@@ -514,65 +529,241 @@ def wan():
     time.sleep(15)
 
 
-if __name__ == "__main__":
-    setting = WAN  # default test setting
-    last_cmd = ""
-    while True:
-        cmds = input("> ").split(" ")
-        cmd_type = cmds[0]
 
-        # press enter to redo
-        if cmd_type == "" and last_cmd != "":
-            cmd_type = last_cmd
-        else:
-            last_cmd = cmd_type
 
-        if cmd_type == "help":
-            print("Not again... oh well here you go\n")
-            print("EC2: \tcreate start stop terminate stats")
-            print("Setup: \tsetup refresh")
-            print("Build: \tcompile")
-            print("Run: \trun")
-            print("Res: \tres results")
-            print("AWS: \tstats hosts")
-            print("Set: \tLAN WAN")
-            print("Quit: \tquit q")
-        elif cmd_type == "create":
-            create_instances()
-        elif cmd_type == "start":
-            start_instances()
-        elif cmd_type == "setup":
-            print("=== will stop instances after setup ===")
-            setup_instances()
-            stop_instances()
-        elif cmd_type == "compile":
-            compile_benchmarks()
-        elif cmd_type == "run":
-            run_benchmarks(setting)
-        elif cmd_type == "stop":
-            stop_instances()
-        elif cmd_type == "terminate":
-            terminate_instances()
-        elif cmd_type == "stats":
-            stats(setting)
-        elif cmd_type == "hosts":
-            hosts()
-        elif cmd_type == "refresh":
-            refresh_instances()
-        elif cmd_type in ["res", "results"]:
-            results()
-        elif cmd_type in ["quit", "q", "exit"]:
-            sys.exit(0)
-        elif cmd_type == LAN:
-            setting = cmd_type
-            print("Operating in: {}".format(setting))
-            lan()
-        elif cmd_type == WAN:
-            setting = cmd_type
-            print("Operating in: {}".format(setting))
-            wan()
-        else:
-            print("unlucky, not a cmd")
 
-        if cmd_type != "stats":
-            stats(setting)
+
+# if __name__ == "__main__":
+#     setting = WAN  # default test setting
+#     last_cmd = ""
+#     while True:
+#         cmds = input("> ").split(" ")
+#         cmd_type = cmds[0]
+
+#         # press enter to redo
+#         if cmd_type == "" and last_cmd != "":
+#             cmd_type = last_cmd
+#         else:
+#             last_cmd = cmd_type
+
+#         if cmd_type == "help":
+#             print("Not again... oh well here you go\n")
+#             print("EC2: \tcreate start stop terminate stats")
+#             print("Setup: \tsetup refresh")
+#             print("Build: \tcompile")
+#             print("Run: \trun")
+#             print("Res: \tres results")
+#             print("AWS: \tstats hosts")
+#             print("Set: \tLAN WAN")
+#             print("Quit: \tquit q")
+#         elif cmd_type == "create":
+#             create_instances()
+#         elif cmd_type == "start":
+#             start_instances()
+#         elif cmd_type == "setup":
+#             print("=== will stop instances after setup ===")
+#             setup_instances()
+#             stop_instances()
+#         elif cmd_type == "compile":
+#             compile_benchmarks()
+#         elif cmd_type == "run":
+#             run_benchmarks(setting)
+#         elif cmd_type == "stop":
+#             stop_instances()
+#         elif cmd_type == "terminate":
+#             terminate_instances()
+#         elif cmd_type == "stats":
+#             stats(setting)
+#         elif cmd_type == "hosts":
+#             hosts()
+#         elif cmd_type == "refresh":
+#             refresh_instances()
+#         elif cmd_type in ["res", "results"]:
+#             results()
+#         elif cmd_type in ["quit", "q", "exit"]:
+#             sys.exit(0)
+#         elif cmd_type == LAN:
+#             setting = cmd_type
+#             print("Operating in: {}".format(setting))
+#             lan()
+#         elif cmd_type == WAN:
+#             setting = cmd_type
+#             print("Operating in: {}".format(setting))
+#             wan()
+#         else:
+#             print("unlucky, not a cmd")
+
+#         if cmd_type != "stats":
+#             stats(setting)
+
+def get_stopped_instances(location):
+    if location == EAST:
+        instances = list(ec2_east.instances.filter(
+            Filters=[{"Name": "instance-state-name", "Values": ["stopped"]}]))
+        return instances
+    else:
+        instances = list(ec2_west.instances.filter(
+            Filters=[{"Name": "instance-state-name", "Values": ["stopped"]}]))
+        return instances
+
+
+def setup_instances():
+    running_instance_ips = []
+    keys = []
+    running_east_instances = list(ec2_east.instances.filter(
+        Filters=[{"Name": "instance-state-name", "Values": ["running"]}]))
+    running_east_instance_ips = [
+        instance.public_dns_name for instance in running_east_instances]
+    running_instance_ips += running_east_instance_ips
+    keys += ["aws-east.pem" for _ in running_east_instance_ips]
+
+    running_west_instances = list(ec2_west.instances.filter(
+        Filters=[{"Name": "instance-state-name", "Values": ["running"]}]))
+    running_west_instance_ips = [
+        instance.public_dns_name for instance in running_west_instances]
+    running_instance_ips += running_west_instance_ips
+    keys += ["aws-west.pem" for _ in running_west_instance_ips]
+
+    print("Setting up:")
+    pool = multiprocessing.Pool(len(running_instance_ips))
+    pool.starmap(setup_worker, zip(running_instance_ips, keys))
+
+
+def setup_worker(ip, key_file):
+    print("Setting up:")
+    print("ip:", ip, "\nkey:", key_file)
+    key = paramiko.Ed25519Key.from_private_key_file(key_file)
+    client = paramiko.SSHClient()
+    client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+    
+    retry = 0
+    while retry < 5:
+        print("Try connecting: {}".format(retry))
+        try:
+            client.connect(hostname=ip, username="ubuntu", pkey=key)
+            print("connected to:", ip)
+            break
+        except:
+            time.sleep(5)
+            retry += 1
+
+    _, stdout, _ = client.exec_command("cd ~/circ_benchmarks")
+    if stdout.channel.recv_exit_status():
+        _, stdout, _ = client.exec_command(
+            "cd ~ && git clone https://github.com/edwjchen/circ_benchmarks.git && cd ~/circ_benchmarks && curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y && source \"$HOME/.cargo/env\" && ./scripts/dependencies.sh && pip3 install pandas && python3 driver.py -f hycc circ && python3 driver.py -b")
+        if stdout.channel.recv_exit_status():
+            print(ip, " failed setup")
+    else:
+        _, stdout, _ = client.exec_command(
+            "cd ~/circ_benchmarks && curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y && source \"$HOME/.cargo/env\" && ./scripts/dependencies.sh && pip3 install pandas && python3 driver.py -f hycc circ && python3 driver.py -b")
+        if stdout.channel.recv_exit_status():
+            print(ip, " failed setup 2")
+
+    print("Set up:", ip)
+    client.close()
+
+def setup_hycc_worker(ip, key_file):
+    print("Setting up:")
+    print("ip:", ip, "\nkey:", key_file)
+    key = paramiko.Ed25519Key.from_private_key_file(key_file)
+    client = paramiko.SSHClient()
+    client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+    
+    retry = 0
+    while retry < 5:
+        print("Try connecting: {}".format(retry))
+        try:
+            client.connect(hostname=ip, username="ubuntu", pkey=key)
+            print("connected to:", ip)
+            break
+        except:
+            time.sleep(5)
+            retry += 1
+
+    _, stdout, _ = client.exec_command("cd ~/circ_benchmarks")
+    if stdout.channel.recv_exit_status():
+        _, stdout, _ = client.exec_command(
+            "cd ~ && git clone https://github.com/edwjchen/circ_benchmarks.git && cd ~/circ_benchmarks && ./scripts/dependencies.sh && pip3 install pandas && python3 driver.py -f hycc && python3 driver.py -b")
+        if stdout.channel.recv_exit_status():
+            print(ip, " failed setup")
+    else:
+        _, stdout, _ = client.exec_command(
+            "cd ~/circ_benchmarks && ./scripts/dependencies.sh && pip3 install pandas && python3 driver.py -f hycc && python3 driver.py -b")
+        if stdout.channel.recv_exit_status():
+            print(ip, " failed setup 2")
+
+    print("Set up:", ip)
+    client.close()
+
+def compile_hycc_worker(instance, ip, key_file, param_str):
+    print("Compile hycc:\nip: {}\nparam: {}".format(ip, param_str))
+    key = paramiko.Ed25519Key.from_private_key_file(key_file)
+    client = paramiko.SSHClient()
+    client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+
+    retry = 0
+    while retry < 5:
+        print("Try connecting: {}".format(retry))
+        try:
+            client.connect(hostname=ip, username="ubuntu", pkey=key)
+            print("connected to:", ip)
+            break
+        except:
+            time.sleep(5)
+            retry += 1
+
+    # compile
+    cmd = "python3 driver.py --compile_aws {}".format(param_str)
+    print("Running:", cmd)
+    _, stdout, _ = client.exec_command(cmd)
+    if stdout.channel.recv_exit_status():
+        print(ip, " failed to compile:", param_str)
+
+    # copy hycc_circ_dir
+    subprocess.call(
+        "rsync -avz -e \"ssh -o StrictHostKeyChecking=no -i aws-east.pem\" --progress ./hycc_circuit_dir/ ubuntu@{}:~/circ_benchmarks/hycc_circuit_dir".format(ip), shell=True)
+    # copy test_results 
+    subprocess.call(
+        "rsync -avz -e \"ssh -o StrictHostKeyChecking=no -i aws-east.pem\" --progress ./test_results/ ubuntu@{}:~/circ_benchmarks/test_results".format(ip), shell=True)
+
+    client.close()
+
+    # stop the instance
+    instance.stop()
+
+
+def compile_hycc_aws(all_param_strs):
+    num_instances = len(all_param_strs)
+    stopped_east_instances = get_stopped_instances(EAST)
+    num_to_create = num_instances - len(stopped_east_instances)
+    created_instances = []
+    if num_to_create > 0:
+        print("Creating instances")
+        created_instances = create_instances(EAST, num_to_create, COMPILE_INSTANCE_TYPE)
+
+        # setup created instances
+        setup_instance_ips = [instance.public_dns_name for instance in created_instances]
+        setup_keys = ["aws-east.pem" for _ in created_instances]
+
+        for ip in setup_instance_ips:
+            print("ssh -i \"aws-east.pem\" ubuntu@{}".format(ip))
+
+        pool = multiprocessing.Pool(len(setup_instance_ips))
+        pool.starmap(setup_hycc_worker, zip(setup_instance_ips, setup_keys))
+
+    # start stopped_east_instances 
+    print("Starting stopped instances")
+    [instance.start() for instance in stopped_east_instances]
+    [instance.wait_until_running() for instance in stopped_east_instances]
+    [instance.load() for instance in stopped_east_instances]
+    
+    # compile benchmarks on all instances 
+    all_instances = created_instances + stopped_east_instances
+    compile_instance_ips = [instance.public_dns_name for instance in all_instances]
+    compile_keys = ["aws-east.pem" for _ in all_instances]
+
+    pool = multiprocessing.Pool(len(compile_instance_ips))
+    pool.starmap_async(compile_hycc_worker, zip(all_instances, compile_instance_ips, compile_keys, all_param_strs))
+
+    
+    

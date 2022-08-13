@@ -1,2 +1,3 @@
 ,TEST,MINIMIZATION_TIME,COST_MODEL,ARGUMENTS,MODE,Compile time,Total_time,Total_memory
 0,biomatch,0,hycc,['--all-variants'],"['compile', 'bundle', 'selection']",1.5981,"[1.6, 0.01, 1.7]","[0.072792, 0.01014, 0.0936]"
+1,kmeans,0,hycc,['--all-variants'],"['compile', 'bundle', 'selection']",3.3215,"[3.33, 0.01, 2.55]","[0.148116, 0.010204, 0.130376]"
