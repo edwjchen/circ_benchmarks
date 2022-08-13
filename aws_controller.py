@@ -1,3 +1,4 @@
+from multiprocessing.resource_sharer import stop
 import boto3
 import json
 import os
@@ -9,8 +10,7 @@ import time
 
 # instance_type = "t2.micro"
 # instance_type = "c5.large"
-instance_type = "r6a.16xlarge"
-
+instance_type = "c6a.16xlarge"
 
 LAN = "LAN"
 WAN = "WAN"
@@ -27,11 +27,12 @@ ec2_west = boto3.resource("ec2",
 
 def create_instances():
     # create two AWS East Instances if they haven't been made
+    all_instances = []
     instances = list(ec2_east.instances.filter(
         Filters=[{"Name": "instance-state-name", "Values": ["stopping", "pending", "running", "stopped"]}]))
     num_instances_to_create = max(0, 2 - len(instances))
     if num_instances_to_create > 0:
-        ec2_east.create_instances(ImageId="ami-05b63781e32145c7f",
+        all_instances += ec2_east.create_instances(ImageId="ami-05b63781e32145c7f",
                                   InstanceType=instance_type,
                                   KeyName="aws-east",
                                   MinCount=1,
@@ -42,14 +43,14 @@ def create_instances():
                                       "circ4mpc"]
                                   )
 
-    print("Created {} instances".format(num_instances_to_create))
+    print("Created {} east instances".format(num_instances_to_create))
 
     # create one AWS West Instance if they haven't been made
     west_instances = list(ec2_west.instances.filter(
         Filters=[{"Name": "instance-state-name", "Values": ["stopping", "pending", "running", "stopped"]}]))
     num_west_instance_to_create = max(0, 1 - len(west_instances))
     if num_west_instance_to_create > 0:
-        ec2_west.create_instances(ImageId="ami-0ddf424f81ddb0720",
+        all_instances += ec2_west.create_instances(ImageId="ami-0ddf424f81ddb0720",
                                   InstanceType=instance_type,
                                   KeyName="aws-west",
                                   MinCount=1,
@@ -60,6 +61,14 @@ def create_instances():
                                       "circ4mpc"]
                                   )
     print("Created {} west instances".format(num_west_instance_to_create))
+
+    # stop instances created 
+    for instance in all_instances:
+        instance.wait_until_running()
+        instance.load()
+        print("Stopping: {}", instance.public_dns_name)
+        instance.stop()
+
 
 
 def start_instances():
@@ -175,25 +184,24 @@ def hosts():
 
 
 def setup_instances():
-    running_instance_ips = []
+    stopped_instances = []
     keys = []
-    running_east_instances = list(ec2_east.instances.filter(
-        Filters=[{"Name": "instance-state-name", "Values": ["running"]}]))
-    running_east_instance_ips = [
-        instance.public_dns_name for instance in running_east_instances]
-    running_instance_ips += running_east_instance_ips
-    keys += ["aws-east.pem" for _ in running_east_instance_ips]
 
-    running_west_instances = list(ec2_west.instances.filter(
-        Filters=[{"Name": "instance-state-name", "Values": ["running"]}]))
-    running_west_instance_ips = [
-        instance.public_dns_name for instance in running_west_instances]
-    running_instance_ips += running_west_instance_ips
-    keys += ["aws-west.pem" for _ in running_west_instance_ips]
+    stopped_east_instances = list(ec2_east.instances.filter(Filters=[{"Name": "instance-state-name", "Values": ["stopped"]}]))
+    stopped_instances += stopped_east_instances
+    keys += ["aws-east.pem" for _ in stopped_east_instances]
 
-    print("Setting up:")
-    pool = multiprocessing.Pool(len(running_instance_ips))
-    pool.starmap(setup_worker, zip(running_instance_ips, keys))
+    stopped_west_instances = list(ec2_west.instances.filter(Filters=[{"Name": "instance-state-name", "Values": ["stopped"]}]))
+    stopped_instances += stopped_west_instances
+    keys += ["aws-west.pem" for _ in stopped_east_instances]
+
+    for instance, key in zip(stopped_instances, keys):
+        print("Setting up:")
+        instance.start()
+        instance.wait_until_running()
+        instance.load()
+        setup_worker(instance.public_dns_name, key)
+        instance.stop()
 
 
 def setup_worker(ip, key_file):
@@ -206,12 +214,12 @@ def setup_worker(ip, key_file):
     _, stdout, _ = client.exec_command("cd ~/circ_benchmarks")
     if stdout.channel.recv_exit_status():
         _, stdout, _ = client.exec_command(
-            "cd ~ && git clone https://github.com/edwjchen/circ_benchmarks.git && cd ~/circ_benchmarks && git checkout aws && ./scripts/dependencies.sh && pip3 install pandas && python3 driver.py -f hycc circ && python3 driver.py -b")
+            "curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y && source $HOME/.cargo/env && cd ~ && git clone https://github.com/edwjchen/circ_benchmarks.git && cd ~/circ_benchmarks && git checkout aws && ./scripts/dependencies.sh && pip3 install pandas && python3 driver.py -f hycc circ && python3 driver.py -b")
         if stdout.channel.recv_exit_status():
             print(ip, " failed setup")
     else:
         _, stdout, _ = client.exec_command(
-            "cd ~/circ_benchmarks && git checkout aws && ./scripts/dependencies.sh && pip3 install pandas && python3 driver.py -f hycc circ && python3 driver.py -b")
+            "curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y && source $HOME/.cargo/env && cd ~/circ_benchmarks && git pull && git checkout aws && ./scripts/dependencies.sh && pip3 install pandas && python3 driver.py -f hycc circ && python3 driver.py -b")
         if stdout.channel.recv_exit_status():
             print(ip, " failed setup 2")
 
@@ -281,7 +289,7 @@ def compile_benchmarks():
     client.connect(hostname=ip, username="ubuntu", pkey=key)
 
     _, stdout, _ = client.exec_command(
-        "cd ~/circ_benchmarks && python3 driver.py -f hycc circ && python3 driver.py --compile")
+        "cd ~/circ_benchmarks && git pull && python3 driver.py -f hycc circ && python3 driver.py --compile")
     if stdout.channel.recv_exit_status():
         print(ip, " failed compiles")
 
@@ -396,7 +404,7 @@ def benchmark_hycc_worker(ip, connect_ip, role, key_file):
     client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
     client.connect(hostname=ip, username="ubuntu", pkey=key)
 
-    cmd = "cd ~/circ_benchmarks/ && python3 driver.py --address {} && python3 driver.py --role {} && python3 driver.py -f hycc && python3 driver.py --benchmark".format(
+    cmd = "cd ~/circ_benchmarks/ && git pull && python3 driver.py --address {} && python3 driver.py --role {} && python3 driver.py -f hycc && python3 driver.py --benchmark".format(
         connect_ip, role)
     _, stdout, _ = client.exec_command(cmd)
 
@@ -414,7 +422,7 @@ def benchmark_circ_worker(ip, connect_ip, role, key_file):
     client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
     client.connect(hostname=ip, username="ubuntu", pkey=key)
 
-    cmd = "cd ~/circ_benchmarks/ && python3 driver.py --address {} && python3 driver.py --role {} && python3 driver.py -f circ && python3 driver.py --benchmark".format(
+    cmd = "cd ~/circ_benchmarks/ && git pull && python3 driver.py --address {} && python3 driver.py --role {} && python3 driver.py -f circ && python3 driver.py --benchmark".format(
         connect_ip, role)
     _, stdout, _ = client.exec_command(cmd)
 
@@ -545,7 +553,6 @@ if __name__ == "__main__":
         elif cmd_type == "setup":
             print("=== will stop instances after setup ===")
             setup_instances()
-            stop_instances()
         elif cmd_type == "compile":
             compile_benchmarks()
         elif cmd_type == "run":
