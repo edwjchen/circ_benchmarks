@@ -56,8 +56,12 @@ def run_hycc_benchmark(spec_file, params, instance_metadata):
 
 def compile_hycc_local(params):
     print("Compiling HyCC Benchmarks")
-    make_dir(HYCC_CIRCUIT_PATH)
     make_dir("test_results/hycc_{}".format(params["name"]))
+
+    make_dir(HYCC_CIRCUIT_PATH)
+    circuit_dir = "{}{}".format(HYCC_CIRCUIT_PATH, params["version"])
+    make_dir(circuit_dir)
+    os.chdir(circuit_dir)
 
     print("compile: ", params["version"])
     args = params["a"]
@@ -109,9 +113,10 @@ def compile_hycc():
                     params["a"] = a
                     params["cm"] = cm
                     version = "{}_{}_mt-{}_args-{}_cm-{}".format("hycc", name, mt, "".join(a), cm)
-                    compile_version = "compile_{}".format(version)
-                    params["version"] = compile_version
-                    compile_log_path = format("{}test_results/{}_{}/log_{}.txt".format(CIRC_BENCHMARK_SOURCE, params["system"], name, compile_version))
+                    params["phase"] = "compile" 
+                    phase_version = "{}_{}".format(params["phase"], version)
+                    params["phase_version"] = phase_version
+                    compile_log_path = format("{}test_results/{}_{}/log_{}.txt".format(CIRC_BENCHMARK_SOURCE, params["system"], name, phase_version))
                     if not os.path.exists(compile_log_path):
                         param_str = json.dumps(params)
                         all_param_strs.append(param_str)

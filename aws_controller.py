@@ -1,4 +1,3 @@
-from concurrent.futures import ThreadPoolExecutor
 import boto3
 import json
 import os
@@ -8,10 +7,12 @@ import subprocess
 import sys
 import time
 
+
+VCPU_LIMIT = 128
 # instance_type = "t2.micro"
 # instance_type = "c5.large"
 # COMPILE_INSTANCE_TYPE = "c5.large"
-COMPILE_INSTANCE_TYPE = "m5.12xlarge"
+COMPILE_INSTANCE_TYPE = "r5.4xlarge" # 16 cpus
 
 LAN = "LAN"
 WAN = "WAN"
@@ -680,22 +681,21 @@ def setup_hycc_worker(ip, key_file):
             time.sleep(5)
             retry += 1
 
-    _, stdout, _ = client.exec_command("cd ~/circ_benchmarks")
+    _, stdout, _ = client.exec_command(
+        "cd ~ && git clone https://github.com/edwjchen/circ_benchmarks.git && cd ~/circ_benchmarks && ./scripts/dependencies.sh && pip3 install -r requirements.txt && python3 driver.py -f hycc && python3 driver.py -b")
     if stdout.channel.recv_exit_status():
+        print(ip, " failed setup, retrying...")
         _, stdout, _ = client.exec_command(
-            "cd ~ && git clone https://github.com/edwjchen/circ_benchmarks.git && cd ~/circ_benchmarks && ./scripts/dependencies.sh && pip3 install requirements.txt && python3 driver.py -f hycc && python3 driver.py -b")
-        if stdout.channel.recv_exit_status():
-            print(ip, " failed setup")
-    else:
-        _, stdout, _ = client.exec_command(
-            "cd ~/circ_benchmarks && ./scripts/dependencies.sh && pip3 install requirements.txt && python3 driver.py -f hycc && python3 driver.py -b")
+        "cd ~/circ_benchmarks && ./scripts/dependencies.sh && pip3 install -r requirements.txt && python3 driver.py -f hycc && python3 driver.py -b")
         if stdout.channel.recv_exit_status():
             print(ip, " failed setup 2")
-
-    print("Set up:", ip)
+        else:
+            print("Set up successful:", ip)
+    else:
+        print("Set up successful:", ip)
     client.close()
 
-def compile_hycc_worker(instance, ip, key_file, param_str):
+def compile_hycc_worker(ip, key_file, param_str):
     print("Compile hycc:\nip: {}\nparam: {}".format(ip, param_str))
     key = paramiko.Ed25519Key.from_private_key_file(key_file)
     client = paramiko.SSHClient()
@@ -713,29 +713,28 @@ def compile_hycc_worker(instance, ip, key_file, param_str):
             retry += 1
 
     # compile
-    cmd = "python3 driver.py --compile_aws {}".format(param_str)
+    cmd = "python3 driver.py --compile_aws '{}'".format(param_str)
     print("Running:", cmd)
     _, stdout, _ = client.exec_command(cmd)
     if stdout.channel.recv_exit_status():
-        print(ip, " failed to compile:", param_str)
-
-    # copy hycc_circ_dir
-    subprocess.call(
-        "rsync -avz -e \"ssh -o StrictHostKeyChecking=no -i aws-east.pem\" --progress ./hycc_circuit_dir/ ubuntu@{}:~/circ_benchmarks/hycc_circuit_dir".format(ip), shell=True)
-    # copy test_results 
-    subprocess.call(
-        "rsync -avz -e \"ssh -o StrictHostKeyChecking=no -i aws-east.pem\" --progress ./test_results/ ubuntu@{}:~/circ_benchmarks/test_results".format(ip), shell=True)
+        print(ip, " failed to compile")
+    else:
+        # copy hycc_circ_dir
+        subprocess.call(
+            "rsync -avz -e \"ssh -o StrictHostKeyChecking=no -i aws-east.pem\" --progress ./hycc_circuit_dir/ ubuntu@{}:~/circ_benchmarks/hycc_circuit_dir".format(ip), shell=True)
+        # copy test_results 
+        subprocess.call(
+            "rsync -avz -e \"ssh -o StrictHostKeyChecking=no -i aws-east.pem\" --progress ./test_results/ ubuntu@{}:~/circ_benchmarks/test_results".format(ip), shell=True)
 
     client.close()
 
-    # stop the instance
-    instance.stop()
-
 
 def compile_hycc_aws(all_param_strs):
-    num_instances = len(all_param_strs)
-    stopped_east_instances = get_stopped_instances(EAST)
+    max_instances = 4
+    num_instances = min(len(all_param_strs), max_instances)
+    stopped_east_instances = get_stopped_instances(EAST)[:num_instances]
     num_to_create = num_instances - len(stopped_east_instances)
+    
     created_instances = []
     if num_to_create > 0:
         print("Creating instances")
@@ -756,6 +755,10 @@ def compile_hycc_aws(all_param_strs):
     [instance.start() for instance in stopped_east_instances]
     [instance.wait_until_running() for instance in stopped_east_instances]
     [instance.load() for instance in stopped_east_instances]
+    for ip in stopped_east_instances:
+        print("ssh -i \"aws-east.pem\" ubuntu@{}".format(ip))
+    print("Started {} instances".format(len(stopped_east_instances)))
+
 
     # compile benchmarks on all instances 
     print("Compiling hycc test cases")
@@ -763,8 +766,16 @@ def compile_hycc_aws(all_param_strs):
     compile_instance_ips = [instance.public_dns_name for instance in all_instances]
     compile_keys = ["aws-east.pem" for _ in all_instances]
 
-    pool = multiprocessing.Pool(len(compile_instance_ips))
-    pool.starmap_async(compile_hycc_worker, zip(all_instances, compile_instance_ips, compile_keys, all_param_strs))
-
+    for chunk in chunks(all_param_strs, len(all_instances)):
+        pool = multiprocessing.Pool(len(chunk))
+        pool.starmap(compile_hycc_worker, zip(compile_instance_ips[:len(chunk)], compile_keys[:len(chunk)], chunk))
+       
+    for instance in all_instances:
+        # stop all instances
+        print("Stopping instance: {}".format(instance.public_dns_name))
+        instance.stop()
     
-    
+def chunks(lst, n):
+    """Yield successive n-sized chunks from lst."""
+    for i in range(0, len(lst), n):
+        yield lst[i:i + n]

@@ -222,7 +222,7 @@ def write_to_log(text, params):
         os.makedirs(dir_path)
 
     log_path = "{}test_results/{}_{}/log_{}.txt".format(
-        CIRC_BENCHMARK_SOURCE, params["system"], params["name"], params["version"])
+        CIRC_BENCHMARK_SOURCE, params["system"], params["name"], params["phase_version"])
     if not os.path.exists(log_path):
         subprocess.run(["touch", log_path])
 
@@ -241,7 +241,7 @@ def write_to_run(text, params):
         os.makedirs(dir_path)
 
     run_path = "{}test_results/{}_{}/run_{}.txt".format(
-        CIRC_BENCHMARK_SOURCE, params["system"], params["name"], params["version"])
+        CIRC_BENCHMARK_SOURCE, params["system"], params["name"], params["phase_version"])
     if not os.path.exists(run_path):
         subprocess.run(["touch", run_path])
 

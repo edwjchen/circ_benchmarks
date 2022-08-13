@@ -116,13 +116,6 @@ def compile_aws(params):
         compile_hycc_local(params)
 
 
-        print("Compiling HyCC Benchmarks")
-        make_dir(HYCC_CIRCUIT_PATH)
-
-        # run hycc benchmarks
-        make_dir("test_results/hycc_{}".format(params["name"]))
-        compile_hycc(params["name"], params["test_path"])
-
     if "circ" in features:
         print("Compiling CirC Benchmarks")
         make_dir(CIRC_CIRCUIT_PATH)
@@ -321,7 +314,7 @@ if __name__ == "__main__":
         delete()
 
     if args.compile_aws:
-        params = json.loads(args.compile_aws)
+        params = json.loads(args.compile_aws[0])
         compile_aws(params)
 
     if args.run_aws:
