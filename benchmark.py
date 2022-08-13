@@ -107,6 +107,7 @@ def compile_hycc_local(params):
 
 
 def compile_hycc():
+    make_dir(HYCC_CIRCUIT_PATH)
     all_param_strs = []
     for (name, path) in HYCC_TEST_CASES:
         for cm in COST_MODELS:
@@ -130,6 +131,9 @@ def compile_hycc():
                     if not os.path.exists(compile_log_path):
                         param_str = json.dumps(params)
                         all_param_strs.append(param_str)
+
+                    circuit_dir = "{}{}".format(HYCC_CIRCUIT_PATH, version)
+                    make_dir(circuit_dir)
     compile_hycc_aws(all_param_strs)
 
 

@@ -713,20 +713,33 @@ def compile_hycc_worker(ip, key_file, param_str):
             retry += 1
 
     # compile
-    cmd = "cd ~/circ_benchmarks && git pull && rm -rf test_results && python3 driver.py --compile_local '{}'".format(param_str)
-    print("Running:", cmd)
+    cmd = "sudo apt-get install rsync -y && cd ~/circ_benchmarks && git pull && rm -rf test_results && python3 driver.py --compile_local '{}'".format(param_str)
+    print("\nRunning:\n", cmd, "\non", ip, "\n")
     _, stdout, _ = client.exec_command(cmd)
-    if stdout.channel.recv_exit_status():
-        print(ip, " failed to compile")
-    else:
+
+    retry = 0
+    while retry < 5 and stdout.channel.recv_exit_status():
+        _, stdout, _ = client.exec_command(cmd)
+        if not stdout.channel.recv_exit_status():
+            print(ip, " compile successful")  
+            break
+        else:
+            print("retrying... {}".format(retry))
+        time.sleep(5)
+        retry += 1
+
+    if retry == 5 and stdout.channel.recv_exit_status():
+        print(ip, " failed to compile")   
+        
+    client.close()
+
+    if not stdout.channel.recv_exit_status():
         # copy hycc_circ_dir
         subprocess.call(
             "rsync -avz -e \"ssh -o StrictHostKeyChecking=no -i aws-east.pem\" --progress ./hycc_circuit_dir/ ubuntu@{}:~/circ_benchmarks/hycc_circuit_dir".format(ip), shell=True)
         # copy test_results 
         subprocess.call(
             "rsync -avz -e \"ssh -o StrictHostKeyChecking=no -i aws-east.pem\" --progress ./test_results/ ubuntu@{}:~/circ_benchmarks/test_results".format(ip), shell=True)
-
-    client.close()
 
 
 def compile_hycc_aws(all_param_strs):
@@ -774,6 +787,7 @@ def compile_hycc_aws(all_param_strs):
         # stop all instances
         print("Stopping instance: {}".format(instance.public_dns_name))
         instance.stop()
+
     
 def chunks(lst, n):
     """Yield successive n-sized chunks from lst."""

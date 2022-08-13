@@ -16,6 +16,7 @@ sudo apt-get install -y libssl-dev
 sudo apt-get install -y libwww-perl
 sudo apt-get install -y m4
 sudo apt-get install -y python3-pip
+sudo apt-get install -y rsync 
 sudo apt-get install -y ufw
 sudo apt-get install -y time
 sudo apt-get install -y zsh
