@@ -206,12 +206,12 @@ def setup_worker(ip, key_file):
     _, stdout, _ = client.exec_command("cd ~/circ_benchmarks")
     if stdout.channel.recv_exit_status():
         _, stdout, _ = client.exec_command(
-            "cd ~ && git clone https://github.com/edwjchen/circ_benchmarks.git && cd ~/circ_benchmarks && ./scripts/dependencies.sh && pip3 install pandas && python3 driver.py -f hycc circ && python3 driver.py -b")
+            "cd ~ && git clone https://github.com/edwjchen/circ_benchmarks.git && cd ~/circ_benchmarks && git checkout aws && ./scripts/dependencies.sh && pip3 install pandas && python3 driver.py -f hycc circ && python3 driver.py -b")
         if stdout.channel.recv_exit_status():
             print(ip, " failed setup")
     else:
         _, stdout, _ = client.exec_command(
-            "cd ~/circ_benchmarks && ./scripts/dependencies.sh && pip3 install pandas && python3 driver.py -f hycc circ && python3 driver.py -b")
+            "cd ~/circ_benchmarks && git checkout aws && ./scripts/dependencies.sh && pip3 install pandas && python3 driver.py -f hycc circ && python3 driver.py -b")
         if stdout.channel.recv_exit_status():
             print(ip, " failed setup 2")
 
