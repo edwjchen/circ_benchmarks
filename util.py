@@ -54,7 +54,8 @@ HYCC_TEST_CASES = [
     # ("mnist_decomp_main", "mnist/mnist_decomp_main.c"),
     # ("mnist_decomp_convolution", "mnist/mnist_decomp_convolution.c"),
     # ("cryptonets", "cryptonets/cryptonets.c"),
-    # TODO: add histogram
+    # ("histogram", "histogram/histogram.c"),
+    # ("gcd", "gcd/gcd.c"),
 ]
 
 MINIMIZATION_TIMES = [0]
@@ -83,6 +84,7 @@ CIRC_TEST_CASES = [
     # "mnist_decomp_convolution",
     # "cryptonets",
     # "histogram",
+    # "gcd",
 ]
 
 CIRC_NO_PARTITION_SELECTION_SCHEMES = [
@@ -280,6 +282,8 @@ def get_circ_build_path(name):
         return "{}/examples/C/mpc/benchmarks/cryptonets/cryptonets.c".format(CIRC_SOURCE)
     if name == "histogram":
         return "{}/examples/C/mpc/benchmarks/histogram/histogram.c".format(CIRC_SOURCE)
+    if name == "gcd":
+        return "{}/examples/C/mpc/benchmarks/gcd/gcd.c".format(CIRC_SOURCE)
     raise RuntimeError("Could not find test: {}".format(name))
 
 
@@ -306,6 +310,8 @@ def get_circ_bytecode_path(name):
         return "{}/scripts/aby_tests/tests/cryptonets_c".format(CIRC_SOURCE)
     if name == "histogram":
         return "{}/scripts/aby_tests/tests/histogram_c".format(CIRC_SOURCE)
+    if name == "gcd":
+        return "{}/scripts/aby_tests/tests/gcd_c".format(CIRC_SOURCE)
     raise RuntimeError("Could not find test: {}".format(name))
 
 
@@ -332,6 +338,8 @@ def get_circ_input_path(name):
         return "{}/scripts/aby_tests/test_inputs/cryptonets.txt".format(CIRC_SOURCE)
     if name == "histogram":
         return "{}/scripts/aby_tests/test_inputs/histogram.txt".format(CIRC_SOURCE)
+    if name == "gcd":
+        return "{}/scripts/aby_tests/test_inputs/gcd.txt".format(CIRC_SOURCE)
     raise RuntimeError("Could not find test: {}".format(name))
 
 
@@ -358,4 +366,6 @@ def get_circ_test_path(name, version):
         return "{}/{}/cryptonets_c".format(CIRC_CIRCUIT_PATH, version)
     if name == "histogram":
         return "{}/{}/histogram_c".format(CIRC_CIRCUIT_PATH, version)
+    if name == "gcd":
+        return "{}/{}/gcd_c".format(CIRC_CIRCUIT_PATH, version)
     raise RuntimeError("Could not find test: {}".format(name))
