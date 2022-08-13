@@ -110,7 +110,7 @@ def build(features):
         os.chdir(CIRC_BENCHMARK_SOURCE)
 
 
-def compile_aws(params):
+def compile_local(params):
     make_test_results()
     if "hycc" == params["system"]:
         compile_hycc_local(params)
@@ -238,9 +238,9 @@ if __name__ == "__main__":
     parser.add_argument("-t", "--test", action="store_true", help="adhoc test")
     parser.add_argument("--compile", action="store_true",
                         help="compile benchmarks")
-    parser.add_argument("--compile_aws", nargs=1,
+    parser.add_argument("--compile_local", nargs=1,
                         help="compile benchmarks on aws")
-    parser.add_argument("--run_aws", nargs=1,
+    parser.add_argument("--run_local", nargs=1,
                         help="run benchmarks on aws")
     parser.add_argument("--benchmark", action="store_true",
                         help="run benchmark")
@@ -262,7 +262,7 @@ if __name__ == "__main__":
 
     def verify_single_action(args: argparse.Namespace):
         actions = [k for k, v in vars(args).items() if (
-            type(v) is bool or k in ["address", "role", "features", "compile_aws"]) and bool(v)]
+            type(v) is bool or k in ["address", "role", "features", "compile_local", "run_local"]) and bool(v)]
         if len(actions) != 1:
             parser.error(
                 "parser error: only one action can be specified. got: " + " ".join(actions))
@@ -313,10 +313,10 @@ if __name__ == "__main__":
     if args.delete:
         delete()
 
-    if args.compile_aws:
-        params = json.loads(args.compile_aws[0])
-        compile_aws(params)
+    if args.compile_local:
+        params = json.loads(args.compile_local[0])
+        compile_local(params)
 
-    if args.run_aws:
+    if args.run_local:
         params = json.loads(args.compile_aws)
         run_aws(params)

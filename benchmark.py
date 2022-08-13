@@ -58,11 +58,20 @@ def compile_hycc_local(params):
     print("Compiling HyCC Benchmarks")
     make_dir("test_results/hycc_{}".format(params["name"]))
 
+    # write header
+    write_log(DELIMITER, params)
+    write_log("LOG: Benchmarking HyCC", params)
+    write_log(DELIMITER, params)
+
+    write_log("LOG: TEST: {}".format(params["name"]), params)
+    write_log("LOG: MINIMIZATION_TIME: {}".format(params["mt"]), params)
+    write_log("LOG: COST_MODEL: {}".format(params["cm"]), params)
+    write_log("LOG: ARGUMENTS: {}".format(params["a"]), params)
+
     make_dir(HYCC_CIRCUIT_PATH)
     circuit_dir = "{}{}".format(HYCC_CIRCUIT_PATH, params["version"])
     make_dir(circuit_dir)
     os.chdir(circuit_dir)
-
     print("compile: ", params["version"])
     args = params["a"]
     test_path = params["test_path"]

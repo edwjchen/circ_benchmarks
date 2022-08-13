@@ -713,7 +713,7 @@ def compile_hycc_worker(ip, key_file, param_str):
             retry += 1
 
     # compile
-    cmd = "cd ~/circ_benchmarks && git pull && python3 driver.py --compile_aws '{}'".format(param_str)
+    cmd = "cd ~/circ_benchmarks && git pull && python3 driver.py --compile_local '{}'".format(param_str)
     print("Running:", cmd)
     _, stdout, _ = client.exec_command(cmd)
     if stdout.channel.recv_exit_status():
