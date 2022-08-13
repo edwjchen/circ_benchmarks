@@ -113,6 +113,7 @@ def compile_hycc():
                     params["a"] = a
                     params["cm"] = cm
                     version = "{}_{}_mt-{}_args-{}_cm-{}".format("hycc", name, mt, "".join(a), cm)
+                    params["version"] = version
                     params["phase"] = "compile" 
                     phase_version = "{}_{}".format(params["phase"], version)
                     params["phase_version"] = phase_version
