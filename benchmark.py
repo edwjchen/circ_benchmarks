@@ -99,9 +99,9 @@ def compile_hycc_local(params):
             " ".join(args), e), params)
         
         log_path = "{}test_results/{}_{}/log_{}.txt".format(
-                CIRC_BENCHMARK_SOURCE, params["system"], params["name"], params["version"])
+                CIRC_BENCHMARK_SOURCE, params["system"], params["name"], params["phase_version"])
         failed_path = "{}test_results/{}_{}/failed_log_{}.txt".format(
-                CIRC_BENCHMARK_SOURCE, params["system"], params["name"], params["version"])
+                CIRC_BENCHMARK_SOURCE, params["system"], params["name"], params["phase_version"])
         subprocess.call("mv {} {}".format(log_path, failed_path), shell=True)
         return False
 
