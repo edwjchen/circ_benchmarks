@@ -74,7 +74,7 @@ def compile_hycc_local(params):
     os.chdir(circuit_dir)
     print("compile: ", params["version"])
     args = params["a"]
-    test_path = params["test_path"]
+    test_path = CIRC_BENCHMARK_SOURCE + params["test_path"]
     try:
         # compile
         cmd = [CBMC_GC, test_path] + args
@@ -115,7 +115,7 @@ def compile_hycc():
                     make_dir("test_results/hycc_{}".format(name))
                     params = {}
                     params["name"] = name
-                    test_path = HYCC_SOURCE + "/examples/benchmarks/{}".format(path)
+                    test_path = "modules/HyCC/examples/benchmarks/{}".format(path)
                     params["test_path"] = test_path
                     params["system"] = "hycc"
                     params["mt"] = mt
