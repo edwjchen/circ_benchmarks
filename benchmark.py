@@ -176,11 +176,10 @@ def select_hycc(name):
         select_version = "select_{}".format(version)
         select_log_path = format(
             "{}test_results/{}_{}/log_{}.txt".format(CIRC_BENCHMARK_SOURCE, params["system"], name, select_version))
-
         failed_log_path = format(
             "{}test_results/{}_{}/failed_log_{}.txt".format(CIRC_BENCHMARK_SOURCE, params["system"], name, select_version))
 
-        if not not os.path.exists(select_log_path) and not os.path.exists(failed_log_path):
+        if not os.path.exists(select_log_path) and not os.path.exists(failed_log_path):
             # select HyCC benchmark
             os.chdir(circuit_dir)
             params["version"] = select_version
