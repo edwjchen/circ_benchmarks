@@ -1,0 +1,13 @@
+LOG: ====================================
+LOG: Benchmarking HyCC
+LOG: ====================================
+LOG: TEST: db_join2
+LOG: MINIMIZATION_TIME: 0
+LOG: COST_MODEL: hycc
+LOG: ARGUMENTS: ['--all-variants']
+LOG: MODE: compile
+LOG: Compile time: 7.00505
+LOG: Time / Memory: 7.08 seconds 431940 kB
+LOG: ====================================
+LOG: MODE: bundle
+LOG: Time / Memory: 0.06 seconds 9836 kB

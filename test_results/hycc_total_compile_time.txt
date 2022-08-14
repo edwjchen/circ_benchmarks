@@ -1,0 +1,5 @@
+LOG: Total hycc compile time: 1.968533992767334
+LOG: Total hycc compile time: 3.90340518951416
+LOG: Total hycc compile time: 2040.1251270771027
+LOG: Total hycc compile time: 203.47668838500977
+LOG: Total hycc compile time: 0.060079097747802734

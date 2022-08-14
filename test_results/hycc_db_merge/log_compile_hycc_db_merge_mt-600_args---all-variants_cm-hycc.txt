@@ -1,0 +1,13 @@
+LOG: ====================================
+LOG: Benchmarking HyCC
+LOG: ====================================
+LOG: TEST: db_merge
+LOG: MINIMIZATION_TIME: 600
+LOG: COST_MODEL: hycc
+LOG: ARGUMENTS: ['--all-variants']
+LOG: MODE: compile
+LOG: Compile time: 1820.73
+LOG: Time / Memory: 1820.90 seconds 4179000 kB
+LOG: ====================================
+LOG: MODE: bundle
+LOG: Time / Memory: 0.02 seconds 9944 kB

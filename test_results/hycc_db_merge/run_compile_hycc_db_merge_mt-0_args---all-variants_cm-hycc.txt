@@ -1,0 +1,1267 @@
+
+LOG: ====================================
+
+LOG: Benchmarking HyCC
+
+LOG: ====================================
+
+LOG: TEST: db_merge
+LOG: MINIMIZATION_TIME: 0
+LOG: COST_MODEL: hycc
+LOG: ARGUMENTS: ['--all-variants']
+LOG: MODE: compile
+CBMC version 5.8 64-bit x86_64 linux
+Parsing /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db_merge.c
+Converting
+Type-checking db_merge
+Adding CPROVER library (x86_64)
+Removal of function pointers and virtual functions
+Partial Inlining
+Generic Property Instrumentation
+
+Function "mpc_main"
+Time limit: -1
+Starting Bounded Model Checking
+Converting function to circuit
+(in)  mpc_main::INPUT_A(0): { db: int32[100]; };
+(in)  mpc_main::INPUT_B(0): { db: int32[100]; };
+(out) mpc_main#return_value(1): { analysis1: int32; analysis2: int32; joined: int32; };
+Function call to "merge<int32[200],int32[100],int32[100],uint32<100>,uint32<100>>"
+(in)  merge<int32[200],int32[100],int32[100],uint32<100>,uint32<100>>::a(0): int32[100];
+(in)  merge<int32[200],int32[100],int32[100],uint32<100>,uint32<100>>::b(0): int32[100];
+(out) merge<int32[200],int32[100],int32[100],uint32<100>,uint32<100>>::OUTPUT_db(0): int32[200];
+Function call to "mean<int32[200],uint32<200>>"
+(in)  mean<int32[200],uint32<200>>::db(0): int32[200];
+(out) mean#return_value(1): int32;
+Function call to "variance<int32[200],uint32<200>>"
+(in)  variance<int32[200],uint32<200>>::db(0): int32[200];
+(out) variance#return_value(1): int32;
+Total:      gates: 0, depth: 0
+Boolean:    gates: 0, Non-XOR gates: 0, Non-XOR depth: 0, LUTs: 0
+Arithmetic: gates: 0, Mul gates: 0, Mul depth: 0
+
+Function "mpc_main"
+Time limit: -1
+Starting Bounded Model Checking
+Converting function to circuit
+(in)  mpc_main::INPUT_A(0): { db: int32[100]; };
+(in)  mpc_main::INPUT_B(0): { db: int32[100]; };
+(out) mpc_main#return_value(1): { analysis1: int32; analysis2: int32; joined: int32; };
+Function call to "merge<int32[200],int32[100],int32[100],uint32<100>,uint32<100>>"
+(in)  merge<int32[200],int32[100],int32[100],uint32<100>,uint32<100>>::a(0): int32[100];
+(in)  merge<int32[200],int32[100],int32[100],uint32<100>,uint32<100>>::b(0): int32[100];
+(out) merge<int32[200],int32[100],int32[100],uint32<100>,uint32<100>>::OUTPUT_db(0): int32[200];
+Function call to "mean<int32[200],uint32<200>>"
+(in)  mean<int32[200],uint32<200>>::db(0): int32[200];
+(out) mean#return_value(1): int32;
+Function call to "variance<int32[200],uint32<200>>"
+(in)  variance<int32[200],uint32<200>>::db(0): int32[200];
+(out) variance#return_value(1): int32;
+Total:      gates: 0, depth: 0
+Boolean:    gates: 0, Non-XOR gates: 0, Non-XOR depth: 0, LUTs: 0
+Arithmetic: gates: 0, Mul gates: 0, Mul depth: 0
+
+Function "mpc_main"
+Time limit: -1
+Starting Bounded Model Checking
+Function call to "merge<int32[200],int32[100],int32[100],uint32<100>,uint32<100>>"
+(in)  a: int32[100];
+(in)  b: int32[100];
+(out) OUTPUT_db: int32[200];
+Function call to "mean<int32[200],uint32<200>>"
+(in)  db: int32[200];
+(out) return_value: int32;
+Function call to "variance<int32[200],uint32<200>>"
+(in)  db: int32[200];
+(out) return_value: int32;
+(in)  INPUT_A: {db: int32[100]; }
+(in)  INPUT_B: {db: int32[100]; }
+(out) return_value: {analysis1: int32; analysis2: int32; joined: int32; }
+Total:      gates: 0, depth: 0
+Boolean:    gates: 0, Non-XOR gates: 0, Non-XOR depth: 0, LUTs: 0
+Arithmetic: gates: 0, Mul gates: 0, Mul depth: 0
+
+Function "merge<int32[200],int32[100],int32[100],uint32<100>,uint32<100>>"
+Time limit: -1
+Starting Bounded Model Checking
+Converting function to circuit
+(in)  merge<int32[200],int32[100],int32[100],uint32<100>,uint32<100>>::a(0): int32[100];
+(in)  merge<int32[200],int32[100],int32[100],uint32<100>,uint32<100>>::b(0): int32[100];
+(out) merge<int32[200],int32[100],int32[100],uint32<100>,uint32<100>>::OUTPUT_db(2): int32[200];
+Total:      gates: 0, depth: 0
+Boolean:    gates: 0, Non-XOR gates: 0, Non-XOR depth: 0, LUTs: 0
+Arithmetic: gates: 0, Mul gates: 0, Mul depth: 0
+
+Function "merge<int32[200],int32[100],int32[100],uint32<100>,uint32<100>>"
+Time limit: -1
+Starting Bounded Model Checking
+Converting function to circuit
+(in)  merge<int32[200],int32[100],int32[100],uint32<100>,uint32<100>>::a(0): int32[100];
+(in)  merge<int32[200],int32[100],int32[100],uint32<100>,uint32<100>>::b(0): int32[100];
+(out) merge<int32[200],int32[100],int32[100],uint32<100>,uint32<100>>::OUTPUT_db(2): int32[200];
+Total:      gates: 0, depth: 0
+Boolean:    gates: 0, Non-XOR gates: 0, Non-XOR depth: 0, LUTs: 0
+Arithmetic: gates: 0, Mul gates: 0, Mul depth: 0
+
+Function "merge<int32[200],int32[100],int32[100],uint32<100>,uint32<100>>"
+Time limit: -1
+Starting Bounded Model Checking
+(out) OUTPUT_db: int32[200]
+(in)  a: int32[100]
+(in)  b: int32[100]
+Total:      gates: 0, depth: 0
+Boolean:    gates: 0, Non-XOR gates: 0, Non-XOR depth: 0, LUTs: 0
+Arithmetic: gates: 0, Mul gates: 0, Mul depth: 0
+
+Function "mean<int32[200],uint32<200>>"
+Time limit: -1
+Starting Bounded Model Checking
+Converting function to circuit
+(in)  mean<int32[200],uint32<200>>::db(0): int32[200];
+(out) mean<int32[200],uint32<200>>#return_value(1): int32;
+Function call to "sum_tree<int32[200],int32<200>,int32<1>>"
+(in)  sum_tree<int32[200],int32<200>,int32<1>>::data(0): int32[200];
+(out) sum_tree#return_value(1): int32;
+Total:      gates: 3062, depth: 1224
+Boolean:    gates: 3062, Non-XOR gates: 772, Non-XOR depth: 400, LUTs: 0
+Arithmetic: gates: 0, Mul gates: 0, Mul depth: 0
+
+Function "mean<int32[200],uint32<200>>"
+Time limit: -1
+Starting Bounded Model Checking
+Converting function to circuit
+(in)  mean<int32[200],uint32<200>>::db(0): int32[200];
+(out) mean<int32[200],uint32<200>>#return_value(1): int32;
+Function call to "sum_tree<int32[200],int32<200>,int32<1>>"
+(in)  sum_tree<int32[200],int32<200>,int32<1>>::data(0): int32[200];
+(out) sum_tree#return_value(1): int32;
+Total:      gates: 3062, depth: 1224
+Boolean:    gates: 3062, Non-XOR gates: 772, Non-XOR depth: 400, LUTs: 0
+Arithmetic: gates: 0, Mul gates: 0, Mul depth: 0
+
+Function "mean<int32[200],uint32<200>>"
+Time limit: -1
+Starting Bounded Model Checking
+
+Function "variance<int32[200],uint32<200>>"
+Time limit: -1
+Starting Bounded Model Checking
+Unwinding loop variance.0 iteration 1 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 2 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 3 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 4 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 5 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 6 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 7 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 8 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 9 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 10 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 11 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 12 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 13 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 14 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 15 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 16 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 17 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 18 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 19 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 20 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 21 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 22 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 23 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 24 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 25 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 26 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 27 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 28 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 29 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 30 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 31 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 32 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 33 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 34 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 35 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 36 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 37 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 38 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 39 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 40 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 41 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 42 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 43 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 44 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 45 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 46 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 47 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 48 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 49 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 50 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 51 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 52 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 53 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 54 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 55 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 56 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 57 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 58 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 59 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 60 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 61 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 62 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 63 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 64 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 65 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 66 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 67 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 68 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 69 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 70 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 71 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 72 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 73 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 74 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 75 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 76 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 77 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 78 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 79 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 80 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 81 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 82 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 83 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 84 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 85 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 86 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 87 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 88 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 89 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 90 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 91 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 92 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 93 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 94 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 95 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 96 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 97 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 98 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 99 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 100 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 101 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 102 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 103 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 104 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 105 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 106 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 107 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 108 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 109 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 110 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 111 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 112 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 113 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 114 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 115 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 116 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 117 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 118 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 119 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 120 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 121 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 122 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 123 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 124 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 125 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 126 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 127 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 128 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 129 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 130 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 131 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 132 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 133 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 134 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 135 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 136 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 137 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 138 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 139 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 140 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 141 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 142 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 143 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 144 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 145 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 146 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 147 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 148 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 149 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 150 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 151 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 152 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 153 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 154 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 155 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 156 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 157 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 158 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 159 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 160 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 161 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 162 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 163 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 164 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 165 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 166 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 167 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 168 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 169 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 170 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 171 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 172 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 173 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 174 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 175 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 176 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 177 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 178 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 179 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 180 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 181 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 182 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 183 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 184 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 185 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 186 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 187 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 188 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 189 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 190 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 191 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 192 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 193 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 194 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 195 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 196 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 197 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 198 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 199 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 200 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Converting function to circuit
+(in)  variance<int32[200],uint32<200>>::db(0): int32[200];
+(out) variance<int32[200],uint32<200>>#return_value(1): int32;
+Function call to "sum_tree<int32[200],int32<200>,int32<1>>"
+(in)  sum_tree<int32[200],int32<200>,int32<1>>::data(0): int32[200];
+(out) sum_tree#return_value(1): int32;
+Function call to "sum_tree<int32[200],int32<200>,int32<1>>"
+(in)  sum_tree<int32[200],int32<200>,int32<1>>::data(0): int32[200];
+(out) sum_tree#return_value(3): int32;
+Total:      gates: 598948, depth: 1379
+Boolean:    gates: 598948, Non-XOR gates: 203144, Non-XOR depth: 432, LUTs: 0
+Arithmetic: gates: 0, Mul gates: 0, Mul depth: 0
+
+Function "variance<int32[200],uint32<200>>"
+Time limit: -1
+Starting Bounded Model Checking
+Unwinding loop variance.0 iteration 1 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 2 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 3 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 4 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 5 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 6 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 7 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 8 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 9 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 10 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 11 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 12 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 13 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 14 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 15 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 16 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 17 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 18 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 19 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 20 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 21 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 22 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 23 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 24 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 25 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 26 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 27 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 28 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 29 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 30 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 31 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 32 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 33 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 34 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 35 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 36 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 37 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 38 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 39 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 40 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 41 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 42 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 43 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 44 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 45 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 46 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 47 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 48 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 49 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 50 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 51 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 52 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 53 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 54 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 55 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 56 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 57 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 58 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 59 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 60 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 61 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 62 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 63 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 64 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 65 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 66 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 67 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 68 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 69 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 70 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 71 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 72 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 73 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 74 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 75 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 76 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 77 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 78 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 79 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 80 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 81 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 82 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 83 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 84 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 85 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 86 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 87 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 88 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 89 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 90 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 91 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 92 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 93 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 94 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 95 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 96 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 97 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 98 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 99 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 100 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 101 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 102 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 103 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 104 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 105 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 106 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 107 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 108 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 109 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 110 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 111 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 112 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 113 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 114 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 115 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 116 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 117 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 118 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 119 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 120 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 121 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 122 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 123 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 124 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 125 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 126 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 127 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 128 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 129 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 130 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 131 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 132 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 133 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 134 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 135 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 136 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 137 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 138 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 139 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 140 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 141 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 142 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 143 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 144 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 145 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 146 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 147 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 148 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 149 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 150 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 151 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 152 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 153 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 154 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 155 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 156 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 157 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 158 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 159 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 160 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 161 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 162 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 163 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 164 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 165 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 166 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 167 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 168 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 169 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 170 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 171 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 172 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 173 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 174 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 175 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 176 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 177 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 178 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 179 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 180 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 181 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 182 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 183 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 184 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 185 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 186 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 187 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 188 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 189 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 190 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 191 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 192 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 193 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 194 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 195 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 196 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 197 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 198 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 199 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Unwinding loop variance.0 iteration 200 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 86 function variance thread 0
+Converting function to circuit
+(in)  variance<int32[200],uint32<200>>::db(0): int32[200];
+(out) variance<int32[200],uint32<200>>#return_value(1): int32;
+Function call to "sum_tree<int32[200],int32<200>,int32<1>>"
+(in)  sum_tree<int32[200],int32<200>,int32<1>>::data(0): int32[200];
+(out) sum_tree#return_value(1): int32;
+Function call to "sum_tree<int32[200],int32<200>,int32<1>>"
+(in)  sum_tree<int32[200],int32<200>,int32<1>>::data(0): int32[200];
+(out) sum_tree#return_value(3): int32;
+Total:      gates: 655949, depth: 1267
+Boolean:    gates: 655949, Non-XOR gates: 252544, Non-XOR depth: 418, LUTs: 0
+Arithmetic: gates: 0, Mul gates: 0, Mul depth: 0
+
+Function "variance<int32[200],uint32<200>>"
+Time limit: -1
+Starting Bounded Model Checking
+
+Function "sum_tree<int32[200],int32<200>,int32<1>>"
+Time limit: -1
+Starting Bounded Model Checking
+Unwinding loop sum_tree.0 iteration 1 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 2 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 3 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 4 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 5 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 6 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 7 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 8 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 9 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 10 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 11 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 12 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 13 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 14 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 15 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 16 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 17 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 18 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 19 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 20 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 21 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 22 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 23 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 24 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 25 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 26 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 27 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 28 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 29 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 30 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 31 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 32 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 33 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 34 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 35 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 36 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 37 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 38 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 39 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 40 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 41 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 42 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 43 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 44 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 45 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 46 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 47 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 48 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 49 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 50 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 51 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 52 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 53 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 54 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 55 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 56 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 57 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 58 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 59 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 60 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 61 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 62 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 63 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 64 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 65 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 66 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 67 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 68 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 69 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 70 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 71 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 72 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 73 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 74 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 75 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 76 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 77 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 78 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 79 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 80 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 81 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 82 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 83 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 84 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 85 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 86 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 87 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 88 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 89 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 90 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 91 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 92 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 93 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 94 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 95 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 96 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 97 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 98 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 99 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 100 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding recursion sum_tree iteration 1
+Unwinding loop sum_tree.0 iteration 1 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 2 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 3 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 4 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 5 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 6 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 7 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 8 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 9 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 10 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 11 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 12 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 13 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 14 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 15 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 16 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 17 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 18 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 19 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 20 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 21 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 22 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 23 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 24 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 25 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 26 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 27 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 28 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 29 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 30 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 31 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 32 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 33 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 34 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 35 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 36 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 37 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 38 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 39 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 40 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 41 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 42 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 43 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 44 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 45 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 46 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 47 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 48 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 49 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 50 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding recursion sum_tree iteration 2
+Unwinding loop sum_tree.0 iteration 1 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 2 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 3 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 4 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 5 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 6 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 7 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 8 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 9 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 10 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 11 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 12 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 13 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 14 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 15 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 16 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 17 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 18 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 19 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 20 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 21 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 22 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 23 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 24 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 25 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding recursion sum_tree iteration 3
+Unwinding loop sum_tree.0 iteration 1 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 2 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 3 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 4 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 5 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 6 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 7 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 8 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 9 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 10 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 11 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 12 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding recursion sum_tree iteration 4
+Unwinding loop sum_tree.0 iteration 1 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 2 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 3 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 4 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 5 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 6 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding recursion sum_tree iteration 5
+Unwinding loop sum_tree.0 iteration 1 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 2 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 3 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding recursion sum_tree iteration 6
+Unwinding loop sum_tree.0 iteration 1 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 2 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding recursion sum_tree iteration 7
+Unwinding loop sum_tree.0 iteration 1 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding recursion sum_tree iteration 8
+Converting function to circuit
+(in)  sum_tree<int32[200],int32<200>,int32<1>>::data(0): int32[200];
+(out) sum_tree<int32[200],int32<200>,int32<1>>#return_value(1): int32;
+Total:      gates: 30646, depth: 107
+Boolean:    gates: 30646, Non-XOR gates: 6169, Non-XOR depth: 31, LUTs: 0
+Arithmetic: gates: 0, Mul gates: 0, Mul depth: 0
+
+Function "sum_tree<int32[200],int32<200>,int32<1>>"
+Time limit: -1
+Starting Bounded Model Checking
+Unwinding loop sum_tree.0 iteration 1 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 2 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 3 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 4 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 5 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 6 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 7 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 8 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 9 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 10 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 11 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 12 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 13 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 14 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 15 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 16 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 17 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 18 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 19 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 20 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 21 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 22 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 23 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 24 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 25 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 26 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 27 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 28 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 29 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 30 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 31 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 32 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 33 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 34 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 35 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 36 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 37 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 38 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 39 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 40 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 41 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 42 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 43 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 44 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 45 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 46 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 47 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 48 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 49 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 50 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 51 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 52 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 53 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 54 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 55 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 56 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 57 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 58 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 59 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 60 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 61 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 62 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 63 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 64 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 65 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 66 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 67 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 68 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 69 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 70 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 71 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 72 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 73 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 74 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 75 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 76 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 77 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 78 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 79 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 80 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 81 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 82 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 83 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 84 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 85 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 86 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 87 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 88 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 89 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 90 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 91 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 92 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 93 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 94 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 95 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 96 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 97 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 98 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 99 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 100 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding recursion sum_tree iteration 1
+Unwinding loop sum_tree.0 iteration 1 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 2 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 3 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 4 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 5 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 6 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 7 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 8 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 9 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 10 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 11 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 12 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 13 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 14 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 15 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 16 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 17 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 18 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 19 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 20 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 21 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 22 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 23 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 24 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 25 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 26 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 27 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 28 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 29 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 30 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 31 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 32 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 33 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 34 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 35 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 36 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 37 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 38 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 39 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 40 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 41 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 42 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 43 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 44 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 45 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 46 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 47 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 48 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 49 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 50 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding recursion sum_tree iteration 2
+Unwinding loop sum_tree.0 iteration 1 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 2 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 3 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 4 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 5 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 6 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 7 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 8 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 9 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 10 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 11 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 12 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 13 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 14 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 15 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 16 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 17 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 18 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 19 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 20 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 21 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 22 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 23 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 24 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 25 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding recursion sum_tree iteration 3
+Unwinding loop sum_tree.0 iteration 1 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 2 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 3 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 4 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 5 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 6 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 7 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 8 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 9 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 10 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 11 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 12 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding recursion sum_tree iteration 4
+Unwinding loop sum_tree.0 iteration 1 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 2 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 3 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 4 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 5 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 6 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding recursion sum_tree iteration 5
+Unwinding loop sum_tree.0 iteration 1 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 2 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 3 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding recursion sum_tree iteration 6
+Unwinding loop sum_tree.0 iteration 1 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 2 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding recursion sum_tree iteration 7
+Unwinding loop sum_tree.0 iteration 1 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding recursion sum_tree iteration 8
+Converting function to circuit
+(in)  sum_tree<int32[200],int32<200>,int32<1>>::data(0): int32[200];
+(out) sum_tree<int32[200],int32<200>,int32<1>>#return_value(1): int32;
+Total:      gates: 59899, depth: 74
+Boolean:    gates: 59899, Non-XOR gates: 31641, Non-XOR depth: 37, LUTs: 0
+Arithmetic: gates: 0, Mul gates: 0, Mul depth: 0
+
+Function "sum_tree<int32[200],int32<200>,int32<1>>"
+Time limit: -1
+Starting Bounded Model Checking
+Unwinding loop sum_tree.0 iteration 1 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 2 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 3 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 4 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 5 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 6 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 7 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 8 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 9 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 10 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 11 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 12 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 13 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 14 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 15 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 16 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 17 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 18 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 19 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 20 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 21 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 22 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 23 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 24 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 25 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 26 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 27 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 28 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 29 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 30 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 31 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 32 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 33 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 34 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 35 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 36 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 37 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 38 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 39 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 40 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 41 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 42 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 43 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 44 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 45 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 46 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 47 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 48 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 49 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 50 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 51 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 52 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 53 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 54 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 55 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 56 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 57 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 58 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 59 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 60 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 61 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 62 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 63 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 64 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 65 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 66 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 67 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 68 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 69 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 70 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 71 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 72 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 73 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 74 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 75 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 76 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 77 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 78 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 79 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 80 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 81 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 82 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 83 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 84 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 85 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 86 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 87 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 88 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 89 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 90 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 91 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 92 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 93 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 94 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 95 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 96 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 97 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 98 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 99 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 100 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding recursion sum_tree iteration 1
+Unwinding loop sum_tree.0 iteration 1 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 2 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 3 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 4 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 5 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 6 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 7 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 8 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 9 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 10 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 11 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 12 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 13 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 14 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 15 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 16 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 17 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 18 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 19 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 20 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 21 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 22 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 23 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 24 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 25 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 26 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 27 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 28 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 29 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 30 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 31 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 32 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 33 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 34 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 35 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 36 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 37 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 38 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 39 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 40 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 41 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 42 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 43 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 44 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 45 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 46 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 47 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 48 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 49 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 50 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding recursion sum_tree iteration 2
+Unwinding loop sum_tree.0 iteration 1 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 2 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 3 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 4 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 5 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 6 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 7 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 8 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 9 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 10 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 11 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 12 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 13 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 14 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 15 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 16 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 17 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 18 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 19 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 20 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 21 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 22 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 23 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 24 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 25 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding recursion sum_tree iteration 3
+Unwinding loop sum_tree.0 iteration 1 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 2 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 3 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 4 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 5 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 6 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 7 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 8 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 9 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 10 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 11 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 12 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding recursion sum_tree iteration 4
+Unwinding loop sum_tree.0 iteration 1 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 2 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 3 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 4 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 5 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 6 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding recursion sum_tree iteration 5
+Unwinding loop sum_tree.0 iteration 1 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 2 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 3 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding recursion sum_tree iteration 6
+Unwinding loop sum_tree.0 iteration 1 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding loop sum_tree.0 iteration 2 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding recursion sum_tree iteration 7
+Unwinding loop sum_tree.0 iteration 1 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/db/db.h line 37 function sum_tree thread 0
+Unwinding recursion sum_tree iteration 8
+(in)  data: int32[200]
+(out) return_value: int32
+Total:      gates: 199, depth: 8
+Boolean:    gates: 0, Non-XOR gates: 0, Non-XOR depth: 0, LUTs: 0
+Arithmetic: gates: 199, Mul gates: 0, Mul depth: 0
+LOG: Compile time: 7.05199
+
+LOG: Time / Memory: 7.08 seconds 579896 kB
+
+LOG: ====================================
+
+LOG: MODE: bundle
+HyCC Module Bundle Generator v0.2
+Directory: /home/ubuntu/circ_benchmarks/hycc_circuit_dir/hycc_db_merge_mt-0_args---all-variants_cm-hycc
+(ignoring variance<int32[200],uint32<200>>@bool_size.stats)
+found mpc_main@bool_size.circ
+found sum_tree<int32[200],int32<200>,int32<1>>@arith.circ
+(ignoring sum_tree<int32[200],int32<200>,int32<1>>@bool_depth.stats)
+found mean<int32[200],uint32<200>>@bool_size.circ
+found variance<int32[200],uint32<200>>@bool_size.circ
+(ignoring sum_tree<int32[200],int32<200>,int32<1>>@bool_size.stats)
+found mpc_main@bool_depth.circ
+(ignoring merge<int32[200],int32[100],int32[100],uint32<100>,uint32<100>>@bool_size.stats)
+(ignoring variance<int32[200],uint32<200>>@bool_depth.stats)
+found variance<int32[200],uint32<200>>@bool_depth.circ
+found merge<int32[200],int32[100],int32[100],uint32<100>,uint32<100>>@bool_size.circ
+(ignoring mpc_main@arith.stats)
+(ignoring mean<int32[200],uint32<200>>@bool_depth.stats)
+found sum_tree<int32[200],int32<200>,int32<1>>@bool_depth.circ
+(ignoring mpc_main@bool_size.stats)
+found sum_tree<int32[200],int32<200>,int32<1>>@bool_size.circ
+(ignoring mean<int32[200],uint32<200>>@bool_size.stats)
+(ignoring sum_tree<int32[200],int32<200>,int32<1>>@arith.stats)
+(ignoring merge<int32[200],int32[100],int32[100],uint32<100>,uint32<100>>@arith.stats)
+(ignoring merge<int32[200],int32[100],int32[100],uint32<100>,uint32<100>>@bool_depth.stats)
+(ignoring mpc_main@bool_depth.stats)
+found mean<int32[200],uint32<200>>@bool_depth.circ
+found merge<int32[200],int32[100],int32[100],uint32<100>,uint32<100>>@bool_depth.circ
+found merge<int32[200],int32[100],int32[100],uint32<100>,uint32<100>>@arith.circ
+found mpc_main@arith.circ
+
+LOG: Time / Memory: 0.02 seconds 9988 kB

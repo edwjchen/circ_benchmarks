@@ -1,0 +1,167 @@
+
+LOG: ====================================
+
+LOG: Benchmarking HyCC
+
+LOG: ====================================
+
+LOG: TEST: gcd
+LOG: MINIMIZATION_TIME: 0
+LOG: COST_MODEL: hycc
+LOG: ARGUMENTS: ['--all-variants']
+LOG: MODE: compile
+CBMC version 5.8 64-bit x86_64 linux
+Parsing /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gcd/gcd.c
+Converting
+Type-checking gcd
+Adding CPROVER library (x86_64)
+Removal of function pointers and virtual functions
+Partial Inlining
+Generic Property Instrumentation
+
+Function "mpc_main"
+Time limit: -1
+Starting Bounded Model Checking
+Unwinding loop mpc_main.0 iteration 1 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gcd/gcd.c line 10 function mpc_main thread 0
+Unwinding loop mpc_main.0 iteration 2 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gcd/gcd.c line 10 function mpc_main thread 0
+Unwinding loop mpc_main.0 iteration 3 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gcd/gcd.c line 10 function mpc_main thread 0
+Unwinding loop mpc_main.0 iteration 4 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gcd/gcd.c line 10 function mpc_main thread 0
+Unwinding loop mpc_main.0 iteration 5 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gcd/gcd.c line 10 function mpc_main thread 0
+Unwinding loop mpc_main.0 iteration 6 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gcd/gcd.c line 10 function mpc_main thread 0
+Unwinding loop mpc_main.0 iteration 7 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gcd/gcd.c line 10 function mpc_main thread 0
+Unwinding loop mpc_main.0 iteration 8 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gcd/gcd.c line 10 function mpc_main thread 0
+Unwinding loop mpc_main.0 iteration 9 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gcd/gcd.c line 10 function mpc_main thread 0
+Unwinding loop mpc_main.0 iteration 10 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gcd/gcd.c line 10 function mpc_main thread 0
+Unwinding loop mpc_main.0 iteration 11 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gcd/gcd.c line 10 function mpc_main thread 0
+Unwinding loop mpc_main.0 iteration 12 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gcd/gcd.c line 10 function mpc_main thread 0
+Unwinding loop mpc_main.0 iteration 13 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gcd/gcd.c line 10 function mpc_main thread 0
+Unwinding loop mpc_main.0 iteration 14 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gcd/gcd.c line 10 function mpc_main thread 0
+Unwinding loop mpc_main.0 iteration 15 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gcd/gcd.c line 10 function mpc_main thread 0
+Unwinding loop mpc_main.0 iteration 16 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gcd/gcd.c line 10 function mpc_main thread 0
+Unwinding loop mpc_main.0 iteration 17 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gcd/gcd.c line 10 function mpc_main thread 0
+Unwinding loop mpc_main.0 iteration 18 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gcd/gcd.c line 10 function mpc_main thread 0
+Unwinding loop mpc_main.0 iteration 19 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gcd/gcd.c line 10 function mpc_main thread 0
+Unwinding loop mpc_main.0 iteration 20 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gcd/gcd.c line 10 function mpc_main thread 0
+Unwinding loop mpc_main.0 iteration 21 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gcd/gcd.c line 10 function mpc_main thread 0
+Unwinding loop mpc_main.0 iteration 22 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gcd/gcd.c line 10 function mpc_main thread 0
+Unwinding loop mpc_main.0 iteration 23 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gcd/gcd.c line 10 function mpc_main thread 0
+Unwinding loop mpc_main.0 iteration 24 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gcd/gcd.c line 10 function mpc_main thread 0
+Unwinding loop mpc_main.0 iteration 25 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gcd/gcd.c line 10 function mpc_main thread 0
+Unwinding loop mpc_main.0 iteration 26 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gcd/gcd.c line 10 function mpc_main thread 0
+Unwinding loop mpc_main.0 iteration 27 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gcd/gcd.c line 10 function mpc_main thread 0
+Unwinding loop mpc_main.0 iteration 28 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gcd/gcd.c line 10 function mpc_main thread 0
+Unwinding loop mpc_main.0 iteration 29 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gcd/gcd.c line 10 function mpc_main thread 0
+Unwinding loop mpc_main.0 iteration 30 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gcd/gcd.c line 10 function mpc_main thread 0
+Unwinding loop mpc_main.0 iteration 31 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gcd/gcd.c line 10 function mpc_main thread 0
+Unwinding loop mpc_main.0 iteration 32 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gcd/gcd.c line 10 function mpc_main thread 0
+Converting function to circuit
+(in)  mpc_main::1::INPUT_A(1): int32;
+(in)  mpc_main::1::INPUT_B(1): int32;
+(out) mpc_main::1::OUTPUT_res(2): int32;
+(out) mpc_main#return_value(1): int32;
+Total:      gates: 163872, depth: 54974
+Boolean:    gates: 163872, Non-XOR gates: 44608, Non-XOR depth: 19934, LUTs: 0
+Arithmetic: gates: 0, Mul gates: 0, Mul depth: 0
+
+Function "mpc_main"
+Time limit: -1
+Starting Bounded Model Checking
+Unwinding loop mpc_main.0 iteration 1 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gcd/gcd.c line 10 function mpc_main thread 0
+Unwinding loop mpc_main.0 iteration 2 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gcd/gcd.c line 10 function mpc_main thread 0
+Unwinding loop mpc_main.0 iteration 3 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gcd/gcd.c line 10 function mpc_main thread 0
+Unwinding loop mpc_main.0 iteration 4 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gcd/gcd.c line 10 function mpc_main thread 0
+Unwinding loop mpc_main.0 iteration 5 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gcd/gcd.c line 10 function mpc_main thread 0
+Unwinding loop mpc_main.0 iteration 6 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gcd/gcd.c line 10 function mpc_main thread 0
+Unwinding loop mpc_main.0 iteration 7 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gcd/gcd.c line 10 function mpc_main thread 0
+Unwinding loop mpc_main.0 iteration 8 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gcd/gcd.c line 10 function mpc_main thread 0
+Unwinding loop mpc_main.0 iteration 9 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gcd/gcd.c line 10 function mpc_main thread 0
+Unwinding loop mpc_main.0 iteration 10 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gcd/gcd.c line 10 function mpc_main thread 0
+Unwinding loop mpc_main.0 iteration 11 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gcd/gcd.c line 10 function mpc_main thread 0
+Unwinding loop mpc_main.0 iteration 12 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gcd/gcd.c line 10 function mpc_main thread 0
+Unwinding loop mpc_main.0 iteration 13 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gcd/gcd.c line 10 function mpc_main thread 0
+Unwinding loop mpc_main.0 iteration 14 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gcd/gcd.c line 10 function mpc_main thread 0
+Unwinding loop mpc_main.0 iteration 15 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gcd/gcd.c line 10 function mpc_main thread 0
+Unwinding loop mpc_main.0 iteration 16 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gcd/gcd.c line 10 function mpc_main thread 0
+Unwinding loop mpc_main.0 iteration 17 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gcd/gcd.c line 10 function mpc_main thread 0
+Unwinding loop mpc_main.0 iteration 18 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gcd/gcd.c line 10 function mpc_main thread 0
+Unwinding loop mpc_main.0 iteration 19 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gcd/gcd.c line 10 function mpc_main thread 0
+Unwinding loop mpc_main.0 iteration 20 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gcd/gcd.c line 10 function mpc_main thread 0
+Unwinding loop mpc_main.0 iteration 21 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gcd/gcd.c line 10 function mpc_main thread 0
+Unwinding loop mpc_main.0 iteration 22 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gcd/gcd.c line 10 function mpc_main thread 0
+Unwinding loop mpc_main.0 iteration 23 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gcd/gcd.c line 10 function mpc_main thread 0
+Unwinding loop mpc_main.0 iteration 24 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gcd/gcd.c line 10 function mpc_main thread 0
+Unwinding loop mpc_main.0 iteration 25 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gcd/gcd.c line 10 function mpc_main thread 0
+Unwinding loop mpc_main.0 iteration 26 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gcd/gcd.c line 10 function mpc_main thread 0
+Unwinding loop mpc_main.0 iteration 27 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gcd/gcd.c line 10 function mpc_main thread 0
+Unwinding loop mpc_main.0 iteration 28 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gcd/gcd.c line 10 function mpc_main thread 0
+Unwinding loop mpc_main.0 iteration 29 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gcd/gcd.c line 10 function mpc_main thread 0
+Unwinding loop mpc_main.0 iteration 30 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gcd/gcd.c line 10 function mpc_main thread 0
+Unwinding loop mpc_main.0 iteration 31 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gcd/gcd.c line 10 function mpc_main thread 0
+Unwinding loop mpc_main.0 iteration 32 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gcd/gcd.c line 10 function mpc_main thread 0
+Converting function to circuit
+(in)  mpc_main::1::INPUT_A(1): int32;
+(in)  mpc_main::1::INPUT_B(1): int32;
+(out) mpc_main::1::OUTPUT_res(2): int32;
+(out) mpc_main#return_value(1): int32;
+Total:      gates: 168192, depth: 54304
+Boolean:    gates: 168192, Non-XOR gates: 48928, Non-XOR depth: 19264, LUTs: 0
+Arithmetic: gates: 0, Mul gates: 0, Mul depth: 0
+
+Function "mpc_main"
+Time limit: -1
+Starting Bounded Model Checking
+!(b!0#2 == 0)
+not
+  * type: bool
+  0: =
+      * type: bool
+      * #source_location: 
+        * file: /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gcd/gcd.c
+        * line: 11
+        * function: mpc_main
+        * working_directory: /home/ubuntu/circ_benchmarks/hycc_circuit_dir/hycc_gcd_mt-0_args---all-variants_cm-hycc
+      0: symbol
+          * type: signedbv
+              * width: 32
+              * #c_type: signed_int
+          * identifier: mpc_main::1::b!0#2
+          * expression: symbol
+              * type: signedbv
+                  * width: 32
+                  * #c_type: signed_int
+              * identifier: mpc_main::1::b
+              * #source_location: 
+                * file: /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gcd/gcd.c
+                * line: 7
+                * function: mpc_main
+                * working_directory: /home/ubuntu/circ_benchmarks/hycc_circuit_dir/hycc_gcd_mt-0_args---all-variants_cm-hycc
+          * L0: 0
+          * L2: 2
+          * L1_object_identifier: mpc_main::1::b!0
+          * #SSA_symbol: 1
+      1: constant
+          * type: signedbv
+              * width: 32
+              * #c_type: signed_int
+          * value: 00000000000000000000000000000000
+          * #source_location: 
+            * file: /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gcd/gcd.c
+            * line: 9
+            * function: mpc_main
+            * working_directory: /home/ubuntu/circ_benchmarks/hycc_circuit_dir/hycc_gcd_mt-0_args---all-variants_cm-hycc
+          * #base: 10
+LOG: Compile time: 1.61072
+
+LOG: Time / Memory: 1.62 seconds 148284 kB
+
+LOG: ====================================
+
+LOG: MODE: bundle
+HyCC Module Bundle Generator v0.2
+Directory: /home/ubuntu/circ_benchmarks/hycc_circuit_dir/hycc_gcd_mt-0_args---all-variants_cm-hycc
+found mpc_main@bool_size.circ
+found mpc_main@bool_depth.circ
+(ignoring mpc_main@bool_size.stats)
+(ignoring mpc_main@bool_depth.stats)
+
+LOG: Time / Memory: 0.02 seconds 10060 kB
