@@ -467,7 +467,7 @@ def run_benchmarks(setting):
     stop_instances()
 
 
-def benchmark_hycc_worker(ip, connect_ip, role, key_file):
+def benchmark_worker(ip, connect_ip, role, key_file):
     print("Running HyCC benchmark:\nip: {}\nconnect: {}\nrole: {}\n".format(
         ip, connect_ip, role))
     key = paramiko.Ed25519Key.from_private_key_file(key_file)
@@ -475,25 +475,7 @@ def benchmark_hycc_worker(ip, connect_ip, role, key_file):
     client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
     client.connect(hostname=ip, username="ubuntu", pkey=key)
 
-    cmd = "cd ~/circ_benchmarks/ && git pull && python3 driver.py --address {} && python3 driver.py --role {} && python3 driver.py -f hycc && python3 driver.py --benchmark".format(
-        connect_ip, role)
-    _, stdout, _ = client.exec_command(cmd)
-
-    if stdout.channel.recv_exit_status():
-        print(ip, " failed running benchmark")
-
-    client.close()
-
-
-def benchmark_circ_worker(ip, connect_ip, role, key_file):
-    print("Running CirC benchmark:\nip: {}\nconnect: {}\nrole: {}\n".format(
-        ip, connect_ip, role))
-    key = paramiko.Ed25519Key.from_private_key_file(key_file)
-    client = paramiko.SSHClient()
-    client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
-    client.connect(hostname=ip, username="ubuntu", pkey=key)
-
-    cmd = "cd ~/circ_benchmarks/ && git pull && python3 driver.py --address {} && python3 driver.py --role {} && python3 driver.py -f circ && python3 driver.py --benchmark".format(
+    cmd = "cd ~/circ_benchmarks/ && git pull && python3 driver.py --address {} && python3 driver.py --role {} && python3 driver.py -f hycc circ && python3 driver.py --benchmark".format(
         connect_ip, role)
     _, stdout, _ = client.exec_command(cmd)
 
@@ -566,32 +548,44 @@ def setup_run_worker(ip, key_file):
 
 def run_lan():
     print("RUNNING LAN TEST")
-    instances = ec2_east.create_instances(ImageId="ami-05b63781e32145c7f",
-                                InstanceType=instance_type,
-                                KeyName="aws-east",
-                                MinCount=1,
-                                MaxCount=2,
-                                Monitoring={
-                                    "Enabled": False
-                                },
-                                SecurityGroups=[
-                                    "circ4mpc"
-                                ],
-                                BlockDeviceMappings=[
-                                    {
-                                        'DeviceName': '/dev/sdh',
-                                        'Ebs': {
-                                            'DeleteOnTermination': True,
-                                            'VolumeSize': 128,
-                                            'VolumeType': 'gp2',
-                                        }
+    stopped_east_instances = list(ec2_east.instances.filter(
+        Filters=[{"Name": "instance-state-name", "Values": ["stopped"]}]))
+    instances = [i for i in stopped_east_instances if i.instance_type == run_instance_type]
+    
+    if len(instances) >= 2:
+        print("starting instances")
+        instances = instances[:2]
+        [i.start() for i in instances]
+        [i.wait_until_running() for i in instances]
+        [i.load() for i in instances]
+        print("started {} instances".format(len(instances)))
+    else:
+        print("creating instances")
+        instances = ec2_east.create_instances(ImageId="ami-05b63781e32145c7f",
+                                    InstanceType=run_instance_type,
+                                    KeyName="aws-east",
+                                    MinCount=1,
+                                    MaxCount=2,
+                                    Monitoring={
+                                        "Enabled": False
                                     },
-                                ]
-                            )
-    print("created {} instances".format(len(instances)))
-    [instance.wait_until_running() for instance in instances]
-    [instance.load() for instance in instances]
-
+                                    SecurityGroups=[
+                                        "circ4mpc"
+                                    ],
+                                    BlockDeviceMappings=[
+                                        {
+                                            'DeviceName': '/dev/sdh',
+                                            'Ebs': {
+                                                'DeleteOnTermination': True,
+                                                'VolumeSize': 128,
+                                                'VolumeType': 'gp2',
+                                            }
+                                        },
+                                    ]
+                                )
+        [instance.wait_until_running() for instance in instances]
+        [instance.load() for instance in instances]
+        print("created {} instances".format(len(instances)))
 
     # install ABY 
     ips = [instance.public_dns_name for instance in instances]
@@ -618,27 +612,21 @@ def run_lan():
     roles = [0, 1]
     keys = ["aws-east.pem", "aws-east.pem"]
 
-    print("benchmarking hycc")
+    print("benchmarking")
     pool = multiprocessing.Pool(len(instances))
-    pool.starmap(benchmark_hycc_worker, zip(ips, connect_ips, roles, keys))
-
-    print("benchmarking circ")
-    pool = multiprocessing.Pool(len(instances))
-    pool.starmap(benchmark_circ_worker, zip(ips, connect_ips, roles, keys))
+    pool.starmap(benchmark_worker, zip(ips, connect_ips, roles, keys))
 
     # scp compiled hycc_circuit_dir & test_results to local directory
     subprocess.call(
-        "rsync -avz -e \"ssh -o StrictHostKeyChecking=no -i aws-west.pem\" --progress ubuntu@{}:~/circ_benchmarks/hycc_circuit_dir .".format(ip), shell=True)
+        "rsync -avz -e \"ssh -o StrictHostKeyChecking=no -i aws-east.pem\" --progress ubuntu@{}:~/circ_benchmarks/hycc_circuit_dir .".format(ip), shell=True)
     subprocess.call(
-        "rsync -avz -e \"ssh -o StrictHostKeyChecking=no -i aws-west.pem\" --progress ubuntu@{}:~/circ_benchmarks/circ_circuit_dir .".format(ip), shell=True)
+        "rsync -avz -e \"ssh -o StrictHostKeyChecking=no -i aws-east.pem\" --progress ubuntu@{}:~/circ_benchmarks/circ_circuit_dir .".format(ip), shell=True)
     subprocess.call(
-        "rsync -avz -e \"ssh -o StrictHostKeyChecking=no -i aws-west.pem\" --progress ubuntu@{}:~/circ_benchmarks/test_results .".format(ip), shell=True)
+        "rsync -avz -e \"ssh -o StrictHostKeyChecking=no -i aws-east.pem\" --progress ubuntu@{}:~/circ_benchmarks/test_results .".format(ip), shell=True)
 
     print("Stopping instances")
     [instance.stop() for instance in instances]
     [instance.wait_until_stopped() for instance in instances]
-    # print("Terminating instances")
-    # [instance.terminate() for instance in instances]
     print("done!")
     
 

@@ -37,7 +37,7 @@ CIRC_TARGET = CIRC_SOURCE + "/target/release/examples/circ"
 ABY_INTERPRETER = ABY_SOURCE + "/build/bin/aby_interpreter"
 
 # joint parameters
-RERUN = 1
+RERUN = 10
 COST_MODELS = ["hycc"]
 # TODO: if more cost models are added, need to give hycc the path to the json
 COSTS = HYCC_SOURCE+"/src/circuit-utils/py/costs.json"
