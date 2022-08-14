@@ -45,9 +45,9 @@ COSTS = HYCC_SOURCE+"/src/circuit-utils/py/costs.json"
 
 # hycc parameters
 HYCC_TEST_CASES = [
-    # ("biomatch", "biomatch/biomatch.c"),
-    # ("kmeans", "kmeans/kmeans.c"),
-    # ("gauss", "gauss/gauss.c"),
+    ("biomatch", "biomatch/biomatch.c"),
+    ("kmeans", "kmeans/kmeans.c"),
+    ("gauss", "gauss/gauss.c"),
     # ("db_join", "db/db_join.c"),
     # ("db_join2", "db/db_join2.c"),
     # ("db_merge", "db/db_merge.c"),
@@ -56,10 +56,10 @@ HYCC_TEST_CASES = [
     # ("mnist_decomp_convolution", "mnist/mnist_decomp_convolution.c"),
     # ("cryptonets", "cryptonets/cryptonets.c"),
     # ("histogram", "histogram/histogram.c"),
-    ("gcd", "gcd/gcd.c"),
+    # ("gcd", "gcd/gcd.c"),
 ]
 
-MINIMIZATION_TIMES = [600]
+MINIMIZATION_TIMES = [0]
 HYCC_SELECTION_SCHEMES = [
     "yaoonly",
     "yaohybrid",
