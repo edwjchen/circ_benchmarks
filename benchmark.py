@@ -129,8 +129,10 @@ def compile_hycc(name, path):
         compile_version = "compile_{}".format(version)
         compile_log_path = format(
             "{}test_results/{}_{}/log_{}.txt".format(CIRC_BENCHMARK_SOURCE, params["system"], name, compile_version))
+        failed_log_path = format(
+            "{}test_results/{}_{}/failed_log_{}.txt".format(CIRC_BENCHMARK_SOURCE, params["system"], name, compile_version))
 
-        if not os.path.exists(compile_log_path):
+        if not os.path.exists(compile_log_path) and not os.path.exists(failed_log_path):
             # compile HyCC benchmark
             os.chdir(circuit_dir)
             params["version"] = compile_version
@@ -175,7 +177,10 @@ def select_hycc(name):
         select_log_path = format(
             "{}test_results/{}_{}/log_{}.txt".format(CIRC_BENCHMARK_SOURCE, params["system"], name, select_version))
 
-        if not os.path.exists(select_log_path):
+        failed_log_path = format(
+            "{}test_results/{}_{}/failed_log_{}.txt".format(CIRC_BENCHMARK_SOURCE, params["system"], name, select_version))
+
+        if not not os.path.exists(select_log_path) and not os.path.exists(failed_log_path):
             # select HyCC benchmark
             os.chdir(circuit_dir)
             params["version"] = select_version
