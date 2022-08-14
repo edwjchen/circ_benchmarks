@@ -1,0 +1,12 @@
+LOG: ====================================
+LOG: Benchmarking HyCC
+LOG: ====================================
+LOG: TEST: gauss
+LOG: MINIMIZATION_TIME: 9
+LOG: COST_MODEL: hycc
+LOG: ARGUMENTS: ['--all-variants']
+LOG: ====================================
+LOG: MODE: selection
+LOG: Error: Process returned with status code 1
+LOG: Error message: Traceback (most recent call last):   File "/home/ubuntu/circ_benchmarks/modules/HyCC/src/circuit-utils/py/selection.py", line 416, in <module>     results = protocol_selection.run(modules)   File "/home/ubuntu/circ_benchmarks/modules/HyCC/src/circuit-utils/py/selection.py", line 309, in run     execution_cost[(module, variant)] = self.cost(   File "/home/ubuntu/circ_benchmarks/modules/HyCC/src/circuit-utils/py/selection.py", line 257, in cost     total += self.costs[gate][sharing][width] * count KeyError: 0 Command exited with non-zero status 1 0.72 seconds 66860 kB Command exited with non-zero status 1 0.72 seconds 66860 kB
+LOG: Failed selecting circuit with args: --all-variants, exception:

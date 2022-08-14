@@ -1,0 +1,163 @@
+
+LOG: ====================================
+
+LOG: Benchmarking HyCC
+
+LOG: ====================================
+
+LOG: TEST: gauss
+LOG: MINIMIZATION_TIME: 9
+LOG: COST_MODEL: hycc
+LOG: ARGUMENTS: ['--all-variants']
+
+LOG: ====================================
+
+LOG: MODE: selection
+Directory: /home/ubuntu/circ_benchmarks/hycc_circuit_dir/hycc_gauss_mt-9_args---all-variants_cm-hycc
+fixedpt_mul_inner@bool_size.stats
+swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<0>,int32<1>>@arith.circ
+fixedpt_mul@bool_depth.circ
+fixedpt_mul_inner@bool_depth.stats
+gaussj_D<int32[9],int32[3],int32[3]>@bool_depth.circ
+fixedpt_div@bool_size.circ
+gaussj_D<int32[9],int32[3],int32[3]>@bool_depth.stats
+mpc_main@bool_size.circ
+swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<0>,int32<1>>@bool_depth.stats
+pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<0>,int32<3>>@bool_size.circ
+pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<1>,int32<3>>@bool_depth.stats
+yaohybrid.cmb
+fixedpt_div@bool_size.stats
+fixedpt_mul_inner@bool_size.circ
+gaussj_D<int32[9],int32[3],int32[3]>@arith.stats
+identity<int32[9]>@bool_size.circ
+mpc_main@bool_depth.circ
+swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<0>,int32<2>>@bool_depth.stats
+gaussj_D<int32[9],int32[3],int32[3]>@arith.circ
+gmwhybrid.cmb
+solve_backtracking<int32[9],int32[3],int32[3]>@bool_depth.stats
+identity<int32[9]>@bool_depth.stats
+abs@bool_depth.circ
+swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<0>,int32<2>>@bool_depth.circ
+fixedpt_mul_inner@bool_depth.circ
+swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<1>,int32<2>>@bool_depth.circ
+all.cmb
+abs@bool_size.circ
+swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<0>,int32<1>>@bool_size.stats
+pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<0>,int32<3>>@bool_depth.stats
+fixedpt_mul@bool_size.stats
+mpc_main@arith.stats
+solve_backtracking<int32[9],int32[3],int32[3]>@bool_depth.circ
+identity<int32[9]>@bool_size.stats
+fixedpt_div@bool_depth.circ
+identity<int32[9]>@arith.circ
+pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<1>,int32<3>>@bool_size.circ
+abs@bool_depth.stats
+abs@bool_size.stats
+pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<1>,int32<3>>@bool_size.stats
+gaussj_D<int32[9],int32[3],int32[3]>@bool_size.circ
+mpc_main@bool_size.stats
+swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<1>,int32<2>>@bool_depth.stats
+gaussj_D<int32[9],int32[3],int32[3]>@bool_size.stats
+fixedpt_mul@bool_depth.stats
+identity<int32[9]>@arith.stats
+yaoonly.cmb
+swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<0>,int32<2>>@arith.stats
+swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<0>,int32<2>>@bool_size.circ
+swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<0>,int32<1>>@arith.stats
+fixedpt_div@bool_depth.stats
+swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<1>,int32<2>>@arith.stats
+identity<int32[9]>@bool_depth.circ
+pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<0>,int32<3>>@bool_depth.circ
+swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<0>,int32<2>>@bool_size.stats
+pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<0>,int32<3>>@bool_size.stats
+gmwonly.cmb
+mpc_main@bool_depth.stats
+swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<0>,int32<1>>@bool_depth.circ
+solve_backtracking<int32[9],int32[3],int32[3]>@bool_size.stats
+swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<0>,int32<2>>@arith.circ
+fixedpt_mul@bool_size.circ
+swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<1>,int32<2>>@arith.circ
+solve_backtracking<int32[9],int32[3],int32[3]>@bool_size.circ
+swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<1>,int32<2>>@bool_size.circ
+pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<1>,int32<3>>@bool_depth.circ
+mpc_main@arith.circ
+swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<1>,int32<2>>@bool_size.stats
+swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<0>,int32<1>>@bool_size.circ
+Modules: 13
+
+swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<0>,int32<1>>
+  Possible sharings: arith bool_depth bool_size
+  Calls:
+
+fixedpt_mul
+  Possible sharings: bool_depth bool_size
+  Calls:
+    fixedpt_mul_inner x 1
+
+gaussj_D<int32[9],int32[3],int32[3]>
+  Possible sharings: arith bool_depth bool_size
+  Calls:
+    identity<int32[9]> x 1
+    pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<0>,int32<3>> x 1
+    fixedpt_div x 3
+    fixedpt_mul x 11
+    pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<1>,int32<3>> x 1
+    solve_backtracking<int32[9],int32[3],int32[3]> x 1
+
+fixedpt_div
+  Possible sharings: bool_depth bool_size
+  Calls:
+
+mpc_main
+  Possible sharings: arith bool_depth bool_size
+  Calls:
+    gaussj_D<int32[9],int32[3],int32[3]> x 1
+
+pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<0>,int32<3>>
+  Possible sharings: bool_depth bool_size
+  Calls:
+    swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<0>,int32<1>> x 1
+    swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<0>,int32<2>> x 1
+
+fixedpt_mul_inner
+  Possible sharings: bool_depth bool_size
+  Calls:
+
+identity<int32[9]>
+  Possible sharings: arith bool_depth bool_size
+  Calls:
+
+abs
+  Possible sharings: bool_depth bool_size
+  Calls:
+
+swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<0>,int32<2>>
+  Possible sharings: arith bool_depth bool_size
+  Calls:
+
+swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<1>,int32<2>>
+  Possible sharings: arith bool_depth bool_size
+  Calls:
+
+solve_backtracking<int32[9],int32[3],int32[3]>
+  Possible sharings: bool_depth bool_size
+  Calls:
+    fixedpt_div x 1
+    fixedpt_mul x 3
+
+pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<1>,int32<3>>
+  Possible sharings: bool_depth bool_size
+  Calls:
+    swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<1>,int32<2>> x 1
+
+Subgraphs:
+  {'identity<int32[9]>', 'pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<0>,int32<3>>', 'fixedpt_mul', 'fixedpt_mul_inner', 'gaussj_D<int32[9],int32[3],int32[3]>', 'pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<1>,int32<3>>', 'swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<0>,int32<2>>', 'solve_backtracking<int32[9],int32[3],int32[3]>', 'fixedpt_div', 'swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<0>,int32<1>>', 'swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<1>,int32<2>>'}
+  {'fixedpt_mul', 'solve_backtracking<int32[9],int32[3],int32[3]>', 'fixedpt_mul_inner', 'fixedpt_div'}
+  {'swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<0>,int32<1>>', 'pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<0>,int32<3>>', 'swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<0>,int32<2>>'}
+  {'fixedpt_mul', 'fixedpt_mul_inner'}
+  {'swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<1>,int32<2>>', 'pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<1>,int32<3>>'}
+
+
+LOG: Error: Process returned with status code 1
+LOG: Error message: Traceback (most recent call last):   File "/home/ubuntu/circ_benchmarks/modules/HyCC/src/circuit-utils/py/selection.py", line 416, in <module>     results = protocol_selection.run(modules)   File "/home/ubuntu/circ_benchmarks/modules/HyCC/src/circuit-utils/py/selection.py", line 309, in run     execution_cost[(module, variant)] = self.cost(   File "/home/ubuntu/circ_benchmarks/modules/HyCC/src/circuit-utils/py/selection.py", line 257, in cost     total += self.costs[gate][sharing][width] * count KeyError: 0 Command exited with non-zero status 1 0.72 seconds 66860 kB Command exited with non-zero status 1 0.72 seconds 66860 kB 
+LOG: Failed selecting circuit with args: --all-variants, exception: 
