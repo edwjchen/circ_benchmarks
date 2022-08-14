@@ -92,6 +92,9 @@ def build(features):
                        "--init", "--remote", "modules/ABY"])
 
     if "hycc" in features:
+        # build hycc
+        subprocess.run(["./scripts/build_hycc.zsh"], check=True)
+        
         # install hycc aby dependency
         if not os.path.isdir(ABY_HYCC_DIR):
             subprocess.run(["cp", "-r", ABY_HYCC, ABY_HYCC_DIR], check=True)
@@ -137,6 +140,9 @@ def build_aby(features):
     os.chdir(CIRC_BENCHMARK_SOURCE)
 
     if "hycc" in features:
+        # build hycc
+        subprocess.run(["./scripts/build_hycc.zsh"], check=True)
+
         # install hycc aby dependency
         if not os.path.isdir(ABY_HYCC_DIR):
             subprocess.run(["cp", "-r", ABY_HYCC, ABY_HYCC_DIR], check=True)
