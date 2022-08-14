@@ -290,7 +290,7 @@ def compile_benchmarks():
     client.connect(hostname=ip, username="ubuntu", pkey=key)
 
     _, stdout, _ = client.exec_command(
-        "cd ~/circ_benchmarks && git pull && python3 driver.py -f hycc circ && python3 driver.py --compile")
+        "cd ~/circ_benchmarks && git pull && git checkout aws && python3 driver.py -f hycc circ && python3 driver.py --compile")
     if stdout.channel.recv_exit_status():
         print(ip, " failed compiles")
 
@@ -303,12 +303,13 @@ def compile_benchmarks():
     if not os.path.exists("./aws/"+id):
         os.mkdir("./aws/"+id)
 
+
     subprocess.call(
-        "rsync -avz -e \"ssh -o StrictHostKeyChecking=no -i aws-west.pem\" --progress ubuntu@{}:~/circ_benchmarks/hycc_circuit_dir ./aws/{}".format(ip, id), shell=True)
+        "rsync -avz -e \"ssh -o StrictHostKeyChecking=no -i aws-west.pem\" --progress ubuntu@{}:~/circ_benchmarks/hycc_circuit_dir .".format(ip), shell=True)
     subprocess.call(
-        "rsync -avz -e \"ssh -o StrictHostKeyChecking=no -i aws-west.pem\" --progress ubuntu@{}:~/circ_benchmarks/circ_circuit_dir ./aws/{}".format(ip, id), shell=True)
+        "rsync -avz -e \"ssh -o StrictHostKeyChecking=no -i aws-west.pem\" --progress ubuntu@{}:~/circ_benchmarks/circ_circuit_dir .".format(ip), shell=True)
     subprocess.call(
-        "rsync -avz -e \"ssh -o StrictHostKeyChecking=no -i aws-west.pem\" --progress ubuntu@{}:~/circ_benchmarks/test_results ./aws/{}".format(ip, id), shell=True)
+        "rsync -avz -e \"ssh -o StrictHostKeyChecking=no -i aws-west.pem\" --progress ubuntu@{}:~/circ_benchmarks/test_results .".format(ip), shell=True)
 
     # start all other instances
     start_instances()
@@ -336,11 +337,11 @@ def compile_scp_worker(ip, id):
     client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
     client.connect(hostname=ip, username="ubuntu", pkey=key)
     subprocess.call(
-        "rsync -avz -e \"ssh -o StrictHostKeyChecking=no -i aws-east.pem\" --progress ./aws/{}/hycc_circuit_dir/ ubuntu@{}:~/circ_benchmarks/hycc_circuit_dir".format(id, ip), shell=True)
+        "rsync -avz -e \"ssh -o StrictHostKeyChecking=no -i aws-east.pem\" --progress ./hycc_circuit_dir/ ubuntu@{}:~/circ_benchmarks/hycc_circuit_dir".format(ip), shell=True)
     subprocess.call(
-        "rsync -avz -e \"ssh -o StrictHostKeyChecking=no -i aws-east.pem\" --progress ./aws/{}/circ_circuit_dir/ ubuntu@{}:~/circ_benchmarks/circ_circuit_dir".format(id, ip), shell=True)
+        "rsync -avz -e \"ssh -o StrictHostKeyChecking=no -i aws-east.pem\" --progress ./circ_circuit_dir/ ubuntu@{}:~/circ_benchmarks/circ_circuit_dir".format(ip), shell=True)
     subprocess.call(
-        "rsync -avz -e \"ssh -o StrictHostKeyChecking=no -i aws-east.pem\" --progress ./aws/{}/test_results/ ubuntu@{}:~/circ_benchmarks/test_results".format(id, ip), shell=True)
+        "rsync -avz -e \"ssh -o StrictHostKeyChecking=no -i aws-east.pem\" --progress ./test_results/ ubuntu@{}:~/circ_benchmarks/test_results".format(ip), shell=True)
 
     print("SCP'd:", ip)
     client.close()

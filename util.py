@@ -73,7 +73,7 @@ HYCC_COMPILE_ARGUMENTS = [
 
 # circ parameters
 CIRC_TEST_CASES = [
-    "biomatch",
+    # "biomatch",
     # "kmeans",
     # "gauss",
     # "db_join",
