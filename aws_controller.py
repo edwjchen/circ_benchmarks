@@ -273,10 +273,11 @@ def compile_benchmarks():
     num = len(stopped_instances)
     for i in range(num):
         instance = stopped_instances[i]
-        ec2_west.instances.filter(InstanceIds=[instance.id]).start()
+        instance.start()
+        instance.wait_until_running()
+        instance.load()
         count += 1
     print("Started {} West instances".format(count))
-    time.sleep(15)
 
     # compile on west instance
     running_west_instances = list(ec2_west.instances.filter(
