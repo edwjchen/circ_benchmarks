@@ -272,6 +272,7 @@ def compile_benchmarks():
     count = 0
     num = len(stopped_instances)
     for i in range(num):
+        print("Starting instance:", instance.public_dns_name)
         instance = stopped_instances[i]
         instance.start()
         instance.wait_until_running()
@@ -290,7 +291,7 @@ def compile_benchmarks():
     client.connect(hostname=ip, username="ubuntu", pkey=key)
 
     _, stdout, _ = client.exec_command(
-        "cd ~/circ_benchmarks && git pull && git checkout aws && python3 driver.py -f hycc circ && python3 driver.py --compile")
+        "cd ~/circ_benchmarks && git checkout aws && git pull && python3 driver.py -f hycc circ && python3 driver.py --compile")
     if stdout.channel.recv_exit_status():
         print(ip, " failed compiles")
 
@@ -303,7 +304,6 @@ def compile_benchmarks():
     if not os.path.exists("./aws/"+id):
         os.mkdir("./aws/"+id)
 
-
     subprocess.call(
         "rsync -avz -e \"ssh -o StrictHostKeyChecking=no -i aws-west.pem\" --progress ubuntu@{}:~/circ_benchmarks/hycc_circuit_dir .".format(ip), shell=True)
     subprocess.call(
@@ -311,9 +311,16 @@ def compile_benchmarks():
     subprocess.call(
         "rsync -avz -e \"ssh -o StrictHostKeyChecking=no -i aws-west.pem\" --progress ubuntu@{}:~/circ_benchmarks/test_results .".format(ip), shell=True)
 
+    # stop west instance
+    running_west_instances[0].stop()
+    running_west_instances[0].wait_until_stopped()
+
     # start all other instances
-    start_instances()
-    time.sleep(15)
+    stopped_east_instances = list(ec2_west.instances.filter(
+        Filters=[{"Name": "instance-state-name", "Values": ["stopped"]}]))
+    [instance.start() for instance in stopped_east_instances]
+    [instance.wait_until_running() for instance in stopped_east_instances]
+    [instance.load() for instance in stopped_east_instances]
 
     # then scp hycc_circ_dir to other instances
     running_east_instances = list(ec2_east.instances.filter(
