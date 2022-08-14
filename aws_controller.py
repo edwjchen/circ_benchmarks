@@ -227,12 +227,12 @@ def setup_worker(ip, key_file):
     _, stdout, _ = client.exec_command("cd ~/circ_benchmarks")
     if stdout.channel.recv_exit_status():
         _, stdout, _ = client.exec_command(
-            "curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -- -y && source $HOME/.cargo/env && cd ~ && git clone https://github.com/edwjchen/circ_benchmarks.git && cd ~/circ_benchmarks && git checkout aws && ./scripts/dependencies.sh && pip3 install pandas && python3 driver.py -f hycc circ && python3 driver.py -b")
+            "curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -- -y && source $HOME/.cargo/env && cd ~ && git clone https://github.com/edwjchen/circ_benchmarks.git && cd ~/circ_benchmarks && git checkout aws -f && git add . && git stash && git pull -f &&./scripts/dependencies.sh && pip3 install pandas && python3 driver.py -f hycc circ && python3 driver.py -b")
         if stdout.channel.recv_exit_status():
             print(ip, " failed setup")
     else:
         _, stdout, _ = client.exec_command(
-            "curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -- -y && source $HOME/.cargo/env && cd ~/circ_benchmarks && git pull && git checkout aws && ./scripts/dependencies.sh && pip3 install pandas && python3 driver.py -f hycc circ && python3 driver.py -b")
+            "curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -- -y && source $HOME/.cargo/env && cd ~/circ_benchmarks && git checkout aws -f && git add . && git stash && git pull -f && ./scripts/dependencies.sh && pip3 install pandas && python3 driver.py -f hycc circ && python3 driver.py -b")
         if stdout.channel.recv_exit_status():
             print(ip, " failed setup 2")
 
@@ -313,8 +313,8 @@ def compile_benchmarks():
             print("retry:", retry)
     print("connected to:", ip)
 
-    # cmd = "cd ~/circ_benchmarks && git checkout aws && git pull && python3 driver.py -f hycc circ && python3 driver.py --compile"
-    cmd = "cd ~/circ_benchmarks && git checkout aws && git pull && python3 driver.py -f hycc && python3 driver.py --compile"
+    # cmd = "cd ~/circ_benchmarks && git checkout aws -f && git pull && python3 driver.py -f hycc circ && python3 driver.py --compile"
+    cmd = "cd ~/circ_benchmarks && git checkout aws -f && git add . && git stash && git pull -f && python3 driver.py -f hycc && python3 driver.py --compile"
     print("Running:", cmd)
     _, stdout, stderr = client.exec_command(cmd)
     print("\n".join(stderr.readlines()))
@@ -375,7 +375,7 @@ def select_benchmarks():
             print("retry:", retry)
     print("connected to:", ip)
 
-    cmd = "cd ~/circ_benchmarks && git checkout aws && git pull && python3 driver.py -f hycc && python3 driver.py --select"
+    cmd = "cd ~/circ_benchmarks && git checkout aws -f && git add . && git stash && git pull -f && python3 driver.py -f hycc && python3 driver.py --select"
     print("Running:", cmd)
     _, stdout, stderr = client.exec_command(cmd)
     print("\n".join(stderr.readlines()))
@@ -475,7 +475,7 @@ def benchmark_worker(ip, connect_ip, role, key_file):
     client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
     client.connect(hostname=ip, username="ubuntu", pkey=key)
 
-    cmd = "cd ~/circ_benchmarks/ && git pull && python3 driver.py --address {} && python3 driver.py --role {} && python3 driver.py -f hycc circ && python3 driver.py --benchmark".format(
+    cmd = "cd ~/circ_benchmarks/ && git add . && git stash && git pull -f && python3 driver.py --address {} && python3 driver.py --role {} && python3 driver.py -f hycc circ && python3 driver.py --benchmark".format(
         connect_ip, role)
     _, stdout, _ = client.exec_command(cmd)
 
@@ -535,12 +535,12 @@ def setup_run_worker(ip, key_file):
     _, stdout, _ = client.exec_command("cd ~/circ_benchmarks")
     if stdout.channel.recv_exit_status():
         _, stdout, _ = client.exec_command(
-            "cd ~ && git clone https://github.com/edwjchen/circ_benchmarks.git && cd ~/circ_benchmarks && git checkout aws && ./scripts/dependencies.sh && pip3 install pandas && python3 driver.py -f hycc && python3 driver.py --build_aby")
+            "cd ~ && git clone https://github.com/edwjchen/circ_benchmarks.git && cd ~/circ_benchmarks && git checkout aws -f && ./scripts/dependencies.sh && pip3 install pandas && python3 driver.py -f hycc && python3 driver.py --build_aby")
         if stdout.channel.recv_exit_status():
             print(ip, " failed setup")
     else:
         _, stdout, _ = client.exec_command(
-            "cd ~/circ_benchmarks && git pull && git checkout aws && ./scripts/dependencies.sh && pip3 install pandas && python3 driver.py -f hycc && python3 driver.py --build_aby")
+            "cd ~/circ_benchmarks && git checkout aws -f && git add . && git stash && git pull -f && ./scripts/dependencies.sh && pip3 install pandas && python3 driver.py -f hycc && python3 driver.py --build_aby")
         if stdout.channel.recv_exit_status():
             print(ip, " failed setup 2")
     print("Set up:", ip)
