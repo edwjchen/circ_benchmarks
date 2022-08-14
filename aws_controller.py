@@ -226,12 +226,12 @@ def setup_worker(ip, key_file):
     _, stdout, _ = client.exec_command("cd ~/circ_benchmarks")
     if stdout.channel.recv_exit_status():
         _, stdout, _ = client.exec_command(
-            "curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y && source $HOME/.cargo/env && cd ~ && git clone https://github.com/edwjchen/circ_benchmarks.git && cd ~/circ_benchmarks && git checkout aws && ./scripts/dependencies.sh && pip3 install pandas && python3 driver.py -f hycc circ && python3 driver.py -b")
+            "curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -- -y && source $HOME/.cargo/env && cd ~ && git clone https://github.com/edwjchen/circ_benchmarks.git && cd ~/circ_benchmarks && git checkout aws && ./scripts/dependencies.sh && pip3 install pandas && python3 driver.py -f hycc circ && python3 driver.py -b")
         if stdout.channel.recv_exit_status():
             print(ip, " failed setup")
     else:
         _, stdout, _ = client.exec_command(
-            "curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y && source $HOME/.cargo/env && cd ~/circ_benchmarks && git pull && git checkout aws && ./scripts/dependencies.sh && pip3 install pandas && python3 driver.py -f hycc circ && python3 driver.py -b")
+            "curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -- -y && source $HOME/.cargo/env && cd ~/circ_benchmarks && git pull && git checkout aws && ./scripts/dependencies.sh && pip3 install pandas && python3 driver.py -f hycc circ && python3 driver.py -b")
         if stdout.channel.recv_exit_status():
             print(ip, " failed setup 2")
 
@@ -313,20 +313,13 @@ def compile_benchmarks():
     print("connected to:", ip)
 
     # cmd = "cd ~/circ_benchmarks && git checkout aws && git pull && python3 driver.py -f hycc circ && python3 driver.py --compile"
-    cmd = "cd ~/circ_benchmarks && git checkout aws && git pull && python3 driver.py -f hycc circ && python3 driver.py --compile"
+    cmd = "cd ~/circ_benchmarks && git checkout aws && git pull && python3 driver.py -f hycc && python3 driver.py --compile"
     print("Running:", cmd)
     _, stdout, stderr = client.exec_command(cmd)
-
-    print(stderr.readlines())
+    print("\n".join(stderr.readlines()))
     if stdout.channel.recv_exit_status():
+        print(stderr)
         print(ip, " failed compiles")
-        _, stdout, stderr = client.exec_command(cmd)
-        if stdout.channel.recv_exit_status():
-            print("\nretry\n")
-            print(stderr.readlines())
-            exit(0)
-    print(stderr)
-    exit(0)
 
     print("Compiled:", ip)
     client.close()
@@ -347,7 +340,7 @@ def compile_benchmarks():
 
     # start all other instances
     print("Starting east instances")
-    stopped_east_instances = list(ec2_west.instances.filter(
+    stopped_east_instances = list(ec2_east.instances.filter(
         Filters=[{"Name": "instance-state-name", "Values": ["stopped"]}]))
     [instance.start() for instance in stopped_east_instances]
     [instance.wait_until_running() for instance in stopped_east_instances]
