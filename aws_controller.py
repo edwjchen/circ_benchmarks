@@ -11,6 +11,7 @@ import time
 # instance_type = "t2.micro"
 # instance_type = "c5.large"
 instance_type = "c6a.16xlarge"
+run_instance_type = "r5.xlarge"
 
 LAN = "LAN"
 WAN = "WAN"
@@ -338,26 +339,6 @@ def compile_benchmarks():
     running_west_instances[0].wait_until_stopped()
     print("Stopped west instance")
 
-    # # start all other instances
-    # print("Starting east instances")
-    # stopped_east_instances = list(ec2_east.instances.filter(
-    #     Filters=[{"Name": "instance-state-name", "Values": ["stopped"]}]))
-    # [instance.start() for instance in stopped_east_instances]
-    # [instance.wait_until_running() for instance in stopped_east_instances]
-    # [instance.load() for instance in stopped_east_instances]
-    # print("Started east instances")
-
-    # # then scp hycc_circ_dir to other instances
-    # running_east_instances = list(ec2_east.instances.filter(
-    #     Filters=[{"Name": "instance-state-name", "Values": ["running"]}]))
-    # running_east_instance_ips = [
-    #     instance.public_dns_name for instance in running_east_instances]
-    # ids = [id for _ in running_east_instance_ips]
-
-    # print("SCP hycc_circuit_dirs:")
-    # pool = multiprocessing.Pool(len(running_east_instance_ips))
-    # pool.starmap(compile_scp_worker, zip(running_east_instance_ips, ids))
-
     # stop all instances
     stop_instances()
 
@@ -381,7 +362,6 @@ def compile_scp_worker(ip, id):
 
 def run_benchmarks(setting):
     if setting == LAN:
-        lan()
         running_east_instances = list(ec2_east.instances.filter(
             Filters=[{"Name": "instance-state-name", "Values": ["running"]}]))
         assert(len(running_east_instances) == 2)
@@ -402,7 +382,6 @@ def run_benchmarks(setting):
             ips, connect_ips, roles, keys))
 
     elif setting == WAN:
-        wan()
         running_east_instances = list(ec2_east.instances.filter(
             Filters=[{"Name": "instance-state-name", "Values": ["running"]}]))
         assert(len(running_east_instances) == 1)
@@ -495,66 +474,113 @@ def results():
             "rsync -avz -e \"ssh -o StrictHostKeyChecking=no -i {}\" --progress ubuntu@{}:~/circ_benchmarks/test_results ./aws/{}".format(key, dns_name, id), shell=True)
 
 
-def lan():
-    # start ec2 east instances if possible
-    stopped_instances = list(ec2_east.instances.filter(
-        Filters=[{"Name": "instance-state-name", "Values": ["stopped"]}]))
-    count = 0
-    num = len(stopped_instances)
-    for i in range(num):
-        instance = stopped_instances[i]
-        ec2_east.instances.filter(InstanceIds=[instance.id]).start()
-        count += 1
-    print("Started {} East instances".format(count))
 
-    # stop ec2 west instances if possible
-    running_instances = list(ec2_west.instances.filter(
-        Filters=[{"Name": "instance-state-name", "Values": ["running"]}]))
-    count = 0
-    num = len(running_instances)
-    for i in range(num):
-        instance = running_instances[i]
-        print("Stopping", instance.public_dns_name)
-        ec2_west.instances.filter(InstanceIds=[instance.id]).stop()
-        count += 1
-    print("Stopped {} West instances".format(count))
-    time.sleep(15)
+def setup_run_worker(ip, key_file):
+    print("ip:", ip, "\nkey:", key_file)
+    key = paramiko.Ed25519Key.from_private_key_file(key_file)
+    client = paramiko.SSHClient()
+    client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+    
+    retry = 0
+    while retry < 5:
+        try:
+            client.connect(hostname=ip, username="ubuntu", pkey=key)
+            break
+        except:
+            time.sleep(5)
+            retry += 1
+            print("retry:", retry)
+
+    print("Connected to:", ip)
+    _, stdout, _ = client.exec_command("cd ~/circ_benchmarks")
+    if stdout.channel.recv_exit_status():
+        _, stdout, _ = client.exec_command(
+            "cd ~ && git clone https://github.com/edwjchen/circ_benchmarks.git && cd ~/circ_benchmarks && git checkout aws && ./scripts/dependencies.sh && pip3 install pandas && python3 driver.py -f hycc circ && python3 driver.py --build_aby")
+        if stdout.channel.recv_exit_status():
+            print(ip, " failed setup")
+    else:
+        _, stdout, _ = client.exec_command(
+            "cd ~/circ_benchmarks && git pull && git checkout aws && ./scripts/dependencies.sh && pip3 install pandas && python3 driver.py -f hycc circ && python3 driver.py --build_aby")
+        if stdout.channel.recv_exit_status():
+            print(ip, " failed setup 2")
+    print("Set up:", ip)
+    client.close()
+
+def run_lan():
+    instances = ec2_east.create_instances(ImageId="ami-05b63781e32145c7f",
+                                InstanceType=instance_type,
+                                KeyName="aws-east",
+                                MinCount=1,
+                                MaxCount=2,
+                                Monitoring={
+                                    "Enabled": False
+                                },
+                                SecurityGroups=[
+                                    "circ4mpc"
+                                ],
+                                BlockDeviceMappings=[
+                                    {
+                                        'DeviceName': '/dev/sdh',
+                                        'Ebs': {
+                                            'DeleteOnTermination': True,
+                                            'VolumeSize': 128,
+                                            'VolumeType': 'gp2',
+                                        }
+                                    },
+                                ]
+                            )
+    [instance.wait_until_running() for instance in instances]
+    [instance.load() for instance in instances]
 
 
-def wan():
-    # start only 1 ec2 east instances if possible
-    running_east_instances = list(ec2_east.instances.filter(
-        Filters=[{"Name": "instance-state-name", "Values": ["running"]}]))
+    # install ABY 
+    ips = [instance.public_dns_name for instance in instances]
+    keys = ["aws-east.pem" for _ in instances]
+    pool = multiprocessing.Pool(len(instances))
+    pool.starmap(setup_run_worker, zip(ips, keys))
 
-    if not running_east_instances:
-        stopped_instances = list(ec2_east.instances.filter(
-            Filters=[{"Name": "instance-state-name", "Values": ["stopped"]}]))
-        count = 0
-        for i in range(1):
-            instance = stopped_instances[i]
-            ec2_east.instances.filter(InstanceIds=[instance.id]).start()
-            count += 1
-        print("Started {} East instances".format(count))
-    elif len(running_east_instances) == 2:
-        count = 0
-        for i in range(1):
-            instance = running_east_instances[i]
-            print("Stopping", instance.public_dns_name)
-            ec2_east.instances.filter(InstanceIds=[instance.id]).stop()
-            count += 1
-        print("Stopped {} West instances".format(count))
+    # copy test cases to benchmark 
+    print("rsync test cases to instances")
+    for ip in [i.public_dns_name for i in instances]:
+        print("copy to:", ip)
+        subprocess.call(
+            "rsync -avz -e \"ssh -o StrictHostKeyChecking=no -i aws-east.pem\" --progress ./hycc_circuit_dir/ ubuntu@{}:~/circ_benchmarks/hycc_circuit_dir".format(ip), shell=True)
+        subprocess.call(
+            "rsync -avz -e \"ssh -o StrictHostKeyChecking=no -i aws-east.pem\" --progress ./circ_circuit_dir/ ubuntu@{}:~/circ_benchmarks/circ_circuit_dir".format(ip), shell=True)
+        subprocess.call(
+            "rsync -avz -e \"ssh -o StrictHostKeyChecking=no -i aws-east.pem\" --progress ./test_results/ ubuntu@{}:~/circ_benchmarks/test_results".format(ip), shell=True)
 
-    # start only 1 ec2 west instances if possible
-    stopped_west_instances = list(ec2_west.instances.filter(
-        Filters=[{"Name": "instance-state-name", "Values": ["stopped"]}]))
-    count = 0
-    num = len(stopped_west_instances)
-    for i in range(num):
-        instance = stopped_west_instances[i]
-        ec2_west.instances.filter(InstanceIds=[instance.id]).start()
-        count += 1
-    print("Started {} East instances".format(count))
-    time.sleep(15)
+    ips = [i.public_dns_name for i in instances]
+    server_private_ip = instances[0].private_ip_address
+    server_public_ip = instances[0].public_ip_address
+    connect_ips = [server_private_ip, server_public_ip]
+    roles = [0, 1]
+    keys = ["aws-east.pem", "aws-east.pem"]
+
+    print("benchmarking hycc")
+    pool = multiprocessing.Pool(len(instances))
+    pool.starmap(benchmark_hycc_worker, zip(ips, connect_ips, roles, keys))
+
+    print("benchmarking circ")
+    pool = multiprocessing.Pool(len(instances))
+    pool.starmap(benchmark_circ_worker, zip(ips, connect_ips, roles, keys))
+
+    # scp compiled hycc_circuit_dir & test_results to local directory
+    subprocess.call(
+        "rsync -avz -e \"ssh -o StrictHostKeyChecking=no -i aws-west.pem\" --progress ubuntu@{}:~/circ_benchmarks/hycc_circuit_dir .".format(ip), shell=True)
+    subprocess.call(
+        "rsync -avz -e \"ssh -o StrictHostKeyChecking=no -i aws-west.pem\" --progress ubuntu@{}:~/circ_benchmarks/circ_circuit_dir .".format(ip), shell=True)
+    subprocess.call(
+        "rsync -avz -e \"ssh -o StrictHostKeyChecking=no -i aws-west.pem\" --progress ubuntu@{}:~/circ_benchmarks/test_results .".format(ip), shell=True)
+
+    print("Stopping instances")
+    [instance.stop() for instance in instances]
+    [instance.wait_until_stopped() for instance in instances]
+    print("Terminating instances")
+    [instance.terminate() for instance in instances]
+    print("done!")
+    
+
 
 
 if __name__ == "__main__":
@@ -606,13 +632,15 @@ if __name__ == "__main__":
         elif cmd_type in ["quit", "q", "exit"]:
             sys.exit(0)
         elif cmd_type == LAN:
-            setting = cmd_type
-            print("Operating in: {}".format(setting))
-            lan()
-        elif cmd_type == WAN:
-            setting = cmd_type
-            print("Operating in: {}".format(setting))
-            wan()
+            run_lan()
+        # elif cmd_type == LAN:
+        #     setting = cmd_type
+        #     print("Operating in: {}".format(setting))
+        #     lan()
+        # elif cmd_type == WAN:
+        #     setting = cmd_type
+        #     print("Operating in: {}".format(setting))
+        #     wan()
         else:
             print("unlucky, not a cmd")
 

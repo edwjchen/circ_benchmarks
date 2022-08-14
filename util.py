@@ -65,7 +65,7 @@ HYCC_SELECTION_SCHEMES = [
     "yaohybrid",
     "gmwonly",
     "gmwhybrid",
-    "ps_optimized"
+    # "ps_optimized"
 ]
 HYCC_COMPILE_ARGUMENTS = [
     ["--all-variants"],

@@ -82,12 +82,16 @@ def install(features):
 
 
 def build(features):
-    install(features)
+    subprocess.run(["git", "pull", "--recurse-submodules"])
+
+    def verify_path_empty(path) -> bool:
+        return not os.path.isdir(path) or (os.path.isdir(path) and not os.listdir(path))
+
+    if verify_path_empty(ABY_SOURCE):
+        subprocess.run(["git", "submodule", "update",
+                       "--init", "--remote", "modules/ABY"])
 
     if "hycc" in features:
-        # build hycc
-        subprocess.run(["./scripts/build_hycc.zsh"], check=True)
-
         # install hycc aby dependency
         if not os.path.isdir(ABY_HYCC_DIR):
             subprocess.run(["cp", "-r", ABY_HYCC, ABY_HYCC_DIR], check=True)
@@ -112,6 +116,35 @@ def build(features):
         # build kahip
         subprocess.run(["./scripts/build_kahip.zsh"], check=True)
 
+def build_aby(features):
+    subprocess.run(["git", "pull", "--recurse-submodules"])
+
+    def verify_path_empty(path) -> bool:
+        return not os.path.isdir(path) or (os.path.isdir(path) and not os.listdir(path))
+
+    if verify_path_empty(ABY_SOURCE):
+        subprocess.run(["git", "submodule", "update",
+                       "--init", "--remote", "modules/ABY"])
+
+    if verify_path_empty(HYCC_SOURCE):
+        subprocess.run(["git", "submodule", "update",
+                        "--init", "--remote", "modules/HyCC"])
+
+    # set git branches
+    os.chdir(ABY_SOURCE)
+    # subprocess.run(["git", "checkout", "functions"])
+    subprocess.run(["git", "checkout", "no_array"])
+    os.chdir(CIRC_BENCHMARK_SOURCE)
+
+    if "hycc" in features:
+        # install hycc aby dependency
+        if not os.path.isdir(ABY_HYCC_DIR):
+            subprocess.run(["cp", "-r", ABY_HYCC, ABY_HYCC_DIR], check=True)
+            with open(ABY_CMAKE, 'a') as f:
+                print("add_subdirectory(aby-hycc)", file=f)
+
+    # build aby
+    subprocess.run(["./scripts/build_aby.zsh"], check=True)
 
 
 def compile(features):
@@ -164,8 +197,6 @@ def select(features):
 
 
 def benchmark(features, instance_metadata):
-    build(features)
-    compile(features)
     make_test_results()
     make_dir(HYCC_CIRCUIT_PATH)
     if "hycc" in features:
@@ -239,6 +270,8 @@ if __name__ == "__main__":
                         help="install all dependencies")
     parser.add_argument("-b", "--build", action="store_true",
                         help="build depedencies")
+    parser.add_argument("--build_aby", action="store_true",
+                        help="build run depedencies")
     parser.add_argument("-t", "--test", action="store_true", help="adhoc test")
     parser.add_argument("--compile", action="store_true",
                         help="compile benchmarks")
@@ -278,6 +311,9 @@ if __name__ == "__main__":
 
     if args.build:
         build(features)
+
+    if args.build_aby:
+        build_aby(features)
 
     if args.test:
         test()
