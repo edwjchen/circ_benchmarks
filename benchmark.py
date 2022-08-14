@@ -69,14 +69,28 @@ def compile_hycc_benchmark(test_path, params):
         write_log(DELIMITER, params)
         cmd = ["python3", MODULE_BUNDLE, "."]
         run_cmd(cmd, "MODE: bundle", params)
-
-        write_log(DELIMITER, params)
-        cmd = ["python3", SELECTION, ".", COSTS]  # TODO: update cost model
-        print(" ".join(cmd))
-        run_cmd(cmd, "MODE: selection", params)
         return True
     except Exception as e:
         write_log("LOG: Failed compiling circuit with args: {}, exception: {}".format(
+            " ".join(args), e), params)
+        
+        log_path = "{}test_results/{}_{}/log_{}.txt".format(
+                CIRC_BENCHMARK_SOURCE, params["system"], params["name"], params["version"])
+        failed_path = "{}test_results/{}_{}/failed_log_{}.txt".format(
+                CIRC_BENCHMARK_SOURCE, params["system"], params["name"], params["version"])
+        subprocess.call("mv {} {}".format(log_path, failed_path), shell=True)
+        return False
+
+def select_hycc_benchmark(params):
+    print("select: ", params["version"])
+    args = params["a"]
+    try:
+        write_log(DELIMITER, params)
+        cmd = ["python3", SELECTION, ".", COSTS]  # TODO: update cost model
+        run_cmd(cmd, "MODE: selection", params)
+        return True
+    except Exception as e:
+        write_log("LOG: Failed selecting circuit with args: {}, exception: {}".format(
             " ".join(args), e), params)
         
         log_path = "{}test_results/{}_{}/log_{}.txt".format(
@@ -133,6 +147,50 @@ def compile_hycc(name, path):
             compile_hycc_benchmark(test_path, params)
     os.chdir(CIRC_BENCHMARK_SOURCE)
 
+
+
+def select_hycc(name):
+    versions = []
+    for cm in COST_MODELS:
+        for mt in MINIMIZATION_TIMES:
+            for a in HYCC_COMPILE_ARGUMENTS:
+                params = {}
+                params["mt"] = mt
+                params["a"] = a
+                params["cm"] = cm
+                version = "{}_{}_mt-{}_args-{}_cm-{}".format(
+                    "hycc", name, mt, "".join(a), cm)
+                if version not in versions:
+                    versions.append((version, params))
+    
+    # make circuit directories
+    for (version, params) in versions:
+        params["system"] = "hycc"
+        params["name"] = name
+
+        circuit_dir = "{}{}".format(HYCC_CIRCUIT_PATH, version)
+        make_dir(circuit_dir)
+
+        select_version = "select_{}".format(version)
+        select_log_path = format(
+            "{}test_results/{}_{}/log_{}.txt".format(CIRC_BENCHMARK_SOURCE, params["system"], name, select_version))
+
+        if not os.path.exists(select_log_path):
+            # select HyCC benchmark
+            os.chdir(circuit_dir)
+            params["version"] = select_version
+
+            write_log(DELIMITER, params)
+            write_log("LOG: Benchmarking HyCC", params)
+            write_log(DELIMITER, params)
+
+            write_log("LOG: TEST: {}".format(name), params)
+            write_log("LOG: MINIMIZATION_TIME: {}".format(
+                params["mt"]), params)
+            write_log("LOG: COST_MODEL: {}".format(params["cm"]), params)
+            write_log("LOG: ARGUMENTS: {}".format(params["a"]), params)
+            select_hycc_benchmark(params)
+    os.chdir(CIRC_BENCHMARK_SOURCE)
 
 def benchmark_hycc(name, path, instance_metadata):
     test_path = HYCC_SOURCE + \
