@@ -475,7 +475,7 @@ def benchmark_worker(ip, connect_ip, role, key_file):
     client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
     client.connect(hostname=ip, username="ubuntu", pkey=key)
 
-    cmd = "cd ~/circ_benchmarks/ && git add . && git stash && git pull -f && python3 driver.py --address {} && python3 driver.py --role {} && python3 driver.py -f hycc circ && python3 driver.py --benchmark".format(
+    cmd = "cd ~/circ_benchmarks/ && git add . && git stash && git pull -f && python3 driver.py --address {} && python3 driver.py --role {} && python3 driver.py -f hycc && python3 driver.py --benchmark".format(
         connect_ip, role)
     _, stdout, _ = client.exec_command(cmd)
 
