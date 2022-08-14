@@ -26,24 +26,24 @@ ec2_west = boto3.resource("ec2",
 
 
 def create_instances():
-    # create two AWS East Instances if they haven't been made
-    all_instances = []
-    instances = list(ec2_east.instances.filter(
-        Filters=[{"Name": "instance-state-name", "Values": ["stopping", "pending", "running", "stopped"]}]))
-    num_instances_to_create = max(0, 2 - len(instances))
-    if num_instances_to_create > 0:
-        all_instances += ec2_east.create_instances(ImageId="ami-05b63781e32145c7f",
-                                  InstanceType=instance_type,
-                                  KeyName="aws-east",
-                                  MinCount=1,
-                                  MaxCount=num_instances_to_create,
-                                  Monitoring={
-                                      "Enabled": False},
-                                  SecurityGroups=[
-                                      "circ4mpc"]
-                                  )
+    # # create two AWS East Instances if they haven't been made
+    # all_instances = []
+    # instances = list(ec2_east.instances.filter(
+    #     Filters=[{"Name": "instance-state-name", "Values": ["stopping", "pending", "running", "stopped"]}]))
+    # num_instances_to_create = max(0, 2 - len(instances))
+    # if num_instances_to_create > 0:
+    #     all_instances += ec2_east.create_instances(ImageId="ami-05b63781e32145c7f",
+    #                               InstanceType=instance_type,
+    #                               KeyName="aws-east",
+    #                               MinCount=1,
+    #                               MaxCount=num_instances_to_create,
+    #                               Monitoring={
+    #                                   "Enabled": False},
+    #                               SecurityGroups=[
+    #                                   "circ4mpc"]
+    #                               )
 
-    print("Created {} east instances".format(num_instances_to_create))
+    # print("Created {} east instances".format(num_instances_to_create))
 
     # create one AWS West Instance if they haven't been made
     west_instances = list(ec2_west.instances.filter(
@@ -338,25 +338,25 @@ def compile_benchmarks():
     running_west_instances[0].wait_until_stopped()
     print("Stopped west instance")
 
-    # start all other instances
-    print("Starting east instances")
-    stopped_east_instances = list(ec2_east.instances.filter(
-        Filters=[{"Name": "instance-state-name", "Values": ["stopped"]}]))
-    [instance.start() for instance in stopped_east_instances]
-    [instance.wait_until_running() for instance in stopped_east_instances]
-    [instance.load() for instance in stopped_east_instances]
-    print("Started east instances")
+    # # start all other instances
+    # print("Starting east instances")
+    # stopped_east_instances = list(ec2_east.instances.filter(
+    #     Filters=[{"Name": "instance-state-name", "Values": ["stopped"]}]))
+    # [instance.start() for instance in stopped_east_instances]
+    # [instance.wait_until_running() for instance in stopped_east_instances]
+    # [instance.load() for instance in stopped_east_instances]
+    # print("Started east instances")
 
-    # then scp hycc_circ_dir to other instances
-    running_east_instances = list(ec2_east.instances.filter(
-        Filters=[{"Name": "instance-state-name", "Values": ["running"]}]))
-    running_east_instance_ips = [
-        instance.public_dns_name for instance in running_east_instances]
-    ids = [id for _ in running_east_instance_ips]
+    # # then scp hycc_circ_dir to other instances
+    # running_east_instances = list(ec2_east.instances.filter(
+    #     Filters=[{"Name": "instance-state-name", "Values": ["running"]}]))
+    # running_east_instance_ips = [
+    #     instance.public_dns_name for instance in running_east_instances]
+    # ids = [id for _ in running_east_instance_ips]
 
-    print("SCP hycc_circuit_dirs:")
-    pool = multiprocessing.Pool(len(running_east_instance_ips))
-    pool.starmap(compile_scp_worker, zip(running_east_instance_ips, ids))
+    # print("SCP hycc_circuit_dirs:")
+    # pool = multiprocessing.Pool(len(running_east_instance_ips))
+    # pool.starmap(compile_scp_worker, zip(running_east_instance_ips, ids))
 
     # stop all instances
     stop_instances()
