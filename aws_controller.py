@@ -507,6 +507,7 @@ def setup_run_worker(ip, key_file):
     client.close()
 
 def run_lan():
+    print("RUNNING LAN TEST")
     instances = ec2_east.create_instances(ImageId="ami-05b63781e32145c7f",
                                 InstanceType=instance_type,
                                 KeyName="aws-east",
@@ -529,6 +530,7 @@ def run_lan():
                                     },
                                 ]
                             )
+    print("created {} instances".format(len(instances)))
     [instance.wait_until_running() for instance in instances]
     [instance.load() for instance in instances]
 
@@ -536,11 +538,12 @@ def run_lan():
     # install ABY 
     ips = [instance.public_dns_name for instance in instances]
     keys = ["aws-east.pem" for _ in instances]
+    print("Setting up instances")
     pool = multiprocessing.Pool(len(instances))
     pool.starmap(setup_run_worker, zip(ips, keys))
 
     # copy test cases to benchmark 
-    print("rsync test cases to instances")
+    print("Rsync test cases to instances")
     for ip in [i.public_dns_name for i in instances]:
         print("copy to:", ip)
         subprocess.call(
