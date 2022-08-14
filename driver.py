@@ -94,22 +94,24 @@ def build(features):
             with open(ABY_CMAKE, 'a') as f:
                 print("add_subdirectory(aby-hycc)", file=f)
 
-    # build aby
-    subprocess.run(["./scripts/build_aby.zsh"], check=True)
-
-    # build kahip
-    subprocess.run(["./scripts/build_kahip.zsh"], check=True)
-
     if "circ" in features:
         # build circ
         os.environ['ABY_SOURCE'] = "../ABY"
         os.environ['CIRC_SOURCE'] = CIRC_SOURCE
+        print(CIRC_SOURCE)
         os.chdir(CIRC_SOURCE)
         subprocess.run(["python3", "driver.py", "-F", "aby",
                         "c", "lp", "bench"], check=True)
         subprocess.run(
             ["python3", "driver.py", "--build_benchmark"], check=True)
         os.chdir(CIRC_BENCHMARK_SOURCE)
+
+        # build aby
+        subprocess.run(["./scripts/build_aby.zsh"], check=True)
+
+        # build kahip
+        subprocess.run(["./scripts/build_kahip.zsh"], check=True)
+
 
 
 def compile(features):

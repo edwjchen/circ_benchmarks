@@ -300,13 +300,33 @@ def compile_benchmarks():
     key = paramiko.Ed25519Key.from_private_key_file("aws-west.pem")
     client = paramiko.SSHClient()
     client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
-    client.connect(hostname=ip, username="ubuntu", pkey=key)
 
-    cmd =  "cd ~/circ_benchmarks && git checkout aws && git pull && python3 driver.py -f hycc circ && python3 driver.py --compile"
+    retry = 0
+    while retry < 5:
+        try:
+            client.connect(hostname=ip, username="ubuntu", pkey=key)
+            break
+        except:
+            time.sleep(5)
+            retry += 1
+            print("retry:", retry)
+    print("connected to:", ip)
+
+    # cmd = "cd ~/circ_benchmarks && git checkout aws && git pull && python3 driver.py -f hycc circ && python3 driver.py --compile"
+    cmd = "cd ~/circ_benchmarks && git checkout aws && git pull && python3 driver.py -f hycc circ && python3 driver.py --compile"
     print("Running:", cmd)
-    _, stdout, _ = client.exec_command(cmd)
+    _, stdout, stderr = client.exec_command(cmd)
+
+    print(stderr.readlines())
     if stdout.channel.recv_exit_status():
         print(ip, " failed compiles")
+        _, stdout, stderr = client.exec_command(cmd)
+        if stdout.channel.recv_exit_status():
+            print("\nretry\n")
+            print(stderr.readlines())
+            exit(0)
+    print(stderr)
+    exit(0)
 
     print("Compiled:", ip)
     client.close()
