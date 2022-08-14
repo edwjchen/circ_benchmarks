@@ -339,8 +339,66 @@ def compile_benchmarks():
     running_west_instances[0].wait_until_stopped()
     print("Stopped west instance")
 
-    # stop all instances
-    stop_instances()
+
+def select_benchmarks():
+    # start west instance
+    stopped_instances = list(ec2_west.instances.filter(
+        Filters=[{"Name": "instance-state-name", "Values": ["stopped"]}]))
+    count = 0
+    num = len(stopped_instances)
+    for i in range(num):
+        instance = stopped_instances[i]
+        print("Starting instance")
+        instance.start()
+        instance.wait_until_running()
+        instance.load()
+        count += 1
+    print("Started {} West instances".format(count))
+
+    # compile on west instance
+    running_west_instances = list(ec2_west.instances.filter(
+        Filters=[{"Name": "instance-state-name", "Values": ["running"]}]))
+    ip = [instance.public_dns_name for instance in running_west_instances][0]
+    id = [instance.id for instance in running_west_instances][0]
+    key = paramiko.Ed25519Key.from_private_key_file("aws-west.pem")
+    client = paramiko.SSHClient()
+    client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+
+    retry = 0
+    while retry < 5:
+        try:
+            client.connect(hostname=ip, username="ubuntu", pkey=key)
+            break
+        except:
+            time.sleep(5)
+            retry += 1
+            print("retry:", retry)
+    print("connected to:", ip)
+
+    cmd = "cd ~/circ_benchmarks && git checkout aws && git pull && python3 driver.py -f hycc && python3 driver.py --select"
+    print("Running:", cmd)
+    _, stdout, stderr = client.exec_command(cmd)
+    print("\n".join(stderr.readlines()))
+    if stdout.channel.recv_exit_status():
+        print(stderr)
+        print(ip, " failed compiles")
+
+    print("Compiled:", ip)
+    client.close()
+
+    # scp compiled hycc_circuit_dir & test_results to local directory
+    subprocess.call(
+        "rsync -avz -e \"ssh -o StrictHostKeyChecking=no -i aws-west.pem\" --progress ubuntu@{}:~/circ_benchmarks/hycc_circuit_dir .".format(ip), shell=True)
+    subprocess.call(
+        "rsync -avz -e \"ssh -o StrictHostKeyChecking=no -i aws-west.pem\" --progress ubuntu@{}:~/circ_benchmarks/circ_circuit_dir .".format(ip), shell=True)
+    subprocess.call(
+        "rsync -avz -e \"ssh -o StrictHostKeyChecking=no -i aws-west.pem\" --progress ubuntu@{}:~/circ_benchmarks/test_results .".format(ip), shell=True)
+
+    # stop west instance
+    print("Stopping west instance")
+    running_west_instances[0].stop()
+    running_west_instances[0].wait_until_stopped()
+    print("Stopped west instance")
 
 
 def compile_scp_worker(ip, id):
@@ -618,6 +676,8 @@ if __name__ == "__main__":
             setup_instances()
         elif cmd_type == "compile":
             compile_benchmarks()
+        elif cmd_type == "select":
+            select_benchmarks()
         elif cmd_type == "run":
             run_benchmarks(setting)
         elif cmd_type == "stop":
