@@ -7,6 +7,7 @@ valid_features = {"circ", "hycc"}
 instance_metadata_path = ".instance_metadata.txt"
 
 TIME_CMD = "/usr/bin/time --format='%e seconds %M kB'"
+TIMEOUT = 24 * 60 * 60 # 1 day
 
 # installation variables
 # TODO: update CIRC_BENCHMARK_SOURCE path
@@ -45,17 +46,17 @@ COSTS = HYCC_SOURCE+"/src/circuit-utils/py/costs.json"
 # hycc parameters
 HYCC_TEST_CASES = [
     ("biomatch", "biomatch/biomatch.c"),
-    # ("kmeans", "kmeans/kmeans.c"),
-    # ("gauss", "gauss/gauss.c"),
-    # ("db_join", "db/db_join.c"),
-    # ("db_join2", "db/db_join2.c"),
-    # ("db_merge", "db/db_merge.c"),
-    # ("mnist", "mnist/mnist.c"),
-    # ("mnist_decomp_main", "mnist/mnist_decomp_main.c"),
-    # ("mnist_decomp_convolution", "mnist/mnist_decomp_convolution.c"),
-    # ("cryptonets", "cryptonets/cryptonets.c"),
-    # ("histogram", "histogram/histogram.c"),
-    # ("gcd", "gcd/gcd.c"),
+    ("kmeans", "kmeans/kmeans.c"),
+    ("gauss", "gauss/gauss.c"),
+    ("db_join", "db/db_join.c"),
+    ("db_join2", "db/db_join2.c"),
+    ("db_merge", "db/db_merge.c"),
+    ("mnist", "mnist/mnist.c"),
+    ("mnist_decomp_main", "mnist/mnist_decomp_main.c"),
+    ("mnist_decomp_convolution", "mnist/mnist_decomp_convolution.c"),
+    ("cryptonets", "cryptonets/cryptonets.c"),
+    ("histogram", "histogram/histogram.c"),
+    ("gcd", "gcd/gcd.c"),
 ]
 
 MINIMIZATION_TIMES = [0]
@@ -170,13 +171,16 @@ def run_cmds(server_cmd, client_cmd, name, params):
     cmd = "{} & {}".format(" ".join(server_cmd), " ".join(client_cmd))
     print(cmd)
     cmd = wrap_time(cmd)
-    proc = subprocess.Popen(
-        cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-    stdout, stderr = proc.communicate()
+    result = subprocess.run(cmd, shell=True, capture_output=True)
+    stdout, stderr = result.stdout, result.stderr
 
-    if proc.returncode:
+    if result.returncode:
+        # record stdout
+        out = stdout.decode("utf-8")
+        write_log(out, params)
+
         write_log("LOG: Error: Process returned with status code {}".format(
-            proc.returncode), params)
+            result.returncode), params)
         write_log("LOG: Error message: {}".format(
             " ".join(stderr.decode("utf-8").split("\n"))), params)
         return
@@ -194,13 +198,24 @@ def run_cmds(server_cmd, client_cmd, name, params):
 def run_cmd(cmd, name, params):
     write_log("LOG: {}".format(name), params)
     cmd = wrap_time(" ".join(cmd))
-    proc = subprocess.Popen(
-        cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-    stdout, stderr = proc.communicate()
+    cmd = wrap_time(cmd)
 
-    if proc.returncode:
+    result = None
+    stdout = ""
+    stderr = ""
+    try:
+        result = subprocess.run(cmd, shell=True, capture_output=True, timeout=TIMEOUT)
+        stdout, stderr = result.stdout, result.stderr
+    except subprocess.TimeoutExpired as timeErr:
+        stdout = timeErr.stdout if timeErr.stdout else b""
+        stderr = timeErr.stderr if timeErr.stderr else b""
+    
+    if result and result.returncode:
+        out = stdout.decode("utf-8")
+        write_log(out, params)
+
         write_log("LOG: Error: Process returned with status code {}".format(
-            proc.returncode), params)
+            result.returncode), params)
         write_log("LOG: Error message: {}".format(
             " ".join(stderr.decode("utf-8").split("\n"))), params)
         raise RuntimeError
@@ -211,9 +226,10 @@ def run_cmd(cmd, name, params):
 
     # record stderr
     err = stderr.decode("utf-8")
-    last_line = [l for l in err.split("\n") if l][-1]
-    memory_output = "LOG: Time / Memory: {}".format(last_line)
-    write_log(memory_output, params)
+    if err:
+        last_line = [l for l in err.split("\n") if l][-1]
+        memory_output = "LOG: Time / Memory: {}".format(last_line)
+        write_log(memory_output, params)
 
 
 def write_to_log(text, params):

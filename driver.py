@@ -143,6 +143,23 @@ def compile(features):
         subprocess.call("echo \"{}\" >> {}/test_results/circ_total_compile_time.txt".format(
             line, CIRC_BENCHMARK_SOURCE), shell=True)
 
+def select(features):
+    build(features)
+    make_test_results()
+    if "hycc" in features:
+        print("Selecting HyCC Benchmarks")
+        start = time.time()
+        make_dir(HYCC_CIRCUIT_PATH)
+
+        # run hycc benchmarks
+        for (name, path) in HYCC_TEST_CASES:
+            make_dir("test_results/hycc_{}".format(name))
+            select_hycc(name)
+        end = time.time()
+        line = "LOG: Total hycc select time: {}".format(end-start)
+        subprocess.call("echo \"{}\" >> {}/test_results/hycc_total_selec_time.txt".format(
+            line, CIRC_BENCHMARK_SOURCE), shell=True)
+
 
 def benchmark(features, instance_metadata):
     build(features)
@@ -223,6 +240,8 @@ if __name__ == "__main__":
     parser.add_argument("-t", "--test", action="store_true", help="adhoc test")
     parser.add_argument("--compile", action="store_true",
                         help="compile benchmarks")
+    parser.add_argument("--select", action="store_true",
+                        help="select benchmarks")
     parser.add_argument("--benchmark", action="store_true",
                         help="run benchmark")
     parser.add_argument("--parse", action="store_true",
@@ -263,6 +282,9 @@ if __name__ == "__main__":
 
     if args.compile:
         compile(features)
+
+    if args.select:
+        select(features)
 
     if args.benchmark:
         benchmark(features, instance_metadata)
