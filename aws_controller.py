@@ -637,8 +637,8 @@ def run_lan():
     print("Stopping instances")
     [instance.stop() for instance in instances]
     [instance.wait_until_stopped() for instance in instances]
-    print("Terminating instances")
-    [instance.terminate() for instance in instances]
+    # print("Terminating instances")
+    # [instance.terminate() for instance in instances]
     print("done!")
     
 
