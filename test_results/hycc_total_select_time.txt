@@ -1,3 +1,4 @@
 LOG: Total hycc select time: 4123.95485830307
 LOG: Total hycc select time: 442.1867184638977
 LOG: Total hycc select time: 448.71610403060913
+LOG: Total hycc select time: 1722.6236655712128

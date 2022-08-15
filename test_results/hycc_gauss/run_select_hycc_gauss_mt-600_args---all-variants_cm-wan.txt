@@ -1,0 +1,33 @@
+
+LOG: ====================================
+
+LOG: Benchmarking HyCC
+
+LOG: ====================================
+
+LOG: TEST: gauss
+LOG: MINIMIZATION_TIME: 600
+LOG: COST_MODEL: wan
+LOG: ARGUMENTS: ['--all-variants']
+
+LOG: ====================================
+
+LOG: MODE: selection
+Directory: /home/ubuntu/circ_benchmarks/hycc_circuit_dir/hycc_gauss_mt-600_args---all-variants
+lan_optimized.cmb
+wan_optimized.cmb
+graph.dot
+hycc_optimized.cmb
+Modules: 0
+
+Subgraphs:
+
+LOG: Total number of modules: 0
+LOG: Modules: []
+LOG: solving combination: 0
+== Protocol selection ==
+
+Cost: 0
+
+
+LOG: Time / Memory: 0.02 seconds 12020 kB
