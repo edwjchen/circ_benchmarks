@@ -37,7 +37,7 @@ CIRC_TARGET = CIRC_SOURCE + "/target/release/examples/circ"
 ABY_INTERPRETER = ABY_SOURCE + "/build/bin/aby_interpreter"
 
 # joint parameters
-RERUN = 10
+RERUN = 1
 COST_MODELS = ["hycc", "lan", "wan"]
 COSTS = HYCC_SOURCE+"/src/circuit-utils/py/costs.json"
 LAN_COSTS = CIRC_SOURCE+"/third_party/empirical/adapted_costs.json"
