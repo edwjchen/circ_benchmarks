@@ -227,12 +227,12 @@ def setup_worker(ip, key_file):
     _, stdout, _ = client.exec_command("cd ~/circ_benchmarks")
     if stdout.channel.recv_exit_status():
         _, stdout, _ = client.exec_command(
-            "curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -- -y && source $HOME/.cargo/env && cd ~ && git clone https://github.com/edwjchen/circ_benchmarks.git && cd ~/circ_benchmarks && git checkout aws -f && git add . && git stash && git pull -f &&./scripts/dependencies.sh && pip3 install pandas && python3 driver.py -f hycc circ && python3 driver.py -b")
+            "curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -- -y && source $HOME/.cargo/env && cd ~ && git clone https://github.com/edwjchen/circ_benchmarks.git && cd ~/circ_benchmarks && git checkout aws -f && git add . && git stash && git pull -f &&./scripts/dependencies.sh && pip3 install pandas && python3 driver.py -f hycc && python3 driver.py -b")
         if stdout.channel.recv_exit_status():
             print(ip, " failed setup")
     else:
         _, stdout, _ = client.exec_command(
-            "curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -- -y && source $HOME/.cargo/env && cd ~/circ_benchmarks && git checkout aws -f && git add . && git stash && git pull -f && ./scripts/dependencies.sh && pip3 install pandas && python3 driver.py -f hycc circ && python3 driver.py -b")
+            "curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -- -y && source $HOME/.cargo/env && cd ~/circ_benchmarks && git checkout aws -f && git add . && git stash && git pull -f && ./scripts/dependencies.sh && pip3 install pandas && python3 driver.py -f hycc && python3 driver.py -b")
         if stdout.channel.recv_exit_status():
             print(ip, " failed setup 2")
 
@@ -738,7 +738,7 @@ def run_wan():
         "rsync -avz -e \"ssh -o StrictHostKeyChecking=no -i aws-west.pem\" --progress ubuntu@{}:~/circ_benchmarks/run_test_results .".format(ips[0]), shell=True)
 
     subprocess.call(
-        "rsync -avz -e \"ssh -o StrictHostKeyChecking=no -i aws-east.pem\" --progress ubuntu@{}:~/circ_benchmarks/run_test_results ./east".format(ips[0]), shell=True)
+        "rsync -avz -e \"ssh -o StrictHostKeyChecking=no -i aws-east.pem\" --progress ubuntu@{}:~/circ_benchmarks/run_test_results ./east".format(ips[1]), shell=True)
 
     print("Stopping instances")
     [instance.stop() for instance in instances]

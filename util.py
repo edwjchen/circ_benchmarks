@@ -238,10 +238,18 @@ def run_cmd(cmd, name, params):
 def write_to_log(text, params):
     dir_path = "{}test_results/{}_{}/".format(
         CIRC_BENCHMARK_SOURCE, params["system"], params["name"])
+    if params["mode"] == "run":
+        dir_path = "{}run_test_results/{}_{}/".format(
+        CIRC_BENCHMARK_SOURCE, params["system"], params["name"])
+    
     if not os.path.exists(dir_path):
         os.makedirs(dir_path)
 
     log_path = "{}test_results/{}_{}/log_{}.txt".format(
+        CIRC_BENCHMARK_SOURCE, params["system"], params["name"], params["version"])
+    
+    if params["mode"] == "run":
+        log_path = "{}run_test_results/{}_{}/log_{}.txt".format(
         CIRC_BENCHMARK_SOURCE, params["system"], params["name"], params["version"])
     if not os.path.exists(log_path):
         subprocess.run(["touch", log_path])
@@ -257,10 +265,17 @@ def write_to_log(text, params):
 def write_to_run(text, params):
     dir_path = "{}test_results/{}_{}/".format(
         CIRC_BENCHMARK_SOURCE, params["system"], params["name"])
+    if params["mode"] == "run":
+        dir_path = "{}run_test_results/{}_{}/".format(
+        CIRC_BENCHMARK_SOURCE, params["system"], params["name"])
+
     if not os.path.exists(dir_path):
         os.makedirs(dir_path)
 
     run_path = "{}test_results/{}_{}/run_{}.txt".format(
+        CIRC_BENCHMARK_SOURCE, params["system"], params["name"], params["version"])
+    if params["mode"] == "run":
+        run_path = "{}run_test_results/{}_{}/run_{}.txt".format(
         CIRC_BENCHMARK_SOURCE, params["system"], params["name"], params["version"])
     if not os.path.exists(run_path):
         subprocess.run(["touch", run_path])
