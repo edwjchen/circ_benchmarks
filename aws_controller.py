@@ -603,7 +603,7 @@ def run_lan():
         subprocess.call(
             "rsync -avz -e \"ssh -o StrictHostKeyChecking=no -i aws-east.pem\" --progress ./circ_circuit_dir/ ubuntu@{}:~/circ_benchmarks/circ_circuit_dir".format(ip), shell=True)
         subprocess.call(
-            "rsync -avz -e \"ssh -o StrictHostKeyChecking=no -i aws-east.pem\" --progress ./run_test_results_lan/ ubuntu@{}:~/circ_benchmarks/run_test_results_lan".format(ip), shell=True)
+            "rsync -avz -e \"ssh -o StrictHostKeyChecking=no -i aws-east.pem\" --progress ./run_test_results/ ubuntu@{}:~/circ_benchmarks/run_test_results".format(ip), shell=True)
 
     ips = [i.public_dns_name for i in instances]
     server_private_ip = instances[0].private_ip_address
@@ -623,7 +623,7 @@ def run_lan():
     subprocess.call(
         "rsync -avz -e \"ssh -o StrictHostKeyChecking=no -i aws-east.pem\" --progress ubuntu@{}:~/circ_benchmarks/circ_circuit_dir .".format(ip), shell=True)
     subprocess.call(
-        "rsync -avz -e \"ssh -o StrictHostKeyChecking=no -i aws-east.pem\" --progress ubuntu@{}:~/circ_benchmarks/run_test_results_lan .".format(ip), shell=True)
+        "rsync -avz -e \"ssh -o StrictHostKeyChecking=no -i aws-east.pem\" --progress ubuntu@{}:~/circ_benchmarks/run_test_results .".format(ip), shell=True)
 
     print("Stopping instances")
     [instance.stop() for instance in instances]
