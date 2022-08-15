@@ -305,7 +305,7 @@ if __name__ == "__main__":
 
     def verify_single_action(args: argparse.Namespace):
         actions = [k for k, v in vars(args).items() if (
-            type(v) is bool or k in ["address", "role", "features"]) and bool(v)]
+            type(v) is bool or k in ["address", "role", "setting", "features"]) and bool(v)]
         if len(actions) != 1:
             parser.error(
                 "parser error: only one action can be specified. got: " + " ".join(actions))
