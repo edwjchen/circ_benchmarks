@@ -1,0 +1,49 @@
+LOG: ====================================
+LOG: Benchmarking HyCC
+LOG: ====================================
+LOG: TEST: gauss
+LOG: SELECTION_SCHEME: yaohybrid
+LOG: MINIMIZATION_TIME: 0
+LOG: COST_MODEL: hycc
+LOG: ARGUMENTS: ['--all-variants']
+LOG: ====================================
+LOG: RERUN: 0
+LOG: Client load time: 1.01575
+LOG: Client exec time: 0.372495
+LOG: Time / Memory: 1.51 seconds 255364 kB
+LOG: RERUN: 1
+LOG: Client load time: 1.01101
+LOG: Client exec time: 0.374592
+LOG: Time / Memory: 1.51 seconds 255608 kB
+LOG: RERUN: 2
+LOG: Client load time: 1.01649
+LOG: Client exec time: 0.328196
+LOG: Time / Memory: 1.47 seconds 255652 kB
+LOG: RERUN: 3
+LOG: Client load time: 1.01309
+LOG: Client exec time: 0.320344
+LOG: Time / Memory: 1.45 seconds 255504 kB
+LOG: RERUN: 4
+LOG: Client load time: 1.01588
+LOG: Client exec time: 0.366242
+LOG: Time / Memory: 1.50 seconds 255616 kB
+LOG: RERUN: 5
+LOG: Client load time: 1.02069
+LOG: Client exec time: 0.338613
+LOG: Time / Memory: 1.48 seconds 255304 kB
+LOG: RERUN: 6
+LOG: Client load time: 1.01458
+LOG: Client exec time: 0.327359
+LOG: Time / Memory: 1.46 seconds 255640 kB
+LOG: RERUN: 7
+LOG: Client load time: 1.01455
+LOG: Client exec time: 0.334616
+LOG: Time / Memory: 1.47 seconds 255348 kB
+LOG: RERUN: 8
+LOG: Client load time: 1.01
+LOG: Client exec time: 0.361937
+LOG: Time / Memory: 1.49 seconds 255656 kB
+LOG: RERUN: 9
+LOG: Client load time: 1.00821
+LOG: Client exec time: 0.342267
+LOG: Time / Memory: 1.47 seconds 255516 kB
