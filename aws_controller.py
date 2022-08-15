@@ -395,10 +395,10 @@ def select_benchmarks():
         "rsync -avz -e \"ssh -o StrictHostKeyChecking=no -i aws-west.pem\" --progress ubuntu@{}:~/circ_benchmarks/test_results .".format(ip), shell=True)
 
     # stop west instance
-    print("Stopping west instance")
-    running_west_instances[0].stop()
-    running_west_instances[0].wait_until_stopped()
-    print("Stopped west instance")
+    # print("Stopping west instance")
+    # running_west_instances[0].stop()
+    # running_west_instances[0].wait_until_stopped()
+    # print("Stopped west instance")
 
 
 def compile_scp_worker(ip, id):
@@ -699,7 +699,7 @@ def run_wan():
                                         },
                                     ]
                                 )
-        instances = [west_instance, east_instance]
+        instances = [west_instance[0], east_instance[0]]
         [instance.wait_until_running() for instance in instances]
         [instance.load() for instance in instances]
         print("created {} instances".format(len(instances)))
@@ -798,6 +798,8 @@ if __name__ == "__main__":
             sys.exit(0)
         elif cmd_type == LAN:
             run_lan()
+        elif cmd_type == WAN:
+            run_wan()
         # elif cmd_type == LAN:
         #     setting = cmd_type
         #     print("Operating in: {}".format(setting))
