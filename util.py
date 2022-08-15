@@ -38,10 +38,11 @@ ABY_INTERPRETER = ABY_SOURCE + "/build/bin/aby_interpreter"
 
 # joint parameters
 RERUN = 10
-COST_MODELS = ["hycc"]
+COST_MODELS = ["hycc", "lan", "wan"]
 # TODO: if more cost models are added, need to give hycc the path to the json
 COSTS = HYCC_SOURCE+"/src/circuit-utils/py/costs.json"
-
+LAN_COSTS = CIRC_SOURCE+"/third_party/empirical/adapted_costs.json"
+WAN_COSTS = CIRC_SOURCE+"/third_party/empirical_wan/adapted_costs.json"
 
 # hycc parameters
 HYCC_TEST_CASES = [

@@ -84,9 +84,17 @@ def compile_hycc_benchmark(test_path, params):
 def select_hycc_benchmark(params):
     print("select: ", params["version"])
     args = params["a"]
+    cm = params["cm"]
+    costs = COSTS
+    if cm == "hycc":
+        costs = COSTS
+    elif cm == "lan":
+        costs = LAN_COSTS
+    elif cm == "wan":
+        costs = WAN_COSTS
     try:
         write_log(DELIMITER, params)
-        cmd = ["python3", SELECTION, ".", COSTS]  # TODO: update cost model
+        cmd = ["python3", SELECTION, ".", costs]  # TODO: update cost model
         run_cmd(cmd, "MODE: selection", params)
         return True
     except Exception as e:
