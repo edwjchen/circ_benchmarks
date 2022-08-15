@@ -716,14 +716,14 @@ def run_wan():
 
     # copy test cases to benchmark 
     print("Rsync test cases to instances")
-    for ip in [i.public_dns_name for i in instances]:
+    for ip, key in zip([i.public_dns_name for i in instances], ["aws-west.pem", "aws-east.pem"]):
         print("copy to:", ip)
         subprocess.call(
-            "rsync -avz -e \"ssh -o StrictHostKeyChecking=no -i aws-east.pem\" --progress ./hycc_circuit_dir/ ubuntu@{}:~/circ_benchmarks/hycc_circuit_dir".format(ip), shell=True)
+            "rsync -avz -e \"ssh -o StrictHostKeyChecking=no -i {}\" --progress ./hycc_circuit_dir/ ubuntu@{}:~/circ_benchmarks/hycc_circuit_dir".format(key, ip), shell=True)
         subprocess.call(
-            "rsync -avz -e \"ssh -o StrictHostKeyChecking=no -i aws-east.pem\" --progress ./circ_circuit_dir/ ubuntu@{}:~/circ_benchmarks/circ_circuit_dir".format(ip), shell=True)
+            "rsync -avz -e \"ssh -o StrictHostKeyChecking=no -i {}\" --progress ./circ_circuit_dir/ ubuntu@{}:~/circ_benchmarks/circ_circuit_dir".format(key, ip), shell=True)
         subprocess.call(
-            "rsync -avz -e \"ssh -o StrictHostKeyChecking=no -i aws-east.pem\" --progress ./run_test_results/ ubuntu@{}:~/circ_benchmarks/run_test_results".format(ip), shell=True)
+            "rsync -avz -e \"ssh -o StrictHostKeyChecking=no -i {}\" --progress ./run_test_results/ ubuntu@{}:~/circ_benchmarks/run_test_results".format(key, ip), shell=True)
 
     ips = [i.public_dns_name for i in instances]
     server_private_ip = instances[0].private_ip_address
