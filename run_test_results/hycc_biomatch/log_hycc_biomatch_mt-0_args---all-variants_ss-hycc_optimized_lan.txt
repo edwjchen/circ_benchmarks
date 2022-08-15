@@ -1,0 +1,48 @@
+LOG: ====================================
+LOG: Benchmarking HyCC
+LOG: ====================================
+LOG: TEST: biomatch
+LOG: SELECTION_SCHEME: hycc_optimized
+LOG: MINIMIZATION_TIME: 0
+LOG: ARGUMENTS: ['--all-variants']
+LOG: ====================================
+LOG: RERUN: 0
+LOG: Client load time: 0.794977
+LOG: Client exec time: 0.322419
+LOG: Time / Memory: 1.23 seconds 159628 kB
+LOG: RERUN: 1
+LOG: Client load time: 0.786762
+LOG: Client exec time: 0.314471
+LOG: Time / Memory: 1.21 seconds 159580 kB
+LOG: RERUN: 2
+LOG: Client load time: 0.804604
+LOG: Client exec time: 0.314971
+LOG: Time / Memory: 1.24 seconds 159336 kB
+LOG: RERUN: 3
+LOG: Client load time: 0.816834
+LOG: Client exec time: 0.302253
+LOG: Time / Memory: 1.23 seconds 159272 kB
+LOG: RERUN: 4
+LOG: Client load time: 0.809409
+LOG: Client exec time: 0.299989
+LOG: Time / Memory: 1.22 seconds 159532 kB
+LOG: RERUN: 5
+LOG: Client load time: 0.78909
+LOG: Client exec time: 0.315695
+LOG: Time / Memory: 1.22 seconds 159336 kB
+LOG: RERUN: 6
+LOG: Client load time: 0.799827
+LOG: Client exec time: 0.304039
+LOG: Time / Memory: 1.22 seconds 159628 kB
+LOG: RERUN: 7
+LOG: Client load time: 0.798191
+LOG: Client exec time: 0.314142
+LOG: Time / Memory: 1.23 seconds 159664 kB
+LOG: RERUN: 8
+LOG: Client load time: 0.800654
+LOG: Client exec time: 0.30288
+LOG: Time / Memory: 1.22 seconds 159608 kB
+LOG: RERUN: 9
+LOG: Client load time: 0.79595
+LOG: Client exec time: 0.316322
+LOG: Time / Memory: 1.23 seconds 159636 kB
