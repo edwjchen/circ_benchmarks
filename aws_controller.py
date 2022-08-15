@@ -279,9 +279,10 @@ def refresh_worker(ip, key_file):
 
 
 def compile_benchmarks():
-    # start west instance
+     # start west instance
     stopped_instances = list(ec2_west.instances.filter(
         Filters=[{"Name": "instance-state-name", "Values": ["stopped"]}]))
+    stopped_instances = [i for i in stopped_instances if i.instance_type == instance_type]
     count = 0
     num = len(stopped_instances)
     for i in range(num):
@@ -296,12 +297,12 @@ def compile_benchmarks():
     # compile on west instance
     running_west_instances = list(ec2_west.instances.filter(
         Filters=[{"Name": "instance-state-name", "Values": ["running"]}]))
+    running_west_instances = [i for i in running_west_instances if i.instance_type == instance_type]
     ip = [instance.public_dns_name for instance in running_west_instances][0]
     id = [instance.id for instance in running_west_instances][0]
     key = paramiko.Ed25519Key.from_private_key_file("aws-west.pem")
     client = paramiko.SSHClient()
     client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
-
     retry = 0
     while retry < 5:
         try:
@@ -344,6 +345,7 @@ def select_benchmarks():
     # start west instance
     stopped_instances = list(ec2_west.instances.filter(
         Filters=[{"Name": "instance-state-name", "Values": ["stopped"]}]))
+    stopped_instances = [i for i in stopped_instances if i.instance_type == instance_type]
     count = 0
     num = len(stopped_instances)
     for i in range(num):
@@ -358,6 +360,7 @@ def select_benchmarks():
     # compile on west instance
     running_west_instances = list(ec2_west.instances.filter(
         Filters=[{"Name": "instance-state-name", "Values": ["running"]}]))
+    running_west_instances = [i for i in running_west_instances if i.instance_type == instance_type]
     ip = [instance.public_dns_name for instance in running_west_instances][0]
     id = [instance.id for instance in running_west_instances][0]
     key = paramiko.Ed25519Key.from_private_key_file("aws-west.pem")
