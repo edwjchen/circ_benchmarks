@@ -731,7 +731,7 @@ def run_wan():
 
     print("benchmarking")
     pool = multiprocessing.Pool(len(instances))
-    pool.starmap(benchmark_worker, zip(ips, connect_ips, roles, keys))
+    pool.starmap(benchmark_worker, zip(ips, connect_ips, roles, keys, settings))
 
     # scp compiled hycc_circuit_dir & test_results to local directory
     subprocess.call(

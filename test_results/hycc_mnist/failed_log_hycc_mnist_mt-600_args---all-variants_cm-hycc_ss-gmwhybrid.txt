@@ -1,0 +1,14 @@
+LOG: ====================================
+LOG: Benchmarking HyCC
+LOG: ====================================
+LOG: TEST: mnist
+LOG: SELECTION_SCHEME: gmwhybrid
+LOG: MINIMIZATION_TIME: 600
+LOG: COST_MODEL: hycc
+LOG: ARGUMENTS: ['--all-variants']
+LOG: ====================================
+LOG: RERUN: 0
+LOG: Client load time: 41.7374
+LOG: Error: Process returned with status code 1
+LOG: Error message: Connect failed due to timeout! Command exited with non-zero status 1 55.57 seconds 5378448 kB Command exited with non-zero status 1 55.57 seconds 5378448 kB
+LOG: Failed gmwhybrid with args: --all-variants, exception:

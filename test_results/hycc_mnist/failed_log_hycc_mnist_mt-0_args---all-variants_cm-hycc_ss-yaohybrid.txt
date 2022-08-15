@@ -1,0 +1,14 @@
+LOG: ====================================
+LOG: Benchmarking HyCC
+LOG: ====================================
+LOG: TEST: mnist
+LOG: SELECTION_SCHEME: yaohybrid
+LOG: MINIMIZATION_TIME: 0
+LOG: COST_MODEL: hycc
+LOG: ARGUMENTS: ['--all-variants']
+LOG: ====================================
+LOG: RERUN: 0
+LOG: Client load time: 44.4226
+LOG: Error: Process returned with status code 1
+LOG: Error message: Connect failed due to timeout! Command exited with non-zero status 1 55.10 seconds 6096400 kB Command exited with non-zero status 1 55.10 seconds 6096400 kB
+LOG: Failed yaohybrid with args: --all-variants, exception:
