@@ -96,6 +96,11 @@ def select_hycc_benchmark(params):
         write_log(DELIMITER, params)
         cmd = ["python3", SELECTION, ".", costs]  # TODO: update cost model
         run_cmd(cmd, "MODE: selection", params)
+
+        circuit_dir = "{}{}".format(HYCC_CIRCUIT_PATH, params["version"])
+        pso_path = "{}/ps_optimized.cmb".format(circuit_dir)
+        new_path = "{}/{}_optimized.cmb".format(circuit_dir, params["cm"])
+        subprocess.call("mv {} {}".format(pso_path, new_path), shell=True)
         return True
     except Exception as e:
         write_log("LOG: Failed selecting circuit with args: {}, exception: {}".format(
