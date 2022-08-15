@@ -241,6 +241,12 @@ def benchmark_hycc(name, path, instance_metadata):
             params["version"] = run_version
             log_path = format("{}run_test_results_{}/{}_{}/log_{}.txt".format(
                 CIRC_BENCHMARK_SOURCE, instance_metadata["setting"], params["system"], name, run_version))
+
+            if ss == "lan_optimized" and instance_metadata["setting"] == "wan":
+                continue
+            if ss == "wan_optimized" and instance_metadata["setting"] == "lan":
+                continue
+
             if not os.path.exists(log_path):
                 # run HyCC benchmark
                 os.chdir(circuit_dir)
