@@ -1,0 +1,163 @@
+
+LOG: ====================================
+
+LOG: Benchmarking HyCC
+
+LOG: ====================================
+
+LOG: TEST: db_join2
+LOG: SELECTION_SCHEME: gmwonly
+LOG: MINIMIZATION_TIME: 0
+LOG: COST_MODEL: hycc
+LOG: ARGUMENTS: ['--all-variants']
+
+LOG: ====================================
+
+LOG: RERUN: 0
+Using YAO protocol for boolean gates
+Loading sqr@bool_depth.circ (using GMW for boolean gates)
+Loading agg_mean_decomposed<int32[2701],uint32<900>,uint32<3>>@bool_depth.circ (using GMW for boolean gates)
+Loading agg_variance_sum<int32[90],uint32<30>,uint32<3>>@bool_depth.circ (using GMW for boolean gates)
+Loading mpc_main@bool_depth.circ (using GMW for boolean gates)
+Loading sum_tree<int32[90],int32<30>,int32<1>>@bool_depth.circ (using GMW for boolean gates)
+Loading sum_tree<int32[30],int32<30>,int32<1>>@bool_depth.circ (using GMW for boolean gates)
+Loading agg_sum_tree<int32[90],uint32<30>,uint32<3>>@bool_depth.circ (using GMW for boolean gates)
+Loading mean<int32[90],uint32<30>>@bool_depth.circ (using GMW for boolean gates)
+Loading agg_variance_decomposed<int32[2701],uint32<900>,uint32<3>>@bool_depth.circ (using GMW for boolean gates)
+Loading cross_join_decomposed<int32[2701],int32[60],int32[60]>@bool_depth.circ (using GMW for boolean gates)
+Loading cross_join_inner<int32[90],int32[60],int32[2],uint32<30>,uint32<2>>@bool_depth.circ (using GMW for boolean gates)
+Merging "cross_join_inner<int32[90],int32[60],int32[2],uint32<30>,uint32<2>>" into "cross_join_decomposed<int32[2701],int32[60],int32[60]>"
+Merging "cross_join_inner<int32[90],int32[60],int32[2],uint32<30>,uint32<2>>" into "cross_join_decomposed<int32[2701],int32[60],int32[60]>"
+Merging "cross_join_inner<int32[90],int32[60],int32[2],uint32<30>,uint32<2>>" into "cross_join_decomposed<int32[2701],int32[60],int32[60]>"
+Merging "cross_join_inner<int32[90],int32[60],int32[2],uint32<30>,uint32<2>>" into "cross_join_decomposed<int32[2701],int32[60],int32[60]>"
+Merging "cross_join_inner<int32[90],int32[60],int32[2],uint32<30>,uint32<2>>" into "cross_join_decomposed<int32[2701],int32[60],int32[60]>"
+Merging "cross_join_inner<int32[90],int32[60],int32[2],uint32<30>,uint32<2>>" into "cross_join_decomposed<int32[2701],int32[60],int32[60]>"
+Merging "cross_join_inner<int32[90],int32[60],int32[2],uint32<30>,uint32<2>>" into "cross_join_decomposed<int32[2701],int32[60],int32[60]>"
+Merging "cross_join_inner<int32[90],int32[60],int32[2],uint32<30>,uint32<2>>" into "cross_join_decomposed<int32[2701],int32[60],int32[60]>"
+Merging "cross_join_inner<int32[90],int32[60],int32[2],uint32<30>,uint32<2>>" into "cross_join_decomposed<int32[2701],int32[60],int32[60]>"
+Merging "cross_join_inner<int32[90],int32[60],int32[2],uint32<30>,uint32<2>>" into "cross_join_decomposed<int32[2701],int32[60],int32[60]>"
+Merging "cross_join_inner<int32[90],int32[60],int32[2],uint32<30>,uint32<2>>" into "cross_join_decomposed<int32[2701],int32[60],int32[60]>"
+Merging "cross_join_inner<int32[90],int32[60],int32[2],uint32<30>,uint32<2>>" into "cross_join_decomposed<int32[2701],int32[60],int32[60]>"
+Merging "cross_join_inner<int32[90],int32[60],int32[2],uint32<30>,uint32<2>>" into "cross_join_decomposed<int32[2701],int32[60],int32[60]>"
+Merging "cross_join_inner<int32[90],int32[60],int32[2],uint32<30>,uint32<2>>" into "cross_join_decomposed<int32[2701],int32[60],int32[60]>"
+Merging "cross_join_inner<int32[90],int32[60],int32[2],uint32<30>,uint32<2>>" into "cross_join_decomposed<int32[2701],int32[60],int32[60]>"
+Merging "cross_join_inner<int32[90],int32[60],int32[2],uint32<30>,uint32<2>>" into "cross_join_decomposed<int32[2701],int32[60],int32[60]>"
+Merging "cross_join_inner<int32[90],int32[60],int32[2],uint32<30>,uint32<2>>" into "cross_join_decomposed<int32[2701],int32[60],int32[60]>"
+Merging "cross_join_inner<int32[90],int32[60],int32[2],uint32<30>,uint32<2>>" into "cross_join_decomposed<int32[2701],int32[60],int32[60]>"
+Merging "cross_join_inner<int32[90],int32[60],int32[2],uint32<30>,uint32<2>>" into "cross_join_decomposed<int32[2701],int32[60],int32[60]>"
+Merging "cross_join_inner<int32[90],int32[60],int32[2],uint32<30>,uint32<2>>" into "cross_join_decomposed<int32[2701],int32[60],int32[60]>"
+Merging "cross_join_inner<int32[90],int32[60],int32[2],uint32<30>,uint32<2>>" into "cross_join_decomposed<int32[2701],int32[60],int32[60]>"
+Merging "cross_join_inner<int32[90],int32[60],int32[2],uint32<30>,uint32<2>>" into "cross_join_decomposed<int32[2701],int32[60],int32[60]>"
+Merging "cross_join_inner<int32[90],int32[60],int32[2],uint32<30>,uint32<2>>" into "cross_join_decomposed<int32[2701],int32[60],int32[60]>"
+Merging "cross_join_inner<int32[90],int32[60],int32[2],uint32<30>,uint32<2>>" into "cross_join_decomposed<int32[2701],int32[60],int32[60]>"
+Merging "cross_join_inner<int32[90],int32[60],int32[2],uint32<30>,uint32<2>>" into "cross_join_decomposed<int32[2701],int32[60],int32[60]>"
+Merging "cross_join_inner<int32[90],int32[60],int32[2],uint32<30>,uint32<2>>" into "cross_join_decomposed<int32[2701],int32[60],int32[60]>"
+Merging "cross_join_inner<int32[90],int32[60],int32[2],uint32<30>,uint32<2>>" into "cross_join_decomposed<int32[2701],int32[60],int32[60]>"
+Merging "cross_join_inner<int32[90],int32[60],int32[2],uint32<30>,uint32<2>>" into "cross_join_decomposed<int32[2701],int32[60],int32[60]>"
+Merging "cross_join_inner<int32[90],int32[60],int32[2],uint32<30>,uint32<2>>" into "cross_join_decomposed<int32[2701],int32[60],int32[60]>"
+Merging "cross_join_inner<int32[90],int32[60],int32[2],uint32<30>,uint32<2>>" into "cross_join_decomposed<int32[2701],int32[60],int32[60]>"
+Merging "cross_join_decomposed<int32[2701],int32[60],int32[60]>" into "mpc_main"
+Merging "sum_tree<int32[30],int32<30>,int32<1>>" into "agg_sum_tree<int32[90],uint32<30>,uint32<3>>"
+Merging "agg_sum_tree<int32[90],uint32<30>,uint32<3>>" into "agg_mean_decomposed<int32[2701],uint32<900>,uint32<3>>"
+Merging "agg_sum_tree<int32[90],uint32<30>,uint32<3>>" into "agg_mean_decomposed<int32[2701],uint32<900>,uint32<3>>"
+Merging "agg_sum_tree<int32[90],uint32<30>,uint32<3>>" into "agg_mean_decomposed<int32[2701],uint32<900>,uint32<3>>"
+Merging "agg_sum_tree<int32[90],uint32<30>,uint32<3>>" into "agg_mean_decomposed<int32[2701],uint32<900>,uint32<3>>"
+Merging "agg_sum_tree<int32[90],uint32<30>,uint32<3>>" into "agg_mean_decomposed<int32[2701],uint32<900>,uint32<3>>"
+Merging "agg_sum_tree<int32[90],uint32<30>,uint32<3>>" into "agg_mean_decomposed<int32[2701],uint32<900>,uint32<3>>"
+Merging "agg_sum_tree<int32[90],uint32<30>,uint32<3>>" into "agg_mean_decomposed<int32[2701],uint32<900>,uint32<3>>"
+Merging "agg_sum_tree<int32[90],uint32<30>,uint32<3>>" into "agg_mean_decomposed<int32[2701],uint32<900>,uint32<3>>"
+Merging "agg_sum_tree<int32[90],uint32<30>,uint32<3>>" into "agg_mean_decomposed<int32[2701],uint32<900>,uint32<3>>"
+Merging "agg_sum_tree<int32[90],uint32<30>,uint32<3>>" into "agg_mean_decomposed<int32[2701],uint32<900>,uint32<3>>"
+Merging "agg_sum_tree<int32[90],uint32<30>,uint32<3>>" into "agg_mean_decomposed<int32[2701],uint32<900>,uint32<3>>"
+Merging "agg_sum_tree<int32[90],uint32<30>,uint32<3>>" into "agg_mean_decomposed<int32[2701],uint32<900>,uint32<3>>"
+Merging "agg_sum_tree<int32[90],uint32<30>,uint32<3>>" into "agg_mean_decomposed<int32[2701],uint32<900>,uint32<3>>"
+Merging "agg_sum_tree<int32[90],uint32<30>,uint32<3>>" into "agg_mean_decomposed<int32[2701],uint32<900>,uint32<3>>"
+Merging "agg_sum_tree<int32[90],uint32<30>,uint32<3>>" into "agg_mean_decomposed<int32[2701],uint32<900>,uint32<3>>"
+Merging "agg_sum_tree<int32[90],uint32<30>,uint32<3>>" into "agg_mean_decomposed<int32[2701],uint32<900>,uint32<3>>"
+Merging "agg_sum_tree<int32[90],uint32<30>,uint32<3>>" into "agg_mean_decomposed<int32[2701],uint32<900>,uint32<3>>"
+Merging "agg_sum_tree<int32[90],uint32<30>,uint32<3>>" into "agg_mean_decomposed<int32[2701],uint32<900>,uint32<3>>"
+Merging "agg_sum_tree<int32[90],uint32<30>,uint32<3>>" into "agg_mean_decomposed<int32[2701],uint32<900>,uint32<3>>"
+Merging "agg_sum_tree<int32[90],uint32<30>,uint32<3>>" into "agg_mean_decomposed<int32[2701],uint32<900>,uint32<3>>"
+Merging "agg_sum_tree<int32[90],uint32<30>,uint32<3>>" into "agg_mean_decomposed<int32[2701],uint32<900>,uint32<3>>"
+Merging "agg_sum_tree<int32[90],uint32<30>,uint32<3>>" into "agg_mean_decomposed<int32[2701],uint32<900>,uint32<3>>"
+Merging "agg_sum_tree<int32[90],uint32<30>,uint32<3>>" into "agg_mean_decomposed<int32[2701],uint32<900>,uint32<3>>"
+Merging "agg_sum_tree<int32[90],uint32<30>,uint32<3>>" into "agg_mean_decomposed<int32[2701],uint32<900>,uint32<3>>"
+Merging "agg_sum_tree<int32[90],uint32<30>,uint32<3>>" into "agg_mean_decomposed<int32[2701],uint32<900>,uint32<3>>"
+Merging "agg_sum_tree<int32[90],uint32<30>,uint32<3>>" into "agg_mean_decomposed<int32[2701],uint32<900>,uint32<3>>"
+Merging "agg_sum_tree<int32[90],uint32<30>,uint32<3>>" into "agg_mean_decomposed<int32[2701],uint32<900>,uint32<3>>"
+Merging "agg_sum_tree<int32[90],uint32<30>,uint32<3>>" into "agg_mean_decomposed<int32[2701],uint32<900>,uint32<3>>"
+Merging "agg_sum_tree<int32[90],uint32<30>,uint32<3>>" into "agg_mean_decomposed<int32[2701],uint32<900>,uint32<3>>"
+Merging "agg_sum_tree<int32[90],uint32<30>,uint32<3>>" into "agg_mean_decomposed<int32[2701],uint32<900>,uint32<3>>"
+Merging "sum_tree<int32[30],int32<30>,int32<1>>" into "agg_mean_decomposed<int32[2701],uint32<900>,uint32<3>>"
+Merging "agg_mean_decomposed<int32[2701],uint32<900>,uint32<3>>" into "mpc_main"
+Merging "sum_tree<int32[90],int32<30>,int32<1>>" into "mean<int32[90],uint32<30>>"
+Merging "mean<int32[90],uint32<30>>" into "agg_variance_sum<int32[90],uint32<30>,uint32<3>>"
+Merging "sqr" into "agg_variance_sum<int32[90],uint32<30>,uint32<3>>"
+Merging "sqr" into "agg_variance_sum<int32[90],uint32<30>,uint32<3>>"
+Merging "sqr" into "agg_variance_sum<int32[90],uint32<30>,uint32<3>>"
+Merging "sqr" into "agg_variance_sum<int32[90],uint32<30>,uint32<3>>"
+Merging "sqr" into "agg_variance_sum<int32[90],uint32<30>,uint32<3>>"
+Merging "sqr" into "agg_variance_sum<int32[90],uint32<30>,uint32<3>>"
+Merging "sqr" into "agg_variance_sum<int32[90],uint32<30>,uint32<3>>"
+Merging "sqr" into "agg_variance_sum<int32[90],uint32<30>,uint32<3>>"
+Merging "sqr" into "agg_variance_sum<int32[90],uint32<30>,uint32<3>>"
+Merging "sqr" into "agg_variance_sum<int32[90],uint32<30>,uint32<3>>"
+Merging "sqr" into "agg_variance_sum<int32[90],uint32<30>,uint32<3>>"
+Merging "sqr" into "agg_variance_sum<int32[90],uint32<30>,uint32<3>>"
+Merging "sqr" into "agg_variance_sum<int32[90],uint32<30>,uint32<3>>"
+Merging "sqr" into "agg_variance_sum<int32[90],uint32<30>,uint32<3>>"
+Merging "sqr" into "agg_variance_sum<int32[90],uint32<30>,uint32<3>>"
+Merging "sqr" into "agg_variance_sum<int32[90],uint32<30>,uint32<3>>"
+Merging "sqr" into "agg_variance_sum<int32[90],uint32<30>,uint32<3>>"
+Merging "sqr" into "agg_variance_sum<int32[90],uint32<30>,uint32<3>>"
+Merging "sqr" into "agg_variance_sum<int32[90],uint32<30>,uint32<3>>"
+Merging "sqr" into "agg_variance_sum<int32[90],uint32<30>,uint32<3>>"
+Merging "sqr" into "agg_variance_sum<int32[90],uint32<30>,uint32<3>>"
+Merging "sqr" into "agg_variance_sum<int32[90],uint32<30>,uint32<3>>"
+Merging "sqr" into "agg_variance_sum<int32[90],uint32<30>,uint32<3>>"
+Merging "sqr" into "agg_variance_sum<int32[90],uint32<30>,uint32<3>>"
+Merging "sqr" into "agg_variance_sum<int32[90],uint32<30>,uint32<3>>"
+Merging "sqr" into "agg_variance_sum<int32[90],uint32<30>,uint32<3>>"
+Merging "sqr" into "agg_variance_sum<int32[90],uint32<30>,uint32<3>>"
+Merging "sqr" into "agg_variance_sum<int32[90],uint32<30>,uint32<3>>"
+Merging "sqr" into "agg_variance_sum<int32[90],uint32<30>,uint32<3>>"
+Merging "sqr" into "agg_variance_sum<int32[90],uint32<30>,uint32<3>>"
+Merging "sum_tree<int32[30],int32<30>,int32<1>>" into "agg_variance_sum<int32[90],uint32<30>,uint32<3>>"
+Merging "agg_variance_sum<int32[90],uint32<30>,uint32<3>>" into "agg_variance_decomposed<int32[2701],uint32<900>,uint32<3>>"
+Merging "agg_variance_sum<int32[90],uint32<30>,uint32<3>>" into "agg_variance_decomposed<int32[2701],uint32<900>,uint32<3>>"
+Merging "agg_variance_sum<int32[90],uint32<30>,uint32<3>>" into "agg_variance_decomposed<int32[2701],uint32<900>,uint32<3>>"
+Merging "agg_variance_sum<int32[90],uint32<30>,uint32<3>>" into "agg_variance_decomposed<int32[2701],uint32<900>,uint32<3>>"
+Merging "agg_variance_sum<int32[90],uint32<30>,uint32<3>>" into "agg_variance_decomposed<int32[2701],uint32<900>,uint32<3>>"
+Merging "agg_variance_sum<int32[90],uint32<30>,uint32<3>>" into "agg_variance_decomposed<int32[2701],uint32<900>,uint32<3>>"
+Merging "agg_variance_sum<int32[90],uint32<30>,uint32<3>>" into "agg_variance_decomposed<int32[2701],uint32<900>,uint32<3>>"
+Merging "agg_variance_sum<int32[90],uint32<30>,uint32<3>>" into "agg_variance_decomposed<int32[2701],uint32<900>,uint32<3>>"
+Merging "agg_variance_sum<int32[90],uint32<30>,uint32<3>>" into "agg_variance_decomposed<int32[2701],uint32<900>,uint32<3>>"
+Merging "agg_variance_sum<int32[90],uint32<30>,uint32<3>>" into "agg_variance_decomposed<int32[2701],uint32<900>,uint32<3>>"
+Merging "agg_variance_sum<int32[90],uint32<30>,uint32<3>>" into "agg_variance_decomposed<int32[2701],uint32<900>,uint32<3>>"
+Merging "agg_variance_sum<int32[90],uint32<30>,uint32<3>>" into "agg_variance_decomposed<int32[2701],uint32<900>,uint32<3>>"
+Merging "agg_variance_sum<int32[90],uint32<30>,uint32<3>>" into "agg_variance_decomposed<int32[2701],uint32<900>,uint32<3>>"
+Merging "agg_variance_sum<int32[90],uint32<30>,uint32<3>>" into "agg_variance_decomposed<int32[2701],uint32<900>,uint32<3>>"
+Merging "agg_variance_sum<int32[90],uint32<30>,uint32<3>>" into "agg_variance_decomposed<int32[2701],uint32<900>,uint32<3>>"
+Merging "agg_variance_sum<int32[90],uint32<30>,uint32<3>>" into "agg_variance_decomposed<int32[2701],uint32<900>,uint32<3>>"
+Merging "agg_variance_sum<int32[90],uint32<30>,uint32<3>>" into "agg_variance_decomposed<int32[2701],uint32<900>,uint32<3>>"
+Merging "agg_variance_sum<int32[90],uint32<30>,uint32<3>>" into "agg_variance_decomposed<int32[2701],uint32<900>,uint32<3>>"
+Merging "agg_variance_sum<int32[90],uint32<30>,uint32<3>>" into "agg_variance_decomposed<int32[2701],uint32<900>,uint32<3>>"
+Merging "agg_variance_sum<int32[90],uint32<30>,uint32<3>>" into "agg_variance_decomposed<int32[2701],uint32<900>,uint32<3>>"
+Merging "agg_variance_sum<int32[90],uint32<30>,uint32<3>>" into "agg_variance_decomposed<int32[2701],uint32<900>,uint32<3>>"
+Merging "agg_variance_sum<int32[90],uint32<30>,uint32<3>>" into "agg_variance_decomposed<int32[2701],uint32<900>,uint32<3>>"
+Merging "agg_variance_sum<int32[90],uint32<30>,uint32<3>>" into "agg_variance_decomposed<int32[2701],uint32<900>,uint32<3>>"
+Merging "agg_variance_sum<int32[90],uint32<30>,uint32<3>>" into "agg_variance_decomposed<int32[2701],uint32<900>,uint32<3>>"
+Merging "agg_variance_sum<int32[90],uint32<30>,uint32<3>>" into "agg_variance_decomposed<int32[2701],uint32<900>,uint32<3>>"
+Merging "agg_variance_sum<int32[90],uint32<30>,uint32<3>>" into "agg_variance_decomposed<int32[2701],uint32<900>,uint32<3>>"
+Merging "agg_variance_sum<int32[90],uint32<30>,uint32<3>>" into "agg_variance_decomposed<int32[2701],uint32<900>,uint32<3>>"
+Merging "agg_variance_sum<int32[90],uint32<30>,uint32<3>>" into "agg_variance_decomposed<int32[2701],uint32<900>,uint32<3>>"
+Merging "agg_variance_sum<int32[90],uint32<30>,uint32<3>>" into "agg_variance_decomposed<int32[2701],uint32<900>,uint32<3>>"
+Merging "agg_variance_sum<int32[90],uint32<30>,uint32<3>>" into "agg_variance_decomposed<int32[2701],uint32<900>,uint32<3>>"
+Merging "sum_tree<int32[30],int32<30>,int32<1>>" into "agg_variance_decomposed<int32[2701],uint32<900>,uint32<3>>"
+Merging "agg_variance_decomposed<int32[2701],uint32<900>,uint32<3>>" into "mpc_main"
+LOG: Client load time: 67.2542
+There was an error during establish connection, ending! 
+
+LOG: Error: Process returned with status code 1
+LOG: Error message: Connect failed due to timeout! Command exited with non-zero status 1 77.83 seconds 5457796 kB Command exited with non-zero status 1 77.83 seconds 5457796 kB 
+LOG: Failed gmwonly with args: --all-variants, exception: 
