@@ -26,7 +26,7 @@ def run_aby_local(spec_file, params):
 
 
 def run_hycc_benchmark(spec_file, params, instance_metadata):
-    print("running: ", params["version"])
+    print("running: ", params["version"], instance_metadata["setting"])
     args = params["a"]
     ss = params["ss"]
     if not args:
@@ -46,10 +46,10 @@ def run_hycc_benchmark(spec_file, params, instance_metadata):
     except Exception as e:
         write_log("LOG: Failed {} with args: {}, exception: {}".format(
             ss, " ".join(args), e), params)
-        log_path = "{}test_results/{}_{}/log_{}.txt".format(
-                CIRC_BENCHMARK_SOURCE, params["system"], params["name"], params["version"])
-        failed_path = "{}test_results/{}_{}/failed_log_{}.txt".format(
-                CIRC_BENCHMARK_SOURCE, params["system"], params["name"], params["version"])
+        log_path = "{}run_test_results_{}/{}_{}/log_{}.txt".format(
+                CIRC_BENCHMARK_SOURCE, instance_metadata["setting"], params["system"], params["name"], params["version"])
+        failed_path = "{}run_test_results_{}/{}_{}/failed_log_{}.txt".format(
+                CIRC_BENCHMARK_SOURCE, instance_metadata["setting"], params["system"], params["name"], params["version"])
         subprocess.call("mv {} {}".format(log_path, failed_path), shell=True)
 
 
@@ -209,8 +209,8 @@ def benchmark_hycc(name, path, instance_metadata):
                 params["mt"] = mt
                 params["a"] = a
                 params["cm"] = cm
-                version = "{}_{}_mt-{}_args-{}_cm-{}".format(
-                    "hycc", name, mt, "".join(a), cm)
+                version = "{}_{}_mt-{}_args-{}_cm-{}".format("hycc", name, mt, "".join(a), cm)
+              
                 if version not in versions:
                     versions.append((version, params))
 
@@ -222,32 +222,12 @@ def benchmark_hycc(name, path, instance_metadata):
         circuit_dir = "{}{}".format(HYCC_CIRCUIT_PATH, version)
         make_dir(circuit_dir)
 
-        compile_version = "compile_{}".format(version)
-        compile_log_path = format(
-            "{}test_results/{}_{}/log_{}.txt".format(CIRC_BENCHMARK_SOURCE, params["system"], name, compile_version))
-
-        if not os.path.exists(compile_log_path):
-            # compile HyCC benchmark
-            os.chdir(circuit_dir)
-            params["version"] = compile_version
-
-            write_log(DELIMITER, params)
-            write_log("LOG: Benchmarking HyCC", params)
-            write_log(DELIMITER, params)
-
-            write_log("LOG: TEST: {}".format(name), params)
-            write_log("LOG: MINIMIZATION_TIME: {}".format(
-                params["mt"]), params)
-            write_log("LOG: COST_MODEL: {}".format(params["cm"]), params)
-            write_log("LOG: ARGUMENTS: {}".format(params["a"]), params)
-            compile_hycc_benchmark(test_path, params)
-
         for ss in HYCC_SELECTION_SCHEMES:
             params["ss"] = ss
-            run_version = "{}_ss-{}".format(version, ss)
+            run_version = "{}_ss-{}_{}".format(version, ss, instance_metadata["setting"])
             params["version"] = run_version
-            log_path = format("{}test_results/{}_{}/log_{}.txt".format(
-                CIRC_BENCHMARK_SOURCE, params["system"], name, run_version))
+            log_path = format("{}run_test_results_{}/{}_{}/log_{}.txt".format(
+                CIRC_BENCHMARK_SOURCE, instance_metadata["setting"], params["system"], name, run_version))
             if not os.path.exists(log_path):
                 # run HyCC benchmark
                 os.chdir(circuit_dir)

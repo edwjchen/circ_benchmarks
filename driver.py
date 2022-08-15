@@ -198,12 +198,12 @@ def select(features):
             select_hycc(name)
         end = time.time()
         line = "LOG: Total hycc select time: {}".format(end-start)
-        subprocess.call("echo \"{}\" >> {}/test_results/hycc_total_selec_time.txt".format(
+        subprocess.call("echo \"{}\" >> {}/test_results/hycc_total_select_time.txt".format(
             line, CIRC_BENCHMARK_SOURCE), shell=True)
 
 
 def benchmark(features, instance_metadata):
-    make_test_results()
+    make_dir("run_test_resuts_{}".format(instance_metadata["setting"]))
     make_dir(HYCC_CIRCUIT_PATH)
     if "hycc" in features:
         print("Running HyCC Benchmarks")
@@ -211,12 +211,12 @@ def benchmark(features, instance_metadata):
 
         # run hycc benchmarks
         for (name, path) in HYCC_TEST_CASES:
-            make_dir("test_results/hycc_{}".format(name))
+            make_dir("run_test_resuts_{}/hycc_{}".format(instance_metadata["setting"], name))
             benchmark_hycc(name, path, instance_metadata)
         end = time.time()
         line = "LOG: Total hycc benchmark time: {}".format(end-start)
-        p = subprocess.Popen("echo \"{}\" >> {}/test_results/hycc_total_time.txt".format(
-            line, CIRC_BENCHMARK_SOURCE), shell=True)
+        p = subprocess.Popen("echo \"{}\" >> {}/run_test_results_{}/hycc_total_time.txt".format(
+            line, CIRC_BENCHMARK_SOURCE, instance_metadata["setting"]), shell=True)
         p.communicate(timeout=10)
 
     if "circ" in features:
@@ -299,6 +299,8 @@ if __name__ == "__main__":
                         help="AWS Instance addresses")
     parser.add_argument("--role",
                         help="AWS Instance role")
+    parser.add_argument("--setting",
+                        help="AWS setting")
     args = parser.parse_args()
 
     def verify_single_action(args: argparse.Namespace):
@@ -345,6 +347,10 @@ if __name__ == "__main__":
 
     if args.role:
         instance_metadata["role"] = args.role
+        save_instance_metadata(instance_metadata)
+    
+    if args.setting:
+        instance_metadata["setting"] = args.setting
         save_instance_metadata(instance_metadata)
 
     if args.list:

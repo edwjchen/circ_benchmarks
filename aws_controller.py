@@ -467,7 +467,7 @@ def run_benchmarks(setting):
     stop_instances()
 
 
-def benchmark_worker(ip, connect_ip, role, key_file):
+def benchmark_worker(ip, connect_ip, role, key_file, setting):
     print("Running HyCC benchmark:\nip: {}\nconnect: {}\nrole: {}\n".format(
         ip, connect_ip, role))
     key = paramiko.Ed25519Key.from_private_key_file(key_file)
@@ -475,8 +475,8 @@ def benchmark_worker(ip, connect_ip, role, key_file):
     client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
     client.connect(hostname=ip, username="ubuntu", pkey=key)
 
-    cmd = "cd ~/circ_benchmarks/ && git add . && git stash && git pull -f && python3 driver.py --address {} && python3 driver.py --role {} && python3 driver.py -f hycc && python3 driver.py --benchmark".format(
-        connect_ip, role)
+    cmd = "cd ~/circ_benchmarks/ && git add . && git stash && git pull -f && python3 driver.py --address {} && python3 driver.py --role {} && python3 driver.py --setting {} && python3 driver.py -f hycc && python3 driver.py --benchmark".format(
+        connect_ip, role, setting)
     _, stdout, _ = client.exec_command(cmd)
 
     if stdout.channel.recv_exit_status():
@@ -603,7 +603,7 @@ def run_lan():
         subprocess.call(
             "rsync -avz -e \"ssh -o StrictHostKeyChecking=no -i aws-east.pem\" --progress ./circ_circuit_dir/ ubuntu@{}:~/circ_benchmarks/circ_circuit_dir".format(ip), shell=True)
         subprocess.call(
-            "rsync -avz -e \"ssh -o StrictHostKeyChecking=no -i aws-east.pem\" --progress ./test_results/ ubuntu@{}:~/circ_benchmarks/test_results".format(ip), shell=True)
+            "rsync -avz -e \"ssh -o StrictHostKeyChecking=no -i aws-east.pem\" --progress ./run_test_results_lan/ ubuntu@{}:~/circ_benchmarks/run_test_results_lan".format(ip), shell=True)
 
     ips = [i.public_dns_name for i in instances]
     server_private_ip = instances[0].private_ip_address
@@ -611,10 +611,11 @@ def run_lan():
     connect_ips = [server_private_ip, server_public_ip]
     roles = [0, 1]
     keys = ["aws-east.pem", "aws-east.pem"]
+    settings = ["lan", "lan"]
 
     print("benchmarking")
     pool = multiprocessing.Pool(len(instances))
-    pool.starmap(benchmark_worker, zip(ips, connect_ips, roles, keys))
+    pool.starmap(benchmark_worker, zip(ips, connect_ips, roles, keys, settings))
 
     # scp compiled hycc_circuit_dir & test_results to local directory
     subprocess.call(
@@ -622,7 +623,7 @@ def run_lan():
     subprocess.call(
         "rsync -avz -e \"ssh -o StrictHostKeyChecking=no -i aws-east.pem\" --progress ubuntu@{}:~/circ_benchmarks/circ_circuit_dir .".format(ip), shell=True)
     subprocess.call(
-        "rsync -avz -e \"ssh -o StrictHostKeyChecking=no -i aws-east.pem\" --progress ubuntu@{}:~/circ_benchmarks/test_results .".format(ip), shell=True)
+        "rsync -avz -e \"ssh -o StrictHostKeyChecking=no -i aws-east.pem\" --progress ubuntu@{}:~/circ_benchmarks/run_test_results_lan .".format(ip), shell=True)
 
     print("Stopping instances")
     [instance.stop() for instance in instances]
@@ -630,7 +631,120 @@ def run_lan():
     print("done!")
     
 
+def run_wan():
+    print("RUNNING WAN TEST")
+    stopped_west_instances = list(ec2_west.instances.filter(
+        Filters=[{"Name": "instance-state-name", "Values": ["stopped"]}]))
+    stopped_east_instances = list(ec2_east.instances.filter(
+        Filters=[{"Name": "instance-state-name", "Values": ["stopped"]}]))
 
+
+    # filter instances by type
+    stopped_west_instances = [i for i in stopped_west_instances if i.instance_type == run_instance_type]
+    stopped_east_instances = [i for i in stopped_east_instances if i.instance_type == run_instance_type]
+    
+    instances = []
+
+    if len(stopped_west_instances) >= 1 and len(stopped_east_instances) >= 1:
+        print("starting instances")
+        west_instance = stopped_west_instances[0]
+        east_instance = stopped_east_instances[0]
+        instances = [west_instance, east_instance]
+        [i.start() for i in instances]
+        [i.wait_until_running() for i in instances]
+        [i.load() for i in instances]
+        print("started {} instances".format(len(instances)))
+    else:
+        print("creating 1 west and 1 east instances")
+
+        west_instance = ec2_west.create_instances(ImageId="ami-0ddf424f81ddb0720",
+                                  InstanceType=run_instance_type,
+                                  KeyName="aws-west",
+                                  MinCount=1,
+                                  MaxCount=1,
+                                  Monitoring={
+                                      "Enabled": False},
+                                  SecurityGroups=[
+                                      "circ4mpc"],
+                                  BlockDeviceMappings=[
+                                        {
+                                            'DeviceName': '/dev/sdh',
+                                            'Ebs': {
+                                                'DeleteOnTermination': True,
+                                                'VolumeSize': 128,
+                                                'VolumeType': 'gp2',
+                                            }
+                                        },
+                                    ]
+                                  )
+        east_instance = ec2_east.create_instances(ImageId="ami-05b63781e32145c7f",
+                                    InstanceType=run_instance_type,
+                                    KeyName="aws-east",
+                                    MinCount=1,
+                                    MaxCount=1,
+                                    Monitoring={
+                                        "Enabled": False
+                                    },
+                                    SecurityGroups=[
+                                        "circ4mpc"
+                                    ],
+                                    BlockDeviceMappings=[
+                                        {
+                                            'DeviceName': '/dev/sdh',
+                                            'Ebs': {
+                                                'DeleteOnTermination': True,
+                                                'VolumeSize': 128,
+                                                'VolumeType': 'gp2',
+                                            }
+                                        },
+                                    ]
+                                )
+        instances = [west_instance, east_instance]
+        [instance.wait_until_running() for instance in instances]
+        [instance.load() for instance in instances]
+        print("created {} instances".format(len(instances)))
+
+    # install ABY 
+    ips = [instance.public_dns_name for instance in instances]
+    keys = ["aws-west.pem", "aws-east.pem"]
+    print("Setting up instances")
+    pool = multiprocessing.Pool(len(instances))
+    pool.starmap(setup_run_worker, zip(ips, keys))
+
+    # copy test cases to benchmark 
+    print("Rsync test cases to instances")
+    for ip in [i.public_dns_name for i in instances]:
+        print("copy to:", ip)
+        subprocess.call(
+            "rsync -avz -e \"ssh -o StrictHostKeyChecking=no -i aws-east.pem\" --progress ./hycc_circuit_dir/ ubuntu@{}:~/circ_benchmarks/hycc_circuit_dir".format(ip), shell=True)
+        subprocess.call(
+            "rsync -avz -e \"ssh -o StrictHostKeyChecking=no -i aws-east.pem\" --progress ./circ_circuit_dir/ ubuntu@{}:~/circ_benchmarks/circ_circuit_dir".format(ip), shell=True)
+        subprocess.call(
+            "rsync -avz -e \"ssh -o StrictHostKeyChecking=no -i aws-east.pem\" --progress ./run_test_results_wan/ ubuntu@{}:~/circ_benchmarks/run_test_results_wan".format(ip), shell=True)
+
+    ips = [i.public_dns_name for i in instances]
+    server_private_ip = instances[0].private_ip_address
+    server_public_ip = instances[0].public_ip_address
+    connect_ips = [server_private_ip, server_public_ip]
+    roles = [0, 1]
+    settings = ["wan", "wan"]
+
+    print("benchmarking")
+    pool = multiprocessing.Pool(len(instances))
+    pool.starmap(benchmark_worker, zip(ips, connect_ips, roles, keys))
+
+    # scp compiled hycc_circuit_dir & test_results to local directory
+    subprocess.call(
+        "rsync -avz -e \"ssh -o StrictHostKeyChecking=no -i aws-west.pem\" --progress ubuntu@{}:~/circ_benchmarks/run_test_results_wan .".format(ips[0]), shell=True)
+
+    subprocess.call(
+        "rsync -avz -e \"ssh -o StrictHostKeyChecking=no -i aws-east.pem\" --progress ubuntu@{}:~/circ_benchmarks/run_test_results_wan ./east".format(ips[0]), shell=True)
+
+    print("Stopping instances")
+    [instance.stop() for instance in instances]
+    [instance.wait_until_stopped() for instance in instances]
+    print("done!")
+    
 
 if __name__ == "__main__":
     setting = WAN  # default test setting
