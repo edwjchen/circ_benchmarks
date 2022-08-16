@@ -7,7 +7,42 @@ LOG: MINIMIZATION_TIME: 0
 LOG: ARGUMENTS: ['--all-variants']
 LOG: ====================================
 LOG: RERUN: 0
-LOG: Client load time: 0.667018
-LOG: Error: Process returned with status code 1
-LOG: Error message: Connect failed due to timeout! Command exited with non-zero status 1 58.43 seconds 151032 kB Command exited with non-zero status 1 58.43 seconds 151032 kB
-LOG: Failed wan_optimized with args: --all-variants, exception:
+LOG: Server load time: 0.638155
+LOG: Server exec time: 3.29453
+LOG: Time / Memory: 4.04 seconds 158464 kB
+LOG: RERUN: 1
+LOG: Server load time: 0.622894
+LOG: Server exec time: 2.69231
+LOG: Time / Memory: 3.42 seconds 158244 kB
+LOG: RERUN: 2
+LOG: Server load time: 0.627527
+LOG: Server exec time: 3.36283
+LOG: Time / Memory: 4.10 seconds 158452 kB
+LOG: RERUN: 3
+LOG: Server load time: 0.63009
+LOG: Server exec time: 2.65767
+LOG: Time / Memory: 3.40 seconds 158444 kB
+LOG: RERUN: 4
+LOG: Server load time: 0.631943
+LOG: Server exec time: 3.32875
+LOG: Time / Memory: 4.07 seconds 158416 kB
+LOG: RERUN: 5
+LOG: Server load time: 0.625996
+LOG: Server exec time: 3.0488
+LOG: Time / Memory: 3.79 seconds 158312 kB
+LOG: RERUN: 6
+LOG: Server load time: 0.627298
+LOG: Server exec time: 3.04293
+LOG: Time / Memory: 3.78 seconds 158284 kB
+LOG: RERUN: 7
+LOG: Server load time: 0.624723
+LOG: Server exec time: 2.94467
+LOG: Time / Memory: 3.68 seconds 158448 kB
+LOG: RERUN: 8
+LOG: Server load time: 0.629047
+LOG: Server exec time: 3.42395
+LOG: Time / Memory: 4.16 seconds 158196 kB
+LOG: RERUN: 9
+LOG: Server load time: 0.626098
+LOG: Server exec time: 3.7557
+LOG: Time / Memory: 4.49 seconds 158408 kB

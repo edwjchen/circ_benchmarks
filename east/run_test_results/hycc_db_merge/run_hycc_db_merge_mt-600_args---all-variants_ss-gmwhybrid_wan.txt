@@ -15,5 +15,5 @@ LOG: ====================================
 LOG: RERUN: 0
 
 LOG: Error: Process returned with status code 134
-LOG: Error message: terminate called after throwing an instance of 'std::out_of_range'   what():  _Map_base::at Command terminated by signal 6 3.17 seconds 637576 kB Command exited with non-zero status 134 3.17 seconds 637576 kB 
+LOG: Error message: terminate called after throwing an instance of 'std::out_of_range'   what():  _Map_base::at Command terminated by signal 6 3.20 seconds 637844 kB Command exited with non-zero status 134 3.20 seconds 637844 kB 
 LOG: Failed gmwhybrid with args: --all-variants, exception: 
