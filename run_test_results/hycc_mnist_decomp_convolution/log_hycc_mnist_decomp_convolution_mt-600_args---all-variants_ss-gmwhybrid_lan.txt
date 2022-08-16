@@ -1,0 +1,48 @@
+LOG: ====================================
+LOG: Benchmarking HyCC
+LOG: ====================================
+LOG: TEST: mnist_decomp_convolution
+LOG: SELECTION_SCHEME: gmwhybrid
+LOG: MINIMIZATION_TIME: 600
+LOG: ARGUMENTS: ['--all-variants']
+LOG: ====================================
+LOG: RERUN: 0
+LOG: Client load time: 4.03438
+LOG: Client exec time: 0.227836
+LOG: Time / Memory: 4.52 seconds 576728 kB
+LOG: RERUN: 1
+LOG: Client load time: 4.01408
+LOG: Client exec time: 0.242838
+LOG: Time / Memory: 4.51 seconds 576852 kB
+LOG: RERUN: 2
+LOG: Client load time: 4.06637
+LOG: Client exec time: 0.221282
+LOG: Time / Memory: 4.55 seconds 576952 kB
+LOG: RERUN: 3
+LOG: Client load time: 4.04267
+LOG: Client exec time: 0.222014
+LOG: Time / Memory: 4.52 seconds 577092 kB
+LOG: RERUN: 4
+LOG: Client load time: 4.02783
+LOG: Client exec time: 0.212012
+LOG: Time / Memory: 4.50 seconds 577116 kB
+LOG: RERUN: 5
+LOG: Client load time: 4.03207
+LOG: Client exec time: 0.226729
+LOG: Time / Memory: 4.52 seconds 577060 kB
+LOG: RERUN: 6
+LOG: Client load time: 4.01361
+LOG: Client exec time: 0.224489
+LOG: Time / Memory: 4.50 seconds 576792 kB
+LOG: RERUN: 7
+LOG: Client load time: 3.9988
+LOG: Client exec time: 0.211141
+LOG: Time / Memory: 4.47 seconds 576800 kB
+LOG: RERUN: 8
+LOG: Client load time: 4.01756
+LOG: Client exec time: 0.222028
+LOG: Time / Memory: 4.50 seconds 577052 kB
+LOG: RERUN: 9
+LOG: Client load time: 4.0094
+LOG: Client exec time: 0.221131
+LOG: Time / Memory: 4.49 seconds 577096 kB
