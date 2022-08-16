@@ -1,0 +1,48 @@
+LOG: ====================================
+LOG: Benchmarking HyCC
+LOG: ====================================
+LOG: TEST: db_merge
+LOG: SELECTION_SCHEME: hycc_optimized
+LOG: MINIMIZATION_TIME: 0
+LOG: ARGUMENTS: ['--all-variants']
+LOG: ====================================
+LOG: RERUN: 0
+LOG: Client load time: 4.40162
+LOG: Client exec time: 21.4798
+LOG: Time / Memory: 26.55 seconds 790884 kB
+LOG: RERUN: 1
+LOG: Client load time: 4.41239
+LOG: Client exec time: 21.7829
+LOG: Time / Memory: 26.87 seconds 790992 kB
+LOG: RERUN: 2
+LOG: Client load time: 4.36198
+LOG: Client exec time: 21.504
+LOG: Time / Memory: 26.56 seconds 790980 kB
+LOG: RERUN: 3
+LOG: Client load time: 4.52983
+LOG: Client exec time: 21.27
+LOG: Time / Memory: 26.47 seconds 790664 kB
+LOG: RERUN: 4
+LOG: Client load time: 4.46218
+LOG: Client exec time: 21.3599
+LOG: Time / Memory: 26.49 seconds 790848 kB
+LOG: RERUN: 5
+LOG: Client load time: 4.43864
+LOG: Client exec time: 21.4601
+LOG: Time / Memory: 26.58 seconds 790880 kB
+LOG: RERUN: 6
+LOG: Client load time: 4.42669
+LOG: Client exec time: 22.8751
+LOG: Time / Memory: 27.99 seconds 791036 kB
+LOG: RERUN: 7
+LOG: Client load time: 4.53305
+LOG: Client exec time: 23.862
+LOG: Time / Memory: 29.09 seconds 791024 kB
+LOG: RERUN: 8
+LOG: Client load time: 4.76561
+LOG: Client exec time: 21.2281
+LOG: Time / Memory: 26.70 seconds 790936 kB
+LOG: RERUN: 9
+LOG: Client load time: 4.65646
+LOG: Client exec time: 21.6878
+LOG: Time / Memory: 27.04 seconds 790928 kB

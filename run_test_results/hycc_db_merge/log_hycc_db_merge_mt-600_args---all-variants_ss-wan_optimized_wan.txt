@@ -1,0 +1,48 @@
+LOG: ====================================
+LOG: Benchmarking HyCC
+LOG: ====================================
+LOG: TEST: db_merge
+LOG: SELECTION_SCHEME: wan_optimized
+LOG: MINIMIZATION_TIME: 600
+LOG: ARGUMENTS: ['--all-variants']
+LOG: ====================================
+LOG: RERUN: 0
+LOG: Server load time: 4.20854
+LOG: Server exec time: 21.1023
+LOG: Time / Memory: 25.94 seconds 723180 kB
+LOG: RERUN: 1
+LOG: Server load time: 4.19562
+LOG: Server exec time: 21.074
+LOG: Time / Memory: 25.89 seconds 723164 kB
+LOG: RERUN: 2
+LOG: Server load time: 3.95486
+LOG: Server exec time: 22.0713
+LOG: Time / Memory: 26.65 seconds 723528 kB
+LOG: RERUN: 3
+LOG: Server load time: 4.0222
+LOG: Server exec time: 21.7887
+LOG: Time / Memory: 26.42 seconds 723216 kB
+LOG: RERUN: 4
+LOG: Server load time: 4.02885
+LOG: Server exec time: 21.1515
+LOG: Time / Memory: 25.79 seconds 723516 kB
+LOG: RERUN: 5
+LOG: Server load time: 4.07178
+LOG: Server exec time: 21.1856
+LOG: Time / Memory: 25.87 seconds 723424 kB
+LOG: RERUN: 6
+LOG: Server load time: 4.02548
+LOG: Server exec time: 21.534
+LOG: Time / Memory: 26.17 seconds 723396 kB
+LOG: RERUN: 7
+LOG: Server load time: 4.02368
+LOG: Server exec time: 23.3066
+LOG: Time / Memory: 27.94 seconds 723544 kB
+LOG: RERUN: 8
+LOG: Server load time: 4.02701
+LOG: Server exec time: 21.164
+LOG: Time / Memory: 25.80 seconds 723652 kB
+LOG: RERUN: 9
+LOG: Server load time: 4.02118
+LOG: Server exec time: 23.5787
+LOG: Time / Memory: 28.21 seconds 723540 kB

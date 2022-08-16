@@ -1,0 +1,48 @@
+LOG: ====================================
+LOG: Benchmarking HyCC
+LOG: ====================================
+LOG: TEST: db_merge
+LOG: SELECTION_SCHEME: yaoonly
+LOG: MINIMIZATION_TIME: 0
+LOG: ARGUMENTS: ['--all-variants']
+LOG: ====================================
+LOG: RERUN: 0
+LOG: Server load time: 4.79602
+LOG: Server exec time: 1.32907
+LOG: Time / Memory: 6.88 seconds 845072 kB
+LOG: RERUN: 1
+LOG: Server load time: 4.72066
+LOG: Server exec time: 3.87627
+LOG: Time / Memory: 9.36 seconds 845360 kB
+LOG: RERUN: 2
+LOG: Server load time: 4.76277
+LOG: Server exec time: 2.8295
+LOG: Time / Memory: 8.34 seconds 845308 kB
+LOG: RERUN: 3
+LOG: Server load time: 4.74188
+LOG: Server exec time: 2.23485
+LOG: Time / Memory: 7.72 seconds 845360 kB
+LOG: RERUN: 4
+LOG: Server load time: 4.7334
+LOG: Server exec time: 1.32511
+LOG: Time / Memory: 6.80 seconds 845104 kB
+LOG: RERUN: 5
+LOG: Server load time: 4.71415
+LOG: Server exec time: 2.23325
+LOG: Time / Memory: 7.69 seconds 845064 kB
+LOG: RERUN: 6
+LOG: Server load time: 4.74251
+LOG: Server exec time: 1.31386
+LOG: Time / Memory: 6.81 seconds 845156 kB
+LOG: RERUN: 7
+LOG: Server load time: 4.71417
+LOG: Server exec time: 1.33577
+LOG: Time / Memory: 6.80 seconds 845308 kB
+LOG: RERUN: 8
+LOG: Server load time: 4.67579
+LOG: Server exec time: 1.66937
+LOG: Time / Memory: 7.12 seconds 845196 kB
+LOG: RERUN: 9
+LOG: Server load time: 4.81851
+LOG: Server exec time: 3.09515
+LOG: Time / Memory: 8.67 seconds 845252 kB
