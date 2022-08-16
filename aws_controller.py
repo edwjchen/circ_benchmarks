@@ -543,7 +543,7 @@ def setup_run_worker(ip, key_file):
             print(ip, " failed setup")
     else:
         _, stdout, _ = client.exec_command(
-            "cd ~/circ_benchmarks && git checkout aws -f && git add . && git stash && git pull -f && ./scripts/dependencies.sh && pip3 install pandas && python3 driver.py -f hycc && python3 driver.py --build_aby")
+            "cd ~/circ_benchmarks && rm -r hycc_circuit_dir/*_cm-hycc && git checkout aws -f && git add . && git stash && git pull -f && ./scripts/dependencies.sh && pip3 install pandas && python3 driver.py -f hycc && python3 driver.py --build_aby")
         if stdout.channel.recv_exit_status():
             print(ip, " failed setup 2")
     print("Set up:", ip)
