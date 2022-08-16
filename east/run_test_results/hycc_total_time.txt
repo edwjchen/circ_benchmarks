@@ -2,12 +2,7 @@ LOG: Total hycc benchmark time: 0.006714344024658203
 LOG: Total hycc benchmark time: 2.1457672119140625e-06
 LOG: Total hycc benchmark time: 35.66463327407837
 LOG: Total hycc benchmark time: 74.33956837654114
-LOG: Total hycc benchmark time: 37.095362424850464
-LOG: Total hycc benchmark time: 62.383705854415894
-LOG: Total hycc benchmark time: 140.04397535324097
-LOG: Total hycc benchmark time: 1107.2024102210999
-LOG: Total hycc benchmark time: 9.5367431640625e-07
-LOG: Total hycc benchmark time: 9.5367431640625e-07
-LOG: Total hycc benchmark time: 2.243067502975464
-LOG: Total hycc benchmark time: 2.1684577465057373
-LOG: Total hycc benchmark time: 9.5367431640625e-07
+LOG: Total hycc benchmark time: 0.004678487777709961
+LOG: Total hycc benchmark time: 10.823392391204834
+LOG: Total hycc benchmark time: 16.275824308395386
+LOG: Total hycc benchmark time: 42.57576107978821

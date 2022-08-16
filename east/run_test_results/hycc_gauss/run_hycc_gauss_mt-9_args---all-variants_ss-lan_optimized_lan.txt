@@ -54,13 +54,13 @@ Merging "fixedpt_mul" into "solve_backtracking<int32[9],int32[3],int32[3]>"
 Merging "fixedpt_mul" into "solve_backtracking<int32[9],int32[3],int32[3]>"
 Merging "solve_backtracking<int32[9],int32[3],int32[3]>" into "gaussj_D<int32[9],int32[3],int32[3]>"
 Merging "gaussj_D<int32[9],int32[3],int32[3]>" into "mpc_main"
-LOG: Client load time: 0.912947
-LOG: Client exec time: 0.339263
+LOG: Client load time: 1.22321
+LOG: Client exec time: 0.283416
 INPUT_A_m : {m: int32[9]; } = {m: [2, 1, 3, 3, 7, 9, 0, 3, 1]; }
-OUTPUT_res : {res: int32[3]; } = {res: [-493359296, -724410454, -910537284]; }
-return_value : {res: int32[3]; } = {res: [910536938, 493360150, -724411990]; }
+OUTPUT_res : {res: int32[3]; } = {res: [588273320, -1012191927, 524584631]; }
+return_value : {res: int32[3]; } = {res: [-524583967, -588272130, -1012192439]; }
 
-LOG: Time / Memory: 1.34 seconds 213568 kB
+LOG: Time / Memory: 1.63 seconds 213640 kB
 LOG: RERUN: 1
 Using YAO protocol for boolean gates
 Loading abs@bool_size.circ (using YAO for boolean gates)
@@ -103,13 +103,13 @@ Merging "fixedpt_mul" into "solve_backtracking<int32[9],int32[3],int32[3]>"
 Merging "fixedpt_mul" into "solve_backtracking<int32[9],int32[3],int32[3]>"
 Merging "solve_backtracking<int32[9],int32[3],int32[3]>" into "gaussj_D<int32[9],int32[3],int32[3]>"
 Merging "gaussj_D<int32[9],int32[3],int32[3]>" into "mpc_main"
-LOG: Client load time: 0.915093
-LOG: Client exec time: 0.318974
+LOG: Client load time: 1.21949
+LOG: Client exec time: 0.292624
 INPUT_A_m : {m: int32[9]; } = {m: [2, 1, 3, 3, 7, 9, 0, 3, 1]; }
-OUTPUT_res : {res: int32[3]; } = {res: [1389642852, 614703552, -1987569422]; }
-return_value : {res: int32[3]; } = {res: [1987569060, -1389641934, 614705088]; }
+OUTPUT_res : {res: int32[3]; } = {res: [-1894411182, -1797745165, -466420489]; }
+return_value : {res: int32[3]; } = {res: [466420129, 1894412036, -1797745677]; }
 
-LOG: Time / Memory: 1.33 seconds 214824 kB
+LOG: Time / Memory: 1.62 seconds 213300 kB
 LOG: RERUN: 2
 Using YAO protocol for boolean gates
 Loading abs@bool_size.circ (using YAO for boolean gates)
@@ -152,13 +152,13 @@ Merging "fixedpt_mul" into "solve_backtracking<int32[9],int32[3],int32[3]>"
 Merging "fixedpt_mul" into "solve_backtracking<int32[9],int32[3],int32[3]>"
 Merging "solve_backtracking<int32[9],int32[3],int32[3]>" into "gaussj_D<int32[9],int32[3],int32[3]>"
 Merging "gaussj_D<int32[9],int32[3],int32[3]>" into "mpc_main"
-LOG: Client load time: 0.921335
-LOG: Client exec time: 0.319074
+LOG: Client load time: 1.21644
+LOG: Client exec time: 0.312146
 INPUT_A_m : {m: int32[9]; } = {m: [2, 1, 3, 3, 7, 9, 0, 3, 1]; }
-OUTPUT_res : {res: int32[3]; } = {res: [1058314373, 1655508479, -1572444116]; }
-return_value : {res: int32[3]; } = {res: [1572443514, -1058315309, 1655507967]; }
+OUTPUT_res : {res: int32[3]; } = {res: [-1446624476, 890449259, 1663734553]; }
+return_value : {res: int32[3]; } = {res: [-1663734193, 1446623346, 890448747]; }
 
-LOG: Time / Memory: 1.33 seconds 214844 kB
+LOG: Time / Memory: 1.64 seconds 214396 kB
 LOG: RERUN: 3
 Using YAO protocol for boolean gates
 Loading abs@bool_size.circ (using YAO for boolean gates)
@@ -201,13 +201,13 @@ Merging "fixedpt_mul" into "solve_backtracking<int32[9],int32[3],int32[3]>"
 Merging "fixedpt_mul" into "solve_backtracking<int32[9],int32[3],int32[3]>"
 Merging "solve_backtracking<int32[9],int32[3],int32[3]>" into "gaussj_D<int32[9],int32[3],int32[3]>"
 Merging "gaussj_D<int32[9],int32[3],int32[3]>" into "mpc_main"
-LOG: Client load time: 0.927864
-LOG: Client exec time: 0.319849
+LOG: Client load time: 1.22983
+LOG: Client exec time: 0.285159
 INPUT_A_m : {m: int32[9]; } = {m: [2, 1, 3, 3, 7, 9, 0, 3, 1]; }
-OUTPUT_res : {res: int32[3]; } = {res: [-1957907553, 173338031, 2129109862]; }
-return_value : {res: int32[3]; } = {res: [-2129109456, 1957906633, 173337519]; }
+OUTPUT_res : {res: int32[3]; } = {res: [1451372938, -290428766, 1204659326]; }
+return_value : {res: int32[3]; } = {res: [-1204659928, -1451373860, -290427230]; }
 
-LOG: Time / Memory: 1.34 seconds 214488 kB
+LOG: Time / Memory: 1.63 seconds 214632 kB
 LOG: RERUN: 4
 Using YAO protocol for boolean gates
 Loading abs@bool_size.circ (using YAO for boolean gates)
@@ -250,13 +250,13 @@ Merging "fixedpt_mul" into "solve_backtracking<int32[9],int32[3],int32[3]>"
 Merging "fixedpt_mul" into "solve_backtracking<int32[9],int32[3],int32[3]>"
 Merging "solve_backtracking<int32[9],int32[3],int32[3]>" into "gaussj_D<int32[9],int32[3],int32[3]>"
 Merging "gaussj_D<int32[9],int32[3],int32[3]>" into "mpc_main"
-LOG: Client load time: 0.909783
-LOG: Client exec time: 0.348423
+LOG: Client load time: 1.21422
+LOG: Client exec time: 0.289818
 INPUT_A_m : {m: int32[9]; } = {m: [2, 1, 3, 3, 7, 9, 0, 3, 1]; }
-OUTPUT_res : {res: int32[3]; } = {res: [137087906, 841607280, -973218172]; }
-return_value : {res: int32[3]; } = {res: [973218770, -137088780, 841608816]; }
+OUTPUT_res : {res: int32[3]; } = {res: [414121197, -50497900, 464287535]; }
+return_value : {res: int32[3]; } = {res: [-464287111, -414120005, -50499436]; }
 
-LOG: Time / Memory: 1.35 seconds 214796 kB
+LOG: Time / Memory: 1.61 seconds 214820 kB
 LOG: RERUN: 5
 Using YAO protocol for boolean gates
 Loading abs@bool_size.circ (using YAO for boolean gates)
@@ -299,13 +299,13 @@ Merging "fixedpt_mul" into "solve_backtracking<int32[9],int32[3],int32[3]>"
 Merging "fixedpt_mul" into "solve_backtracking<int32[9],int32[3],int32[3]>"
 Merging "solve_backtracking<int32[9],int32[3],int32[3]>" into "gaussj_D<int32[9],int32[3],int32[3]>"
 Merging "gaussj_D<int32[9],int32[3],int32[3]>" into "mpc_main"
-LOG: Client load time: 0.935368
-LOG: Client exec time: 0.297083
+LOG: Client load time: 1.21144
+LOG: Client exec time: 0.296551
 INPUT_A_m : {m: int32[9]; } = {m: [2, 1, 3, 3, 7, 9, 0, 3, 1]; }
-OUTPUT_res : {res: int32[3]; } = {res: [-680569031, 1118058250, 1781833061]; }
-return_value : {res: int32[3]; } = {res: [-1781833677, 680569967, 1118056714]; }
+OUTPUT_res : {res: int32[3]; } = {res: [-1027331488, -269820410, -758052560]; }
+return_value : {res: int32[3]; } = {res: [758051942, 1027330358, -269821946]; }
 
-LOG: Time / Memory: 1.33 seconds 213272 kB
+LOG: Time / Memory: 1.62 seconds 214736 kB
 LOG: RERUN: 6
 Using YAO protocol for boolean gates
 Loading abs@bool_size.circ (using YAO for boolean gates)
@@ -348,13 +348,13 @@ Merging "fixedpt_mul" into "solve_backtracking<int32[9],int32[3],int32[3]>"
 Merging "fixedpt_mul" into "solve_backtracking<int32[9],int32[3],int32[3]>"
 Merging "solve_backtracking<int32[9],int32[3],int32[3]>" into "gaussj_D<int32[9],int32[3],int32[3]>"
 Merging "gaussj_D<int32[9],int32[3],int32[3]>" into "mpc_main"
-LOG: Client load time: 0.908314
-LOG: Client exec time: 0.360384
+LOG: Client load time: 1.20901
+LOG: Client exec time: 0.284226
 INPUT_A_m : {m: int32[9]; } = {m: [2, 1, 3, 3, 7, 9, 0, 3, 1]; }
-OUTPUT_res : {res: int32[3]; } = {res: [286823967, -1584049280, 1332885705]; }
-return_value : {res: int32[3]; } = {res: [-1332886113, -286823095, -1584048768]; }
+OUTPUT_res : {res: int32[3]; } = {res: [-1099030742, 2119481428, 1070946856]; }
+return_value : {res: int32[3]; } = {res: [-1070946434, 1099031676, 2119482964]; }
 
-LOG: Time / Memory: 1.36 seconds 214788 kB
+LOG: Time / Memory: 1.60 seconds 213664 kB
 LOG: RERUN: 7
 Using YAO protocol for boolean gates
 Loading abs@bool_size.circ (using YAO for boolean gates)
@@ -397,13 +397,13 @@ Merging "fixedpt_mul" into "solve_backtracking<int32[9],int32[3],int32[3]>"
 Merging "fixedpt_mul" into "solve_backtracking<int32[9],int32[3],int32[3]>"
 Merging "solve_backtracking<int32[9],int32[3],int32[3]>" into "gaussj_D<int32[9],int32[3],int32[3]>"
 Merging "gaussj_D<int32[9],int32[3],int32[3]>" into "mpc_main"
-LOG: Client load time: 0.921947
-LOG: Client exec time: 0.334224
+LOG: Client load time: 1.211
+LOG: Client exec time: 0.29347
 INPUT_A_m : {m: int32[9]; } = {m: [2, 1, 3, 3, 7, 9, 0, 3, 1]; }
-OUTPUT_res : {res: int32[3]; } = {res: [259441410, 60815808, -216610924]; }
-return_value : {res: int32[3]; } = {res: [216611522, -259442604, 60817344]; }
+OUTPUT_res : {res: int32[3]; } = {res: [985661253, -1907897550, 1258801441]; }
+return_value : {res: int32[3]; } = {res: [-1258802057, -985660397, -1907897038]; }
 
-LOG: Time / Memory: 1.35 seconds 214424 kB
+LOG: Time / Memory: 1.61 seconds 214760 kB
 LOG: RERUN: 8
 Using YAO protocol for boolean gates
 Loading abs@bool_size.circ (using YAO for boolean gates)
@@ -446,13 +446,13 @@ Merging "fixedpt_mul" into "solve_backtracking<int32[9],int32[3],int32[3]>"
 Merging "fixedpt_mul" into "solve_backtracking<int32[9],int32[3],int32[3]>"
 Merging "solve_backtracking<int32[9],int32[3],int32[3]>" into "gaussj_D<int32[9],int32[3],int32[3]>"
 Merging "gaussj_D<int32[9],int32[3],int32[3]>" into "mpc_main"
-LOG: Client load time: 0.941562
-LOG: Client exec time: 0.317611
+LOG: Client load time: 1.1996
+LOG: Client exec time: 0.296229
 INPUT_A_m : {m: int32[9]; } = {m: [2, 1, 3, 3, 7, 9, 0, 3, 1]; }
-OUTPUT_res : {res: int32[3]; } = {res: [432743461, -1483722111, 1101327346]; }
-return_value : {res: int32[3]; } = {res: [-1101326684, -432742541, -1483721599]; }
+OUTPUT_res : {res: int32[3]; } = {res: [117235748, -1578629854, 1491802192]; }
+return_value : {res: int32[3]; } = {res: [-1491802874, -117236878, -1578630366]; }
 
-LOG: Time / Memory: 1.35 seconds 214756 kB
+LOG: Time / Memory: 1.61 seconds 214776 kB
 LOG: RERUN: 9
 Using YAO protocol for boolean gates
 Loading abs@bool_size.circ (using YAO for boolean gates)
@@ -495,10 +495,10 @@ Merging "fixedpt_mul" into "solve_backtracking<int32[9],int32[3],int32[3]>"
 Merging "fixedpt_mul" into "solve_backtracking<int32[9],int32[3],int32[3]>"
 Merging "solve_backtracking<int32[9],int32[3],int32[3]>" into "gaussj_D<int32[9],int32[3],int32[3]>"
 Merging "gaussj_D<int32[9],int32[3],int32[3]>" into "mpc_main"
-LOG: Client load time: 0.950146
-LOG: Client exec time: 0.314905
+LOG: Client load time: 1.2088
+LOG: Client exec time: 0.284657
 INPUT_A_m : {m: int32[9]; } = {m: [2, 1, 3, 3, 7, 9, 0, 3, 1]; }
-OUTPUT_res : {res: int32[3]; } = {res: [-1716563351, -786320506, -1217323847]; }
-return_value : {res: int32[3]; } = {res: [1217323503, 1716562239, -786319994]; }
+OUTPUT_res : {res: int32[3]; } = {res: [1883635266, 1709108805, -362484399]; }
+return_value : {res: int32[3]; } = {res: [362483719, -1883634412, 1709107269]; }
 
-LOG: Time / Memory: 1.36 seconds 214840 kB
+LOG: Time / Memory: 1.60 seconds 214780 kB
