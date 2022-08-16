@@ -12,6 +12,7 @@ sudo apt-get install -y default-jdk
 sudo apt-get install -y flex
 sudo apt-get install -y libboost-all-dev
 sudo apt-get install -y libgmp-dev
+sudo apt-get install -y libmpfr-dev 
 sudo apt-get install -y libssl-dev
 sudo apt-get install -y libwww-perl
 sudo apt-get install -y m4
