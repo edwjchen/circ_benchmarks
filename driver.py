@@ -65,10 +65,12 @@ def install(features):
     os.chdir(ABY_SOURCE)
     # subprocess.run(["git", "checkout", "functions"])
     subprocess.run(["git", "checkout", "no_array"])
+    subprocess.run(["git", "pull"], check=True)
     os.chdir(CIRC_BENCHMARK_SOURCE)
 
     os.chdir(CIRC_SOURCE)
     subprocess.run(["git", "checkout", "mpc_aws"])
+    subprocess.run(["git", "pull"], check=True)
     # subprocess.run(["git", "checkout", "function_calls"])
     os.chdir(CIRC_BENCHMARK_SOURCE)
 
@@ -105,7 +107,6 @@ def build(features):
         # build circ
         os.environ['ABY_SOURCE'] = "../ABY"
         os.environ['CIRC_SOURCE'] = CIRC_SOURCE
-        print(CIRC_SOURCE)
         os.chdir(CIRC_SOURCE)
         subprocess.run(["python3", "driver.py", "-F", "aby",
                         "c", "lp", "bench"], check=True)
@@ -137,10 +138,12 @@ def build_aby(features):
     os.chdir(ABY_SOURCE)
     # subprocess.run(["git", "checkout", "functions"])
     subprocess.run(["git", "checkout", "no_array"])
+    subprocess.run(["git", "pull"], check=True)
     os.chdir(CIRC_BENCHMARK_SOURCE)
 
     if "hycc" in features:
         # build hycc
+        subprocess.run(["git", "pull"], check=True)
         subprocess.run(["./scripts/build_hycc.zsh"], check=True)
 
         # install hycc aby dependency
@@ -203,7 +206,7 @@ def select(features):
 
 
 def benchmark(features, instance_metadata):
-    make_dir("run_test_resuts_{}".format(instance_metadata["setting"]))
+    make_dir("run_test_results")
     make_dir(HYCC_CIRCUIT_PATH)
     if "hycc" in features:
         print("Running HyCC Benchmarks")
@@ -211,12 +214,12 @@ def benchmark(features, instance_metadata):
 
         # run hycc benchmarks
         for (name, path) in HYCC_TEST_CASES:
-            make_dir("run_test_resuts_{}/hycc_{}".format(instance_metadata["setting"], name))
+            make_dir("run_test_results/hycc_{}".format(name))
             benchmark_hycc(name, path, instance_metadata)
         end = time.time()
         line = "LOG: Total hycc benchmark time: {}".format(end-start)
-        p = subprocess.Popen("echo \"{}\" >> {}/run_test_results_{}/hycc_total_time.txt".format(
-            line, CIRC_BENCHMARK_SOURCE, instance_metadata["setting"]), shell=True)
+        p = subprocess.Popen("echo \"{}\" >> {}/run_test_results/hycc_total_time.txt".format(
+            line, CIRC_BENCHMARK_SOURCE), shell=True)
         p.communicate(timeout=10)
 
     if "circ" in features:

@@ -1,0 +1,48 @@
+LOG: ====================================
+LOG: Benchmarking HyCC
+LOG: ====================================
+LOG: TEST: histogram
+LOG: SELECTION_SCHEME: yaohybrid
+LOG: MINIMIZATION_TIME: 600
+LOG: ARGUMENTS: ['--all-variants']
+LOG: ====================================
+LOG: RERUN: 0
+LOG: Client load time: 6.91521
+LOG: Client exec time: 0.868092
+LOG: Time / Memory: 8.71 seconds 1516300 kB
+LOG: RERUN: 1
+LOG: Client load time: 7.05934
+LOG: Client exec time: 0.812302
+LOG: Time / Memory: 8.81 seconds 1515996 kB
+LOG: RERUN: 2
+LOG: Client load time: 7.00294
+LOG: Client exec time: 0.826591
+LOG: Time / Memory: 8.76 seconds 1516220 kB
+LOG: RERUN: 3
+LOG: Client load time: 7.01334
+LOG: Client exec time: 0.859698
+LOG: Time / Memory: 8.82 seconds 1516300 kB
+LOG: RERUN: 4
+LOG: Client load time: 6.97296
+LOG: Client exec time: 0.828875
+LOG: Time / Memory: 8.74 seconds 1516376 kB
+LOG: RERUN: 5
+LOG: Client load time: 6.91828
+LOG: Client exec time: 0.915797
+LOG: Time / Memory: 8.76 seconds 1516212 kB
+LOG: RERUN: 6
+LOG: Client load time: 6.84251
+LOG: Client exec time: 1.05634
+LOG: Time / Memory: 8.78 seconds 1516236 kB
+LOG: RERUN: 7
+LOG: Client load time: 6.88753
+LOG: Client exec time: 1.0466
+LOG: Time / Memory: 8.83 seconds 1516196 kB
+LOG: RERUN: 8
+LOG: Client load time: 6.78507
+LOG: Client exec time: 1.08707
+LOG: Time / Memory: 8.79 seconds 1516140 kB
+LOG: RERUN: 9
+LOG: Client load time: 6.81383
+LOG: Client exec time: 0.97358
+LOG: Time / Memory: 8.68 seconds 1516116 kB
