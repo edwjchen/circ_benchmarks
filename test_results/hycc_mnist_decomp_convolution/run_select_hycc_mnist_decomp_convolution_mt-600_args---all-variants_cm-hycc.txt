@@ -1,0 +1,435 @@
+
+LOG: ====================================
+
+LOG: Benchmarking HyCC
+
+LOG: ====================================
+
+LOG: TEST: mnist_decomp_convolution
+LOG: MINIMIZATION_TIME: 600
+LOG: COST_MODEL: hycc
+LOG: ARGUMENTS: ['--all-variants']
+
+LOG: ====================================
+
+LOG: MODE: selection
+Directory: /home/ubuntu/circ_benchmarks/hycc_circuit_dir/hycc_mnist_decomp_convolution_mt-600_args---all-variants
+convolution_naive<uint32[144],uint32[25],uint32[64],uint32<12>,uint32<5>,uint32<1>,uint32<8>>@arith.circ
+convolution_naive<uint32[144],uint32[25],uint32[64],uint32<12>,uint32<5>,uint32<1>,uint32<8>>@arith.stats
+mpc_main@bool_size.circ
+yaohybrid.cmb
+mpc_main@bool_depth.circ
+convolution_naive<uint32[784],uint32[25],uint32[576],uint32<28>,uint32<5>,uint32<1>,uint32<24>>@bool_depth.stats
+convolution_naive_outputs<uint32[784],uint32[400],uint32[9216],uint32<28>,uint32<5>,uint32<16>,uint32<1>,uint32<24>>@bool_depth.circ
+gmwhybrid.cmb
+convolution_naive_outputs<uint32[144],uint32[400],uint32[1024],uint32<12>,uint32<5>,uint32<16>,uint32<1>,uint32<8>>@bool_depth.stats
+convolution_naive<uint32[784],uint32[25],uint32[576],uint32<28>,uint32<5>,uint32<1>,uint32<24>>@bool_size.circ
+convolution_naive_outputs<uint32[784],uint32[400],uint32[9216],uint32<28>,uint32<5>,uint32<16>,uint32<1>,uint32<24>>@arith.stats
+convolution_naive_outputs<uint32[144],uint32[400],uint32[1024],uint32<12>,uint32<5>,uint32<16>,uint32<1>,uint32<8>>@arith.circ
+all.cmb
+convolution_naive_outputs<uint32[144],uint32[400],uint32[1024],uint32<12>,uint32<5>,uint32<16>,uint32<1>,uint32<8>>@bool_size.stats
+convolution_naive_outputs<uint32[784],uint32[400],uint32[9216],uint32<28>,uint32<5>,uint32<16>,uint32<1>,uint32<24>>@bool_depth.stats
+mpc_main@arith.stats
+convolution_naive_outputs<uint32[144],uint32[400],uint32[1024],uint32<12>,uint32<5>,uint32<16>,uint32<1>,uint32<8>>@bool_size.circ
+convolution_naive_outputs<uint32[784],uint32[400],uint32[9216],uint32<28>,uint32<5>,uint32<16>,uint32<1>,uint32<24>>@bool_size.stats
+mpc_main@bool_size.stats
+convolution_naive<uint32[144],uint32[25],uint32[64],uint32<12>,uint32<5>,uint32<1>,uint32<8>>@bool_depth.stats
+yaoonly.cmb
+convolution_naive<uint32[144],uint32[25],uint32[64],uint32<12>,uint32<5>,uint32<1>,uint32<8>>@bool_size.circ
+convolution_naive<uint32[784],uint32[25],uint32[576],uint32<28>,uint32<5>,uint32<1>,uint32<24>>@bool_size.stats
+convolution_naive<uint32[144],uint32[25],uint32[64],uint32<12>,uint32<5>,uint32<1>,uint32<8>>@bool_depth.circ
+convolution_naive<uint32[784],uint32[25],uint32[576],uint32<28>,uint32<5>,uint32<1>,uint32<24>>@bool_depth.circ
+convolution_naive<uint32[784],uint32[25],uint32[576],uint32<28>,uint32<5>,uint32<1>,uint32<24>>@arith.stats
+convolution_naive_outputs<uint32[784],uint32[400],uint32[9216],uint32<28>,uint32<5>,uint32<16>,uint32<1>,uint32<24>>@bool_size.circ
+gmwonly.cmb
+mpc_main@bool_depth.stats
+convolution_naive<uint32[144],uint32[25],uint32[64],uint32<12>,uint32<5>,uint32<1>,uint32<8>>@bool_size.stats
+convolution_naive_outputs<uint32[144],uint32[400],uint32[1024],uint32<12>,uint32<5>,uint32<16>,uint32<1>,uint32<8>>@arith.stats
+convolution_naive_outputs<uint32[784],uint32[400],uint32[9216],uint32<28>,uint32<5>,uint32<16>,uint32<1>,uint32<24>>@arith.circ
+convolution_naive<uint32[784],uint32[25],uint32[576],uint32<28>,uint32<5>,uint32<1>,uint32<24>>@arith.circ
+convolution_naive_outputs<uint32[144],uint32[400],uint32[1024],uint32<12>,uint32<5>,uint32<16>,uint32<1>,uint32<8>>@bool_depth.circ
+mpc_main@arith.circ
+Modules: 5
+
+convolution_naive<uint32[144],uint32[25],uint32[64],uint32<12>,uint32<5>,uint32<1>,uint32<8>>
+  Possible sharings: arith bool_depth bool_size
+  Calls:
+
+mpc_main
+  Possible sharings: arith bool_depth bool_size
+  Calls:
+    convolution_naive_outputs<uint32[784],uint32[400],uint32[9216],uint32<28>,uint32<5>,uint32<16>,uint32<1>,uint32<24>> x 1
+    convolution_naive_outputs<uint32[144],uint32[400],uint32[1024],uint32<12>,uint32<5>,uint32<16>,uint32<1>,uint32<8>> x 1
+
+convolution_naive_outputs<uint32[784],uint32[400],uint32[9216],uint32<28>,uint32<5>,uint32<16>,uint32<1>,uint32<24>>
+  Possible sharings: arith bool_depth bool_size
+  Calls:
+    convolution_naive<uint32[784],uint32[25],uint32[576],uint32<28>,uint32<5>,uint32<1>,uint32<24>> x 16
+
+convolution_naive<uint32[784],uint32[25],uint32[576],uint32<28>,uint32<5>,uint32<1>,uint32<24>>
+  Possible sharings: arith bool_depth bool_size
+  Calls:
+
+convolution_naive_outputs<uint32[144],uint32[400],uint32[1024],uint32<12>,uint32<5>,uint32<16>,uint32<1>,uint32<8>>
+  Possible sharings: arith bool_depth bool_size
+  Calls:
+    convolution_naive<uint32[144],uint32[25],uint32[64],uint32<12>,uint32<5>,uint32<1>,uint32<8>> x 16
+
+Subgraphs:
+  {'convolution_naive<uint32[784],uint32[25],uint32[576],uint32<28>,uint32<5>,uint32<1>,uint32<24>>', 'convolution_naive_outputs<uint32[784],uint32[400],uint32[9216],uint32<28>,uint32<5>,uint32<16>,uint32<1>,uint32<24>>'}
+  {'convolution_naive_outputs<uint32[144],uint32[400],uint32[1024],uint32<12>,uint32<5>,uint32<16>,uint32<1>,uint32<8>>', 'convolution_naive<uint32[144],uint32[25],uint32[64],uint32<12>,uint32<5>,uint32<1>,uint32<8>>'}
+
+LOG: Total number of modules: 5
+LOG: Modules: ['convolution_naive<uint32[144],uint32[25],uint32[64],uint32<12>,uint32<5>,uint32<1>,uint32<8>>', 'mpc_main', 'convolution_naive_outputs<uint32[784],uint32[400],uint32[9216],uint32<28>,uint32<5>,uint32<16>,uint32<1>,uint32<24>>', 'convolution_naive<uint32[784],uint32[25],uint32[576],uint32<28>,uint32<5>,uint32<1>,uint32<24>>', 'convolution_naive_outputs<uint32[144],uint32[400],uint32[1024],uint32<12>,uint32<5>,uint32<16>,uint32<1>,uint32<8>>']
+LOG: solving combination: 0
+LOG: solving combination: 1
+LOG: solving combination: 2
+LOG: solving combination: 3
+LOG: solving combination: 4
+LOG: solving combination: 5
+LOG: solving combination: 6
+LOG: solving combination: 7
+LOG: solving combination: 8
+LOG: solving combination: 9
+LOG: solving combination: 10
+LOG: solving combination: 11
+LOG: solving combination: 12
+LOG: solving combination: 13
+LOG: solving combination: 14
+LOG: solving combination: 15
+LOG: solving combination: 16
+LOG: solving combination: 17
+LOG: solving combination: 18
+LOG: solving combination: 19
+LOG: solving combination: 20
+LOG: solving combination: 21
+LOG: solving combination: 22
+LOG: solving combination: 23
+LOG: solving combination: 24
+LOG: solving combination: 25
+LOG: solving combination: 26
+LOG: solving combination: 27
+LOG: solving combination: 28
+LOG: solving combination: 29
+LOG: solving combination: 30
+LOG: solving combination: 31
+LOG: solving combination: 32
+LOG: solving combination: 33
+LOG: solving combination: 34
+LOG: solving combination: 35
+LOG: solving combination: 36
+LOG: solving combination: 37
+LOG: solving combination: 38
+LOG: solving combination: 39
+LOG: solving combination: 40
+LOG: solving combination: 41
+LOG: solving combination: 42
+LOG: solving combination: 43
+LOG: solving combination: 44
+LOG: solving combination: 45
+LOG: solving combination: 46
+LOG: solving combination: 47
+LOG: solving combination: 48
+LOG: solving combination: 49
+LOG: solving combination: 50
+LOG: solving combination: 51
+LOG: solving combination: 52
+LOG: solving combination: 53
+LOG: solving combination: 54
+LOG: solving combination: 55
+LOG: solving combination: 56
+LOG: solving combination: 57
+LOG: solving combination: 58
+LOG: solving combination: 59
+LOG: solving combination: 60
+LOG: solving combination: 61
+LOG: solving combination: 62
+LOG: solving combination: 63
+LOG: solving combination: 64
+LOG: solving combination: 65
+LOG: solving combination: 66
+LOG: solving combination: 67
+LOG: solving combination: 68
+LOG: solving combination: 69
+LOG: solving combination: 70
+LOG: solving combination: 71
+LOG: solving combination: 72
+LOG: solving combination: 73
+LOG: solving combination: 74
+LOG: solving combination: 75
+LOG: solving combination: 76
+LOG: solving combination: 77
+LOG: solving combination: 78
+LOG: solving combination: 79
+LOG: solving combination: 80
+LOG: solving combination: 81
+LOG: solving combination: 82
+LOG: solving combination: 83
+LOG: solving combination: 84
+LOG: solving combination: 85
+LOG: solving combination: 86
+LOG: solving combination: 87
+LOG: solving combination: 88
+LOG: solving combination: 89
+LOG: solving combination: 90
+LOG: solving combination: 91
+LOG: solving combination: 92
+LOG: solving combination: 93
+LOG: solving combination: 94
+LOG: solving combination: 95
+LOG: solving combination: 96
+LOG: solving combination: 97
+LOG: solving combination: 98
+LOG: solving combination: 99
+LOG: solving combination: 100
+LOG: solving combination: 101
+LOG: solving combination: 102
+LOG: solving combination: 103
+LOG: solving combination: 104
+LOG: solving combination: 105
+LOG: solving combination: 106
+LOG: solving combination: 107
+LOG: solving combination: 108
+LOG: solving combination: 109
+LOG: solving combination: 110
+LOG: solving combination: 111
+LOG: solving combination: 112
+LOG: solving combination: 113
+LOG: solving combination: 114
+LOG: solving combination: 115
+LOG: solving combination: 116
+LOG: solving combination: 117
+LOG: solving combination: 118
+LOG: solving combination: 119
+LOG: solving combination: 120
+LOG: solving combination: 121
+LOG: solving combination: 122
+LOG: solving combination: 123
+LOG: solving combination: 124
+LOG: solving combination: 125
+LOG: solving combination: 126
+LOG: solving combination: 127
+LOG: solving combination: 128
+LOG: solving combination: 129
+LOG: solving combination: 130
+LOG: solving combination: 131
+LOG: solving combination: 132
+LOG: solving combination: 133
+LOG: solving combination: 134
+LOG: solving combination: 135
+LOG: solving combination: 136
+LOG: solving combination: 137
+LOG: solving combination: 138
+LOG: solving combination: 139
+LOG: solving combination: 140
+LOG: solving combination: 141
+LOG: solving combination: 142
+LOG: solving combination: 143
+LOG: solving combination: 144
+LOG: solving combination: 145
+LOG: solving combination: 146
+LOG: solving combination: 147
+LOG: solving combination: 148
+LOG: solving combination: 149
+LOG: solving combination: 150
+LOG: solving combination: 151
+LOG: solving combination: 152
+LOG: solving combination: 153
+LOG: solving combination: 154
+LOG: solving combination: 155
+LOG: solving combination: 156
+LOG: solving combination: 157
+LOG: solving combination: 158
+LOG: solving combination: 159
+LOG: solving combination: 160
+LOG: solving combination: 161
+LOG: solving combination: 162
+LOG: solving combination: 163
+LOG: solving combination: 164
+LOG: solving combination: 165
+LOG: solving combination: 166
+LOG: solving combination: 167
+LOG: solving combination: 168
+LOG: solving combination: 169
+LOG: solving combination: 170
+LOG: solving combination: 171
+LOG: solving combination: 172
+LOG: solving combination: 173
+LOG: solving combination: 174
+LOG: solving combination: 175
+LOG: solving combination: 176
+LOG: solving combination: 177
+LOG: solving combination: 178
+LOG: solving combination: 179
+LOG: solving combination: 180
+LOG: solving combination: 181
+LOG: solving combination: 182
+LOG: solving combination: 183
+LOG: solving combination: 184
+LOG: solving combination: 185
+LOG: solving combination: 186
+LOG: solving combination: 187
+LOG: solving combination: 188
+LOG: solving combination: 189
+LOG: solving combination: 190
+LOG: solving combination: 191
+LOG: solving combination: 192
+LOG: solving combination: 193
+LOG: solving combination: 194
+LOG: solving combination: 195
+LOG: solving combination: 196
+LOG: solving combination: 197
+LOG: solving combination: 198
+LOG: solving combination: 199
+LOG: solving combination: 200
+LOG: solving combination: 201
+LOG: solving combination: 202
+LOG: solving combination: 203
+LOG: solving combination: 204
+LOG: solving combination: 205
+LOG: solving combination: 206
+LOG: solving combination: 207
+LOG: solving combination: 208
+LOG: solving combination: 209
+LOG: solving combination: 210
+LOG: solving combination: 211
+LOG: solving combination: 212
+LOG: solving combination: 213
+LOG: solving combination: 214
+LOG: solving combination: 215
+LOG: solving combination: 216
+LOG: solving combination: 217
+LOG: solving combination: 218
+LOG: solving combination: 219
+LOG: solving combination: 220
+LOG: solving combination: 221
+LOG: solving combination: 222
+LOG: solving combination: 223
+LOG: solving combination: 224
+LOG: solving combination: 225
+LOG: solving combination: 226
+LOG: solving combination: 227
+LOG: solving combination: 228
+LOG: solving combination: 229
+LOG: solving combination: 230
+LOG: solving combination: 231
+LOG: solving combination: 232
+LOG: solving combination: 233
+LOG: solving combination: 234
+LOG: solving combination: 235
+LOG: solving combination: 236
+LOG: solving combination: 237
+LOG: solving combination: 238
+LOG: solving combination: 239
+LOG: solving combination: 240
+LOG: solving combination: 241
+LOG: solving combination: 242
+== Protocol selection ==
+
+Cost: 15306648459
+  convolution_naive<uint32[144],uint32[25],uint32[64],uint32<12>,uint32<5>,uint32<1>,uint32<8>>: Sharing.bool_size
+  convolution_naive<uint32[784],uint32[25],uint32[576],uint32<28>,uint32<5>,uint32<1>,uint32<24>>: Sharing.bool_size
+  convolution_naive_outputs<uint32[144],uint32[400],uint32[1024],uint32<12>,uint32<5>,uint32<16>,uint32<1>,uint32<8>>: Sharing.bool_size
+  convolution_naive_outputs<uint32[784],uint32[400],uint32[9216],uint32<28>,uint32<5>,uint32<16>,uint32<1>,uint32<24>>: Sharing.bool_size
+  mpc_main: Sharing.bool_size
+
+Cost: 12832263264
+  convolution_naive<uint32[144],uint32[25],uint32[64],uint32<12>,uint32<5>,uint32<1>,uint32<8>>: Sharing.bool_size
+  convolution_naive<uint32[784],uint32[25],uint32[576],uint32<28>,uint32<5>,uint32<1>,uint32<24>>: Sharing.bool_depth
+  convolution_naive_outputs<uint32[144],uint32[400],uint32[1024],uint32<12>,uint32<5>,uint32<16>,uint32<1>,uint32<8>>: Sharing.bool_size
+  convolution_naive_outputs<uint32[784],uint32[400],uint32[9216],uint32<28>,uint32<5>,uint32<16>,uint32<1>,uint32<24>>: Sharing.bool_size
+  mpc_main: Sharing.bool_size
+
+Cost: 12806829125
+  convolution_naive<uint32[144],uint32[25],uint32[64],uint32<12>,uint32<5>,uint32<1>,uint32<8>>: Sharing.bool_size
+  convolution_naive<uint32[784],uint32[25],uint32[576],uint32<28>,uint32<5>,uint32<1>,uint32<24>>: Sharing.bool_depth
+  convolution_naive_outputs<uint32[144],uint32[400],uint32[1024],uint32<12>,uint32<5>,uint32<16>,uint32<1>,uint32<8>>: Sharing.bool_size
+  convolution_naive_outputs<uint32[784],uint32[400],uint32[9216],uint32<28>,uint32<5>,uint32<16>,uint32<1>,uint32<24>>: Sharing.bool_depth
+  mpc_main: Sharing.bool_size
+
+Cost: 12716688741
+  convolution_naive<uint32[144],uint32[25],uint32[64],uint32<12>,uint32<5>,uint32<1>,uint32<8>>: Sharing.bool_size
+  convolution_naive<uint32[784],uint32[25],uint32[576],uint32<28>,uint32<5>,uint32<1>,uint32<24>>: Sharing.bool_depth
+  convolution_naive_outputs<uint32[144],uint32[400],uint32[1024],uint32<12>,uint32<5>,uint32<16>,uint32<1>,uint32<8>>: Sharing.bool_size
+  convolution_naive_outputs<uint32[784],uint32[400],uint32[9216],uint32<28>,uint32<5>,uint32<16>,uint32<1>,uint32<24>>: Sharing.bool_depth
+  mpc_main: Sharing.bool_depth
+
+Cost: 1545555522
+  convolution_naive<uint32[144],uint32[25],uint32[64],uint32<12>,uint32<5>,uint32<1>,uint32<8>>: Sharing.bool_size
+  convolution_naive<uint32[784],uint32[25],uint32[576],uint32<28>,uint32<5>,uint32<1>,uint32<24>>: Sharing.arith
+  convolution_naive_outputs<uint32[144],uint32[400],uint32[1024],uint32<12>,uint32<5>,uint32<16>,uint32<1>,uint32<8>>: Sharing.bool_size
+  convolution_naive_outputs<uint32[784],uint32[400],uint32[9216],uint32<28>,uint32<5>,uint32<16>,uint32<1>,uint32<24>>: Sharing.bool_size
+  mpc_main: Sharing.bool_size
+
+Cost: 1544725374
+  convolution_naive<uint32[144],uint32[25],uint32[64],uint32<12>,uint32<5>,uint32<1>,uint32<8>>: Sharing.bool_size
+  convolution_naive<uint32[784],uint32[25],uint32[576],uint32<28>,uint32<5>,uint32<1>,uint32<24>>: Sharing.arith
+  convolution_naive_outputs<uint32[144],uint32[400],uint32[1024],uint32<12>,uint32<5>,uint32<16>,uint32<1>,uint32<8>>: Sharing.bool_size
+  convolution_naive_outputs<uint32[784],uint32[400],uint32[9216],uint32<28>,uint32<5>,uint32<16>,uint32<1>,uint32<24>>: Sharing.arith
+  mpc_main: Sharing.bool_size
+
+Cost: 1283278695
+  convolution_naive<uint32[144],uint32[25],uint32[64],uint32<12>,uint32<5>,uint32<1>,uint32<8>>: Sharing.bool_depth
+  convolution_naive<uint32[784],uint32[25],uint32[576],uint32<28>,uint32<5>,uint32<1>,uint32<24>>: Sharing.arith
+  convolution_naive_outputs<uint32[144],uint32[400],uint32[1024],uint32<12>,uint32<5>,uint32<16>,uint32<1>,uint32<8>>: Sharing.bool_size
+  convolution_naive_outputs<uint32[784],uint32[400],uint32[9216],uint32<28>,uint32<5>,uint32<16>,uint32<1>,uint32<24>>: Sharing.bool_size
+  mpc_main: Sharing.bool_size
+
+Cost: 1282448547
+  convolution_naive<uint32[144],uint32[25],uint32[64],uint32<12>,uint32<5>,uint32<1>,uint32<8>>: Sharing.bool_depth
+  convolution_naive<uint32[784],uint32[25],uint32[576],uint32<28>,uint32<5>,uint32<1>,uint32<24>>: Sharing.arith
+  convolution_naive_outputs<uint32[144],uint32[400],uint32[1024],uint32<12>,uint32<5>,uint32<16>,uint32<1>,uint32<8>>: Sharing.bool_size
+  convolution_naive_outputs<uint32[784],uint32[400],uint32[9216],uint32<28>,uint32<5>,uint32<16>,uint32<1>,uint32<24>>: Sharing.arith
+  mpc_main: Sharing.bool_size
+
+Cost: 1271921313
+  convolution_naive<uint32[144],uint32[25],uint32[64],uint32<12>,uint32<5>,uint32<1>,uint32<8>>: Sharing.bool_depth
+  convolution_naive<uint32[784],uint32[25],uint32[576],uint32<28>,uint32<5>,uint32<1>,uint32<24>>: Sharing.arith
+  convolution_naive_outputs<uint32[144],uint32[400],uint32[1024],uint32<12>,uint32<5>,uint32<16>,uint32<1>,uint32<8>>: Sharing.bool_depth
+  convolution_naive_outputs<uint32[784],uint32[400],uint32[9216],uint32<28>,uint32<5>,uint32<16>,uint32<1>,uint32<24>>: Sharing.bool_size
+  mpc_main: Sharing.bool_size
+
+Cost: 1255938597
+  convolution_naive<uint32[144],uint32[25],uint32[64],uint32<12>,uint32<5>,uint32<1>,uint32<8>>: Sharing.bool_depth
+  convolution_naive<uint32[784],uint32[25],uint32[576],uint32<28>,uint32<5>,uint32<1>,uint32<24>>: Sharing.arith
+  convolution_naive_outputs<uint32[144],uint32[400],uint32[1024],uint32<12>,uint32<5>,uint32<16>,uint32<1>,uint32<8>>: Sharing.bool_depth
+  convolution_naive_outputs<uint32[784],uint32[400],uint32[9216],uint32<28>,uint32<5>,uint32<16>,uint32<1>,uint32<24>>: Sharing.bool_depth
+  mpc_main: Sharing.bool_depth
+
+Cost: 1255108449
+  convolution_naive<uint32[144],uint32[25],uint32[64],uint32<12>,uint32<5>,uint32<1>,uint32<8>>: Sharing.bool_depth
+  convolution_naive<uint32[784],uint32[25],uint32[576],uint32<28>,uint32<5>,uint32<1>,uint32<24>>: Sharing.arith
+  convolution_naive_outputs<uint32[144],uint32[400],uint32[1024],uint32<12>,uint32<5>,uint32<16>,uint32<1>,uint32<8>>: Sharing.bool_depth
+  convolution_naive_outputs<uint32[784],uint32[400],uint32[9216],uint32<28>,uint32<5>,uint32<16>,uint32<1>,uint32<24>>: Sharing.arith
+  mpc_main: Sharing.bool_depth
+
+Cost: 16958239
+  convolution_naive<uint32[144],uint32[25],uint32[64],uint32<12>,uint32<5>,uint32<1>,uint32<8>>: Sharing.arith
+  convolution_naive<uint32[784],uint32[25],uint32[576],uint32<28>,uint32<5>,uint32<1>,uint32<24>>: Sharing.arith
+  convolution_naive_outputs<uint32[144],uint32[400],uint32[1024],uint32<12>,uint32<5>,uint32<16>,uint32<1>,uint32<8>>: Sharing.bool_size
+  convolution_naive_outputs<uint32[784],uint32[400],uint32[9216],uint32<28>,uint32<5>,uint32<16>,uint32<1>,uint32<24>>: Sharing.bool_size
+  mpc_main: Sharing.bool_size
+
+Cost: 16128091
+  convolution_naive<uint32[144],uint32[25],uint32[64],uint32<12>,uint32<5>,uint32<1>,uint32<8>>: Sharing.arith
+  convolution_naive<uint32[784],uint32[25],uint32[576],uint32<28>,uint32<5>,uint32<1>,uint32<24>>: Sharing.arith
+  convolution_naive_outputs<uint32[144],uint32[400],uint32[1024],uint32<12>,uint32<5>,uint32<16>,uint32<1>,uint32<8>>: Sharing.bool_size
+  convolution_naive_outputs<uint32[784],uint32[400],uint32[9216],uint32<28>,uint32<5>,uint32<16>,uint32<1>,uint32<24>>: Sharing.arith
+  mpc_main: Sharing.bool_size
+
+Cost: 15757396
+  convolution_naive<uint32[144],uint32[25],uint32[64],uint32<12>,uint32<5>,uint32<1>,uint32<8>>: Sharing.arith
+  convolution_naive<uint32[784],uint32[25],uint32[576],uint32<28>,uint32<5>,uint32<1>,uint32<24>>: Sharing.arith
+  convolution_naive_outputs<uint32[144],uint32[400],uint32[1024],uint32<12>,uint32<5>,uint32<16>,uint32<1>,uint32<8>>: Sharing.arith
+  convolution_naive_outputs<uint32[784],uint32[400],uint32[9216],uint32<28>,uint32<5>,uint32<16>,uint32<1>,uint32<24>>: Sharing.arith
+  mpc_main: Sharing.bool_size
+
+Cost: 8453017
+  convolution_naive<uint32[144],uint32[25],uint32[64],uint32<12>,uint32<5>,uint32<1>,uint32<8>>: Sharing.arith
+  convolution_naive<uint32[784],uint32[25],uint32[576],uint32<28>,uint32<5>,uint32<1>,uint32<24>>: Sharing.arith
+  convolution_naive_outputs<uint32[144],uint32[400],uint32[1024],uint32<12>,uint32<5>,uint32<16>,uint32<1>,uint32<8>>: Sharing.arith
+  convolution_naive_outputs<uint32[784],uint32[400],uint32[9216],uint32<28>,uint32<5>,uint32<16>,uint32<1>,uint32<24>>: Sharing.arith
+  mpc_main: Sharing.arith
+
+
+LOG: Time / Memory: 708.26 seconds 23300516 kB

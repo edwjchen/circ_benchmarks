@@ -1,0 +1,52 @@
+
+LOG: ====================================
+
+LOG: Benchmarking HyCC
+
+LOG: ====================================
+
+LOG: TEST: gcd
+LOG: MINIMIZATION_TIME: 600
+LOG: COST_MODEL: hycc
+LOG: ARGUMENTS: ['--all-variants']
+
+LOG: ====================================
+
+LOG: MODE: selection
+Directory: /home/ubuntu/circ_benchmarks/hycc_circuit_dir/hycc_gcd_mt-600_args---all-variants
+mpc_main@bool_size.circ
+yaohybrid.cmb
+lan_optimized.cmb
+mpc_main@bool_depth.circ
+gmwhybrid.cmb
+all.cmb
+wan_optimized.cmb
+mpc_main@bool_size.stats
+yaoonly.cmb
+gmwonly.cmb
+mpc_main@bool_depth.stats
+graph.dot
+hycc_optimized.cmb
+Modules: 1
+
+mpc_main
+  Possible sharings: bool_depth bool_size
+  Calls:
+
+Subgraphs:
+
+LOG: Total number of modules: 1
+LOG: Modules: ['mpc_main']
+LOG: solving combination: 0
+LOG: solving combination: 1
+LOG: solving combination: 2
+== Protocol selection ==
+
+Cost: 37319823
+  mpc_main: Sharing.bool_size
+
+Cost: 31575498
+  mpc_main: Sharing.bool_depth
+
+
+LOG: Time / Memory: 1.28 seconds 70488 kB
