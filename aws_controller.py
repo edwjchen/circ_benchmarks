@@ -571,7 +571,7 @@ def run_lan():
                                     ],
                                     BlockDeviceMappings=[
                                         {
-                                            'DeviceName': '/dev/sdh',
+                                            'DeviceName': '/dev/sda1',
                                             'Ebs': {
                                                 'DeleteOnTermination': True,
                                                 'VolumeSize': 128,
@@ -665,7 +665,7 @@ def run_wan():
                                       "circ4mpc"],
                                   BlockDeviceMappings=[
                                         {
-                                            'DeviceName': '/dev/sdh',
+                                            'DeviceName': '/dev/sda1',
                                             'Ebs': {
                                                 'DeleteOnTermination': True,
                                                 'VolumeSize': 128,
@@ -687,7 +687,7 @@ def run_wan():
                                     ],
                                     BlockDeviceMappings=[
                                         {
-                                            'DeviceName': '/dev/sdh',
+                                            'DeviceName': '/dev/sda1',
                                             'Ebs': {
                                                 'DeleteOnTermination': True,
                                                 'VolumeSize': 128,
