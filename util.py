@@ -59,12 +59,12 @@ HYCC_TEST_CASES = [
     # ("gcd", "gcd/gcd.c"),
 ]
 
-MINIMIZATION_TIMES = [0]
+MINIMIZATION_TIMES = [0, 600]
 HYCC_SELECTION_SCHEMES = [
-    "yaoonly",
-    # "yaohybrid",
+    # "yaoonly",
+    "yaohybrid",
     # "gmwonly",
-    # "gmwhybrid",
+    "gmwhybrid",
     # "hycc_optimized",
     # "lan_optimized",
     # "wan_optimized",
