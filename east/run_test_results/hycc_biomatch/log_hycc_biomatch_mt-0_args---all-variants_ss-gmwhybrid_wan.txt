@@ -1,0 +1,48 @@
+LOG: ====================================
+LOG: Benchmarking HyCC
+LOG: ====================================
+LOG: TEST: biomatch
+LOG: SELECTION_SCHEME: gmwhybrid
+LOG: MINIMIZATION_TIME: 0
+LOG: ARGUMENTS: ['--all-variants']
+LOG: ====================================
+LOG: RERUN: 0
+LOG: Client load time: 0.389252
+LOG: Client exec time: 3.94683
+LOG: Time / Memory: 4.38 seconds 122932 kB
+LOG: RERUN: 1
+LOG: Client load time: 0.382037
+LOG: Client exec time: 2.97902
+LOG: Time / Memory: 3.41 seconds 122972 kB
+LOG: RERUN: 2
+LOG: Client load time: 0.388147
+LOG: Client exec time: 3.78251
+LOG: Time / Memory: 4.22 seconds 123228 kB
+LOG: RERUN: 3
+LOG: Client load time: 0.382351
+LOG: Client exec time: 2.74607
+LOG: Time / Memory: 3.17 seconds 123228 kB
+LOG: RERUN: 4
+LOG: Client load time: 0.38287
+LOG: Client exec time: 3.21019
+LOG: Time / Memory: 3.64 seconds 123256 kB
+LOG: RERUN: 5
+LOG: Client load time: 0.380339
+LOG: Client exec time: 3.49788
+LOG: Time / Memory: 3.92 seconds 123172 kB
+LOG: RERUN: 6
+LOG: Client load time: 0.386695
+LOG: Client exec time: 3.22276
+LOG: Time / Memory: 3.66 seconds 123172 kB
+LOG: RERUN: 7
+LOG: Client load time: 0.386779
+LOG: Client exec time: 2.98431
+LOG: Time / Memory: 3.42 seconds 123316 kB
+LOG: RERUN: 8
+LOG: Client load time: 0.384855
+LOG: Client exec time: 3.49791
+LOG: Time / Memory: 3.93 seconds 122900 kB
+LOG: RERUN: 9
+LOG: Client load time: 0.405043
+LOG: Client exec time: 3.50004
+LOG: Time / Memory: 3.95 seconds 123304 kB
