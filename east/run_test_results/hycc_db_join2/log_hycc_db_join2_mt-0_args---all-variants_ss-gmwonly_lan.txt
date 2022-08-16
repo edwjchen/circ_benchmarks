@@ -1,0 +1,48 @@
+LOG: ====================================
+LOG: Benchmarking HyCC
+LOG: ====================================
+LOG: TEST: db_join2
+LOG: SELECTION_SCHEME: gmwonly
+LOG: MINIMIZATION_TIME: 0
+LOG: ARGUMENTS: ['--all-variants']
+LOG: ====================================
+LOG: RERUN: 0
+LOG: Client load time: 66.377
+LOG: Client exec time: 4.63515
+LOG: Time / Memory: 76.57 seconds 5457648 kB
+LOG: RERUN: 1
+LOG: Client load time: 66.5848
+LOG: Client exec time: 5.15595
+LOG: Time / Memory: 77.20 seconds 5457792 kB
+LOG: RERUN: 2
+LOG: Client load time: 65.7673
+LOG: Client exec time: 5.57775
+LOG: Time / Memory: 76.88 seconds 5457692 kB
+LOG: RERUN: 3
+LOG: Client load time: 66.6954
+LOG: Client exec time: 5.0906
+LOG: Time / Memory: 77.26 seconds 5457620 kB
+LOG: RERUN: 4
+LOG: Client load time: 66.19
+LOG: Client exec time: 5.06141
+LOG: Time / Memory: 76.70 seconds 5457508 kB
+LOG: RERUN: 5
+LOG: Client load time: 67.0465
+LOG: Client exec time: 4.39365
+LOG: Time / Memory: 76.93 seconds 5457532 kB
+LOG: RERUN: 6
+LOG: Client load time: 66.496
+LOG: Client exec time: 4.45986
+LOG: Time / Memory: 76.50 seconds 5457804 kB
+LOG: RERUN: 7
+LOG: Client load time: 66.871
+LOG: Client exec time: 4.17943
+LOG: Time / Memory: 76.66 seconds 5457520 kB
+LOG: RERUN: 8
+LOG: Client load time: 66.6029
+LOG: Client exec time: 4.22482
+LOG: Time / Memory: 76.32 seconds 5457676 kB
+LOG: RERUN: 9
+LOG: Client load time: 67.2005
+LOG: Client exec time: 4.03369
+LOG: Time / Memory: 76.93 seconds 5457720 kB

@@ -7,42 +7,42 @@ LOG: MINIMIZATION_TIME: 600
 LOG: ARGUMENTS: ['--all-variants']
 LOG: ====================================
 LOG: RERUN: 0
-LOG: Client load time: 0.335008
-LOG: Client exec time: 1.58665
-LOG: Time / Memory: 1.96 seconds 113048 kB
+LOG: Server load time: 0.32917
+LOG: Server exec time: 1.54768
+LOG: Time / Memory: 1.91 seconds 111308 kB
 LOG: RERUN: 1
-LOG: Client load time: 0.337424
-LOG: Client exec time: 2.3909
-LOG: Time / Memory: 2.77 seconds 112760 kB
+LOG: Server load time: 0.336569
+LOG: Server exec time: 2.39309
+LOG: Time / Memory: 2.77 seconds 111628 kB
 LOG: RERUN: 2
-LOG: Client load time: 0.330898
-LOG: Client exec time: 2.25704
-LOG: Time / Memory: 2.63 seconds 112916 kB
+LOG: Server load time: 0.341644
+LOG: Server exec time: 2.24668
+LOG: Time / Memory: 2.63 seconds 111632 kB
 LOG: RERUN: 3
-LOG: Client load time: 0.326604
-LOG: Client exec time: 2.39232
-LOG: Time / Memory: 2.76 seconds 113052 kB
+LOG: Server load time: 0.340622
+LOG: Server exec time: 2.37982
+LOG: Time / Memory: 2.76 seconds 111556 kB
 LOG: RERUN: 4
-LOG: Client load time: 0.328648
-LOG: Client exec time: 2.39543
-LOG: Time / Memory: 2.76 seconds 113096 kB
+LOG: Server load time: 0.339266
+LOG: Server exec time: 2.38547
+LOG: Time / Memory: 2.76 seconds 111504 kB
 LOG: RERUN: 5
-LOG: Client load time: 0.329324
-LOG: Client exec time: 2.06447
-LOG: Time / Memory: 2.43 seconds 112840 kB
+LOG: Server load time: 0.344839
+LOG: Server exec time: 2.05023
+LOG: Time / Memory: 2.43 seconds 111368 kB
 LOG: RERUN: 6
-LOG: Client load time: 0.328641
-LOG: Client exec time: 1.97205
-LOG: Time / Memory: 2.34 seconds 112960 kB
+LOG: Server load time: 0.343245
+LOG: Server exec time: 1.95869
+LOG: Time / Memory: 2.34 seconds 111636 kB
 LOG: RERUN: 7
-LOG: Client load time: 0.329297
-LOG: Client exec time: 1.68439
-LOG: Time / Memory: 2.05 seconds 113148 kB
+LOG: Server load time: 0.340659
+LOG: Server exec time: 1.6744
+LOG: Time / Memory: 2.05 seconds 111636 kB
 LOG: RERUN: 8
-LOG: Client load time: 0.329772
-LOG: Client exec time: 1.58782
-LOG: Time / Memory: 1.96 seconds 112984 kB
+LOG: Server load time: 0.341008
+LOG: Server exec time: 1.57762
+LOG: Time / Memory: 1.96 seconds 111332 kB
 LOG: RERUN: 9
-LOG: Client load time: 0.330122
-LOG: Client exec time: 1.63411
-LOG: Time / Memory: 2.00 seconds 112780 kB
+LOG: Server load time: 0.348832
+LOG: Server exec time: 1.6163
+LOG: Time / Memory: 2.00 seconds 111340 kB
