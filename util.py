@@ -61,9 +61,9 @@ HYCC_TEST_CASES = [
 
 MINIMIZATION_TIMES = [0]
 HYCC_SELECTION_SCHEMES = [
-    "yaoonly",
+    # "yaoonly",
     # "yaohybrid",
-    # "gmwonly",
+    "gmwonly",
     # "gmwhybrid",
     # "hycc_optimized",
     # "lan_optimized",
