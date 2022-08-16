@@ -1,0 +1,48 @@
+LOG: ====================================
+LOG: Benchmarking HyCC
+LOG: ====================================
+LOG: TEST: gcd
+LOG: SELECTION_SCHEME: gmwonly
+LOG: MINIMIZATION_TIME: 0
+LOG: ARGUMENTS: ['--all-variants']
+LOG: ====================================
+LOG: RERUN: 0
+LOG: Server load time: 0.384923
+LOG: Server exec time: 459.681
+LOG: Time / Memory: 460.12 seconds 168340 kB
+LOG: RERUN: 1
+LOG: Server load time: 0.35741
+LOG: Server exec time: 461.415
+LOG: Time / Memory: 461.83 seconds 167988 kB
+LOG: RERUN: 2
+LOG: Server load time: 0.359352
+LOG: Server exec time: 459.696
+LOG: Time / Memory: 460.11 seconds 168152 kB
+LOG: RERUN: 3
+LOG: Server load time: 0.352646
+LOG: Server exec time: 459.441
+LOG: Time / Memory: 459.85 seconds 168320 kB
+LOG: RERUN: 4
+LOG: Server load time: 0.355195
+LOG: Server exec time: 461.927
+LOG: Time / Memory: 462.34 seconds 167964 kB
+LOG: RERUN: 5
+LOG: Server load time: 0.369877
+LOG: Server exec time: 461.891
+LOG: Time / Memory: 462.32 seconds 168380 kB
+LOG: RERUN: 6
+LOG: Server load time: 0.364697
+LOG: Server exec time: 461.987
+LOG: Time / Memory: 462.41 seconds 168276 kB
+LOG: RERUN: 7
+LOG: Server load time: 0.361865
+LOG: Server exec time: 459.599
+LOG: Time / Memory: 460.02 seconds 168272 kB
+LOG: RERUN: 8
+LOG: Server load time: 0.357247
+LOG: Server exec time: 460.852
+LOG: Time / Memory: 461.27 seconds 168152 kB
+LOG: RERUN: 9
+LOG: Server load time: 0.351707
+LOG: Server exec time: 459.51
+LOG: Time / Memory: 459.92 seconds 168272 kB
