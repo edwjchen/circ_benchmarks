@@ -1,0 +1,13 @@
+LOG: ====================================
+LOG: Benchmarking HyCC
+LOG: ====================================
+LOG: TEST: biomatch
+LOG: SELECTION_SCHEME: wan_optimized
+LOG: MINIMIZATION_TIME: 0
+LOG: ARGUMENTS: ['--all-variants']
+LOG: ====================================
+LOG: RERUN: 0
+LOG: Client load time: 0.667018
+LOG: Error: Process returned with status code 1
+LOG: Error message: Connect failed due to timeout! Command exited with non-zero status 1 58.43 seconds 151032 kB Command exited with non-zero status 1 58.43 seconds 151032 kB
+LOG: Failed wan_optimized with args: --all-variants, exception:

@@ -47,28 +47,22 @@ def create_instances():
     # print("Created {} east instances".format(num_instances_to_create))
 
     # create one AWS West Instance if they haven't been made
-    west_instances = list(ec2_west.instances.filter(
-        Filters=[{"Name": "instance-state-name", "Values": ["stopping", "pending", "running", "stopped"]}]))
-    num_west_instance_to_create = max(0, 1 - len(west_instances))
-    if num_west_instance_to_create > 0:
-        all_instances += ec2_west.create_instances(ImageId="ami-0ddf424f81ddb0720",
-                                  InstanceType=instance_type,
-                                  KeyName="aws-west",
-                                  MinCount=1,
-                                  MaxCount=num_west_instance_to_create,
-                                  Monitoring={
-                                      "Enabled": False},
-                                  SecurityGroups=[
-                                      "circ4mpc"]
-                                  )
-    print("Created {} west instances".format(num_west_instance_to_create))
+    instance = ec2_west.create_instances(ImageId="ami-0ddf424f81ddb0720",
+                                InstanceType=run_instance_type,
+                                KeyName="aws-west",
+                                MinCount=1,
+                                MaxCount=1,
+                                Monitoring={
+                                    "Enabled": False},
+                                SecurityGroups=[
+                                    "circ4mpc"]
+                                )[0]
+    print("Created {} west instances".format(1))
 
     # stop instances created 
-    for instance in all_instances:
-        instance.wait_until_running()
-        instance.load()
-        print("Stopping: {}", instance.public_dns_name)
-        instance.stop()
+    instance.wait_until_running()
+    instance.load()
+    print("ssh -i aws-west.pem ubuntu@{}".format(instance.public_dns_name))
 
 
 
@@ -227,12 +221,12 @@ def setup_worker(ip, key_file):
     _, stdout, _ = client.exec_command("cd ~/circ_benchmarks")
     if stdout.channel.recv_exit_status():
         _, stdout, _ = client.exec_command(
-            "curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -- -y && source $HOME/.cargo/env && cd ~ && git clone https://github.com/edwjchen/circ_benchmarks.git && cd ~/circ_benchmarks && git checkout aws -f && git add . && git stash && git pull -f &&./scripts/dependencies.sh && pip3 install pandas && python3 driver.py -f hycc && python3 driver.py -b")
+            "cd ~ && git clone https://github.com/edwjchen/circ_benchmarks.git && cd ~/circ_benchmarks && git checkout aws -f && git add . && git stash && git pull -f &&./scripts/dependencies.sh && pip3 install pandas && python3 driver.py -f hycc && python3 driver.py -b")
         if stdout.channel.recv_exit_status():
             print(ip, " failed setup")
     else:
         _, stdout, _ = client.exec_command(
-            "curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -- -y && source $HOME/.cargo/env && cd ~/circ_benchmarks && git checkout aws -f && git add . && git stash && git pull -f && ./scripts/dependencies.sh && pip3 install pandas && python3 driver.py -f hycc && python3 driver.py -b")
+            "cd ~/circ_benchmarks && git checkout aws -f && git add . && git stash && git pull -f && ./scripts/dependencies.sh && pip3 install pandas && python3 driver.py -f hycc && python3 driver.py -b")
         if stdout.channel.recv_exit_status():
             print(ip, " failed setup 2")
 
@@ -538,7 +532,7 @@ def setup_run_worker(ip, key_file):
     _, stdout, _ = client.exec_command("cd ~/circ_benchmarks")
     if stdout.channel.recv_exit_status():
         _, stdout, _ = client.exec_command(
-            "cd ~ && git clone https://github.com/edwjchen/circ_benchmarks.git && cd ~/circ_benchmarks && git checkout aws -f && ./scripts/dependencies.sh && pip3 install pandas && python3 driver.py -f hycc && python3 driver.py --build_aby")
+            "cd ~ && git clone https://github.com/edwjchen/circ_benchmarks.git && cd ~/circ_benchmarks && rm -r hycc_circuit_dir/*_cm-hycc && git checkout aws -f && ./scripts/dependencies.sh && pip3 install pandas && python3 driver.py -f hycc && python3 driver.py --build_aby")
         if stdout.channel.recv_exit_status():
             print(ip, " failed setup")
     else:
