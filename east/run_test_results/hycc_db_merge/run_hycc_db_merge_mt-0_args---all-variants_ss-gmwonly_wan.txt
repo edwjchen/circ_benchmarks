@@ -25,12 +25,12 @@ Merging "mean<int32[200],uint32<200>>" into "mpc_main"
 Merging "sum_tree<int32[200],int32<200>,int32<1>>" into "variance<int32[200],uint32<200>>"
 Merging "sum_tree<int32[200],int32<200>,int32<1>>" into "variance<int32[200],uint32<200>>"
 Merging "variance<int32[200],uint32<200>>" into "mpc_main"
-LOG: Client load time: 6.00251
-LOG: Client exec time: 22.8462
-INPUT_A : {db: int32[100]; } = {db: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99]; }
+LOG: Server load time: 6.28474
+LOG: Server exec time: 22.3947
+INPUT_B : {db: int32[100]; } = {db: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99]; }
 return_value : {analysis1: int32; analysis2: int32; joined: int32; } = {analysis1: 49; analysis2: 833; joined: 200; }
 
-LOG: Time / Memory: 29.76 seconds 1040368 kB
+LOG: Time / Memory: 29.64 seconds 1040552 kB
 LOG: RERUN: 1
 Using YAO protocol for boolean gates
 Loading mpc_main@bool_depth.circ (using GMW for boolean gates)
@@ -44,12 +44,12 @@ Merging "mean<int32[200],uint32<200>>" into "mpc_main"
 Merging "sum_tree<int32[200],int32<200>,int32<1>>" into "variance<int32[200],uint32<200>>"
 Merging "sum_tree<int32[200],int32<200>,int32<1>>" into "variance<int32[200],uint32<200>>"
 Merging "variance<int32[200],uint32<200>>" into "mpc_main"
-LOG: Client load time: 6.17641
-LOG: Client exec time: 25.6527
-INPUT_A : {db: int32[100]; } = {db: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99]; }
+LOG: Server load time: 6.33095
+LOG: Server exec time: 25.4447
+INPUT_B : {db: int32[100]; } = {db: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99]; }
 return_value : {analysis1: int32; analysis2: int32; joined: int32; } = {analysis1: 49; analysis2: 833; joined: 200; }
 
-LOG: Time / Memory: 32.75 seconds 1040420 kB
+LOG: Time / Memory: 32.76 seconds 1040488 kB
 LOG: RERUN: 2
 Using YAO protocol for boolean gates
 Loading mpc_main@bool_depth.circ (using GMW for boolean gates)
@@ -63,12 +63,12 @@ Merging "mean<int32[200],uint32<200>>" into "mpc_main"
 Merging "sum_tree<int32[200],int32<200>,int32<1>>" into "variance<int32[200],uint32<200>>"
 Merging "sum_tree<int32[200],int32<200>,int32<1>>" into "variance<int32[200],uint32<200>>"
 Merging "variance<int32[200],uint32<200>>" into "mpc_main"
-LOG: Client load time: 6.07538
-LOG: Client exec time: 27.1282
-INPUT_A : {db: int32[100]; } = {db: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99]; }
+LOG: Server load time: 6.27394
+LOG: Server exec time: 26.8688
+INPUT_B : {db: int32[100]; } = {db: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99]; }
 return_value : {analysis1: int32; analysis2: int32; joined: int32; } = {analysis1: 49; analysis2: 833; joined: 200; }
 
-LOG: Time / Memory: 34.14 seconds 1040228 kB
+LOG: Time / Memory: 34.12 seconds 1040544 kB
 LOG: RERUN: 3
 Using YAO protocol for boolean gates
 Loading mpc_main@bool_depth.circ (using GMW for boolean gates)
@@ -82,12 +82,12 @@ Merging "mean<int32[200],uint32<200>>" into "mpc_main"
 Merging "sum_tree<int32[200],int32<200>,int32<1>>" into "variance<int32[200],uint32<200>>"
 Merging "sum_tree<int32[200],int32<200>,int32<1>>" into "variance<int32[200],uint32<200>>"
 Merging "variance<int32[200],uint32<200>>" into "mpc_main"
-LOG: Client load time: 6.14451
-LOG: Client exec time: 22.6716
-INPUT_A : {db: int32[100]; } = {db: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99]; }
+LOG: Server load time: 6.27709
+LOG: Server exec time: 22.5005
+INPUT_B : {db: int32[100]; } = {db: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99]; }
 return_value : {analysis1: int32; analysis2: int32; joined: int32; } = {analysis1: 49; analysis2: 833; joined: 200; }
 
-LOG: Time / Memory: 29.75 seconds 1040596 kB
+LOG: Time / Memory: 29.75 seconds 1040412 kB
 LOG: RERUN: 4
 Using YAO protocol for boolean gates
 Loading mpc_main@bool_depth.circ (using GMW for boolean gates)
@@ -101,12 +101,12 @@ Merging "mean<int32[200],uint32<200>>" into "mpc_main"
 Merging "sum_tree<int32[200],int32<200>,int32<1>>" into "variance<int32[200],uint32<200>>"
 Merging "sum_tree<int32[200],int32<200>,int32<1>>" into "variance<int32[200],uint32<200>>"
 Merging "variance<int32[200],uint32<200>>" into "mpc_main"
-LOG: Client load time: 6.24891
-LOG: Client exec time: 22.6222
-INPUT_A : {db: int32[100]; } = {db: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99]; }
+LOG: Server load time: 6.30207
+LOG: Server exec time: 22.578
+INPUT_B : {db: int32[100]; } = {db: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99]; }
 return_value : {analysis1: int32; analysis2: int32; joined: int32; } = {analysis1: 49; analysis2: 833; joined: 200; }
 
-LOG: Time / Memory: 29.87 seconds 1040572 kB
+LOG: Time / Memory: 29.86 seconds 1040556 kB
 LOG: RERUN: 5
 Using YAO protocol for boolean gates
 Loading mpc_main@bool_depth.circ (using GMW for boolean gates)
@@ -120,12 +120,12 @@ Merging "mean<int32[200],uint32<200>>" into "mpc_main"
 Merging "sum_tree<int32[200],int32<200>,int32<1>>" into "variance<int32[200],uint32<200>>"
 Merging "sum_tree<int32[200],int32<200>,int32<1>>" into "variance<int32[200],uint32<200>>"
 Merging "variance<int32[200],uint32<200>>" into "mpc_main"
-LOG: Client load time: 6.33073
-LOG: Client exec time: 23.4058
-INPUT_A : {db: int32[100]; } = {db: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99]; }
+LOG: Server load time: 6.3091
+LOG: Server exec time: 23.3933
+INPUT_B : {db: int32[100]; } = {db: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99]; }
 return_value : {analysis1: int32; analysis2: int32; joined: int32; } = {analysis1: 49; analysis2: 833; joined: 200; }
 
-LOG: Time / Memory: 30.67 seconds 1040624 kB
+LOG: Time / Memory: 30.68 seconds 1040460 kB
 LOG: RERUN: 6
 Using YAO protocol for boolean gates
 Loading mpc_main@bool_depth.circ (using GMW for boolean gates)
@@ -139,12 +139,12 @@ Merging "mean<int32[200],uint32<200>>" into "mpc_main"
 Merging "sum_tree<int32[200],int32<200>,int32<1>>" into "variance<int32[200],uint32<200>>"
 Merging "sum_tree<int32[200],int32<200>,int32<1>>" into "variance<int32[200],uint32<200>>"
 Merging "variance<int32[200],uint32<200>>" into "mpc_main"
-LOG: Client load time: 6.03901
-LOG: Client exec time: 22.6876
-INPUT_A : {db: int32[100]; } = {db: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99]; }
+LOG: Server load time: 6.26865
+LOG: Server exec time: 22.456
+INPUT_B : {db: int32[100]; } = {db: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99]; }
 return_value : {analysis1: int32; analysis2: int32; joined: int32; } = {analysis1: 49; analysis2: 833; joined: 200; }
 
-LOG: Time / Memory: 29.68 seconds 1040284 kB
+LOG: Time / Memory: 29.73 seconds 1040236 kB
 LOG: RERUN: 7
 Using YAO protocol for boolean gates
 Loading mpc_main@bool_depth.circ (using GMW for boolean gates)
@@ -158,12 +158,12 @@ Merging "mean<int32[200],uint32<200>>" into "mpc_main"
 Merging "sum_tree<int32[200],int32<200>,int32<1>>" into "variance<int32[200],uint32<200>>"
 Merging "sum_tree<int32[200],int32<200>,int32<1>>" into "variance<int32[200],uint32<200>>"
 Merging "variance<int32[200],uint32<200>>" into "mpc_main"
-LOG: Client load time: 6.09319
-LOG: Client exec time: 22.9308
-INPUT_A : {db: int32[100]; } = {db: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99]; }
+LOG: Server load time: 6.31597
+LOG: Server exec time: 22.6085
+INPUT_B : {db: int32[100]; } = {db: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99]; }
 return_value : {analysis1: int32; analysis2: int32; joined: int32; } = {analysis1: 49; analysis2: 833; joined: 200; }
 
-LOG: Time / Memory: 29.96 seconds 1040516 kB
+LOG: Time / Memory: 29.91 seconds 1040548 kB
 LOG: RERUN: 8
 Using YAO protocol for boolean gates
 Loading mpc_main@bool_depth.circ (using GMW for boolean gates)
@@ -177,12 +177,12 @@ Merging "mean<int32[200],uint32<200>>" into "mpc_main"
 Merging "sum_tree<int32[200],int32<200>,int32<1>>" into "variance<int32[200],uint32<200>>"
 Merging "sum_tree<int32[200],int32<200>,int32<1>>" into "variance<int32[200],uint32<200>>"
 Merging "variance<int32[200],uint32<200>>" into "mpc_main"
-LOG: Client load time: 6.08093
-LOG: Client exec time: 23.923
-INPUT_A : {db: int32[100]; } = {db: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99]; }
+LOG: Server load time: 6.29184
+LOG: Server exec time: 23.6652
+INPUT_B : {db: int32[100]; } = {db: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99]; }
 return_value : {analysis1: int32; analysis2: int32; joined: int32; } = {analysis1: 49; analysis2: 833; joined: 200; }
 
-LOG: Time / Memory: 30.95 seconds 1040284 kB
+LOG: Time / Memory: 30.93 seconds 1040420 kB
 LOG: RERUN: 9
 Using YAO protocol for boolean gates
 Loading mpc_main@bool_depth.circ (using GMW for boolean gates)
@@ -196,9 +196,9 @@ Merging "mean<int32[200],uint32<200>>" into "mpc_main"
 Merging "sum_tree<int32[200],int32<200>,int32<1>>" into "variance<int32[200],uint32<200>>"
 Merging "sum_tree<int32[200],int32<200>,int32<1>>" into "variance<int32[200],uint32<200>>"
 Merging "variance<int32[200],uint32<200>>" into "mpc_main"
-LOG: Client load time: 6.09915
-LOG: Client exec time: 23.3106
-INPUT_A : {db: int32[100]; } = {db: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99]; }
+LOG: Server load time: 6.34879
+LOG: Server exec time: 23.0301
+INPUT_B : {db: int32[100]; } = {db: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99]; }
 return_value : {analysis1: int32; analysis2: int32; joined: int32; } = {analysis1: 49; analysis2: 833; joined: 200; }
 
-LOG: Time / Memory: 30.33 seconds 1040232 kB
+LOG: Time / Memory: 30.35 seconds 1040304 kB
