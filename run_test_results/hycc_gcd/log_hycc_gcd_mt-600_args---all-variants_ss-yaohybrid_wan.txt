@@ -1,0 +1,48 @@
+LOG: ====================================
+LOG: Benchmarking HyCC
+LOG: ====================================
+LOG: TEST: gcd
+LOG: SELECTION_SCHEME: yaohybrid
+LOG: MINIMIZATION_TIME: 600
+LOG: ARGUMENTS: ['--all-variants']
+LOG: ====================================
+LOG: RERUN: 0
+LOG: Server load time: 0.241354
+LOG: Server exec time: 0.871764
+LOG: Time / Memory: 1.16 seconds 96924 kB
+LOG: RERUN: 1
+LOG: Server load time: 0.237358
+LOG: Server exec time: 1.80058
+LOG: Time / Memory: 2.07 seconds 96796 kB
+LOG: RERUN: 2
+LOG: Server load time: 0.236808
+LOG: Server exec time: 0.894263
+LOG: Time / Memory: 1.17 seconds 97028 kB
+LOG: RERUN: 3
+LOG: Server load time: 0.244936
+LOG: Server exec time: 0.893901
+LOG: Time / Memory: 1.17 seconds 96608 kB
+LOG: RERUN: 4
+LOG: Server load time: 0.241192
+LOG: Server exec time: 0.903371
+LOG: Time / Memory: 1.18 seconds 96964 kB
+LOG: RERUN: 5
+LOG: Server load time: 0.257949
+LOG: Server exec time: 1.78418
+LOG: Time / Memory: 2.08 seconds 96740 kB
+LOG: RERUN: 6
+LOG: Server load time: 0.259141
+LOG: Server exec time: 1.3579
+LOG: Time / Memory: 1.65 seconds 96924 kB
+LOG: RERUN: 7
+LOG: Server load time: 0.262345
+LOG: Server exec time: 1.63935
+LOG: Time / Memory: 1.94 seconds 96936 kB
+LOG: RERUN: 8
+LOG: Server load time: 0.234625
+LOG: Server exec time: 1.24
+LOG: Time / Memory: 1.51 seconds 96720 kB
+LOG: RERUN: 9
+LOG: Server load time: 0.238661
+LOG: Server exec time: 1.65864
+LOG: Time / Memory: 1.93 seconds 96812 kB
