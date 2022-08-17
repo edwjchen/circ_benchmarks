@@ -1,0 +1,48 @@
+LOG: ====================================
+LOG: Benchmarking HyCC
+LOG: ====================================
+LOG: TEST: kmeans
+LOG: SELECTION_SCHEME: hycc_optimized
+LOG: MINIMIZATION_TIME: 600
+LOG: ARGUMENTS: ['--all-variants']
+LOG: ====================================
+LOG: RERUN: 0
+LOG: Client load time: 36.8225
+LOG: Client exec time: 82.4941
+LOG: Time / Memory: 123.97 seconds 4631428 kB
+LOG: RERUN: 1
+LOG: Client load time: 36.8632
+LOG: Client exec time: 77.9544
+LOG: Time / Memory: 119.45 seconds 4631464 kB
+LOG: RERUN: 2
+LOG: Client load time: 36.72
+LOG: Client exec time: 79.7401
+LOG: Time / Memory: 121.19 seconds 4631484 kB
+LOG: RERUN: 3
+LOG: Client load time: 36.7577
+LOG: Client exec time: 80.3582
+LOG: Time / Memory: 121.75 seconds 4631296 kB
+LOG: RERUN: 4
+LOG: Client load time: 36.8466
+LOG: Client exec time: 83.5543
+LOG: Time / Memory: 125.01 seconds 4631384 kB
+LOG: RERUN: 5
+LOG: Client load time: 36.7345
+LOG: Client exec time: 80.4957
+LOG: Time / Memory: 121.90 seconds 4631444 kB
+LOG: RERUN: 6
+LOG: Client load time: 37.2987
+LOG: Client exec time: 77.7141
+LOG: Time / Memory: 119.88 seconds 4631384 kB
+LOG: RERUN: 7
+LOG: Client load time: 39.1755
+LOG: Client exec time: 75.2347
+LOG: Time / Memory: 119.29 seconds 4631580 kB
+LOG: RERUN: 8
+LOG: Client load time: 38.8608
+LOG: Client exec time: 76.1555
+LOG: Time / Memory: 119.87 seconds 4631412 kB
+LOG: RERUN: 9
+LOG: Client load time: 38.9522
+LOG: Client exec time: 76.1203
+LOG: Time / Memory: 119.95 seconds 4631364 kB

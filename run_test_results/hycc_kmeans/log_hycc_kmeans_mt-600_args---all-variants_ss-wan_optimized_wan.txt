@@ -1,0 +1,48 @@
+LOG: ====================================
+LOG: Benchmarking HyCC
+LOG: ====================================
+LOG: TEST: kmeans
+LOG: SELECTION_SCHEME: wan_optimized
+LOG: MINIMIZATION_TIME: 600
+LOG: ARGUMENTS: ['--all-variants']
+LOG: ====================================
+LOG: RERUN: 0
+LOG: Server load time: 39.3345
+LOG: Server exec time: 76.5311
+LOG: Time / Memory: 120.67 seconds 4631332 kB
+LOG: RERUN: 1
+LOG: Server load time: 39.6817
+LOG: Server exec time: 77.8439
+LOG: Time / Memory: 122.34 seconds 4631580 kB
+LOG: RERUN: 2
+LOG: Server load time: 39.2157
+LOG: Server exec time: 75.5319
+LOG: Time / Memory: 119.62 seconds 4631580 kB
+LOG: RERUN: 3
+LOG: Server load time: 39.597
+LOG: Server exec time: 75.3359
+LOG: Time / Memory: 119.79 seconds 4631576 kB
+LOG: RERUN: 4
+LOG: Server load time: 39.3977
+LOG: Server exec time: 75.8159
+LOG: Time / Memory: 120.08 seconds 4631332 kB
+LOG: RERUN: 5
+LOG: Server load time: 39.6487
+LOG: Server exec time: 77.4485
+LOG: Time / Memory: 122.00 seconds 4631372 kB
+LOG: RERUN: 6
+LOG: Server load time: 39.5692
+LOG: Server exec time: 77.3774
+LOG: Time / Memory: 121.77 seconds 4631240 kB
+LOG: RERUN: 7
+LOG: Server load time: 39.7325
+LOG: Server exec time: 76.0979
+LOG: Time / Memory: 120.80 seconds 4631336 kB
+LOG: RERUN: 8
+LOG: Server load time: 39.465
+LOG: Server exec time: 75.7454
+LOG: Time / Memory: 120.02 seconds 4631496 kB
+LOG: RERUN: 9
+LOG: Server load time: 39.5556
+LOG: Server exec time: 75.1439
+LOG: Time / Memory: 119.54 seconds 4631360 kB
