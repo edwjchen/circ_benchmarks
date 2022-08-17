@@ -1,0 +1,48 @@
+LOG: ====================================
+LOG: Benchmarking HyCC
+LOG: ====================================
+LOG: TEST: gauss
+LOG: SELECTION_SCHEME: lan_optimized
+LOG: MINIMIZATION_TIME: 9
+LOG: ARGUMENTS: ['--all-variants']
+LOG: ====================================
+LOG: RERUN: 0
+LOG: Server load time: 0.961772
+LOG: Server exec time: 1.00228
+LOG: Time / Memory: 2.06 seconds 223104 kB
+LOG: RERUN: 1
+LOG: Server load time: 0.965214
+LOG: Server exec time: 1.02899
+LOG: Time / Memory: 2.09 seconds 223140 kB
+LOG: RERUN: 2
+LOG: Server load time: 0.971783
+LOG: Server exec time: 1.02031
+LOG: Time / Memory: 2.09 seconds 223128 kB
+LOG: RERUN: 3
+LOG: Server load time: 0.972381
+LOG: Server exec time: 0.999332
+LOG: Time / Memory: 2.07 seconds 223108 kB
+LOG: RERUN: 4
+LOG: Server load time: 0.971444
+LOG: Server exec time: 1.03003
+LOG: Time / Memory: 2.10 seconds 222828 kB
+LOG: RERUN: 5
+LOG: Server load time: 0.971145
+LOG: Server exec time: 1.01494
+LOG: Time / Memory: 2.08 seconds 223028 kB
+LOG: RERUN: 6
+LOG: Server load time: 0.961867
+LOG: Server exec time: 1.06044
+LOG: Time / Memory: 2.12 seconds 223052 kB
+LOG: RERUN: 7
+LOG: Server load time: 0.949134
+LOG: Server exec time: 1.07998
+LOG: Time / Memory: 2.13 seconds 223012 kB
+LOG: RERUN: 8
+LOG: Server load time: 0.975867
+LOG: Server exec time: 1.00308
+LOG: Time / Memory: 2.07 seconds 223052 kB
+LOG: RERUN: 9
+LOG: Server load time: 0.989268
+LOG: Server exec time: 1.03205
+LOG: Time / Memory: 2.12 seconds 222964 kB
