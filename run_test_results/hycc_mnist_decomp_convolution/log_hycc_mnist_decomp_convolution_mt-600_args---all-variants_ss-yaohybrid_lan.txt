@@ -1,0 +1,48 @@
+LOG: ====================================
+LOG: Benchmarking HyCC
+LOG: ====================================
+LOG: TEST: mnist_decomp_convolution
+LOG: SELECTION_SCHEME: yaohybrid
+LOG: MINIMIZATION_TIME: 600
+LOG: ARGUMENTS: ['--all-variants']
+LOG: ====================================
+LOG: RERUN: 0
+LOG: Server load time: 4.40406
+LOG: Server exec time: 0.747238
+LOG: Time / Memory: 5.40 seconds 576808 kB
+LOG: RERUN: 1
+LOG: Server load time: 3.67285
+LOG: Server exec time: 0.53456
+LOG: Time / Memory: 4.45 seconds 576884 kB
+LOG: RERUN: 2
+LOG: Server load time: 3.65512
+LOG: Server exec time: 0.569804
+LOG: Time / Memory: 4.46 seconds 576812 kB
+LOG: RERUN: 3
+LOG: Server load time: 3.68427
+LOG: Server exec time: 0.641358
+LOG: Time / Memory: 4.56 seconds 576964 kB
+LOG: RERUN: 4
+LOG: Server load time: 3.70462
+LOG: Server exec time: 0.596738
+LOG: Time / Memory: 4.55 seconds 577032 kB
+LOG: RERUN: 5
+LOG: Server load time: 3.70057
+LOG: Server exec time: 0.56184
+LOG: Time / Memory: 4.50 seconds 576980 kB
+LOG: RERUN: 6
+LOG: Server load time: 3.71116
+LOG: Server exec time: 0.456091
+LOG: Time / Memory: 4.40 seconds 577128 kB
+LOG: RERUN: 7
+LOG: Server load time: 3.67749
+LOG: Server exec time: 0.620816
+LOG: Time / Memory: 4.54 seconds 577036 kB
+LOG: RERUN: 8
+LOG: Server load time: 3.77982
+LOG: Server exec time: 0.483394
+LOG: Time / Memory: 4.50 seconds 577028 kB
+LOG: RERUN: 9
+LOG: Server load time: 3.72042
+LOG: Server exec time: 0.564334
+LOG: Time / Memory: 4.53 seconds 576920 kB
