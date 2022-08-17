@@ -1,0 +1,48 @@
+LOG: ====================================
+LOG: Benchmarking HyCC
+LOG: ====================================
+LOG: TEST: gauss
+LOG: SELECTION_SCHEME: wan_optimized
+LOG: MINIMIZATION_TIME: 9
+LOG: ARGUMENTS: ['--all-variants']
+LOG: ====================================
+LOG: RERUN: 0
+LOG: Client load time: 0.911242
+LOG: Client exec time: 106.809
+LOG: Time / Memory: 107.82 seconds 223320 kB
+LOG: RERUN: 1
+LOG: Client load time: 0.976522
+LOG: Client exec time: 106.716
+LOG: Time / Memory: 107.79 seconds 223292 kB
+LOG: RERUN: 2
+LOG: Client load time: 0.983184
+LOG: Client exec time: 106.681
+LOG: Time / Memory: 107.76 seconds 223452 kB
+LOG: RERUN: 3
+LOG: Client load time: 0.937472
+LOG: Client exec time: 106.675
+LOG: Time / Memory: 107.71 seconds 223716 kB
+LOG: RERUN: 4
+LOG: Client load time: 0.974443
+LOG: Client exec time: 107.301
+LOG: Time / Memory: 108.37 seconds 223660 kB
+LOG: RERUN: 5
+LOG: Client load time: 0.954436
+LOG: Client exec time: 106.713
+LOG: Time / Memory: 107.76 seconds 223316 kB
+LOG: RERUN: 6
+LOG: Client load time: 0.937243
+LOG: Client exec time: 107.256
+LOG: Time / Memory: 108.29 seconds 223612 kB
+LOG: RERUN: 7
+LOG: Client load time: 0.906427
+LOG: Client exec time: 107.132
+LOG: Time / Memory: 108.13 seconds 223668 kB
+LOG: RERUN: 8
+LOG: Client load time: 0.938642
+LOG: Client exec time: 107.07
+LOG: Time / Memory: 108.11 seconds 223396 kB
+LOG: RERUN: 9
+LOG: Client load time: 1.03113
+LOG: Client exec time: 107.392
+LOG: Time / Memory: 108.52 seconds 223712 kB
