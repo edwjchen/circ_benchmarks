@@ -1,0 +1,48 @@
+LOG: ====================================
+LOG: Benchmarking HyCC
+LOG: ====================================
+LOG: TEST: mnist
+LOG: SELECTION_SCHEME: yaohybrid
+LOG: MINIMIZATION_TIME: 600
+LOG: ARGUMENTS: ['--all-variants']
+LOG: ====================================
+LOG: RERUN: 0
+LOG: Server load time: 45.6115
+LOG: Server exec time: 13.1577
+LOG: Time / Memory: 64.47 seconds 6154312 kB
+LOG: RERUN: 1
+LOG: Server load time: 45.3684
+LOG: Server exec time: 14.185
+LOG: Time / Memory: 65.15 seconds 6154316 kB
+LOG: RERUN: 2
+LOG: Server load time: 45.2275
+LOG: Server exec time: 12.9323
+LOG: Time / Memory: 63.90 seconds 6154508 kB
+LOG: RERUN: 3
+LOG: Server load time: 46.5933
+LOG: Server exec time: 13.7911
+LOG: Time / Memory: 66.08 seconds 6154408 kB
+LOG: RERUN: 4
+LOG: Server load time: 47.7752
+LOG: Server exec time: 14.0948
+LOG: Time / Memory: 67.68 seconds 6154424 kB
+LOG: RERUN: 5
+LOG: Server load time: 46.2859
+LOG: Server exec time: 14.2688
+LOG: Time / Memory: 66.23 seconds 6154372 kB
+LOG: RERUN: 6
+LOG: Server load time: 43.4194
+LOG: Server exec time: 14.5039
+LOG: Time / Memory: 63.40 seconds 6154420 kB
+LOG: RERUN: 7
+LOG: Server load time: 42.0011
+LOG: Server exec time: 13.293
+LOG: Time / Memory: 60.79 seconds 6154264 kB
+LOG: RERUN: 8
+LOG: Server load time: 42.2405
+LOG: Server exec time: 17.1188
+LOG: Time / Memory: 64.80 seconds 6154324 kB
+LOG: RERUN: 9
+LOG: Server load time: 42.1786
+LOG: Server exec time: 13.3145
+LOG: Time / Memory: 60.96 seconds 6154168 kB
