@@ -183,26 +183,32 @@ def parse_hycc_logs():
                     if "optimized" not in ss and "wan" in ss and t < min_wan:
                         min_wan = t
                         min_scheme_wan = ss
+        
         print()
+        print("==== results ====")
         if min_scheme_lan:
             print(test)
             print("min lan:", min_scheme_lan)
             print("min lan time:", min_lan)
+            print()
 
         if min_optimized_scheme_lan:
             print(test)
             print("min opt lan:", min_optimized_scheme_lan)
             print("min opt lan time:", min_optimized_lan)
+            print()
         
         if min_scheme_wan:
             print(test)
             print("min wan:", min_scheme_wan)
             print("min wan time:", min_wan)
-            
+            print()
+
         if min_optimized_scheme_wan:
             print(test)
             print("min opt wan:", min_optimized_scheme_wan)
             print("min opt wan time:", min_optimized_wan)
+            print()
             
         print()
         print("=========================================")
