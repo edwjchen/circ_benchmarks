@@ -1,0 +1,12 @@
+LOG: ====================================
+LOG: Benchmarking HyCC
+LOG: ====================================
+LOG: TEST: kmeans
+LOG: SELECTION_SCHEME: yaoonly
+LOG: MINIMIZATION_TIME: 600
+LOG: ARGUMENTS: ['--all-variants']
+LOG: ====================================
+LOG: RERUN: 0
+LOG: Error: Process returned with status code 137
+LOG: Error message: Command terminated by signal 9 4446.84 seconds 31844184 kB Command exited with non-zero status 137 4446.87 seconds 31844184 kB
+LOG: Failed yaoonly with args: --all-variants, exception:

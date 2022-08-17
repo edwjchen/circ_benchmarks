@@ -64,10 +64,10 @@ MINIMIZATION_TIMES = [
 ]
 
 HYCC_SELECTION_SCHEMES = [
-    "yaoonly",
+    # "yaoonly",
     # "yaohybrid",
-    # "gmwonly",
-    "gmwhybrid",
+    "gmwonly",
+    # "gmwhybrid",
     # "hycc_optimized",
     # "lan_optimized",
     # "wan_optimized",
