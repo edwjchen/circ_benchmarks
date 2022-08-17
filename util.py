@@ -67,7 +67,7 @@ HYCC_SELECTION_SCHEMES = [
     # "yaoonly",
     "yaohybrid",
     # "gmwonly",
-    # "gmwhybrid",
+    "gmwhybrid",
     # "hycc_optimized",
     # "lan_optimized",
     # "wan_optimized",
