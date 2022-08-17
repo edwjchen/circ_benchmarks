@@ -5,4 +5,44 @@ LOG: TEST: cryptonets
 LOG: SELECTION_SCHEME: wan_optimized
 LOG: MINIMIZATION_TIME: 600
 LOG: ARGUMENTS: ['--all-variants']
-LOG: Missing: wan_optimized.cmb
+LOG: ====================================
+LOG: RERUN: 0
+LOG: Client load time: 2.48041
+LOG: Client exec time: 3.42681
+LOG: Time / Memory: 6.31 seconds 510092 kB
+LOG: RERUN: 1
+LOG: Client load time: 2.41754
+LOG: Client exec time: 3.23063
+LOG: Time / Memory: 6.04 seconds 511508 kB
+LOG: RERUN: 2
+LOG: Client load time: 2.41984
+LOG: Client exec time: 3.53471
+LOG: Time / Memory: 6.36 seconds 510252 kB
+LOG: RERUN: 3
+LOG: Client load time: 2.41758
+LOG: Client exec time: 2.73682
+LOG: Time / Memory: 5.55 seconds 511176 kB
+LOG: RERUN: 4
+LOG: Client load time: 2.4015
+LOG: Client exec time: 2.70755
+LOG: Time / Memory: 5.50 seconds 509896 kB
+LOG: RERUN: 5
+LOG: Client load time: 2.40721
+LOG: Client exec time: 4.5186
+LOG: Time / Memory: 7.32 seconds 509820 kB
+LOG: RERUN: 6
+LOG: Client load time: 2.413
+LOG: Client exec time: 3.05006
+LOG: Time / Memory: 5.85 seconds 512344 kB
+LOG: RERUN: 7
+LOG: Client load time: 2.42622
+LOG: Client exec time: 2.79756
+LOG: Time / Memory: 5.62 seconds 511556 kB
+LOG: RERUN: 8
+LOG: Client load time: 2.39338
+LOG: Client exec time: 2.75848
+LOG: Time / Memory: 5.55 seconds 510800 kB
+LOG: RERUN: 9
+LOG: Client load time: 2.40357
+LOG: Client exec time: 2.82863
+LOG: Time / Memory: 5.63 seconds 513112 kB
