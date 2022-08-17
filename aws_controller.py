@@ -616,11 +616,11 @@ def run_lan():
 
     # scp compiled hycc_circuit_dir & test_results to local directory
     subprocess.call(
-        "rsync -avz -e \"ssh -o StrictHostKeyChecking=no -i aws-east.pem\" --progress ubuntu@{}:~/circ_benchmarks/hycc_circuit_dir .".format(ip), shell=True)
+        "rsync -avz -e \"ssh -o StrictHostKeyChecking=no -i aws-east.pem\" --progress ubuntu@{}:~/circ_benchmarks/hycc_circuit_dir .".format(ips[0]), shell=True)
     subprocess.call(
-        "rsync -avz -e \"ssh -o StrictHostKeyChecking=no -i aws-east.pem\" --progress ubuntu@{}:~/circ_benchmarks/circ_circuit_dir .".format(ip), shell=True)
+        "rsync -avz -e \"ssh -o StrictHostKeyChecking=no -i aws-east.pem\" --progress ubuntu@{}:~/circ_benchmarks/circ_circuit_dir .".format(ips[0]), shell=True)
     subprocess.call(
-        "rsync -avz -e \"ssh -o StrictHostKeyChecking=no -i aws-east.pem\" --progress ubuntu@{}:~/circ_benchmarks/run_test_results .".format(ip), shell=True)
+        "rsync -avz -e \"ssh -o StrictHostKeyChecking=no -i aws-east.pem\" --progress ubuntu@{}:~/circ_benchmarks/run_test_results .".format(ips[0]), shell=True)
 
     print("Stopping instances")
     [instance.stop() for instance in instances]
