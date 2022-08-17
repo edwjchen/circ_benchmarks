@@ -1,0 +1,48 @@
+LOG: ====================================
+LOG: Benchmarking HyCC
+LOG: ====================================
+LOG: TEST: gauss
+LOG: SELECTION_SCHEME: hycc_optimized
+LOG: MINIMIZATION_TIME: 9
+LOG: ARGUMENTS: ['--all-variants']
+LOG: ====================================
+LOG: RERUN: 0
+LOG: Client load time: 0.9679
+LOG: Client exec time: 1.0573
+LOG: Time / Memory: 2.13 seconds 223600 kB
+LOG: RERUN: 1
+LOG: Client load time: 0.991922
+LOG: Client exec time: 0.91401
+LOG: Time / Memory: 2.01 seconds 223752 kB
+LOG: RERUN: 2
+LOG: Client load time: 0.921476
+LOG: Client exec time: 1.04092
+LOG: Time / Memory: 2.06 seconds 223408 kB
+LOG: RERUN: 3
+LOG: Client load time: 0.937435
+LOG: Client exec time: 0.947985
+LOG: Time / Memory: 1.98 seconds 223748 kB
+LOG: RERUN: 4
+LOG: Client load time: 0.921659
+LOG: Client exec time: 0.957025
+LOG: Time / Memory: 1.97 seconds 223284 kB
+LOG: RERUN: 5
+LOG: Client load time: 0.93039
+LOG: Client exec time: 0.975177
+LOG: Time / Memory: 2.00 seconds 223612 kB
+LOG: RERUN: 6
+LOG: Client load time: 0.928593
+LOG: Client exec time: 0.970333
+LOG: Time / Memory: 2.00 seconds 223748 kB
+LOG: RERUN: 7
+LOG: Client load time: 0.916995
+LOG: Client exec time: 1.03666
+LOG: Time / Memory: 2.05 seconds 223332 kB
+LOG: RERUN: 8
+LOG: Client load time: 0.923882
+LOG: Client exec time: 1.01797
+LOG: Time / Memory: 2.04 seconds 223280 kB
+LOG: RERUN: 9
+LOG: Client load time: 0.934859
+LOG: Client exec time: 1.02433
+LOG: Time / Memory: 2.05 seconds 223380 kB
