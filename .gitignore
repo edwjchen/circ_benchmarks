@@ -8,5 +8,6 @@ aws_benchmark/aws.sh
 aws
 modules/kahypar
 hycc_circuit_dir/
+hycc_circuit_dir_0/
 circ_circuit_dir/
 
