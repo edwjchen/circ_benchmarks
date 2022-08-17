@@ -1,0 +1,48 @@
+LOG: ====================================
+LOG: Benchmarking HyCC
+LOG: ====================================
+LOG: TEST: db_merge
+LOG: SELECTION_SCHEME: yaohybrid
+LOG: MINIMIZATION_TIME: 600
+LOG: ARGUMENTS: ['--all-variants']
+LOG: ====================================
+LOG: RERUN: 0
+LOG: Server load time: 3.69255
+LOG: Server exec time: 1.45768
+LOG: Time / Memory: 5.73 seconds 740748 kB
+LOG: RERUN: 1
+LOG: Server load time: 3.68424
+LOG: Server exec time: 5.46995
+LOG: Time / Memory: 9.74 seconds 740772 kB
+LOG: RERUN: 2
+LOG: Server load time: 3.74203
+LOG: Server exec time: 1.57049
+LOG: Time / Memory: 5.89 seconds 740684 kB
+LOG: RERUN: 3
+LOG: Server load time: 3.71388
+LOG: Server exec time: 1.52741
+LOG: Time / Memory: 5.82 seconds 740604 kB
+LOG: RERUN: 4
+LOG: Server load time: 3.70989
+LOG: Server exec time: 1.50461
+LOG: Time / Memory: 5.80 seconds 740936 kB
+LOG: RERUN: 5
+LOG: Server load time: 3.70491
+LOG: Server exec time: 5.64192
+LOG: Time / Memory: 9.91 seconds 740740 kB
+LOG: RERUN: 6
+LOG: Server load time: 3.68275
+LOG: Server exec time: 2.78619
+LOG: Time / Memory: 7.05 seconds 740676 kB
+LOG: RERUN: 7
+LOG: Server load time: 3.64267
+LOG: Server exec time: 1.5119
+LOG: Time / Memory: 5.72 seconds 740764 kB
+LOG: RERUN: 8
+LOG: Server load time: 3.66782
+LOG: Server exec time: 2.69889
+LOG: Time / Memory: 6.94 seconds 740540 kB
+LOG: RERUN: 9
+LOG: Server load time: 3.67037
+LOG: Server exec time: 2.39273
+LOG: Time / Memory: 6.64 seconds 740740 kB

@@ -7,6 +7,42 @@ LOG: MINIMIZATION_TIME: 600
 LOG: ARGUMENTS: ['--all-variants']
 LOG: ====================================
 LOG: RERUN: 0
-LOG: Error: Process returned with status code 134
-LOG: Error message: terminate called after throwing an instance of 'std::out_of_range'   what():  _Map_base::at Command terminated by signal 6 3.73 seconds 759596 kB Command exited with non-zero status 134 3.73 seconds 759596 kB
-LOG: Failed gmwhybrid with args: --all-variants, exception:
+LOG: Client load time: 4.94812
+LOG: Client exec time: 0.77821
+LOG: Time / Memory: 6.51 seconds 850432 kB
+LOG: RERUN: 1
+LOG: Client load time: 4.98275
+LOG: Client exec time: 0.771798
+LOG: Time / Memory: 6.54 seconds 850400 kB
+LOG: RERUN: 2
+LOG: Client load time: 4.91801
+LOG: Client exec time: 0.794323
+LOG: Time / Memory: 6.50 seconds 850248 kB
+LOG: RERUN: 3
+LOG: Client load time: 4.93816
+LOG: Client exec time: 0.806673
+LOG: Time / Memory: 6.53 seconds 850428 kB
+LOG: RERUN: 4
+LOG: Client load time: 4.89865
+LOG: Client exec time: 0.771943
+LOG: Time / Memory: 6.45 seconds 850096 kB
+LOG: RERUN: 5
+LOG: Client load time: 4.84421
+LOG: Client exec time: 0.769905
+LOG: Time / Memory: 6.40 seconds 850516 kB
+LOG: RERUN: 6
+LOG: Client load time: 4.92566
+LOG: Client exec time: 0.792768
+LOG: Time / Memory: 6.50 seconds 850128 kB
+LOG: RERUN: 7
+LOG: Client load time: 4.86679
+LOG: Client exec time: 0.764702
+LOG: Time / Memory: 6.40 seconds 850432 kB
+LOG: RERUN: 8
+LOG: Client load time: 4.91593
+LOG: Client exec time: 0.78709
+LOG: Time / Memory: 6.47 seconds 850420 kB
+LOG: RERUN: 9
+LOG: Client load time: 4.86465
+LOG: Client exec time: 0.787182
+LOG: Time / Memory: 6.42 seconds 850224 kB

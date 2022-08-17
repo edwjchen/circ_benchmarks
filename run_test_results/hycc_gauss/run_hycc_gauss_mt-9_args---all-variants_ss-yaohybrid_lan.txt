@@ -6,7 +6,7 @@ LOG: Benchmarking HyCC
 LOG: ====================================
 
 LOG: TEST: gauss
-LOG: SELECTION_SCHEME: gmwhybrid
+LOG: SELECTION_SCHEME: yaohybrid
 LOG: MINIMIZATION_TIME: 9
 LOG: ARGUMENTS: ['--all-variants']
 
@@ -14,19 +14,19 @@ LOG: ====================================
 
 LOG: RERUN: 0
 Using YAO protocol for boolean gates
-Loading swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<0>,int32<1>>@bool_depth.circ (using GMW for boolean gates)
-Loading fixedpt_mul@bool_depth.circ (using GMW for boolean gates)
+Loading swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<0>,int32<1>>@bool_size.circ (using YAO for boolean gates)
+Loading fixedpt_mul@bool_size.circ (using YAO for boolean gates)
 Loading gaussj_D<int32[9],int32[3],int32[3]>@arith.circ (using ARITH for boolean gates)
-Loading fixedpt_div@bool_depth.circ (using GMW for boolean gates)
-Loading mpc_main@bool_depth.circ (using GMW for boolean gates)
-Loading pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<0>,int32<3>>@bool_depth.circ (using GMW for boolean gates)
-Loading fixedpt_mul_inner@bool_depth.circ (using GMW for boolean gates)
-Loading identity<int32[9]>@bool_depth.circ (using GMW for boolean gates)
-Loading abs@bool_depth.circ (using GMW for boolean gates)
-Loading swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<0>,int32<2>>@bool_depth.circ (using GMW for boolean gates)
-Loading swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<1>,int32<2>>@bool_depth.circ (using GMW for boolean gates)
-Loading solve_backtracking<int32[9],int32[3],int32[3]>@bool_depth.circ (using GMW for boolean gates)
-Loading pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<1>,int32<3>>@bool_depth.circ (using GMW for boolean gates)
+Loading fixedpt_div@bool_size.circ (using YAO for boolean gates)
+Loading mpc_main@bool_size.circ (using YAO for boolean gates)
+Loading pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<0>,int32<3>>@bool_size.circ (using YAO for boolean gates)
+Loading fixedpt_mul_inner@bool_size.circ (using YAO for boolean gates)
+Loading identity<int32[9]>@bool_size.circ (using YAO for boolean gates)
+Loading abs@bool_size.circ (using YAO for boolean gates)
+Loading swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<0>,int32<2>>@bool_size.circ (using YAO for boolean gates)
+Loading swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<1>,int32<2>>@bool_size.circ (using YAO for boolean gates)
+Loading solve_backtracking<int32[9],int32[3],int32[3]>@bool_size.circ (using YAO for boolean gates)
+Loading pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<1>,int32<3>>@bool_size.circ (using YAO for boolean gates)
 Merging "identity<int32[9]>" into "gaussj_D<int32[9],int32[3],int32[3]>"
 Merging "swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<0>,int32<1>>" into "pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<0>,int32<3>>"
 Merging "swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<0>,int32<2>>" into "pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<0>,int32<3>>"
@@ -55,28 +55,28 @@ Merging "fixedpt_mul" into "solve_backtracking<int32[9],int32[3],int32[3]>"
 Merging "solve_backtracking<int32[9],int32[3],int32[3]>" into "gaussj_D<int32[9],int32[3],int32[3]>"
 Merging "gaussj_D<int32[9],int32[3],int32[3]>" into "mpc_main"
 Arithmetic bit-width: 32bit
-LOG: Client load time: 0.946659
-LOG: Client exec time: 2.40625
-INPUT_A_m : {m: int32[9]; } = {m: [2, 1, 3, 3, 7, 9, 0, 3, 1]; }
+LOG: Server load time: 0.915938
+LOG: Server exec time: 0.283785
+INPUT_B_b : {b: int32[3]; } = {b: [14, 40, 6]; }
 OUTPUT_res : {res: int32[3]; } = {res: [-1194, 0, 1536]; }
 return_value : {res: int32[3]; } = {res: [-1194, 0, 1536]; }
 
-LOG: Time / Memory: 3.46 seconds 264720 kB
+LOG: Time / Memory: 1.30 seconds 206592 kB
 LOG: RERUN: 1
 Using YAO protocol for boolean gates
-Loading swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<0>,int32<1>>@bool_depth.circ (using GMW for boolean gates)
-Loading fixedpt_mul@bool_depth.circ (using GMW for boolean gates)
+Loading swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<0>,int32<1>>@bool_size.circ (using YAO for boolean gates)
+Loading fixedpt_mul@bool_size.circ (using YAO for boolean gates)
 Loading gaussj_D<int32[9],int32[3],int32[3]>@arith.circ (using ARITH for boolean gates)
-Loading fixedpt_div@bool_depth.circ (using GMW for boolean gates)
-Loading mpc_main@bool_depth.circ (using GMW for boolean gates)
-Loading pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<0>,int32<3>>@bool_depth.circ (using GMW for boolean gates)
-Loading fixedpt_mul_inner@bool_depth.circ (using GMW for boolean gates)
-Loading identity<int32[9]>@bool_depth.circ (using GMW for boolean gates)
-Loading abs@bool_depth.circ (using GMW for boolean gates)
-Loading swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<0>,int32<2>>@bool_depth.circ (using GMW for boolean gates)
-Loading swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<1>,int32<2>>@bool_depth.circ (using GMW for boolean gates)
-Loading solve_backtracking<int32[9],int32[3],int32[3]>@bool_depth.circ (using GMW for boolean gates)
-Loading pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<1>,int32<3>>@bool_depth.circ (using GMW for boolean gates)
+Loading fixedpt_div@bool_size.circ (using YAO for boolean gates)
+Loading mpc_main@bool_size.circ (using YAO for boolean gates)
+Loading pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<0>,int32<3>>@bool_size.circ (using YAO for boolean gates)
+Loading fixedpt_mul_inner@bool_size.circ (using YAO for boolean gates)
+Loading identity<int32[9]>@bool_size.circ (using YAO for boolean gates)
+Loading abs@bool_size.circ (using YAO for boolean gates)
+Loading swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<0>,int32<2>>@bool_size.circ (using YAO for boolean gates)
+Loading swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<1>,int32<2>>@bool_size.circ (using YAO for boolean gates)
+Loading solve_backtracking<int32[9],int32[3],int32[3]>@bool_size.circ (using YAO for boolean gates)
+Loading pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<1>,int32<3>>@bool_size.circ (using YAO for boolean gates)
 Merging "identity<int32[9]>" into "gaussj_D<int32[9],int32[3],int32[3]>"
 Merging "swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<0>,int32<1>>" into "pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<0>,int32<3>>"
 Merging "swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<0>,int32<2>>" into "pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<0>,int32<3>>"
@@ -105,28 +105,28 @@ Merging "fixedpt_mul" into "solve_backtracking<int32[9],int32[3],int32[3]>"
 Merging "solve_backtracking<int32[9],int32[3],int32[3]>" into "gaussj_D<int32[9],int32[3],int32[3]>"
 Merging "gaussj_D<int32[9],int32[3],int32[3]>" into "mpc_main"
 Arithmetic bit-width: 32bit
-LOG: Client load time: 1.05819
-LOG: Client exec time: 2.16786
-INPUT_A_m : {m: int32[9]; } = {m: [2, 1, 3, 3, 7, 9, 0, 3, 1]; }
+LOG: Server load time: 0.895591
+LOG: Server exec time: 0.285081
+INPUT_B_b : {b: int32[3]; } = {b: [14, 40, 6]; }
 OUTPUT_res : {res: int32[3]; } = {res: [-1194, 0, 1536]; }
 return_value : {res: int32[3]; } = {res: [-1194, 0, 1536]; }
 
-LOG: Time / Memory: 3.32 seconds 264956 kB
+LOG: Time / Memory: 1.27 seconds 206692 kB
 LOG: RERUN: 2
 Using YAO protocol for boolean gates
-Loading swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<0>,int32<1>>@bool_depth.circ (using GMW for boolean gates)
-Loading fixedpt_mul@bool_depth.circ (using GMW for boolean gates)
+Loading swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<0>,int32<1>>@bool_size.circ (using YAO for boolean gates)
+Loading fixedpt_mul@bool_size.circ (using YAO for boolean gates)
 Loading gaussj_D<int32[9],int32[3],int32[3]>@arith.circ (using ARITH for boolean gates)
-Loading fixedpt_div@bool_depth.circ (using GMW for boolean gates)
-Loading mpc_main@bool_depth.circ (using GMW for boolean gates)
-Loading pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<0>,int32<3>>@bool_depth.circ (using GMW for boolean gates)
-Loading fixedpt_mul_inner@bool_depth.circ (using GMW for boolean gates)
-Loading identity<int32[9]>@bool_depth.circ (using GMW for boolean gates)
-Loading abs@bool_depth.circ (using GMW for boolean gates)
-Loading swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<0>,int32<2>>@bool_depth.circ (using GMW for boolean gates)
-Loading swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<1>,int32<2>>@bool_depth.circ (using GMW for boolean gates)
-Loading solve_backtracking<int32[9],int32[3],int32[3]>@bool_depth.circ (using GMW for boolean gates)
-Loading pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<1>,int32<3>>@bool_depth.circ (using GMW for boolean gates)
+Loading fixedpt_div@bool_size.circ (using YAO for boolean gates)
+Loading mpc_main@bool_size.circ (using YAO for boolean gates)
+Loading pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<0>,int32<3>>@bool_size.circ (using YAO for boolean gates)
+Loading fixedpt_mul_inner@bool_size.circ (using YAO for boolean gates)
+Loading identity<int32[9]>@bool_size.circ (using YAO for boolean gates)
+Loading abs@bool_size.circ (using YAO for boolean gates)
+Loading swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<0>,int32<2>>@bool_size.circ (using YAO for boolean gates)
+Loading swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<1>,int32<2>>@bool_size.circ (using YAO for boolean gates)
+Loading solve_backtracking<int32[9],int32[3],int32[3]>@bool_size.circ (using YAO for boolean gates)
+Loading pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<1>,int32<3>>@bool_size.circ (using YAO for boolean gates)
 Merging "identity<int32[9]>" into "gaussj_D<int32[9],int32[3],int32[3]>"
 Merging "swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<0>,int32<1>>" into "pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<0>,int32<3>>"
 Merging "swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<0>,int32<2>>" into "pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<0>,int32<3>>"
@@ -155,28 +155,28 @@ Merging "fixedpt_mul" into "solve_backtracking<int32[9],int32[3],int32[3]>"
 Merging "solve_backtracking<int32[9],int32[3],int32[3]>" into "gaussj_D<int32[9],int32[3],int32[3]>"
 Merging "gaussj_D<int32[9],int32[3],int32[3]>" into "mpc_main"
 Arithmetic bit-width: 32bit
-LOG: Client load time: 0.956542
-LOG: Client exec time: 2.3525
-INPUT_A_m : {m: int32[9]; } = {m: [2, 1, 3, 3, 7, 9, 0, 3, 1]; }
+LOG: Server load time: 0.948054
+LOG: Server exec time: 0.307432
+INPUT_B_b : {b: int32[3]; } = {b: [14, 40, 6]; }
 OUTPUT_res : {res: int32[3]; } = {res: [-1194, 0, 1536]; }
 return_value : {res: int32[3]; } = {res: [-1194, 0, 1536]; }
 
-LOG: Time / Memory: 3.41 seconds 265008 kB
+LOG: Time / Memory: 1.34 seconds 206592 kB
 LOG: RERUN: 3
 Using YAO protocol for boolean gates
-Loading swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<0>,int32<1>>@bool_depth.circ (using GMW for boolean gates)
-Loading fixedpt_mul@bool_depth.circ (using GMW for boolean gates)
+Loading swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<0>,int32<1>>@bool_size.circ (using YAO for boolean gates)
+Loading fixedpt_mul@bool_size.circ (using YAO for boolean gates)
 Loading gaussj_D<int32[9],int32[3],int32[3]>@arith.circ (using ARITH for boolean gates)
-Loading fixedpt_div@bool_depth.circ (using GMW for boolean gates)
-Loading mpc_main@bool_depth.circ (using GMW for boolean gates)
-Loading pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<0>,int32<3>>@bool_depth.circ (using GMW for boolean gates)
-Loading fixedpt_mul_inner@bool_depth.circ (using GMW for boolean gates)
-Loading identity<int32[9]>@bool_depth.circ (using GMW for boolean gates)
-Loading abs@bool_depth.circ (using GMW for boolean gates)
-Loading swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<0>,int32<2>>@bool_depth.circ (using GMW for boolean gates)
-Loading swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<1>,int32<2>>@bool_depth.circ (using GMW for boolean gates)
-Loading solve_backtracking<int32[9],int32[3],int32[3]>@bool_depth.circ (using GMW for boolean gates)
-Loading pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<1>,int32<3>>@bool_depth.circ (using GMW for boolean gates)
+Loading fixedpt_div@bool_size.circ (using YAO for boolean gates)
+Loading mpc_main@bool_size.circ (using YAO for boolean gates)
+Loading pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<0>,int32<3>>@bool_size.circ (using YAO for boolean gates)
+Loading fixedpt_mul_inner@bool_size.circ (using YAO for boolean gates)
+Loading identity<int32[9]>@bool_size.circ (using YAO for boolean gates)
+Loading abs@bool_size.circ (using YAO for boolean gates)
+Loading swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<0>,int32<2>>@bool_size.circ (using YAO for boolean gates)
+Loading swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<1>,int32<2>>@bool_size.circ (using YAO for boolean gates)
+Loading solve_backtracking<int32[9],int32[3],int32[3]>@bool_size.circ (using YAO for boolean gates)
+Loading pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<1>,int32<3>>@bool_size.circ (using YAO for boolean gates)
 Merging "identity<int32[9]>" into "gaussj_D<int32[9],int32[3],int32[3]>"
 Merging "swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<0>,int32<1>>" into "pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<0>,int32<3>>"
 Merging "swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<0>,int32<2>>" into "pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<0>,int32<3>>"
@@ -205,28 +205,28 @@ Merging "fixedpt_mul" into "solve_backtracking<int32[9],int32[3],int32[3]>"
 Merging "solve_backtracking<int32[9],int32[3],int32[3]>" into "gaussj_D<int32[9],int32[3],int32[3]>"
 Merging "gaussj_D<int32[9],int32[3],int32[3]>" into "mpc_main"
 Arithmetic bit-width: 32bit
-LOG: Client load time: 0.962505
-LOG: Client exec time: 2.23782
-INPUT_A_m : {m: int32[9]; } = {m: [2, 1, 3, 3, 7, 9, 0, 3, 1]; }
+LOG: Server load time: 0.924109
+LOG: Server exec time: 0.286138
+INPUT_B_b : {b: int32[3]; } = {b: [14, 40, 6]; }
 OUTPUT_res : {res: int32[3]; } = {res: [-1194, 0, 1536]; }
 return_value : {res: int32[3]; } = {res: [-1194, 0, 1536]; }
 
-LOG: Time / Memory: 3.30 seconds 265012 kB
+LOG: Time / Memory: 1.30 seconds 206384 kB
 LOG: RERUN: 4
 Using YAO protocol for boolean gates
-Loading swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<0>,int32<1>>@bool_depth.circ (using GMW for boolean gates)
-Loading fixedpt_mul@bool_depth.circ (using GMW for boolean gates)
+Loading swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<0>,int32<1>>@bool_size.circ (using YAO for boolean gates)
+Loading fixedpt_mul@bool_size.circ (using YAO for boolean gates)
 Loading gaussj_D<int32[9],int32[3],int32[3]>@arith.circ (using ARITH for boolean gates)
-Loading fixedpt_div@bool_depth.circ (using GMW for boolean gates)
-Loading mpc_main@bool_depth.circ (using GMW for boolean gates)
-Loading pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<0>,int32<3>>@bool_depth.circ (using GMW for boolean gates)
-Loading fixedpt_mul_inner@bool_depth.circ (using GMW for boolean gates)
-Loading identity<int32[9]>@bool_depth.circ (using GMW for boolean gates)
-Loading abs@bool_depth.circ (using GMW for boolean gates)
-Loading swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<0>,int32<2>>@bool_depth.circ (using GMW for boolean gates)
-Loading swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<1>,int32<2>>@bool_depth.circ (using GMW for boolean gates)
-Loading solve_backtracking<int32[9],int32[3],int32[3]>@bool_depth.circ (using GMW for boolean gates)
-Loading pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<1>,int32<3>>@bool_depth.circ (using GMW for boolean gates)
+Loading fixedpt_div@bool_size.circ (using YAO for boolean gates)
+Loading mpc_main@bool_size.circ (using YAO for boolean gates)
+Loading pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<0>,int32<3>>@bool_size.circ (using YAO for boolean gates)
+Loading fixedpt_mul_inner@bool_size.circ (using YAO for boolean gates)
+Loading identity<int32[9]>@bool_size.circ (using YAO for boolean gates)
+Loading abs@bool_size.circ (using YAO for boolean gates)
+Loading swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<0>,int32<2>>@bool_size.circ (using YAO for boolean gates)
+Loading swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<1>,int32<2>>@bool_size.circ (using YAO for boolean gates)
+Loading solve_backtracking<int32[9],int32[3],int32[3]>@bool_size.circ (using YAO for boolean gates)
+Loading pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<1>,int32<3>>@bool_size.circ (using YAO for boolean gates)
 Merging "identity<int32[9]>" into "gaussj_D<int32[9],int32[3],int32[3]>"
 Merging "swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<0>,int32<1>>" into "pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<0>,int32<3>>"
 Merging "swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<0>,int32<2>>" into "pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<0>,int32<3>>"
@@ -255,28 +255,28 @@ Merging "fixedpt_mul" into "solve_backtracking<int32[9],int32[3],int32[3]>"
 Merging "solve_backtracking<int32[9],int32[3],int32[3]>" into "gaussj_D<int32[9],int32[3],int32[3]>"
 Merging "gaussj_D<int32[9],int32[3],int32[3]>" into "mpc_main"
 Arithmetic bit-width: 32bit
-LOG: Client load time: 1.03966
-LOG: Client exec time: 2.23256
-INPUT_A_m : {m: int32[9]; } = {m: [2, 1, 3, 3, 7, 9, 0, 3, 1]; }
+LOG: Server load time: 0.933598
+LOG: Server exec time: 0.285319
+INPUT_B_b : {b: int32[3]; } = {b: [14, 40, 6]; }
 OUTPUT_res : {res: int32[3]; } = {res: [-1194, 0, 1536]; }
 return_value : {res: int32[3]; } = {res: [-1194, 0, 1536]; }
 
-LOG: Time / Memory: 3.37 seconds 264956 kB
+LOG: Time / Memory: 1.31 seconds 206644 kB
 LOG: RERUN: 5
 Using YAO protocol for boolean gates
-Loading swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<0>,int32<1>>@bool_depth.circ (using GMW for boolean gates)
-Loading fixedpt_mul@bool_depth.circ (using GMW for boolean gates)
+Loading swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<0>,int32<1>>@bool_size.circ (using YAO for boolean gates)
+Loading fixedpt_mul@bool_size.circ (using YAO for boolean gates)
 Loading gaussj_D<int32[9],int32[3],int32[3]>@arith.circ (using ARITH for boolean gates)
-Loading fixedpt_div@bool_depth.circ (using GMW for boolean gates)
-Loading mpc_main@bool_depth.circ (using GMW for boolean gates)
-Loading pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<0>,int32<3>>@bool_depth.circ (using GMW for boolean gates)
-Loading fixedpt_mul_inner@bool_depth.circ (using GMW for boolean gates)
-Loading identity<int32[9]>@bool_depth.circ (using GMW for boolean gates)
-Loading abs@bool_depth.circ (using GMW for boolean gates)
-Loading swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<0>,int32<2>>@bool_depth.circ (using GMW for boolean gates)
-Loading swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<1>,int32<2>>@bool_depth.circ (using GMW for boolean gates)
-Loading solve_backtracking<int32[9],int32[3],int32[3]>@bool_depth.circ (using GMW for boolean gates)
-Loading pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<1>,int32<3>>@bool_depth.circ (using GMW for boolean gates)
+Loading fixedpt_div@bool_size.circ (using YAO for boolean gates)
+Loading mpc_main@bool_size.circ (using YAO for boolean gates)
+Loading pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<0>,int32<3>>@bool_size.circ (using YAO for boolean gates)
+Loading fixedpt_mul_inner@bool_size.circ (using YAO for boolean gates)
+Loading identity<int32[9]>@bool_size.circ (using YAO for boolean gates)
+Loading abs@bool_size.circ (using YAO for boolean gates)
+Loading swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<0>,int32<2>>@bool_size.circ (using YAO for boolean gates)
+Loading swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<1>,int32<2>>@bool_size.circ (using YAO for boolean gates)
+Loading solve_backtracking<int32[9],int32[3],int32[3]>@bool_size.circ (using YAO for boolean gates)
+Loading pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<1>,int32<3>>@bool_size.circ (using YAO for boolean gates)
 Merging "identity<int32[9]>" into "gaussj_D<int32[9],int32[3],int32[3]>"
 Merging "swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<0>,int32<1>>" into "pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<0>,int32<3>>"
 Merging "swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<0>,int32<2>>" into "pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<0>,int32<3>>"
@@ -305,28 +305,28 @@ Merging "fixedpt_mul" into "solve_backtracking<int32[9],int32[3],int32[3]>"
 Merging "solve_backtracking<int32[9],int32[3],int32[3]>" into "gaussj_D<int32[9],int32[3],int32[3]>"
 Merging "gaussj_D<int32[9],int32[3],int32[3]>" into "mpc_main"
 Arithmetic bit-width: 32bit
-LOG: Client load time: 0.939809
-LOG: Client exec time: 2.15114
-INPUT_A_m : {m: int32[9]; } = {m: [2, 1, 3, 3, 7, 9, 0, 3, 1]; }
+LOG: Server load time: 0.920068
+LOG: Server exec time: 0.276101
+INPUT_B_b : {b: int32[3]; } = {b: [14, 40, 6]; }
 OUTPUT_res : {res: int32[3]; } = {res: [-1194, 0, 1536]; }
 return_value : {res: int32[3]; } = {res: [-1194, 0, 1536]; }
 
-LOG: Time / Memory: 3.19 seconds 264800 kB
+LOG: Time / Memory: 1.29 seconds 206520 kB
 LOG: RERUN: 6
 Using YAO protocol for boolean gates
-Loading swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<0>,int32<1>>@bool_depth.circ (using GMW for boolean gates)
-Loading fixedpt_mul@bool_depth.circ (using GMW for boolean gates)
+Loading swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<0>,int32<1>>@bool_size.circ (using YAO for boolean gates)
+Loading fixedpt_mul@bool_size.circ (using YAO for boolean gates)
 Loading gaussj_D<int32[9],int32[3],int32[3]>@arith.circ (using ARITH for boolean gates)
-Loading fixedpt_div@bool_depth.circ (using GMW for boolean gates)
-Loading mpc_main@bool_depth.circ (using GMW for boolean gates)
-Loading pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<0>,int32<3>>@bool_depth.circ (using GMW for boolean gates)
-Loading fixedpt_mul_inner@bool_depth.circ (using GMW for boolean gates)
-Loading identity<int32[9]>@bool_depth.circ (using GMW for boolean gates)
-Loading abs@bool_depth.circ (using GMW for boolean gates)
-Loading swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<0>,int32<2>>@bool_depth.circ (using GMW for boolean gates)
-Loading swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<1>,int32<2>>@bool_depth.circ (using GMW for boolean gates)
-Loading solve_backtracking<int32[9],int32[3],int32[3]>@bool_depth.circ (using GMW for boolean gates)
-Loading pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<1>,int32<3>>@bool_depth.circ (using GMW for boolean gates)
+Loading fixedpt_div@bool_size.circ (using YAO for boolean gates)
+Loading mpc_main@bool_size.circ (using YAO for boolean gates)
+Loading pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<0>,int32<3>>@bool_size.circ (using YAO for boolean gates)
+Loading fixedpt_mul_inner@bool_size.circ (using YAO for boolean gates)
+Loading identity<int32[9]>@bool_size.circ (using YAO for boolean gates)
+Loading abs@bool_size.circ (using YAO for boolean gates)
+Loading swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<0>,int32<2>>@bool_size.circ (using YAO for boolean gates)
+Loading swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<1>,int32<2>>@bool_size.circ (using YAO for boolean gates)
+Loading solve_backtracking<int32[9],int32[3],int32[3]>@bool_size.circ (using YAO for boolean gates)
+Loading pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<1>,int32<3>>@bool_size.circ (using YAO for boolean gates)
 Merging "identity<int32[9]>" into "gaussj_D<int32[9],int32[3],int32[3]>"
 Merging "swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<0>,int32<1>>" into "pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<0>,int32<3>>"
 Merging "swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<0>,int32<2>>" into "pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<0>,int32<3>>"
@@ -355,28 +355,28 @@ Merging "fixedpt_mul" into "solve_backtracking<int32[9],int32[3],int32[3]>"
 Merging "solve_backtracking<int32[9],int32[3],int32[3]>" into "gaussj_D<int32[9],int32[3],int32[3]>"
 Merging "gaussj_D<int32[9],int32[3],int32[3]>" into "mpc_main"
 Arithmetic bit-width: 32bit
-LOG: Client load time: 0.978751
-LOG: Client exec time: 2.18159
-INPUT_A_m : {m: int32[9]; } = {m: [2, 1, 3, 3, 7, 9, 0, 3, 1]; }
+LOG: Server load time: 0.919585
+LOG: Server exec time: 0.277128
+INPUT_B_b : {b: int32[3]; } = {b: [14, 40, 6]; }
 OUTPUT_res : {res: int32[3]; } = {res: [-1194, 0, 1536]; }
 return_value : {res: int32[3]; } = {res: [-1194, 0, 1536]; }
 
-LOG: Time / Memory: 3.26 seconds 264656 kB
+LOG: Time / Memory: 1.29 seconds 206480 kB
 LOG: RERUN: 7
 Using YAO protocol for boolean gates
-Loading swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<0>,int32<1>>@bool_depth.circ (using GMW for boolean gates)
-Loading fixedpt_mul@bool_depth.circ (using GMW for boolean gates)
+Loading swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<0>,int32<1>>@bool_size.circ (using YAO for boolean gates)
+Loading fixedpt_mul@bool_size.circ (using YAO for boolean gates)
 Loading gaussj_D<int32[9],int32[3],int32[3]>@arith.circ (using ARITH for boolean gates)
-Loading fixedpt_div@bool_depth.circ (using GMW for boolean gates)
-Loading mpc_main@bool_depth.circ (using GMW for boolean gates)
-Loading pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<0>,int32<3>>@bool_depth.circ (using GMW for boolean gates)
-Loading fixedpt_mul_inner@bool_depth.circ (using GMW for boolean gates)
-Loading identity<int32[9]>@bool_depth.circ (using GMW for boolean gates)
-Loading abs@bool_depth.circ (using GMW for boolean gates)
-Loading swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<0>,int32<2>>@bool_depth.circ (using GMW for boolean gates)
-Loading swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<1>,int32<2>>@bool_depth.circ (using GMW for boolean gates)
-Loading solve_backtracking<int32[9],int32[3],int32[3]>@bool_depth.circ (using GMW for boolean gates)
-Loading pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<1>,int32<3>>@bool_depth.circ (using GMW for boolean gates)
+Loading fixedpt_div@bool_size.circ (using YAO for boolean gates)
+Loading mpc_main@bool_size.circ (using YAO for boolean gates)
+Loading pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<0>,int32<3>>@bool_size.circ (using YAO for boolean gates)
+Loading fixedpt_mul_inner@bool_size.circ (using YAO for boolean gates)
+Loading identity<int32[9]>@bool_size.circ (using YAO for boolean gates)
+Loading abs@bool_size.circ (using YAO for boolean gates)
+Loading swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<0>,int32<2>>@bool_size.circ (using YAO for boolean gates)
+Loading swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<1>,int32<2>>@bool_size.circ (using YAO for boolean gates)
+Loading solve_backtracking<int32[9],int32[3],int32[3]>@bool_size.circ (using YAO for boolean gates)
+Loading pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<1>,int32<3>>@bool_size.circ (using YAO for boolean gates)
 Merging "identity<int32[9]>" into "gaussj_D<int32[9],int32[3],int32[3]>"
 Merging "swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<0>,int32<1>>" into "pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<0>,int32<3>>"
 Merging "swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<0>,int32<2>>" into "pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<0>,int32<3>>"
@@ -405,28 +405,28 @@ Merging "fixedpt_mul" into "solve_backtracking<int32[9],int32[3],int32[3]>"
 Merging "solve_backtracking<int32[9],int32[3],int32[3]>" into "gaussj_D<int32[9],int32[3],int32[3]>"
 Merging "gaussj_D<int32[9],int32[3],int32[3]>" into "mpc_main"
 Arithmetic bit-width: 32bit
-LOG: Client load time: 0.935126
-LOG: Client exec time: 2.12925
-INPUT_A_m : {m: int32[9]; } = {m: [2, 1, 3, 3, 7, 9, 0, 3, 1]; }
+LOG: Server load time: 0.923621
+LOG: Server exec time: 0.299119
+INPUT_B_b : {b: int32[3]; } = {b: [14, 40, 6]; }
 OUTPUT_res : {res: int32[3]; } = {res: [-1194, 0, 1536]; }
 return_value : {res: int32[3]; } = {res: [-1194, 0, 1536]; }
 
-LOG: Time / Memory: 3.16 seconds 264716 kB
+LOG: Time / Memory: 1.31 seconds 206740 kB
 LOG: RERUN: 8
 Using YAO protocol for boolean gates
-Loading swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<0>,int32<1>>@bool_depth.circ (using GMW for boolean gates)
-Loading fixedpt_mul@bool_depth.circ (using GMW for boolean gates)
+Loading swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<0>,int32<1>>@bool_size.circ (using YAO for boolean gates)
+Loading fixedpt_mul@bool_size.circ (using YAO for boolean gates)
 Loading gaussj_D<int32[9],int32[3],int32[3]>@arith.circ (using ARITH for boolean gates)
-Loading fixedpt_div@bool_depth.circ (using GMW for boolean gates)
-Loading mpc_main@bool_depth.circ (using GMW for boolean gates)
-Loading pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<0>,int32<3>>@bool_depth.circ (using GMW for boolean gates)
-Loading fixedpt_mul_inner@bool_depth.circ (using GMW for boolean gates)
-Loading identity<int32[9]>@bool_depth.circ (using GMW for boolean gates)
-Loading abs@bool_depth.circ (using GMW for boolean gates)
-Loading swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<0>,int32<2>>@bool_depth.circ (using GMW for boolean gates)
-Loading swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<1>,int32<2>>@bool_depth.circ (using GMW for boolean gates)
-Loading solve_backtracking<int32[9],int32[3],int32[3]>@bool_depth.circ (using GMW for boolean gates)
-Loading pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<1>,int32<3>>@bool_depth.circ (using GMW for boolean gates)
+Loading fixedpt_div@bool_size.circ (using YAO for boolean gates)
+Loading mpc_main@bool_size.circ (using YAO for boolean gates)
+Loading pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<0>,int32<3>>@bool_size.circ (using YAO for boolean gates)
+Loading fixedpt_mul_inner@bool_size.circ (using YAO for boolean gates)
+Loading identity<int32[9]>@bool_size.circ (using YAO for boolean gates)
+Loading abs@bool_size.circ (using YAO for boolean gates)
+Loading swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<0>,int32<2>>@bool_size.circ (using YAO for boolean gates)
+Loading swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<1>,int32<2>>@bool_size.circ (using YAO for boolean gates)
+Loading solve_backtracking<int32[9],int32[3],int32[3]>@bool_size.circ (using YAO for boolean gates)
+Loading pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<1>,int32<3>>@bool_size.circ (using YAO for boolean gates)
 Merging "identity<int32[9]>" into "gaussj_D<int32[9],int32[3],int32[3]>"
 Merging "swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<0>,int32<1>>" into "pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<0>,int32<3>>"
 Merging "swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<0>,int32<2>>" into "pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<0>,int32<3>>"
@@ -455,28 +455,28 @@ Merging "fixedpt_mul" into "solve_backtracking<int32[9],int32[3],int32[3]>"
 Merging "solve_backtracking<int32[9],int32[3],int32[3]>" into "gaussj_D<int32[9],int32[3],int32[3]>"
 Merging "gaussj_D<int32[9],int32[3],int32[3]>" into "mpc_main"
 Arithmetic bit-width: 32bit
-LOG: Client load time: 0.974486
-LOG: Client exec time: 2.11062
-INPUT_A_m : {m: int32[9]; } = {m: [2, 1, 3, 3, 7, 9, 0, 3, 1]; }
+LOG: Server load time: 0.896885
+LOG: Server exec time: 0.293434
+INPUT_B_b : {b: int32[3]; } = {b: [14, 40, 6]; }
 OUTPUT_res : {res: int32[3]; } = {res: [-1194, 0, 1536]; }
 return_value : {res: int32[3]; } = {res: [-1194, 0, 1536]; }
 
-LOG: Time / Memory: 3.18 seconds 265048 kB
+LOG: Time / Memory: 1.28 seconds 206424 kB
 LOG: RERUN: 9
 Using YAO protocol for boolean gates
-Loading swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<0>,int32<1>>@bool_depth.circ (using GMW for boolean gates)
-Loading fixedpt_mul@bool_depth.circ (using GMW for boolean gates)
+Loading swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<0>,int32<1>>@bool_size.circ (using YAO for boolean gates)
+Loading fixedpt_mul@bool_size.circ (using YAO for boolean gates)
 Loading gaussj_D<int32[9],int32[3],int32[3]>@arith.circ (using ARITH for boolean gates)
-Loading fixedpt_div@bool_depth.circ (using GMW for boolean gates)
-Loading mpc_main@bool_depth.circ (using GMW for boolean gates)
-Loading pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<0>,int32<3>>@bool_depth.circ (using GMW for boolean gates)
-Loading fixedpt_mul_inner@bool_depth.circ (using GMW for boolean gates)
-Loading identity<int32[9]>@bool_depth.circ (using GMW for boolean gates)
-Loading abs@bool_depth.circ (using GMW for boolean gates)
-Loading swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<0>,int32<2>>@bool_depth.circ (using GMW for boolean gates)
-Loading swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<1>,int32<2>>@bool_depth.circ (using GMW for boolean gates)
-Loading solve_backtracking<int32[9],int32[3],int32[3]>@bool_depth.circ (using GMW for boolean gates)
-Loading pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<1>,int32<3>>@bool_depth.circ (using GMW for boolean gates)
+Loading fixedpt_div@bool_size.circ (using YAO for boolean gates)
+Loading mpc_main@bool_size.circ (using YAO for boolean gates)
+Loading pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<0>,int32<3>>@bool_size.circ (using YAO for boolean gates)
+Loading fixedpt_mul_inner@bool_size.circ (using YAO for boolean gates)
+Loading identity<int32[9]>@bool_size.circ (using YAO for boolean gates)
+Loading abs@bool_size.circ (using YAO for boolean gates)
+Loading swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<0>,int32<2>>@bool_size.circ (using YAO for boolean gates)
+Loading swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<1>,int32<2>>@bool_size.circ (using YAO for boolean gates)
+Loading solve_backtracking<int32[9],int32[3],int32[3]>@bool_size.circ (using YAO for boolean gates)
+Loading pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<1>,int32<3>>@bool_size.circ (using YAO for boolean gates)
 Merging "identity<int32[9]>" into "gaussj_D<int32[9],int32[3],int32[3]>"
 Merging "swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<0>,int32<1>>" into "pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<0>,int32<3>>"
 Merging "swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<0>,int32<2>>" into "pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<0>,int32<3>>"
@@ -505,10 +505,10 @@ Merging "fixedpt_mul" into "solve_backtracking<int32[9],int32[3],int32[3]>"
 Merging "solve_backtracking<int32[9],int32[3],int32[3]>" into "gaussj_D<int32[9],int32[3],int32[3]>"
 Merging "gaussj_D<int32[9],int32[3],int32[3]>" into "mpc_main"
 Arithmetic bit-width: 32bit
-LOG: Client load time: 0.953681
-LOG: Client exec time: 2.11103
-INPUT_A_m : {m: int32[9]; } = {m: [2, 1, 3, 3, 7, 9, 0, 3, 1]; }
+LOG: Server load time: 0.912168
+LOG: Server exec time: 0.284599
+INPUT_B_b : {b: int32[3]; } = {b: [14, 40, 6]; }
 OUTPUT_res : {res: int32[3]; } = {res: [-1194, 0, 1536]; }
 return_value : {res: int32[3]; } = {res: [-1194, 0, 1536]; }
 
-LOG: Time / Memory: 3.17 seconds 264688 kB
+LOG: Time / Memory: 1.29 seconds 206632 kB

@@ -1,0 +1,48 @@
+LOG: ====================================
+LOG: Benchmarking HyCC
+LOG: ====================================
+LOG: TEST: db_merge
+LOG: SELECTION_SCHEME: gmwhybrid
+LOG: MINIMIZATION_TIME: 600
+LOG: ARGUMENTS: ['--all-variants']
+LOG: ====================================
+LOG: RERUN: 0
+LOG: Server load time: 4.46864
+LOG: Server exec time: 1.32302
+LOG: Time / Memory: 6.49 seconds 850336 kB
+LOG: RERUN: 1
+LOG: Server load time: 4.51592
+LOG: Server exec time: 1.31771
+LOG: Time / Memory: 6.54 seconds 850236 kB
+LOG: RERUN: 2
+LOG: Server load time: 4.47338
+LOG: Server exec time: 1.31598
+LOG: Time / Memory: 6.48 seconds 850252 kB
+LOG: RERUN: 3
+LOG: Server load time: 4.39089
+LOG: Server exec time: 1.44984
+LOG: Time / Memory: 6.55 seconds 850152 kB
+LOG: RERUN: 4
+LOG: Server load time: 4.3866
+LOG: Server exec time: 1.36174
+LOG: Time / Memory: 6.44 seconds 850384 kB
+LOG: RERUN: 5
+LOG: Server load time: 4.40942
+LOG: Server exec time: 1.29169
+LOG: Time / Memory: 6.39 seconds 850424 kB
+LOG: RERUN: 6
+LOG: Server load time: 4.4042
+LOG: Server exec time: 1.40613
+LOG: Time / Memory: 6.50 seconds 850324 kB
+LOG: RERUN: 7
+LOG: Server load time: 4.38902
+LOG: Server exec time: 1.3353
+LOG: Time / Memory: 6.41 seconds 850116 kB
+LOG: RERUN: 8
+LOG: Server load time: 4.3705
+LOG: Server exec time: 1.42017
+LOG: Time / Memory: 6.48 seconds 850136 kB
+LOG: RERUN: 9
+LOG: Server load time: 4.36402
+LOG: Server exec time: 1.37084
+LOG: Time / Memory: 6.44 seconds 850384 kB

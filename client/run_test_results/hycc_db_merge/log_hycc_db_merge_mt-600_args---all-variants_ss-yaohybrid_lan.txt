@@ -7,6 +7,42 @@ LOG: MINIMIZATION_TIME: 600
 LOG: ARGUMENTS: ['--all-variants']
 LOG: ====================================
 LOG: RERUN: 0
-LOG: Error: Process returned with status code 134
-LOG: Error message: terminate called after throwing an instance of 'std::out_of_range'   what():  _Map_base::at Command terminated by signal 6 3.20 seconds 654892 kB Command exited with non-zero status 134 3.20 seconds 654892 kB
-LOG: Failed yaohybrid with args: --all-variants, exception:
+LOG: Client load time: 4.10965
+LOG: Client exec time: 0.445768
+LOG: Time / Memory: 5.19 seconds 740840 kB
+LOG: RERUN: 1
+LOG: Client load time: 4.03378
+LOG: Client exec time: 0.436085
+LOG: Time / Memory: 5.10 seconds 740812 kB
+LOG: RERUN: 2
+LOG: Client load time: 4.04424
+LOG: Client exec time: 0.465167
+LOG: Time / Memory: 5.15 seconds 740828 kB
+LOG: RERUN: 3
+LOG: Client load time: 4.04284
+LOG: Client exec time: 0.440576
+LOG: Time / Memory: 5.11 seconds 740604 kB
+LOG: RERUN: 4
+LOG: Client load time: 4.03953
+LOG: Client exec time: 0.435297
+LOG: Time / Memory: 5.10 seconds 740476 kB
+LOG: RERUN: 5
+LOG: Client load time: 4.04269
+LOG: Client exec time: 0.436035
+LOG: Time / Memory: 5.11 seconds 740828 kB
+LOG: RERUN: 6
+LOG: Client load time: 4.03221
+LOG: Client exec time: 0.453007
+LOG: Time / Memory: 5.13 seconds 740796 kB
+LOG: RERUN: 7
+LOG: Client load time: 4.05985
+LOG: Client exec time: 0.463942
+LOG: Time / Memory: 5.15 seconds 740804 kB
+LOG: RERUN: 8
+LOG: Client load time: 4.04663
+LOG: Client exec time: 0.44529
+LOG: Time / Memory: 5.13 seconds 740888 kB
+LOG: RERUN: 9
+LOG: Client load time: 4.04551
+LOG: Client exec time: 0.4493
+LOG: Time / Memory: 5.13 seconds 740884 kB
