@@ -1,1 +1,1 @@
-LOG: Total hycc benchmark time: 0.015894651412963867
+LOG: Total hycc benchmark time: 71.76665925979614
