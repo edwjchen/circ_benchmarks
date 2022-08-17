@@ -1,0 +1,48 @@
+LOG: ====================================
+LOG: Benchmarking HyCC
+LOG: ====================================
+LOG: TEST: cryptonets
+LOG: SELECTION_SCHEME: hycc_optimized
+LOG: MINIMIZATION_TIME: 600
+LOG: ARGUMENTS: ['--all-variants']
+LOG: ====================================
+LOG: RERUN: 0
+LOG: Client load time: 2.36214
+LOG: Client exec time: 1.05655
+LOG: Time / Memory: 3.81 seconds 457844 kB
+LOG: RERUN: 1
+LOG: Client load time: 2.37566
+LOG: Client exec time: 0.978937
+LOG: Time / Memory: 3.74 seconds 460480 kB
+LOG: RERUN: 2
+LOG: Client load time: 2.38284
+LOG: Client exec time: 1.01299
+LOG: Time / Memory: 3.77 seconds 459880 kB
+LOG: RERUN: 3
+LOG: Client load time: 2.35192
+LOG: Client exec time: 1.01577
+LOG: Time / Memory: 3.73 seconds 457924 kB
+LOG: RERUN: 4
+LOG: Client load time: 2.29685
+LOG: Client exec time: 1.06837
+LOG: Time / Memory: 3.74 seconds 458088 kB
+LOG: RERUN: 5
+LOG: Client load time: 2.34068
+LOG: Client exec time: 0.997755
+LOG: Time / Memory: 3.71 seconds 462940 kB
+LOG: RERUN: 6
+LOG: Client load time: 2.38649
+LOG: Client exec time: 1.03114
+LOG: Time / Memory: 3.81 seconds 458564 kB
+LOG: RERUN: 7
+LOG: Client load time: 2.37209
+LOG: Client exec time: 1.09075
+LOG: Time / Memory: 3.85 seconds 457992 kB
+LOG: RERUN: 8
+LOG: Client load time: 2.33051
+LOG: Client exec time: 1.05466
+LOG: Time / Memory: 3.76 seconds 458336 kB
+LOG: RERUN: 9
+LOG: Client load time: 2.27975
+LOG: Client exec time: 1.14541
+LOG: Time / Memory: 3.80 seconds 458572 kB
