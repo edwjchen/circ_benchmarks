@@ -55,13 +55,13 @@ Merging "fixedpt_mul" into "solve_backtracking<int32[9],int32[3],int32[3]>"
 Merging "solve_backtracking<int32[9],int32[3],int32[3]>" into "gaussj_D<int32[9],int32[3],int32[3]>"
 Merging "gaussj_D<int32[9],int32[3],int32[3]>" into "mpc_main"
 Arithmetic bit-width: 32bit
-LOG: Client load time: 0.976803
-LOG: Client exec time: 258.147
-INPUT_A_m : {m: int32[9]; } = {m: [2, 1, 3, 3, 7, 9, 0, 3, 1]; }
+LOG: Server load time: 0.950701
+LOG: Server exec time: 258.183
+INPUT_B_b : {b: int32[3]; } = {b: [14, 40, 6]; }
 OUTPUT_res : {res: int32[3]; } = {res: [-1194, 0, 1536]; }
 return_value : {res: int32[3]; } = {res: [-1194, 0, 1536]; }
 
-LOG: Time / Memory: 259.22 seconds 264956 kB
+LOG: Time / Memory: 259.23 seconds 264756 kB
 LOG: RERUN: 1
 Using YAO protocol for boolean gates
 Loading swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<0>,int32<1>>@bool_depth.circ (using GMW for boolean gates)
@@ -105,13 +105,13 @@ Merging "fixedpt_mul" into "solve_backtracking<int32[9],int32[3],int32[3]>"
 Merging "solve_backtracking<int32[9],int32[3],int32[3]>" into "gaussj_D<int32[9],int32[3],int32[3]>"
 Merging "gaussj_D<int32[9],int32[3],int32[3]>" into "mpc_main"
 Arithmetic bit-width: 32bit
-LOG: Client load time: 0.905496
-LOG: Client exec time: 259.187
-INPUT_A_m : {m: int32[9]; } = {m: [2, 1, 3, 3, 7, 9, 0, 3, 1]; }
+LOG: Server load time: 0.93242
+LOG: Server exec time: 259.158
+INPUT_B_b : {b: int32[3]; } = {b: [14, 40, 6]; }
 OUTPUT_res : {res: int32[3]; } = {res: [-1194, 0, 1536]; }
 return_value : {res: int32[3]; } = {res: [-1194, 0, 1536]; }
 
-LOG: Time / Memory: 260.19 seconds 264612 kB
+LOG: Time / Memory: 260.19 seconds 264940 kB
 LOG: RERUN: 2
 Using YAO protocol for boolean gates
 Loading swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<0>,int32<1>>@bool_depth.circ (using GMW for boolean gates)
@@ -155,13 +155,13 @@ Merging "fixedpt_mul" into "solve_backtracking<int32[9],int32[3],int32[3]>"
 Merging "solve_backtracking<int32[9],int32[3],int32[3]>" into "gaussj_D<int32[9],int32[3],int32[3]>"
 Merging "gaussj_D<int32[9],int32[3],int32[3]>" into "mpc_main"
 Arithmetic bit-width: 32bit
-LOG: Client load time: 0.904765
-LOG: Client exec time: 257.82
-INPUT_A_m : {m: int32[9]; } = {m: [2, 1, 3, 3, 7, 9, 0, 3, 1]; }
+LOG: Server load time: 0.94832
+LOG: Server exec time: 257.785
+INPUT_B_b : {b: int32[3]; } = {b: [14, 40, 6]; }
 OUTPUT_res : {res: int32[3]; } = {res: [-1194, 0, 1536]; }
 return_value : {res: int32[3]; } = {res: [-1194, 0, 1536]; }
 
-LOG: Time / Memory: 258.82 seconds 264940 kB
+LOG: Time / Memory: 258.85 seconds 264632 kB
 LOG: RERUN: 3
 Using YAO protocol for boolean gates
 Loading swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<0>,int32<1>>@bool_depth.circ (using GMW for boolean gates)
@@ -205,13 +205,13 @@ Merging "fixedpt_mul" into "solve_backtracking<int32[9],int32[3],int32[3]>"
 Merging "solve_backtracking<int32[9],int32[3],int32[3]>" into "gaussj_D<int32[9],int32[3],int32[3]>"
 Merging "gaussj_D<int32[9],int32[3],int32[3]>" into "mpc_main"
 Arithmetic bit-width: 32bit
-LOG: Client load time: 0.921139
-LOG: Client exec time: 259.369
-INPUT_A_m : {m: int32[9]; } = {m: [2, 1, 3, 3, 7, 9, 0, 3, 1]; }
+LOG: Server load time: 1.02482
+LOG: Server exec time: 259.247
+INPUT_B_b : {b: int32[3]; } = {b: [14, 40, 6]; }
 OUTPUT_res : {res: int32[3]; } = {res: [-1194, 0, 1536]; }
 return_value : {res: int32[3]; } = {res: [-1194, 0, 1536]; }
 
-LOG: Time / Memory: 260.39 seconds 264684 kB
+LOG: Time / Memory: 260.37 seconds 264944 kB
 LOG: RERUN: 4
 Using YAO protocol for boolean gates
 Loading swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<0>,int32<1>>@bool_depth.circ (using GMW for boolean gates)
@@ -255,13 +255,13 @@ Merging "fixedpt_mul" into "solve_backtracking<int32[9],int32[3],int32[3]>"
 Merging "solve_backtracking<int32[9],int32[3],int32[3]>" into "gaussj_D<int32[9],int32[3],int32[3]>"
 Merging "gaussj_D<int32[9],int32[3],int32[3]>" into "mpc_main"
 Arithmetic bit-width: 32bit
-LOG: Client load time: 1.00553
-LOG: Client exec time: 257.846
-INPUT_A_m : {m: int32[9]; } = {m: [2, 1, 3, 3, 7, 9, 0, 3, 1]; }
+LOG: Server load time: 0.973037
+LOG: Server exec time: 257.88
+INPUT_B_b : {b: int32[3]; } = {b: [14, 40, 6]; }
 OUTPUT_res : {res: int32[3]; } = {res: [-1194, 0, 1536]; }
 return_value : {res: int32[3]; } = {res: [-1194, 0, 1536]; }
 
-LOG: Time / Memory: 258.95 seconds 265056 kB
+LOG: Time / Memory: 258.95 seconds 264680 kB
 LOG: RERUN: 5
 Using YAO protocol for boolean gates
 Loading swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<0>,int32<1>>@bool_depth.circ (using GMW for boolean gates)
@@ -305,13 +305,13 @@ Merging "fixedpt_mul" into "solve_backtracking<int32[9],int32[3],int32[3]>"
 Merging "solve_backtracking<int32[9],int32[3],int32[3]>" into "gaussj_D<int32[9],int32[3],int32[3]>"
 Merging "gaussj_D<int32[9],int32[3],int32[3]>" into "mpc_main"
 Arithmetic bit-width: 32bit
-LOG: Client load time: 0.907114
-LOG: Client exec time: 258.505
-INPUT_A_m : {m: int32[9]; } = {m: [2, 1, 3, 3, 7, 9, 0, 3, 1]; }
+LOG: Server load time: 0.939179
+LOG: Server exec time: 258.481
+INPUT_B_b : {b: int32[3]; } = {b: [14, 40, 6]; }
 OUTPUT_res : {res: int32[3]; } = {res: [-1194, 0, 1536]; }
 return_value : {res: int32[3]; } = {res: [-1194, 0, 1536]; }
 
-LOG: Time / Memory: 259.51 seconds 264796 kB
+LOG: Time / Memory: 259.52 seconds 264964 kB
 LOG: RERUN: 6
 Using YAO protocol for boolean gates
 Loading swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<0>,int32<1>>@bool_depth.circ (using GMW for boolean gates)
@@ -355,13 +355,13 @@ Merging "fixedpt_mul" into "solve_backtracking<int32[9],int32[3],int32[3]>"
 Merging "solve_backtracking<int32[9],int32[3],int32[3]>" into "gaussj_D<int32[9],int32[3],int32[3]>"
 Merging "gaussj_D<int32[9],int32[3],int32[3]>" into "mpc_main"
 Arithmetic bit-width: 32bit
-LOG: Client load time: 0.920126
-LOG: Client exec time: 259.308
-INPUT_A_m : {m: int32[9]; } = {m: [2, 1, 3, 3, 7, 9, 0, 3, 1]; }
+LOG: Server load time: 1.10839
+LOG: Server exec time: 259.125
+INPUT_B_b : {b: int32[3]; } = {b: [14, 40, 6]; }
 OUTPUT_res : {res: int32[3]; } = {res: [-1194, 0, 1536]; }
 return_value : {res: int32[3]; } = {res: [-1194, 0, 1536]; }
 
-LOG: Time / Memory: 260.33 seconds 264956 kB
+LOG: Time / Memory: 260.33 seconds 264992 kB
 LOG: RERUN: 7
 Using YAO protocol for boolean gates
 Loading swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<0>,int32<1>>@bool_depth.circ (using GMW for boolean gates)
@@ -405,13 +405,13 @@ Merging "fixedpt_mul" into "solve_backtracking<int32[9],int32[3],int32[3]>"
 Merging "solve_backtracking<int32[9],int32[3],int32[3]>" into "gaussj_D<int32[9],int32[3],int32[3]>"
 Merging "gaussj_D<int32[9],int32[3],int32[3]>" into "mpc_main"
 Arithmetic bit-width: 32bit
-LOG: Client load time: 0.908796
-LOG: Client exec time: 257.717
-INPUT_A_m : {m: int32[9]; } = {m: [2, 1, 3, 3, 7, 9, 0, 3, 1]; }
+LOG: Server load time: 0.942832
+LOG: Server exec time: 257.658
+INPUT_B_b : {b: int32[3]; } = {b: [14, 40, 6]; }
 OUTPUT_res : {res: int32[3]; } = {res: [-1194, 0, 1536]; }
 return_value : {res: int32[3]; } = {res: [-1194, 0, 1536]; }
 
-LOG: Time / Memory: 258.73 seconds 264932 kB
+LOG: Time / Memory: 258.70 seconds 264636 kB
 LOG: RERUN: 8
 Using YAO protocol for boolean gates
 Loading swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<0>,int32<1>>@bool_depth.circ (using GMW for boolean gates)
@@ -455,13 +455,13 @@ Merging "fixedpt_mul" into "solve_backtracking<int32[9],int32[3],int32[3]>"
 Merging "solve_backtracking<int32[9],int32[3],int32[3]>" into "gaussj_D<int32[9],int32[3],int32[3]>"
 Merging "gaussj_D<int32[9],int32[3],int32[3]>" into "mpc_main"
 Arithmetic bit-width: 32bit
-LOG: Client load time: 0.967108
-LOG: Client exec time: 259.165
-INPUT_A_m : {m: int32[9]; } = {m: [2, 1, 3, 3, 7, 9, 0, 3, 1]; }
+LOG: Server load time: 0.964778
+LOG: Server exec time: 259.156
+INPUT_B_b : {b: int32[3]; } = {b: [14, 40, 6]; }
 OUTPUT_res : {res: int32[3]; } = {res: [-1194, 0, 1536]; }
 return_value : {res: int32[3]; } = {res: [-1194, 0, 1536]; }
 
-LOG: Time / Memory: 260.23 seconds 264992 kB
+LOG: Time / Memory: 260.22 seconds 264640 kB
 LOG: RERUN: 9
 Using YAO protocol for boolean gates
 Loading swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<0>,int32<1>>@bool_depth.circ (using GMW for boolean gates)
@@ -505,10 +505,10 @@ Merging "fixedpt_mul" into "solve_backtracking<int32[9],int32[3],int32[3]>"
 Merging "solve_backtracking<int32[9],int32[3],int32[3]>" into "gaussj_D<int32[9],int32[3],int32[3]>"
 Merging "gaussj_D<int32[9],int32[3],int32[3]>" into "mpc_main"
 Arithmetic bit-width: 32bit
-LOG: Client load time: 0.978008
-LOG: Client exec time: 257.764
-INPUT_A_m : {m: int32[9]; } = {m: [2, 1, 3, 3, 7, 9, 0, 3, 1]; }
+LOG: Server load time: 1.00814
+LOG: Server exec time: 257.733
+INPUT_B_b : {b: int32[3]; } = {b: [14, 40, 6]; }
 OUTPUT_res : {res: int32[3]; } = {res: [-1194, 0, 1536]; }
 return_value : {res: int32[3]; } = {res: [-1194, 0, 1536]; }
 
-LOG: Time / Memory: 258.84 seconds 264636 kB
+LOG: Time / Memory: 258.84 seconds 264640 kB

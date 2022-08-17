@@ -7,5 +7,42 @@ LOG: MINIMIZATION_TIME: 9
 LOG: ARGUMENTS: ['--all-variants']
 LOG: ====================================
 LOG: RERUN: 0
-LOG: Error: Process returned with status code 134
-LOG: Error message: terminate called after throwing an instance of 'std::out_of_range'   what():  _Map_base::at Command terminated by signal 6 0.91 seconds 193684 kB Command exited with non-zero status 134 0.91 seconds 193684 kB
+LOG: Client load time: 0.976803
+LOG: Client exec time: 258.147
+LOG: Time / Memory: 259.22 seconds 264956 kB
+LOG: RERUN: 1
+LOG: Client load time: 0.905496
+LOG: Client exec time: 259.187
+LOG: Time / Memory: 260.19 seconds 264612 kB
+LOG: RERUN: 2
+LOG: Client load time: 0.904765
+LOG: Client exec time: 257.82
+LOG: Time / Memory: 258.82 seconds 264940 kB
+LOG: RERUN: 3
+LOG: Client load time: 0.921139
+LOG: Client exec time: 259.369
+LOG: Time / Memory: 260.39 seconds 264684 kB
+LOG: RERUN: 4
+LOG: Client load time: 1.00553
+LOG: Client exec time: 257.846
+LOG: Time / Memory: 258.95 seconds 265056 kB
+LOG: RERUN: 5
+LOG: Client load time: 0.907114
+LOG: Client exec time: 258.505
+LOG: Time / Memory: 259.51 seconds 264796 kB
+LOG: RERUN: 6
+LOG: Client load time: 0.920126
+LOG: Client exec time: 259.308
+LOG: Time / Memory: 260.33 seconds 264956 kB
+LOG: RERUN: 7
+LOG: Client load time: 0.908796
+LOG: Client exec time: 257.717
+LOG: Time / Memory: 258.73 seconds 264932 kB
+LOG: RERUN: 8
+LOG: Client load time: 0.967108
+LOG: Client exec time: 259.165
+LOG: Time / Memory: 260.23 seconds 264992 kB
+LOG: RERUN: 9
+LOG: Client load time: 0.978008
+LOG: Client exec time: 257.764
+LOG: Time / Memory: 258.84 seconds 264636 kB
