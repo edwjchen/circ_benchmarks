@@ -1,4 +1,48 @@
-LOG: Client load time: 3.92216
-LOG: Error: Process returned with status code 1
-LOG: Error message: Connect failed due to timeout! Command exited with non-zero status 1 61.74 seconds 570488 kB Command exited with non-zero status 1 61.74 seconds 570488 kB
-LOG: Failed hycc_optimized with args: --all-variants, exception:
+LOG: ====================================
+LOG: Benchmarking HyCC
+LOG: ====================================
+LOG: TEST: mnist_decomp_convolution
+LOG: SELECTION_SCHEME: hycc_optimized
+LOG: MINIMIZATION_TIME: 600
+LOG: ARGUMENTS: ['--all-variants']
+LOG: ====================================
+LOG: RERUN: 0
+LOG: Client load time: 3.95899
+LOG: Client exec time: 1.72579
+LOG: Time / Memory: 5.94 seconds 577084 kB
+LOG: RERUN: 1
+LOG: Client load time: 3.91978
+LOG: Client exec time: 0.972472
+LOG: Time / Memory: 5.13 seconds 577196 kB
+LOG: RERUN: 2
+LOG: Client load time: 4.02931
+LOG: Client exec time: 0.974271
+LOG: Time / Memory: 5.24 seconds 577160 kB
+LOG: RERUN: 3
+LOG: Client load time: 3.78606
+LOG: Client exec time: 1.20679
+LOG: Time / Memory: 5.24 seconds 577160 kB
+LOG: RERUN: 4
+LOG: Client load time: 3.99984
+LOG: Client exec time: 0.971819
+LOG: Time / Memory: 5.20 seconds 577112 kB
+LOG: RERUN: 5
+LOG: Client load time: 3.69422
+LOG: Client exec time: 1.26317
+LOG: Time / Memory: 5.19 seconds 577268 kB
+LOG: RERUN: 6
+LOG: Client load time: 3.74621
+LOG: Client exec time: 1.26378
+LOG: Time / Memory: 5.24 seconds 577080 kB
+LOG: RERUN: 7
+LOG: Client load time: 3.79085
+LOG: Client exec time: 1.26244
+LOG: Time / Memory: 5.28 seconds 576900 kB
+LOG: RERUN: 8
+LOG: Client load time: 3.68214
+LOG: Client exec time: 1.26339
+LOG: Time / Memory: 5.17 seconds 576968 kB
+LOG: RERUN: 9
+LOG: Client load time: 3.68482
+LOG: Client exec time: 1.26229
+LOG: Time / Memory: 5.18 seconds 577224 kB
