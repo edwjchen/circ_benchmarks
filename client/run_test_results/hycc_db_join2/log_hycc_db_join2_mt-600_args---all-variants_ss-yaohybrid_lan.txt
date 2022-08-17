@@ -1,0 +1,48 @@
+LOG: ====================================
+LOG: Benchmarking HyCC
+LOG: ====================================
+LOG: TEST: db_join2
+LOG: SELECTION_SCHEME: yaohybrid
+LOG: MINIMIZATION_TIME: 600
+LOG: ARGUMENTS: ['--all-variants']
+LOG: ====================================
+LOG: RERUN: 0
+LOG: Client load time: 25.5391
+LOG: Client exec time: 0.636512
+LOG: Time / Memory: 26.86 seconds 787280 kB
+LOG: RERUN: 1
+LOG: Client load time: 25.4714
+LOG: Client exec time: 0.66346
+LOG: Time / Memory: 26.80 seconds 786952 kB
+LOG: RERUN: 2
+LOG: Client load time: 25.3782
+LOG: Client exec time: 0.632435
+LOG: Time / Memory: 26.68 seconds 786884 kB
+LOG: RERUN: 3
+LOG: Client load time: 25.407
+LOG: Client exec time: 0.636234
+LOG: Time / Memory: 26.71 seconds 787100 kB
+LOG: RERUN: 4
+LOG: Client load time: 25.5379
+LOG: Client exec time: 0.640496
+LOG: Time / Memory: 26.84 seconds 787024 kB
+LOG: RERUN: 5
+LOG: Client load time: 25.5298
+LOG: Client exec time: 0.639756
+LOG: Time / Memory: 26.82 seconds 786904 kB
+LOG: RERUN: 6
+LOG: Client load time: 25.519
+LOG: Client exec time: 0.719312
+LOG: Time / Memory: 26.90 seconds 786776 kB
+LOG: RERUN: 7
+LOG: Client load time: 25.425
+LOG: Client exec time: 0.602308
+LOG: Time / Memory: 26.68 seconds 787192 kB
+LOG: RERUN: 8
+LOG: Client load time: 25.3501
+LOG: Client exec time: 0.635102
+LOG: Time / Memory: 26.63 seconds 786920 kB
+LOG: RERUN: 9
+LOG: Client load time: 25.5088
+LOG: Client exec time: 0.688645
+LOG: Time / Memory: 26.85 seconds 787252 kB

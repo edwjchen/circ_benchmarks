@@ -1,0 +1,39 @@
+LOG: Server load time: 25.0794
+LOG: Server exec time: 1.22325
+LOG: Time / Memory: 26.96 seconds 793476 kB
+LOG: RERUN: 1
+LOG: Server load time: 25.1941
+LOG: Server exec time: 0.959688
+LOG: Time / Memory: 26.77 seconds 793908 kB
+LOG: RERUN: 2
+LOG: Server load time: 25.1305
+LOG: Server exec time: 0.927684
+LOG: Time / Memory: 26.68 seconds 793592 kB
+LOG: RERUN: 3
+LOG: Server load time: 25.4448
+LOG: Server exec time: 0.647744
+LOG: Time / Memory: 26.72 seconds 793464 kB
+LOG: RERUN: 4
+LOG: Server load time: 25.5272
+LOG: Server exec time: 0.69738
+LOG: Time / Memory: 26.85 seconds 793704 kB
+LOG: RERUN: 5
+LOG: Server load time: 25.3629
+LOG: Server exec time: 0.838207
+LOG: Time / Memory: 26.84 seconds 793660 kB
+LOG: RERUN: 6
+LOG: Server load time: 25.5889
+LOG: Server exec time: 0.668378
+LOG: Time / Memory: 26.91 seconds 793048 kB
+LOG: RERUN: 7
+LOG: Server load time: 25.1105
+LOG: Server exec time: 0.935002
+LOG: Time / Memory: 26.66 seconds 793368 kB
+LOG: RERUN: 8
+LOG: Server load time: 25.3069
+LOG: Server exec time: 0.717812
+LOG: Time / Memory: 26.65 seconds 793560 kB
+LOG: RERUN: 9
+LOG: Server load time: 25.4542
+LOG: Server exec time: 0.767244
+LOG: Time / Memory: 26.85 seconds 793492 kB

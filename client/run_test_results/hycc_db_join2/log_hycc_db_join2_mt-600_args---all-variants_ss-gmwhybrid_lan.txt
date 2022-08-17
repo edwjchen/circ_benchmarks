@@ -1,0 +1,48 @@
+LOG: ====================================
+LOG: Benchmarking HyCC
+LOG: ====================================
+LOG: TEST: db_join2
+LOG: SELECTION_SCHEME: gmwhybrid
+LOG: MINIMIZATION_TIME: 600
+LOG: ARGUMENTS: ['--all-variants']
+LOG: ====================================
+LOG: RERUN: 0
+LOG: Client load time: 26.5587
+LOG: Client exec time: 0.903301
+LOG: Time / Memory: 28.29 seconds 939820 kB
+LOG: RERUN: 1
+LOG: Client load time: 26.6144
+LOG: Client exec time: 0.91091
+LOG: Time / Memory: 28.36 seconds 939352 kB
+LOG: RERUN: 2
+LOG: Client load time: 26.3437
+LOG: Client exec time: 1.03455
+LOG: Time / Memory: 28.19 seconds 939848 kB
+LOG: RERUN: 3
+LOG: Client load time: 26.5792
+LOG: Client exec time: 0.818083
+LOG: Time / Memory: 28.23 seconds 940340 kB
+LOG: RERUN: 4
+LOG: Client load time: 26.8004
+LOG: Client exec time: 0.869619
+LOG: Time / Memory: 28.50 seconds 940096 kB
+LOG: RERUN: 5
+LOG: Client load time: 26.5564
+LOG: Client exec time: 0.80897
+LOG: Time / Memory: 28.22 seconds 940260 kB
+LOG: RERUN: 6
+LOG: Client load time: 26.7204
+LOG: Client exec time: 0.901114
+LOG: Time / Memory: 28.45 seconds 939652 kB
+LOG: RERUN: 7
+LOG: Client load time: 26.6496
+LOG: Client exec time: 0.826024
+LOG: Time / Memory: 28.32 seconds 940008 kB
+LOG: RERUN: 8
+LOG: Client load time: 26.6998
+LOG: Client exec time: 0.882125
+LOG: Time / Memory: 28.42 seconds 939644 kB
+LOG: RERUN: 9
+LOG: Client load time: 26.6641
+LOG: Client exec time: 0.948083
+LOG: Time / Memory: 28.43 seconds 939912 kB
