@@ -154,6 +154,13 @@ def parse_hycc_logs():
 
         min_optimized_wan = 1000000
         min_optimized_scheme_wan = ""
+
+        min_lan = 1000000
+        min_scheme_lan = ""
+
+        min_wan = 1000000
+        min_scheme_wan = ""
+
         for ss in selection_schemes:
             server_exec_times = list(df[(df["TEST"] == test) & (df["SELECTION_SCHEME"] == ss)]["Server exec time"])
             if len(server_exec_times) >= 1:
@@ -169,11 +176,29 @@ def parse_hycc_logs():
                     if "optimized" in ss and "wan" in ss and t < min_optimized_wan and "hycc" not in ss:
                         min_optimized_wan = t
                         min_optimized_scheme_wan = ss
+
+                    if "optimized" not in ss and "lan" in ss and t < min_lan:
+                        min_lan = t
+                        min_scheme_lan = ss
+                    if "optimized" not in ss and "wan" in ss and t < min_wan:
+                        min_wan = t
+                        min_scheme_wan = ss
         print()
+        if min_scheme_lan:
+            print(test)
+            print("min lan:", min_scheme_lan)
+            print("min lan time:", min_lan)
+
         if min_optimized_scheme_lan:
             print(test)
             print("min opt lan:", min_optimized_scheme_lan)
             print("min opt lan time:", min_optimized_lan)
+        
+        if min_scheme_wan:
+            print(test)
+            print("min wan:", min_scheme_wan)
+            print("min wan time:", min_wan)
+            
         if min_optimized_scheme_wan:
             print(test)
             print("min opt wan:", min_optimized_scheme_wan)

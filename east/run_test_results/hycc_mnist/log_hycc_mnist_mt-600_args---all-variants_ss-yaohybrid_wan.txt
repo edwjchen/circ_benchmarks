@@ -7,7 +7,7 @@ LOG: MINIMIZATION_TIME: 600
 LOG: ARGUMENTS: ['--all-variants']
 LOG: ====================================
 LOG: RERUN: 0
-LOG: Client load time: 44.1975
+LOG: Client load time: 45.4911
 LOG: Error: Process returned with status code 1
-LOG: Error message: Connect failed due to timeout! Command exited with non-zero status 1 102.10 seconds 6154356 kB Command exited with non-zero status 1 102.10 seconds 6154356 kB
+LOG: Error message: Connect failed due to timeout! Command exited with non-zero status 1 103.44 seconds 6154008 kB Command exited with non-zero status 1 103.44 seconds 6154008 kB
 LOG: Failed yaohybrid with args: --all-variants, exception:
