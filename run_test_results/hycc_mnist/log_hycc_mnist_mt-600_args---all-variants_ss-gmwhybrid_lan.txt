@@ -1,0 +1,48 @@
+LOG: ====================================
+LOG: Benchmarking HyCC
+LOG: ====================================
+LOG: TEST: mnist
+LOG: SELECTION_SCHEME: gmwhybrid
+LOG: MINIMIZATION_TIME: 600
+LOG: ARGUMENTS: ['--all-variants']
+LOG: ====================================
+LOG: RERUN: 0
+LOG: Server load time: 38.6784
+LOG: Server exec time: 8.79201
+LOG: Time / Memory: 52.20 seconds 5434648 kB
+LOG: RERUN: 1
+LOG: Server load time: 38.5851
+LOG: Server exec time: 7.82881
+LOG: Time / Memory: 51.19 seconds 5434584 kB
+LOG: RERUN: 2
+LOG: Server load time: 38.6825
+LOG: Server exec time: 7.85355
+LOG: Time / Memory: 51.27 seconds 5434348 kB
+LOG: RERUN: 3
+LOG: Server load time: 38.9764
+LOG: Server exec time: 7.53932
+LOG: Time / Memory: 51.22 seconds 5434512 kB
+LOG: RERUN: 4
+LOG: Server load time: 39.1531
+LOG: Server exec time: 7.59124
+LOG: Time / Memory: 51.46 seconds 5434548 kB
+LOG: RERUN: 5
+LOG: Server load time: 38.8108
+LOG: Server exec time: 7.64347
+LOG: Time / Memory: 51.23 seconds 5434736 kB
+LOG: RERUN: 6
+LOG: Server load time: 39.2552
+LOG: Server exec time: 7.50254
+LOG: Time / Memory: 51.47 seconds 5434656 kB
+LOG: RERUN: 7
+LOG: Server load time: 39.0482
+LOG: Server exec time: 7.44982
+LOG: Time / Memory: 51.22 seconds 5434580 kB
+LOG: RERUN: 8
+LOG: Server load time: 39.153
+LOG: Server exec time: 7.71905
+LOG: Time / Memory: 51.68 seconds 5434576 kB
+LOG: RERUN: 9
+LOG: Server load time: 38.7557
+LOG: Server exec time: 8.64523
+LOG: Time / Memory: 52.09 seconds 5434680 kB

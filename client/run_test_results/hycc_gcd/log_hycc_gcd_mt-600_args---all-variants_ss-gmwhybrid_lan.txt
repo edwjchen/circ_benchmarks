@@ -1,0 +1,48 @@
+LOG: ====================================
+LOG: Benchmarking HyCC
+LOG: ====================================
+LOG: TEST: gcd
+LOG: SELECTION_SCHEME: gmwhybrid
+LOG: MINIMIZATION_TIME: 600
+LOG: ARGUMENTS: ['--all-variants']
+LOG: ====================================
+LOG: RERUN: 0
+LOG: Client load time: 0.313218
+LOG: Client exec time: 3.34754
+LOG: Time / Memory: 3.71 seconds 143808 kB
+LOG: RERUN: 1
+LOG: Client load time: 0.313096
+LOG: Client exec time: 3.37303
+LOG: Time / Memory: 3.73 seconds 144044 kB
+LOG: RERUN: 2
+LOG: Client load time: 0.313618
+LOG: Client exec time: 3.38921
+LOG: Time / Memory: 3.75 seconds 144032 kB
+LOG: RERUN: 3
+LOG: Client load time: 0.311509
+LOG: Client exec time: 3.34103
+LOG: Time / Memory: 3.70 seconds 145140 kB
+LOG: RERUN: 4
+LOG: Client load time: 0.317712
+LOG: Client exec time: 3.36773
+LOG: Time / Memory: 3.73 seconds 143868 kB
+LOG: RERUN: 5
+LOG: Client load time: 0.314966
+LOG: Client exec time: 3.28548
+LOG: Time / Memory: 3.65 seconds 143752 kB
+LOG: RERUN: 6
+LOG: Client load time: 0.318508
+LOG: Client exec time: 3.28783
+LOG: Time / Memory: 3.66 seconds 144084 kB
+LOG: RERUN: 7
+LOG: Client load time: 0.312757
+LOG: Client exec time: 3.36797
+LOG: Time / Memory: 3.73 seconds 143996 kB
+LOG: RERUN: 8
+LOG: Client load time: 0.313514
+LOG: Client exec time: 3.39975
+LOG: Time / Memory: 3.76 seconds 144932 kB
+LOG: RERUN: 9
+LOG: Client load time: 0.311553
+LOG: Client exec time: 3.34709
+LOG: Time / Memory: 3.71 seconds 144048 kB
