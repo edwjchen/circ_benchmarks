@@ -55,7 +55,7 @@ HYCC_TEST_CASES = [
     # ("mnist_decomp_main", "mnist/mnist_decomp_main.c"),
     # ("mnist_decomp_convolution", "mnist/mnist_decomp_convolution.c"),
     # ("cryptonets", "cryptonets/cryptonets.c"),
-    ("histogram", "histogram/histogram.c"),
+    # ("histogram", "histogram/histogram.c"),
     # ("gcd", "gcd/gcd.c"),
 ]
 
