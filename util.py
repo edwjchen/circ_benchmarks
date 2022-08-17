@@ -46,7 +46,7 @@ WAN_COSTS = CIRC_SOURCE+"/third_party/empirical_wan/adapted_costs.json"
 # hycc parameters
 HYCC_TEST_CASES = [
     # ("biomatch", "biomatch/biomatch.c"),
-    ("kmeans", "kmeans/kmeans.c"),
+    # ("kmeans", "kmeans/kmeans.c"),
     # ("gauss", "gauss/gauss.c"),
     # ("db_join", "db/db_join.c"),
     # ("db_join2", "db/db_join2.c"),
@@ -54,7 +54,7 @@ HYCC_TEST_CASES = [
     # ("mnist", "mnist/mnist.c"),
     # ("mnist_decomp_main", "mnist/mnist_decomp_main.c"),
     # ("mnist_decomp_convolution", "mnist/mnist_decomp_convolution.c"),
-    # ("cryptonets", "cryptonets/cryptonets.c"),
+    ("cryptonets", "cryptonets/cryptonets.c"),
     # ("histogram", "histogram/histogram.c"),
     # ("gcd", "gcd/gcd.c"),
 ]
@@ -62,13 +62,14 @@ HYCC_TEST_CASES = [
 MINIMIZATION_TIMES = [
     600
 ]
+
 HYCC_SELECTION_SCHEMES = [
     # "yaoonly",
     # "yaohybrid",
     # "gmwonly",
     # "gmwhybrid",
-    "hycc_optimized",
-    "lan_optimized",
+    # "hycc_optimized",
+    # "lan_optimized",
     "wan_optimized",
 ]
 HYCC_COMPILE_ARGUMENTS = [
