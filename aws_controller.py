@@ -472,7 +472,7 @@ def benchmark_worker(ip, connect_ip, role, key_file, setting):
     client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
     client.connect(hostname=ip, username="ubuntu", pkey=key)
 
-    cmd = "cd ~/circ_benchmarks/ && python3 driver.py --address {} && python3 driver.py --role {} && python3 driver.py --setting {} && python3 driver.py -f hycc && python3 driver.py --benchmark".format(
+    cmd = "cd ~/circ_benchmarks/ && rm -rf run_test_results && rm -rf east && python3 driver.py --address {} && python3 driver.py --role {} && python3 driver.py --setting {} && python3 driver.py -f hycc && python3 driver.py --benchmark".format(
         connect_ip, role, setting)
     _, stdout, _ = client.exec_command(cmd)
 
@@ -537,7 +537,7 @@ def setup_run_worker(ip, key_file):
             print(ip, " failed setup")
     else:
         _, stdout, _ = client.exec_command(
-            "cd ~/circ_benchmarks && rm -rf hycc_circuit_dir/*_cm-hycc && git checkout aws -f && git add . && git stash && git pull -f && rm -rf run_test_results && ./scripts/dependencies.sh && pip3 install pandas && python3 driver.py -f hycc && python3 driver.py --build_aby")
+            "cd ~/circ_benchmarks && rm -rf hycc_circuit_dir/*_cm-hycc && git checkout aws -f && git add . && git stash && git pull -f && rm -rf run_test_results && rm -rf east && ./scripts/dependencies.sh && pip3 install pandas && python3 driver.py -f hycc && python3 driver.py --build_aby")
         if stdout.channel.recv_exit_status():
             print(ip, " failed setup 2")
     print("Set up:", ip)
