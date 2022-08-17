@@ -1028,9 +1028,9 @@ Merging "mmulT_unrolled_inner<uint32[100],uint32[100],uint32<100>>" into "mmulT_
 Merging "mmulT_unrolled_inner<uint32[100],uint32[100],uint32<100>>" into "mmulT_unrolled<uint32[1000],uint32[100],uint32[10],uint32<10>,uint32<1>,uint32<100>>"
 Merging "mmulT_unrolled<uint32[1000],uint32[100],uint32[10],uint32<10>,uint32<1>,uint32<100>>" into "mpc_main"
 Arithmetic bit-width: 32bit
-LOG: Client load time: 45.8094
+LOG: Client load time: 47.0971
 There was an error during establish connection, ending! 
 
 LOG: Error: Process returned with status code 1
-LOG: Error message: Connect failed due to timeout! Command exited with non-zero status 1 103.74 seconds 6154388 kB Command exited with non-zero status 1 103.74 seconds 6154388 kB 
+LOG: Error message: Connect failed due to timeout! Command exited with non-zero status 1 105.06 seconds 6154400 kB Command exited with non-zero status 1 105.06 seconds 6154400 kB 
 LOG: Failed yaohybrid with args: --all-variants, exception: 

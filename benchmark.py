@@ -35,22 +35,29 @@ def run_hycc_benchmark(spec_file, params, instance_metadata):
     ss_file = "{}.cmb".format(ss)
     params["ss_file"] = ss_file
 
-    try:
-        if os.path.exists(ss_file):
-            if "role" in instance_metadata:
-                run_aby(spec_file, params, instance_metadata)
+    retry = 0
+
+    while retry < 5:
+        try:
+            if os.path.exists(ss_file):
+                if "role" in instance_metadata:
+                    run_aby(spec_file, params, instance_metadata)
+                else:
+                    run_aby_local(spec_file, params)
             else:
-                run_aby_local(spec_file, params)
-        else:
-            write_log("LOG: Missing: {}".format(ss_file), params)
-    except Exception as e:
-        write_log("LOG: Failed {} with args: {}, exception: {}".format(
-            ss, " ".join(args), e), params)
-        log_path = "{}run_test_results_{}/{}_{}/log_{}.txt".format(
-                CIRC_BENCHMARK_SOURCE, instance_metadata["setting"], params["system"], params["name"], params["version"])
-        failed_path = "{}run_test_results_{}/{}_{}/failed_log_{}.txt".format(
-                CIRC_BENCHMARK_SOURCE, instance_metadata["setting"], params["system"], params["name"], params["version"])
-        subprocess.call("mv {} {}".format(log_path, failed_path), shell=True)
+                write_log("LOG: Missing: {}".format(ss_file), params)
+            break
+        except Exception as e:
+            write_log("LOG: retry: {}".format(retry))
+            retry += 1
+            if retry >= 5:
+                write_log("LOG: Failed {} with args: {}, exception: {}".format(
+                    ss, " ".join(args), e), params)
+                log_path = "{}run_test_results_{}/{}_{}/log_{}.txt".format(
+                        CIRC_BENCHMARK_SOURCE, instance_metadata["setting"], params["system"], params["name"], params["version"])
+                failed_path = "{}run_test_results_{}/{}_{}/failed_log_{}.txt".format(
+                        CIRC_BENCHMARK_SOURCE, instance_metadata["setting"], params["system"], params["name"], params["version"])
+                subprocess.call("mv {} {}".format(log_path, failed_path), shell=True)
 
 
 def compile_hycc_benchmark(test_path, params):

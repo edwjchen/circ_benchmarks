@@ -472,11 +472,7 @@ def benchmark_worker(ip, connect_ip, role, key_file, setting):
     client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
     client.connect(hostname=ip, username="ubuntu", pkey=key)
 
-    if role == 1:
-        # delay client
-        time.sleep(10)
-
-    cmd = "cd ~/circ_benchmarks/ && rm -rf run_test_results && rm -rf east && python3 driver.py --address {} && python3 driver.py --role {} && python3 driver.py --setting {} && python3 driver.py -f hycc && python3 driver.py --benchmark".format(
+    cmd = "cd ~/circ_benchmarks/ && rm -rf run_test_results && python3 driver.py --address {} && python3 driver.py --role {} && python3 driver.py --setting {} && python3 driver.py -f hycc && python3 driver.py --benchmark".format(
         connect_ip, role, setting)
     _, stdout, _ = client.exec_command(cmd)
 
