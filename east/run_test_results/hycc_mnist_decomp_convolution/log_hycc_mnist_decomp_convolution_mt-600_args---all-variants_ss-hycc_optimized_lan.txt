@@ -1,0 +1,48 @@
+LOG: ====================================
+LOG: Benchmarking HyCC
+LOG: ====================================
+LOG: TEST: mnist_decomp_convolution
+LOG: SELECTION_SCHEME: hycc_optimized
+LOG: MINIMIZATION_TIME: 600
+LOG: ARGUMENTS: ['--all-variants']
+LOG: ====================================
+LOG: RERUN: 0
+LOG: Client load time: 3.76157
+LOG: Client exec time: 0.248437
+LOG: Time / Memory: 4.24 seconds 577116 kB
+LOG: RERUN: 1
+LOG: Client load time: 3.70625
+LOG: Client exec time: 0.218361
+LOG: Time / Memory: 4.16 seconds 577220 kB
+LOG: RERUN: 2
+LOG: Client load time: 3.69755
+LOG: Client exec time: 0.220839
+LOG: Time / Memory: 4.15 seconds 576916 kB
+LOG: RERUN: 3
+LOG: Client load time: 3.7097
+LOG: Client exec time: 0.260764
+LOG: Time / Memory: 4.20 seconds 576900 kB
+LOG: RERUN: 4
+LOG: Client load time: 3.66496
+LOG: Client exec time: 0.227429
+LOG: Time / Memory: 4.12 seconds 577212 kB
+LOG: RERUN: 5
+LOG: Client load time: 3.65735
+LOG: Client exec time: 0.273542
+LOG: Time / Memory: 4.17 seconds 577272 kB
+LOG: RERUN: 6
+LOG: Client load time: 3.66704
+LOG: Client exec time: 0.23222
+LOG: Time / Memory: 4.13 seconds 576920 kB
+LOG: RERUN: 7
+LOG: Client load time: 3.68859
+LOG: Client exec time: 0.230251
+LOG: Time / Memory: 4.15 seconds 577064 kB
+LOG: RERUN: 8
+LOG: Client load time: 3.68821
+LOG: Client exec time: 0.228234
+LOG: Time / Memory: 4.14 seconds 577212 kB
+LOG: RERUN: 9
+LOG: Client load time: 3.72201
+LOG: Client exec time: 0.229944
+LOG: Time / Memory: 4.18 seconds 577136 kB

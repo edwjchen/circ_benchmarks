@@ -53,8 +53,8 @@ HYCC_TEST_CASES = [
     # ("db_merge", "db/db_merge.c"),
     # ("mnist", "mnist/mnist.c"),
     # ("mnist_decomp_main", "mnist/mnist_decomp_main.c"),
-    ("mnist_decomp_convolution", "mnist/mnist_decomp_convolution.c"),
-    # ("cryptonets", "cryptonets/cryptonets.c"),
+    # ("mnist_decomp_convolution", "mnist/mnist_decomp_convolution.c"),
+    ("cryptonets", "cryptonets/cryptonets.c"),
     # ("histogram", "histogram/histogram.c"),
     # ("gcd", "gcd/gcd.c"),
 ]

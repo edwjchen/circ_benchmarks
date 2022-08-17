@@ -1,0 +1,47 @@
+Using YAO protocol for boolean gates
+Loading convolution_naive<uint32[144],uint32[25],uint32[64],uint32<12>,uint32<5>,uint32<1>,uint32<8>>@arith.circ (using ARITH for boolean gates)
+Loading convolution_naive<uint32[784],uint32[25],uint32[576],uint32<28>,uint32<5>,uint32<1>,uint32<24>>@arith.circ (using ARITH for boolean gates)
+Loading convolution_naive_outputs<uint32[144],uint32[400],uint32[1024],uint32<12>,uint32<5>,uint32<16>,uint32<1>,uint32<8>>@arith.circ (using ARITH for boolean gates)
+Loading convolution_naive_outputs<uint32[784],uint32[400],uint32[9216],uint32<28>,uint32<5>,uint32<16>,uint32<1>,uint32<24>>@arith.circ (using ARITH for boolean gates)
+Loading mpc_main@arith.circ (using ARITH for boolean gates)
+Merging "convolution_naive<uint32[784],uint32[25],uint32[576],uint32<28>,uint32<5>,uint32<1>,uint32<24>>" into "convolution_naive_outputs<uint32[784],uint32[400],uint32[9216],uint32<28>,uint32<5>,uint32<16>,uint32<1>,uint32<24>>"
+Merging "convolution_naive<uint32[784],uint32[25],uint32[576],uint32<28>,uint32<5>,uint32<1>,uint32<24>>" into "convolution_naive_outputs<uint32[784],uint32[400],uint32[9216],uint32<28>,uint32<5>,uint32<16>,uint32<1>,uint32<24>>"
+Merging "convolution_naive<uint32[784],uint32[25],uint32[576],uint32<28>,uint32<5>,uint32<1>,uint32<24>>" into "convolution_naive_outputs<uint32[784],uint32[400],uint32[9216],uint32<28>,uint32<5>,uint32<16>,uint32<1>,uint32<24>>"
+Merging "convolution_naive<uint32[784],uint32[25],uint32[576],uint32<28>,uint32<5>,uint32<1>,uint32<24>>" into "convolution_naive_outputs<uint32[784],uint32[400],uint32[9216],uint32<28>,uint32<5>,uint32<16>,uint32<1>,uint32<24>>"
+Merging "convolution_naive<uint32[784],uint32[25],uint32[576],uint32<28>,uint32<5>,uint32<1>,uint32<24>>" into "convolution_naive_outputs<uint32[784],uint32[400],uint32[9216],uint32<28>,uint32<5>,uint32<16>,uint32<1>,uint32<24>>"
+Merging "convolution_naive<uint32[784],uint32[25],uint32[576],uint32<28>,uint32<5>,uint32<1>,uint32<24>>" into "convolution_naive_outputs<uint32[784],uint32[400],uint32[9216],uint32<28>,uint32<5>,uint32<16>,uint32<1>,uint32<24>>"
+Merging "convolution_naive<uint32[784],uint32[25],uint32[576],uint32<28>,uint32<5>,uint32<1>,uint32<24>>" into "convolution_naive_outputs<uint32[784],uint32[400],uint32[9216],uint32<28>,uint32<5>,uint32<16>,uint32<1>,uint32<24>>"
+Merging "convolution_naive<uint32[784],uint32[25],uint32[576],uint32<28>,uint32<5>,uint32<1>,uint32<24>>" into "convolution_naive_outputs<uint32[784],uint32[400],uint32[9216],uint32<28>,uint32<5>,uint32<16>,uint32<1>,uint32<24>>"
+Merging "convolution_naive<uint32[784],uint32[25],uint32[576],uint32<28>,uint32<5>,uint32<1>,uint32<24>>" into "convolution_naive_outputs<uint32[784],uint32[400],uint32[9216],uint32<28>,uint32<5>,uint32<16>,uint32<1>,uint32<24>>"
+Merging "convolution_naive<uint32[784],uint32[25],uint32[576],uint32<28>,uint32<5>,uint32<1>,uint32<24>>" into "convolution_naive_outputs<uint32[784],uint32[400],uint32[9216],uint32<28>,uint32<5>,uint32<16>,uint32<1>,uint32<24>>"
+Merging "convolution_naive<uint32[784],uint32[25],uint32[576],uint32<28>,uint32<5>,uint32<1>,uint32<24>>" into "convolution_naive_outputs<uint32[784],uint32[400],uint32[9216],uint32<28>,uint32<5>,uint32<16>,uint32<1>,uint32<24>>"
+Merging "convolution_naive<uint32[784],uint32[25],uint32[576],uint32<28>,uint32<5>,uint32<1>,uint32<24>>" into "convolution_naive_outputs<uint32[784],uint32[400],uint32[9216],uint32<28>,uint32<5>,uint32<16>,uint32<1>,uint32<24>>"
+Merging "convolution_naive<uint32[784],uint32[25],uint32[576],uint32<28>,uint32<5>,uint32<1>,uint32<24>>" into "convolution_naive_outputs<uint32[784],uint32[400],uint32[9216],uint32<28>,uint32<5>,uint32<16>,uint32<1>,uint32<24>>"
+Merging "convolution_naive<uint32[784],uint32[25],uint32[576],uint32<28>,uint32<5>,uint32<1>,uint32<24>>" into "convolution_naive_outputs<uint32[784],uint32[400],uint32[9216],uint32<28>,uint32<5>,uint32<16>,uint32<1>,uint32<24>>"
+Merging "convolution_naive<uint32[784],uint32[25],uint32[576],uint32<28>,uint32<5>,uint32<1>,uint32<24>>" into "convolution_naive_outputs<uint32[784],uint32[400],uint32[9216],uint32<28>,uint32<5>,uint32<16>,uint32<1>,uint32<24>>"
+Merging "convolution_naive<uint32[784],uint32[25],uint32[576],uint32<28>,uint32<5>,uint32<1>,uint32<24>>" into "convolution_naive_outputs<uint32[784],uint32[400],uint32[9216],uint32<28>,uint32<5>,uint32<16>,uint32<1>,uint32<24>>"
+Merging "convolution_naive_outputs<uint32[784],uint32[400],uint32[9216],uint32<28>,uint32<5>,uint32<16>,uint32<1>,uint32<24>>" into "mpc_main"
+Merging "convolution_naive<uint32[144],uint32[25],uint32[64],uint32<12>,uint32<5>,uint32<1>,uint32<8>>" into "convolution_naive_outputs<uint32[144],uint32[400],uint32[1024],uint32<12>,uint32<5>,uint32<16>,uint32<1>,uint32<8>>"
+Merging "convolution_naive<uint32[144],uint32[25],uint32[64],uint32<12>,uint32<5>,uint32<1>,uint32<8>>" into "convolution_naive_outputs<uint32[144],uint32[400],uint32[1024],uint32<12>,uint32<5>,uint32<16>,uint32<1>,uint32<8>>"
+Merging "convolution_naive<uint32[144],uint32[25],uint32[64],uint32<12>,uint32<5>,uint32<1>,uint32<8>>" into "convolution_naive_outputs<uint32[144],uint32[400],uint32[1024],uint32<12>,uint32<5>,uint32<16>,uint32<1>,uint32<8>>"
+Merging "convolution_naive<uint32[144],uint32[25],uint32[64],uint32<12>,uint32<5>,uint32<1>,uint32<8>>" into "convolution_naive_outputs<uint32[144],uint32[400],uint32[1024],uint32<12>,uint32<5>,uint32<16>,uint32<1>,uint32<8>>"
+Merging "convolution_naive<uint32[144],uint32[25],uint32[64],uint32<12>,uint32<5>,uint32<1>,uint32<8>>" into "convolution_naive_outputs<uint32[144],uint32[400],uint32[1024],uint32<12>,uint32<5>,uint32<16>,uint32<1>,uint32<8>>"
+Merging "convolution_naive<uint32[144],uint32[25],uint32[64],uint32<12>,uint32<5>,uint32<1>,uint32<8>>" into "convolution_naive_outputs<uint32[144],uint32[400],uint32[1024],uint32<12>,uint32<5>,uint32<16>,uint32<1>,uint32<8>>"
+Merging "convolution_naive<uint32[144],uint32[25],uint32[64],uint32<12>,uint32<5>,uint32<1>,uint32<8>>" into "convolution_naive_outputs<uint32[144],uint32[400],uint32[1024],uint32<12>,uint32<5>,uint32<16>,uint32<1>,uint32<8>>"
+Merging "convolution_naive<uint32[144],uint32[25],uint32[64],uint32<12>,uint32<5>,uint32<1>,uint32<8>>" into "convolution_naive_outputs<uint32[144],uint32[400],uint32[1024],uint32<12>,uint32<5>,uint32<16>,uint32<1>,uint32<8>>"
+Merging "convolution_naive<uint32[144],uint32[25],uint32[64],uint32<12>,uint32<5>,uint32<1>,uint32<8>>" into "convolution_naive_outputs<uint32[144],uint32[400],uint32[1024],uint32<12>,uint32<5>,uint32<16>,uint32<1>,uint32<8>>"
+Merging "convolution_naive<uint32[144],uint32[25],uint32[64],uint32<12>,uint32<5>,uint32<1>,uint32<8>>" into "convolution_naive_outputs<uint32[144],uint32[400],uint32[1024],uint32<12>,uint32<5>,uint32<16>,uint32<1>,uint32<8>>"
+Merging "convolution_naive<uint32[144],uint32[25],uint32[64],uint32<12>,uint32<5>,uint32<1>,uint32<8>>" into "convolution_naive_outputs<uint32[144],uint32[400],uint32[1024],uint32<12>,uint32<5>,uint32<16>,uint32<1>,uint32<8>>"
+Merging "convolution_naive<uint32[144],uint32[25],uint32[64],uint32<12>,uint32<5>,uint32<1>,uint32<8>>" into "convolution_naive_outputs<uint32[144],uint32[400],uint32[1024],uint32<12>,uint32<5>,uint32<16>,uint32<1>,uint32<8>>"
+Merging "convolution_naive<uint32[144],uint32[25],uint32[64],uint32<12>,uint32<5>,uint32<1>,uint32<8>>" into "convolution_naive_outputs<uint32[144],uint32[400],uint32[1024],uint32<12>,uint32<5>,uint32<16>,uint32<1>,uint32<8>>"
+Merging "convolution_naive<uint32[144],uint32[25],uint32[64],uint32<12>,uint32<5>,uint32<1>,uint32<8>>" into "convolution_naive_outputs<uint32[144],uint32[400],uint32[1024],uint32<12>,uint32<5>,uint32<16>,uint32<1>,uint32<8>>"
+Merging "convolution_naive<uint32[144],uint32[25],uint32[64],uint32<12>,uint32<5>,uint32<1>,uint32<8>>" into "convolution_naive_outputs<uint32[144],uint32[400],uint32[1024],uint32<12>,uint32<5>,uint32<16>,uint32<1>,uint32<8>>"
+Merging "convolution_naive<uint32[144],uint32[25],uint32[64],uint32<12>,uint32<5>,uint32<1>,uint32<8>>" into "convolution_naive_outputs<uint32[144],uint32[400],uint32[1024],uint32<12>,uint32<5>,uint32<16>,uint32<1>,uint32<8>>"
+Merging "convolution_naive_outputs<uint32[144],uint32[400],uint32[1024],uint32<12>,uint32<5>,uint32<16>,uint32<1>,uint32<8>>" into "mpc_main"
+Arithmetic bit-width: 32bit
+LOG: Client load time: 3.92216
+There was an error during establish connection, ending! 
+
+LOG: Error: Process returned with status code 1
+LOG: Error message: Connect failed due to timeout! Command exited with non-zero status 1 61.74 seconds 570488 kB Command exited with non-zero status 1 61.74 seconds 570488 kB 
+LOG: Failed hycc_optimized with args: --all-variants, exception: 

@@ -7,7 +7,42 @@ LOG: MINIMIZATION_TIME: 600
 LOG: ARGUMENTS: ['--all-variants']
 LOG: ====================================
 LOG: RERUN: 0
-LOG: Client load time: 25.3507
-LOG: Error: Process returned with status code 1
-LOG: Error message: Connect failed due to timeout! Command exited with non-zero status 1 83.18 seconds 766768 kB Command exited with non-zero status 1 83.18 seconds 766768 kB
-LOG: Failed hycc_optimized with args: --all-variants, exception:
+LOG: Client load time: 25.4829
+LOG: Client exec time: 2.86769
+LOG: Time / Memory: 28.99 seconds 787120 kB
+LOG: RERUN: 1
+LOG: Client load time: 25.1321
+LOG: Client exec time: 2.66818
+LOG: Time / Memory: 28.43 seconds 786444 kB
+LOG: RERUN: 2
+LOG: Client load time: 25.1472
+LOG: Client exec time: 2.47862
+LOG: Time / Memory: 28.27 seconds 786740 kB
+LOG: RERUN: 3
+LOG: Client load time: 25.3207
+LOG: Client exec time: 7.69179
+LOG: Time / Memory: 33.66 seconds 787328 kB
+LOG: RERUN: 4
+LOG: Client load time: 25.4597
+LOG: Client exec time: 3.16629
+LOG: Time / Memory: 29.27 seconds 787400 kB
+LOG: RERUN: 5
+LOG: Client load time: 25.4705
+LOG: Client exec time: 2.91379
+LOG: Time / Memory: 29.03 seconds 787640 kB
+LOG: RERUN: 6
+LOG: Client load time: 25.5213
+LOG: Client exec time: 2.94606
+LOG: Time / Memory: 29.11 seconds 786804 kB
+LOG: RERUN: 7
+LOG: Client load time: 25.3347
+LOG: Client exec time: 2.4222
+LOG: Time / Memory: 28.40 seconds 787092 kB
+LOG: RERUN: 8
+LOG: Client load time: 25.2226
+LOG: Client exec time: 6.85682
+LOG: Time / Memory: 32.71 seconds 787060 kB
+LOG: RERUN: 9
+LOG: Client load time: 25.3034
+LOG: Client exec time: 2.21782
+LOG: Time / Memory: 28.18 seconds 787196 kB

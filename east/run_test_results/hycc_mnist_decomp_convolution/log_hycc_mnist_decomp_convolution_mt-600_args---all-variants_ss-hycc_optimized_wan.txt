@@ -1,0 +1,4 @@
+LOG: Client load time: 3.92216
+LOG: Error: Process returned with status code 1
+LOG: Error message: Connect failed due to timeout! Command exited with non-zero status 1 61.74 seconds 570488 kB Command exited with non-zero status 1 61.74 seconds 570488 kB
+LOG: Failed hycc_optimized with args: --all-variants, exception:

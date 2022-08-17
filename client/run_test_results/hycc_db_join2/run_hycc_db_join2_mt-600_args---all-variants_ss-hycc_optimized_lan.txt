@@ -154,12 +154,12 @@ Merging "agg_variance_sum<int32[90],uint32<30>,uint32<3>>" into "agg_variance_de
 Merging "sum_tree<int32[30],int32<30>,int32<1>>" into "agg_variance_decomposed<int32[2701],uint32<900>,uint32<3>>"
 Merging "agg_variance_decomposed<int32[2701],uint32<900>,uint32<3>>" into "mpc_main"
 Arithmetic bit-width: 32bit
-LOG: Client load time: 25.4829
-LOG: Client exec time: 2.86769
+LOG: Client load time: 25.8018
+LOG: Client exec time: 0.638188
 INPUT_A : {db: int32[60]; } = {db: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59]; }
-return_value : {analysis1: int32; analysis2: int32; joined: int32; } = {analysis1: -192445536; analysis2: -691599906; joined: 574654024; }
+return_value : {analysis1: int32; analysis2: int32; joined: int32; } = {analysis1: 1045339119; analysis2: -1714584778; joined: -1484580625; }
 
-LOG: Time / Memory: 28.99 seconds 787120 kB
+LOG: Time / Memory: 27.10 seconds 786920 kB
 LOG: RERUN: 1
 Using YAO protocol for boolean gates
 Loading agg_mean_decomposed<int32[2701],uint32<900>,uint32<3>>@bool_size.circ (using YAO for boolean gates)
@@ -302,12 +302,12 @@ Merging "agg_variance_sum<int32[90],uint32<30>,uint32<3>>" into "agg_variance_de
 Merging "sum_tree<int32[30],int32<30>,int32<1>>" into "agg_variance_decomposed<int32[2701],uint32<900>,uint32<3>>"
 Merging "agg_variance_decomposed<int32[2701],uint32<900>,uint32<3>>" into "mpc_main"
 Arithmetic bit-width: 32bit
-LOG: Client load time: 25.1321
-LOG: Client exec time: 2.66818
+LOG: Client load time: 25.8937
+LOG: Client exec time: 0.611599
 INPUT_A : {db: int32[60]; } = {db: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59]; }
-return_value : {analysis1: int32; analysis2: int32; joined: int32; } = {analysis1: 812426144; analysis2: -397069243; joined: -667314221; }
+return_value : {analysis1: int32; analysis2: int32; joined: int32; } = {analysis1: 1437702685; analysis2: -687560267; joined: -2102053986; }
 
-LOG: Time / Memory: 28.43 seconds 786444 kB
+LOG: Time / Memory: 27.15 seconds 786620 kB
 LOG: RERUN: 2
 Using YAO protocol for boolean gates
 Loading agg_mean_decomposed<int32[2701],uint32<900>,uint32<3>>@bool_size.circ (using YAO for boolean gates)
@@ -450,12 +450,12 @@ Merging "agg_variance_sum<int32[90],uint32<30>,uint32<3>>" into "agg_variance_de
 Merging "sum_tree<int32[30],int32<30>,int32<1>>" into "agg_variance_decomposed<int32[2701],uint32<900>,uint32<3>>"
 Merging "agg_variance_decomposed<int32[2701],uint32<900>,uint32<3>>" into "mpc_main"
 Arithmetic bit-width: 32bit
-LOG: Client load time: 25.1472
-LOG: Client exec time: 2.47862
+LOG: Client load time: 25.7635
+LOG: Client exec time: 0.62354
 INPUT_A : {db: int32[60]; } = {db: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59]; }
-return_value : {analysis1: int32; analysis2: int32; joined: int32; } = {analysis1: 228222557; analysis2: -1688664553; joined: -1765580676; }
+return_value : {analysis1: int32; analysis2: int32; joined: int32; } = {analysis1: -1120400384; analysis2: 53744915; joined: -1106503387; }
 
-LOG: Time / Memory: 28.27 seconds 786740 kB
+LOG: Time / Memory: 27.05 seconds 787296 kB
 LOG: RERUN: 3
 Using YAO protocol for boolean gates
 Loading agg_mean_decomposed<int32[2701],uint32<900>,uint32<3>>@bool_size.circ (using YAO for boolean gates)
@@ -598,12 +598,12 @@ Merging "agg_variance_sum<int32[90],uint32<30>,uint32<3>>" into "agg_variance_de
 Merging "sum_tree<int32[30],int32<30>,int32<1>>" into "agg_variance_decomposed<int32[2701],uint32<900>,uint32<3>>"
 Merging "agg_variance_decomposed<int32[2701],uint32<900>,uint32<3>>" into "mpc_main"
 Arithmetic bit-width: 32bit
-LOG: Client load time: 25.3207
-LOG: Client exec time: 7.69179
+LOG: Client load time: 25.4461
+LOG: Client exec time: 0.937652
 INPUT_A : {db: int32[60]; } = {db: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59]; }
-return_value : {analysis1: int32; analysis2: int32; joined: int32; } = {analysis1: -776045783; analysis2: 1620646064; joined: -1322818641; }
+return_value : {analysis1: int32; analysis2: int32; joined: int32; } = {analysis1: 1860412789; analysis2: -1227959748; joined: -668108929; }
 
-LOG: Time / Memory: 33.66 seconds 787328 kB
+LOG: Time / Memory: 27.04 seconds 786788 kB
 LOG: RERUN: 4
 Using YAO protocol for boolean gates
 Loading agg_mean_decomposed<int32[2701],uint32<900>,uint32<3>>@bool_size.circ (using YAO for boolean gates)
@@ -746,12 +746,12 @@ Merging "agg_variance_sum<int32[90],uint32<30>,uint32<3>>" into "agg_variance_de
 Merging "sum_tree<int32[30],int32<30>,int32<1>>" into "agg_variance_decomposed<int32[2701],uint32<900>,uint32<3>>"
 Merging "agg_variance_decomposed<int32[2701],uint32<900>,uint32<3>>" into "mpc_main"
 Arithmetic bit-width: 32bit
-LOG: Client load time: 25.4597
-LOG: Client exec time: 3.16629
+LOG: Client load time: 25.8591
+LOG: Client exec time: 0.621278
 INPUT_A : {db: int32[60]; } = {db: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59]; }
-return_value : {analysis1: int32; analysis2: int32; joined: int32; } = {analysis1: 602922039; analysis2: 1040169386; joined: 504391083; }
+return_value : {analysis1: int32; analysis2: int32; joined: int32; } = {analysis1: 177730415; analysis2: 1576860372; joined: 1466632589; }
 
-LOG: Time / Memory: 29.27 seconds 787400 kB
+LOG: Time / Memory: 27.15 seconds 787104 kB
 LOG: RERUN: 5
 Using YAO protocol for boolean gates
 Loading agg_mean_decomposed<int32[2701],uint32<900>,uint32<3>>@bool_size.circ (using YAO for boolean gates)
@@ -894,12 +894,12 @@ Merging "agg_variance_sum<int32[90],uint32<30>,uint32<3>>" into "agg_variance_de
 Merging "sum_tree<int32[30],int32<30>,int32<1>>" into "agg_variance_decomposed<int32[2701],uint32<900>,uint32<3>>"
 Merging "agg_variance_decomposed<int32[2701],uint32<900>,uint32<3>>" into "mpc_main"
 Arithmetic bit-width: 32bit
-LOG: Client load time: 25.4705
-LOG: Client exec time: 2.91379
+LOG: Client load time: 25.9506
+LOG: Client exec time: 0.620881
 INPUT_A : {db: int32[60]; } = {db: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59]; }
-return_value : {analysis1: int32; analysis2: int32; joined: int32; } = {analysis1: 1101720231; analysis2: 1509417752; joined: 408750473; }
+return_value : {analysis1: int32; analysis2: int32; joined: int32; } = {analysis1: 333240712; analysis2: 726950540; joined: 948484914; }
 
-LOG: Time / Memory: 29.03 seconds 787640 kB
+LOG: Time / Memory: 27.22 seconds 787040 kB
 LOG: RERUN: 6
 Using YAO protocol for boolean gates
 Loading agg_mean_decomposed<int32[2701],uint32<900>,uint32<3>>@bool_size.circ (using YAO for boolean gates)
@@ -1042,12 +1042,12 @@ Merging "agg_variance_sum<int32[90],uint32<30>,uint32<3>>" into "agg_variance_de
 Merging "sum_tree<int32[30],int32<30>,int32<1>>" into "agg_variance_decomposed<int32[2701],uint32<900>,uint32<3>>"
 Merging "agg_variance_decomposed<int32[2701],uint32<900>,uint32<3>>" into "mpc_main"
 Arithmetic bit-width: 32bit
-LOG: Client load time: 25.5213
-LOG: Client exec time: 2.94606
+LOG: Client load time: 25.4523
+LOG: Client exec time: 1.07619
 INPUT_A : {db: int32[60]; } = {db: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59]; }
-return_value : {analysis1: int32; analysis2: int32; joined: int32; } = {analysis1: -54645220; analysis2: 102420520; joined: -89850366; }
+return_value : {analysis1: int32; analysis2: int32; joined: int32; } = {analysis1: 1604080608; analysis2: 1235067686; joined: 369225968; }
 
-LOG: Time / Memory: 29.11 seconds 786804 kB
+LOG: Time / Memory: 27.18 seconds 786592 kB
 LOG: RERUN: 7
 Using YAO protocol for boolean gates
 Loading agg_mean_decomposed<int32[2701],uint32<900>,uint32<3>>@bool_size.circ (using YAO for boolean gates)
@@ -1190,12 +1190,12 @@ Merging "agg_variance_sum<int32[90],uint32<30>,uint32<3>>" into "agg_variance_de
 Merging "sum_tree<int32[30],int32<30>,int32<1>>" into "agg_variance_decomposed<int32[2701],uint32<900>,uint32<3>>"
 Merging "agg_variance_decomposed<int32[2701],uint32<900>,uint32<3>>" into "mpc_main"
 Arithmetic bit-width: 32bit
-LOG: Client load time: 25.3347
-LOG: Client exec time: 2.4222
+LOG: Client load time: 25.7607
+LOG: Client exec time: 0.758197
 INPUT_A : {db: int32[60]; } = {db: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59]; }
-return_value : {analysis1: int32; analysis2: int32; joined: int32; } = {analysis1: -350441932; analysis2: 1601723584; joined: -1268452670; }
+return_value : {analysis1: int32; analysis2: int32; joined: int32; } = {analysis1: -1760972094; analysis2: 1035977038; joined: -1430883398; }
 
-LOG: Time / Memory: 28.40 seconds 787092 kB
+LOG: Time / Memory: 27.17 seconds 787084 kB
 LOG: RERUN: 8
 Using YAO protocol for boolean gates
 Loading agg_mean_decomposed<int32[2701],uint32<900>,uint32<3>>@bool_size.circ (using YAO for boolean gates)
@@ -1338,12 +1338,12 @@ Merging "agg_variance_sum<int32[90],uint32<30>,uint32<3>>" into "agg_variance_de
 Merging "sum_tree<int32[30],int32<30>,int32<1>>" into "agg_variance_decomposed<int32[2701],uint32<900>,uint32<3>>"
 Merging "agg_variance_decomposed<int32[2701],uint32<900>,uint32<3>>" into "mpc_main"
 Arithmetic bit-width: 32bit
-LOG: Client load time: 25.2226
-LOG: Client exec time: 6.85682
+LOG: Client load time: 25.4779
+LOG: Client exec time: 0.631059
 INPUT_A : {db: int32[60]; } = {db: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59]; }
-return_value : {analysis1: int32; analysis2: int32; joined: int32; } = {analysis1: 1657477355; analysis2: 1125898862; joined: 567329459; }
+return_value : {analysis1: int32; analysis2: int32; joined: int32; } = {analysis1: -973308332; analysis2: -2124502955; joined: 1151522359; }
 
-LOG: Time / Memory: 32.71 seconds 787060 kB
+LOG: Time / Memory: 26.76 seconds 787036 kB
 LOG: RERUN: 9
 Using YAO protocol for boolean gates
 Loading agg_mean_decomposed<int32[2701],uint32<900>,uint32<3>>@bool_size.circ (using YAO for boolean gates)
@@ -1486,9 +1486,9 @@ Merging "agg_variance_sum<int32[90],uint32<30>,uint32<3>>" into "agg_variance_de
 Merging "sum_tree<int32[30],int32<30>,int32<1>>" into "agg_variance_decomposed<int32[2701],uint32<900>,uint32<3>>"
 Merging "agg_variance_decomposed<int32[2701],uint32<900>,uint32<3>>" into "mpc_main"
 Arithmetic bit-width: 32bit
-LOG: Client load time: 25.3034
-LOG: Client exec time: 2.21782
+LOG: Client load time: 25.8042
+LOG: Client exec time: 0.680429
 INPUT_A : {db: int32[60]; } = {db: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59]; }
-return_value : {analysis1: int32; analysis2: int32; joined: int32; } = {analysis1: 2102464086; analysis2: 1475389855; joined: 715237375; }
+return_value : {analysis1: int32; analysis2: int32; joined: int32; } = {analysis1: 55512720; analysis2: 1118100161; joined: 1105974375; }
 
-LOG: Time / Memory: 28.18 seconds 787196 kB
+LOG: Time / Memory: 27.14 seconds 787032 kB
