@@ -54,8 +54,8 @@ HYCC_TEST_CASES = [
     # ("mnist", "mnist/mnist.c"),
     # ("mnist_decomp_main", "mnist/mnist_decomp_main.c"),
     # ("mnist_decomp_convolution", "mnist/mnist_decomp_convolution.c"),
-    # ("cryptonets", "cryptonets/cryptonets.c"),
-    ("histogram", "histogram/histogram.c"),
+    ("cryptonets", "cryptonets/cryptonets.c"),
+    # ("histogram", "histogram/histogram.c"),
     # ("gcd", "gcd/gcd.c"),
 ]
 
@@ -65,12 +65,12 @@ MINIMIZATION_TIMES = [
 
 HYCC_SELECTION_SCHEMES = [
     # "yaoonly",
-    "yaohybrid",
+    # "yaohybrid",
     # "gmwonly",
     # "gmwhybrid",
     # "hycc_optimized",
-    "lan_optimized",
-    # "wan_optimized",
+    # "lan_optimized",
+    "wan_optimized",
 ]
 HYCC_COMPILE_ARGUMENTS = [
     ["--all-variants"],

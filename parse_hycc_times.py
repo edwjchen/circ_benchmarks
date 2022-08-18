@@ -147,8 +147,7 @@ def parse_hycc_logs():
     
     tests = df["TEST"].unique()
     selection_schemes = df["SELECTION_SCHEME"].unique()
-    for test in tests:
-
+    for test in run_tests:
         min_optimized_lan = 1000000
         min_optimized_scheme_lan = ""
 
@@ -167,7 +166,7 @@ def parse_hycc_logs():
                 times = server_exec_times[0]
                 if times:
                     print(test, ss)
-                    t = np.median(server_exec_times[0])
+                    t = np.min(server_exec_times[0])
                     print(t)
 
                     if "optimized" in ss and "lan" in ss and t < min_optimized_lan and "hycc" not in ss:
@@ -213,5 +212,17 @@ def parse_hycc_logs():
         print()
         print("=========================================")
         print()
+    print(tests)
 
+run_tests = [
+    'biomatch',
+    'kmeans',
+    'gcd',
+    'histogram', 
+    'db_merge', 
+    'db_join2',
+    'gauss', 
+    'mnist',
+    'cryptonets', 
+]
 parse_hycc_logs()
