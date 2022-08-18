@@ -147,18 +147,24 @@ def parse_hycc_logs():
     
     tests = df["TEST"].unique()
     selection_schemes = df["SELECTION_SCHEME"].unique()
+    best_results = {}
     for test in run_tests:
+        best_results[test] = {}
         min_optimized_lan = 1000000
         min_optimized_scheme_lan = ""
+        min_optimized_lan_times = []
 
         min_optimized_wan = 1000000
         min_optimized_scheme_wan = ""
+        min_optimized_wan_times = []
 
         min_lan = 1000000
         min_scheme_lan = ""
+        min_lan_times = []
 
         min_wan = 1000000
         min_scheme_wan = ""
+        min_wan_times = []
 
         for ss in selection_schemes:
             server_exec_times = list(df[(df["TEST"] == test) & (df["SELECTION_SCHEME"] == ss)]["Server exec time"])
@@ -172,16 +178,23 @@ def parse_hycc_logs():
                     if "optimized" in ss and "lan" in ss and t < min_optimized_lan and "hycc" not in ss:
                         min_optimized_lan = t
                         min_optimized_scheme_lan = ss
+                        min_optimized_lan_times = times
+
                     if "optimized" in ss and "wan" in ss and t < min_optimized_wan and "hycc" not in ss:
                         min_optimized_wan = t
                         min_optimized_scheme_wan = ss
+                        min_optimized_wan_times = times
 
                     if "optimized" not in ss and "lan" in ss and t < min_lan:
                         min_lan = t
                         min_scheme_lan = ss
+                        min_lan_times = times
+
                     if "optimized" not in ss and "wan" in ss and t < min_wan:
                         min_wan = t
                         min_scheme_wan = ss
+                        min_wan_times = times
+                    
         
         print()
         print("==== results ====")
@@ -190,29 +203,37 @@ def parse_hycc_logs():
             print("min lan:", min_scheme_lan)
             print("min lan time:", min_lan)
             print()
+            best_results[test][min_scheme_lan] = min_lan_times
 
         if min_optimized_scheme_lan:
             print(test)
             print("min opt lan:", min_optimized_scheme_lan)
             print("min opt lan time:", min_optimized_lan)
             print()
+            best_results[test][min_optimized_scheme_lan] = min_optimized_lan_times
         
         if min_scheme_wan:
             print(test)
             print("min wan:", min_scheme_wan)
             print("min wan time:", min_wan)
             print()
+            best_results[test][min_scheme_wan] = min_wan_times
 
         if min_optimized_scheme_wan:
             print(test)
             print("min opt wan:", min_optimized_scheme_wan)
             print("min opt wan time:", min_optimized_wan)
             print()
+            best_results[test][min_optimized_scheme_wan] = min_optimized_wan_times
             
         print()
         print("=========================================")
         print()
     print(tests)
+    best_results_df = pd.DataFrame(best_results)
+    print(best_results_df.head())
+    print(best_results_df["biomatch"].head())
+    best_results_df.to_csv("analysis/hycc_res.csv")
 
 run_tests = [
     'biomatch',
