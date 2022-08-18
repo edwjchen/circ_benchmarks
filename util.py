@@ -71,7 +71,7 @@ HYCC_SELECTION_SCHEMES = [
     # "gmwonly",
     # "gmwhybrid",
     # "hycc_optimized",
-    # "lan_optimized",
+    "lan_optimized",
     "wan_optimized",
 ]
 HYCC_COMPILE_ARGUMENTS = [
