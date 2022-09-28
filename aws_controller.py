@@ -10,7 +10,7 @@ import time
 
 # instance_type = "t2.micro"
 # instance_type = "c5.large"
-instance_type = "c6a.16xlarge"
+compile_instance_type = "c6a.16xlarge"
 run_instance_type = "r5.xlarge"
 
 LAN = "LAN"
@@ -47,17 +47,20 @@ def compile_hycc_test(test_name, test_path, minimization_time, arguments):
     instance = None
     if len(stopped_instances):
         instance = stopped_instances[0]
+        print("Starting instance")
         instance.start()
     else:
+        print("Creating instance")
         instance = ec2_east1.create_instances(ImageId="ami-0149b2da6ceec4bb0",
-                                              InstanceType=run_instance_type,
-                                              KeyName="aws-east",
+                                              InstanceType=compile_instance_type,
+                                              KeyName="aws-virg",
                                               MinCount=1,
                                               MaxCount=1,
                                               Monitoring={
                                                       "Enabled": False},
                                               SecurityGroups=[
-                                                  "circ4mpc"],
+                                                  "circ4mpc"
+                                              ],
                                               BlockDeviceMappings=[
                                                   {
                                                       'DeviceName': '/dev/sda1',
@@ -68,7 +71,7 @@ def compile_hycc_test(test_name, test_path, minimization_time, arguments):
                                                       }
                                                   },
                                               ]
-                                              )
+                                              )[0]
     instance.wait_until_running()
     instance.load()
 
@@ -98,18 +101,18 @@ def compile_hycc_test(test_name, test_path, minimization_time, arguments):
     print("Setting up:", ip)
     if stdout.channel.recv_exit_status():
         _, stdout, _ = client.exec_command(
-            "cd ~ && git clone https://github.com/edwjchen/circ_benchmarks.git && cd ~/circ_benchmarks && git checkout aws -f && git add . && git stash && git pull -f &&./scripts/dependencies.sh && pip3 install pandas && python3 driver.py -f hycc && python3 driver.py -b")
+            "cd ~ && git clone https://github.com/edwjchen/circ_benchmarks.git && cd ~/circ_benchmarks && git checkout aws -f && git add . && git stash && git pull -f && git submodule init && git submodule update && ./scripts/dependencies.sh && pip3 install pandas && python3 driver.py -f hycc && python3 driver.py -b")
         if stdout.channel.recv_exit_status():
             print(ip, " failed setup")
     else:
         _, stdout, _ = client.exec_command(
-            "cd ~/circ_benchmarks && git checkout aws -f && git add . && git stash && git pull -f && ./scripts/dependencies.sh && pip3 install pandas && python3 driver.py -f hycc && python3 driver.py -b")
+            "cd ~/circ_benchmarks && git checkout aws -f && git add . && git stash && git pull -f && git submodule init && git submodule update && ./scripts/dependencies.sh && pip3 install pandas && python3 driver.py -f hycc && python3 driver.py -b")
         if stdout.channel.recv_exit_status():
             print(ip, " failed setup 2")
     print("Set up:", ip)
 
-    # Write compile params to file]
-    print("Writing compile params: ", cmd)
+    # Write compile params to file
+    print("Writing compile params: ", params)
     with open("compile_params.json", "w") as f:
         json.dump(params, f)
     subprocess.call(
@@ -118,13 +121,23 @@ def compile_hycc_test(test_name, test_path, minimization_time, arguments):
 
     # Compile test case
     cmd = "cd ~/circ_benchmarks && git checkout aws -f && git add . && git stash && git pull -f && python3 driver.py -f hycc && python3 driver.py --compile_with_params"
-    print("Running:", cmd)
+    print("Compiling:", cmd)
     _, stdout, stderr = client.exec_command(cmd)
     print("\n".join(stderr.readlines()))
     if stdout.channel.recv_exit_status():
         print(stderr)
         print(ip, " failed compiles")
     print("Compiled:", ip)
+
+    # Select
+    cmd = "cd ~/circ_benchmarks && git checkout aws -f && git add . && git stash && git pull -f && python3 driver.py -f hycc && python3 driver.py --select_with_params"
+    print("Selecting:", cmd)
+    _, stdout, stderr = client.exec_command(cmd)
+    print("\n".join(stderr.readlines()))
+    if stdout.channel.recv_exit_status():
+        print(stderr)
+        print(ip, " failed selecting")
+    print("Selected:", ip)
 
     # close client
     client.close()
@@ -141,19 +154,10 @@ def compile_hycc_test(test_name, test_path, minimization_time, arguments):
     print("Finished!")
 
 
-# compile_hycc_test("biomatch",
-#                   "biomatch/biomatch.c", 600, ["--all-variants"])
+compile_hycc_test("biomatch",
+                  "biomatch/biomatch.c", 600, ["--all-variants"])
 # compile_hycc_test("biomatch_outline",
 #                   "biomatch_outline/biomatch.c", 600, ["--all-variants", "--outline"])
-
-params = {
-    "name": "biomatch",
-    "path": "biomatch/biomatch.c",
-    "mt": 600,
-    "a": ["--all-variants"]
-}
-with open("compile_params.json", "w") as f:
-    json.dump(params, f)
 
 
 def create_instances():

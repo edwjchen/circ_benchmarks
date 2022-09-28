@@ -231,6 +231,31 @@ def select(features):
             line, CIRC_BENCHMARK_SOURCE), shell=True)
 
 
+def select(features):
+    build(features)
+    make_test_results()
+    if "hycc" in features:
+        print("Selecting HyCC Benchmarks")
+        start = time.time()
+        make_dir(HYCC_CIRCUIT_PATH)
+
+        # check params
+        if not os.path.exists("./compile_params.json"):
+            sys.exit("compile_params.json: file does not exist")
+
+        # compile_hycc
+        with open('compile_params.json') as f:
+            params = json.load(f)
+
+        # run hycc benchmarks
+        make_dir("test_results/hycc_{}".format(params["name"]))
+        select_hycc(params["name"])
+        end = time.time()
+        line = "LOG: Total hycc select time: {}".format(end-start)
+        subprocess.call("echo \"{}\" >> {}/test_results/hycc_total_select_time.txt".format(
+            line, CIRC_BENCHMARK_SOURCE), shell=True)
+
+
 def benchmark(features, instance_metadata):
     make_dir("run_test_results")
     make_dir(HYCC_CIRCUIT_PATH)
@@ -314,6 +339,8 @@ if __name__ == "__main__":
                         help="compile benchmarks with params")
     parser.add_argument("--select", action="store_true",
                         help="select benchmarks")
+    parser.add_argument("--select_with_params", action="store_true",
+                        help="select benchmarks with params")
     parser.add_argument("--benchmark", action="store_true",
                         help="run benchmark")
     parser.add_argument("--parse", action="store_true",
@@ -365,6 +392,9 @@ if __name__ == "__main__":
 
     if args.select:
         select(features)
+
+    if args.select_with_params:
+        select_with_params(features)
 
     if args.benchmark:
         benchmark(features, instance_metadata)
