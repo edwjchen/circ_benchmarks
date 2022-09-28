@@ -4,11 +4,11 @@ import time
 from util import *
 from benchmark import *
 from parser import *
-
-# ad hoc testing
+import sys
 
 
 def test():
+    # ad hoc testing
     test_path = HYCC_SOURCE + \
         "/examples/benchmarks/mnist/mnist.c"
     spec_file = CIRC_BENCHMARK_SOURCE+"specs/mnist.spec"
@@ -96,7 +96,7 @@ def build(features):
     if "hycc" in features:
         # build hycc
         subprocess.run(["./scripts/build_hycc.zsh"], check=True)
-        
+
         # install hycc aby dependency
         if not os.path.isdir(ABY_HYCC_DIR):
             subprocess.run(["cp", "-r", ABY_HYCC, ABY_HYCC_DIR], check=True)
@@ -119,6 +119,7 @@ def build(features):
 
         # build kahip
         subprocess.run(["./scripts/build_kahip.zsh"], check=True)
+
 
 def build_aby(features):
     subprocess.run(["git", "pull", "--recurse-submodules"])
@@ -186,6 +187,31 @@ def compile(features):
         line = "LOG: Total circ compile time: {}".format(end-start)
         subprocess.call("echo \"{}\" >> {}/test_results/circ_total_compile_time.txt".format(
             line, CIRC_BENCHMARK_SOURCE), shell=True)
+
+
+def compile_with_params(features):
+    build(features)
+    make_test_results()
+    if "hycc" in features:
+        print("Compiling HyCC Benchmarks")
+        start = time.time()
+        make_dir(HYCC_CIRCUIT_PATH)
+
+        # check params
+        if not os.path.exists("./compile_params.json"):
+            sys.exit("compile_params.json: file does not exist")
+
+        # compile_hycc
+        with open('compile_params.json') as f:
+            params = json.load(f)
+
+        make_dir("test_results/hycc_{}".format(params["name"]))
+        compile_hycc_with_params(params)
+        end = time.time()
+        line = "LOG: Total hycc compile time: {}".format(end-start)
+        subprocess.call("echo \"{}\" >> {}/test_results/hycc_total_compile_time.txt".format(
+            line, CIRC_BENCHMARK_SOURCE), shell=True)
+
 
 def select(features):
     build(features)
@@ -284,6 +310,8 @@ if __name__ == "__main__":
     parser.add_argument("-t", "--test", action="store_true", help="adhoc test")
     parser.add_argument("--compile", action="store_true",
                         help="compile benchmarks")
+    parser.add_argument("--compile_with_params", action="store_true",
+                        help="compile benchmarks with params")
     parser.add_argument("--select", action="store_true",
                         help="select benchmarks")
     parser.add_argument("--benchmark", action="store_true",
@@ -291,7 +319,7 @@ if __name__ == "__main__":
     parser.add_argument("--parse", action="store_true",
                         help="run parser")
     parser.add_argument("-f", "--features", nargs="+",
-                        help="set features <circ, hycc>, reset features with -F none")
+                        help="set features <circ, hycc>, reset features with -f none")
     parser.add_argument("-l", "--list", action="store_true",
                         help="list features")
     parser.add_argument("-c", "--clean", action="store_true",
@@ -332,6 +360,9 @@ if __name__ == "__main__":
     if args.compile:
         compile(features)
 
+    if args.compile_with_params:
+        compile_with_params(features)
+
     if args.select:
         select(features)
 
@@ -351,7 +382,7 @@ if __name__ == "__main__":
     if args.role:
         instance_metadata["role"] = args.role
         save_instance_metadata(instance_metadata)
-    
+
     if args.setting:
         instance_metadata["setting"] = args.setting
         save_instance_metadata(instance_metadata)

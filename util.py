@@ -7,10 +7,9 @@ valid_features = {"circ", "hycc"}
 instance_metadata_path = ".instance_metadata.txt"
 
 TIME_CMD = "/usr/bin/time --format='%e seconds %M kB'"
-TIMEOUT = 24 * 60 * 60 # 1 day
+TIMEOUT = 24 * 60 * 60  # 1 day
 
 # installation variables
-# TODO: update CIRC_BENCHMARK_SOURCE path
 CIRC_BENCHMARK_SOURCE = os.getcwd() + "/"
 ABY_SOURCE = CIRC_BENCHMARK_SOURCE+"modules/ABY"
 HYCC_SOURCE = CIRC_BENCHMARK_SOURCE+"modules/HyCC"
@@ -45,20 +44,20 @@ WAN_COSTS = CIRC_SOURCE+"/third_party/empirical_wan/adapted_costs.json"
 
 # hycc parameters
 HYCC_TEST_CASES = [
-    # ("biomatch", "biomatch/biomatch.c"),
-    # ("kmeans", "kmeans/kmeans.c"),
-    # ("gauss", "gauss/gauss.c"),
-    # ("db_join", "db/db_join.c"),
-    # ("db_join2", "db/db_join2.c"),
+    ("biomatch", "biomatch/biomatch.c"),
+    ("kmeans", "kmeans/kmeans.c"),
+    ("gauss", "gauss/gauss.c"),
+    ("db_join", "db/db_join.c"),
+    ("db_join2", "db/db_join2.c"),
     ("db_join50", "db/db_join50.c"),
-    # ("db_join100", "db/db_join100.c"),
-    # ("db_merge", "db/db_merge.c"),
-    # ("mnist", "mnist/mnist.c"),
-    # ("mnist_decomp_main", "mnist/mnist_decomp_main.c"),
-    # ("mnist_decomp_convolution", "mnist/mnist_decomp_convolution.c"),
-    # ("cryptonets", "cryptonets/cryptonets.c"),
-    # ("histogram", "histogram/histogram.c"),
-    # ("gcd", "gcd/gcd.c"),
+    ("db_join100", "db/db_join100.c"),
+    ("db_merge", "db/db_merge.c"),
+    ("mnist", "mnist/mnist.c"),
+    ("mnist_decomp_main", "mnist/mnist_decomp_main.c"),
+    ("mnist_decomp_convolution", "mnist/mnist_decomp_convolution.c"),
+    ("cryptonets", "cryptonets/cryptonets.c"),
+    ("histogram", "histogram/histogram.c"),
+    ("gcd", "gcd/gcd.c"),
 ]
 
 MINIMIZATION_TIMES = [
@@ -66,33 +65,33 @@ MINIMIZATION_TIMES = [
 ]
 
 HYCC_SELECTION_SCHEMES = [
-    # "yaoonly",
-    # "yaohybrid",
-    # "gmwonly",
-    # "gmwhybrid",
-    # "hycc_optimized",
+    "yaoonly",
+    "yaohybrid",
+    "gmwonly",
+    "gmwhybrid",
+    "hycc_optimized",
     "lan_optimized",
     "wan_optimized",
 ]
 HYCC_COMPILE_ARGUMENTS = [
     ["--all-variants"],
-    # ["--all-variants", "--outline"]
+    ["--all-variants", "--outline"]
 ]
 
 # circ parameters
 CIRC_TEST_CASES = [
-    # "biomatch",
-    # "kmeans",
-    # "gauss",
-    # "db_join",
-    # "db_join2",
-    # "db_merge",
-    # "mnist",
-    # "mnist_decomp_main",
-    # "mnist_decomp_convolution",
-    # "cryptonets",
-    # "histogram",
-    # "gcd",
+    "biomatch",
+    "kmeans",
+    "gauss",
+    "db_join",
+    "db_join2",
+    "db_merge",
+    "mnist",
+    "mnist_decomp_main",
+    "mnist_decomp_convolution",
+    "cryptonets",
+    "histogram",
+    "gcd",
 ]
 
 CIRC_NO_PARTITION_SELECTION_SCHEMES = [
@@ -108,13 +107,12 @@ CIRC_PARTITION_SELECTION_SCHEMES = [
     "smart_lp",
 ]
 PARTITIONERS = [
-    0, # KaHIP
+    0,  # KaHIP
     # 1 # KaHyPar
 ]
 PARTITION_SIZES = [1000, 3000, 5000]
 MUT_LEVELS = [1, 2, 4]
 MUT_STEP_SIZES = [1, 2, 4]
-
 
 
 # logging variables
@@ -211,12 +209,13 @@ def run_cmd(cmd, name, params):
     stdout = ""
     stderr = ""
     try:
-        result = subprocess.run(cmd, shell=True, capture_output=True, timeout=TIMEOUT)
+        result = subprocess.run(
+            cmd, shell=True, capture_output=True, timeout=TIMEOUT)
         stdout, stderr = result.stdout, result.stderr
     except subprocess.TimeoutExpired as timeErr:
         stdout = timeErr.stdout if timeErr.stdout else b""
         stderr = timeErr.stderr if timeErr.stderr else b""
-    
+
     if result and result.returncode:
         out = stdout.decode("utf-8")
         write_log(out, params)
@@ -244,17 +243,17 @@ def write_to_log(text, params):
         CIRC_BENCHMARK_SOURCE, params["system"], params["name"])
     if params["mode"] == "run":
         dir_path = "{}run_test_results/{}_{}/".format(
-        CIRC_BENCHMARK_SOURCE, params["system"], params["name"])
-    
+            CIRC_BENCHMARK_SOURCE, params["system"], params["name"])
+
     if not os.path.exists(dir_path):
         os.makedirs(dir_path)
 
     log_path = "{}test_results/{}_{}/log_{}.txt".format(
         CIRC_BENCHMARK_SOURCE, params["system"], params["name"], params["version"])
-    
+
     if params["mode"] == "run":
         log_path = "{}run_test_results/{}_{}/log_{}.txt".format(
-        CIRC_BENCHMARK_SOURCE, params["system"], params["name"], params["version"])
+            CIRC_BENCHMARK_SOURCE, params["system"], params["name"], params["version"])
     if not os.path.exists(log_path):
         subprocess.run(["touch", log_path])
 
@@ -271,7 +270,7 @@ def write_to_run(text, params):
         CIRC_BENCHMARK_SOURCE, params["system"], params["name"])
     if params["mode"] == "run":
         dir_path = "{}run_test_results/{}_{}/".format(
-        CIRC_BENCHMARK_SOURCE, params["system"], params["name"])
+            CIRC_BENCHMARK_SOURCE, params["system"], params["name"])
 
     if not os.path.exists(dir_path):
         os.makedirs(dir_path)
@@ -280,7 +279,7 @@ def write_to_run(text, params):
         CIRC_BENCHMARK_SOURCE, params["system"], params["name"], params["version"])
     if params["mode"] == "run":
         run_path = "{}run_test_results/{}_{}/run_{}.txt".format(
-        CIRC_BENCHMARK_SOURCE, params["system"], params["name"], params["version"])
+            CIRC_BENCHMARK_SOURCE, params["system"], params["name"], params["version"])
     if not os.path.exists(run_path):
         subprocess.run(["touch", run_path])
 

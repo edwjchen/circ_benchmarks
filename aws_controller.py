@@ -1,8 +1,8 @@
-from multiprocessing.resource_sharer import stop
 import boto3
 import json
 import os
 import multiprocessing
+from matplotlib.font_manager import json_dump
 import paramiko
 import subprocess
 import sys
@@ -16,14 +16,144 @@ run_instance_type = "r5.xlarge"
 LAN = "LAN"
 WAN = "WAN"
 
-ec2_east = boto3.resource("ec2",
-                          aws_access_key_id=os.environ["AWS_ACCESS_KEY_ID"],
-                          aws_secret_access_key=os.environ["AWS_SECRET_ACCESS_KEY"],
-                          region_name="us-east-2")
+ec2_east1 = boto3.resource("ec2",
+                           aws_access_key_id=os.environ["AWS_ACCESS_KEY_ID"],
+                           aws_secret_access_key=os.environ["AWS_SECRET_ACCESS_KEY"],
+                           region_name="us-east-1")
+
+ec2_east2 = boto3.resource("ec2",
+                           aws_access_key_id=os.environ["AWS_ACCESS_KEY_ID"],
+                           aws_secret_access_key=os.environ["AWS_SECRET_ACCESS_KEY"],
+                           region_name="us-east-2")
 ec2_west = boto3.resource("ec2",
                           aws_access_key_id=os.environ["AWS_ACCESS_KEY_ID"],
                           aws_secret_access_key=os.environ["AWS_SECRET_ACCESS_KEY"],
                           region_name="us-west-2")
+
+
+def compile_hycc_test(test_name, test_path, minimization_time, arguments):
+    params = {
+        "name": test_name,
+        "path": test_path,
+        "mt": minimization_time,
+        "a": arguments
+    }
+
+    # check if there is a stopped compile instance
+    # otherwise, create a compile instance
+    stopped_instances = list(ec2_east1.instances.filter(
+        Filters=[{"Name": "instance-state-name", "Values": ["stopped"]}]))
+
+    instance = None
+    if len(stopped_instances):
+        instance = stopped_instances[0]
+        instance.start()
+    else:
+        instance = ec2_east1.create_instances(ImageId="ami-0149b2da6ceec4bb0",
+                                              InstanceType=run_instance_type,
+                                              KeyName="aws-east",
+                                              MinCount=1,
+                                              MaxCount=1,
+                                              Monitoring={
+                                                      "Enabled": False},
+                                              SecurityGroups=[
+                                                  "circ4mpc"],
+                                              BlockDeviceMappings=[
+                                                  {
+                                                      'DeviceName': '/dev/sda1',
+                                                      'Ebs': {
+                                                          'DeleteOnTermination': True,
+                                                          'VolumeSize': 32,
+                                                          'VolumeType': 'gp2',
+                                                      }
+                                                  },
+                                              ]
+                                              )
+    instance.wait_until_running()
+    instance.load()
+
+    # Connect to ec2 instance
+    key = paramiko.Ed25519Key.from_private_key_file("aws-virg.pem")
+    ip = instance.public_dns_name
+    client = paramiko.SSHClient()
+    client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+    retry = 0
+    while retry < 5:
+        try:
+            client.connect(hostname=ip,
+                           username="ubuntu", pkey=key)
+            break
+        except:
+            time.sleep(5)
+            retry += 1
+            print("retry:", retry)
+
+    if retry == 5:
+        sys.exit("could not connect to ec2 instance")
+    else:
+        print("Connected to:", ip)
+
+    # setup HyCC on ec2 instance
+    _, stdout, _ = client.exec_command("cd ~/circ_benchmarks")
+    print("Setting up:", ip)
+    if stdout.channel.recv_exit_status():
+        _, stdout, _ = client.exec_command(
+            "cd ~ && git clone https://github.com/edwjchen/circ_benchmarks.git && cd ~/circ_benchmarks && git checkout aws -f && git add . && git stash && git pull -f &&./scripts/dependencies.sh && pip3 install pandas && python3 driver.py -f hycc && python3 driver.py -b")
+        if stdout.channel.recv_exit_status():
+            print(ip, " failed setup")
+    else:
+        _, stdout, _ = client.exec_command(
+            "cd ~/circ_benchmarks && git checkout aws -f && git add . && git stash && git pull -f && ./scripts/dependencies.sh && pip3 install pandas && python3 driver.py -f hycc && python3 driver.py -b")
+        if stdout.channel.recv_exit_status():
+            print(ip, " failed setup 2")
+    print("Set up:", ip)
+
+    # Write compile params to file]
+    print("Writing compile params: ", cmd)
+    with open("compile_params.json", "w") as f:
+        json.dump(params, f)
+    subprocess.call(
+        "rsync -avz -e \"ssh -o StrictHostKeyChecking=no -i aws-virg.pem\" --progress compile_params.json ubuntu@{}:~/circ_benchmarks/.".format(ip), shell=True)
+    print("Finished writing compile params: ", ip)
+
+    # Compile test case
+    cmd = "cd ~/circ_benchmarks && git checkout aws -f && git add . && git stash && git pull -f && python3 driver.py -f hycc && python3 driver.py --compile_with_params"
+    print("Running:", cmd)
+    _, stdout, stderr = client.exec_command(cmd)
+    print("\n".join(stderr.readlines()))
+    if stdout.channel.recv_exit_status():
+        print(stderr)
+        print(ip, " failed compiles")
+    print("Compiled:", ip)
+
+    # close client
+    client.close()
+
+    # scp compiled hycc_circuit_dir & test_results to local directory
+    subprocess.call(
+        "rsync -avz -e \"ssh -o StrictHostKeyChecking=no -i aws-virg.pem\" --progress ubuntu@{}:~/circ_benchmarks/hycc_circuit_dir .".format(ip), shell=True)
+    subprocess.call(
+        "rsync -avz -e \"ssh -o StrictHostKeyChecking=no -i aws-virg.pem\" --progress ubuntu@{}:~/circ_benchmarks/test_results .".format(ip), shell=True)
+
+    # stop instance
+    instance.stop()
+    instance.wait_until_stopped()
+    print("Finished!")
+
+
+# compile_hycc_test("biomatch",
+#                   "biomatch/biomatch.c", 600, ["--all-variants"])
+# compile_hycc_test("biomatch_outline",
+#                   "biomatch_outline/biomatch.c", 600, ["--all-variants", "--outline"])
+
+params = {
+    "name": "biomatch",
+    "path": "biomatch/biomatch.c",
+    "mt": 600,
+    "a": ["--all-variants"]
+}
+with open("compile_params.json", "w") as f:
+    json.dump(params, f)
 
 
 def create_instances():
@@ -48,22 +178,21 @@ def create_instances():
 
     # create one AWS West Instance if they haven't been made
     instance = ec2_west.create_instances(ImageId="ami-0ddf424f81ddb0720",
-                                InstanceType=run_instance_type,
-                                KeyName="aws-west",
-                                MinCount=1,
-                                MaxCount=1,
-                                Monitoring={
-                                    "Enabled": False},
-                                SecurityGroups=[
-                                    "circ4mpc"]
-                                )[0]
+                                         InstanceType=run_instance_type,
+                                         KeyName="aws-west",
+                                         MinCount=1,
+                                         MaxCount=1,
+                                         Monitoring={
+                                             "Enabled": False},
+                                         SecurityGroups=[
+                                             "circ4mpc"]
+                                         )[0]
     print("Created {} west instances".format(1))
 
-    # stop instances created 
+    # stop instances created
     instance.wait_until_running()
     instance.load()
     print("ssh -i aws-west.pem ubuntu@{}".format(instance.public_dns_name))
-
 
 
 # def start_instances():
@@ -182,11 +311,13 @@ def setup_instances():
     stopped_instances = []
     keys = []
 
-    stopped_east_instances = list(ec2_east.instances.filter(Filters=[{"Name": "instance-state-name", "Values": ["stopped"]}]))
+    stopped_east_instances = list(ec2_east.instances.filter(
+        Filters=[{"Name": "instance-state-name", "Values": ["stopped"]}]))
     stopped_instances += stopped_east_instances
     keys += ["aws-east.pem" for _ in stopped_east_instances]
 
-    stopped_west_instances = list(ec2_west.instances.filter(Filters=[{"Name": "instance-state-name", "Values": ["stopped"]}]))
+    stopped_west_instances = list(ec2_west.instances.filter(
+        Filters=[{"Name": "instance-state-name", "Values": ["stopped"]}]))
     stopped_instances += stopped_west_instances
     keys += ["aws-west.pem" for _ in stopped_east_instances]
 
@@ -206,7 +337,7 @@ def setup_worker(ip, key_file):
     key = paramiko.Ed25519Key.from_private_key_file(key_file)
     client = paramiko.SSHClient()
     client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
-    
+
     retry = 0
     while retry < 5:
         try:
@@ -273,10 +404,11 @@ def refresh_worker(ip, key_file):
 
 
 def compile_benchmarks():
-     # start west instance
+    # start west instance
     stopped_instances = list(ec2_west.instances.filter(
         Filters=[{"Name": "instance-state-name", "Values": ["stopped"]}]))
-    stopped_instances = [i for i in stopped_instances if i.instance_type == instance_type]
+    stopped_instances = [
+        i for i in stopped_instances if i.instance_type == instance_type]
     count = 0
     num = len(stopped_instances)
     for i in range(num):
@@ -291,7 +423,8 @@ def compile_benchmarks():
     # compile on west instance
     running_west_instances = list(ec2_west.instances.filter(
         Filters=[{"Name": "instance-state-name", "Values": ["running"]}]))
-    running_west_instances = [i for i in running_west_instances if i.instance_type == instance_type]
+    running_west_instances = [
+        i for i in running_west_instances if i.instance_type == instance_type]
     ip = [instance.public_dns_name for instance in running_west_instances][0]
     id = [instance.id for instance in running_west_instances][0]
     key = paramiko.Ed25519Key.from_private_key_file("aws-west.pem")
@@ -339,7 +472,8 @@ def select_benchmarks():
     # start west instance
     stopped_instances = list(ec2_west.instances.filter(
         Filters=[{"Name": "instance-state-name", "Values": ["stopped"]}]))
-    stopped_instances = [i for i in stopped_instances if i.instance_type == instance_type]
+    stopped_instances = [
+        i for i in stopped_instances if i.instance_type == instance_type]
     count = 0
     num = len(stopped_instances)
     for i in range(num):
@@ -354,7 +488,8 @@ def select_benchmarks():
     # compile on west instance
     running_west_instances = list(ec2_west.instances.filter(
         Filters=[{"Name": "instance-state-name", "Values": ["running"]}]))
-    running_west_instances = [i for i in running_west_instances if i.instance_type == instance_type]
+    running_west_instances = [
+        i for i in running_west_instances if i.instance_type == instance_type]
     ip = [instance.public_dns_name for instance in running_west_instances][0]
     id = [instance.id for instance in running_west_instances][0]
     key = paramiko.Ed25519Key.from_private_key_file("aws-west.pem")
@@ -511,13 +646,12 @@ def results():
             "rsync -avz -e \"ssh -o StrictHostKeyChecking=no -i {}\" --progress ubuntu@{}:~/circ_benchmarks/test_results ./aws/{}".format(key, dns_name, id), shell=True)
 
 
-
 def setup_run_worker(ip, key_file):
     print("ip:", ip, "\nkey:", key_file)
     key = paramiko.Ed25519Key.from_private_key_file(key_file)
     client = paramiko.SSHClient()
     client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
-    
+
     retry = 0
     while retry < 5:
         try:
@@ -543,12 +677,14 @@ def setup_run_worker(ip, key_file):
     print("Set up:", ip)
     client.close()
 
+
 def run_lan():
     print("RUNNING LAN TEST")
     stopped_east_instances = list(ec2_east.instances.filter(
         Filters=[{"Name": "instance-state-name", "Values": ["stopped"]}]))
-    instances = [i for i in stopped_east_instances if i.instance_type == run_instance_type]
-    
+    instances = [
+        i for i in stopped_east_instances if i.instance_type == run_instance_type]
+
     if len(instances) >= 2:
         print("starting instances")
         instances = instances[:2]
@@ -559,39 +695,39 @@ def run_lan():
     else:
         print("creating instances")
         instances = ec2_east.create_instances(ImageId="ami-05b63781e32145c7f",
-                                    InstanceType=run_instance_type,
-                                    KeyName="aws-east",
-                                    MinCount=1,
-                                    MaxCount=2,
-                                    Monitoring={
-                                        "Enabled": False
-                                    },
-                                    SecurityGroups=[
-                                        "circ4mpc"
-                                    ],
-                                    BlockDeviceMappings=[
-                                        {
-                                            'DeviceName': '/dev/sda1',
-                                            'Ebs': {
-                                                'DeleteOnTermination': True,
-                                                'VolumeSize': 128,
-                                                'VolumeType': 'gp2',
-                                            }
-                                        },
-                                    ]
-                                )
+                                              InstanceType=run_instance_type,
+                                              KeyName="aws-east",
+                                              MinCount=1,
+                                              MaxCount=2,
+                                              Monitoring={
+                                                  "Enabled": False
+                                              },
+                                              SecurityGroups=[
+                                                  "circ4mpc"
+                                              ],
+                                              BlockDeviceMappings=[
+                                                  {
+                                                      'DeviceName': '/dev/sda1',
+                                                      'Ebs': {
+                                                          'DeleteOnTermination': True,
+                                                          'VolumeSize': 128,
+                                                          'VolumeType': 'gp2',
+                                                      }
+                                                  },
+                                              ]
+                                              )
         [instance.wait_until_running() for instance in instances]
         [instance.load() for instance in instances]
         print("created {} instances".format(len(instances)))
 
-    # install ABY 
+    # install ABY
     ips = [instance.public_dns_name for instance in instances]
     keys = ["aws-east.pem" for _ in instances]
     print("Setting up instances")
     pool = multiprocessing.Pool(len(instances))
     pool.starmap(setup_run_worker, zip(ips, keys))
 
-    # copy test cases to benchmark 
+    # copy test cases to benchmark
     print("Rsync test cases to instances")
     for ip in [i.public_dns_name for i in instances]:
         print("copy to:", ip)
@@ -610,7 +746,8 @@ def run_lan():
 
     print("benchmarking")
     pool = multiprocessing.Pool(len(instances))
-    pool.starmap(benchmark_worker, zip(ips, connect_ips, roles, keys, settings))
+    pool.starmap(benchmark_worker, zip(
+        ips, connect_ips, roles, keys, settings))
 
     # scp compiled hycc_circuit_dir & test_results to local directory
     subprocess.call(
@@ -619,12 +756,11 @@ def run_lan():
     subprocess.call(
         "rsync -avz -e \"ssh -o StrictHostKeyChecking=no -i aws-east.pem\" --progress ubuntu@{}:~/circ_benchmarks/run_test_results ./client".format(ips[1]), shell=True)
 
-
     print("Stopping instances")
     [instance.stop() for instance in instances]
     [instance.wait_until_stopped() for instance in instances]
     print("done!")
-    
+
 
 def run_wan():
     print("RUNNING WAN TEST")
@@ -633,11 +769,12 @@ def run_wan():
     stopped_east_instances = list(ec2_east.instances.filter(
         Filters=[{"Name": "instance-state-name", "Values": ["stopped"]}]))
 
-
     # filter instances by type
-    stopped_west_instances = [i for i in stopped_west_instances if i.instance_type == run_instance_type]
-    stopped_east_instances = [i for i in stopped_east_instances if i.instance_type == run_instance_type]
-    
+    stopped_west_instances = [
+        i for i in stopped_west_instances if i.instance_type == run_instance_type]
+    stopped_east_instances = [
+        i for i in stopped_east_instances if i.instance_type == run_instance_type]
+
     instances = []
 
     if len(stopped_west_instances) >= 1 and len(stopped_east_instances) >= 1:
@@ -653,60 +790,60 @@ def run_wan():
         print("creating 1 west and 1 east instances")
 
         west_instance = ec2_west.create_instances(ImageId="ami-0ddf424f81ddb0720",
-                                  InstanceType=run_instance_type,
-                                  KeyName="aws-west",
-                                  MinCount=1,
-                                  MaxCount=1,
-                                  Monitoring={
-                                      "Enabled": False},
-                                  SecurityGroups=[
-                                      "circ4mpc"],
-                                  BlockDeviceMappings=[
-                                        {
-                                            'DeviceName': '/dev/sda1',
-                                            'Ebs': {
-                                                'DeleteOnTermination': True,
-                                                'VolumeSize': 128,
-                                                'VolumeType': 'gp2',
-                                            }
-                                        },
-                                    ]
-                                  )
+                                                  InstanceType=run_instance_type,
+                                                  KeyName="aws-west",
+                                                  MinCount=1,
+                                                  MaxCount=1,
+                                                  Monitoring={
+                                                      "Enabled": False},
+                                                  SecurityGroups=[
+                                                      "circ4mpc"],
+                                                  BlockDeviceMappings=[
+                                                      {
+                                                          'DeviceName': '/dev/sda1',
+                                                          'Ebs': {
+                                                              'DeleteOnTermination': True,
+                                                              'VolumeSize': 128,
+                                                              'VolumeType': 'gp2',
+                                                          }
+                                                      },
+                                                  ]
+                                                  )
         east_instance = ec2_east.create_instances(ImageId="ami-05b63781e32145c7f",
-                                    InstanceType=run_instance_type,
-                                    KeyName="aws-east",
-                                    MinCount=1,
-                                    MaxCount=1,
-                                    Monitoring={
-                                        "Enabled": False
-                                    },
-                                    SecurityGroups=[
-                                        "circ4mpc"
-                                    ],
-                                    BlockDeviceMappings=[
-                                        {
-                                            'DeviceName': '/dev/sda1',
-                                            'Ebs': {
-                                                'DeleteOnTermination': True,
-                                                'VolumeSize': 128,
-                                                'VolumeType': 'gp2',
-                                            }
-                                        },
-                                    ]
-                                )
+                                                  InstanceType=run_instance_type,
+                                                  KeyName="aws-east",
+                                                  MinCount=1,
+                                                  MaxCount=1,
+                                                  Monitoring={
+                                                      "Enabled": False
+                                                  },
+                                                  SecurityGroups=[
+                                                      "circ4mpc"
+                                                  ],
+                                                  BlockDeviceMappings=[
+                                                      {
+                                                          'DeviceName': '/dev/sda1',
+                                                          'Ebs': {
+                                                              'DeleteOnTermination': True,
+                                                              'VolumeSize': 128,
+                                                              'VolumeType': 'gp2',
+                                                          }
+                                                      },
+                                                  ]
+                                                  )
         instances = [west_instance[0], east_instance[0]]
         [instance.wait_until_running() for instance in instances]
         [instance.load() for instance in instances]
         print("created {} instances".format(len(instances)))
 
-    # install ABY 
+    # install ABY
     ips = [instance.public_dns_name for instance in instances]
     keys = ["aws-west.pem", "aws-east.pem"]
     print("Setting up instances")
     pool = multiprocessing.Pool(len(instances))
     pool.starmap(setup_run_worker, zip(ips, keys))
 
-    # copy test cases to benchmark 
+    # copy test cases to benchmark
     print("Rsync test cases to instances")
     for ip, key in zip([i.public_dns_name for i in instances], ["aws-west.pem", "aws-east.pem"]):
         print("copy to:", ip)
@@ -726,7 +863,8 @@ def run_wan():
 
     print("benchmarking")
     pool = multiprocessing.Pool(len(instances))
-    pool.starmap(benchmark_worker, zip(ips, connect_ips, roles, keys, settings))
+    pool.starmap(benchmark_worker, zip(
+        ips, connect_ips, roles, keys, settings))
 
     # scp compiled hycc_circuit_dir & test_results to local directory
     subprocess.call(
@@ -739,72 +877,72 @@ def run_wan():
     [instance.stop() for instance in instances]
     [instance.wait_until_stopped() for instance in instances]
     print("done!")
-    
 
-if __name__ == "__main__":
-    setting = WAN  # default test setting
-    last_cmd = ""
-    while True:
-        cmds = input("> ").split(" ")
-        cmd_type = cmds[0]
 
-        # press enter to redo
-        if cmd_type == "" and last_cmd != "":
-            cmd_type = last_cmd
-        else:
-            last_cmd = cmd_type
+# if __name__ == "__main__":
+#     setting = WAN  # default test setting
+#     last_cmd = ""
+#     while True:
+#         cmds = input("> ").split(" ")
+#         cmd_type = cmds[0]
 
-        if cmd_type == "help":
-            print("Not again... oh well here you go\n")
-            print("EC2: \tcreate start stop terminate stats")
-            print("Setup: \tsetup refresh")
-            print("Build: \tcompile")
-            print("Run: \trun")
-            print("Res: \tres results")
-            print("AWS: \tstats hosts")
-            print("Set: \tLAN WAN")
-            print("Quit: \tquit q")
-        elif cmd_type == "create":
-            create_instances()
-        elif cmd_type == "start":
-            start_instances()
-        elif cmd_type == "setup":
-            print("=== will stop instances after setup ===")
-            setup_instances()
-        elif cmd_type == "compile":
-            compile_benchmarks()
-        elif cmd_type == "select":
-            select_benchmarks()
-        elif cmd_type == "run":
-            run_benchmarks(setting)
-        elif cmd_type == "stop":
-            stop_instances()
-        elif cmd_type == "terminate":
-            terminate_instances()
-        elif cmd_type == "stats":
-            stats(setting)
-        elif cmd_type == "hosts":
-            hosts()
-        elif cmd_type == "refresh":
-            refresh_instances()
-        elif cmd_type in ["res", "results"]:
-            results()
-        elif cmd_type in ["quit", "q", "exit"]:
-            sys.exit(0)
-        elif cmd_type == LAN:
-            run_lan()
-        elif cmd_type == WAN:
-            run_wan()
-        # elif cmd_type == LAN:
-        #     setting = cmd_type
-        #     print("Operating in: {}".format(setting))
-        #     lan()
-        # elif cmd_type == WAN:
-        #     setting = cmd_type
-        #     print("Operating in: {}".format(setting))
-        #     wan()
-        else:
-            print("unlucky, not a cmd")
+#         # press enter to redo
+#         if cmd_type == "" and last_cmd != "":
+#             cmd_type = last_cmd
+#         else:
+#             last_cmd = cmd_type
 
-        if cmd_type != "stats":
-            stats(setting)
+#         if cmd_type == "help":
+#             print("Not again... oh well here you go\n")
+#             print("EC2: \tcreate start stop terminate stats")
+#             print("Setup: \tsetup refresh")
+#             print("Build: \tcompile")
+#             print("Run: \trun")
+#             print("Res: \tres results")
+#             print("AWS: \tstats hosts")
+#             print("Set: \tLAN WAN")
+#             print("Quit: \tquit q")
+#         elif cmd_type == "create":
+#             create_instances()
+#         elif cmd_type == "start":
+#             start_instances()
+#         elif cmd_type == "setup":
+#             print("=== will stop instances after setup ===")
+#             setup_instances()
+#         elif cmd_type == "compile":
+#             compile_benchmarks()
+#         elif cmd_type == "select":
+#             select_benchmarks()
+#         elif cmd_type == "run":
+#             run_benchmarks(setting)
+#         elif cmd_type == "stop":
+#             stop_instances()
+#         elif cmd_type == "terminate":
+#             terminate_instances()
+#         elif cmd_type == "stats":
+#             stats(setting)
+#         elif cmd_type == "hosts":
+#             hosts()
+#         elif cmd_type == "refresh":
+#             refresh_instances()
+#         elif cmd_type in ["res", "results"]:
+#             results()
+#         elif cmd_type in ["quit", "q", "exit"]:
+#             sys.exit(0)
+#         elif cmd_type == LAN:
+#             run_lan()
+#         elif cmd_type == WAN:
+#             run_wan()
+#         # elif cmd_type == LAN:
+#         #     setting = cmd_type
+#         #     print("Operating in: {}".format(setting))
+#         #     lan()
+#         # elif cmd_type == WAN:
+#         #     setting = cmd_type
+#         #     print("Operating in: {}".format(setting))
+#         #     wan()
+#         else:
+#             print("unlucky, not a cmd")
+
+#         if cmd_type != "stats":
+#             stats(setting)
