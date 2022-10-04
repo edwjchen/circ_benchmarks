@@ -10,8 +10,7 @@ import time
 
 # instance_type = "t2.micro"
 # instance_type = "c5.large"
-# compile_instance_type = "c6a.16xlarge"
-compile_instance_type = "c5.large"
+compile_instance_type = "c6a.16xlarge"
 run_instance_type = "r5.xlarge"
 
 LAN = "LAN"
@@ -21,7 +20,6 @@ ec2_east1 = boto3.resource("ec2",
                            aws_access_key_id=os.environ["AWS_ACCESS_KEY_ID"],
                            aws_secret_access_key=os.environ["AWS_SECRET_ACCESS_KEY"],
                            region_name="us-east-1")
-
 ec2_east2 = boto3.resource("ec2",
                            aws_access_key_id=os.environ["AWS_ACCESS_KEY_ID"],
                            aws_secret_access_key=os.environ["AWS_SECRET_ACCESS_KEY"],
@@ -32,6 +30,128 @@ ec2_west = boto3.resource("ec2",
                           region_name="us-west-2")
 
 
+def create_west_compile_instance():
+    print("Creating west instance")
+    instance = ec2_west.create_instances(ImageId="ami-0c09c7eb16d3e8e70",
+                                         InstanceType=compile_instance_type,
+                                         KeyName="aws-west",
+                                         MinCount=1,
+                                         MaxCount=1,
+                                         Monitoring={
+                                             "Enabled": False},
+                                         SecurityGroups=[
+                                             "circ4mpc"
+                                         ],
+                                         BlockDeviceMappings=[
+                                             {
+                                                 'DeviceName': '/dev/sda1',
+                                                 'Ebs': {
+                                                     'DeleteOnTermination': True,
+                                                     'VolumeSize': 32,
+                                                     'VolumeType': 'gp2',
+                                                 }
+                                             },
+                                         ]
+                                         )[0]
+    instance.wait_until_running()
+    instance.load()
+    return instance
+
+
+def create_east1_compile_instance():
+    print("Creating east1 instance")
+    instance = ec2_east1.create_instances(ImageId="ami-0149b2da6ceec4bb0",
+                                          InstanceType=compile_instance_type,
+                                          KeyName="aws-virg",
+                                          MinCount=1,
+                                          MaxCount=1,
+                                          Monitoring={
+                                              "Enabled": False},
+                                          SecurityGroups=[
+                                              "circ4mpc"
+                                          ],
+                                          BlockDeviceMappings=[
+                                              {
+                                                  'DeviceName': '/dev/sda1',
+                                                  'Ebs': {
+                                                      'DeleteOnTermination': True,
+                                                      'VolumeSize': 32,
+                                                      'VolumeType': 'gp2',
+                                                  }
+                                              },
+                                          ]
+                                          )[0]
+    instance.wait_until_running()
+    instance.load()
+    return instance
+
+
+def create_east2_compile_instance():
+    print("Creating east2 instance")
+    instance = ec2_east2.create_instances(ImageId="ami-0d5bf08bc8017c83b",
+                                          InstanceType=compile_instance_type,
+                                          KeyName="aws-east",
+                                          MinCount=1,
+                                          MaxCount=1,
+                                          Monitoring={
+                                              "Enabled": False},
+                                          SecurityGroups=[
+                                              "circ4mpc"
+                                          ],
+                                          BlockDeviceMappings=[
+                                              {
+                                                  'DeviceName': '/dev/sda1',
+                                                  'Ebs': {
+                                                      'DeleteOnTermination': True,
+                                                      'VolumeSize': 32,
+                                                      'VolumeType': 'gp2',
+                                                  }
+                                              },
+                                          ]
+                                          )[0]
+    instance.wait_until_running()
+    instance.load()
+    return instance
+
+
+def get_compile_instance():
+    stopped_instances = [(i, "aws-west") for i in list(ec2_west.instances.filter(
+        Filters=[{"Name": "instance-state-name", "Values": ["stopped"]}]))] + \
+        [(i, "aws-east") for i in list(ec2_east2.instances.filter(
+            Filters=[{"Name": "instance-state-name", "Values": ["stopped"]}]))] + \
+        [(i, "aws-virg") for i in list(ec2_east1.instances.filter(
+            Filters=[{"Name": "instance-state-name", "Values": ["stopped"]}]))]
+
+    stopped_compile_instances = [
+        i for i in stopped_instances if i[0].instance_type == compile_instance_type]
+
+    if len(stopped_compile_instances):
+        instance = stopped_compile_instances[0][0]
+        print("Starting instance")
+        instance.start()
+        instance.wait_until_running()
+        instance.load()
+        return stopped_compile_instances[0]
+    else:
+        try:
+            instance = create_west_compile_instance()
+            return (instance, "aws-west")
+        except:
+            print("Failed to create west instance")
+
+        try:
+            instance = create_east1_compile_instance()
+            return (instance, "aws-virg")
+        except:
+            print("Failed to create east1 instance")
+
+        try:
+            instance = create_east2_compile_instance()
+            return (instance, "aws-east")
+        except:
+            print("Failed to create east2 instance")
+
+
 def compile_hycc_test(test_name, test_path, minimization_time, arguments):
     params = {
         "name": test_name,
@@ -40,45 +160,15 @@ def compile_hycc_test(test_name, test_path, minimization_time, arguments):
         "a": arguments
     }
 
-    # check if there is a stopped compile instance
-    # otherwise, create a compile instance
-    stopped_instances = list(ec2_east1.instances.filter(
-        Filters=[{"Name": "instance-state-name", "Values": ["stopped"]}]))
-
-    instance = None
-    if len(stopped_instances):
-        instance = stopped_instances[0]
-        print("Starting instance")
-        instance.start()
-    else:
-        print("Creating instance")
-        instance = ec2_east1.create_instances(ImageId="ami-0149b2da6ceec4bb0",
-                                              InstanceType=compile_instance_type,
-                                              KeyName="aws-virg",
-                                              MinCount=1,
-                                              MaxCount=1,
-                                              Monitoring={
-                                                      "Enabled": False},
-                                              SecurityGroups=[
-                                                  "circ4mpc"
-                                              ],
-                                              BlockDeviceMappings=[
-                                                  {
-                                                      'DeviceName': '/dev/sda1',
-                                                      'Ebs': {
-                                                          'DeleteOnTermination': True,
-                                                          'VolumeSize': 32,
-                                                          'VolumeType': 'gp2',
-                                                      }
-                                                  },
-                                              ]
-                                              )[0]
-    instance.wait_until_running()
-    instance.load()
+    # get compile instance
+    (instance, k) = get_compile_instance()
+    print("instance:", instance)
+    print("key:",  k)
 
     # Connect to ec2 instance
-    key = paramiko.Ed25519Key.from_private_key_file("aws-virg.pem")
+    key = paramiko.Ed25519Key.from_private_key_file("{}.pem".format(k))
     ip = instance.public_dns_name
+    print("ip:", ip)
     client = paramiko.SSHClient()
     client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
     retry = 0
@@ -112,51 +202,55 @@ def compile_hycc_test(test_name, test_path, minimization_time, arguments):
             print(ip, " failed setup 2")
     print("Set up:", ip)
 
-    # # Write compile params to file
-    # print("Writing compile params: ", params)
-    # with open("compile_params.json", "w") as f:
-    #     json.dump(params, f)
-    # subprocess.call(
-    #     "rsync -avz -e \"ssh -o StrictHostKeyChecking=no -i aws-virg.pem\" --progress compile_params.json ubuntu@{}:~/circ_benchmarks/.".format(ip), shell=True)
-    # print("Finished writing compile params: ", ip)
+    # Write compile params to file
+    print("Writing compile params: ", params)
+    with open("compile_params.json", "w") as f:
+        json.dump(params, f)
+    subprocess.call(
+        "rsync -avz -e \"ssh -o StrictHostKeyChecking=no -i {}.pem\" --progress compile_params.json ubuntu@{}:~/circ_benchmarks/.".format(k, ip), shell=True)
+    print("Finished writing compile params: ", ip)
 
-    # # Compile test case
-    # cmd = "cd ~/circ_benchmarks && git checkout aws -f && git add . && git stash && git pull -f && python3 driver.py -f hycc && python3 driver.py --compile_with_params"
-    # print("Compiling:", cmd)
-    # _, stdout, stderr = client.exec_command(cmd)
-    # print("\n".join(stderr.readlines()))
-    # if stdout.channel.recv_exit_status():
-    #     print(stderr)
-    #     print(ip, " failed compiles")
-    # print("Compiled:", ip)
+    # Compile test case
+    cmd = "cd ~/circ_benchmarks && python3 driver.py --compile_with_params"
+    print("Compiling:", cmd)
+    _, stdout, stderr = client.exec_command(cmd)
+    print("\n".join(stderr.readlines()))
+    if stdout.channel.recv_exit_status():
+        print(stderr)
+        print(ip, " failed compiles")
+    print("Compiled:", ip)
 
-    # # Select
-    # cmd = "cd ~/circ_benchmarks && git checkout aws -f && git add . && git stash && git pull -f && python3 driver.py -f hycc && python3 driver.py --select_with_params"
-    # print("Selecting:", cmd)
-    # _, stdout, stderr = client.exec_command(cmd)
-    # print("\n".join(stderr.readlines()))
-    # if stdout.channel.recv_exit_status():
-    #     print(stderr)
-    #     print(ip, " failed selecting")
-    # print("Selected:", ip)
+    # Select
+    cmd = "cd ~/circ_benchmarks && python3 driver.py --select_with_params"
+    print("Selecting:", cmd)
+    _, stdout, stderr = client.exec_command(cmd)
+    print("\n".join(stderr.readlines()))
+    if stdout.channel.recv_exit_status():
+        print(stderr)
+        print(ip, " failed selecting")
+    print("Selected:", ip)
 
-    # # close client
-    # client.close()
+    # close client
+    client.close()
 
-    # # scp compiled hycc_circuit_dir & test_results to local directory
-    # subprocess.call(
-    #     "rsync -avz -e \"ssh -o StrictHostKeyChecking=no -i aws-virg.pem\" --progress ubuntu@{}:~/circ_benchmarks/hycc_circuit_dir .".format(ip), shell=True)
-    # subprocess.call(
-    #     "rsync -avz -e \"ssh -o StrictHostKeyChecking=no -i aws-virg.pem\" --progress ubuntu@{}:~/circ_benchmarks/test_results .".format(ip), shell=True)
+    # scp compiled hycc_circuit_dir & test_results to local directory
+    subprocess.call(
+        "rsync -avz -e \"ssh -o StrictHostKeyChecking=no -i {}.pem\" --progress ubuntu@{}:~/circ_benchmarks/hycc_circuit_dir .".format(k, ip), shell=True)
+    subprocess.call(
+        "rsync -avz -e \"ssh -o StrictHostKeyChecking=no -i {}.pem\" --progress ubuntu@{}:~/circ_benchmarks/test_results .".format(k, ip), shell=True)
 
-    # # stop instance
-    # instance.stop()
-    # instance.wait_until_stopped()
-    # print("Finished!")
+    # stop instance
+    instance.stop()
+    instance.wait_until_stopped()
+    print("Finished!")
 
 
 compile_hycc_test("biomatch",
-                  "biomatch/biomatch.c", 600, ["--all-variants"])
+                  "biomatch/biomatch.c", 0, ["--all-variants"])
+# compile_hycc_test("biomatch_outline",
+#                   "biomatch_outline/biomatch.c", 0, ["--all-variants", "--outline"])
+# compile_hycc_test("biomatch",
+#                   "biomatch/biomatch.c", 600, ["--all-variants"])
 # compile_hycc_test("biomatch_outline",
 #                   "biomatch_outline/biomatch.c", 600, ["--all-variants", "--outline"])
 

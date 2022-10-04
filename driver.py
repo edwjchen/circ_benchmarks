@@ -231,7 +231,7 @@ def select(features):
             line, CIRC_BENCHMARK_SOURCE), shell=True)
 
 
-def select(features):
+def select_with_params(features):
     build(features)
     make_test_results()
     if "hycc" in features:
