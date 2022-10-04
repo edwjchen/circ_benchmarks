@@ -1,4 +1,0 @@
-LOG: Test: Build circuit time
-LOG: Error: Process returned with status code 134
-LOG: Error message: <command-line>: warning: "__STDC_VERSION__" redefined <built-in>: note: this is the location of the previous definition <command-line>: warning: "__STDC_VERSION__" redefined <built-in>: note: this is the location of the previous definition terminate called after throwing an instance of 'std::runtime_error'   what():  Unknown literal: 1611009. Did you forget to return a value or assign a value to a OUTPUT variable? Command terminated by signal 6 4.27 seconds 1319236 kB
-LOG: Failed simulating circuit with args: --all-variants --outline, exception:
