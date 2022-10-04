@@ -10,7 +10,8 @@ import time
 
 # instance_type = "t2.micro"
 # instance_type = "c5.large"
-compile_instance_type = "c6a.16xlarge"
+# compile_instance_type = "c6a.16xlarge"
+compile_instance_type = "c5.large"
 run_instance_type = "r5.xlarge"
 
 LAN = "LAN"
@@ -111,47 +112,47 @@ def compile_hycc_test(test_name, test_path, minimization_time, arguments):
             print(ip, " failed setup 2")
     print("Set up:", ip)
 
-    # Write compile params to file
-    print("Writing compile params: ", params)
-    with open("compile_params.json", "w") as f:
-        json.dump(params, f)
-    subprocess.call(
-        "rsync -avz -e \"ssh -o StrictHostKeyChecking=no -i aws-virg.pem\" --progress compile_params.json ubuntu@{}:~/circ_benchmarks/.".format(ip), shell=True)
-    print("Finished writing compile params: ", ip)
+    # # Write compile params to file
+    # print("Writing compile params: ", params)
+    # with open("compile_params.json", "w") as f:
+    #     json.dump(params, f)
+    # subprocess.call(
+    #     "rsync -avz -e \"ssh -o StrictHostKeyChecking=no -i aws-virg.pem\" --progress compile_params.json ubuntu@{}:~/circ_benchmarks/.".format(ip), shell=True)
+    # print("Finished writing compile params: ", ip)
 
-    # Compile test case
-    cmd = "cd ~/circ_benchmarks && git checkout aws -f && git add . && git stash && git pull -f && python3 driver.py -f hycc && python3 driver.py --compile_with_params"
-    print("Compiling:", cmd)
-    _, stdout, stderr = client.exec_command(cmd)
-    print("\n".join(stderr.readlines()))
-    if stdout.channel.recv_exit_status():
-        print(stderr)
-        print(ip, " failed compiles")
-    print("Compiled:", ip)
+    # # Compile test case
+    # cmd = "cd ~/circ_benchmarks && git checkout aws -f && git add . && git stash && git pull -f && python3 driver.py -f hycc && python3 driver.py --compile_with_params"
+    # print("Compiling:", cmd)
+    # _, stdout, stderr = client.exec_command(cmd)
+    # print("\n".join(stderr.readlines()))
+    # if stdout.channel.recv_exit_status():
+    #     print(stderr)
+    #     print(ip, " failed compiles")
+    # print("Compiled:", ip)
 
-    # Select
-    cmd = "cd ~/circ_benchmarks && git checkout aws -f && git add . && git stash && git pull -f && python3 driver.py -f hycc && python3 driver.py --select_with_params"
-    print("Selecting:", cmd)
-    _, stdout, stderr = client.exec_command(cmd)
-    print("\n".join(stderr.readlines()))
-    if stdout.channel.recv_exit_status():
-        print(stderr)
-        print(ip, " failed selecting")
-    print("Selected:", ip)
+    # # Select
+    # cmd = "cd ~/circ_benchmarks && git checkout aws -f && git add . && git stash && git pull -f && python3 driver.py -f hycc && python3 driver.py --select_with_params"
+    # print("Selecting:", cmd)
+    # _, stdout, stderr = client.exec_command(cmd)
+    # print("\n".join(stderr.readlines()))
+    # if stdout.channel.recv_exit_status():
+    #     print(stderr)
+    #     print(ip, " failed selecting")
+    # print("Selected:", ip)
 
-    # close client
-    client.close()
+    # # close client
+    # client.close()
 
-    # scp compiled hycc_circuit_dir & test_results to local directory
-    subprocess.call(
-        "rsync -avz -e \"ssh -o StrictHostKeyChecking=no -i aws-virg.pem\" --progress ubuntu@{}:~/circ_benchmarks/hycc_circuit_dir .".format(ip), shell=True)
-    subprocess.call(
-        "rsync -avz -e \"ssh -o StrictHostKeyChecking=no -i aws-virg.pem\" --progress ubuntu@{}:~/circ_benchmarks/test_results .".format(ip), shell=True)
+    # # scp compiled hycc_circuit_dir & test_results to local directory
+    # subprocess.call(
+    #     "rsync -avz -e \"ssh -o StrictHostKeyChecking=no -i aws-virg.pem\" --progress ubuntu@{}:~/circ_benchmarks/hycc_circuit_dir .".format(ip), shell=True)
+    # subprocess.call(
+    #     "rsync -avz -e \"ssh -o StrictHostKeyChecking=no -i aws-virg.pem\" --progress ubuntu@{}:~/circ_benchmarks/test_results .".format(ip), shell=True)
 
-    # stop instance
-    instance.stop()
-    instance.wait_until_stopped()
-    print("Finished!")
+    # # stop instance
+    # instance.stop()
+    # instance.wait_until_stopped()
+    # print("Finished!")
 
 
 compile_hycc_test("biomatch",
