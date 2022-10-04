@@ -157,7 +157,7 @@ def compile_hycc_test(test_name, test_path, minimization_time, arguments):
         "name": test_name,
         "path": test_path,
         "mt": minimization_time,
-        "a": arguments
+        "a": arguments,
     }
 
     # get compile instance
@@ -220,16 +220,6 @@ def compile_hycc_test(test_name, test_path, minimization_time, arguments):
         print(ip, " failed compiles")
     print("Compiled:", ip)
 
-    # Select
-    cmd = "cd ~/circ_benchmarks && python3 driver.py --select_with_params"
-    print("Selecting:", cmd)
-    _, stdout, stderr = client.exec_command(cmd)
-    print("\n".join(stderr.readlines()))
-    if stdout.channel.recv_exit_status():
-        print(stderr)
-        print(ip, " failed selecting")
-    print("Selected:", ip)
-
     # close client
     client.close()
 
@@ -240,6 +230,7 @@ def compile_hycc_test(test_name, test_path, minimization_time, arguments):
         "rsync -avz -e \"ssh -o StrictHostKeyChecking=no -i {}.pem\" --progress ubuntu@{}:~/circ_benchmarks/test_results .".format(k, ip), shell=True)
 
     # stop instance
+    print("Stopping instance")
     instance.stop()
     instance.wait_until_stopped()
     print("Finished!")
@@ -253,6 +244,16 @@ compile_hycc_test("biomatch",
 #                   "biomatch/biomatch.c", 600, ["--all-variants"])
 # compile_hycc_test("biomatch_outline",
 #                   "biomatch_outline/biomatch.c", 600, ["--all-variants", "--outline"])
+
+# # Select
+# cmd = "cd ~/circ_benchmarks && python3 driver.py --select_with_params"
+# print("Selecting:", cmd)
+# _, stdout, stderr = client.exec_command(cmd)
+# print("\n".join(stderr.readlines()))
+# if stdout.channel.recv_exit_status():
+#     print(stderr)
+#     print(ip, " failed selecting")
+# print("Selected:", ip)
 
 
 def create_instances():

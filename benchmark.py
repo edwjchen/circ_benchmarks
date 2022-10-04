@@ -258,6 +258,40 @@ def select_hycc(name):
     os.chdir(CIRC_BENCHMARK_SOURCE)
 
 
+def select_hycc_with_params(params):
+    params["system"] = "hycc"
+
+    version = version = "{}_{}_mt-{}_args-{}".format(
+        "hycc", params["name"], params["mt"], "".join(params["a"]))
+
+    circuit_dir = "{}{}".format(HYCC_CIRCUIT_PATH, version)
+    make_dir(circuit_dir)
+    params["circ_dir"] = version
+
+    select_version = "select_{}_cm-{}".format(version, params["cm"])
+    select_log_path = format(
+        "{}test_results/{}_{}/log_{}.txt".format(CIRC_BENCHMARK_SOURCE, params["system"], params["name"], select_version))
+    failed_log_path = format(
+        "{}test_results/{}_{}/failed_log_{}.txt".format(CIRC_BENCHMARK_SOURCE, params["system"], params["name"], select_version))
+
+    if not os.path.exists(select_log_path) and not os.path.exists(failed_log_path):
+        # select HyCC benchmark
+        os.chdir(circuit_dir)
+        params["version"] = select_version
+
+        write_log(DELIMITER, params)
+        write_log("LOG: Benchmarking HyCC", params)
+        write_log(DELIMITER, params)
+
+        write_log("LOG: TEST: {}".format(params["name"]), params)
+        write_log("LOG: MINIMIZATION_TIME: {}".format(
+            params["mt"]), params)
+        write_log("LOG: COST_MODEL: {}".format(params["cm"]), params)
+        write_log("LOG: ARGUMENTS: {}".format(params["a"]), params)
+        select_hycc_benchmark(params)
+    os.chdir(CIRC_BENCHMARK_SOURCE)
+
+
 def benchmark_hycc(name, path, instance_metadata):
     test_path = HYCC_SOURCE + \
         "/examples/benchmarks/{}".format(path)

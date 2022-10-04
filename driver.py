@@ -249,7 +249,7 @@ def select_with_params(features):
 
         # run hycc benchmarks
         make_dir("test_results/hycc_{}".format(params["name"]))
-        select_hycc(params["name"])
+        select_hycc(params)
         end = time.time()
         line = "LOG: Total hycc select time: {}".format(end-start)
         subprocess.call("echo \"{}\" >> {}/test_results/hycc_total_select_time.txt".format(
