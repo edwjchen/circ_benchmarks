@@ -1,0 +1,12 @@
+LOG: ====================================
+LOG: Benchmarking HyCC
+LOG: ====================================
+LOG: TEST: biomatch_outline
+LOG: MINIMIZATION_TIME: 600
+LOG: ARGUMENTS: ['--all-variants', '--outline']
+LOG: MODE: compile
+LOG: Compile time: 1264.6
+LOG: Time / Memory: 1267.98 seconds 67871796 kB
+LOG: ====================================
+LOG: MODE: bundle
+LOG: Time / Memory: 0.02 seconds 10040 kB

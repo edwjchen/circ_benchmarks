@@ -236,14 +236,35 @@ def compile_hycc_test(test_name, test_path, minimization_time, arguments):
     print("Finished!")
 
 
-compile_hycc_test("biomatch",
-                  "biomatch/biomatch.c", 0, ["--all-variants"])
+# # compile biomatch testcases
+# compile_hycc_test("biomatch",
+#                   "biomatch/biomatch.c", 0, ["--all-variants"])
 # compile_hycc_test("biomatch_outline",
 #                   "biomatch_outline/biomatch.c", 0, ["--all-variants", "--outline"])
 # compile_hycc_test("biomatch",
 #                   "biomatch/biomatch.c", 600, ["--all-variants"])
 # compile_hycc_test("biomatch_outline",
 #                   "biomatch_outline/biomatch.c", 600, ["--all-variants", "--outline"])
+
+# # compile kmeans testcases
+# compile_hycc_test("kmeans",
+#                   "kmeans/kmeans.c", 0, ["--all-variants"])
+# compile_hycc_test("kmeans_outline",
+#                   "kmeans_outline/kmeans.c", 0, ["--all-variants", "--outline"])
+# compile_hycc_test("kmeans",
+#                   "kmeans/kmeans.c", 600, ["--all-variants"])
+# compile_hycc_test("kmeans_outline",
+#                   "kmeans_outline/kmeans.c", 600, ["--all-variants", "--outline"])
+
+# # compile gauss testcases
+# compile_hycc_test("gauss",
+#                   "gauss/gauss.c", 0, ["--all-variants"])
+# compile_hycc_test("gauss_outline",
+#                   "gauss_outline/gauss.c", 0, ["--all-variants", "--outline"])
+# compile_hycc_test("gauss",
+#                   "gauss/gauss.c", 600, ["--all-variants"])
+# compile_hycc_test("gauss_outline",
+#                   "gauss_outline/gauss.c", 600, ["--all-variants", "--outline"])
 
 # # Select
 # cmd = "cd ~/circ_benchmarks && python3 driver.py --select_with_params"

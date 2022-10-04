@@ -1,0 +1,3085 @@
+
+LOG: ====================================
+
+LOG: Benchmarking HyCC
+
+LOG: ====================================
+
+LOG: TEST: gauss_outline
+LOG: MINIMIZATION_TIME: 0
+LOG: ARGUMENTS: ['--all-variants', '--outline']
+LOG: MODE: compile
+CBMC version 5.8 64-bit x86_64 linux
+Parsing /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gauss_outline/gauss.c
+Converting
+Type-checking gauss
+Adding CPROVER library (x86_64)
+Removal of function pointers and virtual functions
+Partial Inlining
+Generic Property Instrumentation
+Converting swap
+
+        // 39 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gauss_outline/gauss.c line 81 function swap
+        IF !(from != to) THEN GOTO 3
+        // 40 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gauss_outline/gauss.c line 83 function swap
+        signed int j;
+        // 41 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gauss_outline/gauss.c line 83 function swap
+        j = from;
+        // 42 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gauss_outline/gauss.c line 83 function swap
+     1: IF !(j < n) THEN GOTO 2
+        // 43 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gauss_outline/gauss.c line 84 function swap
+        DT tmp;
+        // 44 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gauss_outline/gauss.c line 84 function swap
+        tmp = m[(signed long int)(from * n + j)];
+        // 45 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gauss_outline/gauss.c line 85 function swap
+        m[(signed long int)(from * n + j)] = m[(signed long int)(to * n + j)];
+        // 46 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gauss_outline/gauss.c line 86 function swap
+        m[(signed long int)(to * n + j)] = tmp;
+        // 47 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gauss_outline/gauss.c line 87 function swap
+        dead tmp;
+        // 48 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gauss_outline/gauss.c line 83 function swap
+        j = j + 1;
+        // 49 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gauss_outline/gauss.c line 83 function swap
+        GOTO 1
+        // 50 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gauss_outline/gauss.c line 87 function swap
+     2: dead j;
+        // 51 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gauss_outline/gauss.c line 88 function swap
+        DT tmp;
+        // 52 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gauss_outline/gauss.c line 88 function swap
+        tmp = v[(signed long int)from];
+        // 53 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gauss_outline/gauss.c line 89 function swap
+        v[(signed long int)from] = v[(signed long int)to];
+        // 54 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gauss_outline/gauss.c line 90 function swap
+        v[(signed long int)to] = tmp;
+        // 55 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gauss_outline/gauss.c line 91 function swap
+        dead tmp;
+        // 56 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gauss_outline/gauss.c line 93 function swap
+     3: signed int i;
+        // 57 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gauss_outline/gauss.c line 93 function swap
+        i = 0;
+        // 58 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gauss_outline/gauss.c line 93 function swap
+     4: IF !(i < 3 * 3) THEN GOTO 5
+        // 59 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gauss_outline/gauss.c line 94 function swap
+        OUTPUT_m[(signed long int)i] = m[(signed long int)i];
+        // 60 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gauss_outline/gauss.c line 93 function swap
+        i = i + 1;
+        // 61 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gauss_outline/gauss.c line 93 function swap
+        GOTO 4
+        // 62 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gauss_outline/gauss.c line 95 function swap
+     5: dead i;
+        // 63 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gauss_outline/gauss.c line 97 function swap
+        signed int i;
+        // 64 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gauss_outline/gauss.c line 97 function swap
+        i = 0;
+        // 65 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gauss_outline/gauss.c line 97 function swap
+     6: IF !(i < 3) THEN GOTO 7
+        // 66 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gauss_outline/gauss.c line 98 function swap
+        OUTPUT_v[(signed long int)i] = v[(signed long int)i];
+        // 67 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gauss_outline/gauss.c line 97 function swap
+        i = i + 1;
+        // 68 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gauss_outline/gauss.c line 97 function swap
+        GOTO 6
+        // 69 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gauss_outline/gauss.c line 99 function swap
+     7: dead i;
+        // 70 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gauss_outline/gauss.c line 101 function swap
+        END_FUNCTION
+
+swap: (swap::m, swap::v, swap::OUTPUT_m, swap::OUTPUT_v, swap::n, swap::from, swap::to) -> ()
+0:   
+    %0 = (signed int)3
+    %1 = (signed int)0
+    %2 = (signed int)1
+    %swap::from = named_addr<signed int *> swap::from
+    %3 = load<signed int> %swap::from
+    %swap::to = named_addr<signed int *> swap::to
+    %4 = load<signed int> %swap::to
+    %5 = eq<_Bool> %3 %4
+    %6 = l_not<_Bool> %5
+    %7 = l_not<_Bool> %6
+    branch %7
+2:   
+    %swap::from1 = named_addr<signed int *> swap::from
+    %8 = load<signed int> %swap::from1
+    %swap::1::1::1::j = named_addr<signed int *> swap::1::1::1::j
+    store %swap::1::1::1::j %8
+    jump
+5:   
+    %swap::m = named_addr<DT **> swap::m
+    %9 = load<DT *> %swap::m
+    %swap::from2 = named_addr<signed int *> swap::from
+    %10 = load<signed int> %swap::from2
+    %swap::n = named_addr<signed int *> swap::n
+    %11 = load<signed int> %swap::n
+    %12 = mul<signed int> %10 %11
+    %swap::1::1::1::j1 = named_addr<signed int *> swap::1::1::1::j
+    %13 = load<signed int> %swap::1::1::1::j1
+    %14 = add<signed int> %12 %13
+    %15 = cast<signed long int> %14
+    %16 = compute_addr<DT *> %9 %15
+    %17 = load<DT> %16
+    %swap::1::1::1::1::tmp = named_addr<DT *> swap::1::1::1::1::tmp
+    store %swap::1::1::1::1::tmp %17
+    %swap::m1 = named_addr<DT **> swap::m
+    %18 = load<DT *> %swap::m1
+    %swap::to1 = named_addr<signed int *> swap::to
+    %19 = load<signed int> %swap::to1
+    %swap::n1 = named_addr<signed int *> swap::n
+    %20 = load<signed int> %swap::n1
+    %21 = mul<signed int> %19 %20
+    %swap::1::1::1::j2 = named_addr<signed int *> swap::1::1::1::j
+    %22 = load<signed int> %swap::1::1::1::j2
+    %23 = add<signed int> %21 %22
+    %24 = cast<signed long int> %23
+    %25 = compute_addr<DT *> %18 %24
+    %26 = load<DT> %25
+    %swap::m2 = named_addr<DT **> swap::m
+    %27 = load<DT *> %swap::m2
+    %swap::from3 = named_addr<signed int *> swap::from
+    %28 = load<signed int> %swap::from3
+    %swap::n2 = named_addr<signed int *> swap::n
+    %29 = load<signed int> %swap::n2
+    %30 = mul<signed int> %28 %29
+    %swap::1::1::1::j3 = named_addr<signed int *> swap::1::1::1::j
+    %31 = load<signed int> %swap::1::1::1::j3
+    %32 = add<signed int> %30 %31
+    %33 = cast<signed long int> %32
+    %34 = compute_addr<DT *> %27 %33
+    store %34 %26
+    %swap::1::1::1::1::tmp1 = named_addr<DT *> swap::1::1::1::1::tmp
+    %35 = load<DT> %swap::1::1::1::1::tmp1
+    %swap::m3 = named_addr<DT **> swap::m
+    %36 = load<DT *> %swap::m3
+    %swap::to2 = named_addr<signed int *> swap::to
+    %37 = load<signed int> %swap::to2
+    %swap::n3 = named_addr<signed int *> swap::n
+    %38 = load<signed int> %swap::n3
+    %39 = mul<signed int> %37 %38
+    %swap::1::1::1::j4 = named_addr<signed int *> swap::1::1::1::j
+    %40 = load<signed int> %swap::1::1::1::j4
+    %41 = add<signed int> %39 %40
+    %42 = cast<signed long int> %41
+    %43 = compute_addr<DT *> %36 %42
+    store %43 %35
+    dead
+    %swap::1::1::1::j5 = named_addr<signed int *> swap::1::1::1::j
+    %44 = load<signed int> %swap::1::1::1::j5
+    %45 = add<signed int> %44 (signed int)1
+    %swap::1::1::1::j6 = named_addr<signed int *> swap::1::1::1::j
+    store %swap::1::1::1::j6 %45
+    jump
+3:   
+    %swap::1::1::1::j7 = named_addr<signed int *> swap::1::1::1::j
+    %46 = load<signed int> %swap::1::1::1::j7
+    %swap::n4 = named_addr<signed int *> swap::n
+    %47 = load<signed int> %swap::n4
+    %48 = lt<_Bool> %46 %47
+    %49 = l_not<_Bool> %48
+    branch %49
+4:   
+    dead
+    %swap::v = named_addr<DT **> swap::v
+    %50 = load<DT *> %swap::v
+    %swap::from4 = named_addr<signed int *> swap::from
+    %51 = load<signed int> %swap::from4
+    %52 = cast<signed long int> %51
+    %53 = compute_addr<DT *> %50 %52
+    %54 = load<DT> %53
+    %swap::1::1::tmp = named_addr<DT *> swap::1::1::tmp
+    store %swap::1::1::tmp %54
+    %swap::v1 = named_addr<DT **> swap::v
+    %55 = load<DT *> %swap::v1
+    %swap::to3 = named_addr<signed int *> swap::to
+    %56 = load<signed int> %swap::to3
+    %57 = cast<signed long int> %56
+    %58 = compute_addr<DT *> %55 %57
+    %59 = load<DT> %58
+    %swap::v2 = named_addr<DT **> swap::v
+    %60 = load<DT *> %swap::v2
+    %swap::from5 = named_addr<signed int *> swap::from
+    %61 = load<signed int> %swap::from5
+    %62 = cast<signed long int> %61
+    %63 = compute_addr<DT *> %60 %62
+    store %63 %59
+    %swap::1::1::tmp1 = named_addr<DT *> swap::1::1::tmp
+    %64 = load<DT> %swap::1::1::tmp1
+    %swap::v3 = named_addr<DT **> swap::v
+    %65 = load<DT *> %swap::v3
+    %swap::to4 = named_addr<signed int *> swap::to
+    %66 = load<signed int> %swap::to4
+    %67 = cast<signed long int> %66
+    %68 = compute_addr<DT *> %65 %67
+    store %68 %64
+    dead
+    jump
+1:   
+    %swap::1::2::i = named_addr<signed int *> swap::1::2::i
+    store %swap::1::2::i (signed int)0
+    jump
+8:   
+    %swap::m4 = named_addr<DT **> swap::m
+    %69 = load<DT *> %swap::m4
+    %swap::1::2::i1 = named_addr<signed int *> swap::1::2::i
+    %70 = load<signed int> %swap::1::2::i1
+    %71 = cast<signed long int> %70
+    %72 = compute_addr<DT *> %69 %71
+    %73 = load<DT> %72
+    %swap::OUTPUT_m = named_addr<DT **> swap::OUTPUT_m
+    %74 = load<DT *> %swap::OUTPUT_m
+    %swap::1::2::i2 = named_addr<signed int *> swap::1::2::i
+    %75 = load<signed int> %swap::1::2::i2
+    %76 = cast<signed long int> %75
+    %77 = compute_addr<DT *> %74 %76
+    store %77 %73
+    %swap::1::2::i3 = named_addr<signed int *> swap::1::2::i
+    %78 = load<signed int> %swap::1::2::i3
+    %79 = add<signed int> %78 (signed int)1
+    %swap::1::2::i4 = named_addr<signed int *> swap::1::2::i
+    store %swap::1::2::i4 %79
+    jump
+6:   
+    %swap::1::2::i5 = named_addr<signed int *> swap::1::2::i
+    %80 = load<signed int> %swap::1::2::i5
+    %81 = mul<signed int> (signed int)3 (signed int)3
+    %82 = lt<_Bool> %80 %81
+    %83 = l_not<_Bool> %82
+    branch %83
+7:   
+    dead
+    %swap::1::3::i = named_addr<signed int *> swap::1::3::i
+    store %swap::1::3::i (signed int)0
+    jump
+11:  
+    %swap::v4 = named_addr<DT **> swap::v
+    %84 = load<DT *> %swap::v4
+    %swap::1::3::i1 = named_addr<signed int *> swap::1::3::i
+    %85 = load<signed int> %swap::1::3::i1
+    %86 = cast<signed long int> %85
+    %87 = compute_addr<DT *> %84 %86
+    %88 = load<DT> %87
+    %swap::OUTPUT_v = named_addr<DT **> swap::OUTPUT_v
+    %89 = load<DT *> %swap::OUTPUT_v
+    %swap::1::3::i2 = named_addr<signed int *> swap::1::3::i
+    %90 = load<signed int> %swap::1::3::i2
+    %91 = cast<signed long int> %90
+    %92 = compute_addr<DT *> %89 %91
+    store %92 %88
+    %swap::1::3::i3 = named_addr<signed int *> swap::1::3::i
+    %93 = load<signed int> %swap::1::3::i3
+    %94 = add<signed int> %93 (signed int)1
+    %swap::1::3::i4 = named_addr<signed int *> swap::1::3::i
+    store %swap::1::3::i4 %94
+    jump
+9:   
+    %swap::1::3::i5 = named_addr<signed int *> swap::1::3::i
+    %95 = load<signed int> %swap::1::3::i5
+    %96 = lt<_Bool> %95 (signed int)3
+    %97 = l_not<_Bool> %96
+    branch %97
+10:  
+    dead
+
+Converting solve_backtracking
+
+        // 30 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gauss_outline/gauss.c line 39 function solve_backtracking
+        signed int i;
+        // 31 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gauss_outline/gauss.c line 39 function solve_backtracking
+        i = 0;
+        // 32 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gauss_outline/gauss.c line 39 function solve_backtracking
+1     : IF !(i < 3) THEN GOTO 2
+        // 33 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gauss_outline/gauss.c line 40 function solve_backtracking
+        OUTPUT_res[(signed long int)i] = 0;
+        // 34 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gauss_outline/gauss.c line 39 function solve_backtracking
+        i = i + 1;
+        // 35 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gauss_outline/gauss.c line 39 function solve_backtracking
+        GOTO 1
+        // 36 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gauss_outline/gauss.c line 41 function solve_backtracking
+2     : dead i;
+        // 37 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gauss_outline/gauss.c line 43 function solve_backtracking
+        OUTPUT_res[(signed long int)2] = b[(signed long int)(3 - 1)] / m[(signed long int)(((3 - 1) * 3 + 3) - 1)];
+        // 38 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gauss_outline/gauss.c line 78 function solve_backtracking
+        END_FUNCTION
+
+solve_backtracking: (solve_backtracking::m, solve_backtracking::b, solve_backtracking::OUTPUT_res) -> ()
+0:   
+    %0 = (signed int)2
+    %1 = (signed int)1
+    %2 = (signed int)3
+    %3 = (signed int)0
+    %solve_backtracking::1::1::i = named_addr<signed int *> solve_backtracking::1::1::i
+    store %solve_backtracking::1::1::i (signed int)0
+    jump
+3:   
+    %solve_backtracking::OUTPUT_res = named_addr<DT **> solve_backtracking::OUTPUT_res
+    %4 = load<DT *> %solve_backtracking::OUTPUT_res
+    %solve_backtracking::1::1::i1 = named_addr<signed int *> solve_backtracking::1::1::i
+    %5 = load<signed int> %solve_backtracking::1::1::i1
+    %6 = cast<signed long int> %5
+    %7 = compute_addr<DT *> %4 %6
+    store %7 (signed int)0
+    %solve_backtracking::1::1::i2 = named_addr<signed int *> solve_backtracking::1::1::i
+    %8 = load<signed int> %solve_backtracking::1::1::i2
+    %9 = add<signed int> %8 (signed int)1
+    %solve_backtracking::1::1::i3 = named_addr<signed int *> solve_backtracking::1::1::i
+    store %solve_backtracking::1::1::i3 %9
+    jump
+1:   
+    %solve_backtracking::1::1::i4 = named_addr<signed int *> solve_backtracking::1::1::i
+    %10 = load<signed int> %solve_backtracking::1::1::i4
+    %11 = lt<_Bool> %10 (signed int)3
+    %12 = l_not<_Bool> %11
+    branch %12
+2:   
+    dead
+    %solve_backtracking::b = named_addr<DT **> solve_backtracking::b
+    %13 = load<DT *> %solve_backtracking::b
+    %14 = sub<signed int> (signed int)3 (signed int)1
+    %15 = cast<signed long int> %14
+    %16 = compute_addr<DT *> %13 %15
+    %17 = load<DT> %16
+    %solve_backtracking::m = named_addr<DT **> solve_backtracking::m
+    %18 = load<DT *> %solve_backtracking::m
+    %19 = sub<signed int> (signed int)3 (signed int)1
+    %20 = mul<signed int> %19 (signed int)3
+    %21 = add<signed int> %20 (signed int)3
+    %22 = sub<signed int> %21 (signed int)1
+    %23 = cast<signed long int> %22
+    %24 = compute_addr<DT *> %18 %23
+    %25 = load<DT> %24
+    %26 = div<DT> %17 %25
+    %solve_backtracking::OUTPUT_res1 = named_addr<DT **> solve_backtracking::OUTPUT_res
+    %27 = load<DT *> %solve_backtracking::OUTPUT_res1
+    %28 = cast<signed long int> (signed int)2
+    %29 = compute_addr<DT *> %27 %28
+    store %29 %26
+
+Converting identity
+
+        // 13 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gauss_outline/gauss.c line 24 function identity
+        signed int i;
+        // 14 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gauss_outline/gauss.c line 24 function identity
+        i = 0;
+        // 15 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gauss_outline/gauss.c line 24 function identity
+1     : IF !(i < 3) THEN GOTO 6
+        // 16 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gauss_outline/gauss.c line 25 function identity
+        signed int j;
+        // 17 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gauss_outline/gauss.c line 25 function identity
+        j = 0;
+        // 18 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gauss_outline/gauss.c line 25 function identity
+2     : IF !(j < 3) THEN GOTO 5
+        // 19 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gauss_outline/gauss.c line 26 function identity
+        IF !(i == j) THEN GOTO 3
+        // 20 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gauss_outline/gauss.c line 27 function identity
+        OUTPUT_m[(signed long int)(i * 3 + j)] = 1;
+        // 21 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gauss_outline/gauss.c line 27 function identity
+        GOTO 4
+        // 22 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gauss_outline/gauss.c line 29 function identity
+3     : OUTPUT_m[(signed long int)(i * 3 + j)] = 0;
+        // 23 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gauss_outline/gauss.c line 25 function identity
+4     : j = j + 1;
+        // 24 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gauss_outline/gauss.c line 25 function identity
+        GOTO 2
+        // 25 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gauss_outline/gauss.c line 31 function identity
+5     : dead j;
+        // 26 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gauss_outline/gauss.c line 24 function identity
+        i = i + 1;
+        // 27 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gauss_outline/gauss.c line 24 function identity
+        GOTO 1
+        // 28 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gauss_outline/gauss.c line 32 function identity
+6     : dead i;
+        // 29 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gauss_outline/gauss.c line 33 function identity
+        END_FUNCTION
+
+identity: (identity::OUTPUT_m) -> ()
+0:   
+    %0 = (signed int)1
+    %1 = (signed int)3
+    %2 = (signed int)0
+    %identity::1::1::i = named_addr<signed int *> identity::1::1::i
+    store %identity::1::1::i (signed int)0
+    jump
+3:   
+    %identity::1::1::1::1::j = named_addr<signed int *> identity::1::1::1::1::j
+    store %identity::1::1::1::1::j (signed int)0
+    jump
+6:   
+    %identity::1::1::i1 = named_addr<signed int *> identity::1::1::i
+    %3 = load<signed int> %identity::1::1::i1
+    %identity::1::1::1::1::j1 = named_addr<signed int *> identity::1::1::1::1::j
+    %4 = load<signed int> %identity::1::1::1::1::j1
+    %5 = eq<_Bool> %3 %4
+    %6 = l_not<_Bool> %5
+    branch %6
+8:   
+    %identity::OUTPUT_m = named_addr<DT **> identity::OUTPUT_m
+    %7 = load<DT *> %identity::OUTPUT_m
+    %identity::1::1::i2 = named_addr<signed int *> identity::1::1::i
+    %8 = load<signed int> %identity::1::1::i2
+    %9 = mul<signed int> %8 (signed int)3
+    %identity::1::1::1::1::j2 = named_addr<signed int *> identity::1::1::1::1::j
+    %10 = load<signed int> %identity::1::1::1::1::j2
+    %11 = add<signed int> %9 %10
+    %12 = cast<signed long int> %11
+    %13 = compute_addr<DT *> %7 %12
+    store %13 (signed int)1
+    jump
+7:   
+    %identity::OUTPUT_m1 = named_addr<DT **> identity::OUTPUT_m
+    %14 = load<DT *> %identity::OUTPUT_m1
+    %identity::1::1::i3 = named_addr<signed int *> identity::1::1::i
+    %15 = load<signed int> %identity::1::1::i3
+    %16 = mul<signed int> %15 (signed int)3
+    %identity::1::1::1::1::j3 = named_addr<signed int *> identity::1::1::1::1::j
+    %17 = load<signed int> %identity::1::1::1::1::j3
+    %18 = add<signed int> %16 %17
+    %19 = cast<signed long int> %18
+    %20 = compute_addr<DT *> %14 %19
+    store %20 (signed int)0
+    jump
+9:   
+    %identity::1::1::1::1::j4 = named_addr<signed int *> identity::1::1::1::1::j
+    %21 = load<signed int> %identity::1::1::1::1::j4
+    %22 = add<signed int> %21 (signed int)1
+    %identity::1::1::1::1::j5 = named_addr<signed int *> identity::1::1::1::1::j
+    store %identity::1::1::1::1::j5 %22
+    jump
+4:   
+    %identity::1::1::1::1::j6 = named_addr<signed int *> identity::1::1::1::1::j
+    %23 = load<signed int> %identity::1::1::1::1::j6
+    %24 = lt<_Bool> %23 (signed int)3
+    %25 = l_not<_Bool> %24
+    branch %25
+5:   
+    dead
+    %identity::1::1::i4 = named_addr<signed int *> identity::1::1::i
+    %26 = load<signed int> %identity::1::1::i4
+    %27 = add<signed int> %26 (signed int)1
+    %identity::1::1::i5 = named_addr<signed int *> identity::1::1::i
+    store %identity::1::1::i5 %27
+    jump
+1:   
+    %identity::1::1::i6 = named_addr<signed int *> identity::1::1::i
+    %28 = load<signed int> %identity::1::1::i6
+    %29 = lt<_Bool> %28 (signed int)3
+    %30 = l_not<_Bool> %29
+    branch %30
+2:   
+    dead
+
+Converting mpc_main
+
+        // 153 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gauss_outline/gauss.c line 166 function mpc_main
+        InputMatrix INPUT_A_m;
+        // 154 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gauss_outline/gauss.c line 167 function mpc_main
+        InputVector INPUT_B_b;
+        // 155 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gauss_outline/gauss.c line 168 function mpc_main
+        Output OUTPUT_res;
+        // 156 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gauss_outline/gauss.c line 169 function mpc_main
+        gaussj_E(INPUT_A_m.m, INPUT_B_b.b, OUTPUT_res.res);
+        // 157 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gauss_outline/gauss.c line 170 function mpc_main
+        dead OUTPUT_res;
+        // 158 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gauss_outline/gauss.c line 170 function mpc_main
+        dead INPUT_B_b;
+        // 159 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gauss_outline/gauss.c line 170 function mpc_main
+        dead INPUT_A_m;
+        // 160 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gauss_outline/gauss.c line 170 function mpc_main
+        END_FUNCTION
+
+mpc_main: () -> ()
+0:   
+    %0 = (signed long int)0
+    %1 = (int)0
+    %gaussj_E = named_addr<void (*)(DT *m, DT *b, DT *OUTPUT_res)> gaussj_E
+    %mpc_main::1::INPUT_A_m = named_addr<InputMatrix *> mpc_main::1::INPUT_A_m
+    %2 = compute_addr<DT (*)[9l]> %mpc_main::1::INPUT_A_m (int)0 (int)0
+    %3 = compute_addr<DT *> %2 (int)0 (signed long int)0
+    %mpc_main::1::INPUT_B_b = named_addr<InputVector *> mpc_main::1::INPUT_B_b
+    %4 = compute_addr<DT (*)[3l]> %mpc_main::1::INPUT_B_b (int)0 (int)0
+    %5 = compute_addr<DT *> %4 (int)0 (signed long int)0
+    %mpc_main::1::OUTPUT_res = named_addr<Output *> mpc_main::1::OUTPUT_res
+    %6 = compute_addr<DT (*)[3l]> %mpc_main::1::OUTPUT_res (int)0 (int)0
+    %7 = compute_addr<DT *> %6 (int)0 (signed long int)0
+    call %gaussj_E %3 %5 %7
+    dead
+    dead
+    dead
+
+Converting pivot_swap
+
+        // 71 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gauss_outline/gauss.c line 108 function pivot_swap
+        signed int j;
+        // 72 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gauss_outline/gauss.c line 108 function pivot_swap
+        j = 0;
+        // 73 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gauss_outline/gauss.c line 108 function pivot_swap
+1     : IF !(j < 3 * 3) THEN GOTO 2
+        // 74 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gauss_outline/gauss.c line 109 function pivot_swap
+        OUTPUT_m[(signed long int)j] = m[(signed long int)j];
+        // 75 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gauss_outline/gauss.c line 108 function pivot_swap
+        j = j + 1;
+        // 76 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gauss_outline/gauss.c line 108 function pivot_swap
+        GOTO 1
+        // 77 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gauss_outline/gauss.c line 110 function pivot_swap
+2     : dead j;
+        // 78 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gauss_outline/gauss.c line 112 function pivot_swap
+        signed int j;
+        // 79 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gauss_outline/gauss.c line 112 function pivot_swap
+        j = 0;
+        // 80 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gauss_outline/gauss.c line 112 function pivot_swap
+3     : IF !(j < 3) THEN GOTO 4
+        // 81 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gauss_outline/gauss.c line 113 function pivot_swap
+        OUTPUT_b[(signed long int)j] = b[(signed long int)j];
+        // 82 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gauss_outline/gauss.c line 112 function pivot_swap
+        j = j + 1;
+        // 83 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gauss_outline/gauss.c line 112 function pivot_swap
+        GOTO 3
+        // 84 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gauss_outline/gauss.c line 114 function pivot_swap
+4     : dead j;
+        // 85 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gauss_outline/gauss.c line 116 function pivot_swap
+        signed int k;
+        // 86 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gauss_outline/gauss.c line 116 function pivot_swap
+        k = i + 1;
+        // 87 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gauss_outline/gauss.c line 116 function pivot_swap
+5     : IF !(k < n) THEN GOTO 11
+        // 88 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gauss_outline/gauss.c line 117 function pivot_swap
+        IF !(m[(signed long int)(k * n + i)] > m[(signed long int)(i * n + i)]) THEN GOTO 10
+        // 89 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gauss_outline/gauss.c line 118 function pivot_swap
+        swap(m, b, OUTPUT_m, OUTPUT_b, n, i, k);
+        // 90 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gauss_outline/gauss.c line 120 function pivot_swap
+        signed int j;
+        // 91 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gauss_outline/gauss.c line 120 function pivot_swap
+        j = 0;
+        // 92 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gauss_outline/gauss.c line 120 function pivot_swap
+6     : IF !(j < 3 * 3) THEN GOTO 7
+        // 93 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gauss_outline/gauss.c line 121 function pivot_swap
+        m[(signed long int)j] = OUTPUT_m[(signed long int)j];
+        // 94 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gauss_outline/gauss.c line 120 function pivot_swap
+        j = j + 1;
+        // 95 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gauss_outline/gauss.c line 120 function pivot_swap
+        GOTO 6
+        // 96 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gauss_outline/gauss.c line 122 function pivot_swap
+7     : dead j;
+        // 97 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gauss_outline/gauss.c line 124 function pivot_swap
+        signed int j;
+        // 98 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gauss_outline/gauss.c line 124 function pivot_swap
+        j = 0;
+        // 99 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gauss_outline/gauss.c line 124 function pivot_swap
+8     : IF !(j < 3) THEN GOTO 9
+        // 100 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gauss_outline/gauss.c line 125 function pivot_swap
+        b[(signed long int)j] = OUTPUT_b[(signed long int)j];
+        // 101 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gauss_outline/gauss.c line 124 function pivot_swap
+        j = j + 1;
+        // 102 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gauss_outline/gauss.c line 124 function pivot_swap
+        GOTO 8
+        // 103 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gauss_outline/gauss.c line 126 function pivot_swap
+9     : dead j;
+        // 104 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gauss_outline/gauss.c line 116 function pivot_swap
+10    : k = k + 1;
+        // 105 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gauss_outline/gauss.c line 116 function pivot_swap
+        GOTO 5
+        // 106 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gauss_outline/gauss.c line 128 function pivot_swap
+11    : dead k;
+        // 107 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gauss_outline/gauss.c line 131 function pivot_swap
+        END_FUNCTION
+
+pivot_swap: (pivot_swap::m, pivot_swap::b, pivot_swap::OUTPUT_m, pivot_swap::OUTPUT_b, pivot_swap::i, pivot_swap::n) -> ()
+0:   
+    %0 = (signed int)1
+    %1 = (signed int)3
+    %2 = (signed int)0
+    %pivot_swap::1::1::j = named_addr<signed int *> pivot_swap::1::1::j
+    store %pivot_swap::1::1::j (signed int)0
+    jump
+3:   
+    %pivot_swap::m = named_addr<DT **> pivot_swap::m
+    %3 = load<DT *> %pivot_swap::m
+    %pivot_swap::1::1::j1 = named_addr<signed int *> pivot_swap::1::1::j
+    %4 = load<signed int> %pivot_swap::1::1::j1
+    %5 = cast<signed long int> %4
+    %6 = compute_addr<DT *> %3 %5
+    %7 = load<DT> %6
+    %pivot_swap::OUTPUT_m = named_addr<DT **> pivot_swap::OUTPUT_m
+    %8 = load<DT *> %pivot_swap::OUTPUT_m
+    %pivot_swap::1::1::j2 = named_addr<signed int *> pivot_swap::1::1::j
+    %9 = load<signed int> %pivot_swap::1::1::j2
+    %10 = cast<signed long int> %9
+    %11 = compute_addr<DT *> %8 %10
+    store %11 %7
+    %pivot_swap::1::1::j3 = named_addr<signed int *> pivot_swap::1::1::j
+    %12 = load<signed int> %pivot_swap::1::1::j3
+    %13 = add<signed int> %12 (signed int)1
+    %pivot_swap::1::1::j4 = named_addr<signed int *> pivot_swap::1::1::j
+    store %pivot_swap::1::1::j4 %13
+    jump
+1:   
+    %pivot_swap::1::1::j5 = named_addr<signed int *> pivot_swap::1::1::j
+    %14 = load<signed int> %pivot_swap::1::1::j5
+    %15 = mul<signed int> (signed int)3 (signed int)3
+    %16 = lt<_Bool> %14 %15
+    %17 = l_not<_Bool> %16
+    branch %17
+2:   
+    dead
+    %pivot_swap::1::2::j = named_addr<signed int *> pivot_swap::1::2::j
+    store %pivot_swap::1::2::j (signed int)0
+    jump
+6:   
+    %pivot_swap::b = named_addr<DT **> pivot_swap::b
+    %18 = load<DT *> %pivot_swap::b
+    %pivot_swap::1::2::j1 = named_addr<signed int *> pivot_swap::1::2::j
+    %19 = load<signed int> %pivot_swap::1::2::j1
+    %20 = cast<signed long int> %19
+    %21 = compute_addr<DT *> %18 %20
+    %22 = load<DT> %21
+    %pivot_swap::OUTPUT_b = named_addr<DT **> pivot_swap::OUTPUT_b
+    %23 = load<DT *> %pivot_swap::OUTPUT_b
+    %pivot_swap::1::2::j2 = named_addr<signed int *> pivot_swap::1::2::j
+    %24 = load<signed int> %pivot_swap::1::2::j2
+    %25 = cast<signed long int> %24
+    %26 = compute_addr<DT *> %23 %25
+    store %26 %22
+    %pivot_swap::1::2::j3 = named_addr<signed int *> pivot_swap::1::2::j
+    %27 = load<signed int> %pivot_swap::1::2::j3
+    %28 = add<signed int> %27 (signed int)1
+    %pivot_swap::1::2::j4 = named_addr<signed int *> pivot_swap::1::2::j
+    store %pivot_swap::1::2::j4 %28
+    jump
+4:   
+    %pivot_swap::1::2::j5 = named_addr<signed int *> pivot_swap::1::2::j
+    %29 = load<signed int> %pivot_swap::1::2::j5
+    %30 = lt<_Bool> %29 (signed int)3
+    %31 = l_not<_Bool> %30
+    branch %31
+5:   
+    dead
+    %pivot_swap::i = named_addr<signed int *> pivot_swap::i
+    %32 = load<signed int> %pivot_swap::i
+    %33 = add<signed int> %32 (signed int)1
+    %pivot_swap::1::3::k = named_addr<signed int *> pivot_swap::1::3::k
+    store %pivot_swap::1::3::k %33
+    jump
+9:   
+    %pivot_swap::m1 = named_addr<DT **> pivot_swap::m
+    %34 = load<DT *> %pivot_swap::m1
+    %pivot_swap::1::3::k1 = named_addr<signed int *> pivot_swap::1::3::k
+    %35 = load<signed int> %pivot_swap::1::3::k1
+    %pivot_swap::n = named_addr<signed int *> pivot_swap::n
+    %36 = load<signed int> %pivot_swap::n
+    %37 = mul<signed int> %35 %36
+    %pivot_swap::i1 = named_addr<signed int *> pivot_swap::i
+    %38 = load<signed int> %pivot_swap::i1
+    %39 = add<signed int> %37 %38
+    %40 = cast<signed long int> %39
+    %41 = compute_addr<DT *> %34 %40
+    %42 = load<DT> %41
+    %pivot_swap::m2 = named_addr<DT **> pivot_swap::m
+    %43 = load<DT *> %pivot_swap::m2
+    %pivot_swap::i2 = named_addr<signed int *> pivot_swap::i
+    %44 = load<signed int> %pivot_swap::i2
+    %pivot_swap::n1 = named_addr<signed int *> pivot_swap::n
+    %45 = load<signed int> %pivot_swap::n1
+    %46 = mul<signed int> %44 %45
+    %pivot_swap::i3 = named_addr<signed int *> pivot_swap::i
+    %47 = load<signed int> %pivot_swap::i3
+    %48 = add<signed int> %46 %47
+    %49 = cast<signed long int> %48
+    %50 = compute_addr<DT *> %43 %49
+    %51 = load<DT> %50
+    %52 = gt<_Bool> %42 %51
+    %53 = l_not<_Bool> %52
+    branch %53
+11:  
+    %swap = named_addr<void (*)(DT *m, DT *v, DT *OUTPUT_m, DT *OUTPUT_v, signed int n, signed int from, signed int to)> swap
+    %pivot_swap::m3 = named_addr<DT **> pivot_swap::m
+    %54 = load<DT *> %pivot_swap::m3
+    %pivot_swap::b1 = named_addr<DT **> pivot_swap::b
+    %55 = load<DT *> %pivot_swap::b1
+    %pivot_swap::OUTPUT_m1 = named_addr<DT **> pivot_swap::OUTPUT_m
+    %56 = load<DT *> %pivot_swap::OUTPUT_m1
+    %pivot_swap::OUTPUT_b1 = named_addr<DT **> pivot_swap::OUTPUT_b
+    %57 = load<DT *> %pivot_swap::OUTPUT_b1
+    %pivot_swap::n2 = named_addr<signed int *> pivot_swap::n
+    %58 = load<signed int> %pivot_swap::n2
+    %pivot_swap::i4 = named_addr<signed int *> pivot_swap::i
+    %59 = load<signed int> %pivot_swap::i4
+    %pivot_swap::1::3::k2 = named_addr<signed int *> pivot_swap::1::3::k
+    %60 = load<signed int> %pivot_swap::1::3::k2
+    call %swap %54 %55 %56 %57 %58 %59 %60
+    %pivot_swap::1::3::1::1::1::j = named_addr<signed int *> pivot_swap::1::3::1::1::1::j
+    store %pivot_swap::1::3::1::1::1::j (signed int)0
+    jump
+14:  
+    %pivot_swap::OUTPUT_m2 = named_addr<DT **> pivot_swap::OUTPUT_m
+    %61 = load<DT *> %pivot_swap::OUTPUT_m2
+    %pivot_swap::1::3::1::1::1::j1 = named_addr<signed int *> pivot_swap::1::3::1::1::1::j
+    %62 = load<signed int> %pivot_swap::1::3::1::1::1::j1
+    %63 = cast<signed long int> %62
+    %64 = compute_addr<DT *> %61 %63
+    %65 = load<DT> %64
+    %pivot_swap::m4 = named_addr<DT **> pivot_swap::m
+    %66 = load<DT *> %pivot_swap::m4
+    %pivot_swap::1::3::1::1::1::j2 = named_addr<signed int *> pivot_swap::1::3::1::1::1::j
+    %67 = load<signed int> %pivot_swap::1::3::1::1::1::j2
+    %68 = cast<signed long int> %67
+    %69 = compute_addr<DT *> %66 %68
+    store %69 %65
+    %pivot_swap::1::3::1::1::1::j3 = named_addr<signed int *> pivot_swap::1::3::1::1::1::j
+    %70 = load<signed int> %pivot_swap::1::3::1::1::1::j3
+    %71 = add<signed int> %70 (signed int)1
+    %pivot_swap::1::3::1::1::1::j4 = named_addr<signed int *> pivot_swap::1::3::1::1::1::j
+    store %pivot_swap::1::3::1::1::1::j4 %71
+    jump
+12:  
+    %pivot_swap::1::3::1::1::1::j5 = named_addr<signed int *> pivot_swap::1::3::1::1::1::j
+    %72 = load<signed int> %pivot_swap::1::3::1::1::1::j5
+    %73 = mul<signed int> (signed int)3 (signed int)3
+    %74 = lt<_Bool> %72 %73
+    %75 = l_not<_Bool> %74
+    branch %75
+13:  
+    dead
+    %pivot_swap::1::3::1::1::2::j = named_addr<signed int *> pivot_swap::1::3::1::1::2::j
+    store %pivot_swap::1::3::1::1::2::j (signed int)0
+    jump
+17:  
+    %pivot_swap::OUTPUT_b2 = named_addr<DT **> pivot_swap::OUTPUT_b
+    %76 = load<DT *> %pivot_swap::OUTPUT_b2
+    %pivot_swap::1::3::1::1::2::j1 = named_addr<signed int *> pivot_swap::1::3::1::1::2::j
+    %77 = load<signed int> %pivot_swap::1::3::1::1::2::j1
+    %78 = cast<signed long int> %77
+    %79 = compute_addr<DT *> %76 %78
+    %80 = load<DT> %79
+    %pivot_swap::b2 = named_addr<DT **> pivot_swap::b
+    %81 = load<DT *> %pivot_swap::b2
+    %pivot_swap::1::3::1::1::2::j2 = named_addr<signed int *> pivot_swap::1::3::1::1::2::j
+    %82 = load<signed int> %pivot_swap::1::3::1::1::2::j2
+    %83 = cast<signed long int> %82
+    %84 = compute_addr<DT *> %81 %83
+    store %84 %80
+    %pivot_swap::1::3::1::1::2::j3 = named_addr<signed int *> pivot_swap::1::3::1::1::2::j
+    %85 = load<signed int> %pivot_swap::1::3::1::1::2::j3
+    %86 = add<signed int> %85 (signed int)1
+    %pivot_swap::1::3::1::1::2::j4 = named_addr<signed int *> pivot_swap::1::3::1::1::2::j
+    store %pivot_swap::1::3::1::1::2::j4 %86
+    jump
+15:  
+    %pivot_swap::1::3::1::1::2::j5 = named_addr<signed int *> pivot_swap::1::3::1::1::2::j
+    %87 = load<signed int> %pivot_swap::1::3::1::1::2::j5
+    %88 = lt<_Bool> %87 (signed int)3
+    %89 = l_not<_Bool> %88
+    branch %89
+16:  
+    dead
+    jump
+10:  
+    %pivot_swap::1::3::k3 = named_addr<signed int *> pivot_swap::1::3::k
+    %90 = load<signed int> %pivot_swap::1::3::k3
+    %91 = add<signed int> %90 (signed int)1
+    %pivot_swap::1::3::k4 = named_addr<signed int *> pivot_swap::1::3::k
+    store %pivot_swap::1::3::k4 %91
+    jump
+7:   
+    %pivot_swap::1::3::k5 = named_addr<signed int *> pivot_swap::1::3::k
+    %92 = load<signed int> %pivot_swap::1::3::k5
+    %pivot_swap::n3 = named_addr<signed int *> pivot_swap::n
+    %93 = load<signed int> %pivot_swap::n3
+    %94 = lt<_Bool> %92 %93
+    %95 = l_not<_Bool> %94
+    branch %95
+8:   
+    dead
+
+Converting gaussj_E
+
+        // 108 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gauss_outline/gauss.c line 138 function gaussj_E
+        InputMatrix L;
+        // 109 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gauss_outline/gauss.c line 139 function gaussj_E
+        identity(L.m);
+        // 110 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gauss_outline/gauss.c line 140 function gaussj_E
+        signed int i;
+        // 111 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gauss_outline/gauss.c line 140 function gaussj_E
+        i = 0;
+        // 112 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gauss_outline/gauss.c line 140 function gaussj_E
+1     : IF !(i < 3 - 1) THEN GOTO 10
+        // 113 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gauss_outline/gauss.c line 141 function gaussj_E
+        DT m_tmp[9l];
+        // 114 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gauss_outline/gauss.c line 142 function gaussj_E
+        DT b_tmp[3l];
+        // 115 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gauss_outline/gauss.c line 143 function gaussj_E
+        pivot_swap(m, b, m_tmp, b_tmp, i, 3);
+        // 116 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gauss_outline/gauss.c line 145 function gaussj_E
+        signed int j;
+        // 117 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gauss_outline/gauss.c line 145 function gaussj_E
+        j = 0;
+        // 118 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gauss_outline/gauss.c line 145 function gaussj_E
+2     : IF !(j < 3 * 3) THEN GOTO 3
+        // 119 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gauss_outline/gauss.c line 146 function gaussj_E
+        m[(signed long int)j] = m_tmp[(signed long int)j];
+        // 120 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gauss_outline/gauss.c line 145 function gaussj_E
+        j = j + 1;
+        // 121 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gauss_outline/gauss.c line 145 function gaussj_E
+        GOTO 2
+        // 122 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gauss_outline/gauss.c line 147 function gaussj_E
+3     : dead j;
+        // 123 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gauss_outline/gauss.c line 149 function gaussj_E
+        signed int j;
+        // 124 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gauss_outline/gauss.c line 149 function gaussj_E
+        j = 0;
+        // 125 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gauss_outline/gauss.c line 149 function gaussj_E
+4     : IF !(j < 3) THEN GOTO 5
+        // 126 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gauss_outline/gauss.c line 150 function gaussj_E
+        b[(signed long int)j] = b_tmp[(signed long int)j];
+        // 127 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gauss_outline/gauss.c line 149 function gaussj_E
+        j = j + 1;
+        // 128 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gauss_outline/gauss.c line 149 function gaussj_E
+        GOTO 4
+        // 129 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gauss_outline/gauss.c line 151 function gaussj_E
+5     : dead j;
+        // 130 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gauss_outline/gauss.c line 152 function gaussj_E
+        signed int k;
+        // 131 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gauss_outline/gauss.c line 152 function gaussj_E
+        k = i + 1;
+        // 132 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gauss_outline/gauss.c line 152 function gaussj_E
+6     : IF !(k < 3) THEN GOTO 9
+        // 133 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gauss_outline/gauss.c line 153 function gaussj_E
+        L.m[(signed long int)(k * 3 + i)] = m[(signed long int)(k * 3 + i)] / m[(signed long int)(i * 3 + i)];
+        // 134 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gauss_outline/gauss.c line 155 function gaussj_E
+        signed int j;
+        // 135 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gauss_outline/gauss.c line 155 function gaussj_E
+        j = i;
+        // 136 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gauss_outline/gauss.c line 155 function gaussj_E
+7     : IF !(j < 3) THEN GOTO 8
+        // 137 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gauss_outline/gauss.c line 156 function gaussj_E
+        m[(signed long int)(k * 3 + j)] = m[(signed long int)(k * 3 + j)] - L.m[(signed long int)(k * 3 + i)] * m[(signed long int)(i * 3 + j)];
+        // 138 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gauss_outline/gauss.c line 155 function gaussj_E
+        j = j + 1;
+        // 139 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gauss_outline/gauss.c line 155 function gaussj_E
+        GOTO 7
+        // 140 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gauss_outline/gauss.c line 158 function gaussj_E
+8     : dead j;
+        // 141 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gauss_outline/gauss.c line 159 function gaussj_E
+        b[(signed long int)k] = b[(signed long int)k] - L.m[(signed long int)(k * 3 + i)] * b[(signed long int)i];
+        // 142 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gauss_outline/gauss.c line 152 function gaussj_E
+        k = k + 1;
+        // 143 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gauss_outline/gauss.c line 152 function gaussj_E
+        GOTO 6
+        // 144 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gauss_outline/gauss.c line 160 function gaussj_E
+9     : dead k;
+        // 145 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gauss_outline/gauss.c line 161 function gaussj_E
+        dead b_tmp;
+        // 146 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gauss_outline/gauss.c line 161 function gaussj_E
+        dead m_tmp;
+        // 147 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gauss_outline/gauss.c line 140 function gaussj_E
+        i = i + 1;
+        // 148 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gauss_outline/gauss.c line 140 function gaussj_E
+        GOTO 1
+        // 149 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gauss_outline/gauss.c line 161 function gaussj_E
+10    : dead i;
+        // 150 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gauss_outline/gauss.c line 162 function gaussj_E
+        solve_backtracking(m, b, OUTPUT_res);
+        // 151 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gauss_outline/gauss.c line 163 function gaussj_E
+        dead L;
+        // 152 file /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gauss_outline/gauss.c line 163 function gaussj_E
+        END_FUNCTION
+
+gaussj_E: (gaussj_E::m, gaussj_E::b, gaussj_E::OUTPUT_res) -> ()
+0:   
+    %0 = (signed int)1
+    %1 = (signed int)3
+    %2 = (signed long int)0
+    %3 = (int)0
+    %identity = named_addr<void (*)(DT *OUTPUT_m)> identity
+    %gaussj_E::1::L = named_addr<InputMatrix *> gaussj_E::1::L
+    %4 = compute_addr<DT (*)[9l]> %gaussj_E::1::L (int)0 (int)0
+    %5 = compute_addr<DT *> %4 (int)0 (signed long int)0
+    call %identity %5
+    %gaussj_E::1::1::i = named_addr<signed int *> gaussj_E::1::1::i
+    store %gaussj_E::1::1::i (int)0
+    jump
+3:   
+    %pivot_swap = named_addr<void (*)(DT *m, DT *b, DT *OUTPUT_m, DT *OUTPUT_b, signed int i, signed int n)> pivot_swap
+    %gaussj_E::m = named_addr<DT **> gaussj_E::m
+    %6 = load<DT *> %gaussj_E::m
+    %gaussj_E::b = named_addr<DT **> gaussj_E::b
+    %7 = load<DT *> %gaussj_E::b
+    %gaussj_E::1::1::1::m_tmp = named_addr<DT (*)[9l]> gaussj_E::1::1::1::m_tmp
+    %8 = compute_addr<DT *> %gaussj_E::1::1::1::m_tmp (int)0 (signed long int)0
+    %gaussj_E::1::1::1::b_tmp = named_addr<DT (*)[3l]> gaussj_E::1::1::1::b_tmp
+    %9 = compute_addr<DT *> %gaussj_E::1::1::1::b_tmp (int)0 (signed long int)0
+    %gaussj_E::1::1::i1 = named_addr<signed int *> gaussj_E::1::1::i
+    %10 = load<signed int> %gaussj_E::1::1::i1
+    call %pivot_swap %6 %7 %8 %9 %10 (signed int)3
+    %gaussj_E::1::1::1::1::j = named_addr<signed int *> gaussj_E::1::1::1::1::j
+    store %gaussj_E::1::1::1::1::j (int)0
+    jump
+6:   
+    %gaussj_E::1::1::1::m_tmp1 = named_addr<DT (*)[9l]> gaussj_E::1::1::1::m_tmp
+    %gaussj_E::1::1::1::1::j1 = named_addr<signed int *> gaussj_E::1::1::1::1::j
+    %11 = load<signed int> %gaussj_E::1::1::1::1::j1
+    %12 = cast<signed long int> %11
+    %13 = compute_addr<DT *> %gaussj_E::1::1::1::m_tmp1 (int)0 %12
+    %14 = load<DT> %13
+    %gaussj_E::m1 = named_addr<DT **> gaussj_E::m
+    %15 = load<DT *> %gaussj_E::m1
+    %gaussj_E::1::1::1::1::j2 = named_addr<signed int *> gaussj_E::1::1::1::1::j
+    %16 = load<signed int> %gaussj_E::1::1::1::1::j2
+    %17 = cast<signed long int> %16
+    %18 = compute_addr<DT *> %15 %17
+    store %18 %14
+    %gaussj_E::1::1::1::1::j3 = named_addr<signed int *> gaussj_E::1::1::1::1::j
+    %19 = load<signed int> %gaussj_E::1::1::1::1::j3
+    %20 = add<signed int> %19 (signed int)1
+    %gaussj_E::1::1::1::1::j4 = named_addr<signed int *> gaussj_E::1::1::1::1::j
+    store %gaussj_E::1::1::1::1::j4 %20
+    jump
+4:   
+    %gaussj_E::1::1::1::1::j5 = named_addr<signed int *> gaussj_E::1::1::1::1::j
+    %21 = load<signed int> %gaussj_E::1::1::1::1::j5
+    %22 = mul<signed int> (signed int)3 (signed int)3
+    %23 = lt<_Bool> %21 %22
+    %24 = l_not<_Bool> %23
+    branch %24
+5:   
+    dead
+    %gaussj_E::1::1::1::2::j = named_addr<signed int *> gaussj_E::1::1::1::2::j
+    store %gaussj_E::1::1::1::2::j (int)0
+    jump
+9:   
+    %gaussj_E::1::1::1::b_tmp1 = named_addr<DT (*)[3l]> gaussj_E::1::1::1::b_tmp
+    %gaussj_E::1::1::1::2::j1 = named_addr<signed int *> gaussj_E::1::1::1::2::j
+    %25 = load<signed int> %gaussj_E::1::1::1::2::j1
+    %26 = cast<signed long int> %25
+    %27 = compute_addr<DT *> %gaussj_E::1::1::1::b_tmp1 (int)0 %26
+    %28 = load<DT> %27
+    %gaussj_E::b1 = named_addr<DT **> gaussj_E::b
+    %29 = load<DT *> %gaussj_E::b1
+    %gaussj_E::1::1::1::2::j2 = named_addr<signed int *> gaussj_E::1::1::1::2::j
+    %30 = load<signed int> %gaussj_E::1::1::1::2::j2
+    %31 = cast<signed long int> %30
+    %32 = compute_addr<DT *> %29 %31
+    store %32 %28
+    %gaussj_E::1::1::1::2::j3 = named_addr<signed int *> gaussj_E::1::1::1::2::j
+    %33 = load<signed int> %gaussj_E::1::1::1::2::j3
+    %34 = add<signed int> %33 (signed int)1
+    %gaussj_E::1::1::1::2::j4 = named_addr<signed int *> gaussj_E::1::1::1::2::j
+    store %gaussj_E::1::1::1::2::j4 %34
+    jump
+7:   
+    %gaussj_E::1::1::1::2::j5 = named_addr<signed int *> gaussj_E::1::1::1::2::j
+    %35 = load<signed int> %gaussj_E::1::1::1::2::j5
+    %36 = lt<_Bool> %35 (signed int)3
+    %37 = l_not<_Bool> %36
+    branch %37
+8:   
+    dead
+    %gaussj_E::1::1::i2 = named_addr<signed int *> gaussj_E::1::1::i
+    %38 = load<signed int> %gaussj_E::1::1::i2
+    %39 = add<signed int> %38 (signed int)1
+    %gaussj_E::1::1::1::3::k = named_addr<signed int *> gaussj_E::1::1::1::3::k
+    store %gaussj_E::1::1::1::3::k %39
+    jump
+12:  
+    %gaussj_E::m2 = named_addr<DT **> gaussj_E::m
+    %40 = load<DT *> %gaussj_E::m2
+    %gaussj_E::1::1::1::3::k1 = named_addr<signed int *> gaussj_E::1::1::1::3::k
+    %41 = load<signed int> %gaussj_E::1::1::1::3::k1
+    %42 = mul<signed int> %41 (signed int)3
+    %gaussj_E::1::1::i3 = named_addr<signed int *> gaussj_E::1::1::i
+    %43 = load<signed int> %gaussj_E::1::1::i3
+    %44 = add<signed int> %42 %43
+    %45 = cast<signed long int> %44
+    %46 = compute_addr<DT *> %40 %45
+    %47 = load<DT> %46
+    %gaussj_E::m3 = named_addr<DT **> gaussj_E::m
+    %48 = load<DT *> %gaussj_E::m3
+    %gaussj_E::1::1::i4 = named_addr<signed int *> gaussj_E::1::1::i
+    %49 = load<signed int> %gaussj_E::1::1::i4
+    %50 = mul<signed int> %49 (signed int)3
+    %gaussj_E::1::1::i5 = named_addr<signed int *> gaussj_E::1::1::i
+    %51 = load<signed int> %gaussj_E::1::1::i5
+    %52 = add<signed int> %50 %51
+    %53 = cast<signed long int> %52
+    %54 = compute_addr<DT *> %48 %53
+    %55 = load<DT> %54
+    %56 = div<DT> %47 %55
+    %gaussj_E::1::L1 = named_addr<InputMatrix *> gaussj_E::1::L
+    %57 = compute_addr<DT (*)[9l]> %gaussj_E::1::L1 (int)0 (int)0
+    %gaussj_E::1::1::1::3::k2 = named_addr<signed int *> gaussj_E::1::1::1::3::k
+    %58 = load<signed int> %gaussj_E::1::1::1::3::k2
+    %59 = mul<signed int> %58 (signed int)3
+    %gaussj_E::1::1::i6 = named_addr<signed int *> gaussj_E::1::1::i
+    %60 = load<signed int> %gaussj_E::1::1::i6
+    %61 = add<signed int> %59 %60
+    %62 = cast<signed long int> %61
+    %63 = compute_addr<DT *> %57 (int)0 %62
+    store %63 %56
+    %gaussj_E::1::1::i7 = named_addr<signed int *> gaussj_E::1::1::i
+    %64 = load<signed int> %gaussj_E::1::1::i7
+    %gaussj_E::1::1::1::3::1::1::j = named_addr<signed int *> gaussj_E::1::1::1::3::1::1::j
+    store %gaussj_E::1::1::1::3::1::1::j %64
+    jump
+15:  
+    %gaussj_E::m4 = named_addr<DT **> gaussj_E::m
+    %65 = load<DT *> %gaussj_E::m4
+    %gaussj_E::1::1::1::3::k3 = named_addr<signed int *> gaussj_E::1::1::1::3::k
+    %66 = load<signed int> %gaussj_E::1::1::1::3::k3
+    %67 = mul<signed int> %66 (signed int)3
+    %gaussj_E::1::1::1::3::1::1::j1 = named_addr<signed int *> gaussj_E::1::1::1::3::1::1::j
+    %68 = load<signed int> %gaussj_E::1::1::1::3::1::1::j1
+    %69 = add<signed int> %67 %68
+    %70 = cast<signed long int> %69
+    %71 = compute_addr<DT *> %65 %70
+    %72 = load<DT> %71
+    %gaussj_E::1::L2 = named_addr<InputMatrix *> gaussj_E::1::L
+    %73 = compute_addr<DT (*)[9l]> %gaussj_E::1::L2 (int)0 (int)0
+    %gaussj_E::1::1::1::3::k4 = named_addr<signed int *> gaussj_E::1::1::1::3::k
+    %74 = load<signed int> %gaussj_E::1::1::1::3::k4
+    %75 = mul<signed int> %74 (signed int)3
+    %gaussj_E::1::1::i8 = named_addr<signed int *> gaussj_E::1::1::i
+    %76 = load<signed int> %gaussj_E::1::1::i8
+    %77 = add<signed int> %75 %76
+    %78 = cast<signed long int> %77
+    %79 = compute_addr<DT *> %73 (int)0 %78
+    %80 = load<DT> %79
+    %gaussj_E::m5 = named_addr<DT **> gaussj_E::m
+    %81 = load<DT *> %gaussj_E::m5
+    %gaussj_E::1::1::i9 = named_addr<signed int *> gaussj_E::1::1::i
+    %82 = load<signed int> %gaussj_E::1::1::i9
+    %83 = mul<signed int> %82 (signed int)3
+    %gaussj_E::1::1::1::3::1::1::j2 = named_addr<signed int *> gaussj_E::1::1::1::3::1::1::j
+    %84 = load<signed int> %gaussj_E::1::1::1::3::1::1::j2
+    %85 = add<signed int> %83 %84
+    %86 = cast<signed long int> %85
+    %87 = compute_addr<DT *> %81 %86
+    %88 = load<DT> %87
+    %89 = mul<DT> %80 %88
+    %90 = sub<DT> %72 %89
+    %gaussj_E::m6 = named_addr<DT **> gaussj_E::m
+    %91 = load<DT *> %gaussj_E::m6
+    %gaussj_E::1::1::1::3::k5 = named_addr<signed int *> gaussj_E::1::1::1::3::k
+    %92 = load<signed int> %gaussj_E::1::1::1::3::k5
+    %93 = mul<signed int> %92 (signed int)3
+    %gaussj_E::1::1::1::3::1::1::j3 = named_addr<signed int *> gaussj_E::1::1::1::3::1::1::j
+    %94 = load<signed int> %gaussj_E::1::1::1::3::1::1::j3
+    %95 = add<signed int> %93 %94
+    %96 = cast<signed long int> %95
+    %97 = compute_addr<DT *> %91 %96
+    store %97 %90
+    %gaussj_E::1::1::1::3::1::1::j4 = named_addr<signed int *> gaussj_E::1::1::1::3::1::1::j
+    %98 = load<signed int> %gaussj_E::1::1::1::3::1::1::j4
+    %99 = add<signed int> %98 (signed int)1
+    %gaussj_E::1::1::1::3::1::1::j5 = named_addr<signed int *> gaussj_E::1::1::1::3::1::1::j
+    store %gaussj_E::1::1::1::3::1::1::j5 %99
+    jump
+13:  
+    %gaussj_E::1::1::1::3::1::1::j6 = named_addr<signed int *> gaussj_E::1::1::1::3::1::1::j
+    %100 = load<signed int> %gaussj_E::1::1::1::3::1::1::j6
+    %101 = lt<_Bool> %100 (signed int)3
+    %102 = l_not<_Bool> %101
+    branch %102
+14:  
+    dead
+    %gaussj_E::b2 = named_addr<DT **> gaussj_E::b
+    %103 = load<DT *> %gaussj_E::b2
+    %gaussj_E::1::1::1::3::k6 = named_addr<signed int *> gaussj_E::1::1::1::3::k
+    %104 = load<signed int> %gaussj_E::1::1::1::3::k6
+    %105 = cast<signed long int> %104
+    %106 = compute_addr<DT *> %103 %105
+    %107 = load<DT> %106
+    %gaussj_E::1::L3 = named_addr<InputMatrix *> gaussj_E::1::L
+    %108 = compute_addr<DT (*)[9l]> %gaussj_E::1::L3 (int)0 (int)0
+    %gaussj_E::1::1::1::3::k7 = named_addr<signed int *> gaussj_E::1::1::1::3::k
+    %109 = load<signed int> %gaussj_E::1::1::1::3::k7
+    %110 = mul<signed int> %109 (signed int)3
+    %gaussj_E::1::1::i10 = named_addr<signed int *> gaussj_E::1::1::i
+    %111 = load<signed int> %gaussj_E::1::1::i10
+    %112 = add<signed int> %110 %111
+    %113 = cast<signed long int> %112
+    %114 = compute_addr<DT *> %108 (int)0 %113
+    %115 = load<DT> %114
+    %gaussj_E::b3 = named_addr<DT **> gaussj_E::b
+    %116 = load<DT *> %gaussj_E::b3
+    %gaussj_E::1::1::i11 = named_addr<signed int *> gaussj_E::1::1::i
+    %117 = load<signed int> %gaussj_E::1::1::i11
+    %118 = cast<signed long int> %117
+    %119 = compute_addr<DT *> %116 %118
+    %120 = load<DT> %119
+    %121 = mul<DT> %115 %120
+    %122 = sub<DT> %107 %121
+    %gaussj_E::b4 = named_addr<DT **> gaussj_E::b
+    %123 = load<DT *> %gaussj_E::b4
+    %gaussj_E::1::1::1::3::k8 = named_addr<signed int *> gaussj_E::1::1::1::3::k
+    %124 = load<signed int> %gaussj_E::1::1::1::3::k8
+    %125 = cast<signed long int> %124
+    %126 = compute_addr<DT *> %123 %125
+    store %126 %122
+    %gaussj_E::1::1::1::3::k9 = named_addr<signed int *> gaussj_E::1::1::1::3::k
+    %127 = load<signed int> %gaussj_E::1::1::1::3::k9
+    %128 = add<signed int> %127 (signed int)1
+    %gaussj_E::1::1::1::3::k10 = named_addr<signed int *> gaussj_E::1::1::1::3::k
+    store %gaussj_E::1::1::1::3::k10 %128
+    jump
+10:  
+    %gaussj_E::1::1::1::3::k11 = named_addr<signed int *> gaussj_E::1::1::1::3::k
+    %129 = load<signed int> %gaussj_E::1::1::1::3::k11
+    %130 = lt<_Bool> %129 (signed int)3
+    %131 = l_not<_Bool> %130
+    branch %131
+11:  
+    dead
+    dead
+    dead
+    %gaussj_E::1::1::i12 = named_addr<signed int *> gaussj_E::1::1::i
+    %132 = load<signed int> %gaussj_E::1::1::i12
+    %133 = add<signed int> %132 (signed int)1
+    %gaussj_E::1::1::i13 = named_addr<signed int *> gaussj_E::1::1::i
+    store %gaussj_E::1::1::i13 %133
+    jump
+1:   
+    %gaussj_E::1::1::i14 = named_addr<signed int *> gaussj_E::1::1::i
+    %134 = load<signed int> %gaussj_E::1::1::i14
+    %135 = sub<signed int> (signed int)3 (signed int)1
+    %136 = lt<_Bool> %134 %135
+    %137 = l_not<_Bool> %136
+    branch %137
+2:   
+    dead
+    %solve_backtracking = named_addr<void (*)(DT *m, DT *b, DT *OUTPUT_res)> solve_backtracking
+    %gaussj_E::m7 = named_addr<DT **> gaussj_E::m
+    %138 = load<DT *> %gaussj_E::m7
+    %gaussj_E::b5 = named_addr<DT **> gaussj_E::b
+    %139 = load<DT *> %gaussj_E::b5
+    %gaussj_E::OUTPUT_res = named_addr<DT **> gaussj_E::OUTPUT_res
+    %140 = load<DT *> %gaussj_E::OUTPUT_res
+    call %solve_backtracking %138 %139 %140
+    dead
+
+Starting pointer analysis
+
+Starting reaching definitions analysis
+Starting program dependence graph analysis
+
+
+Starting instruction outliner
+Outline: mpc_main
+
+0:   
+instr next nullptr
+Outline: gaussj_E
+gaussj_E
+0:   
+  should_outline: No - too simple
+instr next nullptr
+3:   
+  should_outline: No - too simple
+instr next nullptr
+6:   
+  should_outline: No - complex lhs of assignment
+  should_outline: No - probably a loop increment/decrement
+instr next nullptr
+4:   
+instr next nullptr
+5:   
+  should_outline: No - too simple
+instr next nullptr
+9:   
+  should_outline: No - complex lhs of assignment
+  should_outline: No - probably a loop increment/decrement
+instr next nullptr
+7:   
+instr next nullptr
+8:   
+  should_outline: No - probably a loop increment/decrement
+instr next nullptr
+12:  
+  should_outline: No - complex lhs of assignment
+  should_outline: No - too simple
+instr next nullptr
+15:  
+  should_outline: No - complex lhs of assignment
+  should_outline: No - probably a loop increment/decrement
+instr next nullptr
+13:  
+instr next nullptr
+14:  
+  should_outline: No - complex lhs of assignment
+  should_outline: No - probably a loop increment/decrement
+instr next nullptr
+10:  
+instr next nullptr
+11:  
+  should_outline: No - probably a loop increment/decrement
+instr next nullptr
+1:   
+instr next nullptr
+2:   
+instr next nullptr
+Outline: identity
+gaussj_E::identity
+0:   
+  should_outline: No - too simple
+instr next nullptr
+3:   
+  should_outline: No - too simple
+instr next nullptr
+6:   
+instr next nullptr
+8:   
+  should_outline: No - complex lhs of assignment
+instr next nullptr
+7:   
+  should_outline: No - complex lhs of assignment
+instr next nullptr
+9:   
+  should_outline: No - probably a loop increment/decrement
+instr next nullptr
+4:   
+instr next nullptr
+5:   
+  should_outline: No - probably a loop increment/decrement
+instr next nullptr
+1:   
+instr next nullptr
+2:   
+instr next nullptr
+
+Outline: pivot_swap
+gaussj_E::pivot_swap
+0:   
+  should_outline: No - too simple
+instr next nullptr
+3:   
+  should_outline: No - complex lhs of assignment
+  should_outline: No - probably a loop increment/decrement
+instr next nullptr
+1:   
+instr next nullptr
+2:   
+  should_outline: No - too simple
+instr next nullptr
+6:   
+  should_outline: No - complex lhs of assignment
+  should_outline: No - probably a loop increment/decrement
+instr next nullptr
+4:   
+instr next nullptr
+5:   
+  should_outline: No - probably a loop increment/decrement
+instr next nullptr
+9:   
+instr next nullptr
+11:  
+  should_outline: No - too simple
+instr next nullptr
+14:  
+  should_outline: No - complex lhs of assignment
+  should_outline: No - probably a loop increment/decrement
+instr next nullptr
+12:  
+instr next nullptr
+13:  
+  should_outline: No - too simple
+instr next nullptr
+17:  
+  should_outline: No - complex lhs of assignment
+  should_outline: No - probably a loop increment/decrement
+instr next nullptr
+15:  
+instr next nullptr
+16:  
+instr next nullptr
+10:  
+  should_outline: No - probably a loop increment/decrement
+instr next nullptr
+7:   
+instr next nullptr
+8:   
+instr next nullptr
+Outline: swap
+gaussj_E::pivot_swap::swap
+0:   
+instr next nullptr
+2:   
+  should_outline: No - too simple
+instr next nullptr
+5:   
+  should_outline: No - too simple
+  should_outline: No - complex lhs of assignment
+  should_outline: No - complex lhs of assignment
+  should_outline: No - probably a loop increment/decrement
+instr next nullptr
+3:   
+instr next nullptr
+4:   
+  should_outline: No - too simple
+  should_outline: No - complex lhs of assignment
+  should_outline: No - complex lhs of assignment
+instr next nullptr
+1:   
+  should_outline: No - too simple
+instr next nullptr
+8:   
+  should_outline: No - complex lhs of assignment
+  should_outline: No - probably a loop increment/decrement
+instr next nullptr
+6:   
+instr next nullptr
+7:   
+  should_outline: No - too simple
+instr next nullptr
+11:  
+  should_outline: No - complex lhs of assignment
+  should_outline: No - probably a loop increment/decrement
+instr next nullptr
+9:   
+instr next nullptr
+10:  
+instr next nullptr
+
+
+Outline: solve_backtracking
+gaussj_E::solve_backtracking
+0:   
+  should_outline: No - too simple
+instr next nullptr
+3:   
+  should_outline: No - complex lhs of assignment
+  should_outline: No - probably a loop increment/decrement
+instr next nullptr
+1:   
+instr next nullptr
+2:   
+  should_outline: No - complex lhs of assignment
+instr next nullptr
+
+
+
+Converting "swap" back to CBMC.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ Conversion successful.
+        // 39 no location
+        signed int i;
+        // 40 no location
+        signed int i;
+        // 41 no location
+        signed int j;
+        // 42 no location
+        DT tmp;
+        // 43 no location
+        DT tmp;
+        // 44 no location
+        IF !(!(from == to)) THEN GOTO 4
+        // 45 no location
+        SKIP
+        // 46 no location
+        j = from;
+        // 47 no location
+        GOTO 2
+        // 48 no location
+1     : SKIP
+        // 49 no location
+        tmp = m[(signed long int)(from * n + j)];
+        // 50 no location
+        m[(signed long int)(from * n + j)] = m[(signed long int)(to * n + j)];
+        // 51 no location
+        m[(signed long int)(to * n + j)] = tmp;
+        // 52 no location
+        dead tmp;
+        // 53 no location
+        j = j + 1;
+        // 54 no location
+2     : SKIP
+        // 55 no location
+        IF !(j < n) THEN GOTO 3
+        // 56 no location
+        GOTO 1
+        // 57 no location
+3     : SKIP
+        // 58 no location
+        dead j;
+        // 59 no location
+        tmp = v[(signed long int)from];
+        // 60 no location
+        v[(signed long int)from] = v[(signed long int)to];
+        // 61 no location
+        v[(signed long int)to] = tmp;
+        // 62 no location
+        dead tmp;
+        // 63 no location
+4     : SKIP
+        // 64 no location
+        i = 0;
+        // 65 no location
+        GOTO 6
+        // 66 no location
+5     : SKIP
+        // 67 no location
+        OUTPUT_m[(signed long int)i] = m[(signed long int)i];
+        // 68 no location
+        i = i + 1;
+        // 69 no location
+6     : SKIP
+        // 70 no location
+        IF !(i < 3 * 3) THEN GOTO 7
+        // 71 no location
+        GOTO 5
+        // 72 no location
+7     : SKIP
+        // 73 no location
+        dead i;
+        // 74 no location
+        i = 0;
+        // 75 no location
+        GOTO 9
+        // 76 no location
+8     : SKIP
+        // 77 no location
+        OUTPUT_v[(signed long int)i] = v[(signed long int)i];
+        // 78 no location
+        i = i + 1;
+        // 79 no location
+9     : SKIP
+        // 80 no location
+        IF !(i < 3) THEN GOTO 10
+        // 81 no location
+        GOTO 8
+        // 82 no location
+10    : SKIP
+        // 83 no location
+        dead i;
+        // 84 no location
+        END_FUNCTION
+
+Converting "solve_backtracking" back to CBMC.
+
+
+
+
+
+ Conversion successful.
+        // 30 no location
+        signed int i;
+        // 31 no location
+        i = 0;
+        // 32 no location
+        GOTO 2
+        // 33 no location
+1     : SKIP
+        // 34 no location
+        OUTPUT_res[(signed long int)i] = 0;
+        // 35 no location
+        i = i + 1;
+        // 36 no location
+2     : SKIP
+        // 37 no location
+        IF !(i < 3) THEN GOTO 3
+        // 38 no location
+        GOTO 1
+        // 39 no location
+3     : SKIP
+        // 40 no location
+        dead i;
+        // 41 no location
+        OUTPUT_res[(signed long int)2] = b[(signed long int)(3 - 1)] / m[(signed long int)(((3 - 1) * 3 + 3) - 1)];
+        // 42 no location
+        END_FUNCTION
+
+Converting "identity" back to CBMC.
+
+
+
+
+
+
+
+ Conversion successful.
+        // 13 no location
+        signed int j;
+        // 14 no location
+        signed int i;
+        // 15 no location
+        i = 0;
+        // 16 no location
+        GOTO 7
+        // 17 no location
+1     : SKIP
+        // 18 no location
+        j = 0;
+        // 19 no location
+        GOTO 5
+        // 20 no location
+2     : SKIP
+        // 21 no location
+        IF !(i == j) THEN GOTO 3
+        // 22 no location
+        SKIP
+        // 23 no location
+        OUTPUT_m[(signed long int)(i * 3 + j)] = 1;
+        // 24 no location
+        GOTO 4
+        // 25 no location
+3     : SKIP
+        // 26 no location
+        OUTPUT_m[(signed long int)(i * 3 + j)] = 0;
+        // 27 no location
+4     : SKIP
+        // 28 no location
+        j = j + 1;
+        // 29 no location
+5     : SKIP
+        // 30 no location
+        IF !(j < 3) THEN GOTO 6
+        // 31 no location
+        GOTO 2
+        // 32 no location
+6     : SKIP
+        // 33 no location
+        dead j;
+        // 34 no location
+        i = i + 1;
+        // 35 no location
+7     : SKIP
+        // 36 no location
+        IF !(i < 3) THEN GOTO 8
+        // 37 no location
+        GOTO 1
+        // 38 no location
+8     : SKIP
+        // 39 no location
+        dead i;
+        // 40 no location
+        END_FUNCTION
+
+Converting "mpc_main" back to CBMC.
+
+ Conversion successful.
+        // 182 no location
+        Output OUTPUT_res;
+        // 183 no location
+        InputVector INPUT_B_b;
+        // 184 no location
+        InputMatrix INPUT_A_m;
+        // 185 no location
+        gaussj_E(INPUT_A_m.m, INPUT_B_b.b, OUTPUT_res.res);
+        // 186 no location
+        dead OUTPUT_res;
+        // 187 no location
+        dead INPUT_B_b;
+        // 188 no location
+        dead INPUT_A_m;
+        // 189 no location
+        END_FUNCTION
+
+Converting "pivot_swap" back to CBMC.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ Conversion successful.
+        // 100 no location
+        signed int j;
+        // 101 no location
+        signed int j;
+        // 102 no location
+        signed int k;
+        // 103 no location
+        signed int j;
+        // 104 no location
+        signed int j;
+        // 105 no location
+        j = 0;
+        // 106 no location
+        GOTO 2
+        // 107 no location
+1     : SKIP
+        // 108 no location
+        OUTPUT_m[(signed long int)j] = m[(signed long int)j];
+        // 109 no location
+        j = j + 1;
+        // 110 no location
+2     : SKIP
+        // 111 no location
+        IF !(j < 3 * 3) THEN GOTO 3
+        // 112 no location
+        GOTO 1
+        // 113 no location
+3     : SKIP
+        // 114 no location
+        dead j;
+        // 115 no location
+        j = 0;
+        // 116 no location
+        GOTO 5
+        // 117 no location
+4     : SKIP
+        // 118 no location
+        OUTPUT_b[(signed long int)j] = b[(signed long int)j];
+        // 119 no location
+        j = j + 1;
+        // 120 no location
+5     : SKIP
+        // 121 no location
+        IF !(j < 3) THEN GOTO 6
+        // 122 no location
+        GOTO 4
+        // 123 no location
+6     : SKIP
+        // 124 no location
+        dead j;
+        // 125 no location
+        k = i + 1;
+        // 126 no location
+        GOTO 15
+        // 127 no location
+7     : SKIP
+        // 128 no location
+        IF !(m[(signed long int)(k * n + i)] > m[(signed long int)(i * n + i)]) THEN GOTO 14
+        // 129 no location
+        SKIP
+        // 130 no location
+        swap(m, b, OUTPUT_m, OUTPUT_b, n, i, k);
+        // 131 no location
+        j = 0;
+        // 132 no location
+        GOTO 9
+        // 133 no location
+8     : SKIP
+        // 134 no location
+        m[(signed long int)j] = OUTPUT_m[(signed long int)j];
+        // 135 no location
+        j = j + 1;
+        // 136 no location
+9     : SKIP
+        // 137 no location
+        IF !(j < 3 * 3) THEN GOTO 10
+        // 138 no location
+        GOTO 8
+        // 139 no location
+10    : SKIP
+        // 140 no location
+        dead j;
+        // 141 no location
+        j = 0;
+        // 142 no location
+        GOTO 12
+        // 143 no location
+11    : SKIP
+        // 144 no location
+        b[(signed long int)j] = OUTPUT_b[(signed long int)j];
+        // 145 no location
+        j = j + 1;
+        // 146 no location
+12    : SKIP
+        // 147 no location
+        IF !(j < 3) THEN GOTO 13
+        // 148 no location
+        GOTO 11
+        // 149 no location
+13    : SKIP
+        // 150 no location
+        dead j;
+        // 151 no location
+14    : SKIP
+        // 152 no location
+        k = k + 1;
+        // 153 no location
+15    : SKIP
+        // 154 no location
+        IF !(k < n) THEN GOTO 16
+        // 155 no location
+        GOTO 7
+        // 156 no location
+16    : SKIP
+        // 157 no location
+        dead k;
+        // 158 no location
+        END_FUNCTION
+
+Converting "gaussj_E" back to CBMC.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ Conversion successful.
+        // 159 no location
+        signed int k;
+        // 160 no location
+        signed int j;
+        // 161 no location
+        signed int j;
+        // 162 no location
+        DT m_tmp[9l];
+        // 163 no location
+        signed int i;
+        // 164 no location
+        DT b_tmp[3l];
+        // 165 no location
+        InputMatrix L;
+        // 166 no location
+        signed int j;
+        // 167 no location
+        identity(L.m);
+        // 168 no location
+        i = 0;
+        // 169 no location
+        GOTO 14
+        // 170 no location
+1     : SKIP
+        // 171 no location
+        pivot_swap(m, b, m_tmp, b_tmp, i, 3);
+        // 172 no location
+        j = 0;
+        // 173 no location
+        GOTO 3
+        // 174 no location
+2     : SKIP
+        // 175 no location
+        m[(signed long int)j] = m_tmp[(signed long int)j];
+        // 176 no location
+        j = j + 1;
+        // 177 no location
+3     : SKIP
+        // 178 no location
+        IF !(j < 3 * 3) THEN GOTO 4
+        // 179 no location
+        GOTO 2
+        // 180 no location
+4     : SKIP
+        // 181 no location
+        dead j;
+        // 182 no location
+        j = 0;
+        // 183 no location
+        GOTO 6
+        // 184 no location
+5     : SKIP
+        // 185 no location
+        b[(signed long int)j] = b_tmp[(signed long int)j];
+        // 186 no location
+        j = j + 1;
+        // 187 no location
+6     : SKIP
+        // 188 no location
+        IF !(j < 3) THEN GOTO 7
+        // 189 no location
+        GOTO 5
+        // 190 no location
+7     : SKIP
+        // 191 no location
+        dead j;
+        // 192 no location
+        k = i + 1;
+        // 193 no location
+        GOTO 12
+        // 194 no location
+8     : SKIP
+        // 195 no location
+        L.m[(signed long int)(k * 3 + i)] = m[(signed long int)(k * 3 + i)] / m[(signed long int)(i * 3 + i)];
+        // 196 no location
+        j = i;
+        // 197 no location
+        GOTO 10
+        // 198 no location
+9     : SKIP
+        // 199 no location
+        m[(signed long int)(k * 3 + j)] = m[(signed long int)(k * 3 + j)] - L.m[(signed long int)(k * 3 + i)] * m[(signed long int)(i * 3 + j)];
+        // 200 no location
+        j = j + 1;
+        // 201 no location
+10    : SKIP
+        // 202 no location
+        IF !(j < 3) THEN GOTO 11
+        // 203 no location
+        GOTO 9
+        // 204 no location
+11    : SKIP
+        // 205 no location
+        dead j;
+        // 206 no location
+        b[(signed long int)k] = b[(signed long int)k] - L.m[(signed long int)(k * 3 + i)] * b[(signed long int)i];
+        // 207 no location
+        k = k + 1;
+        // 208 no location
+12    : SKIP
+        // 209 no location
+        IF !(k < 3) THEN GOTO 13
+        // 210 no location
+        GOTO 8
+        // 211 no location
+13    : SKIP
+        // 212 no location
+        dead k;
+        // 213 no location
+        dead b_tmp;
+        // 214 no location
+        dead m_tmp;
+        // 215 no location
+        i = i + 1;
+        // 216 no location
+14    : SKIP
+        // 217 no location
+        IF !(i < 3 - 1) THEN GOTO 15
+        // 218 no location
+        GOTO 1
+        // 219 no location
+15    : SKIP
+        // 220 no location
+        dead i;
+        // 221 no location
+        solve_backtracking(m, b, OUTPUT_res);
+        // 222 no location
+        dead L;
+        // 223 no location
+        END_FUNCTION
+
+
+Function "mpc_main"
+Time limit: -1
+Starting Bounded Model Checking
+Converting function to circuit
+(in)  mpc_main::1::INPUT_A_m(1): { m: int32[9]; };
+(in)  mpc_main::1::INPUT_B_b(1): { b: int32[3]; };
+(out) mpc_main::1::OUTPUT_res(2): { res: int32[3]; };
+Function call to "gaussj_E<int32[9],int32[3],int32[3]>"
+(in)  gaussj_E<int32[9],int32[3],int32[3]>::m(0): int32[9];
+(in)  gaussj_E<int32[9],int32[3],int32[3]>::b(0): int32[3];
+(out) gaussj_E<int32[9],int32[3],int32[3]>::OUTPUT_res(0): int32[3];
+Total:      gates: 0, depth: 0
+Boolean:    gates: 0, Non-XOR gates: 0, Non-XOR depth: 0, LUTs: 0
+Arithmetic: gates: 0, Mul gates: 0, Mul depth: 0
+
+Function "mpc_main"
+Time limit: -1
+Starting Bounded Model Checking
+Converting function to circuit
+(in)  mpc_main::1::INPUT_A_m(1): { m: int32[9]; };
+(in)  mpc_main::1::INPUT_B_b(1): { b: int32[3]; };
+(out) mpc_main::1::OUTPUT_res(2): { res: int32[3]; };
+Function call to "gaussj_E<int32[9],int32[3],int32[3]>"
+(in)  gaussj_E<int32[9],int32[3],int32[3]>::m(0): int32[9];
+(in)  gaussj_E<int32[9],int32[3],int32[3]>::b(0): int32[3];
+(out) gaussj_E<int32[9],int32[3],int32[3]>::OUTPUT_res(0): int32[3];
+Total:      gates: 0, depth: 0
+Boolean:    gates: 0, Non-XOR gates: 0, Non-XOR depth: 0, LUTs: 0
+Arithmetic: gates: 0, Mul gates: 0, Mul depth: 0
+
+Function "mpc_main"
+Time limit: -1
+Starting Bounded Model Checking
+Function call to "gaussj_E<int32[9],int32[3],int32[3]>"
+(in)  m: int32[9];
+(in)  b: int32[3];
+(out) OUTPUT_res: int32[3];
+(in)  INPUT_A_m: {m: int32[9]; }
+(in)  INPUT_B_b: {b: int32[3]; }
+(out) OUTPUT_res: {res: int32[3]; }
+Total:      gates: 0, depth: 0
+Boolean:    gates: 0, Non-XOR gates: 0, Non-XOR depth: 0, LUTs: 0
+Arithmetic: gates: 0, Mul gates: 0, Mul depth: 0
+
+Function "gaussj_E<int32[9],int32[3],int32[3]>"
+Time limit: -1
+Starting Bounded Model Checking
+Unwinding loop gaussj_E.4 iteration 1  thread 0
+Unwinding loop gaussj_E.0 iteration 1  thread 0
+Unwinding loop gaussj_E.0 iteration 2  thread 0
+Unwinding loop gaussj_E.0 iteration 3  thread 0
+Unwinding loop gaussj_E.0 iteration 4  thread 0
+Unwinding loop gaussj_E.0 iteration 5  thread 0
+Unwinding loop gaussj_E.0 iteration 6  thread 0
+Unwinding loop gaussj_E.0 iteration 7  thread 0
+Unwinding loop gaussj_E.0 iteration 8  thread 0
+Unwinding loop gaussj_E.0 iteration 9  thread 0
+Unwinding loop gaussj_E.1 iteration 1  thread 0
+Unwinding loop gaussj_E.1 iteration 2  thread 0
+Unwinding loop gaussj_E.1 iteration 3  thread 0
+Unwinding loop gaussj_E.3 iteration 1  thread 0
+Unwinding loop gaussj_E.2 iteration 1  thread 0
+Unwinding loop gaussj_E.2 iteration 2  thread 0
+Unwinding loop gaussj_E.2 iteration 3  thread 0
+Unwinding loop gaussj_E.3 iteration 2  thread 0
+Unwinding loop gaussj_E.2 iteration 1  thread 0
+Unwinding loop gaussj_E.2 iteration 2  thread 0
+Unwinding loop gaussj_E.2 iteration 3  thread 0
+Unwinding loop gaussj_E.4 iteration 2  thread 0
+Unwinding loop gaussj_E.0 iteration 1  thread 0
+Unwinding loop gaussj_E.0 iteration 2  thread 0
+Unwinding loop gaussj_E.0 iteration 3  thread 0
+Unwinding loop gaussj_E.0 iteration 4  thread 0
+Unwinding loop gaussj_E.0 iteration 5  thread 0
+Unwinding loop gaussj_E.0 iteration 6  thread 0
+Unwinding loop gaussj_E.0 iteration 7  thread 0
+Unwinding loop gaussj_E.0 iteration 8  thread 0
+Unwinding loop gaussj_E.0 iteration 9  thread 0
+Unwinding loop gaussj_E.1 iteration 1  thread 0
+Unwinding loop gaussj_E.1 iteration 2  thread 0
+Unwinding loop gaussj_E.1 iteration 3  thread 0
+Unwinding loop gaussj_E.3 iteration 1  thread 0
+Unwinding loop gaussj_E.2 iteration 1  thread 0
+Unwinding loop gaussj_E.2 iteration 2  thread 0
+Converting function to circuit
+(in)  gaussj_E<int32[9],int32[3],int32[3]>::b(0): int32[3];
+(in)  gaussj_E<int32[9],int32[3],int32[3]>::m(0): int32[9];
+(out) gaussj_E<int32[9],int32[3],int32[3]>::OUTPUT_res(1): int32[3];
+Function call to "identity<int32[9]>"
+(out) identity<int32[9]>::OUTPUT_m(0): int32[9];
+Function call to "pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<0>,int32<3>>"
+(in)  pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<0>,int32<3>>::m(0): int32[9];
+(in)  pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<0>,int32<3>>::b(0): int32[3];
+(out) pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<0>,int32<3>>::OUTPUT_m(0): int32[9];
+(out) pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<0>,int32<3>>::OUTPUT_b(0): int32[3];
+Function call to "pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<1>,int32<3>>"
+(in)  pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<1>,int32<3>>::m(0): int32[9];
+(in)  pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<1>,int32<3>>::b(0): int32[3];
+(out) pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<1>,int32<3>>::OUTPUT_m(0): int32[9];
+(out) pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<1>,int32<3>>::OUTPUT_b(0): int32[3];
+Function call to "solve_backtracking<int32[9],int32[3],int32[3]>"
+(in)  solve_backtracking<int32[9],int32[3],int32[3]>::m(0): int32[9];
+(in)  solve_backtracking<int32[9],int32[3],int32[3]>::b(0): int32[3];
+(out) solve_backtracking<int32[9],int32[3],int32[3]>::OUTPUT_res(0): int32[3];
+Total:      gates: 47315, depth: 1864
+Boolean:    gates: 47315, Non-XOR gates: 15068, Non-XOR depth: 651, LUTs: 0
+Arithmetic: gates: 0, Mul gates: 0, Mul depth: 0
+
+Function "gaussj_E<int32[9],int32[3],int32[3]>"
+Time limit: -1
+Starting Bounded Model Checking
+Unwinding loop gaussj_E.4 iteration 1  thread 0
+Unwinding loop gaussj_E.0 iteration 1  thread 0
+Unwinding loop gaussj_E.0 iteration 2  thread 0
+Unwinding loop gaussj_E.0 iteration 3  thread 0
+Unwinding loop gaussj_E.0 iteration 4  thread 0
+Unwinding loop gaussj_E.0 iteration 5  thread 0
+Unwinding loop gaussj_E.0 iteration 6  thread 0
+Unwinding loop gaussj_E.0 iteration 7  thread 0
+Unwinding loop gaussj_E.0 iteration 8  thread 0
+Unwinding loop gaussj_E.0 iteration 9  thread 0
+Unwinding loop gaussj_E.1 iteration 1  thread 0
+Unwinding loop gaussj_E.1 iteration 2  thread 0
+Unwinding loop gaussj_E.1 iteration 3  thread 0
+Unwinding loop gaussj_E.3 iteration 1  thread 0
+Unwinding loop gaussj_E.2 iteration 1  thread 0
+Unwinding loop gaussj_E.2 iteration 2  thread 0
+Unwinding loop gaussj_E.2 iteration 3  thread 0
+Unwinding loop gaussj_E.3 iteration 2  thread 0
+Unwinding loop gaussj_E.2 iteration 1  thread 0
+Unwinding loop gaussj_E.2 iteration 2  thread 0
+Unwinding loop gaussj_E.2 iteration 3  thread 0
+Unwinding loop gaussj_E.4 iteration 2  thread 0
+Unwinding loop gaussj_E.0 iteration 1  thread 0
+Unwinding loop gaussj_E.0 iteration 2  thread 0
+Unwinding loop gaussj_E.0 iteration 3  thread 0
+Unwinding loop gaussj_E.0 iteration 4  thread 0
+Unwinding loop gaussj_E.0 iteration 5  thread 0
+Unwinding loop gaussj_E.0 iteration 6  thread 0
+Unwinding loop gaussj_E.0 iteration 7  thread 0
+Unwinding loop gaussj_E.0 iteration 8  thread 0
+Unwinding loop gaussj_E.0 iteration 9  thread 0
+Unwinding loop gaussj_E.1 iteration 1  thread 0
+Unwinding loop gaussj_E.1 iteration 2  thread 0
+Unwinding loop gaussj_E.1 iteration 3  thread 0
+Unwinding loop gaussj_E.3 iteration 1  thread 0
+Unwinding loop gaussj_E.2 iteration 1  thread 0
+Unwinding loop gaussj_E.2 iteration 2  thread 0
+Converting function to circuit
+(in)  gaussj_E<int32[9],int32[3],int32[3]>::b(0): int32[3];
+(in)  gaussj_E<int32[9],int32[3],int32[3]>::m(0): int32[9];
+(out) gaussj_E<int32[9],int32[3],int32[3]>::OUTPUT_res(1): int32[3];
+Function call to "identity<int32[9]>"
+(out) identity<int32[9]>::OUTPUT_m(0): int32[9];
+Function call to "pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<0>,int32<3>>"
+(in)  pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<0>,int32<3>>::m(0): int32[9];
+(in)  pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<0>,int32<3>>::b(0): int32[3];
+(out) pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<0>,int32<3>>::OUTPUT_m(0): int32[9];
+(out) pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<0>,int32<3>>::OUTPUT_b(0): int32[3];
+Function call to "pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<1>,int32<3>>"
+(in)  pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<1>,int32<3>>::m(0): int32[9];
+(in)  pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<1>,int32<3>>::b(0): int32[3];
+(out) pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<1>,int32<3>>::OUTPUT_m(0): int32[9];
+(out) pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<1>,int32<3>>::OUTPUT_b(0): int32[3];
+Function call to "solve_backtracking<int32[9],int32[3],int32[3]>"
+(in)  solve_backtracking<int32[9],int32[3],int32[3]>::m(0): int32[9];
+(in)  solve_backtracking<int32[9],int32[3],int32[3]>::b(0): int32[3];
+(out) solve_backtracking<int32[9],int32[3],int32[3]>::OUTPUT_res(0): int32[3];
+Total:      gates: 50831, depth: 1722
+Boolean:    gates: 50831, Non-XOR gates: 17222, Non-XOR depth: 613, LUTs: 0
+Arithmetic: gates: 0, Mul gates: 0, Mul depth: 0
+
+Function "gaussj_E<int32[9],int32[3],int32[3]>"
+Time limit: -1
+Starting Bounded Model Checking
+Unwinding loop gaussj_E.4 iteration 1  thread 0
+Unwinding loop gaussj_E.0 iteration 1  thread 0
+Unwinding loop gaussj_E.0 iteration 2  thread 0
+Unwinding loop gaussj_E.0 iteration 3  thread 0
+Unwinding loop gaussj_E.0 iteration 4  thread 0
+Unwinding loop gaussj_E.0 iteration 5  thread 0
+Unwinding loop gaussj_E.0 iteration 6  thread 0
+Unwinding loop gaussj_E.0 iteration 7  thread 0
+Unwinding loop gaussj_E.0 iteration 8  thread 0
+Unwinding loop gaussj_E.0 iteration 9  thread 0
+Unwinding loop gaussj_E.1 iteration 1  thread 0
+Unwinding loop gaussj_E.1 iteration 2  thread 0
+Unwinding loop gaussj_E.1 iteration 3  thread 0
+Unwinding loop gaussj_E.3 iteration 1  thread 0
+m!0#9[3l] / m!0#9[0l]
+/
+  * type: signedbv
+      * width: 32
+      * #typedef: DT
+      * #c_type: signed_int
+  0: index
+      * type: signedbv
+          * width: 32
+          * #typedef: DT
+          * #c_type: signed_int
+      0: symbol
+          * type: array
+              * size: constant
+                  * type: signedbv
+                      * width: 64
+                      * #c_type: signed_long_int
+                  * value: 0000000000000000000000000000000000000000000000000000000000001001
+              * #source_location: 
+                * file: /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gauss_outline/gauss.c
+                * line: 10
+                * working_directory: /home/ubuntu/circ_benchmarks/hycc_circuit_dir/hycc_gauss_outline_mt-0_args---all-variants--outline
+              0: signedbv
+                  * width: 32
+                  * #typedef: DT
+                  * #c_type: signed_int
+          * identifier: gaussj_E<int32[9],int32[3],int32[3]>::m!0#9
+          * expression: symbol
+              * type: array
+                  * size: constant
+                      * type: signedbv
+                          * width: 64
+                          * #c_type: signed_long_int
+                      * value: 0000000000000000000000000000000000000000000000000000000000001001
+                  * #source_location: 
+                    * file: /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gauss_outline/gauss.c
+                    * line: 10
+                    * working_directory: /home/ubuntu/circ_benchmarks/hycc_circuit_dir/hycc_gauss_outline_mt-0_args---all-variants--outline
+                  0: signedbv
+                      * width: 32
+                      * #typedef: DT
+                      * #c_type: signed_int
+              * identifier: gaussj_E<int32[9],int32[3],int32[3]>::m
+          * L0: 0
+          * L2: 9
+          * L1_object_identifier: gaussj_E<int32[9],int32[3],int32[3]>::m!0
+          * #SSA_symbol: 1
+      1: constant
+          * type: signedbv
+              * width: 64
+              * #c_type: signed_long_int
+          * value: 0000000000000000000000000000000000000000000000000000000000000011
+  1: index
+      * type: signedbv
+          * width: 32
+          * #typedef: DT
+          * #c_type: signed_int
+      0: symbol
+          * type: array
+              * size: constant
+                  * type: signedbv
+                      * width: 64
+                      * #c_type: signed_long_int
+                  * value: 0000000000000000000000000000000000000000000000000000000000001001
+              * #source_location: 
+                * file: /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gauss_outline/gauss.c
+                * line: 10
+                * working_directory: /home/ubuntu/circ_benchmarks/hycc_circuit_dir/hycc_gauss_outline_mt-0_args---all-variants--outline
+              0: signedbv
+                  * width: 32
+                  * #typedef: DT
+                  * #c_type: signed_int
+          * identifier: gaussj_E<int32[9],int32[3],int32[3]>::m!0#9
+          * expression: symbol
+              * type: array
+                  * size: constant
+                      * type: signedbv
+                          * width: 64
+                          * #c_type: signed_long_int
+                      * value: 0000000000000000000000000000000000000000000000000000000000001001
+                  * #source_location: 
+                    * file: /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gauss_outline/gauss.c
+                    * line: 10
+                    * working_directory: /home/ubuntu/circ_benchmarks/hycc_circuit_dir/hycc_gauss_outline_mt-0_args---all-variants--outline
+                  0: signedbv
+                      * width: 32
+                      * #typedef: DT
+                      * #c_type: signed_int
+              * identifier: gaussj_E<int32[9],int32[3],int32[3]>::m
+          * L0: 0
+          * L2: 9
+          * L1_object_identifier: gaussj_E<int32[9],int32[3],int32[3]>::m!0
+          * #SSA_symbol: 1
+      1: constant
+          * type: signedbv
+              * width: 64
+              * #c_type: signed_long_int
+          * value: 0000000000000000000000000000000000000000000000000000000000000000
+
+Function "identity<int32[9]>"
+Time limit: -1
+Starting Bounded Model Checking
+Unwinding loop identity.1 iteration 1  thread 0
+Unwinding loop identity.0 iteration 1  thread 0
+Unwinding loop identity.0 iteration 2  thread 0
+Unwinding loop identity.0 iteration 3  thread 0
+Unwinding loop identity.1 iteration 2  thread 0
+Unwinding loop identity.0 iteration 1  thread 0
+Unwinding loop identity.0 iteration 2  thread 0
+Unwinding loop identity.0 iteration 3  thread 0
+Unwinding loop identity.1 iteration 3  thread 0
+Unwinding loop identity.0 iteration 1  thread 0
+Unwinding loop identity.0 iteration 2  thread 0
+Unwinding loop identity.0 iteration 3  thread 0
+Converting function to circuit
+(out) identity<int32[9]>::OUTPUT_m(9): int32[9];
+Total:      gates: 0, depth: 0
+Boolean:    gates: 0, Non-XOR gates: 0, Non-XOR depth: 0, LUTs: 0
+Arithmetic: gates: 0, Mul gates: 0, Mul depth: 0
+
+Function "identity<int32[9]>"
+Time limit: -1
+Starting Bounded Model Checking
+Unwinding loop identity.1 iteration 1  thread 0
+Unwinding loop identity.0 iteration 1  thread 0
+Unwinding loop identity.0 iteration 2  thread 0
+Unwinding loop identity.0 iteration 3  thread 0
+Unwinding loop identity.1 iteration 2  thread 0
+Unwinding loop identity.0 iteration 1  thread 0
+Unwinding loop identity.0 iteration 2  thread 0
+Unwinding loop identity.0 iteration 3  thread 0
+Unwinding loop identity.1 iteration 3  thread 0
+Unwinding loop identity.0 iteration 1  thread 0
+Unwinding loop identity.0 iteration 2  thread 0
+Unwinding loop identity.0 iteration 3  thread 0
+Converting function to circuit
+(out) identity<int32[9]>::OUTPUT_m(9): int32[9];
+Total:      gates: 0, depth: 0
+Boolean:    gates: 0, Non-XOR gates: 0, Non-XOR depth: 0, LUTs: 0
+Arithmetic: gates: 0, Mul gates: 0, Mul depth: 0
+
+Function "identity<int32[9]>"
+Time limit: -1
+Starting Bounded Model Checking
+Unwinding loop identity.1 iteration 1  thread 0
+Unwinding loop identity.0 iteration 1  thread 0
+Unwinding loop identity.0 iteration 2  thread 0
+Unwinding loop identity.0 iteration 3  thread 0
+Unwinding loop identity.1 iteration 2  thread 0
+Unwinding loop identity.0 iteration 1  thread 0
+Unwinding loop identity.0 iteration 2  thread 0
+Unwinding loop identity.0 iteration 3  thread 0
+Unwinding loop identity.1 iteration 3  thread 0
+Unwinding loop identity.0 iteration 1  thread 0
+Unwinding loop identity.0 iteration 2  thread 0
+Unwinding loop identity.0 iteration 3  thread 0
+(out) OUTPUT_m: int32[9]
+Total:      gates: 0, depth: 0
+Boolean:    gates: 0, Non-XOR gates: 0, Non-XOR depth: 0, LUTs: 0
+Arithmetic: gates: 0, Mul gates: 0, Mul depth: 0
+
+Function "pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<0>,int32<3>>"
+Time limit: -1
+Starting Bounded Model Checking
+Unwinding loop pivot_swap.0 iteration 1  thread 0
+Unwinding loop pivot_swap.0 iteration 2  thread 0
+Unwinding loop pivot_swap.0 iteration 3  thread 0
+Unwinding loop pivot_swap.0 iteration 4  thread 0
+Unwinding loop pivot_swap.0 iteration 5  thread 0
+Unwinding loop pivot_swap.0 iteration 6  thread 0
+Unwinding loop pivot_swap.0 iteration 7  thread 0
+Unwinding loop pivot_swap.0 iteration 8  thread 0
+Unwinding loop pivot_swap.0 iteration 9  thread 0
+Unwinding loop pivot_swap.1 iteration 1  thread 0
+Unwinding loop pivot_swap.1 iteration 2  thread 0
+Unwinding loop pivot_swap.1 iteration 3  thread 0
+Unwinding loop pivot_swap.4 iteration 1  thread 0
+Unwinding loop pivot_swap.2 iteration 1  thread 0
+Unwinding loop pivot_swap.2 iteration 2  thread 0
+Unwinding loop pivot_swap.2 iteration 3  thread 0
+Unwinding loop pivot_swap.2 iteration 4  thread 0
+Unwinding loop pivot_swap.2 iteration 5  thread 0
+Unwinding loop pivot_swap.2 iteration 6  thread 0
+Unwinding loop pivot_swap.2 iteration 7  thread 0
+Unwinding loop pivot_swap.2 iteration 8  thread 0
+Unwinding loop pivot_swap.2 iteration 9  thread 0
+Unwinding loop pivot_swap.3 iteration 1  thread 0
+Unwinding loop pivot_swap.3 iteration 2  thread 0
+Unwinding loop pivot_swap.3 iteration 3  thread 0
+Unwinding loop pivot_swap.4 iteration 2  thread 0
+Unwinding loop pivot_swap.2 iteration 1  thread 0
+Unwinding loop pivot_swap.2 iteration 2  thread 0
+Unwinding loop pivot_swap.2 iteration 3  thread 0
+Unwinding loop pivot_swap.2 iteration 4  thread 0
+Unwinding loop pivot_swap.2 iteration 5  thread 0
+Unwinding loop pivot_swap.2 iteration 6  thread 0
+Unwinding loop pivot_swap.2 iteration 7  thread 0
+Unwinding loop pivot_swap.2 iteration 8  thread 0
+Unwinding loop pivot_swap.2 iteration 9  thread 0
+Unwinding loop pivot_swap.3 iteration 1  thread 0
+Unwinding loop pivot_swap.3 iteration 2  thread 0
+Unwinding loop pivot_swap.3 iteration 3  thread 0
+Converting function to circuit
+(in)  pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<0>,int32<3>>::b(0): int32[3];
+(in)  pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<0>,int32<3>>::m(0): int32[9];
+(out) pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<0>,int32<3>>::OUTPUT_m(13): int32[9];
+(out) pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<0>,int32<3>>::OUTPUT_b(7): int32[3];
+Function call to "swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<0>,int32<1>>"
+(in)  swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<0>,int32<1>>::m(0): int32[9];
+(in)  swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<0>,int32<1>>::v(0): int32[3];
+(out) swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<0>,int32<1>>::OUTPUT_m(0): int32[9];
+(out) swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<0>,int32<1>>::OUTPUT_v(0): int32[3];
+Function call to "swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<0>,int32<2>>"
+(in)  swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<0>,int32<2>>::m(0): int32[9];
+(in)  swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<0>,int32<2>>::v(0): int32[3];
+(out) swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<0>,int32<2>>::OUTPUT_m(0): int32[9];
+(out) swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<0>,int32<2>>::OUTPUT_v(0): int32[3];
+Total:      gates: 3778, depth: 198
+Boolean:    gates: 3778, Non-XOR gates: 1216, Non-XOR depth: 66, LUTs: 0
+Arithmetic: gates: 0, Mul gates: 0, Mul depth: 0
+
+Function "pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<0>,int32<3>>"
+Time limit: -1
+Starting Bounded Model Checking
+Unwinding loop pivot_swap.0 iteration 1  thread 0
+Unwinding loop pivot_swap.0 iteration 2  thread 0
+Unwinding loop pivot_swap.0 iteration 3  thread 0
+Unwinding loop pivot_swap.0 iteration 4  thread 0
+Unwinding loop pivot_swap.0 iteration 5  thread 0
+Unwinding loop pivot_swap.0 iteration 6  thread 0
+Unwinding loop pivot_swap.0 iteration 7  thread 0
+Unwinding loop pivot_swap.0 iteration 8  thread 0
+Unwinding loop pivot_swap.0 iteration 9  thread 0
+Unwinding loop pivot_swap.1 iteration 1  thread 0
+Unwinding loop pivot_swap.1 iteration 2  thread 0
+Unwinding loop pivot_swap.1 iteration 3  thread 0
+Unwinding loop pivot_swap.4 iteration 1  thread 0
+Unwinding loop pivot_swap.2 iteration 1  thread 0
+Unwinding loop pivot_swap.2 iteration 2  thread 0
+Unwinding loop pivot_swap.2 iteration 3  thread 0
+Unwinding loop pivot_swap.2 iteration 4  thread 0
+Unwinding loop pivot_swap.2 iteration 5  thread 0
+Unwinding loop pivot_swap.2 iteration 6  thread 0
+Unwinding loop pivot_swap.2 iteration 7  thread 0
+Unwinding loop pivot_swap.2 iteration 8  thread 0
+Unwinding loop pivot_swap.2 iteration 9  thread 0
+Unwinding loop pivot_swap.3 iteration 1  thread 0
+Unwinding loop pivot_swap.3 iteration 2  thread 0
+Unwinding loop pivot_swap.3 iteration 3  thread 0
+Unwinding loop pivot_swap.4 iteration 2  thread 0
+Unwinding loop pivot_swap.2 iteration 1  thread 0
+Unwinding loop pivot_swap.2 iteration 2  thread 0
+Unwinding loop pivot_swap.2 iteration 3  thread 0
+Unwinding loop pivot_swap.2 iteration 4  thread 0
+Unwinding loop pivot_swap.2 iteration 5  thread 0
+Unwinding loop pivot_swap.2 iteration 6  thread 0
+Unwinding loop pivot_swap.2 iteration 7  thread 0
+Unwinding loop pivot_swap.2 iteration 8  thread 0
+Unwinding loop pivot_swap.2 iteration 9  thread 0
+Unwinding loop pivot_swap.3 iteration 1  thread 0
+Unwinding loop pivot_swap.3 iteration 2  thread 0
+Unwinding loop pivot_swap.3 iteration 3  thread 0
+Converting function to circuit
+(in)  pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<0>,int32<3>>::b(0): int32[3];
+(in)  pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<0>,int32<3>>::m(0): int32[9];
+(out) pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<0>,int32<3>>::OUTPUT_m(13): int32[9];
+(out) pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<0>,int32<3>>::OUTPUT_b(7): int32[3];
+Function call to "swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<0>,int32<1>>"
+(in)  swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<0>,int32<1>>::m(0): int32[9];
+(in)  swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<0>,int32<1>>::v(0): int32[3];
+(out) swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<0>,int32<1>>::OUTPUT_m(0): int32[9];
+(out) swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<0>,int32<1>>::OUTPUT_v(0): int32[3];
+Function call to "swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<0>,int32<2>>"
+(in)  swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<0>,int32<2>>::m(0): int32[9];
+(in)  swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<0>,int32<2>>::v(0): int32[3];
+(out) swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<0>,int32<2>>::OUTPUT_m(0): int32[9];
+(out) swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<0>,int32<2>>::OUTPUT_v(0): int32[3];
+Total:      gates: 3832, depth: 32
+Boolean:    gates: 3832, Non-XOR gates: 1330, Non-XOR depth: 14, LUTs: 0
+Arithmetic: gates: 0, Mul gates: 0, Mul depth: 0
+
+Function "pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<0>,int32<3>>"
+Time limit: -1
+Starting Bounded Model Checking
+Unwinding loop pivot_swap.0 iteration 1  thread 0
+Unwinding loop pivot_swap.0 iteration 2  thread 0
+Unwinding loop pivot_swap.0 iteration 3  thread 0
+Unwinding loop pivot_swap.0 iteration 4  thread 0
+Unwinding loop pivot_swap.0 iteration 5  thread 0
+Unwinding loop pivot_swap.0 iteration 6  thread 0
+Unwinding loop pivot_swap.0 iteration 7  thread 0
+Unwinding loop pivot_swap.0 iteration 8  thread 0
+Unwinding loop pivot_swap.0 iteration 9  thread 0
+Unwinding loop pivot_swap.1 iteration 1  thread 0
+Unwinding loop pivot_swap.1 iteration 2  thread 0
+Unwinding loop pivot_swap.1 iteration 3  thread 0
+Unwinding loop pivot_swap.4 iteration 1  thread 0
+!(m!0#0[0l] >= m!0#0[3l])
+not
+  * type: bool
+  0: >=
+      * type: bool
+      0: index
+          * type: signedbv
+              * width: 32
+              * #typedef: DT
+              * #c_type: signed_int
+          0: symbol
+              * type: array
+                  * size: constant
+                      * type: signedbv
+                          * width: 64
+                          * #c_type: signed_long_int
+                      * value: 0000000000000000000000000000000000000000000000000000000000001001
+                  * #source_location: 
+                    * file: /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gauss_outline/gauss.c
+                    * line: 10
+                    * working_directory: /home/ubuntu/circ_benchmarks/hycc_circuit_dir/hycc_gauss_outline_mt-0_args---all-variants--outline
+                  0: signedbv
+                      * width: 32
+                      * #typedef: DT
+                      * #c_type: signed_int
+              * identifier: pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<0>,int32<3>>::m!0#0
+              * expression: symbol
+                  * type: array
+                      * size: constant
+                          * type: signedbv
+                              * width: 64
+                              * #c_type: signed_long_int
+                          * value: 0000000000000000000000000000000000000000000000000000000000001001
+                      * #source_location: 
+                        * file: /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gauss_outline/gauss.c
+                        * line: 10
+                        * working_directory: /home/ubuntu/circ_benchmarks/hycc_circuit_dir/hycc_gauss_outline_mt-0_args---all-variants--outline
+                      0: signedbv
+                          * width: 32
+                          * #typedef: DT
+                          * #c_type: signed_int
+                  * identifier: pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<0>,int32<3>>::m
+              * L0: 0
+              * L2: 0
+              * L1_object_identifier: pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<0>,int32<3>>::m!0
+              * #SSA_symbol: 1
+          1: constant
+              * type: signedbv
+                  * width: 64
+                  * #c_type: signed_long_int
+              * value: 0000000000000000000000000000000000000000000000000000000000000000
+      1: index
+          * type: signedbv
+              * width: 32
+              * #typedef: DT
+              * #c_type: signed_int
+          0: symbol
+              * type: array
+                  * size: constant
+                      * type: signedbv
+                          * width: 64
+                          * #c_type: signed_long_int
+                      * value: 0000000000000000000000000000000000000000000000000000000000001001
+                  * #source_location: 
+                    * file: /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gauss_outline/gauss.c
+                    * line: 10
+                    * working_directory: /home/ubuntu/circ_benchmarks/hycc_circuit_dir/hycc_gauss_outline_mt-0_args---all-variants--outline
+                  0: signedbv
+                      * width: 32
+                      * #typedef: DT
+                      * #c_type: signed_int
+              * identifier: pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<0>,int32<3>>::m!0#0
+              * expression: symbol
+                  * type: array
+                      * size: constant
+                          * type: signedbv
+                              * width: 64
+                              * #c_type: signed_long_int
+                          * value: 0000000000000000000000000000000000000000000000000000000000001001
+                      * #source_location: 
+                        * file: /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gauss_outline/gauss.c
+                        * line: 10
+                        * working_directory: /home/ubuntu/circ_benchmarks/hycc_circuit_dir/hycc_gauss_outline_mt-0_args---all-variants--outline
+                      0: signedbv
+                          * width: 32
+                          * #typedef: DT
+                          * #c_type: signed_int
+                  * identifier: pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<0>,int32<3>>::m
+              * L0: 0
+              * L2: 0
+              * L1_object_identifier: pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<0>,int32<3>>::m!0
+              * #SSA_symbol: 1
+          1: constant
+              * type: signedbv
+                  * width: 64
+                  * #c_type: signed_long_int
+              * value: 0000000000000000000000000000000000000000000000000000000000000011
+
+Function "pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<1>,int32<3>>"
+Time limit: -1
+Starting Bounded Model Checking
+Unwinding loop pivot_swap.0 iteration 1  thread 0
+Unwinding loop pivot_swap.0 iteration 2  thread 0
+Unwinding loop pivot_swap.0 iteration 3  thread 0
+Unwinding loop pivot_swap.0 iteration 4  thread 0
+Unwinding loop pivot_swap.0 iteration 5  thread 0
+Unwinding loop pivot_swap.0 iteration 6  thread 0
+Unwinding loop pivot_swap.0 iteration 7  thread 0
+Unwinding loop pivot_swap.0 iteration 8  thread 0
+Unwinding loop pivot_swap.0 iteration 9  thread 0
+Unwinding loop pivot_swap.1 iteration 1  thread 0
+Unwinding loop pivot_swap.1 iteration 2  thread 0
+Unwinding loop pivot_swap.1 iteration 3  thread 0
+Unwinding loop pivot_swap.4 iteration 1  thread 0
+Unwinding loop pivot_swap.2 iteration 1  thread 0
+Unwinding loop pivot_swap.2 iteration 2  thread 0
+Unwinding loop pivot_swap.2 iteration 3  thread 0
+Unwinding loop pivot_swap.2 iteration 4  thread 0
+Unwinding loop pivot_swap.2 iteration 5  thread 0
+Unwinding loop pivot_swap.2 iteration 6  thread 0
+Unwinding loop pivot_swap.2 iteration 7  thread 0
+Unwinding loop pivot_swap.2 iteration 8  thread 0
+Unwinding loop pivot_swap.2 iteration 9  thread 0
+Unwinding loop pivot_swap.3 iteration 1  thread 0
+Unwinding loop pivot_swap.3 iteration 2  thread 0
+Unwinding loop pivot_swap.3 iteration 3  thread 0
+Converting function to circuit
+(in)  pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<1>,int32<3>>::b(0): int32[3];
+(in)  pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<1>,int32<3>>::m(0): int32[9];
+(out) pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<1>,int32<3>>::OUTPUT_m(11): int32[9];
+(out) pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<1>,int32<3>>::OUTPUT_b(5): int32[3];
+Function call to "swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<1>,int32<2>>"
+(in)  swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<1>,int32<2>>::m(0): int32[9];
+(in)  swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<1>,int32<2>>::v(0): int32[3];
+(out) swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<1>,int32<2>>::OUTPUT_m(0): int32[9];
+(out) swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<1>,int32<2>>::OUTPUT_v(0): int32[3];
+Total:      gates: 1313, depth: 99
+Boolean:    gates: 1313, Non-XOR gates: 416, Non-XOR depth: 33, LUTs: 0
+Arithmetic: gates: 0, Mul gates: 0, Mul depth: 0
+
+Function "pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<1>,int32<3>>"
+Time limit: -1
+Starting Bounded Model Checking
+Unwinding loop pivot_swap.0 iteration 1  thread 0
+Unwinding loop pivot_swap.0 iteration 2  thread 0
+Unwinding loop pivot_swap.0 iteration 3  thread 0
+Unwinding loop pivot_swap.0 iteration 4  thread 0
+Unwinding loop pivot_swap.0 iteration 5  thread 0
+Unwinding loop pivot_swap.0 iteration 6  thread 0
+Unwinding loop pivot_swap.0 iteration 7  thread 0
+Unwinding loop pivot_swap.0 iteration 8  thread 0
+Unwinding loop pivot_swap.0 iteration 9  thread 0
+Unwinding loop pivot_swap.1 iteration 1  thread 0
+Unwinding loop pivot_swap.1 iteration 2  thread 0
+Unwinding loop pivot_swap.1 iteration 3  thread 0
+Unwinding loop pivot_swap.4 iteration 1  thread 0
+Unwinding loop pivot_swap.2 iteration 1  thread 0
+Unwinding loop pivot_swap.2 iteration 2  thread 0
+Unwinding loop pivot_swap.2 iteration 3  thread 0
+Unwinding loop pivot_swap.2 iteration 4  thread 0
+Unwinding loop pivot_swap.2 iteration 5  thread 0
+Unwinding loop pivot_swap.2 iteration 6  thread 0
+Unwinding loop pivot_swap.2 iteration 7  thread 0
+Unwinding loop pivot_swap.2 iteration 8  thread 0
+Unwinding loop pivot_swap.2 iteration 9  thread 0
+Unwinding loop pivot_swap.3 iteration 1  thread 0
+Unwinding loop pivot_swap.3 iteration 2  thread 0
+Unwinding loop pivot_swap.3 iteration 3  thread 0
+Converting function to circuit
+(in)  pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<1>,int32<3>>::b(0): int32[3];
+(in)  pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<1>,int32<3>>::m(0): int32[9];
+(out) pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<1>,int32<3>>::OUTPUT_m(11): int32[9];
+(out) pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<1>,int32<3>>::OUTPUT_b(5): int32[3];
+Function call to "swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<1>,int32<2>>"
+(in)  swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<1>,int32<2>>::m(0): int32[9];
+(in)  swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<1>,int32<2>>::v(0): int32[3];
+(out) swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<1>,int32<2>>::OUTPUT_m(0): int32[9];
+(out) swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<1>,int32<2>>::OUTPUT_v(0): int32[3];
+Total:      gates: 1340, depth: 16
+Boolean:    gates: 1340, Non-XOR gates: 473, Non-XOR depth: 7, LUTs: 0
+Arithmetic: gates: 0, Mul gates: 0, Mul depth: 0
+
+Function "pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<1>,int32<3>>"
+Time limit: -1
+Starting Bounded Model Checking
+Unwinding loop pivot_swap.0 iteration 1  thread 0
+Unwinding loop pivot_swap.0 iteration 2  thread 0
+Unwinding loop pivot_swap.0 iteration 3  thread 0
+Unwinding loop pivot_swap.0 iteration 4  thread 0
+Unwinding loop pivot_swap.0 iteration 5  thread 0
+Unwinding loop pivot_swap.0 iteration 6  thread 0
+Unwinding loop pivot_swap.0 iteration 7  thread 0
+Unwinding loop pivot_swap.0 iteration 8  thread 0
+Unwinding loop pivot_swap.0 iteration 9  thread 0
+Unwinding loop pivot_swap.1 iteration 1  thread 0
+Unwinding loop pivot_swap.1 iteration 2  thread 0
+Unwinding loop pivot_swap.1 iteration 3  thread 0
+Unwinding loop pivot_swap.4 iteration 1  thread 0
+!(m!0#0[4l] >= m!0#0[7l])
+not
+  * type: bool
+  0: >=
+      * type: bool
+      0: index
+          * type: signedbv
+              * width: 32
+              * #typedef: DT
+              * #c_type: signed_int
+          0: symbol
+              * type: array
+                  * size: constant
+                      * type: signedbv
+                          * width: 64
+                          * #c_type: signed_long_int
+                      * value: 0000000000000000000000000000000000000000000000000000000000001001
+                  * #source_location: 
+                    * file: /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gauss_outline/gauss.c
+                    * line: 10
+                    * working_directory: /home/ubuntu/circ_benchmarks/hycc_circuit_dir/hycc_gauss_outline_mt-0_args---all-variants--outline
+                  0: signedbv
+                      * width: 32
+                      * #typedef: DT
+                      * #c_type: signed_int
+              * identifier: pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<1>,int32<3>>::m!0#0
+              * expression: symbol
+                  * type: array
+                      * size: constant
+                          * type: signedbv
+                              * width: 64
+                              * #c_type: signed_long_int
+                          * value: 0000000000000000000000000000000000000000000000000000000000001001
+                      * #source_location: 
+                        * file: /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gauss_outline/gauss.c
+                        * line: 10
+                        * working_directory: /home/ubuntu/circ_benchmarks/hycc_circuit_dir/hycc_gauss_outline_mt-0_args---all-variants--outline
+                      0: signedbv
+                          * width: 32
+                          * #typedef: DT
+                          * #c_type: signed_int
+                  * identifier: pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<1>,int32<3>>::m
+              * L0: 0
+              * L2: 0
+              * L1_object_identifier: pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<1>,int32<3>>::m!0
+              * #SSA_symbol: 1
+          1: constant
+              * type: signedbv
+                  * width: 64
+                  * #c_type: signed_long_int
+              * value: 0000000000000000000000000000000000000000000000000000000000000100
+      1: index
+          * type: signedbv
+              * width: 32
+              * #typedef: DT
+              * #c_type: signed_int
+          0: symbol
+              * type: array
+                  * size: constant
+                      * type: signedbv
+                          * width: 64
+                          * #c_type: signed_long_int
+                      * value: 0000000000000000000000000000000000000000000000000000000000001001
+                  * #source_location: 
+                    * file: /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gauss_outline/gauss.c
+                    * line: 10
+                    * working_directory: /home/ubuntu/circ_benchmarks/hycc_circuit_dir/hycc_gauss_outline_mt-0_args---all-variants--outline
+                  0: signedbv
+                      * width: 32
+                      * #typedef: DT
+                      * #c_type: signed_int
+              * identifier: pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<1>,int32<3>>::m!0#0
+              * expression: symbol
+                  * type: array
+                      * size: constant
+                          * type: signedbv
+                              * width: 64
+                              * #c_type: signed_long_int
+                          * value: 0000000000000000000000000000000000000000000000000000000000001001
+                      * #source_location: 
+                        * file: /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gauss_outline/gauss.c
+                        * line: 10
+                        * working_directory: /home/ubuntu/circ_benchmarks/hycc_circuit_dir/hycc_gauss_outline_mt-0_args---all-variants--outline
+                      0: signedbv
+                          * width: 32
+                          * #typedef: DT
+                          * #c_type: signed_int
+                  * identifier: pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<1>,int32<3>>::m
+              * L0: 0
+              * L2: 0
+              * L1_object_identifier: pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<1>,int32<3>>::m!0
+              * #SSA_symbol: 1
+          1: constant
+              * type: signedbv
+                  * width: 64
+                  * #c_type: signed_long_int
+              * value: 0000000000000000000000000000000000000000000000000000000000000111
+
+Function "solve_backtracking<int32[9],int32[3],int32[3]>"
+Time limit: -1
+Starting Bounded Model Checking
+Unwinding loop solve_backtracking.0 iteration 1  thread 0
+Unwinding loop solve_backtracking.0 iteration 2  thread 0
+Unwinding loop solve_backtracking.0 iteration 3  thread 0
+Converting function to circuit
+(in)  solve_backtracking<int32[9],int32[3],int32[3]>::b(0): int32[3];
+(in)  solve_backtracking<int32[9],int32[3],int32[3]>::m(0): int32[9];
+(out) solve_backtracking<int32[9],int32[3],int32[3]>::OUTPUT_res(4): int32[3];
+Total:      gates: 4743, depth: 1742
+Boolean:    gates: 4743, Non-XOR gates: 1268, Non-XOR depth: 650, LUTs: 0
+Arithmetic: gates: 0, Mul gates: 0, Mul depth: 0
+
+Function "solve_backtracking<int32[9],int32[3],int32[3]>"
+Time limit: -1
+Starting Bounded Model Checking
+Unwinding loop solve_backtracking.0 iteration 1  thread 0
+Unwinding loop solve_backtracking.0 iteration 2  thread 0
+Unwinding loop solve_backtracking.0 iteration 3  thread 0
+Converting function to circuit
+(in)  solve_backtracking<int32[9],int32[3],int32[3]>::b(0): int32[3];
+(in)  solve_backtracking<int32[9],int32[3],int32[3]>::m(0): int32[9];
+(out) solve_backtracking<int32[9],int32[3],int32[3]>::OUTPUT_res(4): int32[3];
+Total:      gates: 4878, depth: 1692
+Boolean:    gates: 4878, Non-XOR gates: 1403, Non-XOR depth: 600, LUTs: 0
+Arithmetic: gates: 0, Mul gates: 0, Mul depth: 0
+
+Function "solve_backtracking<int32[9],int32[3],int32[3]>"
+Time limit: -1
+Starting Bounded Model Checking
+Unwinding loop solve_backtracking.0 iteration 1  thread 0
+Unwinding loop solve_backtracking.0 iteration 2  thread 0
+Unwinding loop solve_backtracking.0 iteration 3  thread 0
+b!0#0[2l] / m!0#0[8l]
+/
+  * type: signedbv
+      * width: 32
+      * #typedef: DT
+      * #c_type: signed_int
+  0: index
+      * type: signedbv
+          * width: 32
+          * #typedef: DT
+          * #c_type: signed_int
+      0: symbol
+          * type: array
+              * size: constant
+                  * type: signedbv
+                      * width: 64
+                      * #c_type: signed_long_int
+                  * value: 0000000000000000000000000000000000000000000000000000000000000011
+              * #source_location: 
+                * file: /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gauss_outline/gauss.c
+                * line: 20
+                * working_directory: /home/ubuntu/circ_benchmarks/hycc_circuit_dir/hycc_gauss_outline_mt-0_args---all-variants--outline
+              0: signedbv
+                  * width: 32
+                  * #typedef: DT
+                  * #c_type: signed_int
+          * identifier: solve_backtracking<int32[9],int32[3],int32[3]>::b!0#0
+          * expression: symbol
+              * type: array
+                  * size: constant
+                      * type: signedbv
+                          * width: 64
+                          * #c_type: signed_long_int
+                      * value: 0000000000000000000000000000000000000000000000000000000000000011
+                  * #source_location: 
+                    * file: /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gauss_outline/gauss.c
+                    * line: 20
+                    * working_directory: /home/ubuntu/circ_benchmarks/hycc_circuit_dir/hycc_gauss_outline_mt-0_args---all-variants--outline
+                  0: signedbv
+                      * width: 32
+                      * #typedef: DT
+                      * #c_type: signed_int
+              * identifier: solve_backtracking<int32[9],int32[3],int32[3]>::b
+          * L0: 0
+          * L2: 0
+          * L1_object_identifier: solve_backtracking<int32[9],int32[3],int32[3]>::b!0
+          * #SSA_symbol: 1
+      1: constant
+          * type: signedbv
+              * width: 64
+              * #c_type: signed_long_int
+          * value: 0000000000000000000000000000000000000000000000000000000000000010
+  1: index
+      * type: signedbv
+          * width: 32
+          * #typedef: DT
+          * #c_type: signed_int
+      0: symbol
+          * type: array
+              * size: constant
+                  * type: signedbv
+                      * width: 64
+                      * #c_type: signed_long_int
+                  * value: 0000000000000000000000000000000000000000000000000000000000001001
+              * #source_location: 
+                * file: /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gauss_outline/gauss.c
+                * line: 10
+                * working_directory: /home/ubuntu/circ_benchmarks/hycc_circuit_dir/hycc_gauss_outline_mt-0_args---all-variants--outline
+              0: signedbv
+                  * width: 32
+                  * #typedef: DT
+                  * #c_type: signed_int
+          * identifier: solve_backtracking<int32[9],int32[3],int32[3]>::m!0#0
+          * expression: symbol
+              * type: array
+                  * size: constant
+                      * type: signedbv
+                          * width: 64
+                          * #c_type: signed_long_int
+                      * value: 0000000000000000000000000000000000000000000000000000000000001001
+                  * #source_location: 
+                    * file: /home/ubuntu/circ_benchmarks/modules/HyCC/examples/benchmarks/gauss_outline/gauss.c
+                    * line: 10
+                    * working_directory: /home/ubuntu/circ_benchmarks/hycc_circuit_dir/hycc_gauss_outline_mt-0_args---all-variants--outline
+                  0: signedbv
+                      * width: 32
+                      * #typedef: DT
+                      * #c_type: signed_int
+              * identifier: solve_backtracking<int32[9],int32[3],int32[3]>::m
+          * L0: 0
+          * L2: 0
+          * L1_object_identifier: solve_backtracking<int32[9],int32[3],int32[3]>::m!0
+          * #SSA_symbol: 1
+      1: constant
+          * type: signedbv
+              * width: 64
+              * #c_type: signed_long_int
+          * value: 0000000000000000000000000000000000000000000000000000000000001000
+
+Function "swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<0>,int32<1>>"
+Time limit: -1
+Starting Bounded Model Checking
+Unwinding loop swap.0 iteration 1  thread 0
+Unwinding loop swap.0 iteration 2  thread 0
+Unwinding loop swap.0 iteration 3  thread 0
+Unwinding loop swap.1 iteration 1  thread 0
+Unwinding loop swap.1 iteration 2  thread 0
+Unwinding loop swap.1 iteration 3  thread 0
+Unwinding loop swap.1 iteration 4  thread 0
+Unwinding loop swap.1 iteration 5  thread 0
+Unwinding loop swap.1 iteration 6  thread 0
+Unwinding loop swap.1 iteration 7  thread 0
+Unwinding loop swap.1 iteration 8  thread 0
+Unwinding loop swap.1 iteration 9  thread 0
+Unwinding loop swap.2 iteration 1  thread 0
+Unwinding loop swap.2 iteration 2  thread 0
+Unwinding loop swap.2 iteration 3  thread 0
+Converting function to circuit
+(in)  swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<0>,int32<1>>::m(0): int32[9];
+(in)  swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<0>,int32<1>>::v(0): int32[3];
+(out) swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<0>,int32<1>>::OUTPUT_v(3): int32[3];
+(out) swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<0>,int32<1>>::OUTPUT_m(9): int32[9];
+Total:      gates: 0, depth: 0
+Boolean:    gates: 0, Non-XOR gates: 0, Non-XOR depth: 0, LUTs: 0
+Arithmetic: gates: 0, Mul gates: 0, Mul depth: 0
+
+Function "swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<0>,int32<1>>"
+Time limit: -1
+Starting Bounded Model Checking
+Unwinding loop swap.0 iteration 1  thread 0
+Unwinding loop swap.0 iteration 2  thread 0
+Unwinding loop swap.0 iteration 3  thread 0
+Unwinding loop swap.1 iteration 1  thread 0
+Unwinding loop swap.1 iteration 2  thread 0
+Unwinding loop swap.1 iteration 3  thread 0
+Unwinding loop swap.1 iteration 4  thread 0
+Unwinding loop swap.1 iteration 5  thread 0
+Unwinding loop swap.1 iteration 6  thread 0
+Unwinding loop swap.1 iteration 7  thread 0
+Unwinding loop swap.1 iteration 8  thread 0
+Unwinding loop swap.1 iteration 9  thread 0
+Unwinding loop swap.2 iteration 1  thread 0
+Unwinding loop swap.2 iteration 2  thread 0
+Unwinding loop swap.2 iteration 3  thread 0
+Converting function to circuit
+(in)  swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<0>,int32<1>>::m(0): int32[9];
+(in)  swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<0>,int32<1>>::v(0): int32[3];
+(out) swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<0>,int32<1>>::OUTPUT_v(3): int32[3];
+(out) swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<0>,int32<1>>::OUTPUT_m(9): int32[9];
+Total:      gates: 0, depth: 0
+Boolean:    gates: 0, Non-XOR gates: 0, Non-XOR depth: 0, LUTs: 0
+Arithmetic: gates: 0, Mul gates: 0, Mul depth: 0
+
+Function "swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<0>,int32<1>>"
+Time limit: -1
+Starting Bounded Model Checking
+Unwinding loop swap.0 iteration 1  thread 0
+Unwinding loop swap.0 iteration 2  thread 0
+Unwinding loop swap.0 iteration 3  thread 0
+Unwinding loop swap.1 iteration 1  thread 0
+Unwinding loop swap.1 iteration 2  thread 0
+Unwinding loop swap.1 iteration 3  thread 0
+Unwinding loop swap.1 iteration 4  thread 0
+Unwinding loop swap.1 iteration 5  thread 0
+Unwinding loop swap.1 iteration 6  thread 0
+Unwinding loop swap.1 iteration 7  thread 0
+Unwinding loop swap.1 iteration 8  thread 0
+Unwinding loop swap.1 iteration 9  thread 0
+Unwinding loop swap.2 iteration 1  thread 0
+Unwinding loop swap.2 iteration 2  thread 0
+Unwinding loop swap.2 iteration 3  thread 0
+(out) OUTPUT_m: int32[9]
+(out) OUTPUT_v: int32[3]
+(in)  m: int32[9]
+(in)  v: int32[3]
+Total:      gates: 0, depth: 0
+Boolean:    gates: 0, Non-XOR gates: 0, Non-XOR depth: 0, LUTs: 0
+Arithmetic: gates: 0, Mul gates: 0, Mul depth: 0
+
+Function "swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<0>,int32<2>>"
+Time limit: -1
+Starting Bounded Model Checking
+Unwinding loop swap.0 iteration 1  thread 0
+Unwinding loop swap.0 iteration 2  thread 0
+Unwinding loop swap.0 iteration 3  thread 0
+Unwinding loop swap.1 iteration 1  thread 0
+Unwinding loop swap.1 iteration 2  thread 0
+Unwinding loop swap.1 iteration 3  thread 0
+Unwinding loop swap.1 iteration 4  thread 0
+Unwinding loop swap.1 iteration 5  thread 0
+Unwinding loop swap.1 iteration 6  thread 0
+Unwinding loop swap.1 iteration 7  thread 0
+Unwinding loop swap.1 iteration 8  thread 0
+Unwinding loop swap.1 iteration 9  thread 0
+Unwinding loop swap.2 iteration 1  thread 0
+Unwinding loop swap.2 iteration 2  thread 0
+Unwinding loop swap.2 iteration 3  thread 0
+Converting function to circuit
+(in)  swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<0>,int32<2>>::m(0): int32[9];
+(in)  swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<0>,int32<2>>::v(0): int32[3];
+(out) swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<0>,int32<2>>::OUTPUT_v(3): int32[3];
+(out) swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<0>,int32<2>>::OUTPUT_m(9): int32[9];
+Total:      gates: 0, depth: 0
+Boolean:    gates: 0, Non-XOR gates: 0, Non-XOR depth: 0, LUTs: 0
+Arithmetic: gates: 0, Mul gates: 0, Mul depth: 0
+
+Function "swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<0>,int32<2>>"
+Time limit: -1
+Starting Bounded Model Checking
+Unwinding loop swap.0 iteration 1  thread 0
+Unwinding loop swap.0 iteration 2  thread 0
+Unwinding loop swap.0 iteration 3  thread 0
+Unwinding loop swap.1 iteration 1  thread 0
+Unwinding loop swap.1 iteration 2  thread 0
+Unwinding loop swap.1 iteration 3  thread 0
+Unwinding loop swap.1 iteration 4  thread 0
+Unwinding loop swap.1 iteration 5  thread 0
+Unwinding loop swap.1 iteration 6  thread 0
+Unwinding loop swap.1 iteration 7  thread 0
+Unwinding loop swap.1 iteration 8  thread 0
+Unwinding loop swap.1 iteration 9  thread 0
+Unwinding loop swap.2 iteration 1  thread 0
+Unwinding loop swap.2 iteration 2  thread 0
+Unwinding loop swap.2 iteration 3  thread 0
+Converting function to circuit
+(in)  swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<0>,int32<2>>::m(0): int32[9];
+(in)  swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<0>,int32<2>>::v(0): int32[3];
+(out) swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<0>,int32<2>>::OUTPUT_v(3): int32[3];
+(out) swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<0>,int32<2>>::OUTPUT_m(9): int32[9];
+Total:      gates: 0, depth: 0
+Boolean:    gates: 0, Non-XOR gates: 0, Non-XOR depth: 0, LUTs: 0
+Arithmetic: gates: 0, Mul gates: 0, Mul depth: 0
+
+Function "swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<0>,int32<2>>"
+Time limit: -1
+Starting Bounded Model Checking
+Unwinding loop swap.0 iteration 1  thread 0
+Unwinding loop swap.0 iteration 2  thread 0
+Unwinding loop swap.0 iteration 3  thread 0
+Unwinding loop swap.1 iteration 1  thread 0
+Unwinding loop swap.1 iteration 2  thread 0
+Unwinding loop swap.1 iteration 3  thread 0
+Unwinding loop swap.1 iteration 4  thread 0
+Unwinding loop swap.1 iteration 5  thread 0
+Unwinding loop swap.1 iteration 6  thread 0
+Unwinding loop swap.1 iteration 7  thread 0
+Unwinding loop swap.1 iteration 8  thread 0
+Unwinding loop swap.1 iteration 9  thread 0
+Unwinding loop swap.2 iteration 1  thread 0
+Unwinding loop swap.2 iteration 2  thread 0
+Unwinding loop swap.2 iteration 3  thread 0
+(out) OUTPUT_m: int32[9]
+(out) OUTPUT_v: int32[3]
+(in)  m: int32[9]
+(in)  v: int32[3]
+Total:      gates: 0, depth: 0
+Boolean:    gates: 0, Non-XOR gates: 0, Non-XOR depth: 0, LUTs: 0
+Arithmetic: gates: 0, Mul gates: 0, Mul depth: 0
+
+Function "swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<1>,int32<2>>"
+Time limit: -1
+Starting Bounded Model Checking
+Unwinding loop swap.0 iteration 1  thread 0
+Unwinding loop swap.0 iteration 2  thread 0
+Unwinding loop swap.1 iteration 1  thread 0
+Unwinding loop swap.1 iteration 2  thread 0
+Unwinding loop swap.1 iteration 3  thread 0
+Unwinding loop swap.1 iteration 4  thread 0
+Unwinding loop swap.1 iteration 5  thread 0
+Unwinding loop swap.1 iteration 6  thread 0
+Unwinding loop swap.1 iteration 7  thread 0
+Unwinding loop swap.1 iteration 8  thread 0
+Unwinding loop swap.1 iteration 9  thread 0
+Unwinding loop swap.2 iteration 1  thread 0
+Unwinding loop swap.2 iteration 2  thread 0
+Unwinding loop swap.2 iteration 3  thread 0
+Converting function to circuit
+(in)  swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<1>,int32<2>>::m(0): int32[9];
+(in)  swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<1>,int32<2>>::v(0): int32[3];
+(out) swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<1>,int32<2>>::OUTPUT_v(3): int32[3];
+(out) swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<1>,int32<2>>::OUTPUT_m(9): int32[9];
+Total:      gates: 0, depth: 0
+Boolean:    gates: 0, Non-XOR gates: 0, Non-XOR depth: 0, LUTs: 0
+Arithmetic: gates: 0, Mul gates: 0, Mul depth: 0
+
+Function "swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<1>,int32<2>>"
+Time limit: -1
+Starting Bounded Model Checking
+Unwinding loop swap.0 iteration 1  thread 0
+Unwinding loop swap.0 iteration 2  thread 0
+Unwinding loop swap.1 iteration 1  thread 0
+Unwinding loop swap.1 iteration 2  thread 0
+Unwinding loop swap.1 iteration 3  thread 0
+Unwinding loop swap.1 iteration 4  thread 0
+Unwinding loop swap.1 iteration 5  thread 0
+Unwinding loop swap.1 iteration 6  thread 0
+Unwinding loop swap.1 iteration 7  thread 0
+Unwinding loop swap.1 iteration 8  thread 0
+Unwinding loop swap.1 iteration 9  thread 0
+Unwinding loop swap.2 iteration 1  thread 0
+Unwinding loop swap.2 iteration 2  thread 0
+Unwinding loop swap.2 iteration 3  thread 0
+Converting function to circuit
+(in)  swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<1>,int32<2>>::m(0): int32[9];
+(in)  swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<1>,int32<2>>::v(0): int32[3];
+(out) swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<1>,int32<2>>::OUTPUT_v(3): int32[3];
+(out) swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<1>,int32<2>>::OUTPUT_m(9): int32[9];
+Total:      gates: 0, depth: 0
+Boolean:    gates: 0, Non-XOR gates: 0, Non-XOR depth: 0, LUTs: 0
+Arithmetic: gates: 0, Mul gates: 0, Mul depth: 0
+
+Function "swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<1>,int32<2>>"
+Time limit: -1
+Starting Bounded Model Checking
+Unwinding loop swap.0 iteration 1  thread 0
+Unwinding loop swap.0 iteration 2  thread 0
+Unwinding loop swap.1 iteration 1  thread 0
+Unwinding loop swap.1 iteration 2  thread 0
+Unwinding loop swap.1 iteration 3  thread 0
+Unwinding loop swap.1 iteration 4  thread 0
+Unwinding loop swap.1 iteration 5  thread 0
+Unwinding loop swap.1 iteration 6  thread 0
+Unwinding loop swap.1 iteration 7  thread 0
+Unwinding loop swap.1 iteration 8  thread 0
+Unwinding loop swap.1 iteration 9  thread 0
+Unwinding loop swap.2 iteration 1  thread 0
+Unwinding loop swap.2 iteration 2  thread 0
+Unwinding loop swap.2 iteration 3  thread 0
+(out) OUTPUT_m: int32[9]
+(out) OUTPUT_v: int32[3]
+(in)  m: int32[9]
+(in)  v: int32[3]
+Total:      gates: 0, depth: 0
+Boolean:    gates: 0, Non-XOR gates: 0, Non-XOR depth: 0, LUTs: 0
+Arithmetic: gates: 0, Mul gates: 0, Mul depth: 0
+LOG: Compile time: 1.30913
+
+LOG: Time / Memory: 1.31 seconds 69580 kB
+
+LOG: ====================================
+
+LOG: MODE: bundle
+HyCC Module Bundle Generator v0.2
+Directory: /home/ubuntu/circ_benchmarks/hycc_circuit_dir/hycc_gauss_outline_mt-0_args---all-variants--outline
+(ignoring basic_blocks_identity_raw.dot)
+(ignoring identity<int32[9]>@bool_size.stats)
+(ignoring solve_backtracking<int32[9],int32[3],int32[3]>@bool_size.stats)
+(ignoring swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<1>,int32<2>>@bool_depth.stats)
+(ignoring pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<1>,int32<3>>@bool_depth.stats)
+found identity<int32[9]>@bool_depth.circ
+(ignoring gaussj_E<int32[9],int32[3],int32[3]>@bool_size.stats)
+found swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<0>,int32<2>>@bool_depth.circ
+found swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<1>,int32<2>>@bool_size.circ
+found mpc_main@bool_depth.circ
+(ignoring pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<0>,int32<3>>@bool_depth.stats)
+found swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<0>,int32<1>>@arith.circ
+found swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<1>,int32<2>>@arith.circ
+(ignoring swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<0>,int32<1>>@bool_size.stats)
+found swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<0>,int32<1>>@bool_size.circ
+(ignoring swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<0>,int32<1>>@arith.stats)
+found swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<0>,int32<1>>@bool_depth.circ
+found gaussj_E<int32[9],int32[3],int32[3]>@bool_size.circ
+(ignoring identity<int32[9]>@arith.stats)
+(ignoring basic_blocks_gaussj_E_raw.dot)
+found solve_backtracking<int32[9],int32[3],int32[3]>@bool_depth.circ
+found mpc_main@arith.circ
+found gaussj_E<int32[9],int32[3],int32[3]>@bool_depth.circ
+found pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<1>,int32<3>>@bool_size.circ
+(ignoring mpc_main@arith.stats)
+found swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<1>,int32<2>>@bool_depth.circ
+found swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<0>,int32<2>>@arith.circ
+found identity<int32[9]>@arith.circ
+found pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<0>,int32<3>>@bool_size.circ
+found solve_backtracking<int32[9],int32[3],int32[3]>@bool_size.circ
+(ignoring basic_blocks_swap_raw.dot)
+(ignoring basic_blocks_pivot_swap_raw.dot)
+(ignoring basic_blocks_solve_backtracking_raw.dot)
+(ignoring basic_blocks_mpc_main_raw.dot)
+(ignoring mpc_main@bool_depth.stats)
+(ignoring swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<0>,int32<2>>@arith.stats)
+(ignoring pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<0>,int32<3>>@bool_size.stats)
+(ignoring mpc_main@bool_size.stats)
+(ignoring swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<1>,int32<2>>@arith.stats)
+(ignoring swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<0>,int32<1>>@bool_depth.stats)
+found pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<1>,int32<3>>@bool_depth.circ
+found identity<int32[9]>@bool_size.circ
+found swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<0>,int32<2>>@bool_size.circ
+found pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<0>,int32<3>>@bool_depth.circ
+(ignoring solve_backtracking<int32[9],int32[3],int32[3]>@bool_depth.stats)
+(ignoring PDG_mpc_main.dot)
+(ignoring swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<1>,int32<2>>@bool_size.stats)
+(ignoring gaussj_E<int32[9],int32[3],int32[3]>@bool_depth.stats)
+found mpc_main@bool_size.circ
+(ignoring identity<int32[9]>@bool_depth.stats)
+(ignoring pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<1>,int32<3>>@bool_size.stats)
+(ignoring swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<0>,int32<2>>@bool_depth.stats)
+(ignoring swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<0>,int32<2>>@bool_size.stats)
+
+LOG: Time / Memory: 0.02 seconds 10056 kB

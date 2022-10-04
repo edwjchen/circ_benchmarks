@@ -1,1 +1,1 @@
-{"name": "biomatch", "path": "biomatch/biomatch.c", "mt": 0, "a": ["--all-variants"]}
+{"name": "kmeans_outline", "path": "kmeans_outline/kmeans.c", "mt": 600, "a": ["--all-variants", "--outline"]}

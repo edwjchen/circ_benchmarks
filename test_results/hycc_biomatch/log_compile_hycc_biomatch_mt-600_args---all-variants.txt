@@ -1,0 +1,12 @@
+LOG: ====================================
+LOG: Benchmarking HyCC
+LOG: ====================================
+LOG: TEST: biomatch
+LOG: MINIMIZATION_TIME: 600
+LOG: ARGUMENTS: ['--all-variants']
+LOG: MODE: compile
+LOG: Compile time: 69.8183
+LOG: Time / Memory: 69.84 seconds 514928 kB
+LOG: ====================================
+LOG: MODE: bundle
+LOG: Time / Memory: 0.02 seconds 10040 kB
