@@ -103,6 +103,9 @@ def build(features):
             with open(ABY_CMAKE, 'a') as f:
                 print("add_subdirectory(aby-hycc)", file=f)
 
+        # build aby
+        subprocess.run(["./scripts/build_aby.zsh"], check=True)
+
     if "circ" in features:
         # build circ
         os.environ['ABY_SOURCE'] = "../ABY"
