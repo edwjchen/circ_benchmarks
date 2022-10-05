@@ -8,7 +8,7 @@ from util import *
 def run_aby(spec_file, params, instance_metadata):
     write_log(DELIMITER, params)
     address = instance_metadata.get("address", "127.0.0.1")
-    role = instance_metadata["role"]
+    role = str(instance_metadata["role"])
     assert(role == "0" or role == "1")
     cmd = [ABY_CBMC_GC, "--spec-file", spec_file, "-c", params["ss_file"]]
     cmd = cmd + ["-a", address] + ["-r", role]
@@ -19,7 +19,7 @@ def run_aby(spec_file, params, instance_metadata):
 def run_aby(spec_file, params):
     write_log(DELIMITER, params)
     address = params.get("address", "127.0.0.1")
-    role = params["role"]
+    role = str(params["role"])
     assert(role == "0" or role == "1")
     cmd = [ABY_CBMC_GC, "--spec-file", spec_file, "-c", params["ss_file"]]
     cmd = cmd + ["-a", address] + ["-r", role]
@@ -95,7 +95,7 @@ def run_hycc_benchmark(spec_file, params):
                 write_log("LOG: Missing: {}".format(ss_file), params)
             break
         except Exception as e:
-            write_log("LOG: retry: {}".format(retry))
+            write_log("LOG: retry: {}".format(retry), params)
             retry += 1
             if retry >= 5:
                 write_log("LOG: Failed {} with args: {}, exception: {}".format(

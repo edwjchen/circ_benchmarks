@@ -1,1 +1,1 @@
-{"name": "biomatch", "path": "biomatch/biomatch.c", "mt": 0, "a": ["--all-variants"], "setting": "LAN", "ss": "yaohybrid", "cm": "lan", "role": 1, "address": "ec2-34-204-201-231.compute-1.amazonaws.com"}
+{"name": "biomatch", "path": "biomatch/biomatch.c", "mt": 0, "a": ["--all-variants"], "setting": "LAN", "ss": "yaohybrid", "cm": "lan", "role": 1, "address": "ec2-35-175-133-181.compute-1.amazonaws.com"}
