@@ -249,7 +249,7 @@ def select_with_params(features):
 
         # run hycc benchmarks
         make_dir("test_results/hycc_{}".format(params["name"]))
-        select_hycc(params)
+        select_hycc_with_params(params)
         end = time.time()
         line = "LOG: Total hycc select time: {}".format(end-start)
         subprocess.call("echo \"{}\" >> {}/test_results/hycc_total_select_time.txt".format(
@@ -284,6 +284,31 @@ def benchmark(features, instance_metadata):
         end = time.time()
         line = "LOG: Total circ benchmark time: {}".format(end-start)
         p = subprocess.Popen("echo \"{}\" >> {}/test_results/circ_total_time.txt".format(
+            line, CIRC_BENCHMARK_SOURCE), shell=True)
+        p.communicate(timeout=10)
+
+
+def run_with_params(features):
+    make_dir("run_test_results")
+    make_dir(HYCC_CIRCUIT_PATH)
+    if "hycc" in features:
+        print("Running HyCC Benchmarks")
+        start = time.time()
+
+        # check params
+        if not os.path.exists("./run_params.json"):
+            sys.exit("run_params.json: file does not exist")
+
+        # compile_hycc
+        with open('run_params.json') as f:
+            params = json.load(f)
+
+        # run hycc benchmarks
+        make_dir("run_test_results/hycc_{}".format(params["name"]))
+        run_hycc_with_params(params)
+        end = time.time()
+        line = "LOG: Total hycc benchmark time: {}".format(end-start)
+        p = subprocess.Popen("echo \"{}\" >> {}/run_test_results/hycc_total_time.txt".format(
             line, CIRC_BENCHMARK_SOURCE), shell=True)
         p.communicate(timeout=10)
 
@@ -343,6 +368,8 @@ if __name__ == "__main__":
                         help="select benchmarks with params")
     parser.add_argument("--benchmark", action="store_true",
                         help="run benchmark")
+    parser.add_argument("--run_with_params", action="store_true",
+                        help="run benchmarks with params")
     parser.add_argument("--parse", action="store_true",
                         help="run parser")
     parser.add_argument("-f", "--features", nargs="+",
@@ -398,6 +425,9 @@ if __name__ == "__main__":
 
     if args.benchmark:
         benchmark(features, instance_metadata)
+
+    if args.run_with_params:
+        run_with_params(features)
 
     if args.parse:
         parse(features)

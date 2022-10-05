@@ -16,6 +16,17 @@ def run_aby(spec_file, params, instance_metadata):
         run_cmd(cmd, "RERUN: {}".format(i), params)
 
 
+def run_aby(spec_file, params):
+    write_log(DELIMITER, params)
+    address = params.get("address", "127.0.0.1")
+    role = params["role"]
+    assert(role == "0" or role == "1")
+    cmd = [ABY_CBMC_GC, "--spec-file", spec_file, "-c", params["ss_file"]]
+    cmd = cmd + ["-a", address] + ["-r", role]
+    for i in range(RERUN):
+        run_cmd(cmd, "RERUN: {}".format(i), params)
+
+
 def run_aby_local(spec_file, params):
     write_log(DELIMITER, params)
     cmd = [ABY_CBMC_GC, "--spec-file", spec_file, "-c", params["ss_file"]]
@@ -57,6 +68,42 @@ def run_hycc_benchmark(spec_file, params, instance_metadata):
                     CIRC_BENCHMARK_SOURCE, instance_metadata["setting"], params["system"], params["name"], params["version"])
                 failed_path = "{}run_test_results_{}/{}_{}/failed_log_{}.txt".format(
                     CIRC_BENCHMARK_SOURCE, instance_metadata["setting"], params["system"], params["name"], params["version"])
+                subprocess.call("mv {} {}".format(
+                    log_path, failed_path), shell=True)
+
+
+def run_hycc_benchmark(spec_file, params):
+    print("running: ", params["version"], params["setting"])
+    args = params["a"]
+    ss = params["ss"]
+    if not args:
+        return
+
+    ss_file = "{}.cmb".format(ss)
+    params["ss_file"] = ss_file
+
+    retry = 0
+
+    while retry < 5:
+        try:
+            if os.path.exists(ss_file):
+                if "role" in params:
+                    run_aby(spec_file, params)
+                else:
+                    run_aby_local(spec_file, params)
+            else:
+                write_log("LOG: Missing: {}".format(ss_file), params)
+            break
+        except Exception as e:
+            write_log("LOG: retry: {}".format(retry))
+            retry += 1
+            if retry >= 5:
+                write_log("LOG: Failed {} with args: {}, exception: {}".format(
+                    ss, " ".join(args), e), params)
+                log_path = "{}run_test_results_{}/{}_{}/log_{}.txt".format(
+                    CIRC_BENCHMARK_SOURCE, params["setting"], params["system"], params["name"], params["version"])
+                failed_path = "{}run_test_results_{}/{}_{}/failed_log_{}.txt".format(
+                    CIRC_BENCHMARK_SOURCE, params["setting"], params["system"], params["name"], params["version"])
                 subprocess.call("mv {} {}".format(
                     log_path, failed_path), shell=True)
 
@@ -347,6 +394,38 @@ def benchmark_hycc(name, path, instance_metadata):
                 run_hycc_benchmark(spec_file, params, instance_metadata)
             else:
                 print("Benchmark already ran: {}".format(log_path))
+
+    os.chdir(CIRC_BENCHMARK_SOURCE)
+
+
+def benchmark_hycc_with_params(params):
+    spec_file = "{}specs/{}.spec".format(CIRC_BENCHMARK_SOURCE, params["name"])
+    params["system"] = "hycc"
+
+    version = "{}_{}_mt-{}_args-{}".format(
+        "hycc", params["name"], params["mt"], "".join(params["a"]))
+
+    # make circuit directories
+    circuit_dir = "{}{}".format(HYCC_CIRCUIT_PATH, version)
+    make_dir(circuit_dir)
+
+    run_version = "{}_ss-{}_{}".format(version,
+                                       params["ss"], params["setting"])
+    params["version"] = run_version
+
+    # run HyCC benchmark
+    os.chdir(circuit_dir)
+    write_log(DELIMITER, params)
+    write_log("LOG: Benchmarking HyCC", params)
+    write_log(DELIMITER, params)
+
+    write_log("LOG: TEST: {}".format(params["name"]), params)
+    write_log("LOG: SELECTION_SCHEME: {}".format(params["ss"]), params)
+    write_log("LOG: MINIMIZATION_TIME: {}".format(
+        params["mt"]), params)
+    write_log("LOG: ARGUMENTS: {}".format(params["a"]), params)
+
+    run_hycc_benchmark(spec_file, params)
 
     os.chdir(CIRC_BENCHMARK_SOURCE)
 
