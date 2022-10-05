@@ -516,6 +516,6 @@ gauss_compile_params = [
     },
 ]
 
-
-run_hycc_test((biomatch_compile_params[0] | biomatch_run_params[0]))
+p = {**biomatch_compile_params[0], **biomatch_run_params[0]}
+run_hycc_test(p)
 # run_hycc_test({}, WAN)

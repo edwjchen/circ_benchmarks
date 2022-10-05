@@ -302,6 +302,7 @@ def select_hycc(name):
 
 def select_hycc_with_params(params):
     params["system"] = "hycc"
+    params["mode"] = "select"
 
     version = version = "{}_{}_mt-{}_args-{}".format(
         "hycc", params["name"], params["mt"], "".join(params["a"]))
@@ -391,6 +392,7 @@ def benchmark_hycc(name, path, instance_metadata):
 def benchmark_hycc_with_params(params):
     spec_file = "{}specs/{}.spec".format(CIRC_BENCHMARK_SOURCE, params["name"])
     params["system"] = "hycc"
+    params["mode"] = "run"
 
     version = "{}_{}_mt-{}_args-{}".format(
         "hycc", params["name"], params["mt"], "".join(params["a"]))
