@@ -399,9 +399,9 @@ def run_hycc_test(params):
 
     # get results
     subprocess.call(
-        "rsync -avz -e \"ssh -o StrictHostKeyChecking=no -i {}.pem\" --progress ubuntu@{}:~/circ_benchmarks/run_test_results east1/".format(k1, ip1), shell=True)
+        "rsync -avz -e \"ssh -o StrictHostKeyChecking=no -i {}.pem\" --progress ubuntu@{}:~/circ_benchmarks/run_test_results server/".format(k1, ip1), shell=True)
     subprocess.call(
-        "rsync -avz -e \"ssh -o StrictHostKeyChecking=no -i {}.pem\" --progress ubuntu@{}:~/circ_benchmarks/run_test_results east2/".format(k2, ip2), shell=True)
+        "rsync -avz -e \"ssh -o StrictHostKeyChecking=no -i {}.pem\" --progress ubuntu@{}:~/circ_benchmarks/run_test_results client/".format(k2, ip2), shell=True)
 
     # stop instances
     print("Stopping instance")
