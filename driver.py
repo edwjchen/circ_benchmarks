@@ -305,7 +305,7 @@ def run_with_params(features):
 
         # run hycc benchmarks
         make_dir("run_test_results/hycc_{}".format(params["name"]))
-        run_hycc_benchmark(params)
+        benchmark_hycc_with_params(params)
         end = time.time()
         line = "LOG: Total hycc benchmark time: {}".format(end-start)
         p = subprocess.Popen("echo \"{}\" >> {}/run_test_results/hycc_total_time.txt".format(

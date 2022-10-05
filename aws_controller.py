@@ -257,12 +257,12 @@ def setup_hycc(ip, k):
     print("Setting up:", ip)
     if stdout.channel.recv_exit_status():
         _, stdout, _ = client.exec_command(
-            "cd ~ && git clone https://github.com/edwjchen/circ_benchmarks.git && cd ~/circ_benchmarks && git checkout aws2 -f && git add . && git stash && git pull -f && git submodule init && git submodule update && ./scripts/dependencies.sh && pip3 install pandas && python3 driver.py -f hycc && python3 driver.py -b")
+            "cd ~ && git clone https://github.com/edwjchen/circ_benchmarks.git && cd ~/circ_benchmarks && git checkout aws2 -f && git add . && git stash && git pull -f && git submodule init && git submodule update && ./scripts/dependencies.sh && pip3 install pandas && python3 driver.py -f hycc && python3 driver.py -b && mkdir -p hycc_circuit_dir")
         if stdout.channel.recv_exit_status():
             print(ip, " failed setup")
     else:
         _, stdout, _ = client.exec_command(
-            "cd ~/circ_benchmarks && git checkout aws2 -f && git add . && git stash && git pull -f && git submodule init && git submodule update && ./scripts/dependencies.sh && pip3 install pandas && python3 driver.py -f hycc && python3 driver.py -b")
+            "cd ~/circ_benchmarks && git checkout aws2 -f && git add . && git stash && git pull -f && git submodule init && git submodule update && ./scripts/dependencies.sh && pip3 install pandas && python3 driver.py -f hycc && python3 driver.py -b && mkdir -p hycc_circuit_dir")
         if stdout.channel.recv_exit_status():
             print(ip, " failed setup 2")
     print("Set up:", ip)
@@ -304,8 +304,6 @@ def compile_hycc_test(params):
     # compile hycc
     compile_hycc(ip, k)
 
-    # select hycc
-
     # get results
     subprocess.call(
         "rsync -avz -e \"ssh -o StrictHostKeyChecking=no -i {}.pem\" --progress ubuntu@{}:~/circ_benchmarks/hycc_circuit_dir .".format(k, ip), shell=True)
@@ -317,6 +315,10 @@ def compile_hycc_test(params):
     instance.stop()
     instance.wait_until_stopped()
     print("Finished!")
+
+
+def get_version(params):
+    return "hycc_{}_mt-{}_args-{}".format(params["name"], params["mt"], "".join(params["a"]))
 
 
 def select_hycc(ip, k):
@@ -368,6 +370,9 @@ def run_hycc_test(params):
     client_params["address"] = instance1.public_dns_name
     client_params["setting"] = run_env
 
+    print(server_params)
+    print(client_params)
+
     # setup hycc
     ips = [ip1, ip2]
     ks = [k1, k2]
@@ -376,18 +381,25 @@ def run_hycc_test(params):
 
     # write run params to file
     print("Writing server params: ", server_params)
-    with open("run_params.json", "w") as f:
+    with open("server_run_params.json", "w") as f:
         json.dump(server_params, f)
     subprocess.call(
-        "rsync -avz -e \"ssh -o StrictHostKeyChecking=no -i {}.pem\" --progress run_params.json ubuntu@{}:~/circ_benchmarks/.".format(k1, ip2), shell=True)
+        "rsync -avz -e \"ssh -o StrictHostKeyChecking=no -i {}.pem\" --progress server_run_params.json ubuntu@{}:~/circ_benchmarks/run_params.json".format(k1, ip1), shell=True)
     print("Finished writing server params: ", ip1)
 
     print("Writing client params: ", client_params)
-    with open("run_params.json", "w") as f:
+    with open("client_run_params.json", "w") as f:
         json.dump(client_params, f)
     subprocess.call(
-        "rsync -avz -e \"ssh -o StrictHostKeyChecking=no -i {}.pem\" --progress run_params.json ubuntu@{}:~/circ_benchmarks/.".format(k2, ip2), shell=True)
+        "rsync -avz -e \"ssh -o StrictHostKeyChecking=no -i {}.pem\" --progress client_run_params.json ubuntu@{}:~/circ_benchmarks/run_params.json".format(k2, ip2), shell=True)
     print("Finished writing run params: ", ip2)
+
+    # copy compiled circuits to instances
+    version = get_version(params)
+    subprocess.call(
+        "rsync -avz -e \"ssh -o StrictHostKeyChecking=no -i {}.pem\" --progress ./hycc_circuit_dir/{} ubuntu@{}:~/circ_benchmarks/hycc_circuit_dir".format(k1, version, ip1), shell=True)
+    subprocess.call(
+        "rsync -avz -e \"ssh -o StrictHostKeyChecking=no -i {}.pem\" --progress ./hycc_circuit_dir/{} ubuntu@{}:~/circ_benchmarks/hycc_circuit_dir".format(k2, version, ip2), shell=True)
 
     # select test case
     pool = multiprocessing.Pool(len(ips))
