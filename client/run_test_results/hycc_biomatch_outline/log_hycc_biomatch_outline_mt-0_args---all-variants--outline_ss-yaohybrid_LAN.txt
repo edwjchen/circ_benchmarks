@@ -1,0 +1,33 @@
+LOG: ====================================
+LOG: Benchmarking HyCC
+LOG: ====================================
+LOG: TEST: biomatch_outline
+LOG: SELECTION_SCHEME: yaohybrid
+LOG: MINIMIZATION_TIME: 0
+LOG: ARGUMENTS: ['--all-variants', '--outline']
+LOG: ====================================
+LOG: RERUN: 0
+LOG: Error: Process returned with status code 134
+LOG: Error message: terminate called after throwing an instance of 'std::runtime_error'   what():  <command-line-spec>:1:25: Expected COMMA, got SEMICOLON Command terminated by signal 6 0.62 seconds 121796 kB Command exited with non-zero status 134 0.62 seconds 121796 kB
+LOG: retry: 0
+LOG: ====================================
+LOG: RERUN: 0
+LOG: Error: Process returned with status code 134
+LOG: Error message: terminate called after throwing an instance of 'std::runtime_error'   what():  <command-line-spec>:1:25: Expected COMMA, got SEMICOLON Command terminated by signal 6 0.60 seconds 121852 kB Command exited with non-zero status 134 0.60 seconds 121852 kB
+LOG: retry: 1
+LOG: ====================================
+LOG: RERUN: 0
+LOG: Error: Process returned with status code 134
+LOG: Error message: terminate called after throwing an instance of 'std::runtime_error'   what():  <command-line-spec>:1:25: Expected COMMA, got SEMICOLON Command terminated by signal 6 0.58 seconds 121732 kB Command exited with non-zero status 134 0.58 seconds 121732 kB
+LOG: retry: 2
+LOG: ====================================
+LOG: RERUN: 0
+LOG: Error: Process returned with status code 134
+LOG: Error message: terminate called after throwing an instance of 'std::runtime_error'   what():  <command-line-spec>:1:25: Expected COMMA, got SEMICOLON Command terminated by signal 6 0.58 seconds 121736 kB Command exited with non-zero status 134 0.58 seconds 121736 kB
+LOG: retry: 3
+LOG: ====================================
+LOG: RERUN: 0
+LOG: Error: Process returned with status code 134
+LOG: Error message: terminate called after throwing an instance of 'std::runtime_error'   what():  <command-line-spec>:1:25: Expected COMMA, got SEMICOLON Command terminated by signal 6 0.58 seconds 122116 kB Command exited with non-zero status 134 0.58 seconds 122116 kB
+LOG: retry: 4
+LOG: Failed yaohybrid with args: --all-variants --outline, exception:

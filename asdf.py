@@ -10,7 +10,7 @@ for i in range(256):
         if j < 3:
             l.append(",")
         count += 1
-    l.append("];")
-l.append("]")
+    l.append("],")
+l.append("];")
 
 print("".join(l))

@@ -1,1 +1,1 @@
-{"name": "biomatch_outline", "path": "biomatch_outline/biomatch.c", "mt": 0, "a": ["--all-variants", "--outline"], "setting": "LAN", "ss": "lan_optimized", "cm": "lan", "role": 1, "address": "ec2-3-237-47-52.compute-1.amazonaws.com"}
+{"name": "biomatch_outline", "path": "biomatch_outline/biomatch.c", "mt": 0, "a": ["--all-variants", "--outline"], "setting": "LAN", "ss": "yaohybrid", "cm": "lan", "role": 1, "address": "ec2-3-227-0-192.compute-1.amazonaws.com"}
