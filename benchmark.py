@@ -390,7 +390,8 @@ def benchmark_hycc(name, path, instance_metadata):
 
 
 def benchmark_hycc_with_params(params):
-    spec_file = "{}specs/{}.spec".format(CIRC_BENCHMARK_SOURCE, params["name"])
+    spec_file = "{}specs/{}.spec".format(CIRC_BENCHMARK_SOURCE,
+                                         params["name"].replace("_outline", ""))
     params["system"] = "hycc"
     params["mode"] = "run"
 
