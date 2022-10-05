@@ -270,7 +270,6 @@ def setup_hycc(ip, k):
 
 
 def compile_hycc(ip, k):
-    # Compile test case
     client = connect_to_instance(ip, k)
     cmd = "cd ~/circ_benchmarks && python3 driver.py --compile_with_params"
     print("Compiling:", cmd)
@@ -280,7 +279,7 @@ def compile_hycc(ip, k):
         print(stderr)
         print(ip, " failed compiles")
     print("Compiled:", ip)
-    client.cloe()
+    client.close()
 
 
 def compile_hycc_test(params):
@@ -294,7 +293,7 @@ def compile_hycc_test(params):
     # setup hycc
     setup_hycc(ip, k)
 
-    # Write compile params to file
+    # write compile params to file
     print("Writing compile params: ", params)
     with open("compile_params.json", "w") as f:
         json.dump(params, f)
@@ -304,6 +303,8 @@ def compile_hycc_test(params):
 
     # compile hycc
     compile_hycc(ip, k)
+
+    # select hycc
 
     # get results
     subprocess.call(
@@ -318,6 +319,19 @@ def compile_hycc_test(params):
     print("Finished!")
 
 
+def select_hycc(ip, k):
+    client = connect_to_instance(ip, k)
+    cmd = "cd ~/circ_benchmarks && python3 driver.py --select_with_params"
+    print("Selecting:", cmd)
+    _, stdout, stderr = client.exec_command(cmd)
+    print("\n".join(stderr.readlines()))
+    if stdout.channel.recv_exit_status():
+        print(stderr)
+        print(ip, " failed compiles")
+    print("Selected:", ip)
+    client.close()
+
+
 def run_hycc(ip, k):
     client = connect_to_instance(ip, k)
     print("Running HyCC benchmark:\nip:", ip)
@@ -329,7 +343,9 @@ def run_hycc(ip, k):
     client.close()
 
 
-def run_hycc_test(params, run_env):
+def run_hycc_test(params):
+    run_env = params["setting"]
+
     # get run instances
     ((instance1, k1), (instance2, k2)) = get_run_instances(run_env)
     ip1 = instance1.public_dns_name
@@ -344,7 +360,7 @@ def run_hycc_test(params, run_env):
     server_params = params.copy()
     client_params = params.copy()
 
-    # ip1 is the server
+    # instance1 is the server
     server_params["role"] = 0
     server_params["address"] = instance1.private_ip_address
     server_params["setting"] = run_env
@@ -358,7 +374,7 @@ def run_hycc_test(params, run_env):
     pool = multiprocessing.Pool(len(ips))
     pool.starmap(setup_hycc, zip(ips, ks))
 
-    # Write run params to file
+    # write run params to file
     print("Writing server params: ", server_params)
     with open("run_params.json", "w") as f:
         json.dump(server_params, f)
@@ -373,7 +389,11 @@ def run_hycc_test(params, run_env):
         "rsync -avz -e \"ssh -o StrictHostKeyChecking=no -i {}.pem\" --progress run_params.json ubuntu@{}:~/circ_benchmarks/.".format(k2, ip2), shell=True)
     print("Finished writing run params: ", ip2)
 
-    # Compile test case
+    # select test case
+    pool = multiprocessing.Pool(len(ips))
+    pool.starmap(select_hycc, zip(ips, ks))
+
+    # run test case
     pool = multiprocessing.Pool(len(ips))
     pool.starmap(run_hycc, zip(ips, ks))
 
@@ -390,10 +410,6 @@ def run_hycc_test(params, run_env):
     instance1.wait_until_stopped()
     instance2.wait_until_stopped()
     print("Finished!")
-
-
-run_hycc_test({}, LAN)
-# run_hycc_test({}, WAN)
 
 
 biomatch_compile_params = [
@@ -420,6 +436,29 @@ biomatch_compile_params = [
         "path": "biomatch_outline/biomatch.c",
         "mt": 600,
         "a": ["--all-variants", "--outline"],
+    },
+]
+
+biomatch_run_params = [
+    {
+        "setting": LAN,
+        "ss": "yaohybrid",
+        "cm": "lan"
+    },
+    {
+        "setting": LAN,
+        "ss": "lan_optimized",
+        "cm": "lan"
+    },
+    {
+        "setting": WAN,
+        "ss": "yaohybrid",
+        "cm": "wan"
+    },
+    {
+        "setting": WAN,
+        "ss": "wan_optimized",
+        "cm": "wan"
     },
 ]
 
@@ -476,3 +515,7 @@ gauss_compile_params = [
         "a": ["--all-variants", "--outline"],
     },
 ]
+
+
+run_hycc_test((biomatch_compile_params[0] | biomatch_run_params[0]))
+# run_hycc_test({}, WAN)

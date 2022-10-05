@@ -240,11 +240,11 @@ def select_with_params(features):
         make_dir(HYCC_CIRCUIT_PATH)
 
         # check params
-        if not os.path.exists("./compile_params.json"):
-            sys.exit("compile_params.json: file does not exist")
+        if not os.path.exists("./run_params.json"):
+            sys.exit("run_params.json: file does not exist")
 
         # compile_hycc
-        with open('compile_params.json') as f:
+        with open('run_params.json') as f:
             params = json.load(f)
 
         # run hycc benchmarks
