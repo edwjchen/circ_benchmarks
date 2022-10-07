@@ -528,10 +528,10 @@ gauss_compile_params = [
     },
 ]
 
-p = {**biomatch_compile_params[1], **biomatch_run_params[0]}
-run_hycc_test(p)
+# p = {**biomatch_compile_params[1], **biomatch_run_params[0]}
+# run_hycc_test(p)
 
-# for compile_params in biomatch_compile_params:
-#     for run_params in biomatch_run_params:
-#         p = {**compile_params, **run_params}
-#         run_hycc_test(p)
+for compile_params in biomatch_compile_params:
+    for run_params in biomatch_run_params:
+        p = {**compile_params, **run_params}
+        run_hycc_test(p)

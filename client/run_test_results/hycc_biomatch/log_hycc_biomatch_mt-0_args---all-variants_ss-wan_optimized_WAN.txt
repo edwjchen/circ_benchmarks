@@ -1,0 +1,48 @@
+LOG: ====================================
+LOG: Benchmarking HyCC
+LOG: ====================================
+LOG: TEST: biomatch
+LOG: SELECTION_SCHEME: wan_optimized
+LOG: MINIMIZATION_TIME: 0
+LOG: ARGUMENTS: ['--all-variants']
+LOG: ====================================
+LOG: RERUN: 0
+LOG: Client load time: 0.838698
+LOG: Client exec time: 2.91802
+LOG: Time / Memory: 3.88 seconds 160200 kB
+LOG: RERUN: 1
+LOG: Client load time: 0.778042
+LOG: Client exec time: 2.7629
+LOG: Time / Memory: 3.66 seconds 160548 kB
+LOG: RERUN: 2
+LOG: Client load time: 0.882624
+LOG: Client exec time: 2.7631
+LOG: Time / Memory: 3.78 seconds 160332 kB
+LOG: RERUN: 3
+LOG: Client load time: 0.89764
+LOG: Client exec time: 2.80822
+LOG: Time / Memory: 3.81 seconds 160404 kB
+LOG: RERUN: 4
+LOG: Client load time: 0.794441
+LOG: Client exec time: 2.85994
+LOG: Time / Memory: 3.77 seconds 160400 kB
+LOG: RERUN: 5
+LOG: Client load time: 0.768914
+LOG: Client exec time: 2.66891
+LOG: Time / Memory: 3.56 seconds 160960 kB
+LOG: RERUN: 6
+LOG: Client load time: 0.866557
+LOG: Client exec time: 2.67353
+LOG: Time / Memory: 3.66 seconds 160164 kB
+LOG: RERUN: 7
+LOG: Client load time: 0.877986
+LOG: Client exec time: 2.80724
+LOG: Time / Memory: 3.80 seconds 160200 kB
+LOG: RERUN: 8
+LOG: Client load time: 0.774198
+LOG: Client exec time: 2.76177
+LOG: Time / Memory: 3.65 seconds 160260 kB
+LOG: RERUN: 9
+LOG: Client load time: 0.77305
+LOG: Client exec time: 2.71765
+LOG: Time / Memory: 3.61 seconds 160220 kB

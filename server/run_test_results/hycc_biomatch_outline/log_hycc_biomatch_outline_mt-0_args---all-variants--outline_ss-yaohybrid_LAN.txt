@@ -7,27 +7,42 @@ LOG: MINIMIZATION_TIME: 0
 LOG: ARGUMENTS: ['--all-variants', '--outline']
 LOG: ====================================
 LOG: RERUN: 0
-LOG: Error: Process returned with status code 134
-LOG: Error message: terminate called after throwing an instance of 'std::runtime_error'   what():  <command-line-spec>:1:25: Expected COMMA, got SEMICOLON Command terminated by signal 6 0.58 seconds 121784 kB Command exited with non-zero status 134 0.58 seconds 121784 kB
-LOG: retry: 0
-LOG: ====================================
-LOG: RERUN: 0
-LOG: Error: Process returned with status code 134
-LOG: Error message: terminate called after throwing an instance of 'std::runtime_error'   what():  <command-line-spec>:1:25: Expected COMMA, got SEMICOLON Command terminated by signal 6 0.55 seconds 121840 kB Command exited with non-zero status 134 0.55 seconds 121840 kB
-LOG: retry: 1
-LOG: ====================================
-LOG: RERUN: 0
-LOG: Error: Process returned with status code 134
-LOG: Error message: terminate called after throwing an instance of 'std::runtime_error'   what():  <command-line-spec>:1:25: Expected COMMA, got SEMICOLON Command terminated by signal 6 0.55 seconds 121956 kB Command exited with non-zero status 134 0.55 seconds 121956 kB
-LOG: retry: 2
-LOG: ====================================
-LOG: RERUN: 0
-LOG: Error: Process returned with status code 134
-LOG: Error message: terminate called after throwing an instance of 'std::runtime_error'   what():  <command-line-spec>:1:25: Expected COMMA, got SEMICOLON Command terminated by signal 6 0.55 seconds 122060 kB Command exited with non-zero status 134 0.55 seconds 122060 kB
-LOG: retry: 3
-LOG: ====================================
-LOG: RERUN: 0
-LOG: Error: Process returned with status code 134
-LOG: Error message: terminate called after throwing an instance of 'std::runtime_error'   what():  <command-line-spec>:1:25: Expected COMMA, got SEMICOLON Command terminated by signal 6 0.55 seconds 121928 kB Command exited with non-zero status 134 0.55 seconds 121928 kB
-LOG: retry: 4
-LOG: Failed yaohybrid with args: --all-variants --outline, exception:
+LOG: Server load time: 0.475198
+LOG: Server exec time: 0.510647
+LOG: Time / Memory: 1.06 seconds 143888 kB
+LOG: RERUN: 1
+LOG: Server load time: 0.472952
+LOG: Server exec time: 0.512361
+LOG: Time / Memory: 1.05 seconds 143956 kB
+LOG: RERUN: 2
+LOG: Server load time: 0.465801
+LOG: Server exec time: 0.516481
+LOG: Time / Memory: 1.05 seconds 143940 kB
+LOG: RERUN: 3
+LOG: Server load time: 0.468746
+LOG: Server exec time: 0.527627
+LOG: Time / Memory: 1.06 seconds 143900 kB
+LOG: RERUN: 4
+LOG: Server load time: 0.468022
+LOG: Server exec time: 0.51333
+LOG: Time / Memory: 1.05 seconds 143996 kB
+LOG: RERUN: 5
+LOG: Server load time: 0.467632
+LOG: Server exec time: 0.53056
+LOG: Time / Memory: 1.07 seconds 143804 kB
+LOG: RERUN: 6
+LOG: Server load time: 0.470729
+LOG: Server exec time: 0.514097
+LOG: Time / Memory: 1.05 seconds 143800 kB
+LOG: RERUN: 7
+LOG: Server load time: 0.471945
+LOG: Server exec time: 0.54574
+LOG: Time / Memory: 1.09 seconds 143872 kB
+LOG: RERUN: 8
+LOG: Server load time: 0.469964
+LOG: Server exec time: 0.564071
+LOG: Time / Memory: 1.10 seconds 143868 kB
+LOG: RERUN: 9
+LOG: Server load time: 0.471536
+LOG: Server exec time: 0.508855
+LOG: Time / Memory: 1.05 seconds 143708 kB
