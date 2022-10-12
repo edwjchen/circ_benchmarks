@@ -1,0 +1,52 @@
+
+LOG: ====================================
+
+LOG: Benchmarking HyCC
+
+LOG: ====================================
+
+LOG: TEST: biomatch_inline_all
+LOG: SELECTION_SCHEME: lan_optimized
+LOG: MINIMIZATION_TIME: 600
+LOG: ARGUMENTS: ['--all-variants']
+
+LOG: ====================================
+
+LOG: RERUN: 0
+
+LOG: Error: Process returned with status code 134
+LOG: Error message: terminate called after throwing an instance of 'std::runtime_error'   what():  Failed to open file: /home/ubuntu/circ_benchmarks/specs/biomatch_inline_all.spec Command terminated by signal 6 0.19 seconds 5352 kB Command exited with non-zero status 134 0.20 seconds 5352 kB 
+LOG: retry: 0
+
+LOG: ====================================
+
+LOG: RERUN: 0
+
+LOG: Error: Process returned with status code 134
+LOG: Error message: terminate called after throwing an instance of 'std::runtime_error'   what():  Failed to open file: /home/ubuntu/circ_benchmarks/specs/biomatch_inline_all.spec Command terminated by signal 6 0.17 seconds 5304 kB Command exited with non-zero status 134 0.17 seconds 5304 kB 
+LOG: retry: 1
+
+LOG: ====================================
+
+LOG: RERUN: 0
+
+LOG: Error: Process returned with status code 134
+LOG: Error message: terminate called after throwing an instance of 'std::runtime_error'   what():  Failed to open file: /home/ubuntu/circ_benchmarks/specs/biomatch_inline_all.spec Command terminated by signal 6 0.17 seconds 5152 kB Command exited with non-zero status 134 0.17 seconds 5152 kB 
+LOG: retry: 2
+
+LOG: ====================================
+
+LOG: RERUN: 0
+
+LOG: Error: Process returned with status code 134
+LOG: Error message: terminate called after throwing an instance of 'std::runtime_error'   what():  Failed to open file: /home/ubuntu/circ_benchmarks/specs/biomatch_inline_all.spec Command terminated by signal 6 0.17 seconds 5276 kB Command exited with non-zero status 134 0.17 seconds 5276 kB 
+LOG: retry: 3
+
+LOG: ====================================
+
+LOG: RERUN: 0
+
+LOG: Error: Process returned with status code 134
+LOG: Error message: terminate called after throwing an instance of 'std::runtime_error'   what():  Failed to open file: /home/ubuntu/circ_benchmarks/specs/biomatch_inline_all.spec Command terminated by signal 6 0.17 seconds 5152 kB Command exited with non-zero status 134 0.17 seconds 5152 kB 
+LOG: retry: 4
+LOG: Failed lan_optimized with args: --all-variants, exception: 

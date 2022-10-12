@@ -1,0 +1,33 @@
+LOG: ====================================
+LOG: Benchmarking HyCC
+LOG: ====================================
+LOG: TEST: biomatch_inline_all
+LOG: SELECTION_SCHEME: yaohybrid
+LOG: MINIMIZATION_TIME: 0
+LOG: ARGUMENTS: ['--all-variants']
+LOG: ====================================
+LOG: RERUN: 0
+LOG: Error: Process returned with status code 134
+LOG: Error message: terminate called after throwing an instance of 'std::runtime_error'   what():  Failed to open file: /home/ubuntu/circ_benchmarks/specs/biomatch_inline_all.spec Command terminated by signal 6 0.19 seconds 5344 kB Command exited with non-zero status 134 0.19 seconds 5344 kB
+LOG: retry: 0
+LOG: ====================================
+LOG: RERUN: 0
+LOG: Error: Process returned with status code 134
+LOG: Error message: terminate called after throwing an instance of 'std::runtime_error'   what():  Failed to open file: /home/ubuntu/circ_benchmarks/specs/biomatch_inline_all.spec Command terminated by signal 6 0.17 seconds 5128 kB Command exited with non-zero status 134 0.17 seconds 5128 kB
+LOG: retry: 1
+LOG: ====================================
+LOG: RERUN: 0
+LOG: Error: Process returned with status code 134
+LOG: Error message: terminate called after throwing an instance of 'std::runtime_error'   what():  Failed to open file: /home/ubuntu/circ_benchmarks/specs/biomatch_inline_all.spec Command terminated by signal 6 0.17 seconds 5036 kB Command exited with non-zero status 134 0.17 seconds 5036 kB
+LOG: retry: 2
+LOG: ====================================
+LOG: RERUN: 0
+LOG: Error: Process returned with status code 134
+LOG: Error message: terminate called after throwing an instance of 'std::runtime_error'   what():  Failed to open file: /home/ubuntu/circ_benchmarks/specs/biomatch_inline_all.spec Command terminated by signal 6 0.17 seconds 5168 kB Command exited with non-zero status 134 0.17 seconds 5168 kB
+LOG: retry: 3
+LOG: ====================================
+LOG: RERUN: 0
+LOG: Error: Process returned with status code 134
+LOG: Error message: terminate called after throwing an instance of 'std::runtime_error'   what():  Failed to open file: /home/ubuntu/circ_benchmarks/specs/biomatch_inline_all.spec Command terminated by signal 6 0.17 seconds 5300 kB Command exited with non-zero status 134 0.17 seconds 5300 kB
+LOG: retry: 4
+LOG: Failed yaohybrid with args: --all-variants, exception:

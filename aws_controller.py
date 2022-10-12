@@ -262,7 +262,7 @@ def setup_hycc(ip, k):
             print(ip, " failed setup")
     else:
         _, stdout, _ = client.exec_command(
-            "cd ~/circ_benchmarks && git checkout aws2 -f && git add . && git stash && git pull -f && git submodule init && git submodule update && ./scripts/dependencies.sh && pip3 install pandas && python3 driver.py -f hycc && python3 driver.py -b && mkdir -p hycc_circuit_dir")
+            "cd ~/circ_benchmarks && git checkout aws2 -f && git add . && git stash && git pull -f && git submodule init && git submodule update && cd modules/HyCC && git pull -f && cd ~/circ_benchmarks && ./scripts/dependencies.sh && pip3 install pandas && python3 driver.py -f hycc && python3 driver.py -b && mkdir -p hycc_circuit_dir")
         if stdout.channel.recv_exit_status():
             print(ip, " failed setup 2")
     print("Set up:", ip)
@@ -531,7 +531,61 @@ gauss_compile_params = [
 # p = {**biomatch_compile_params[1], **biomatch_run_params[0]}
 # run_hycc_test(p)
 
-for compile_params in biomatch_compile_params:
-    for run_params in biomatch_run_params:
+
+test_compile_params = [
+    # {
+    #     "name": "biomatch_inline_all",
+    #     "path": "biomatch_inline_all/biomatch.c",
+    #     "mt": 0,
+    #     "a": ["--all-variants"],
+    # },
+    # {
+    #     "name": "biomatch_inline_all_outline",
+    #     "path": "biomatch_inline_all_outline/biomatch.c",
+    #     "mt": 0,
+    #     "a": ["--all-variants", "--outline"],
+    # },
+    {
+        "name": "biomatch_inline_all",
+        "path": "biomatch_inline_all/biomatch.c",
+        "mt": 600,
+        "a": ["--all-variants"],
+    },
+    {
+        "name": "biomatch_inline_all_outline",
+        "path": "biomatch_inline_all_outline/biomatch.c",
+        "mt": 600,
+        "a": ["--all-variants", "--outline"],
+    },
+]
+
+test_run_params = [
+    {
+        "setting": LAN,
+        "ss": "yaohybrid",
+        "cm": "lan"
+    },
+    {
+        "setting": LAN,
+        "ss": "lan_optimized",
+        "cm": "lan"
+    },
+    {
+        "setting": WAN,
+        "ss": "yaohybrid",
+        "cm": "wan"
+    },
+    {
+        "setting": WAN,
+        "ss": "wan_optimized",
+        "cm": "wan"
+    },
+]
+
+# for compile_params in test_compile_params:
+#     compile_hycc_test(compile_params)
+
+for compile_params in test_compile_params:
+    for run_params in test_run_params:
         p = {**compile_params, **run_params}
         run_hycc_test(p)
