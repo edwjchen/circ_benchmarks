@@ -1,0 +1,48 @@
+LOG: ====================================
+LOG: Benchmarking HyCC
+LOG: ====================================
+LOG: TEST: biomatch_inline_all
+LOG: SELECTION_SCHEME: wan_optimized
+LOG: MINIMIZATION_TIME: 0
+LOG: ARGUMENTS: ['--all-variants']
+LOG: ====================================
+LOG: RERUN: 0
+LOG: Server load time: 11.4693
+LOG: Server exec time: 58.9657
+LOG: Time / Memory: 72.35 seconds 2293220 kB
+LOG: RERUN: 1
+LOG: Server load time: 11.4089
+LOG: Server exec time: 58.9682
+LOG: Time / Memory: 72.29 seconds 2293316 kB
+LOG: RERUN: 2
+LOG: Server load time: 11.3844
+LOG: Server exec time: 58.8813
+LOG: Time / Memory: 72.17 seconds 2293028 kB
+LOG: RERUN: 3
+LOG: Server load time: 11.4172
+LOG: Server exec time: 58.7932
+LOG: Time / Memory: 72.14 seconds 2293240 kB
+LOG: RERUN: 4
+LOG: Server load time: 11.6128
+LOG: Server exec time: 58.9612
+LOG: Time / Memory: 72.50 seconds 2293452 kB
+LOG: RERUN: 5
+LOG: Server load time: 11.5867
+LOG: Server exec time: 58.8791
+LOG: Time / Memory: 72.41 seconds 2293496 kB
+LOG: RERUN: 6
+LOG: Server load time: 11.6234
+LOG: Server exec time: 58.918
+LOG: Time / Memory: 72.42 seconds 2293316 kB
+LOG: RERUN: 7
+LOG: Server load time: 11.5979
+LOG: Server exec time: 58.821
+LOG: Time / Memory: 72.34 seconds 2293280 kB
+LOG: RERUN: 8
+LOG: Server load time: 11.4193
+LOG: Server exec time: 58.7283
+LOG: Time / Memory: 72.07 seconds 2293480 kB
+LOG: RERUN: 9
+LOG: Server load time: 11.461
+LOG: Server exec time: 58.8926
+LOG: Time / Memory: 72.27 seconds 2293396 kB

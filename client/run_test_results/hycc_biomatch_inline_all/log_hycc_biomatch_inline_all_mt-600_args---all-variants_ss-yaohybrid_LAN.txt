@@ -7,27 +7,42 @@ LOG: MINIMIZATION_TIME: 600
 LOG: ARGUMENTS: ['--all-variants']
 LOG: ====================================
 LOG: RERUN: 0
-LOG: Error: Process returned with status code 134
-LOG: Error message: terminate called after throwing an instance of 'std::runtime_error'   what():  Failed to open file: /home/ubuntu/circ_benchmarks/specs/biomatch_inline_all.spec Command terminated by signal 6 0.19 seconds 5336 kB Command exited with non-zero status 134 0.19 seconds 5336 kB
-LOG: retry: 0
-LOG: ====================================
-LOG: RERUN: 0
-LOG: Error: Process returned with status code 134
-LOG: Error message: terminate called after throwing an instance of 'std::runtime_error'   what():  Failed to open file: /home/ubuntu/circ_benchmarks/specs/biomatch_inline_all.spec Command terminated by signal 6 0.16 seconds 5232 kB Command exited with non-zero status 134 0.16 seconds 5232 kB
-LOG: retry: 1
-LOG: ====================================
-LOG: RERUN: 0
-LOG: Error: Process returned with status code 134
-LOG: Error message: terminate called after throwing an instance of 'std::runtime_error'   what():  Failed to open file: /home/ubuntu/circ_benchmarks/specs/biomatch_inline_all.spec Command terminated by signal 6 0.16 seconds 5320 kB Command exited with non-zero status 134 0.16 seconds 5320 kB
-LOG: retry: 2
-LOG: ====================================
-LOG: RERUN: 0
-LOG: Error: Process returned with status code 134
-LOG: Error message: terminate called after throwing an instance of 'std::runtime_error'   what():  Failed to open file: /home/ubuntu/circ_benchmarks/specs/biomatch_inline_all.spec Command terminated by signal 6 0.17 seconds 5348 kB Command exited with non-zero status 134 0.17 seconds 5348 kB
-LOG: retry: 3
-LOG: ====================================
-LOG: RERUN: 0
-LOG: Error: Process returned with status code 134
-LOG: Error message: terminate called after throwing an instance of 'std::runtime_error'   what():  Failed to open file: /home/ubuntu/circ_benchmarks/specs/biomatch_inline_all.spec Command terminated by signal 6 0.17 seconds 5252 kB Command exited with non-zero status 134 0.17 seconds 5252 kB
-LOG: retry: 4
-LOG: Failed yaohybrid with args: --all-variants, exception:
+LOG: Client load time: 10.1826
+LOG: Client exec time: 2.04427
+LOG: Time / Memory: 13.57 seconds 2015720 kB
+LOG: RERUN: 1
+LOG: Client load time: 10.3503
+LOG: Client exec time: 1.97467
+LOG: Time / Memory: 13.67 seconds 2015540 kB
+LOG: RERUN: 2
+LOG: Client load time: 10.2293
+LOG: Client exec time: 2.11849
+LOG: Time / Memory: 13.69 seconds 2015476 kB
+LOG: RERUN: 3
+LOG: Client load time: 10.2129
+LOG: Client exec time: 2.21034
+LOG: Time / Memory: 13.75 seconds 2015700 kB
+LOG: RERUN: 4
+LOG: Client load time: 10.2146
+LOG: Client exec time: 2.85064
+LOG: Time / Memory: 14.40 seconds 2015540 kB
+LOG: RERUN: 5
+LOG: Client load time: 10.179
+LOG: Client exec time: 2.71788
+LOG: Time / Memory: 14.22 seconds 2015848 kB
+LOG: RERUN: 6
+LOG: Client load time: 10.2194
+LOG: Client exec time: 2.42604
+LOG: Time / Memory: 13.99 seconds 2015792 kB
+LOG: RERUN: 7
+LOG: Client load time: 10.1541
+LOG: Client exec time: 2.48455
+LOG: Time / Memory: 13.98 seconds 2015916 kB
+LOG: RERUN: 8
+LOG: Client load time: 10.2082
+LOG: Client exec time: 2.10982
+LOG: Time / Memory: 13.68 seconds 2015864 kB
+LOG: RERUN: 9
+LOG: Client load time: 10.1845
+LOG: Client exec time: 1.97958
+LOG: Time / Memory: 13.50 seconds 2015608 kB

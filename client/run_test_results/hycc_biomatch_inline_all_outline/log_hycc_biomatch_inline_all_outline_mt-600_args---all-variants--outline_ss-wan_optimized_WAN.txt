@@ -7,27 +7,42 @@ LOG: MINIMIZATION_TIME: 600
 LOG: ARGUMENTS: ['--all-variants', '--outline']
 LOG: ====================================
 LOG: RERUN: 0
-LOG: Error: Process returned with status code 134
-LOG: Error message: terminate called after throwing an instance of 'std::runtime_error'   what():  Failed to open file: /home/ubuntu/circ_benchmarks/specs/biomatch_inline_all_outline.spec Command terminated by signal 6 0.20 seconds 5124 kB Command exited with non-zero status 134 0.20 seconds 5124 kB
-LOG: retry: 0
-LOG: ====================================
-LOG: RERUN: 0
-LOG: Error: Process returned with status code 134
-LOG: Error message: terminate called after throwing an instance of 'std::runtime_error'   what():  Failed to open file: /home/ubuntu/circ_benchmarks/specs/biomatch_inline_all_outline.spec Command terminated by signal 6 0.17 seconds 5148 kB Command exited with non-zero status 134 0.17 seconds 5148 kB
-LOG: retry: 1
-LOG: ====================================
-LOG: RERUN: 0
-LOG: Error: Process returned with status code 134
-LOG: Error message: terminate called after throwing an instance of 'std::runtime_error'   what():  Failed to open file: /home/ubuntu/circ_benchmarks/specs/biomatch_inline_all_outline.spec Command terminated by signal 6 0.17 seconds 5136 kB Command exited with non-zero status 134 0.17 seconds 5136 kB
-LOG: retry: 2
-LOG: ====================================
-LOG: RERUN: 0
-LOG: Error: Process returned with status code 134
-LOG: Error message: terminate called after throwing an instance of 'std::runtime_error'   what():  Failed to open file: /home/ubuntu/circ_benchmarks/specs/biomatch_inline_all_outline.spec Command terminated by signal 6 0.17 seconds 5392 kB Command exited with non-zero status 134 0.17 seconds 5392 kB
-LOG: retry: 3
-LOG: ====================================
-LOG: RERUN: 0
-LOG: Error: Process returned with status code 134
-LOG: Error message: terminate called after throwing an instance of 'std::runtime_error'   what():  Failed to open file: /home/ubuntu/circ_benchmarks/specs/biomatch_inline_all_outline.spec Command terminated by signal 6 0.17 seconds 5296 kB Command exited with non-zero status 134 0.17 seconds 5296 kB
-LOG: retry: 4
-LOG: Failed wan_optimized with args: --all-variants --outline, exception:
+LOG: Client load time: 0.70267
+LOG: Client exec time: 2.64752
+LOG: Time / Memory: 3.51 seconds 212680 kB
+LOG: RERUN: 1
+LOG: Client load time: 0.71743
+LOG: Client exec time: 1.95568
+LOG: Time / Memory: 2.82 seconds 212628 kB
+LOG: RERUN: 2
+LOG: Client load time: 0.68477
+LOG: Client exec time: 2.0308
+LOG: Time / Memory: 2.86 seconds 212640 kB
+LOG: RERUN: 3
+LOG: Client load time: 0.678808
+LOG: Client exec time: 2.02952
+LOG: Time / Memory: 2.86 seconds 212756 kB
+LOG: RERUN: 4
+LOG: Client load time: 0.697017
+LOG: Client exec time: 1.95886
+LOG: Time / Memory: 2.80 seconds 212816 kB
+LOG: RERUN: 5
+LOG: Client load time: 0.693823
+LOG: Client exec time: 2.00911
+LOG: Time / Memory: 2.85 seconds 212884 kB
+LOG: RERUN: 6
+LOG: Client load time: 0.706223
+LOG: Client exec time: 1.96737
+LOG: Time / Memory: 2.83 seconds 212776 kB
+LOG: RERUN: 7
+LOG: Client load time: 0.678705
+LOG: Client exec time: 1.96626
+LOG: Time / Memory: 2.79 seconds 212828 kB
+LOG: RERUN: 8
+LOG: Client load time: 0.704916
+LOG: Client exec time: 1.96579
+LOG: Time / Memory: 2.82 seconds 212556 kB
+LOG: RERUN: 9
+LOG: Client load time: 0.687264
+LOG: Client exec time: 2.07178
+LOG: Time / Memory: 2.91 seconds 212708 kB

@@ -1,0 +1,104 @@
+
+LOG: ====================================
+
+LOG: Benchmarking HyCC
+
+LOG: ====================================
+
+LOG: TEST: biomatch_inline_all
+LOG: SELECTION_SCHEME: yaohybrid
+LOG: MINIMIZATION_TIME: 0
+LOG: ARGUMENTS: ['--all-variants']
+
+LOG: ====================================
+
+LOG: RERUN: 0
+Using YAO protocol for boolean gates
+Loading mpc_main@bool_size.circ (using YAO for boolean gates)
+LOG: Server load time: 10.9952
+LOG: Server exec time: 3.18036
+INPUT_B_sample : int32[4] = [0, 1, 2, 3]
+OUTPUT_res : int32 = 0
+
+LOG: Time / Memory: 15.67 seconds 2178932 kB
+LOG: RERUN: 1
+Using YAO protocol for boolean gates
+Loading mpc_main@bool_size.circ (using YAO for boolean gates)
+LOG: Server load time: 10.9567
+LOG: Server exec time: 3.01345
+INPUT_B_sample : int32[4] = [0, 1, 2, 3]
+OUTPUT_res : int32 = 0
+
+LOG: Time / Memory: 15.43 seconds 2179224 kB
+LOG: RERUN: 2
+Using YAO protocol for boolean gates
+Loading mpc_main@bool_size.circ (using YAO for boolean gates)
+LOG: Server load time: 11.0031
+LOG: Server exec time: 2.96833
+INPUT_B_sample : int32[4] = [0, 1, 2, 3]
+OUTPUT_res : int32 = 0
+
+LOG: Time / Memory: 15.45 seconds 2179356 kB
+LOG: RERUN: 3
+Using YAO protocol for boolean gates
+Loading mpc_main@bool_size.circ (using YAO for boolean gates)
+LOG: Server load time: 11.0155
+LOG: Server exec time: 2.90377
+INPUT_B_sample : int32[4] = [0, 1, 2, 3]
+OUTPUT_res : int32 = 0
+
+LOG: Time / Memory: 15.40 seconds 2179048 kB
+LOG: RERUN: 4
+Using YAO protocol for boolean gates
+Loading mpc_main@bool_size.circ (using YAO for boolean gates)
+LOG: Server load time: 11.1394
+LOG: Server exec time: 3.0278
+INPUT_B_sample : int32[4] = [0, 1, 2, 3]
+OUTPUT_res : int32 = 0
+
+LOG: Time / Memory: 15.66 seconds 2179504 kB
+LOG: RERUN: 5
+Using YAO protocol for boolean gates
+Loading mpc_main@bool_size.circ (using YAO for boolean gates)
+LOG: Server load time: 11.1631
+LOG: Server exec time: 3.03478
+INPUT_B_sample : int32[4] = [0, 1, 2, 3]
+OUTPUT_res : int32 = 0
+
+LOG: Time / Memory: 15.71 seconds 2179532 kB
+LOG: RERUN: 6
+Using YAO protocol for boolean gates
+Loading mpc_main@bool_size.circ (using YAO for boolean gates)
+LOG: Server load time: 11.1395
+LOG: Server exec time: 3.19501
+INPUT_B_sample : int32[4] = [0, 1, 2, 3]
+OUTPUT_res : int32 = 0
+
+LOG: Time / Memory: 15.83 seconds 2179552 kB
+LOG: RERUN: 7
+Using YAO protocol for boolean gates
+Loading mpc_main@bool_size.circ (using YAO for boolean gates)
+LOG: Server load time: 11.145
+LOG: Server exec time: 2.94303
+INPUT_B_sample : int32[4] = [0, 1, 2, 3]
+OUTPUT_res : int32 = 0
+
+LOG: Time / Memory: 15.58 seconds 2179116 kB
+LOG: RERUN: 8
+Using YAO protocol for boolean gates
+Loading mpc_main@bool_size.circ (using YAO for boolean gates)
+LOG: Server load time: 11.0695
+LOG: Server exec time: 3.19804
+INPUT_B_sample : int32[4] = [0, 1, 2, 3]
+OUTPUT_res : int32 = 0
+
+LOG: Time / Memory: 15.76 seconds 2179456 kB
+LOG: RERUN: 9
+Using YAO protocol for boolean gates
+Loading mpc_main@bool_size.circ (using YAO for boolean gates)
+LOG: Server load time: 11.0754
+LOG: Server exec time: 3.07313
+INPUT_B_sample : int32[4] = [0, 1, 2, 3]
+OUTPUT_res : int32 = 0
+
+LOG: Time / Memory: 15.62 seconds 2179576 kB

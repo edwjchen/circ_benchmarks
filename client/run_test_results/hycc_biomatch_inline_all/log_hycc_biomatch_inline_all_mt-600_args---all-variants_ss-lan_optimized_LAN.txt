@@ -7,27 +7,42 @@ LOG: MINIMIZATION_TIME: 600
 LOG: ARGUMENTS: ['--all-variants']
 LOG: ====================================
 LOG: RERUN: 0
-LOG: Error: Process returned with status code 134
-LOG: Error message: terminate called after throwing an instance of 'std::runtime_error'   what():  Failed to open file: /home/ubuntu/circ_benchmarks/specs/biomatch_inline_all.spec Command terminated by signal 6 0.19 seconds 5352 kB Command exited with non-zero status 134 0.20 seconds 5352 kB
-LOG: retry: 0
-LOG: ====================================
-LOG: RERUN: 0
-LOG: Error: Process returned with status code 134
-LOG: Error message: terminate called after throwing an instance of 'std::runtime_error'   what():  Failed to open file: /home/ubuntu/circ_benchmarks/specs/biomatch_inline_all.spec Command terminated by signal 6 0.17 seconds 5304 kB Command exited with non-zero status 134 0.17 seconds 5304 kB
-LOG: retry: 1
-LOG: ====================================
-LOG: RERUN: 0
-LOG: Error: Process returned with status code 134
-LOG: Error message: terminate called after throwing an instance of 'std::runtime_error'   what():  Failed to open file: /home/ubuntu/circ_benchmarks/specs/biomatch_inline_all.spec Command terminated by signal 6 0.17 seconds 5152 kB Command exited with non-zero status 134 0.17 seconds 5152 kB
-LOG: retry: 2
-LOG: ====================================
-LOG: RERUN: 0
-LOG: Error: Process returned with status code 134
-LOG: Error message: terminate called after throwing an instance of 'std::runtime_error'   what():  Failed to open file: /home/ubuntu/circ_benchmarks/specs/biomatch_inline_all.spec Command terminated by signal 6 0.17 seconds 5276 kB Command exited with non-zero status 134 0.17 seconds 5276 kB
-LOG: retry: 3
-LOG: ====================================
-LOG: RERUN: 0
-LOG: Error: Process returned with status code 134
-LOG: Error message: terminate called after throwing an instance of 'std::runtime_error'   what():  Failed to open file: /home/ubuntu/circ_benchmarks/specs/biomatch_inline_all.spec Command terminated by signal 6 0.17 seconds 5152 kB Command exited with non-zero status 134 0.17 seconds 5152 kB
-LOG: retry: 4
-LOG: Failed lan_optimized with args: --all-variants, exception:
+LOG: Client load time: 10.9904
+LOG: Client exec time: 11.5941
+LOG: Time / Memory: 24.28 seconds 2064176 kB
+LOG: RERUN: 1
+LOG: Client load time: 10.9977
+LOG: Client exec time: 11.5376
+LOG: Time / Memory: 24.24 seconds 2063812 kB
+LOG: RERUN: 2
+LOG: Client load time: 11.0814
+LOG: Client exec time: 11.5902
+LOG: Time / Memory: 24.36 seconds 2061656 kB
+LOG: RERUN: 3
+LOG: Client load time: 10.9316
+LOG: Client exec time: 11.5639
+LOG: Time / Memory: 24.19 seconds 2062744 kB
+LOG: RERUN: 4
+LOG: Client load time: 11.0583
+LOG: Client exec time: 11.5257
+LOG: Time / Memory: 24.28 seconds 2064028 kB
+LOG: RERUN: 5
+LOG: Client load time: 11.1015
+LOG: Client exec time: 11.6617
+LOG: Time / Memory: 24.49 seconds 2062196 kB
+LOG: RERUN: 6
+LOG: Client load time: 11.2373
+LOG: Client exec time: 11.6166
+LOG: Time / Memory: 24.52 seconds 2066268 kB
+LOG: RERUN: 7
+LOG: Client load time: 11.0175
+LOG: Client exec time: 11.6339
+LOG: Time / Memory: 24.34 seconds 2061712 kB
+LOG: RERUN: 8
+LOG: Client load time: 10.9828
+LOG: Client exec time: 11.5261
+LOG: Time / Memory: 24.17 seconds 2064236 kB
+LOG: RERUN: 9
+LOG: Client load time: 10.8264
+LOG: Client exec time: 11.5882
+LOG: Time / Memory: 24.10 seconds 2062332 kB

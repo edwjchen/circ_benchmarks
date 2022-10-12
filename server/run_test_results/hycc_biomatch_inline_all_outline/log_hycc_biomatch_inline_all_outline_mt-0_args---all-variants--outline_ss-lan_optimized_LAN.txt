@@ -1,0 +1,48 @@
+LOG: ====================================
+LOG: Benchmarking HyCC
+LOG: ====================================
+LOG: TEST: biomatch_inline_all_outline
+LOG: SELECTION_SCHEME: lan_optimized
+LOG: MINIMIZATION_TIME: 0
+LOG: ARGUMENTS: ['--all-variants', '--outline']
+LOG: ====================================
+LOG: RERUN: 0
+LOG: Server load time: 0.75439
+LOG: Server exec time: 0.739766
+LOG: Time / Memory: 1.67 seconds 212796 kB
+LOG: RERUN: 1
+LOG: Server load time: 0.752042
+LOG: Server exec time: 0.780387
+LOG: Time / Memory: 1.70 seconds 212600 kB
+LOG: RERUN: 2
+LOG: Server load time: 0.760636
+LOG: Server exec time: 0.689599
+LOG: Time / Memory: 1.62 seconds 212512 kB
+LOG: RERUN: 3
+LOG: Server load time: 0.756565
+LOG: Server exec time: 0.64809
+LOG: Time / Memory: 1.57 seconds 212624 kB
+LOG: RERUN: 4
+LOG: Server load time: 0.762013
+LOG: Server exec time: 0.706795
+LOG: Time / Memory: 1.64 seconds 212728 kB
+LOG: RERUN: 5
+LOG: Server load time: 0.77091
+LOG: Server exec time: 0.624333
+LOG: Time / Memory: 1.56 seconds 212692 kB
+LOG: RERUN: 6
+LOG: Server load time: 0.749598
+LOG: Server exec time: 0.667027
+LOG: Time / Memory: 1.58 seconds 212488 kB
+LOG: RERUN: 7
+LOG: Server load time: 0.742896
+LOG: Server exec time: 0.657936
+LOG: Time / Memory: 1.57 seconds 212440 kB
+LOG: RERUN: 8
+LOG: Server load time: 0.745668
+LOG: Server exec time: 0.770427
+LOG: Time / Memory: 1.68 seconds 213216 kB
+LOG: RERUN: 9
+LOG: Server load time: 0.748794
+LOG: Server exec time: 0.775057
+LOG: Time / Memory: 1.69 seconds 212636 kB
