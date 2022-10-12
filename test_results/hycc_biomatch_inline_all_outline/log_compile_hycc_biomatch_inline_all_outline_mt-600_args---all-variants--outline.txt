@@ -10,3 +10,15 @@ LOG: Time / Memory: 1261.71 seconds 3075488 kB
 LOG: ====================================
 LOG: MODE: bundle
 LOG: Time / Memory: 0.02 seconds 10036 kB
+LOG: ====================================
+LOG: Benchmarking HyCC
+LOG: ====================================
+LOG: TEST: biomatch_inline_all_outline
+LOG: MINIMIZATION_TIME: 600
+LOG: ARGUMENTS: ['--all-variants', '--outline']
+LOG: MODE: compile
+LOG: Compile time: 1247.33
+LOG: Time / Memory: 1248.49 seconds 30647436 kB
+LOG: ====================================
+LOG: MODE: bundle
+LOG: Time / Memory: 0.02 seconds 9916 kB

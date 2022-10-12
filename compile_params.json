@@ -1,1 +1,1 @@
-{"name": "biomatch_inline_all", "path": "biomatch_inline_all/biomatch.c", "mt": 600, "a": ["--all-variants"]}
+{"name": "biomatch_inline_all_outline", "path": "biomatch_inline_all_outline/biomatch.c", "mt": 600, "a": ["--all-variants", "--outline"]}
