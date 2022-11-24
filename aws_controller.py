@@ -265,6 +265,12 @@ def setup_hycc(ip, k):
             "cd ~/circ_benchmarks && git checkout aws2 -f && git add . && git stash && git pull -f && git submodule init && git submodule update && cd modules/HyCC && git pull -f && cd ~/circ_benchmarks && ./scripts/dependencies.sh && pip3 install pandas && python3 driver.py -f hycc && python3 driver.py -b && mkdir -p hycc_circuit_dir")
         if stdout.channel.recv_exit_status():
             print(ip, " failed setup 2")
+
+    _, stdout, _ = client.exec_command(
+        "cd ~/circ_benchmarks && rm -rf hycc_circuit_dir/ && rm -rf test_results/")
+    if stdout.channel.recv_exit_status():
+        print(ip, " failed to remove hycc circuits")
+
     print("Set up:", ip)
     client.close()
 
@@ -295,10 +301,11 @@ def compile_hycc_test(params):
 
     # write compile params to file
     print("Writing compile params: ", params)
-    with open("compile_params.json", "w") as f:
+    client = connect_to_instance(ip, k)
+    sftp = client.open_sftp()
+    with sftp.open('./circ_benchmarks/compile_params.json', 'w') as f:
         json.dump(params, f)
-    subprocess.call(
-        "rsync -avz -e \"ssh -o StrictHostKeyChecking=no -i {}.pem\" --progress compile_params.json ubuntu@{}:~/circ_benchmarks/.".format(k, ip), shell=True)
+    client.close()
     print("Finished writing compile params: ", ip)
 
     # compile hycc
@@ -346,6 +353,7 @@ def run_hycc(ip, k):
 
 
 def run_hycc_test(params):
+    print("Running hycc")
     run_env = params["setting"]
 
     # get run instances
@@ -381,17 +389,19 @@ def run_hycc_test(params):
 
     # write run params to file
     print("Writing server params: ", server_params)
-    with open("server_run_params.json", "w") as f:
+    client = connect_to_instance(ip1, k1)
+    sftp = client.open_sftp()
+    with sftp.open('./circ_benchmarks/run_params.json', 'w') as f:
         json.dump(server_params, f)
-    subprocess.call(
-        "rsync -avz -e \"ssh -o StrictHostKeyChecking=no -i {}.pem\" --progress server_run_params.json ubuntu@{}:~/circ_benchmarks/run_params.json".format(k1, ip1), shell=True)
+    client.close()
     print("Finished writing server params: ", ip1)
 
     print("Writing client params: ", client_params)
-    with open("client_run_params.json", "w") as f:
-        json.dump(client_params, f)
-    subprocess.call(
-        "rsync -avz -e \"ssh -o StrictHostKeyChecking=no -i {}.pem\" --progress client_run_params.json ubuntu@{}:~/circ_benchmarks/run_params.json".format(k2, ip2), shell=True)
+    client = connect_to_instance(ip2, k2)
+    sftp = client.open_sftp()
+    with sftp.open('./circ_benchmarks/run_params.json', 'w') as f:
+        json.dump(params, f)
+    client.close()
     print("Finished writing run params: ", ip2)
 
     # copy compiled circuits to instances
@@ -400,10 +410,6 @@ def run_hycc_test(params):
         "rsync -avz -e \"ssh -o StrictHostKeyChecking=no -i {}.pem\" --progress ./hycc_circuit_dir/{} ubuntu@{}:~/circ_benchmarks/hycc_circuit_dir".format(k1, version, ip1), shell=True)
     subprocess.call(
         "rsync -avz -e \"ssh -o StrictHostKeyChecking=no -i {}.pem\" --progress ./hycc_circuit_dir/{} ubuntu@{}:~/circ_benchmarks/hycc_circuit_dir".format(k2, version, ip2), shell=True)
-
-    # select test case
-    pool = multiprocessing.Pool(len(ips))
-    pool.starmap(select_hycc, zip(ips, ks))
 
     # run test case
     pool = multiprocessing.Pool(len(ips))
@@ -424,168 +430,199 @@ def run_hycc_test(params):
     print("Finished!")
 
 
-biomatch_compile_params = [
-    {
-        "name": "biomatch",
-        "path": "biomatch/biomatch.c",
-        "mt": 0,
-        "a": ["--all-variants"],
-    },
-    {
-        "name": "biomatch_outline",
-        "path": "biomatch_outline/biomatch.c",
-        "mt": 0,
-        "a": ["--all-variants", "--outline"],
-    },
-    {
-        "name": "biomatch",
-        "path": "biomatch/biomatch.c",
-        "mt": 600,
-        "a": ["--all-variants"],
-    },
-    {
-        "name": "biomatch_outline",
-        "path": "biomatch_outline/biomatch.c",
-        "mt": 600,
-        "a": ["--all-variants", "--outline"],
-    },
-]
+def select_hycc_test(params):
+    print("Selecting hycc")
+    run_env = params["setting"]
 
-biomatch_run_params = [
-    {
-        "setting": LAN,
-        "ss": "yaohybrid",
-        "cm": "lan"
-    },
-    {
-        "setting": LAN,
-        "ss": "lan_optimized",
-        "cm": "lan"
-    },
-    {
-        "setting": WAN,
-        "ss": "yaohybrid",
-        "cm": "wan"
-    },
-    {
-        "setting": WAN,
-        "ss": "wan_optimized",
-        "cm": "wan"
-    },
-]
+    # get run instances
+    ((instance1, k1), (instance2, k2)) = get_run_instances(run_env)
+    ip1 = instance1.public_dns_name
+    ip2 = instance2.public_dns_name
+    print("instance1:", instance1)
+    print("key1:",  k1)
+    print("ip1:", ip1)
+    print("instance2:", instance2)
+    print("key2:",  k2)
+    print("ip2:", ip2)
 
-kmeans_compile_params = [
-    {
-        "name": "kmeans",
-        "path": "kmeans/kmeans.c",
-        "mt": 0,
-        "a": ["--all-variants"],
-    },
-    {
-        "name": "kmeans_outline",
-        "path": "kmeans_outline/kmeans.c",
-        "mt": 0,
-        "a": ["--all-variants", "--outline"],
-    },
-    {
-        "name": "kmeans",
-        "path": "kmeans/kmeans.c",
-        "mt": 600,
-        "a": ["--all-variants"],
-    },
-    {
-        "name": "kmeans_outline",
-        "path": "kmeans_outline/kmeans.c",
-        "mt": 600,
-        "a": ["--all-variants", "--outline"],
-    },
-]
+    server_params = params.copy()
+    client_params = params.copy()
 
-gauss_compile_params = [
-    {
-        "name": "gauss",
-        "path": "gauss/gauss.c",
-        "mt": 0,
-        "a": ["--all-variants"],
-    },
-    {
-        "name": "gauss_outline",
-        "path": "gauss_outline/gauss.c",
-        "mt": 0,
-        "a": ["--all-variants", "--outline"],
-    },
-    {
-        "name": "gauss",
-        "path": "gauss/gauss.c",
-        "mt": 600,
-        "a": ["--all-variants"],
-    },
-    {
-        "name": "gauss_outline",
-        "path": "gauss_outline/gauss.c",
-        "mt": 600,
-        "a": ["--all-variants", "--outline"],
-    },
-]
+    # instance1 is the server
+    server_params["role"] = 0
+    server_params["address"] = instance1.private_ip_address
+    server_params["setting"] = run_env
+    client_params["role"] = 1
+    client_params["address"] = instance1.public_dns_name
+    client_params["setting"] = run_env
 
-# p = {**biomatch_compile_params[1], **biomatch_run_params[0]}
-# run_hycc_test(p)
+    print(server_params)
+    print(client_params)
+
+    # setup hycc
+    ips = [ip1, ip2]
+    ks = [k1, k2]
+    pool = multiprocessing.Pool(len(ips))
+    pool.starmap(setup_hycc, zip(ips, ks))
+
+    # write run params to file
+    print("Writing server params: ", server_params)
+    client = connect_to_instance(ip1, k1)
+    sftp = client.open_sftp()
+    with sftp.open('./circ_benchmarks/run_params.json', 'w') as f:
+        json.dump(server_params, f)
+    client.close()
+    print("Finished writing server params: ", ip1)
+
+    print("Writing client params: ", client_params)
+    client = connect_to_instance(ip2, k2)
+    sftp = client.open_sftp()
+    with sftp.open('./circ_benchmarks/run_params.json', 'w') as f:
+        json.dump(params, f)
+    client.close()
+    print("Finished writing run params: ", ip2)
+
+    # copy compiled circuits to instances
+    version = get_version(params)
+    subprocess.call(
+        "rsync -avz -e \"ssh -o StrictHostKeyChecking=no -i {}.pem\" --progress ./hycc_circuit_dir/{} ubuntu@{}:~/circ_benchmarks/hycc_circuit_dir".format(k1, version, ip1), shell=True)
+    subprocess.call(
+        "rsync -avz -e \"ssh -o StrictHostKeyChecking=no -i {}.pem\" --progress ./hycc_circuit_dir/{} ubuntu@{}:~/circ_benchmarks/hycc_circuit_dir".format(k2, version, ip2), shell=True)
+
+    # select test case
+    pool = multiprocessing.Pool(len(ips))
+    pool.starmap(select_hycc, zip(ips, ks))
+
+    # get results
+    subprocess.call(
+        "rsync -avz -e \"ssh -o StrictHostKeyChecking=no -i {}.pem\" --progress ubuntu@{}:~/circ_benchmarks/test_results server/".format(k1, ip1), shell=True)
+    subprocess.call(
+        "rsync -avz -e \"ssh -o StrictHostKeyChecking=no -i {}.pem\" --progress ubuntu@{}:~/circ_benchmarks/test_results client/".format(k2, ip2), shell=True)
+
+    # stop instances
+    print("Stopping instance")
+    # instance1.stop()
+    # instance2.stop()
+    # instance1.wait_until_stopped()
+    # instance2.wait_until_stopped()
+    print("Finished!")
 
 
 test_compile_params = [
     {
-        "name": "biomatch_inline_all",
-        "path": "biomatch_inline_all/biomatch.c",
-        "mt": 0,
-        "a": ["--all-variants"],
-    },
-    {
-        "name": "biomatch_inline_all_outline",
-        "path": "biomatch_inline_all_outline/biomatch.c",
-        "mt": 0,
-        "a": ["--all-variants", "--outline"],
-    },
-    {
-        "name": "biomatch_inline_all",
-        "path": "biomatch_inline_all/biomatch.c",
+        "name": "biomatch",
+        "path": "biomatch/biomatch.c",
         "mt": 600,
         "a": ["--all-variants"],
     },
-    {
-        "name": "biomatch_inline_all_outline",
-        "path": "biomatch_inline_all_outline/biomatch.c",
-        "mt": 600,
-        "a": ["--all-variants", "--outline"],
-    },
-]
-
-test_run_params = [
-    {
-        "setting": LAN,
-        "ss": "yaohybrid",
-        "cm": "lan"
-    },
-    {
-        "setting": LAN,
-        "ss": "lan_optimized",
-        "cm": "lan"
-    },
-    {
-        "setting": WAN,
-        "ss": "yaohybrid",
-        "cm": "wan"
-    },
-    {
-        "setting": WAN,
-        "ss": "wan_optimized",
-        "cm": "wan"
-    },
+    # {
+    #     "name": "kmeans",
+    #     "path": "kmeans/kmeans.c",
+    #     "mt": 600,
+    #     "a": ["--all-variants"],
+    # },
+    # {
+    #     "name": "gauss",
+    #     "path": "gauss/gauss.c",
+    #     "mt": 9,
+    #     "a": ["--all-variants"],
+    # },
+    # {
+    #     "name": "gcd",
+    #     "path": "gcd/gcd.c",
+    #     "mt": 600,
+    #     "a": ["--all-variants"],
+    # },
+    # {
+    #     "name": "histogram",
+    #     "path": "histogram/histogram.c",
+    #     "mt": 600,
+    #     "a": ["--all-variants"],
+    # },
+    # {
+    #     "name": "db_join2",
+    #     "path": "db_join2/db_join2.c",
+    #     "mt": 600,
+    #     "a": ["--all-variants"],
+    # },
+    # {
+    #     "name": "db_merge",
+    #     "path": "db_merge/db_merge.c",
+    #     "mt": 600,
+    #     "a": ["--all-variants"],
+    # },
+    # {
+    #     "name": "mnist",
+    #     "path": "mnist/mnist.c",
+    #     "mt": 600,
+    #     "a": ["--all-variants"],
+    # },
+    # {
+    #     "name": "cryptonets",
+    #     "path": "cryptonets/cryptonets.c",
+    #     "mt": 600,
+    #     "a": ["--all-variants"],
+    # },
 ]
 
 # for compile_params in test_compile_params:
 #     compile_hycc_test(compile_params)
 
+test_select_params = [
+    {
+        "setting": LAN,
+        "cm": "lan"
+    },
+    # {
+    #     "setting": WAN,
+    #     "cm": "wan"
+    # },
+]
+
 for compile_params in test_compile_params:
-    for run_params in test_run_params:
-        p = {**compile_params, **run_params}
-        run_hycc_test(p)
+    for select_params in test_select_params:
+        p = {**compile_params, **select_params}
+        select_hycc_test(p)
+
+
+test_run_lan_params = [
+    {
+        "ss": "yaoonly",
+    },
+    {
+        "ss": "gwmonly",
+    },
+    {
+        "ss": "yaohybrid",
+    },
+    {
+        "ss": "gmwhybrid",
+    },
+    {
+        "ss": "lan_optimized",
+    },
+]
+
+test_run_wan_params = [
+    {
+        "ss": "yaoonly",
+    },
+    {
+        "ss": "gwmonly",
+    },
+    {
+        "ss": "yaohybrid",
+    },
+    {
+        "ss": "gmwhybrid",
+    },
+    {
+        "ss": "wan_optimized",
+    },
+]
+
+
+# for compile_params in test_compile_params:
+#     for run_params in test_run_params:
+#         p = {**compile_params, **run_params}
+#         run_hycc_test(p)

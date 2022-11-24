@@ -1,0 +1,12 @@
+LOG: ====================================
+LOG: Benchmarking HyCC
+LOG: ====================================
+LOG: TEST: gcd
+LOG: MINIMIZATION_TIME: 600
+LOG: ARGUMENTS: ['--all-variants']
+LOG: MODE: compile
+LOG: Compile time: 1207.46
+LOG: Time / Memory: 1207.63 seconds 7266796 kB
+LOG: ====================================
+LOG: MODE: bundle
+LOG: Time / Memory: 0.01 seconds 9908 kB

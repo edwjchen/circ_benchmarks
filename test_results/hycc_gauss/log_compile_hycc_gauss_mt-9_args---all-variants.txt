@@ -1,0 +1,12 @@
+LOG: ====================================
+LOG: Benchmarking HyCC
+LOG: ====================================
+LOG: TEST: gauss
+LOG: MINIMIZATION_TIME: 9
+LOG: ARGUMENTS: ['--all-variants']
+LOG: MODE: compile
+LOG: Compile time: 85.4894
+LOG: Time / Memory: 85.52 seconds 1139708 kB
+LOG: ====================================
+LOG: MODE: bundle
+LOG: Time / Memory: 0.01 seconds 10056 kB

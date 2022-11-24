@@ -1,0 +1,12 @@
+LOG: ====================================
+LOG: Benchmarking HyCC
+LOG: ====================================
+LOG: TEST: cryptonets
+LOG: MINIMIZATION_TIME: 600
+LOG: ARGUMENTS: ['--all-variants']
+LOG: MODE: compile
+LOG: Compile time: 3701.96
+LOG: Time / Memory: 3702.25 seconds 13226316 kB
+LOG: ====================================
+LOG: MODE: bundle
+LOG: Time / Memory: 0.01 seconds 10052 kB

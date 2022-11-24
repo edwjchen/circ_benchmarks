@@ -1,0 +1,19 @@
+
+LOG: ====================================
+
+LOG: Benchmarking HyCC
+
+LOG: ====================================
+
+LOG: TEST: biomatch
+LOG: MINIMIZATION_TIME: 600
+LOG: COST_MODEL: lan
+LOG: ARGUMENTS: ['--all-variants']
+
+LOG: ====================================
+
+LOG: MODE: selection
+
+LOG: Error: Process returned with status code 1
+LOG: Error message: Traceback (most recent call last):   File "/home/ubuntu/circ_benchmarks/modules/HyCC/src/circuit-utils/py/selection.py", line 386, in <module>     costs = load_costs(args.cost)   File "/home/ubuntu/circ_benchmarks/modules/HyCC/src/circuit-utils/py/selection.py", line 373, in load_costs     costs = json.load(open(path, 'r'), object_pairs_hook=object_pairs_hook) FileNotFoundError: [Errno 2] No such file or directory: '/home/ubuntu/circ_benchmarks/modules/HyCC/src/circuit-utils/py/lan.json' Command exited with non-zero status 1 0.18 seconds 33764 kB Command exited with non-zero status 1 0.18 seconds 33764 kB 
+LOG: Failed selecting circuit with args: --all-variants, exception: 
