@@ -1,0 +1,12 @@
+LOG: ====================================
+LOG: Benchmarking HyCC
+LOG: ====================================
+LOG: TEST: gcd
+LOG: MINIMIZATION_TIME: 600
+LOG: COST_MODEL: wan
+LOG: ARGUMENTS: ['--all-variants']
+LOG: ====================================
+LOG: MODE: selection
+LOG: Total number of modules: 1
+LOG: Modules: ['mpc_main']
+LOG: Time / Memory: 1.17 seconds 70460 kB

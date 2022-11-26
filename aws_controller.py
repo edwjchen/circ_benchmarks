@@ -206,11 +206,11 @@ def get_run_instances(run_env):
             east2_instance[0].wait_until_running()
             west_instance[0].load()
             east2_instance[0].load()
-            return (west_instance, east2_instance)
+            return (east2_instance, west_instance)
         else:
             try:
                 instance1 = create_west_instance(run_instance_type)
-                west_instance = (instance1, "aws-virg")
+                west_instance = (instance1, "aws-west")
             except:
                 print("Failed to create east1 instance")
                 exit(0)
@@ -221,7 +221,28 @@ def get_run_instances(run_env):
             except:
                 print("Failed to create east2 instance")
                 exit(0)
-            return (west_instance, east2_instance)
+            return (east2_instance, west_instance)
+
+
+def get_select_instances(run_env):
+    print(run_env, "SETTING")
+    stopped_east2_instances = filter_run_instances([(i, "aws-east") for i in list(ec2_east2.instances.filter(
+        Filters=[{"Name": "instance-state-name", "Values": ["stopped"]}]))])
+    if len(stopped_east2_instances) >= 1:
+        print("Starting run instances")
+        east2_instance = stopped_east2_instances[0]
+        east2_instance[0].start()
+        east2_instance[0].wait_until_running()
+        east2_instance[0].load()
+        return east2_instance
+    else:
+        try:
+            instance2 = create_east2_instance(run_instance_type)
+            east2_instance = (instance2, "aws-east")
+        except:
+            print("Failed to create east2 instance")
+            exit(0)
+        return east2_instance
 
 
 def connect_to_instance(ip, k):
@@ -441,8 +462,7 @@ def select_hycc_test(params):
     run_env = params["setting"]
 
     # get run instances
-    ((instance1, k1), (instance2, k2)) = get_run_instances(run_env)
-    instance2.stop()
+    instance1, k1 = get_select_instances(run_env)
 
     ip1 = instance1.public_dns_name
     print("instance1:", instance1)
@@ -494,7 +514,6 @@ def select_hycc_test(params):
     print("Stopping instance")
     instance1.stop()
     instance1.wait_until_stopped()
-    instance2.wait_until_stopped()
     print("Finished!")
 
 
@@ -511,12 +530,12 @@ test_compile_params = [
     #     "mt": 600,
     #     "a": ["--all-variants"],
     # },
-    {
-        "name": "gauss",
-        "path": "gauss/gauss.c",
-        "mt": 9,
-        "a": ["--all-variants"],
-    },
+    # {
+    #     "name": "gauss",
+    #     "path": "gauss/gauss.c",
+    #     "mt": 9,
+    #     "a": ["--all-variants"],
+    # },
     # {
     #     "name": "gcd",
     #     "path": "gcd/gcd.c",
@@ -535,12 +554,12 @@ test_compile_params = [
     #     "mt": 600,
     #     "a": ["--all-variants"],
     # },
-    # {
-    #     "name": "db_merge",
-    #     "path": "db_merge/db_merge.c",
-    #     "mt": 600,
-    #     "a": ["--all-variants"],
-    # },
+    {
+        "name": "db_merge",
+        "path": "db_merge/db_merge.c",
+        "mt": 600,
+        "a": ["--all-variants"],
+    },
     # {
     #     "name": "mnist",
     #     "path": "mnist/mnist.c",
@@ -577,14 +596,19 @@ test_select_wan_params = [
 #         p = {**compile_params, **select_params}
 #         select_hycc_test(p)
 
+for compile_params in test_compile_params:
+    for select_params in test_select_wan_params:
+        p = {**compile_params, **select_params}
+        select_hycc_test(p)
+
 
 test_run_lan_params = [
-    # {
-    #     "ss": "yaoonly",
-    # },
-    # {
-    #     "ss": "gwmonly",
-    # },
+    {
+        "ss": "yaoonly",
+    },
+    {
+        "ss": "gwmonly",
+    },
     {
         "ss": "yaohybrid",
     },
@@ -596,12 +620,12 @@ test_run_lan_params = [
     },
 ]
 
-for compile_params in test_compile_params:
-    for select_params in test_select_lan_params:
-        for run_params in test_run_lan_params:
-            p = {**compile_params, **run_params}
-            p = {**p, **select_params}
-            run_hycc_test(p)
+# for compile_params in test_compile_params:
+#     for select_params in test_select_lan_params:
+#         for run_params in test_run_lan_params:
+#             p = {**compile_params, **run_params}
+#             p = {**p, **select_params}
+#             run_hycc_test(p)
 
 test_run_wan_params = [
     {

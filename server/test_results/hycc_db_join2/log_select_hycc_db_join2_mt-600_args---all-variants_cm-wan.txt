@@ -1,0 +1,12 @@
+LOG: ====================================
+LOG: Benchmarking HyCC
+LOG: ====================================
+LOG: TEST: db_join2
+LOG: MINIMIZATION_TIME: 600
+LOG: COST_MODEL: wan
+LOG: ARGUMENTS: ['--all-variants']
+LOG: ====================================
+LOG: MODE: selection
+LOG: Total number of modules: 10
+LOG: Modules: ['agg_sum_tree<int32[90],uint32<30>,uint32<3>>', 'mpc_main', 'cross_join_inner<int32[90],int32[60],int32[2],uint32<30>,uint32<2>>', 'sqr', 'agg_mean_decomposed<int32[2701],uint32<900>,uint32<3>>', 'agg_variance_decomposed<int32[2701],uint32<900>,uint32<3>>', 'cross_join_decomposed<int32[2701],int32[60],int32[60]>', 'agg_variance_sum<int32[90],uint32<30>,uint32<3>>', 'sum_tree<int32[30],int32<30>,int32<1>>', 'mean<int32[90],uint32<30>>']
+LOG: Time / Memory: 8.07 seconds 434028 kB

@@ -1,0 +1,48 @@
+LOG: ====================================
+LOG: Benchmarking HyCC
+LOG: ====================================
+LOG: TEST: biomatch
+LOG: SELECTION_SCHEME: yaoonly
+LOG: MINIMIZATION_TIME: 600
+LOG: ARGUMENTS: ['--all-variants']
+LOG: ====================================
+LOG: RERUN: 0
+LOG: Server load time: 21.2634
+LOG: Server exec time: 1.11583
+LOG: Time / Memory: 24.76 seconds 2447832 kB
+LOG: RERUN: 1
+LOG: Server load time: 21.2966
+LOG: Server exec time: 1.06123
+LOG: Time / Memory: 24.73 seconds 2447592 kB
+LOG: RERUN: 2
+LOG: Server load time: 21.5655
+LOG: Server exec time: 1.05565
+LOG: Time / Memory: 25.02 seconds 2447760 kB
+LOG: RERUN: 3
+LOG: Server load time: 21.205
+LOG: Server exec time: 1.05228
+LOG: Time / Memory: 24.62 seconds 2447156 kB
+LOG: RERUN: 4
+LOG: Server load time: 21.3422
+LOG: Server exec time: 1.06398
+LOG: Time / Memory: 24.78 seconds 2447404 kB
+LOG: RERUN: 5
+LOG: Server load time: 21.2436
+LOG: Server exec time: 1.07726
+LOG: Time / Memory: 24.67 seconds 2447164 kB
+LOG: RERUN: 6
+LOG: Server load time: 21.3603
+LOG: Server exec time: 1.07899
+LOG: Time / Memory: 24.81 seconds 2447404 kB
+LOG: RERUN: 7
+LOG: Server load time: 21.5999
+LOG: Server exec time: 1.05096
+LOG: Time / Memory: 25.03 seconds 2447424 kB
+LOG: RERUN: 8
+LOG: Server load time: 21.2245
+LOG: Server exec time: 1.09964
+LOG: Time / Memory: 24.71 seconds 2447420 kB
+LOG: RERUN: 9
+LOG: Server load time: 21.4618
+LOG: Server exec time: 1.04812
+LOG: Time / Memory: 24.88 seconds 2447984 kB

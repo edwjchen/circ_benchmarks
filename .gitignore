@@ -10,3 +10,4 @@ modules/kahypar
 hycc_circuit_dir/
 hycc_circuit_dir_0/
 circ_circuit_dir/
+*run_select*

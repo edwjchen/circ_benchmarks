@@ -1,0 +1,48 @@
+LOG: ====================================
+LOG: Benchmarking HyCC
+LOG: ====================================
+LOG: TEST: biomatch
+LOG: SELECTION_SCHEME: yaohybrid
+LOG: MINIMIZATION_TIME: 600
+LOG: ARGUMENTS: ['--all-variants']
+LOG: ====================================
+LOG: RERUN: 0
+LOG: Server load time: 0.832447
+LOG: Server exec time: 0.279746
+LOG: Time / Memory: 1.21 seconds 148876 kB
+LOG: RERUN: 1
+LOG: Server load time: 0.850136
+LOG: Server exec time: 0.282885
+LOG: Time / Memory: 1.23 seconds 149216 kB
+LOG: RERUN: 2
+LOG: Server load time: 0.863868
+LOG: Server exec time: 0.282358
+LOG: Time / Memory: 1.25 seconds 148880 kB
+LOG: RERUN: 3
+LOG: Server load time: 0.875422
+LOG: Server exec time: 0.277183
+LOG: Time / Memory: 1.25 seconds 148860 kB
+LOG: RERUN: 4
+LOG: Server load time: 0.868935
+LOG: Server exec time: 0.280024
+LOG: Time / Memory: 1.25 seconds 149200 kB
+LOG: RERUN: 5
+LOG: Server load time: 0.865143
+LOG: Server exec time: 0.275352
+LOG: Time / Memory: 1.24 seconds 149012 kB
+LOG: RERUN: 6
+LOG: Server load time: 0.861379
+LOG: Server exec time: 0.277216
+LOG: Time / Memory: 1.24 seconds 149064 kB
+LOG: RERUN: 7
+LOG: Server load time: 0.869857
+LOG: Server exec time: 0.28523
+LOG: Time / Memory: 1.26 seconds 149152 kB
+LOG: RERUN: 8
+LOG: Server load time: 0.88355
+LOG: Server exec time: 0.27941
+LOG: Time / Memory: 1.27 seconds 149260 kB
+LOG: RERUN: 9
+LOG: Server load time: 0.886559
+LOG: Server exec time: 0.281853
+LOG: Time / Memory: 1.27 seconds 149076 kB
