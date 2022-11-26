@@ -1,0 +1,77 @@
+
+LOG: ====================================
+
+LOG: Benchmarking HyCC
+
+LOG: ====================================
+
+LOG: TEST: histogram
+LOG: MINIMIZATION_TIME: 600
+LOG: COST_MODEL: lan
+LOG: ARGUMENTS: ['--all-variants']
+
+LOG: ====================================
+
+LOG: MODE: selection
+Directory: /home/ubuntu/circ_benchmarks/hycc_circuit_dir/hycc_histogram_mt-600_args---all-variants
+graph.dot
+map@bool_size.stats
+mpc_main@bool_depth.circ
+yaoonly.cmb
+lan_optimized.cmb
+all.cmb
+map@bool_depth.stats
+map@bool_size.circ
+map@bool_depth.circ
+mpc_main@bool_depth.stats
+gmwhybrid.cmb
+gmwonly.cmb
+mpc_main@bool_size.stats
+mpc_main@bool_size.circ
+yaohybrid.cmb
+Modules: 2
+
+mpc_main
+  Possible sharings: bool_depth bool_size
+  Calls:
+    map x 100
+
+map
+  Possible sharings: bool_depth bool_size
+  Calls:
+
+Subgraphs:
+
+mpc_main Sharing.bool_depth
+
+mpc_main Sharing.bool_size
+
+map Sharing.bool_size
+
+map Sharing.bool_depth
+
+LOG: Total number of modules: 2
+LOG: Modules: ['mpc_main', 'map']
+op: ('mpc_main', <Sharing.bool_depth: 2>) 182294.61059999999
+op: ('mpc_main', <Sharing.bool_size: 3>) 735.1722
+op: ('map', <Sharing.bool_size: 3>) 0.44419999999999993
+op: ('map', <Sharing.bool_depth: 2>) 52.612199999999994
+{'map': <Sharing.bool_size: 3>, 'mpc_main': <Sharing.bool_size: 3>}
+{'map': <Sharing.bool_size: 3>, 'mpc_main': <Sharing.bool_depth: 2>}
+{'map': <Sharing.bool_size: 3>, 'mpc_main': <Sharing.arith: 1>}
+{'map': <Sharing.bool_depth: 2>, 'mpc_main': <Sharing.bool_size: 3>}
+{'map': <Sharing.bool_depth: 2>, 'mpc_main': <Sharing.bool_depth: 2>}
+{'map': <Sharing.bool_depth: 2>, 'mpc_main': <Sharing.arith: 1>}
+{'map': <Sharing.arith: 1>, 'mpc_main': <Sharing.bool_size: 3>}
+{'map': <Sharing.arith: 1>, 'mpc_main': <Sharing.bool_depth: 2>}
+{'map': <Sharing.arith: 1>, 'mpc_main': <Sharing.arith: 1>}
+conv: ('mpc_main', <Sharing.bool_size: 3>, 'map', <Sharing.bool_size: 3>) 0
+num_skips 0
+== Protocol selection ==
+
+Cost: 736
+  map: Sharing.bool_size
+  mpc_main: Sharing.bool_size
+
+
+LOG: Time / Memory: 28.60 seconds 1448464 kB
