@@ -1,0 +1,48 @@
+LOG: ====================================
+LOG: Benchmarking HyCC
+LOG: ====================================
+LOG: TEST: kmeans
+LOG: SELECTION_SCHEME: gmwhybrid
+LOG: MINIMIZATION_TIME: 600
+LOG: ARGUMENTS: ['--all-variants']
+LOG: ====================================
+LOG: RERUN: 0
+LOG: Client load time: 38.8681
+LOG: Client exec time: 74.4674
+LOG: Time / Memory: 118.09 seconds 4631480 kB
+LOG: RERUN: 1
+LOG: Client load time: 39.2431
+LOG: Client exec time: 74.4269
+LOG: Time / Memory: 118.43 seconds 4631444 kB
+LOG: RERUN: 2
+LOG: Client load time: 39.2259
+LOG: Client exec time: 74.6182
+LOG: Time / Memory: 118.63 seconds 4631240 kB
+LOG: RERUN: 3
+LOG: Client load time: 39.3712
+LOG: Client exec time: 74.8576
+LOG: Time / Memory: 118.99 seconds 4631332 kB
+LOG: RERUN: 4
+LOG: Client load time: 38.5474
+LOG: Client exec time: 75.0922
+LOG: Time / Memory: 118.47 seconds 4631224 kB
+LOG: RERUN: 5
+LOG: Client load time: 38.4589
+LOG: Client exec time: 75.4722
+LOG: Time / Memory: 118.64 seconds 4631516 kB
+LOG: RERUN: 6
+LOG: Client load time: 38.7465
+LOG: Client exec time: 75.5978
+LOG: Time / Memory: 119.11 seconds 4631452 kB
+LOG: RERUN: 7
+LOG: Client load time: 38.6419
+LOG: Client exec time: 75.2096
+LOG: Time / Memory: 118.61 seconds 4631260 kB
+LOG: RERUN: 8
+LOG: Client load time: 38.5309
+LOG: Client exec time: 75.1408
+LOG: Time / Memory: 118.40 seconds 4631448 kB
+LOG: RERUN: 9
+LOG: Client load time: 39.7516
+LOG: Client exec time: 74.6024
+LOG: Time / Memory: 119.11 seconds 4631460 kB

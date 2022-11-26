@@ -1,0 +1,48 @@
+LOG: ====================================
+LOG: Benchmarking HyCC
+LOG: ====================================
+LOG: TEST: cryptonets
+LOG: SELECTION_SCHEME: gmwhybrid
+LOG: MINIMIZATION_TIME: 600
+LOG: ARGUMENTS: ['--all-variants']
+LOG: ====================================
+LOG: RERUN: 0
+LOG: Client load time: 102.549
+LOG: Client exec time: 1.1806
+LOG: Time / Memory: 105.55 seconds 6008008 kB
+LOG: RERUN: 1
+LOG: Client load time: 101.864
+LOG: Client exec time: 1.20698
+LOG: Time / Memory: 104.89 seconds 6008196 kB
+LOG: RERUN: 2
+LOG: Client load time: 102.128
+LOG: Client exec time: 1.19254
+LOG: Time / Memory: 105.13 seconds 6010240 kB
+LOG: RERUN: 3
+LOG: Client load time: 101.891
+LOG: Client exec time: 1.18487
+LOG: Time / Memory: 104.88 seconds 6008152 kB
+LOG: RERUN: 4
+LOG: Client load time: 102.077
+LOG: Client exec time: 1.21432
+LOG: Time / Memory: 105.10 seconds 6008068 kB
+LOG: RERUN: 5
+LOG: Client load time: 101.606
+LOG: Client exec time: 1.16958
+LOG: Time / Memory: 104.58 seconds 6010876 kB
+LOG: RERUN: 6
+LOG: Client load time: 102.548
+LOG: Client exec time: 1.16864
+LOG: Time / Memory: 105.53 seconds 6008344 kB
+LOG: RERUN: 7
+LOG: Client load time: 102.175
+LOG: Client exec time: 1.1963
+LOG: Time / Memory: 105.18 seconds 6008228 kB
+LOG: RERUN: 8
+LOG: Client load time: 102.035
+LOG: Client exec time: 2.90363
+LOG: Time / Memory: 106.74 seconds 6010856 kB
+LOG: RERUN: 9
+LOG: Client load time: 102.071
+LOG: Client exec time: 1.47784
+LOG: Time / Memory: 105.36 seconds 6008332 kB

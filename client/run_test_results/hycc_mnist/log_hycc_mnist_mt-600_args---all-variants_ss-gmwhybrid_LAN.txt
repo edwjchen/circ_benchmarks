@@ -1,0 +1,33 @@
+LOG: ====================================
+LOG: Benchmarking HyCC
+LOG: ====================================
+LOG: TEST: mnist
+LOG: SELECTION_SCHEME: gmwhybrid
+LOG: MINIMIZATION_TIME: 600
+LOG: ARGUMENTS: ['--all-variants']
+LOG: ====================================
+LOG: RERUN: 0
+LOG: Error: Process returned with status code 134
+LOG: Error message: terminate called after throwing an instance of 'std::runtime_error'   what():  Cannot convert array of size 784 to uint32[256] Command terminated by signal 6 2.91 seconds 526780 kB Command exited with non-zero status 134 2.91 seconds 526780 kB
+LOG: retry: 0
+LOG: ====================================
+LOG: RERUN: 0
+LOG: Error: Process returned with status code 134
+LOG: Error message: terminate called after throwing an instance of 'std::runtime_error'   what():  Cannot convert array of size 784 to uint32[256] Command terminated by signal 6 2.88 seconds 526804 kB Command exited with non-zero status 134 2.88 seconds 526804 kB
+LOG: retry: 1
+LOG: ====================================
+LOG: RERUN: 0
+LOG: Error: Process returned with status code 134
+LOG: Error message: terminate called after throwing an instance of 'std::runtime_error'   what():  Cannot convert array of size 784 to uint32[256] Command terminated by signal 6 2.87 seconds 526924 kB Command exited with non-zero status 134 2.87 seconds 526924 kB
+LOG: retry: 2
+LOG: ====================================
+LOG: RERUN: 0
+LOG: Error: Process returned with status code 134
+LOG: Error message: terminate called after throwing an instance of 'std::runtime_error'   what():  Cannot convert array of size 784 to uint32[256] Command terminated by signal 6 2.91 seconds 526796 kB Command exited with non-zero status 134 2.91 seconds 526796 kB
+LOG: retry: 3
+LOG: ====================================
+LOG: RERUN: 0
+LOG: Error: Process returned with status code 134
+LOG: Error message: terminate called after throwing an instance of 'std::runtime_error'   what():  Cannot convert array of size 784 to uint32[256] Command terminated by signal 6 2.88 seconds 526792 kB Command exited with non-zero status 134 2.88 seconds 526792 kB
+LOG: retry: 4
+LOG: Failed gmwhybrid with args: --all-variants, exception:

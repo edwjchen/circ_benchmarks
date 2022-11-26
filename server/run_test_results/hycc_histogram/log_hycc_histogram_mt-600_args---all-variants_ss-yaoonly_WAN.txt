@@ -1,0 +1,48 @@
+LOG: ====================================
+LOG: Benchmarking HyCC
+LOG: ====================================
+LOG: TEST: histogram
+LOG: SELECTION_SCHEME: yaoonly
+LOG: MINIMIZATION_TIME: 600
+LOG: ARGUMENTS: ['--all-variants']
+LOG: ====================================
+LOG: RERUN: 0
+LOG: Server load time: 6.99696
+LOG: Server exec time: 2.09103
+LOG: Time / Memory: 10.04 seconds 1526388 kB
+LOG: RERUN: 1
+LOG: Server load time: 7.00717
+LOG: Server exec time: 1.59795
+LOG: Time / Memory: 9.56 seconds 1526320 kB
+LOG: RERUN: 2
+LOG: Server load time: 7.02092
+LOG: Server exec time: 1.74945
+LOG: Time / Memory: 9.75 seconds 1526412 kB
+LOG: RERUN: 3
+LOG: Server load time: 6.96657
+LOG: Server exec time: 1.75029
+LOG: Time / Memory: 9.67 seconds 1526100 kB
+LOG: RERUN: 4
+LOG: Server load time: 7.01648
+LOG: Server exec time: 1.62664
+LOG: Time / Memory: 9.58 seconds 1526468 kB
+LOG: RERUN: 5
+LOG: Server load time: 6.94602
+LOG: Server exec time: 1.63065
+LOG: Time / Memory: 9.54 seconds 1526312 kB
+LOG: RERUN: 6
+LOG: Server load time: 7.08872
+LOG: Server exec time: 1.6598
+LOG: Time / Memory: 9.70 seconds 1526216 kB
+LOG: RERUN: 7
+LOG: Server load time: 7.02312
+LOG: Server exec time: 1.78164
+LOG: Time / Memory: 9.76 seconds 1526068 kB
+LOG: RERUN: 8
+LOG: Server load time: 7.08495
+LOG: Server exec time: 1.64616
+LOG: Time / Memory: 9.67 seconds 1526128 kB
+LOG: RERUN: 9
+LOG: Server load time: 7.04637
+LOG: Server exec time: 1.64195
+LOG: Time / Memory: 9.64 seconds 1526396 kB

@@ -542,18 +542,18 @@ test_compile_params = [
     #     "mt": 600,
     #     "a": ["--all-variants"],
     # },
-    {
-        "name": "histogram",
-        "path": "histogram/histogram.c",
-        "mt": 600,
-        "a": ["--all-variants"],
-    },
     # {
-    #     "name": "db_join2",
-    #     "path": "db_join2/db_join2.c",
+    #     "name": "histogram",
+    #     "path": "histogram/histogram.c",
     #     "mt": 600,
     #     "a": ["--all-variants"],
     # },
+    {
+        "name": "db_join2",
+        "path": "db_join2/db_join2.c",
+        "mt": 600,
+        "a": ["--all-variants"],
+    },
     # {
     #     "name": "db_merge",
     #     "path": "db_merge/db_merge.c",
@@ -603,12 +603,12 @@ test_select_wan_params = [
 
 
 test_run_lan_params = [
-    {
-        "ss": "yaoonly",
-    },
-    {
-        "ss": "gmwonly",
-    },
+    # {
+    #     "ss": "yaoonly",
+    # },
+    # {
+    #     "ss": "gmwonly",
+    # },
     {
         "ss": "yaohybrid",
     },
@@ -620,20 +620,20 @@ test_run_lan_params = [
     },
 ]
 
-for compile_params in test_compile_params:
-    for select_params in test_select_lan_params:
-        for run_params in test_run_lan_params:
-            p = {**compile_params, **run_params}
-            p = {**p, **select_params}
-            run_hycc_test(p)
+# for compile_params in test_compile_params:
+#     for select_params in test_select_lan_params:
+#         for run_params in test_run_lan_params:
+#             p = {**compile_params, **run_params}
+#             p = {**p, **select_params}
+#             run_hycc_test(p)
 
 test_run_wan_params = [
-    {
-        "ss": "yaoonly",
-    },
-    {
-        "ss": "gmwonly",
-    },
+    # {
+    #     "ss": "yaoonly",
+    # },
+    # {
+    #     "ss": "gmwonly",
+    # },
     {
         "ss": "yaohybrid",
     },
@@ -644,3 +644,10 @@ test_run_wan_params = [
         "ss": "wan_optimized",
     },
 ]
+
+for compile_params in test_compile_params:
+    for select_params in test_select_wan_params:
+        for run_params in test_run_wan_params:
+            p = {**compile_params, **run_params}
+            p = {**p, **select_params}
+            run_hycc_test(p)

@@ -1,0 +1,33 @@
+LOG: ====================================
+LOG: Benchmarking HyCC
+LOG: ====================================
+LOG: TEST: mnist
+LOG: SELECTION_SCHEME: yaohybrid
+LOG: MINIMIZATION_TIME: 600
+LOG: ARGUMENTS: ['--all-variants']
+LOG: ====================================
+LOG: RERUN: 0
+LOG: Error: Process returned with status code 134
+LOG: Error message: terminate called after throwing an instance of 'std::runtime_error'   what():  Cannot convert array of size 784 to uint32[256] Command terminated by signal 6 3.42 seconds 576236 kB Command exited with non-zero status 134 3.42 seconds 576236 kB
+LOG: retry: 0
+LOG: ====================================
+LOG: RERUN: 0
+LOG: Error: Process returned with status code 134
+LOG: Error message: terminate called after throwing an instance of 'std::runtime_error'   what():  Cannot convert array of size 784 to uint32[256] Command terminated by signal 6 3.38 seconds 576068 kB Command exited with non-zero status 134 3.38 seconds 576068 kB
+LOG: retry: 1
+LOG: ====================================
+LOG: RERUN: 0
+LOG: Error: Process returned with status code 134
+LOG: Error message: terminate called after throwing an instance of 'std::runtime_error'   what():  Cannot convert array of size 784 to uint32[256] Command terminated by signal 6 3.30 seconds 575920 kB Command exited with non-zero status 134 3.30 seconds 575920 kB
+LOG: retry: 2
+LOG: ====================================
+LOG: RERUN: 0
+LOG: Error: Process returned with status code 134
+LOG: Error message: terminate called after throwing an instance of 'std::runtime_error'   what():  Cannot convert array of size 784 to uint32[256] Command terminated by signal 6 3.29 seconds 576060 kB Command exited with non-zero status 134 3.29 seconds 576060 kB
+LOG: retry: 3
+LOG: ====================================
+LOG: RERUN: 0
+LOG: Error: Process returned with status code 134
+LOG: Error message: terminate called after throwing an instance of 'std::runtime_error'   what():  Cannot convert array of size 784 to uint32[256] Command terminated by signal 6 3.39 seconds 575808 kB Command exited with non-zero status 134 3.39 seconds 575808 kB
+LOG: retry: 4
+LOG: Failed yaohybrid with args: --all-variants, exception:

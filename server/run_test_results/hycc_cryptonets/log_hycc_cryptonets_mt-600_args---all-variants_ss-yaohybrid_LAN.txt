@@ -1,0 +1,48 @@
+LOG: ====================================
+LOG: Benchmarking HyCC
+LOG: ====================================
+LOG: TEST: cryptonets
+LOG: SELECTION_SCHEME: yaohybrid
+LOG: MINIMIZATION_TIME: 600
+LOG: ARGUMENTS: ['--all-variants']
+LOG: ====================================
+LOG: RERUN: 0
+LOG: Server load time: 105.507
+LOG: Server exec time: 1.71137
+LOG: Time / Memory: 109.03 seconds 6011252 kB
+LOG: RERUN: 1
+LOG: Server load time: 109.408
+LOG: Server exec time: 18.2732
+LOG: Time / Memory: 129.49 seconds 6012168 kB
+LOG: RERUN: 2
+LOG: Server load time: 139.746
+LOG: Server exec time: 1.1822
+LOG: Time / Memory: 142.73 seconds 6010944 kB
+LOG: RERUN: 3
+LOG: Server load time: 105.307
+LOG: Server exec time: 4.92772
+LOG: Time / Memory: 112.03 seconds 6012312 kB
+LOG: RERUN: 4
+LOG: Server load time: 105.777
+LOG: Server exec time: 11.7317
+LOG: Time / Memory: 119.32 seconds 6010932 kB
+LOG: RERUN: 5
+LOG: Server load time: 109.062
+LOG: Server exec time: 1.15137
+LOG: Time / Memory: 112.02 seconds 6009644 kB
+LOG: RERUN: 6
+LOG: Server load time: 109.736
+LOG: Server exec time: 2.22205
+LOG: Time / Memory: 113.77 seconds 6011424 kB
+LOG: RERUN: 7
+LOG: Server load time: 106.159
+LOG: Server exec time: 4.11518
+LOG: Time / Memory: 112.07 seconds 6010924 kB
+LOG: RERUN: 8
+LOG: Server load time: 110.884
+LOG: Server exec time: 1.38027
+LOG: Time / Memory: 114.06 seconds 6010748 kB
+LOG: RERUN: 9
+LOG: Server load time: 138.551
+LOG: Server exec time: 1.17156
+LOG: Time / Memory: 141.53 seconds 6010904 kB

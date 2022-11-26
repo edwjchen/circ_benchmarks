@@ -1,0 +1,48 @@
+LOG: ====================================
+LOG: Benchmarking HyCC
+LOG: ====================================
+LOG: TEST: biomatch
+LOG: SELECTION_SCHEME: gmwonly
+LOG: MINIMIZATION_TIME: 600
+LOG: ARGUMENTS: ['--all-variants']
+LOG: ====================================
+LOG: RERUN: 0
+LOG: Server load time: 19.5684
+LOG: Server exec time: 5.57499
+LOG: Time / Memory: 27.31 seconds 2221332 kB
+LOG: RERUN: 1
+LOG: Server load time: 19.4582
+LOG: Server exec time: 5.22689
+LOG: Time / Memory: 26.85 seconds 2221092 kB
+LOG: RERUN: 2
+LOG: Server load time: 19.5258
+LOG: Server exec time: 5.19608
+LOG: Time / Memory: 26.87 seconds 2220972 kB
+LOG: RERUN: 3
+LOG: Server load time: 19.4584
+LOG: Server exec time: 4.99723
+LOG: Time / Memory: 26.62 seconds 2221056 kB
+LOG: RERUN: 4
+LOG: Server load time: 19.4668
+LOG: Server exec time: 4.65822
+LOG: Time / Memory: 26.29 seconds 2221232 kB
+LOG: RERUN: 5
+LOG: Server load time: 19.4521
+LOG: Server exec time: 4.60146
+LOG: Time / Memory: 26.23 seconds 2221168 kB
+LOG: RERUN: 6
+LOG: Server load time: 19.4545
+LOG: Server exec time: 4.97756
+LOG: Time / Memory: 26.59 seconds 2221324 kB
+LOG: RERUN: 7
+LOG: Server load time: 19.4605
+LOG: Server exec time: 5.85104
+LOG: Time / Memory: 27.47 seconds 2221156 kB
+LOG: RERUN: 8
+LOG: Server load time: 19.4459
+LOG: Server exec time: 5.47398
+LOG: Time / Memory: 27.07 seconds 2221292 kB
+LOG: RERUN: 9
+LOG: Server load time: 19.4864
+LOG: Server exec time: 5.4343
+LOG: Time / Memory: 27.07 seconds 2220992 kB
