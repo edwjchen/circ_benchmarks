@@ -161,15 +161,13 @@ def get_compile_instance():
 def get_run_instances(run_env):
     print(run_env, "SETTING")
     if run_env == LAN:
-        stopped_east1_instances = filter_run_instances([(i, "aws-virg") for i in list(ec2_east1.instances.filter(
-            Filters=[{"Name": "instance-state-name", "Values": ["stopped"]}]))])
         stopped_east2_instances = filter_run_instances([(i, "aws-east") for i in list(ec2_east2.instances.filter(
             Filters=[{"Name": "instance-state-name", "Values": ["stopped"]}]))])
 
-        if len(stopped_east1_instances) >= 1 and len(stopped_east2_instances) >= 1:
+        if len(stopped_east2_instances) >= 2:
             print("Starting run instances")
-            east1_instance = stopped_east1_instances[0]
-            east2_instance = stopped_east2_instances[0]
+            east1_instance = stopped_east2_instances[0]
+            east2_instance = stopped_east2_instances[1]
             east1_instance[0].start()
             east2_instance[0].start()
             east1_instance[0].wait_until_running()
@@ -179,8 +177,8 @@ def get_run_instances(run_env):
             return (east1_instance, east2_instance)
         else:
             try:
-                instance1 = create_east1_instance(run_instance_type)
-                east1_instance = (instance1, "aws-virg")
+                instance1 = create_east2_instance(run_instance_type)
+                east1_instance = (instance1, "aws-east")
             except:
                 print("Failed to create east1 instance")
                 exit(0)
@@ -257,17 +255,25 @@ def setup_hycc(ip, k):
     print("Setting up:", ip)
     if stdout.channel.recv_exit_status():
         _, stdout, _ = client.exec_command(
-            "cd ~ && git clone https://github.com/edwjchen/circ_benchmarks.git && cd ~/circ_benchmarks && git checkout aws2 -f && git add . && git stash && git pull -f && git submodule init && git submodule update && ./scripts/dependencies.sh && pip3 install pandas && python3 driver.py -f hycc && python3 driver.py -b && mkdir -p hycc_circuit_dir")
+            "cd ~ && git clone https://github.com/edwjchen/circ_benchmarks.git && cd ~/circ_benchmarks && git checkout aws2 -f && git add . && git stash && git pull -f && git submodule init && git submodule update && cd modules/HyCC && git checkout master -f && git add . && git stash && git pull -f && cd ~/circ_benchmarks && ./scripts/dependencies.sh && pip3 install pandas && python3 driver.py -f hycc && python3 driver.py -b && mkdir -p hycc_circuit_dir")
         if stdout.channel.recv_exit_status():
             print(ip, " failed setup")
     else:
         _, stdout, _ = client.exec_command(
-            "cd ~/circ_benchmarks && git checkout aws2 -f && git add . && git stash && git pull -f && git submodule init && git submodule update && cd modules/HyCC && git pull -f && cd ~/circ_benchmarks && ./scripts/dependencies.sh && pip3 install pandas && python3 driver.py -f hycc && python3 driver.py -b && mkdir -p hycc_circuit_dir")
+            "cd ~/circ_benchmarks && git checkout aws2 -f && git add . && git stash && git pull -f && git submodule init && git submodule update && cd modules/HyCC && git checkout master -f && git add . && git stash && git pull -f && cd ~/circ_benchmarks && ./scripts/dependencies.sh && pip3 install pandas && python3 driver.py -f hycc && python3 driver.py -b && mkdir -p hycc_circuit_dir")
         if stdout.channel.recv_exit_status():
             print(ip, " failed setup 2")
 
+    # update ABY
+    print("Updating ABY")
     _, stdout, _ = client.exec_command(
-        "cd ~/circ_benchmarks && rm -rf hycc_circuit_dir/ && rm -rf test_results/")
+        "cd ~/circ_benchmarks && cd modules/ABY && git checkout public -f && git add . && git stash && git pull -f && cd extern/ENCRYPTO_utils && git checkout master -f && git add . && git stash && git pull -f")
+    if stdout.channel.recv_exit_status():
+        print(ip, " failed setup 2")
+
+    print("Removing old results directories")
+    _, stdout, _ = client.exec_command(
+        "cd ~/circ_benchmarks && rm -rf hycc_circuit_dir/ && rm -rf test_results/ && rm -rf run_test_results/")
     if stdout.channel.recv_exit_status():
         print(ip, " failed to remove hycc circuits")
 
@@ -400,9 +406,9 @@ def run_hycc_test(params):
     client = connect_to_instance(ip2, k2)
     sftp = client.open_sftp()
     with sftp.open('./circ_benchmarks/run_params.json', 'w') as f:
-        json.dump(params, f)
+        json.dump(client_params, f)
     client.close()
-    print("Finished writing run params: ", ip2)
+    print("Finished writing client params: ", ip2)
 
     # copy compiled circuits to instances
     version = get_version(params)
@@ -436,32 +442,25 @@ def select_hycc_test(params):
 
     # get run instances
     ((instance1, k1), (instance2, k2)) = get_run_instances(run_env)
+    instance2.stop()
+
     ip1 = instance1.public_dns_name
-    ip2 = instance2.public_dns_name
     print("instance1:", instance1)
     print("key1:",  k1)
     print("ip1:", ip1)
-    print("instance2:", instance2)
-    print("key2:",  k2)
-    print("ip2:", ip2)
 
     server_params = params.copy()
-    client_params = params.copy()
 
     # instance1 is the server
     server_params["role"] = 0
     server_params["address"] = instance1.private_ip_address
     server_params["setting"] = run_env
-    client_params["role"] = 1
-    client_params["address"] = instance1.public_dns_name
-    client_params["setting"] = run_env
 
     print(server_params)
-    print(client_params)
 
     # setup hycc
-    ips = [ip1, ip2]
-    ks = [k1, k2]
+    ips = [ip1]
+    ks = [k1]
     pool = multiprocessing.Pool(len(ips))
     pool.starmap(setup_hycc, zip(ips, ks))
 
@@ -474,59 +473,50 @@ def select_hycc_test(params):
     client.close()
     print("Finished writing server params: ", ip1)
 
-    print("Writing client params: ", client_params)
-    client = connect_to_instance(ip2, k2)
-    sftp = client.open_sftp()
-    with sftp.open('./circ_benchmarks/run_params.json', 'w') as f:
-        json.dump(params, f)
-    client.close()
-    print("Finished writing run params: ", ip2)
-
     # copy compiled circuits to instances
     version = get_version(params)
     subprocess.call(
         "rsync -avz -e \"ssh -o StrictHostKeyChecking=no -i {}.pem\" --progress ./hycc_circuit_dir/{} ubuntu@{}:~/circ_benchmarks/hycc_circuit_dir".format(k1, version, ip1), shell=True)
-    subprocess.call(
-        "rsync -avz -e \"ssh -o StrictHostKeyChecking=no -i {}.pem\" --progress ./hycc_circuit_dir/{} ubuntu@{}:~/circ_benchmarks/hycc_circuit_dir".format(k2, version, ip2), shell=True)
 
     # select test case
     pool = multiprocessing.Pool(len(ips))
     pool.starmap(select_hycc, zip(ips, ks))
 
+    # get circuit results
+    subprocess.call(
+        "rsync -avz -e \"ssh -o StrictHostKeyChecking=no -i {}.pem\" --progress ubuntu@{}:~/circ_benchmarks/hycc_circuit_dir .".format(k1, ip1), shell=True)
+
     # get results
     subprocess.call(
         "rsync -avz -e \"ssh -o StrictHostKeyChecking=no -i {}.pem\" --progress ubuntu@{}:~/circ_benchmarks/test_results server/".format(k1, ip1), shell=True)
-    subprocess.call(
-        "rsync -avz -e \"ssh -o StrictHostKeyChecking=no -i {}.pem\" --progress ubuntu@{}:~/circ_benchmarks/test_results client/".format(k2, ip2), shell=True)
 
     # stop instances
     print("Stopping instance")
-    # instance1.stop()
-    # instance2.stop()
-    # instance1.wait_until_stopped()
-    # instance2.wait_until_stopped()
+    instance1.stop()
+    instance1.wait_until_stopped()
+    instance2.wait_until_stopped()
     print("Finished!")
 
 
 test_compile_params = [
-    {
-        "name": "biomatch",
-        "path": "biomatch/biomatch.c",
-        "mt": 600,
-        "a": ["--all-variants"],
-    },
+    # {
+    #     "name": "biomatch",
+    #     "path": "biomatch/biomatch.c",
+    #     "mt": 600,
+    #     "a": ["--all-variants"],
+    # },
     # {
     #     "name": "kmeans",
     #     "path": "kmeans/kmeans.c",
     #     "mt": 600,
     #     "a": ["--all-variants"],
     # },
-    # {
-    #     "name": "gauss",
-    #     "path": "gauss/gauss.c",
-    #     "mt": 9,
-    #     "a": ["--all-variants"],
-    # },
+    {
+        "name": "gauss",
+        "path": "gauss/gauss.c",
+        "mt": 9,
+        "a": ["--all-variants"],
+    },
     # {
     #     "name": "gcd",
     #     "path": "gcd/gcd.c",
@@ -568,30 +558,33 @@ test_compile_params = [
 # for compile_params in test_compile_params:
 #     compile_hycc_test(compile_params)
 
-test_select_params = [
+test_select_lan_params = [
     {
         "setting": LAN,
         "cm": "lan"
     },
-    # {
-    #     "setting": WAN,
-    #     "cm": "wan"
-    # },
+]
+
+test_select_wan_params = [
+    {
+        "setting": WAN,
+        "cm": "wan"
+    },
 ]
 
 for compile_params in test_compile_params:
-    for select_params in test_select_params:
+    for select_params in test_select_lan_params:
         p = {**compile_params, **select_params}
         select_hycc_test(p)
 
 
 test_run_lan_params = [
-    {
-        "ss": "yaoonly",
-    },
-    {
-        "ss": "gwmonly",
-    },
+    # {
+    #     "ss": "yaoonly",
+    # },
+    # {
+    #     "ss": "gwmonly",
+    # },
     {
         "ss": "yaohybrid",
     },
@@ -602,6 +595,13 @@ test_run_lan_params = [
         "ss": "lan_optimized",
     },
 ]
+
+# for compile_params in test_compile_params:
+#     for select_params in test_select_lan_params:
+#         for run_params in test_run_lan_params:
+#             p = {**compile_params, **run_params}
+#             p = {**p, **select_params}
+#             run_hycc_test(p)
 
 test_run_wan_params = [
     {
@@ -620,9 +620,3 @@ test_run_wan_params = [
         "ss": "wan_optimized",
     },
 ]
-
-
-# for compile_params in test_compile_params:
-#     for run_params in test_run_params:
-#         p = {**compile_params, **run_params}
-#         run_hycc_test(p)

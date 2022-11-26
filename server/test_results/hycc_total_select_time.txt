@@ -1,1 +1,1 @@
-LOG: Total hycc select time: 0.20451807975769043
+LOG: Total hycc select time: 0.7212324142456055

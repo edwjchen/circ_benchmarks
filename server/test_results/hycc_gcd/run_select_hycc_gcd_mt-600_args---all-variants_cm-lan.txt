@@ -1,0 +1,60 @@
+
+LOG: ====================================
+
+LOG: Benchmarking HyCC
+
+LOG: ====================================
+
+LOG: TEST: gcd
+LOG: MINIMIZATION_TIME: 600
+LOG: COST_MODEL: lan
+LOG: ARGUMENTS: ['--all-variants']
+
+LOG: ====================================
+
+LOG: MODE: selection
+Directory: /home/ubuntu/circ_benchmarks/hycc_circuit_dir/hycc_gcd_mt-600_args---all-variants
+graph.dot
+mpc_main@bool_depth.circ
+yaoonly.cmb
+lan_optimized.cmb
+all.cmb
+mpc_main@bool_depth.stats
+gmwhybrid.cmb
+gmwonly.cmb
+mpc_main@bool_size.stats
+mpc_main@bool_size.circ
+yaohybrid.cmb
+Modules: 1
+
+mpc_main
+  Possible sharings: bool_depth bool_size
+  Calls:
+
+Subgraphs:
+
+mpc_main Sharing.bool_depth
+or 1 2048 : 0.1095 224.256
+xor 1 76890 : 0.0001 7.689
+and 1 46848 : 0.1095 5129.856
+
+mpc_main Sharing.bool_size
+or 1 4830 : 0.0005 2.415
+xor 1 71430 : 0.0003 21.429
+and 1 39737 : 0.0005 19.8685
+
+LOG: Total number of modules: 1
+LOG: Modules: ['mpc_main']
+op: ('mpc_main', <Sharing.bool_depth: 2>) 5361.8009999999995
+op: ('mpc_main', <Sharing.bool_size: 3>) 43.7125
+{'mpc_main': <Sharing.bool_size: 3>}
+{'mpc_main': <Sharing.bool_depth: 2>}
+{'mpc_main': <Sharing.arith: 1>}
+num_skips 0
+== Protocol selection ==
+
+Cost: 44
+  mpc_main: Sharing.bool_size
+
+
+LOG: Time / Memory: 1.16 seconds 70204 kB
