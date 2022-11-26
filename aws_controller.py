@@ -499,24 +499,24 @@ def select_hycc_test(params):
 
 
 test_compile_params = [
-    {
-        "name": "biomatch",
-        "path": "biomatch/biomatch.c",
-        "mt": 600,
-        "a": ["--all-variants"],
-    },
+    # {
+    #     "name": "biomatch",
+    #     "path": "biomatch/biomatch.c",
+    #     "mt": 600,
+    #     "a": ["--all-variants"],
+    # },
     # {
     #     "name": "kmeans",
     #     "path": "kmeans/kmeans.c",
     #     "mt": 600,
     #     "a": ["--all-variants"],
     # },
-    # {
-    #     "name": "gauss",
-    #     "path": "gauss/gauss.c",
-    #     "mt": 9,
-    #     "a": ["--all-variants"],
-    # },
+    {
+        "name": "gauss",
+        "path": "gauss/gauss.c",
+        "mt": 9,
+        "a": ["--all-variants"],
+    },
     # {
     #     "name": "gcd",
     #     "path": "gcd/gcd.c",
@@ -579,12 +579,12 @@ test_select_wan_params = [
 
 
 test_run_lan_params = [
-    {
-        "ss": "yaoonly",
-    },
-    {
-        "ss": "gwmonly",
-    },
+    # {
+    #     "ss": "yaoonly",
+    # },
+    # {
+    #     "ss": "gwmonly",
+    # },
     {
         "ss": "yaohybrid",
     },
