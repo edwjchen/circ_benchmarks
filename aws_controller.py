@@ -514,10 +514,6 @@ def bundle_hycc_test(params):
     subprocess.call(
         "rsync -avz -e \"ssh -o StrictHostKeyChecking=no -i {}.pem\" --progress ubuntu@{}:~/circ_benchmarks/hycc_circuit_dir .".format(k1, ip1), shell=True)
 
-    # get results
-    subprocess.call(
-        "rsync -avz -e \"ssh -o StrictHostKeyChecking=no -i {}.pem\" --progress ubuntu@{}:~/circ_benchmarks/test_results server/".format(k1, ip1), shell=True)
-
     # stop instances
     print("Stopping instance")
     instance1.stop()
@@ -662,8 +658,7 @@ test_select_wan_params = [
 for compile_params in test_compile_params:
     for select_params in test_select_lan_params:
         p = {**compile_params, **select_params}
-        select_hycc_test(p)
-
+        bundle_hycc_test(p)
 
 # for compile_params in test_compile_params:
 #     for select_params in test_select_lan_params:
@@ -719,9 +714,9 @@ test_run_wan_params = [
     },
 ]
 
-for compile_params in test_compile_params:
-    for select_params in test_select_wan_params:
-        for run_params in test_run_wan_params:
-            p = {**compile_params, **run_params}
-            p = {**p, **select_params}
-            run_hycc_test(p)
+# for compile_params in test_compile_params:
+#     for select_params in test_select_wan_params:
+#         for run_params in test_run_wan_params:
+#             p = {**compile_params, **run_params}
+#             p = {**p, **select_params}
+#             run_hycc_test(p)

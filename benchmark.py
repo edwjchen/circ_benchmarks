@@ -289,7 +289,7 @@ def bundle_hycc_with_params(params):
     # compile HyCC benchmark
     os.chdir(circuit_dir)
     params["version"] = compile_version
-    module_bundle_benchmark(test_path, params)
+    module_bundle_benchmark(params)
     os.chdir(CIRC_BENCHMARK_SOURCE)
 
 
