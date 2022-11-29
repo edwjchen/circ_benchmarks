@@ -37,10 +37,12 @@ def clean_data(data):
     return merged_data
 
 
-def get_log_paths(system):
+def get_log_paths(system, role):
     assert system == "circ" or system == "hycc"
-    test_results_path = "{}run_test_results/".format(CIRC_BENCHMARK_SOURCE)
-    paths = [os.path.join(test_results_path, f) for f in os.listdir(test_results_path) if f.startswith(system)]
+    test_results_path = "{}/{}/run_test_results/".format(
+        CIRC_BENCHMARK_SOURCE, role)
+    paths = [os.path.join(test_results_path, f) for f in os.listdir(
+        test_results_path) if f.startswith(system)]
     log_paths = []
     for p in paths:
         if os.path.isdir(p):
@@ -69,6 +71,9 @@ def parse_hycc_log(log, setting):
 
         line[0] = line[0].strip()
         line[1] = line[1].strip()
+
+        if line[0] == 'retry':
+            continue
 
         if line[0] == "TEST":
             data[line[0]] = line[1]
@@ -123,28 +128,30 @@ def parse_hycc_log(log, setting):
             raise RuntimeError("Unknown key")
     return data
 
-def parse_hycc_logs():
-    log_paths = get_log_paths("hycc")
+
+def parse_hycc_logs(role):
+    log_paths = get_log_paths("hycc", role)
     run_datas = []
     setting = ""
     for log_path in log_paths:
         setting = ""
-        if log_path.endswith("lan.txt"):
+        if log_path.endswith("LAN.txt"):
             setting = "lan"
-        elif log_path.endswith("wan.txt"):
+        elif log_path.endswith("WAN.txt"):
             setting = "wan"
         else:
             print(log_path)
             raise RuntimeError("Unknown setting")
 
         data = {}
+        print(log_path)
         with open(log_path, "r") as f:
             log = f.read()
             data = parse_hycc_log(log, setting)
             run_datas.append(data)
     run_data = clean_data(run_datas)
     df = pd.DataFrame(run_data)
-    
+
     tests = df["TEST"].unique()
     selection_schemes = df["SELECTION_SCHEME"].unique()
     best_results = {}
@@ -167,7 +174,9 @@ def parse_hycc_logs():
         min_wan_times = []
 
         for ss in selection_schemes:
-            server_exec_times = list(df[(df["TEST"] == test) & (df["SELECTION_SCHEME"] == ss)]["Server exec time"])
+            exec_times = "Server exec time" if "Server exec time" in df.columns else "Client exec time"
+            server_exec_times = list(df[(df["TEST"] == test) & (
+                df["SELECTION_SCHEME"] == ss)][exec_times])
             if len(server_exec_times) >= 1:
                 times = server_exec_times[0]
                 if times:
@@ -194,8 +203,9 @@ def parse_hycc_logs():
                         min_wan = t
                         min_scheme_wan = ss
                         min_wan_times = times
-                    
-        
+
+                best_results[test][ss] = times
+
         print()
         print("==== results ====")
         if min_scheme_lan:
@@ -211,7 +221,7 @@ def parse_hycc_logs():
             print("min opt lan time:", min_optimized_lan)
             print()
             best_results[test][min_optimized_scheme_lan] = min_optimized_lan_times
-        
+
         if min_scheme_wan:
             print(test)
             print("min wan:", min_scheme_wan)
@@ -225,25 +235,25 @@ def parse_hycc_logs():
             print("min opt wan time:", min_optimized_wan)
             print()
             best_results[test][min_optimized_scheme_wan] = min_optimized_wan_times
-            
+
         print()
         print("=========================================")
         print()
     print(tests)
     best_results_df = pd.DataFrame(best_results)
-    print(best_results_df.head())
-    print(best_results_df["biomatch"].head())
-    best_results_df.to_csv("analysis/hycc_res.csv")
+    best_results_df.to_csv(f"analysis/hycc_res_{role}.csv")
+
 
 run_tests = [
     'biomatch',
     'kmeans',
     'gcd',
-    'histogram', 
-    'db_merge', 
+    'histogram',
+    'db_merge',
     'db_join2',
-    'gauss', 
+    'gauss',
     'mnist',
-    'cryptonets', 
+    'cryptonets',
 ]
-parse_hycc_logs()
+parse_hycc_logs("server")
+parse_hycc_logs("client")

@@ -5,8 +5,8 @@ LOG: TEST: mnist
 LOG: MINIMIZATION_TIME: 600
 LOG: ARGUMENTS: ['--all-variants']
 LOG: MODE: compile
-LOG: Compile time: 3772.81
-LOG: Time / Memory: 3773.02 seconds 9667316 kB
+LOG: Compile time: 7507.54
+LOG: Time / Memory: 7508.47 seconds 40883284 kB
 LOG: ====================================
 LOG: MODE: bundle
-LOG: Time / Memory: 0.02 seconds 10068 kB
+LOG: Time / Memory: 0.01 seconds 10060 kB

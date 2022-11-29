@@ -8,26 +8,26 @@ LOG: ARGUMENTS: ['--all-variants']
 LOG: ====================================
 LOG: RERUN: 0
 LOG: Error: Process returned with status code 134
-LOG: Error message: terminate called after throwing an instance of 'std::runtime_error'   what():  Cannot convert array of size 784 to uint32[256] Command terminated by signal 6 2.91 seconds 526780 kB Command exited with non-zero status 134 2.91 seconds 526780 kB
+LOG: Error message: terminate called after throwing an instance of 'std::runtime_error'   what():  Cannot convert array of size 784 to uint32[256] Command terminated by signal 6 3.25 seconds 526836 kB Command exited with non-zero status 134 3.25 seconds 526836 kB
 LOG: retry: 0
 LOG: ====================================
 LOG: RERUN: 0
 LOG: Error: Process returned with status code 134
-LOG: Error message: terminate called after throwing an instance of 'std::runtime_error'   what():  Cannot convert array of size 784 to uint32[256] Command terminated by signal 6 2.88 seconds 526804 kB Command exited with non-zero status 134 2.88 seconds 526804 kB
+LOG: Error message: terminate called after throwing an instance of 'std::runtime_error'   what():  Cannot convert array of size 784 to uint32[256] Command terminated by signal 6 3.02 seconds 526788 kB Command exited with non-zero status 134 3.02 seconds 526788 kB
 LOG: retry: 1
 LOG: ====================================
 LOG: RERUN: 0
 LOG: Error: Process returned with status code 134
-LOG: Error message: terminate called after throwing an instance of 'std::runtime_error'   what():  Cannot convert array of size 784 to uint32[256] Command terminated by signal 6 2.87 seconds 526924 kB Command exited with non-zero status 134 2.87 seconds 526924 kB
+LOG: Error message: terminate called after throwing an instance of 'std::runtime_error'   what():  Cannot convert array of size 784 to uint32[256] Command terminated by signal 6 3.03 seconds 526712 kB Command exited with non-zero status 134 3.03 seconds 526712 kB
 LOG: retry: 2
 LOG: ====================================
 LOG: RERUN: 0
 LOG: Error: Process returned with status code 134
-LOG: Error message: terminate called after throwing an instance of 'std::runtime_error'   what():  Cannot convert array of size 784 to uint32[256] Command terminated by signal 6 2.91 seconds 526796 kB Command exited with non-zero status 134 2.91 seconds 526796 kB
+LOG: Error message: terminate called after throwing an instance of 'std::runtime_error'   what():  Cannot convert array of size 784 to uint32[256] Command terminated by signal 6 3.05 seconds 527028 kB Command exited with non-zero status 134 3.05 seconds 527028 kB
 LOG: retry: 3
 LOG: ====================================
 LOG: RERUN: 0
 LOG: Error: Process returned with status code 134
-LOG: Error message: terminate called after throwing an instance of 'std::runtime_error'   what():  Cannot convert array of size 784 to uint32[256] Command terminated by signal 6 2.88 seconds 526792 kB Command exited with non-zero status 134 2.88 seconds 526792 kB
+LOG: Error message: terminate called after throwing an instance of 'std::runtime_error'   what():  Cannot convert array of size 784 to uint32[256] Command terminated by signal 6 3.06 seconds 526844 kB Command exited with non-zero status 134 3.06 seconds 526844 kB
 LOG: retry: 4
 LOG: Failed gmwhybrid with args: --all-variants, exception:

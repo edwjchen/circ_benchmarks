@@ -530,12 +530,12 @@ test_compile_params = [
     #     "mt": 600,
     #     "a": ["--all-variants"],
     # },
-    # {
-    #     "name": "gauss",
-    #     "path": "gauss/gauss.c",
-    #     "mt": 9,
-    #     "a": ["--all-variants"],
-    # },
+    {
+        "name": "gauss",
+        "path": "gauss/gauss.c",
+        "mt": 9,
+        "a": ["--all-variants"],
+    },
     # {
     #     "name": "gcd",
     #     "path": "gcd/gcd.c",
@@ -548,12 +548,12 @@ test_compile_params = [
     #     "mt": 600,
     #     "a": ["--all-variants"],
     # },
-    {
-        "name": "db_join2",
-        "path": "db_join2/db_join2.c",
-        "mt": 600,
-        "a": ["--all-variants"],
-    },
+    # {
+    #     "name": "db_join2",
+    #     "path": "db_join2/db_join2.c",
+    #     "mt": 600,
+    #     "a": ["--all-variants"],
+    # },
     # {
     #     "name": "db_merge",
     #     "path": "db_merge/db_merge.c",
@@ -609,12 +609,12 @@ test_run_lan_params = [
     # {
     #     "ss": "gmwonly",
     # },
-    {
-        "ss": "yaohybrid",
-    },
-    {
-        "ss": "gmwhybrid",
-    },
+    # {
+    #     "ss": "yaohybrid",
+    # },
+    # {
+    #     "ss": "gmwhybrid",
+    # },
     {
         "ss": "lan_optimized",
     },
@@ -634,12 +634,12 @@ test_run_wan_params = [
     # {
     #     "ss": "gmwonly",
     # },
-    {
-        "ss": "yaohybrid",
-    },
-    {
-        "ss": "gmwhybrid",
-    },
+    # {
+    #     "ss": "yaohybrid",
+    # },
+    # {
+    #     "ss": "gmwhybrid",
+    # },
     {
         "ss": "wan_optimized",
     },

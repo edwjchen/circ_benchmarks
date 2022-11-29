@@ -316,16 +316,6 @@ def run_with_params(features):
         p.communicate(timeout=10)
 
 
-def parse(features):
-    if "hycc" in features:
-        print("Parsing hycc logs")
-        parse_hycc_logs()
-
-    if "circ" in features:
-        print("Parsing circ logs")
-        parse_circ_logs()
-
-
 def set_features(features):
     if "none" in features:
         features = set()
@@ -373,8 +363,6 @@ if __name__ == "__main__":
                         help="run benchmark")
     parser.add_argument("--run_with_params", action="store_true",
                         help="run benchmarks with params")
-    parser.add_argument("--parse", action="store_true",
-                        help="run parser")
     parser.add_argument("-f", "--features", nargs="+",
                         help="set features <circ, hycc>, reset features with -f none")
     parser.add_argument("-l", "--list", action="store_true",
@@ -431,9 +419,6 @@ if __name__ == "__main__":
 
     if args.run_with_params:
         run_with_params(features)
-
-    if args.parse:
-        parse(features)
 
     if args.features:
         features = set_features(args.features)
