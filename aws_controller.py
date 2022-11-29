@@ -355,6 +355,19 @@ def get_version(params):
     return "hycc_{}_mt-{}_args-{}".format(params["name"], params["mt"], "".join(params["a"]))
 
 
+def bundle_hycc(ip, k):
+    client = connect_to_instance(ip, k)
+    cmd = "cd ~/circ_benchmarks && python3 driver.py --bundle_with_params"
+    print("Bundling:", cmd)
+    _, stdout, stderr = client.exec_command(cmd)
+    print("\n".join(stderr.readlines()))
+    if stdout.channel.recv_exit_status():
+        print(stderr)
+        print(ip, " failed bundle")
+    print("Bundled:", ip)
+    client.close()
+
+
 def select_hycc(ip, k):
     client = connect_to_instance(ip, k)
     cmd = "cd ~/circ_benchmarks && python3 driver.py --select_with_params"
@@ -363,7 +376,7 @@ def select_hycc(ip, k):
     print("\n".join(stderr.readlines()))
     if stdout.channel.recv_exit_status():
         print(stderr)
-        print(ip, " failed compiles")
+        print(ip, " failed select")
     print("Selected:", ip)
     client.close()
 
@@ -457,6 +470,61 @@ def run_hycc_test(params):
     print("Finished!")
 
 
+def bundle_hycc_test(params):
+    print("Bundling hycc")
+    run_env = params["setting"]
+
+    # get run instances
+    instance1, k1 = get_select_instances(run_env)
+
+    ip1 = instance1.public_dns_name
+    print("instance1:", instance1)
+    print("key1:",  k1)
+    print("ip1:", ip1)
+
+    server_params = params.copy()
+
+    print(server_params)
+
+    # setup hycc
+    ips = [ip1]
+    ks = [k1]
+    pool = multiprocessing.Pool(len(ips))
+    pool.starmap(setup_hycc, zip(ips, ks))
+
+    # write run params to file
+    print("Writing server params: ", server_params)
+    client = connect_to_instance(ip1, k1)
+    sftp = client.open_sftp()
+    with sftp.open('./circ_benchmarks/compile_params.json', 'w') as f:
+        json.dump(server_params, f)
+    client.close()
+    print("Finished writing server params: ", ip1)
+
+    # copy compiled circuits to instances
+    version = get_version(params)
+    subprocess.call(
+        "rsync -avz -e \"ssh -o StrictHostKeyChecking=no -i {}.pem\" --progress ./hycc_circuit_dir/{} ubuntu@{}:~/circ_benchmarks/hycc_circuit_dir".format(k1, version, ip1), shell=True)
+
+    # bundle test case
+    pool = multiprocessing.Pool(len(ips))
+    pool.starmap(bundle_hycc, zip(ips, ks))
+
+    # get circuit results
+    subprocess.call(
+        "rsync -avz -e \"ssh -o StrictHostKeyChecking=no -i {}.pem\" --progress ubuntu@{}:~/circ_benchmarks/hycc_circuit_dir .".format(k1, ip1), shell=True)
+
+    # get results
+    subprocess.call(
+        "rsync -avz -e \"ssh -o StrictHostKeyChecking=no -i {}.pem\" --progress ubuntu@{}:~/circ_benchmarks/test_results server/".format(k1, ip1), shell=True)
+
+    # stop instances
+    print("Stopping instance")
+    instance1.stop()
+    instance1.wait_until_stopped()
+    print("Finished!")
+
+
 def select_hycc_test(params):
     print("Selecting hycc")
     run_env = params["setting"]
@@ -530,12 +598,12 @@ test_compile_params = [
     #     "mt": 600,
     #     "a": ["--all-variants"],
     # },
-    {
-        "name": "gauss",
-        "path": "gauss/gauss.c",
-        "mt": 9,
-        "a": ["--all-variants"],
-    },
+    # {
+    #     "name": "gauss",
+    #     "path": "gauss/gauss.c",
+    #     "mt": 9,
+    #     "a": ["--all-variants"],
+    # },
     # {
     #     "name": "gcd",
     #     "path": "gcd/gcd.c",
@@ -566,12 +634,12 @@ test_compile_params = [
     #     "mt": 600,
     #     "a": ["--all-variants"],
     # },
-    # {
-    #     "name": "cryptonets",
-    #     "path": "cryptonets/cryptonets.c",
-    #     "mt": 600,
-    #     "a": ["--all-variants"],
-    # },
+    {
+        "name": "cryptonets",
+        "path": "cryptonets/cryptonets.c",
+        "mt": 600,
+        "a": ["--all-variants"],
+    },
 ]
 
 # for compile_params in test_compile_params:
@@ -590,6 +658,12 @@ test_select_wan_params = [
         "cm": "wan"
     },
 ]
+
+for compile_params in test_compile_params:
+    for select_params in test_select_lan_params:
+        p = {**compile_params, **select_params}
+        select_hycc_test(p)
+
 
 # for compile_params in test_compile_params:
 #     for select_params in test_select_lan_params:

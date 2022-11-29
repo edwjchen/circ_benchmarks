@@ -137,6 +137,22 @@ def compile_hycc_benchmark(test_path, params):
         return False
 
 
+def module_bundle_benchmark(params):
+    print("bundling:", params["version"])
+    try:
+        # bundle modules
+        cmd = ["python3", MODULE_BUNDLE, "."]
+        run_cmd(cmd, "MODE: bundle", params)
+        return True
+    except Exception as e:
+        log_path = "{}test_results/{}_{}/log_module_bundle_{}.txt".format(
+            CIRC_BENCHMARK_SOURCE, params["system"], params["name"], params["version"])
+        failed_path = "{}test_results/{}_{}/failed_log_module_bundle_{}.txt".format(
+            CIRC_BENCHMARK_SOURCE, params["system"], params["name"], params["version"])
+        subprocess.call("mv {} {}".format(log_path, failed_path), shell=True)
+        return False
+
+
 def select_hycc_benchmark(params):
     print("select: ", params["version"], params["cm"])
     args = params["a"]
@@ -249,6 +265,31 @@ def compile_hycc_with_params(params):
         params["mt"]), params)
     write_log("LOG: ARGUMENTS: {}".format(params["a"]), params)
     compile_hycc_benchmark(test_path, params)
+    os.chdir(CIRC_BENCHMARK_SOURCE)
+
+
+def bundle_hycc_with_params(params):
+    # add system parameters
+    params["mode"] = "compile"
+    params["system"] = "hycc"
+
+    # define testing parameters
+    test_path = HYCC_SOURCE + \
+        "/examples/benchmarks/{}".format(params["path"])
+    version = "{}_{}_mt-{}_args-{}".format(
+        "hycc", params["name"], params["mt"], "".join(params["a"]))
+
+    # create circuit directory
+    circuit_dir = "{}{}".format(HYCC_CIRCUIT_PATH, version)
+    make_dir(circuit_dir)
+
+    # create compile versions
+    compile_version = "compile_{}".format(version)
+
+    # compile HyCC benchmark
+    os.chdir(circuit_dir)
+    params["version"] = compile_version
+    module_bundle_benchmark(test_path, params)
     os.chdir(CIRC_BENCHMARK_SOURCE)
 
 
