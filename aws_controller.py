@@ -285,12 +285,18 @@ def setup_hycc(ip, k):
         if stdout.channel.recv_exit_status():
             print(ip, " failed setup 2")
 
+    print("Update repo")
+    _, stdout, _ = client.exec_command(
+        "cd ~/circ_benchmarks && git checkout aws2 -f && git add . && git stash && git pull -f && git submodule init && git submodule update && cd modules/HyCC && git checkout master -f && git add . && git stash && git pull -f && cd ~/circ_benchmarks && ./scripts/dependencies.sh && pip3 install pandas && python3 driver.py -f hycc && python3 driver.py -b && mkdir -p hycc_circuit_dir")
+    if stdout.channel.recv_exit_status():
+        print(ip, " failed setup 3")
+
     # update ABY
     print("Updating ABY")
     _, stdout, _ = client.exec_command(
         "cd ~/circ_benchmarks && cd modules/ABY && git checkout public -f && git add . && git stash && git pull -f && cd extern/ENCRYPTO_utils && git checkout master -f && git add . && git stash && git pull -f")
     if stdout.channel.recv_exit_status():
-        print(ip, " failed setup 2")
+        print(ip, " failed setup 4")
 
     print("Removing old results directories")
     _, stdout, _ = client.exec_command(
