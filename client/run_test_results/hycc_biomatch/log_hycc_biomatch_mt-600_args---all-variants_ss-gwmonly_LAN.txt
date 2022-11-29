@@ -1,8 +1,0 @@
-LOG: ====================================
-LOG: Benchmarking HyCC
-LOG: ====================================
-LOG: TEST: biomatch
-LOG: SELECTION_SCHEME: gwmonly
-LOG: MINIMIZATION_TIME: 600
-LOG: ARGUMENTS: ['--all-variants']
-LOG: Missing: gwmonly.cmb
