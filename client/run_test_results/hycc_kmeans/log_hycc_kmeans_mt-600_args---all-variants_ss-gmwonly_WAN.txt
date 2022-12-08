@@ -1,0 +1,48 @@
+LOG: ====================================
+LOG: Benchmarking HyCC
+LOG: ====================================
+LOG: TEST: kmeans
+LOG: SELECTION_SCHEME: gmwonly
+LOG: MINIMIZATION_TIME: 600
+LOG: ARGUMENTS: ['--all-variants']
+LOG: ====================================
+LOG: RERUN: 0
+LOG: Client load time: 354.585
+LOG: Client exec time: 121.701
+LOG: Time / Memory: 516.61 seconds 31829136 kB
+LOG: RERUN: 1
+LOG: Client load time: 347.558
+LOG: Client exec time: 142.312
+LOG: Time / Memory: 531.11 seconds 31823012 kB
+LOG: RERUN: 2
+LOG: Client load time: 359.255
+LOG: Client exec time: 116.402
+LOG: Time / Memory: 516.37 seconds 31833948 kB
+LOG: RERUN: 3
+LOG: Client load time: 355.884
+LOG: Client exec time: 127.811
+LOG: Time / Memory: 524.59 seconds 31831108 kB
+LOG: RERUN: 4
+LOG: Client load time: 357.045
+LOG: Client exec time: 129.688
+LOG: Time / Memory: 527.71 seconds 31836276 kB
+LOG: RERUN: 5
+LOG: Client load time: 354.486
+LOG: Client exec time: 118.585
+LOG: Time / Memory: 514.38 seconds 31834380 kB
+LOG: RERUN: 6
+LOG: Client load time: 355.303
+LOG: Client exec time: 113.472
+LOG: Time / Memory: 510.82 seconds 31826280 kB
+LOG: RERUN: 7
+LOG: Client load time: 355.303
+LOG: Client exec time: 106.303
+LOG: Time / Memory: 502.40 seconds 31828912 kB
+LOG: RERUN: 8
+LOG: Client load time: 355.171
+LOG: Client exec time: 102.791
+LOG: Time / Memory: 498.88 seconds 31829392 kB
+LOG: RERUN: 9
+LOG: Client load time: 355.132
+LOG: Client exec time: 101.934
+LOG: Time / Memory: 498.33 seconds 31836476 kB

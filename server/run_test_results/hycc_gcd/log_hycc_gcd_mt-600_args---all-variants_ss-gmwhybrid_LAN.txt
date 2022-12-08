@@ -1,0 +1,48 @@
+LOG: ====================================
+LOG: Benchmarking HyCC
+LOG: ====================================
+LOG: TEST: gcd
+LOG: SELECTION_SCHEME: gmwhybrid
+LOG: MINIMIZATION_TIME: 600
+LOG: ARGUMENTS: ['--all-variants']
+LOG: ====================================
+LOG: RERUN: 0
+LOG: Server load time: 0.3393
+LOG: Server exec time: 2.86891
+LOG: Time / Memory: 3.27 seconds 144104 kB
+LOG: RERUN: 1
+LOG: Server load time: 0.3228
+LOG: Server exec time: 2.20883
+LOG: Time / Memory: 2.58 seconds 143852 kB
+LOG: RERUN: 2
+LOG: Server load time: 0.28155
+LOG: Server exec time: 2.22533
+LOG: Time / Memory: 2.56 seconds 143832 kB
+LOG: RERUN: 3
+LOG: Server load time: 0.282357
+LOG: Server exec time: 2.19909
+LOG: Time / Memory: 2.53 seconds 143828 kB
+LOG: RERUN: 4
+LOG: Server load time: 0.283854
+LOG: Server exec time: 2.20009
+LOG: Time / Memory: 2.53 seconds 143768 kB
+LOG: RERUN: 5
+LOG: Server load time: 0.281363
+LOG: Server exec time: 2.19751
+LOG: Time / Memory: 2.53 seconds 143712 kB
+LOG: RERUN: 6
+LOG: Server load time: 0.285172
+LOG: Server exec time: 2.14555
+LOG: Time / Memory: 2.48 seconds 143796 kB
+LOG: RERUN: 7
+LOG: Server load time: 0.291719
+LOG: Server exec time: 2.20408
+LOG: Time / Memory: 2.55 seconds 143876 kB
+LOG: RERUN: 8
+LOG: Server load time: 0.280129
+LOG: Server exec time: 2.18248
+LOG: Time / Memory: 2.51 seconds 143804 kB
+LOG: RERUN: 9
+LOG: Server load time: 0.282222
+LOG: Server exec time: 2.25555
+LOG: Time / Memory: 2.59 seconds 143800 kB

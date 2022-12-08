@@ -1,0 +1,48 @@
+LOG: ====================================
+LOG: Benchmarking HyCC
+LOG: ====================================
+LOG: TEST: gauss
+LOG: SELECTION_SCHEME: gmwonly
+LOG: MINIMIZATION_TIME: 9
+LOG: ARGUMENTS: ['--all-variants']
+LOG: ====================================
+LOG: RERUN: 0
+LOG: Client load time: 1.27231
+LOG: Client exec time: 1.81223
+LOG: Time / Memory: 3.21 seconds 241408 kB
+LOG: RERUN: 1
+LOG: Client load time: 1.01772
+LOG: Client exec time: 1.78172
+LOG: Time / Memory: 2.91 seconds 241652 kB
+LOG: RERUN: 2
+LOG: Client load time: 1.04988
+LOG: Client exec time: 1.67497
+LOG: Time / Memory: 2.83 seconds 241372 kB
+LOG: RERUN: 3
+LOG: Client load time: 1.03131
+LOG: Client exec time: 1.73667
+LOG: Time / Memory: 2.87 seconds 241348 kB
+LOG: RERUN: 4
+LOG: Client load time: 1.04304
+LOG: Client exec time: 1.68026
+LOG: Time / Memory: 2.83 seconds 241660 kB
+LOG: RERUN: 5
+LOG: Client load time: 1.01023
+LOG: Client exec time: 1.64515
+LOG: Time / Memory: 2.76 seconds 241532 kB
+LOG: RERUN: 6
+LOG: Client load time: 1.01985
+LOG: Client exec time: 1.65685
+LOG: Time / Memory: 2.78 seconds 241604 kB
+LOG: RERUN: 7
+LOG: Client load time: 1.02775
+LOG: Client exec time: 1.68303
+LOG: Time / Memory: 2.82 seconds 241656 kB
+LOG: RERUN: 8
+LOG: Client load time: 1.05703
+LOG: Client exec time: 1.40288
+LOG: Time / Memory: 2.56 seconds 241372 kB
+LOG: RERUN: 9
+LOG: Client load time: 1.0424
+LOG: Client exec time: 1.42341
+LOG: Time / Memory: 2.57 seconds 241396 kB

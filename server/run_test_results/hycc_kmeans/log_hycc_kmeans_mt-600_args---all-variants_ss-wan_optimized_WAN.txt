@@ -1,0 +1,33 @@
+LOG: ====================================
+LOG: Benchmarking HyCC
+LOG: ====================================
+LOG: TEST: kmeans
+LOG: SELECTION_SCHEME: wan_optimized
+LOG: MINIMIZATION_TIME: 600
+LOG: ARGUMENTS: ['--all-variants']
+LOG: ====================================
+LOG: RERUN: 0
+LOG: Error: Process returned with status code 137
+LOG: Error message: Command terminated by signal 9 362.09 seconds 31898700 kB Command exited with non-zero status 137 362.09 seconds 31898700 kB
+LOG: retry: 0
+LOG: ====================================
+LOG: RERUN: 0
+LOG: Error: Process returned with status code 137
+LOG: Error message: Command terminated by signal 9 374.27 seconds 31898744 kB Command exited with non-zero status 137 374.27 seconds 31898744 kB
+LOG: retry: 1
+LOG: ====================================
+LOG: RERUN: 0
+LOG: Error: Process returned with status code 137
+LOG: Error message: Command terminated by signal 9 374.26 seconds 31899044 kB Command exited with non-zero status 137 374.26 seconds 31899044 kB
+LOG: retry: 2
+LOG: ====================================
+LOG: RERUN: 0
+LOG: Error: Process returned with status code 137
+LOG: Error message: Command terminated by signal 9 375.25 seconds 31898496 kB Command exited with non-zero status 137 375.25 seconds 31898496 kB
+LOG: retry: 3
+LOG: ====================================
+LOG: RERUN: 0
+LOG: Error: Process returned with status code 137
+LOG: Error message: Command terminated by signal 9 374.00 seconds 31898172 kB Command exited with non-zero status 137 374.00 seconds 31898172 kB
+LOG: retry: 4
+LOG: Failed wan_optimized with args: --all-variants, exception:

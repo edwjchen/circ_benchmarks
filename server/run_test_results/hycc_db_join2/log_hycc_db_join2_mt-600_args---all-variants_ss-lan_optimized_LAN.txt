@@ -1,0 +1,48 @@
+LOG: ====================================
+LOG: Benchmarking HyCC
+LOG: ====================================
+LOG: TEST: db_join2
+LOG: SELECTION_SCHEME: lan_optimized
+LOG: MINIMIZATION_TIME: 600
+LOG: ARGUMENTS: ['--all-variants']
+LOG: ====================================
+LOG: RERUN: 0
+LOG: Server load time: 55.6063
+LOG: Server exec time: 1.36748
+LOG: Time / Memory: 60.98 seconds 4043724 kB
+LOG: RERUN: 1
+LOG: Server load time: 55.095
+LOG: Server exec time: 1.54749
+LOG: Time / Memory: 60.67 seconds 4044196 kB
+LOG: RERUN: 2
+LOG: Server load time: 55.0391
+LOG: Server exec time: 1.31733
+LOG: Time / Memory: 60.38 seconds 4044208 kB
+LOG: RERUN: 3
+LOG: Server load time: 54.9218
+LOG: Server exec time: 1.8286
+LOG: Time / Memory: 60.78 seconds 4044120 kB
+LOG: RERUN: 4
+LOG: Server load time: 55.3966
+LOG: Server exec time: 1.51799
+LOG: Time / Memory: 60.94 seconds 4044104 kB
+LOG: RERUN: 5
+LOG: Server load time: 55.0522
+LOG: Server exec time: 1.69853
+LOG: Time / Memory: 60.75 seconds 4044024 kB
+LOG: RERUN: 6
+LOG: Server load time: 55.3826
+LOG: Server exec time: 1.29493
+LOG: Time / Memory: 60.67 seconds 4043864 kB
+LOG: RERUN: 7
+LOG: Server load time: 55.1605
+LOG: Server exec time: 1.51266
+LOG: Time / Memory: 60.69 seconds 4043980 kB
+LOG: RERUN: 8
+LOG: Server load time: 54.9811
+LOG: Server exec time: 1.71312
+LOG: Time / Memory: 60.73 seconds 4043768 kB
+LOG: RERUN: 9
+LOG: Server load time: 55.1251
+LOG: Server exec time: 1.31547
+LOG: Time / Memory: 60.48 seconds 4043816 kB

@@ -1,0 +1,48 @@
+LOG: ====================================
+LOG: Benchmarking HyCC
+LOG: ====================================
+LOG: TEST: gcd
+LOG: SELECTION_SCHEME: lan_optimized
+LOG: MINIMIZATION_TIME: 600
+LOG: ARGUMENTS: ['--all-variants']
+LOG: ====================================
+LOG: RERUN: 0
+LOG: Client load time: 0.247103
+LOG: Client exec time: 0.599996
+LOG: Time / Memory: 0.89 seconds 98308 kB
+LOG: RERUN: 1
+LOG: Client load time: 0.232149
+LOG: Client exec time: 0.238219
+LOG: Time / Memory: 0.51 seconds 98520 kB
+LOG: RERUN: 2
+LOG: Client load time: 0.249686
+LOG: Client exec time: 0.239912
+LOG: Time / Memory: 0.53 seconds 98580 kB
+LOG: RERUN: 3
+LOG: Client load time: 0.244659
+LOG: Client exec time: 0.237389
+LOG: Time / Memory: 0.52 seconds 98564 kB
+LOG: RERUN: 4
+LOG: Client load time: 0.246584
+LOG: Client exec time: 0.239435
+LOG: Time / Memory: 0.52 seconds 98260 kB
+LOG: RERUN: 5
+LOG: Client load time: 0.248452
+LOG: Client exec time: 0.240967
+LOG: Time / Memory: 0.53 seconds 98468 kB
+LOG: RERUN: 6
+LOG: Client load time: 0.250752
+LOG: Client exec time: 0.249564
+LOG: Time / Memory: 0.54 seconds 98524 kB
+LOG: RERUN: 7
+LOG: Client load time: 0.249775
+LOG: Client exec time: 0.236921
+LOG: Time / Memory: 0.52 seconds 98188 kB
+LOG: RERUN: 8
+LOG: Client load time: 0.252053
+LOG: Client exec time: 0.239797
+LOG: Time / Memory: 0.53 seconds 98408 kB
+LOG: RERUN: 9
+LOG: Client load time: 0.247587
+LOG: Client exec time: 0.239042
+LOG: Time / Memory: 0.52 seconds 98324 kB

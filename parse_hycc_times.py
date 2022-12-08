@@ -241,7 +241,9 @@ def parse_hycc_logs(role):
         print()
     print(tests)
     best_results_df = pd.DataFrame(best_results)
-    best_results_df.to_csv(f"analysis/hycc_res_{role}.csv")
+    # best_results_df.to_csv(f"analysis/hycc_res.csv")
+    # return best_results_df
+    return best_results
 
 
 run_tests = [
@@ -255,5 +257,78 @@ run_tests = [
     'mnist',
     'cryptonets',
 ]
-parse_hycc_logs("server")
-parse_hycc_logs("client")
+
+server_best = parse_hycc_logs("server")
+client_best = parse_hycc_logs("client")
+
+best_combined = {}
+
+for test in server_best.keys():
+    for ss in server_best[test].keys():
+        print(test, ss)
+        if test not in best_combined:
+            best_combined[test] = {}
+
+        if ss not in best_combined[test]:
+            best_combined[test][ss] = []
+
+        if test in server_best and test in client_best and ss in server_best[test] and ss in client_best[test]:
+            server_data = server_best[test][ss]
+
+            if test == "biomatch" or test == "gauss":
+                server_data = server_data[1:]
+            # client_data = client_best[test][ss]
+            # data = [item for sublist in zip(
+            #     server_data, client_data) for item in sublist]
+            best_combined[test][ss] = server_data
+
+# print(server_df.head())
+# print(client_df.head())
+
+
+# print(server_df['gauss'].yaoonly_lan[0])
+
+best_only = {}
+
+for test in best_combined.keys():
+    for ss in best_combined[test].keys():
+        if test not in best_only:
+            best_only[test] = {}
+
+        if ss not in best_only[test]:
+            best_only[test][ss] = []
+
+    optimized = ["lan_optimized_lan", "wan_optimized_wan"]
+    for o in optimized:
+        if o in best_combined[test]:
+            best_only[test][o] = best_combined[test][o]
+
+    min_amount_lan = float("inf")
+    min_amount_wan = float("inf")
+    min_ss_lan = None
+    min_ss_wan = None
+
+    for ss in best_combined[test].keys():
+        if ss not in optimized:
+            amount = sum(best_combined[test][ss])
+            if ss.endswith("lan"):
+                if amount < min_amount_lan and amount > 0:
+                    min_amount_lan = amount
+                    min_ss_lan = ss
+            else:
+                if amount < min_amount_wan and amount > 0:
+                    min_amount_wan = amount
+                    min_ss_wan = ss
+
+    if min_ss_lan:
+        best_only[test][min_ss_lan] = best_combined[test][min_ss_lan]
+        print(test, min_ss_lan, best_combined[test][min_ss_lan])
+    if min_ss_wan:
+        best_only[test][min_ss_wan] = best_combined[test][min_ss_wan]
+        print(test, min_ss_wan, best_combined[test][min_ss_wan])
+
+    # else:
+    #     assert(False)
+
+df = pd.DataFrame(best_only)
+df.to_csv(f"analysis/best_server_only.csv")

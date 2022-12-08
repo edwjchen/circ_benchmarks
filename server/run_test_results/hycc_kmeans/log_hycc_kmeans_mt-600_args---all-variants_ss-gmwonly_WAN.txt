@@ -1,0 +1,48 @@
+LOG: ====================================
+LOG: Benchmarking HyCC
+LOG: ====================================
+LOG: TEST: kmeans
+LOG: SELECTION_SCHEME: gmwonly
+LOG: MINIMIZATION_TIME: 600
+LOG: ARGUMENTS: ['--all-variants']
+LOG: ====================================
+LOG: RERUN: 0
+LOG: Server load time: 382.018
+LOG: Server exec time: 94.5443
+LOG: Time / Memory: 522.95 seconds 31835848 kB
+LOG: RERUN: 1
+LOG: Server load time: 388.83
+LOG: Server exec time: 95.0242
+LOG: Time / Memory: 530.34 seconds 31838200 kB
+LOG: RERUN: 2
+LOG: Server load time: 376.335
+LOG: Server exec time: 94.0561
+LOG: Time / Memory: 514.15 seconds 31843396 kB
+LOG: RERUN: 3
+LOG: Server load time: 385.965
+LOG: Server exec time: 94.7357
+LOG: Time / Memory: 526.60 seconds 31844912 kB
+LOG: RERUN: 4
+LOG: Server load time: 386.706
+LOG: Server exec time: 95.0438
+LOG: Time / Memory: 527.94 seconds 31837684 kB
+LOG: RERUN: 5
+LOG: Server load time: 373.894
+LOG: Server exec time: 93.9175
+LOG: Time / Memory: 510.47 seconds 31840768 kB
+LOG: RERUN: 6
+LOG: Server load time: 372.941
+LOG: Server exec time: 94.5041
+LOG: Time / Memory: 511.89 seconds 31842280 kB
+LOG: RERUN: 7
+LOG: Server load time: 365.546
+LOG: Server exec time: 93.7407
+LOG: Time / Memory: 501.70 seconds 31846276 kB
+LOG: RERUN: 8
+LOG: Server load time: 362.08
+LOG: Server exec time: 94.1997
+LOG: Time / Memory: 498.64 seconds 31840576 kB
+LOG: RERUN: 9
+LOG: Server load time: 361.399
+LOG: Server exec time: 94.2317
+LOG: Time / Memory: 498.04 seconds 31841520 kB

@@ -1,0 +1,33 @@
+LOG: ====================================
+LOG: Benchmarking HyCC
+LOG: ====================================
+LOG: TEST: gauss
+LOG: SELECTION_SCHEME: gmwhybrid
+LOG: MINIMIZATION_TIME: 9
+LOG: ARGUMENTS: ['--all-variants']
+LOG: ====================================
+LOG: RERUN: 0
+LOG: Error: Process returned with status code 134
+LOG: Error message: terminate called after throwing an instance of 'std::out_of_range'   what():  _Map_base::at Command terminated by signal 6 1.04 seconds 193948 kB Command exited with non-zero status 134 1.04 seconds 193948 kB
+LOG: retry: 0
+LOG: ====================================
+LOG: RERUN: 0
+LOG: Error: Process returned with status code 134
+LOG: Error message: terminate called after throwing an instance of 'std::out_of_range'   what():  _Map_base::at Command terminated by signal 6 0.99 seconds 193940 kB Command exited with non-zero status 134 0.99 seconds 193940 kB
+LOG: retry: 1
+LOG: ====================================
+LOG: RERUN: 0
+LOG: Error: Process returned with status code 134
+LOG: Error message: terminate called after throwing an instance of 'std::out_of_range'   what():  _Map_base::at Command terminated by signal 6 1.00 seconds 193524 kB Command exited with non-zero status 134 1.00 seconds 193524 kB
+LOG: retry: 2
+LOG: ====================================
+LOG: RERUN: 0
+LOG: Error: Process returned with status code 134
+LOG: Error message: terminate called after throwing an instance of 'std::out_of_range'   what():  _Map_base::at Command terminated by signal 6 1.01 seconds 193948 kB Command exited with non-zero status 134 1.01 seconds 193948 kB
+LOG: retry: 3
+LOG: ====================================
+LOG: RERUN: 0
+LOG: Error: Process returned with status code 134
+LOG: Error message: terminate called after throwing an instance of 'std::out_of_range'   what():  _Map_base::at Command terminated by signal 6 1.00 seconds 193876 kB Command exited with non-zero status 134 1.00 seconds 193876 kB
+LOG: retry: 4
+LOG: Failed gmwhybrid with args: --all-variants, exception:

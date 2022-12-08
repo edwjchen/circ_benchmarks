@@ -279,11 +279,11 @@ def setup_hycc(ip, k):
             "cd ~ && git clone https://github.com/edwjchen/circ_benchmarks.git && cd ~/circ_benchmarks && git checkout aws2 -f && git add . && git stash && git pull -f && git submodule init && git submodule update && cd modules/HyCC && git checkout master -f && git add . && git stash && git pull -f && cd ~/circ_benchmarks && ./scripts/dependencies.sh && pip3 install pandas && python3 driver.py -f hycc && python3 driver.py -b && mkdir -p hycc_circuit_dir")
         if stdout.channel.recv_exit_status():
             print(ip, " failed setup")
-    else:
-        _, stdout, _ = client.exec_command(
-            "cd ~/circ_benchmarks && git checkout aws2 -f && git add . && git stash && git pull -f && git submodule init && git submodule update && cd modules/HyCC && git checkout master -f && git add . && git stash && git pull -f && cd ~/circ_benchmarks && ./scripts/dependencies.sh && pip3 install pandas && python3 driver.py -f hycc && python3 driver.py -b && mkdir -p hycc_circuit_dir")
-        if stdout.channel.recv_exit_status():
-            print(ip, " failed setup 2")
+    # else:
+    #     _, stdout, _ = client.exec_command(
+    #         "cd ~/circ_benchmarks && git checkout aws2 -f && git add . && git stash && git pull -f && git submodule init && git submodule update && cd modules/HyCC && git checkout master -f && git add . && git stash && git pull -f && cd ~/circ_benchmarks && ./scripts/dependencies.sh && pip3 install pandas && python3 driver.py -f hycc && python3 driver.py -b && mkdir -p hycc_circuit_dir")
+    #     if stdout.channel.recv_exit_status():
+    #         print(ip, " failed setup 2")
 
     print("Update repo")
     _, stdout, _ = client.exec_command(
@@ -291,12 +291,12 @@ def setup_hycc(ip, k):
     if stdout.channel.recv_exit_status():
         print(ip, " failed setup 3")
 
-    # update ABY
-    print("Updating ABY")
-    _, stdout, _ = client.exec_command(
-        "cd ~/circ_benchmarks && cd modules/ABY && git checkout public -f && git add . && git stash && git pull -f && cd extern/ENCRYPTO_utils && git checkout master -f && git add . && git stash && git pull -f")
-    if stdout.channel.recv_exit_status():
-        print(ip, " failed setup 4")
+    # # update ABY
+    # print("Updating ABY")
+    # _, stdout, _ = client.exec_command(
+    #     "cd ~/circ_benchmarks && cd modules/ABY && git checkout public -f && git add . && git stash && git pull -f && cd extern/ENCRYPTO_utils && git checkout master -f && git add . && git stash && git pull -f")
+    # if stdout.channel.recv_exit_status():
+    #     print(ip, " failed setup 4")
 
     print("Removing old results directories")
     _, stdout, _ = client.exec_command(
@@ -594,12 +594,12 @@ test_compile_params = [
     #     "mt": 600,
     #     "a": ["--all-variants"],
     # },
-    # {
-    #     "name": "kmeans",
-    #     "path": "kmeans/kmeans.c",
-    #     "mt": 600,
-    #     "a": ["--all-variants"],
-    # },
+    {
+        "name": "kmeans",
+        "path": "kmeans/kmeans.c",
+        "mt": 600,
+        "a": ["--all-variants"],
+    },
     # {
     #     "name": "gauss",
     #     "path": "gauss/gauss.c",
@@ -618,12 +618,12 @@ test_compile_params = [
     #     "mt": 600,
     #     "a": ["--all-variants"],
     # },
-    # {
-    #     "name": "db_join2",
-    #     "path": "db_join2/db_join2.c",
-    #     "mt": 600,
-    #     "a": ["--all-variants"],
-    # },
+    {
+        "name": "db_join2",
+        "path": "db_join2/db_join2.c",
+        "mt": 600,
+        "a": ["--all-variants"],
+    },
     # {
     #     "name": "db_merge",
     #     "path": "db_merge/db_merge.c",
@@ -636,12 +636,12 @@ test_compile_params = [
     #     "mt": 600,
     #     "a": ["--all-variants"],
     # },
-    {
-        "name": "cryptonets",
-        "path": "cryptonets/cryptonets.c",
-        "mt": 600,
-        "a": ["--all-variants"],
-    },
+    # {
+    #     "name": "cryptonets",
+    #     "path": "cryptonets/cryptonets.c",
+    #     "mt": 600,
+    #     "a": ["--all-variants"],
+    # },
 ]
 
 # for compile_params in test_compile_params:
@@ -661,10 +661,10 @@ test_select_wan_params = [
     },
 ]
 
-for compile_params in test_compile_params:
-    for select_params in test_select_lan_params:
-        p = {**compile_params, **select_params}
-        bundle_hycc_test(p)
+# for compile_params in test_compile_params:
+#     for select_params in test_select_lan_params:
+#         p = {**compile_params, **select_params}
+#         bundle_hycc_test(p)
 
 # for compile_params in test_compile_params:
 #     for select_params in test_select_lan_params:
@@ -695,12 +695,12 @@ test_run_lan_params = [
     },
 ]
 
-# for compile_params in test_compile_params:
-#     for select_params in test_select_lan_params:
-#         for run_params in test_run_lan_params:
-#             p = {**compile_params, **run_params}
-#             p = {**p, **select_params}
-#             run_hycc_test(p)
+for compile_params in test_compile_params:
+    for select_params in test_select_lan_params:
+        for run_params in test_run_lan_params:
+            p = {**compile_params, **run_params}
+            p = {**p, **select_params}
+            run_hycc_test(p)
 
 test_run_wan_params = [
     # {
@@ -712,12 +712,12 @@ test_run_wan_params = [
     # {
     #     "ss": "yaohybrid",
     # },
-    # {
-    #     "ss": "gmwhybrid",
-    # },
     {
-        "ss": "wan_optimized",
+        "ss": "gmwhybrid",
     },
+    # {
+    #     "ss": "wan_optimized",
+    # },
 ]
 
 # for compile_params in test_compile_params:
