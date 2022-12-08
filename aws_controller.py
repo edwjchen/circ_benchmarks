@@ -287,7 +287,7 @@ def setup_hycc(ip, k):
 
     print("Update repo")
     _, stdout, _ = client.exec_command(
-        "cd ~/circ_benchmarks && git checkout aws2 -f && git add . && git stash && git pull -f && git submodule init && git submodule update && cd modules/HyCC && git checkout master -f && git add . && git stash && git pull -f && cd ~/circ_benchmarks && ./scripts/dependencies.sh && pip3 install pandas && python3 driver.py -f hycc && python3 driver.py -b && mkdir -p hycc_circuit_dir")
+        "cd ~/circ_benchmarks && git checkout aws2 -f && git reset --hard && git pull -f && git submodule init && git submodule update && cd modules/HyCC && git checkout master -f && git add . && git stash && git pull -f && cd ~/circ_benchmarks && ./scripts/dependencies.sh && pip3 install pandas && python3 driver.py -f hycc && python3 driver.py -b && mkdir -p hycc_circuit_dir")
     if stdout.channel.recv_exit_status():
         print(ip, " failed setup 3")
 
@@ -297,6 +297,13 @@ def setup_hycc(ip, k):
     #     "cd ~/circ_benchmarks && cd modules/ABY && git checkout public -f && git add . && git stash && git pull -f && cd extern/ENCRYPTO_utils && git checkout master -f && git add . && git stash && git pull -f")
     # if stdout.channel.recv_exit_status():
     #     print(ip, " failed setup 4")
+
+    # update ABY
+    print("Updating HyCC")
+    _, stdout, _ = client.exec_command(
+        "cd ~/circ_benchmarks && cd modules/HyCC && git checkout master -f && git reset --hard && git pull -f")
+    if stdout.channel.recv_exit_status():
+        print(ip, " failed setup 4")
 
     print("Removing old results directories")
     _, stdout, _ = client.exec_command(
@@ -618,12 +625,12 @@ test_compile_params = [
     #     "mt": 600,
     #     "a": ["--all-variants"],
     # },
-    {
-        "name": "db_join2",
-        "path": "db_join2/db_join2.c",
-        "mt": 600,
-        "a": ["--all-variants"],
-    },
+    # {
+    #     "name": "db_join2",
+    #     "path": "db_join2/db_join2.c",
+    #     "mt": 600,
+    #     "a": ["--all-variants"],
+    # },
     # {
     #     "name": "db_merge",
     #     "path": "db_merge/db_merge.c",
@@ -687,12 +694,12 @@ test_run_lan_params = [
     # {
     #     "ss": "yaohybrid",
     # },
-    # {
-    #     "ss": "gmwhybrid",
-    # },
     {
-        "ss": "lan_optimized",
+        "ss": "gmwhybrid",
     },
+    # {
+    #     "ss": "lan_optimized",
+    # },
 ]
 
 for compile_params in test_compile_params:
@@ -709,12 +716,12 @@ test_run_wan_params = [
     # {
     #     "ss": "gmwonly",
     # },
-    # {
-    #     "ss": "yaohybrid",
-    # },
     {
-        "ss": "gmwhybrid",
+        "ss": "yaohybrid",
     },
+    # {
+    #     "ss": "gmwhybrid",
+    # },
     # {
     #     "ss": "wan_optimized",
     # },
