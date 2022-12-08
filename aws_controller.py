@@ -291,6 +291,12 @@ def setup_hycc(ip, k):
     if stdout.channel.recv_exit_status():
         print(ip, " failed setup 3")
 
+    print("Build repo")
+    _, stdout, _ = client.exec_command(
+        "cd ~/circ_benchmarks && python3 driver.py -b && mkdir -p hycc_circuit_dir")
+    if stdout.channel.recv_exit_status():
+        print(ip, " failed setup 3")
+
     # # update ABY
     # print("Updating ABY")
     # _, stdout, _ = client.exec_command(

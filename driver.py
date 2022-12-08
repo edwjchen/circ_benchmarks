@@ -98,6 +98,7 @@ def build(features):
         subprocess.run(["./scripts/build_hycc.zsh"], check=True)
 
         # install hycc aby dependency
+        subprocess.run(["rm", "-rf", ABY_HYCC_DIR], check=True)
         subprocess.run(["cp", "-r", ABY_HYCC, ABY_HYCC_DIR], check=True)
 
         with open(ABY_CMAKE, 'r') as f:
@@ -154,6 +155,7 @@ def build_aby(features):
         subprocess.run(["./scripts/build_hycc.zsh"], check=True)
 
         # install hycc aby dependency
+        subprocess.run(["rm", "-rf", ABY_HYCC_DIR], check=True)
         subprocess.run(["cp", "-r", ABY_HYCC, ABY_HYCC_DIR], check=True)
 
         with open(ABY_CMAKE, 'r') as f:
