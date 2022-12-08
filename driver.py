@@ -100,8 +100,9 @@ def build(features):
         # install hycc aby dependency
         subprocess.run(["cp", "-r", ABY_HYCC, ABY_HYCC_DIR], check=True)
 
-        with open(ABY_CMAKE, 'a') as f:
+        with open(ABY_CMAKE, 'r') as f:
             data = f.read()
+        with open(ABY_CMAKE, 'a') as f:
             if "add_subdirectory(aby-hycc)" not in data:
                 print("add_subdirectory(aby-hycc)", file=f)
 
@@ -155,8 +156,9 @@ def build_aby(features):
         # install hycc aby dependency
         subprocess.run(["cp", "-r", ABY_HYCC, ABY_HYCC_DIR], check=True)
 
-        with open(ABY_CMAKE, 'a') as f:
+        with open(ABY_CMAKE, 'r') as f:
             data = f.read()
+        with open(ABY_CMAKE, 'a') as f:
             if "add_subdirectory(aby-hycc)" not in data:
                 print("add_subdirectory(aby-hycc)", file=f)
 
