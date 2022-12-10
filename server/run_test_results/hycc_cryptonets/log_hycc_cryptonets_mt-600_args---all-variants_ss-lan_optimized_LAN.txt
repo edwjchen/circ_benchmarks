@@ -1,0 +1,78 @@
+LOG: ====================================
+LOG: Benchmarking HyCC
+LOG: ====================================
+LOG: TEST: cryptonets
+LOG: SELECTION_SCHEME: lan_optimized
+LOG: MINIMIZATION_TIME: 600
+LOG: ARGUMENTS: ['--all-variants']
+LOG: ====================================
+LOG: RERUN: 0
+LOG: Server load time: 2.224
+LOG: Server exec time: 0.928796
+LOG: TOTAL: 616.125
+LOG: SETUP: 470.09
+LOG: ONLINE: 146.034
+LOG: Time / Memory: 3.53 seconds 477340 kB
+LOG: RERUN: 1
+LOG: Server load time: 2.24646
+LOG: Server exec time: 0.912847
+LOG: TOTAL: 624.082
+LOG: SETUP: 480.264
+LOG: ONLINE: 143.816
+LOG: Time / Memory: 3.53 seconds 477324 kB
+LOG: RERUN: 2
+LOG: Server load time: 2.23087
+LOG: Server exec time: 0.88733
+LOG: TOTAL: 621.999
+LOG: SETUP: 480.604
+LOG: ONLINE: 141.394
+LOG: Time / Memory: 3.50 seconds 476704 kB
+LOG: RERUN: 3
+LOG: Server load time: 2.24509
+LOG: Server exec time: 0.919179
+LOG: TOTAL: 603.477
+LOG: SETUP: 459.6
+LOG: ONLINE: 143.876
+LOG: Time / Memory: 3.54 seconds 476964 kB
+LOG: RERUN: 4
+LOG: Server load time: 2.20836
+LOG: Server exec time: 0.929571
+LOG: TOTAL: 616.18
+LOG: SETUP: 475.616
+LOG: ONLINE: 140.563
+LOG: Time / Memory: 3.52 seconds 477132 kB
+LOG: RERUN: 5
+LOG: Server load time: 2.22372
+LOG: Server exec time: 0.918489
+LOG: TOTAL: 629.653
+LOG: SETUP: 487.741
+LOG: ONLINE: 141.91
+LOG: Time / Memory: 3.52 seconds 476804 kB
+LOG: RERUN: 6
+LOG: Server load time: 2.2004
+LOG: Server exec time: 0.973258
+LOG: TOTAL: 620.685
+LOG: SETUP: 479.83
+LOG: ONLINE: 140.852
+LOG: Time / Memory: 3.55 seconds 476896 kB
+LOG: RERUN: 7
+LOG: Server load time: 2.19935
+LOG: Server exec time: 0.977866
+LOG: TOTAL: 624.439
+LOG: SETUP: 481.669
+LOG: ONLINE: 142.768
+LOG: Time / Memory: 3.56 seconds 476572 kB
+LOG: RERUN: 8
+LOG: Server load time: 2.2264
+LOG: Server exec time: 0.961652
+LOG: TOTAL: 640.393
+LOG: SETUP: 496.017
+LOG: ONLINE: 144.373
+LOG: Time / Memory: 3.57 seconds 476556 kB
+LOG: RERUN: 9
+LOG: Server load time: 2.2059
+LOG: Server exec time: 1.0079
+LOG: TOTAL: 633.593
+LOG: SETUP: 488.529
+LOG: ONLINE: 145.061
+LOG: Time / Memory: 3.59 seconds 476960 kB

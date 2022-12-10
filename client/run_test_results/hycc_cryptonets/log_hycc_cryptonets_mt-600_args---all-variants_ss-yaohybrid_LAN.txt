@@ -1,0 +1,78 @@
+LOG: ====================================
+LOG: Benchmarking HyCC
+LOG: ====================================
+LOG: TEST: cryptonets
+LOG: SELECTION_SCHEME: yaohybrid
+LOG: MINIMIZATION_TIME: 600
+LOG: ARGUMENTS: ['--all-variants']
+LOG: ====================================
+LOG: RERUN: 0
+LOG: Client load time: 104.051
+LOG: Client exec time: 1.24137
+LOG: TOTAL: 957.949
+LOG: SETUP: 625.872
+LOG: ONLINE: 332.074
+LOG: Time / Memory: 107.13 seconds 6010792 kB
+LOG: RERUN: 1
+LOG: Client load time: 103.645
+LOG: Client exec time: 1.4512
+LOG: TOTAL: 956.048
+LOG: SETUP: 637.842
+LOG: ONLINE: 318.205
+LOG: Time / Memory: 106.91 seconds 6010756 kB
+LOG: RERUN: 2
+LOG: Client load time: 102.365
+LOG: Client exec time: 2.81925
+LOG: TOTAL: 978.015
+LOG: SETUP: 657.233
+LOG: ONLINE: 320.779
+LOG: Time / Memory: 107.02 seconds 6010944 kB
+LOG: RERUN: 3
+LOG: Client load time: 102.009
+LOG: Client exec time: 2.90896
+LOG: TOTAL: 962.084
+LOG: SETUP: 654.816
+LOG: ONLINE: 307.266
+LOG: Time / Memory: 106.74 seconds 6014296 kB
+LOG: RERUN: 4
+LOG: Client load time: 103.814
+LOG: Client exec time: 1.41479
+LOG: TOTAL: 949.129
+LOG: SETUP: 636.038
+LOG: ONLINE: 313.09
+LOG: Time / Memory: 107.05 seconds 6010500 kB
+LOG: RERUN: 5
+LOG: Client load time: 102.353
+LOG: Client exec time: 1.67545
+LOG: TOTAL: 1107.13
+LOG: SETUP: 780.452
+LOG: ONLINE: 326.678
+LOG: Time / Memory: 105.87 seconds 6011616 kB
+LOG: RERUN: 6
+LOG: Client load time: 102.233
+LOG: Client exec time: 1.34543
+LOG: TOTAL: 972.704
+LOG: SETUP: 662.749
+LOG: ONLINE: 309.953
+LOG: Time / Memory: 105.39 seconds 6008268 kB
+LOG: RERUN: 7
+LOG: Client load time: 102.18
+LOG: Client exec time: 2.16673
+LOG: TOTAL: 958.428
+LOG: SETUP: 651.579
+LOG: ONLINE: 306.847
+LOG: Time / Memory: 106.19 seconds 6008152 kB
+LOG: RERUN: 8
+LOG: Client load time: 102.272
+LOG: Client exec time: 1.52097
+LOG: TOTAL: 953.076
+LOG: SETUP: 632.401
+LOG: ONLINE: 320.673
+LOG: Time / Memory: 105.64 seconds 6008776 kB
+LOG: RERUN: 9
+LOG: Client load time: 102.148
+LOG: Client exec time: 1.72107
+LOG: TOTAL: 922.98
+LOG: SETUP: 615.907
+LOG: ONLINE: 307.071
+LOG: Time / Memory: 105.69 seconds 6008836 kB

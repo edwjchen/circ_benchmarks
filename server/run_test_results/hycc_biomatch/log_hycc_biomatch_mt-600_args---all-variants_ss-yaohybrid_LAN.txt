@@ -1,0 +1,78 @@
+LOG: ====================================
+LOG: Benchmarking HyCC
+LOG: ====================================
+LOG: TEST: biomatch
+LOG: SELECTION_SCHEME: yaohybrid
+LOG: MINIMIZATION_TIME: 600
+LOG: ARGUMENTS: ['--all-variants']
+LOG: ====================================
+LOG: RERUN: 0
+LOG: Server load time: 0.376519
+LOG: Server exec time: 0.269666
+LOG: TOTAL: 56.526
+LOG: SETUP: 38.088
+LOG: ONLINE: 18.436
+LOG: Time / Memory: 0.69 seconds 111588 kB
+LOG: RERUN: 1
+LOG: Server load time: 0.391222
+LOG: Server exec time: 0.273756
+LOG: TOTAL: 58.516
+LOG: SETUP: 39.588
+LOG: ONLINE: 18.926
+LOG: Time / Memory: 0.70 seconds 111476 kB
+LOG: RERUN: 2
+LOG: Server load time: 0.389401
+LOG: Server exec time: 0.282406
+LOG: TOTAL: 57.095
+LOG: SETUP: 38.375
+LOG: ONLINE: 18.717
+LOG: Time / Memory: 0.71 seconds 111684 kB
+LOG: RERUN: 3
+LOG: Server load time: 0.40621
+LOG: Server exec time: 0.273923
+LOG: TOTAL: 60.091
+LOG: SETUP: 40.972
+LOG: ONLINE: 19.117
+LOG: Time / Memory: 0.72 seconds 111644 kB
+LOG: RERUN: 4
+LOG: Server load time: 0.393719
+LOG: Server exec time: 0.276312
+LOG: TOTAL: 56.388
+LOG: SETUP: 38.016
+LOG: ONLINE: 18.37
+LOG: Time / Memory: 0.71 seconds 111616 kB
+LOG: RERUN: 5
+LOG: Server load time: 0.386703
+LOG: Server exec time: 0.278219
+LOG: TOTAL: 57.237
+LOG: SETUP: 38.26
+LOG: ONLINE: 18.975
+LOG: Time / Memory: 0.70 seconds 111544 kB
+LOG: RERUN: 6
+LOG: Server load time: 0.360517
+LOG: Server exec time: 0.287915
+LOG: TOTAL: 56.656
+LOG: SETUP: 37.727
+LOG: ONLINE: 18.927
+LOG: Time / Memory: 0.69 seconds 111596 kB
+LOG: RERUN: 7
+LOG: Server load time: 0.37831
+LOG: Server exec time: 0.273
+LOG: TOTAL: 57.453
+LOG: SETUP: 37.863
+LOG: ONLINE: 19.589
+LOG: Time / Memory: 0.69 seconds 111564 kB
+LOG: RERUN: 8
+LOG: Server load time: 0.381823
+LOG: Server exec time: 0.271755
+LOG: TOTAL: 58.758
+LOG: SETUP: 39.655
+LOG: ONLINE: 19.101
+LOG: Time / Memory: 0.69 seconds 111660 kB
+LOG: RERUN: 9
+LOG: Server load time: 0.374624
+LOG: Server exec time: 0.273817
+LOG: TOTAL: 56.053
+LOG: SETUP: 37.361
+LOG: ONLINE: 18.69
+LOG: Time / Memory: 0.69 seconds 111476 kB

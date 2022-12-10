@@ -1,0 +1,78 @@
+LOG: ====================================
+LOG: Benchmarking HyCC
+LOG: ====================================
+LOG: TEST: gauss
+LOG: SELECTION_SCHEME: wan_optimized
+LOG: MINIMIZATION_TIME: 9
+LOG: ARGUMENTS: ['--all-variants']
+LOG: ====================================
+LOG: RERUN: 0
+LOG: Server load time: 0.841124
+LOG: Server exec time: 1.47563
+LOG: TOTAL: 362.931
+LOG: SETUP: 160.119
+LOG: ONLINE: 202.812
+LOG: Time / Memory: 2.41 seconds 205288 kB
+LOG: RERUN: 1
+LOG: Server load time: 0.838645
+LOG: Server exec time: 0.946575
+LOG: TOTAL: 362.815
+LOG: SETUP: 160.267
+LOG: ONLINE: 202.548
+LOG: Time / Memory: 1.88 seconds 204940 kB
+LOG: RERUN: 2
+LOG: Server load time: 0.845772
+LOG: Server exec time: 0.946518
+LOG: TOTAL: 364.47
+LOG: SETUP: 161.925
+LOG: ONLINE: 202.542
+LOG: Time / Memory: 1.88 seconds 204964 kB
+LOG: RERUN: 3
+LOG: Server load time: 0.85003
+LOG: Server exec time: 0.959856
+LOG: TOTAL: 363.041
+LOG: SETUP: 160.529
+LOG: ONLINE: 202.511
+LOG: Time / Memory: 1.90 seconds 205056 kB
+LOG: RERUN: 4
+LOG: Server load time: 0.8423
+LOG: Server exec time: 0.948486
+LOG: TOTAL: 364.75
+LOG: SETUP: 162.088
+LOG: ONLINE: 202.661
+LOG: Time / Memory: 1.88 seconds 205156 kB
+LOG: RERUN: 5
+LOG: Server load time: 0.848366
+LOG: Server exec time: 0.908029
+LOG: TOTAL: 362.7
+LOG: SETUP: 160.276
+LOG: ONLINE: 202.423
+LOG: Time / Memory: 1.85 seconds 205004 kB
+LOG: RERUN: 6
+LOG: Server load time: 0.850333
+LOG: Server exec time: 0.916384
+LOG: TOTAL: 363.002
+LOG: SETUP: 160.321
+LOG: ONLINE: 202.679
+LOG: Time / Memory: 1.86 seconds 204968 kB
+LOG: RERUN: 7
+LOG: Server load time: 0.849951
+LOG: Server exec time: 0.949642
+LOG: TOTAL: 362.821
+LOG: SETUP: 160.272
+LOG: ONLINE: 202.546
+LOG: Time / Memory: 1.89 seconds 205288 kB
+LOG: RERUN: 8
+LOG: Server load time: 0.84675
+LOG: Server exec time: 0.939406
+LOG: TOTAL: 363.089
+LOG: SETUP: 160.215
+LOG: ONLINE: 202.872
+LOG: Time / Memory: 1.88 seconds 205156 kB
+LOG: RERUN: 9
+LOG: Server load time: 0.851608
+LOG: Server exec time: 0.92098
+LOG: TOTAL: 362.904
+LOG: SETUP: 160.238
+LOG: ONLINE: 202.66
+LOG: Time / Memory: 1.87 seconds 205244 kB

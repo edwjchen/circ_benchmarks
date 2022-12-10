@@ -1,0 +1,78 @@
+LOG: ====================================
+LOG: Benchmarking HyCC
+LOG: ====================================
+LOG: TEST: biomatch
+LOG: SELECTION_SCHEME: gmwhybrid
+LOG: MINIMIZATION_TIME: 600
+LOG: ARGUMENTS: ['--all-variants']
+LOG: ====================================
+LOG: RERUN: 0
+LOG: Server load time: 0.509104
+LOG: Server exec time: 0.297625
+LOG: TOTAL: 77.566
+LOG: SETUP: 42.205
+LOG: ONLINE: 35.36
+LOG: Time / Memory: 0.86 seconds 119672 kB
+LOG: RERUN: 1
+LOG: Server load time: 0.520715
+LOG: Server exec time: 0.301125
+LOG: TOTAL: 81.854
+LOG: SETUP: 42.712
+LOG: ONLINE: 39.141
+LOG: Time / Memory: 0.87 seconds 119644 kB
+LOG: RERUN: 2
+LOG: Server load time: 0.53816
+LOG: Server exec time: 0.302492
+LOG: TOTAL: 79.869
+LOG: SETUP: 43.367
+LOG: ONLINE: 36.499
+LOG: Time / Memory: 0.89 seconds 119580 kB
+LOG: RERUN: 3
+LOG: Server load time: 0.523737
+LOG: Server exec time: 0.302486
+LOG: TOTAL: 80.244
+LOG: SETUP: 44.027
+LOG: ONLINE: 36.217
+LOG: Time / Memory: 0.88 seconds 119396 kB
+LOG: RERUN: 4
+LOG: Server load time: 0.526063
+LOG: Server exec time: 0.296643
+LOG: TOTAL: 81.78
+LOG: SETUP: 44.085
+LOG: ONLINE: 37.693
+LOG: Time / Memory: 0.87 seconds 119576 kB
+LOG: RERUN: 5
+LOG: Server load time: 0.535888
+LOG: Server exec time: 0.294079
+LOG: TOTAL: 80.196
+LOG: SETUP: 42.95
+LOG: ONLINE: 37.244
+LOG: Time / Memory: 0.88 seconds 119716 kB
+LOG: RERUN: 6
+LOG: Server load time: 0.534701
+LOG: Server exec time: 0.305865
+LOG: TOTAL: 82.001
+LOG: SETUP: 45.172
+LOG: ONLINE: 36.826
+LOG: Time / Memory: 0.89 seconds 119516 kB
+LOG: RERUN: 7
+LOG: Server load time: 0.526099
+LOG: Server exec time: 0.305702
+LOG: TOTAL: 79.959
+LOG: SETUP: 44.084
+LOG: ONLINE: 35.874
+LOG: Time / Memory: 0.88 seconds 119416 kB
+LOG: RERUN: 8
+LOG: Server load time: 0.529487
+LOG: Server exec time: 0.299615
+LOG: TOTAL: 79.12
+LOG: SETUP: 44.039
+LOG: ONLINE: 35.079
+LOG: Time / Memory: 0.88 seconds 119728 kB
+LOG: RERUN: 9
+LOG: Server load time: 0.525806
+LOG: Server exec time: 0.303685
+LOG: TOTAL: 81.651
+LOG: SETUP: 42.896
+LOG: ONLINE: 38.753
+LOG: Time / Memory: 0.88 seconds 119460 kB

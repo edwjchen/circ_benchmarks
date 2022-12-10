@@ -1,0 +1,78 @@
+LOG: ====================================
+LOG: Benchmarking HyCC
+LOG: ====================================
+LOG: TEST: biomatch
+LOG: SELECTION_SCHEME: wan_optimized
+LOG: MINIMIZATION_TIME: 600
+LOG: ARGUMENTS: ['--all-variants']
+LOG: ====================================
+LOG: RERUN: 0
+LOG: Server load time: 21.7071
+LOG: Server exec time: 3.24896
+LOG: TOTAL: 1629.76
+LOG: SETUP: 1233.19
+LOG: ONLINE: 396.561
+LOG: Time / Memory: 27.83 seconds 2449300 kB
+LOG: RERUN: 1
+LOG: Server load time: 21.7136
+LOG: Server exec time: 2.58929
+LOG: TOTAL: 1576.79
+LOG: SETUP: 1139.21
+LOG: ONLINE: 437.574
+LOG: Time / Memory: 27.18 seconds 2447408 kB
+LOG: RERUN: 2
+LOG: Server load time: 21.8029
+LOG: Server exec time: 2.73048
+LOG: TOTAL: 1717.59
+LOG: SETUP: 1282.14
+LOG: ONLINE: 435.452
+LOG: Time / Memory: 27.39 seconds 2447744 kB
+LOG: RERUN: 3
+LOG: Server load time: 21.6161
+LOG: Server exec time: 3.10168
+LOG: TOTAL: 1719.11
+LOG: SETUP: 1282.89
+LOG: ONLINE: 436.214
+LOG: Time / Memory: 27.62 seconds 2447424 kB
+LOG: RERUN: 4
+LOG: Server load time: 21.7161
+LOG: Server exec time: 2.9968
+LOG: TOTAL: 1766.71
+LOG: SETUP: 1331.38
+LOG: ONLINE: 435.334
+LOG: Time / Memory: 27.62 seconds 2447236 kB
+LOG: RERUN: 5
+LOG: Server load time: 21.7836
+LOG: Server exec time: 2.33164
+LOG: TOTAL: 1482.46
+LOG: SETUP: 1090.99
+LOG: ONLINE: 391.475
+LOG: Time / Memory: 27.00 seconds 2447264 kB
+LOG: RERUN: 6
+LOG: Server load time: 21.9871
+LOG: Server exec time: 2.49664
+LOG: TOTAL: 1824.53
+LOG: SETUP: 1380.08
+LOG: ONLINE: 444.451
+LOG: Time / Memory: 27.41 seconds 2447524 kB
+LOG: RERUN: 7
+LOG: Server load time: 21.8844
+LOG: Server exec time: 2.40187
+LOG: TOTAL: 1571.36
+LOG: SETUP: 1138.05
+LOG: ONLINE: 433.301
+LOG: Time / Memory: 27.18 seconds 2447800 kB
+LOG: RERUN: 8
+LOG: Server load time: 21.7111
+LOG: Server exec time: 2.68792
+LOG: TOTAL: 1575.16
+LOG: SETUP: 1144.84
+LOG: ONLINE: 430.318
+LOG: Time / Memory: 27.27 seconds 2447384 kB
+LOG: RERUN: 9
+LOG: Server load time: 21.8379
+LOG: Server exec time: 2.63978
+LOG: TOTAL: 1576.77
+LOG: SETUP: 1142.48
+LOG: ONLINE: 434.29
+LOG: Time / Memory: 27.37 seconds 2447172 kB

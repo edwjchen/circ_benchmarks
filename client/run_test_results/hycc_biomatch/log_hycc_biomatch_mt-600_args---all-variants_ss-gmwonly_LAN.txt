@@ -1,0 +1,78 @@
+LOG: ====================================
+LOG: Benchmarking HyCC
+LOG: ====================================
+LOG: TEST: biomatch
+LOG: SELECTION_SCHEME: gmwonly
+LOG: MINIMIZATION_TIME: 600
+LOG: ARGUMENTS: ['--all-variants']
+LOG: ====================================
+LOG: RERUN: 0
+LOG: Client load time: 23.3289
+LOG: Client exec time: 1.91427
+LOG: TOTAL: 1489.1
+LOG: SETUP: 206.299
+LOG: ONLINE: 1282.79
+LOG: Time / Memory: 27.87 seconds 2214136 kB
+LOG: RERUN: 1
+LOG: Client load time: 22.1742
+LOG: Client exec time: 1.71545
+LOG: TOTAL: 1333.61
+LOG: SETUP: 151.952
+LOG: ONLINE: 1181.66
+LOG: Time / Memory: 26.49 seconds 2210616 kB
+LOG: RERUN: 2
+LOG: Client load time: 22.764
+LOG: Client exec time: 1.81809
+LOG: TOTAL: 1437.06
+LOG: SETUP: 160.506
+LOG: ONLINE: 1276.55
+LOG: Time / Memory: 27.21 seconds 2212324 kB
+LOG: RERUN: 3
+LOG: Client load time: 22.4028
+LOG: Client exec time: 1.75088
+LOG: TOTAL: 1342.81
+LOG: SETUP: 156.833
+LOG: ONLINE: 1185.98
+LOG: Time / Memory: 26.76 seconds 2210560 kB
+LOG: RERUN: 4
+LOG: Client load time: 22.2913
+LOG: Client exec time: 1.79973
+LOG: TOTAL: 1419.1
+LOG: SETUP: 157.238
+LOG: ONLINE: 1261.86
+LOG: Time / Memory: 26.73 seconds 2212664 kB
+LOG: RERUN: 5
+LOG: Client load time: 22.5339
+LOG: Client exec time: 1.75262
+LOG: TOTAL: 1364.55
+LOG: SETUP: 156.723
+LOG: ONLINE: 1207.83
+LOG: Time / Memory: 26.91 seconds 2210352 kB
+LOG: RERUN: 6
+LOG: Client load time: 22.6095
+LOG: Client exec time: 1.76124
+LOG: TOTAL: 1382.68
+LOG: SETUP: 152.247
+LOG: ONLINE: 1230.43
+LOG: Time / Memory: 27.02 seconds 2212188 kB
+LOG: RERUN: 7
+LOG: Client load time: 22.5831
+LOG: Client exec time: 1.74974
+LOG: TOTAL: 1367.85
+LOG: SETUP: 157.728
+LOG: ONLINE: 1210.12
+LOG: Time / Memory: 26.94 seconds 2212400 kB
+LOG: RERUN: 8
+LOG: Client load time: 22.0138
+LOG: Client exec time: 1.75452
+LOG: TOTAL: 1379.48
+LOG: SETUP: 155.09
+LOG: ONLINE: 1224.39
+LOG: Time / Memory: 26.41 seconds 2210616 kB
+LOG: RERUN: 9
+LOG: Client load time: 22.4965
+LOG: Client exec time: 1.83836
+LOG: TOTAL: 1443.3
+LOG: SETUP: 150.827
+LOG: ONLINE: 1292.47
+LOG: Time / Memory: 26.94 seconds 2210316 kB

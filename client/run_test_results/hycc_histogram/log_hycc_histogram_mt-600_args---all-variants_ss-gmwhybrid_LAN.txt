@@ -1,0 +1,78 @@
+LOG: ====================================
+LOG: Benchmarking HyCC
+LOG: ====================================
+LOG: TEST: histogram
+LOG: SELECTION_SCHEME: gmwhybrid
+LOG: MINIMIZATION_TIME: 600
+LOG: ARGUMENTS: ['--all-variants']
+LOG: ====================================
+LOG: RERUN: 0
+LOG: Client load time: 13.7245
+LOG: Client exec time: 2.69352
+LOG: TOTAL: 1621.45
+LOG: SETUP: 269.918
+LOG: ONLINE: 1351.53
+LOG: Time / Memory: 18.23 seconds 2326600 kB
+LOG: RERUN: 1
+LOG: Client load time: 13.0677
+LOG: Client exec time: 3.37591
+LOG: TOTAL: 1519.97
+LOG: SETUP: 260.528
+LOG: ONLINE: 1259.44
+LOG: Time / Memory: 18.27 seconds 2326300 kB
+LOG: RERUN: 2
+LOG: Client load time: 13.1205
+LOG: Client exec time: 2.70228
+LOG: TOTAL: 1516.13
+LOG: SETUP: 263.59
+LOG: ONLINE: 1252.54
+LOG: Time / Memory: 17.65 seconds 2326336 kB
+LOG: RERUN: 3
+LOG: Client load time: 13.9265
+LOG: Client exec time: 2.59857
+LOG: TOTAL: 1541.22
+LOG: SETUP: 269.544
+LOG: ONLINE: 1271.68
+LOG: Time / Memory: 18.35 seconds 2326612 kB
+LOG: RERUN: 4
+LOG: Client load time: 13.4093
+LOG: Client exec time: 2.68988
+LOG: TOTAL: 1519.1
+LOG: SETUP: 268.047
+LOG: ONLINE: 1251.05
+LOG: Time / Memory: 17.92 seconds 2326424 kB
+LOG: RERUN: 5
+LOG: Client load time: 13.826
+LOG: Client exec time: 2.7258
+LOG: TOTAL: 1655.56
+LOG: SETUP: 272.858
+LOG: ONLINE: 1382.7
+LOG: Time / Memory: 18.39 seconds 2326332 kB
+LOG: RERUN: 6
+LOG: Client load time: 13.9213
+LOG: Client exec time: 2.73599
+LOG: TOTAL: 1657.35
+LOG: SETUP: 281.798
+LOG: ONLINE: 1375.56
+LOG: Time / Memory: 18.50 seconds 2326584 kB
+LOG: RERUN: 7
+LOG: Client load time: 13.4474
+LOG: Client exec time: 2.71153
+LOG: TOTAL: 1637.72
+LOG: SETUP: 267.796
+LOG: ONLINE: 1369.93
+LOG: Time / Memory: 17.99 seconds 2326524 kB
+LOG: RERUN: 8
+LOG: Client load time: 13.1568
+LOG: Client exec time: 3.25784
+LOG: TOTAL: 1567.33
+LOG: SETUP: 267.714
+LOG: ONLINE: 1299.62
+LOG: Time / Memory: 18.23 seconds 2326464 kB
+LOG: RERUN: 9
+LOG: Client load time: 13.3276
+LOG: Client exec time: 2.61752
+LOG: TOTAL: 1546.17
+LOG: SETUP: 271.73
+LOG: ONLINE: 1274.44
+LOG: Time / Memory: 17.79 seconds 2326532 kB

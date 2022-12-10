@@ -1,0 +1,78 @@
+LOG: ====================================
+LOG: Benchmarking HyCC
+LOG: ====================================
+LOG: TEST: db_merge
+LOG: SELECTION_SCHEME: yaohybrid
+LOG: MINIMIZATION_TIME: 600
+LOG: ARGUMENTS: ['--all-variants']
+LOG: ====================================
+LOG: RERUN: 0
+LOG: Client load time: 3.80306
+LOG: Client exec time: 1.50251
+LOG: TOTAL: 945.567
+LOG: SETUP: 689.111
+LOG: ONLINE: 256.453
+LOG: Time / Memory: 5.92 seconds 743076 kB
+LOG: RERUN: 1
+LOG: Client load time: 3.85376
+LOG: Client exec time: 1.47996
+LOG: TOTAL: 944.169
+LOG: SETUP: 688.548
+LOG: ONLINE: 255.619
+LOG: Time / Memory: 5.94 seconds 742804 kB
+LOG: RERUN: 2
+LOG: Client load time: 3.87248
+LOG: Client exec time: 1.48257
+LOG: TOTAL: 945.581
+LOG: SETUP: 689.469
+LOG: ONLINE: 256.109
+LOG: Time / Memory: 5.96 seconds 742844 kB
+LOG: RERUN: 3
+LOG: Client load time: 3.61855
+LOG: Client exec time: 1.53547
+LOG: TOTAL: 946.508
+LOG: SETUP: 690.3
+LOG: ONLINE: 256.206
+LOG: Time / Memory: 5.71 seconds 742912 kB
+LOG: RERUN: 4
+LOG: Client load time: 3.59006
+LOG: Client exec time: 1.65863
+LOG: TOTAL: 945.858
+LOG: SETUP: 690.05
+LOG: ONLINE: 255.806
+LOG: Time / Memory: 5.83 seconds 742964 kB
+LOG: RERUN: 5
+LOG: Client load time: 3.79575
+LOG: Client exec time: 1.48039
+LOG: TOTAL: 946.915
+LOG: SETUP: 690.007
+LOG: ONLINE: 256.906
+LOG: Time / Memory: 5.87 seconds 742992 kB
+LOG: RERUN: 6
+LOG: Client load time: 3.74543
+LOG: Client exec time: 1.48049
+LOG: TOTAL: 944.77
+LOG: SETUP: 689.698
+LOG: ONLINE: 255.069
+LOG: Time / Memory: 5.80 seconds 742980 kB
+LOG: RERUN: 7
+LOG: Client load time: 3.62051
+LOG: Client exec time: 1.66056
+LOG: TOTAL: 947.734
+LOG: SETUP: 690.968
+LOG: ONLINE: 256.766
+LOG: Time / Memory: 5.84 seconds 743064 kB
+LOG: RERUN: 8
+LOG: Client load time: 3.67105
+LOG: Client exec time: 1.58517
+LOG: TOTAL: 991.966
+LOG: SETUP: 737.542
+LOG: ONLINE: 254.424
+LOG: Time / Memory: 5.82 seconds 742920 kB
+LOG: RERUN: 9
+LOG: Client load time: 3.6758
+LOG: Client exec time: 1.58336
+LOG: TOTAL: 990.655
+LOG: SETUP: 735.442
+LOG: ONLINE: 255.212
+LOG: Time / Memory: 5.83 seconds 742688 kB

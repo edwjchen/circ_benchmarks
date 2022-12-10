@@ -1,0 +1,78 @@
+LOG: ====================================
+LOG: Benchmarking HyCC
+LOG: ====================================
+LOG: TEST: db_join2
+LOG: SELECTION_SCHEME: wan_optimized
+LOG: MINIMIZATION_TIME: 600
+LOG: ARGUMENTS: ['--all-variants']
+LOG: ====================================
+LOG: RERUN: 0
+LOG: Server load time: 56.3723
+LOG: Server exec time: 2.35436
+LOG: TOTAL: 1477.95
+LOG: SETUP: 1034.17
+LOG: ONLINE: 443.778
+LOG: Time / Memory: 62.89 seconds 4043736 kB
+LOG: RERUN: 1
+LOG: Server load time: 56.13
+LOG: Server exec time: 2.34715
+LOG: TOTAL: 1468.12
+LOG: SETUP: 1023.09
+LOG: ONLINE: 445.025
+LOG: Time / Memory: 62.65 seconds 4044048 kB
+LOG: RERUN: 2
+LOG: Server load time: 56.1694
+LOG: Server exec time: 2.30802
+LOG: TOTAL: 1420.96
+LOG: SETUP: 1020.49
+LOG: ONLINE: 400.473
+LOG: Time / Memory: 62.67 seconds 4043800 kB
+LOG: RERUN: 3
+LOG: Server load time: 56.3352
+LOG: Server exec time: 2.34361
+LOG: TOTAL: 1465.37
+LOG: SETUP: 1021.73
+LOG: ONLINE: 443.641
+LOG: Time / Memory: 62.87 seconds 4043852 kB
+LOG: RERUN: 4
+LOG: Server load time: 56.2445
+LOG: Server exec time: 2.28479
+LOG: TOTAL: 1421.14
+LOG: SETUP: 974.476
+LOG: ONLINE: 446.667
+LOG: Time / Memory: 62.83 seconds 4044056 kB
+LOG: RERUN: 5
+LOG: Server load time: 56.2979
+LOG: Server exec time: 2.41081
+LOG: TOTAL: 1523.06
+LOG: SETUP: 1069.89
+LOG: ONLINE: 453.165
+LOG: Time / Memory: 62.92 seconds 4043976 kB
+LOG: RERUN: 6
+LOG: Server load time: 56.1123
+LOG: Server exec time: 2.41108
+LOG: TOTAL: 1515.56
+LOG: SETUP: 1069.38
+LOG: ONLINE: 446.177
+LOG: Time / Memory: 62.74 seconds 4044024 kB
+LOG: RERUN: 7
+LOG: Server load time: 55.8485
+LOG: Server exec time: 2.33341
+LOG: TOTAL: 1468.08
+LOG: SETUP: 1022.76
+LOG: ONLINE: 445.316
+LOG: Time / Memory: 62.34 seconds 4043744 kB
+LOG: RERUN: 8
+LOG: Server load time: 56.1052
+LOG: Server exec time: 2.28143
+LOG: TOTAL: 1420.34
+LOG: SETUP: 975.688
+LOG: ONLINE: 444.652
+LOG: Time / Memory: 62.57 seconds 4043796 kB
+LOG: RERUN: 9
+LOG: Server load time: 56.2809
+LOG: Server exec time: 2.3434
+LOG: TOTAL: 1465.85
+LOG: SETUP: 1021.52
+LOG: ONLINE: 444.331
+LOG: Time / Memory: 62.77 seconds 4044156 kB

@@ -1,0 +1,48 @@
+LOG: ====================================
+LOG: Benchmarking HyCC
+LOG: ====================================
+LOG: TEST: gauss
+LOG: SELECTION_SCHEME: yaoonly
+LOG: MINIMIZATION_TIME: 9
+LOG: ARGUMENTS: ['--all-variants']
+LOG: ====================================
+LOG: RERUN: 0
+LOG: Server load time: 0.856415
+LOG: Server exec time: 0.336471
+LOG: Time / Memory: 1.28 seconds 205276 kB
+LOG: RERUN: 1
+LOG: Server load time: 0.847357
+LOG: Server exec time: 0.333421
+LOG: Time / Memory: 1.27 seconds 205100 kB
+LOG: RERUN: 2
+LOG: Server load time: 0.861995
+LOG: Server exec time: 0.344126
+LOG: Time / Memory: 1.30 seconds 205164 kB
+LOG: RERUN: 3
+LOG: Server load time: 0.854108
+LOG: Server exec time: 0.334414
+LOG: Time / Memory: 1.28 seconds 205236 kB
+LOG: RERUN: 4
+LOG: Server load time: 0.84255
+LOG: Server exec time: 0.344037
+LOG: Time / Memory: 1.28 seconds 205004 kB
+LOG: RERUN: 5
+LOG: Server load time: 0.841032
+LOG: Server exec time: 0.357356
+LOG: Time / Memory: 1.29 seconds 204984 kB
+LOG: RERUN: 6
+LOG: Server load time: 0.843377
+LOG: Server exec time: 0.35644
+LOG: Time / Memory: 1.29 seconds 204984 kB
+LOG: RERUN: 7
+LOG: Server load time: 0.869992
+LOG: Server exec time: 0.320464
+LOG: Time / Memory: 1.28 seconds 205168 kB
+LOG: RERUN: 8
+LOG: Server load time: 0.848404
+LOG: Server exec time: 0.327807
+LOG: Time / Memory: 1.27 seconds 205148 kB
+LOG: RERUN: 9
+LOG: Server load time: 0.853327
+LOG: Server exec time: 0.3336
+LOG: Time / Memory: 1.28 seconds 205272 kB

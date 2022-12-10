@@ -289,7 +289,7 @@ def setup_hycc(ip, k):
     _, stdout, _ = client.exec_command(
         "cd ~/circ_benchmarks && git checkout aws2 -f && git reset --hard && git pull -f && git submodule init && git submodule update && cd modules/HyCC && git checkout master -f && git add . && git stash && git pull -f && cd ~/circ_benchmarks && ./scripts/dependencies.sh && pip3 install pandas && python3 driver.py -f hycc && python3 driver.py -b && mkdir -p hycc_circuit_dir")
     if stdout.channel.recv_exit_status():
-        print(ip, " failed setup 3")
+        print(ip, " failed update (expected)")
 
     print("Build repo")
     _, stdout, _ = client.exec_command(
@@ -607,12 +607,12 @@ test_compile_params = [
     #     "mt": 600,
     #     "a": ["--all-variants"],
     # },
-    {
-        "name": "kmeans",
-        "path": "kmeans/kmeans.c",
-        "mt": 600,
-        "a": ["--all-variants"],
-    },
+    # {
+    #     "name": "kmeans",
+    #     "path": "kmeans/kmeans.c",
+    #     "mt": 600,
+    #     "a": ["--all-variants"],
+    # },
     # {
     #     "name": "gauss",
     #     "path": "gauss/gauss.c",
@@ -643,12 +643,12 @@ test_compile_params = [
     #     "mt": 600,
     #     "a": ["--all-variants"],
     # },
-    # {
-    #     "name": "mnist",
-    #     "path": "mnist/mnist.c",
-    #     "mt": 600,
-    #     "a": ["--all-variants"],
-    # },
+    {
+        "name": "mnist",
+        "path": "mnist/mnist.c",
+        "mt": 600,
+        "a": ["--all-variants"],
+    },
     # {
     #     "name": "cryptonets",
     #     "path": "cryptonets/cryptonets.c",
@@ -697,12 +697,12 @@ test_run_lan_params = [
     # {
     #     "ss": "gmwonly",
     # },
-    # {
-    #     "ss": "yaohybrid",
-    # },
     {
-        "ss": "gmwhybrid",
+        "ss": "yaohybrid",
     },
+    # {
+    #     "ss": "gmwhybrid",
+    # },
     # {
     #     "ss": "lan_optimized",
     # },

@@ -1,0 +1,78 @@
+LOG: ====================================
+LOG: Benchmarking HyCC
+LOG: ====================================
+LOG: TEST: kmeans
+LOG: SELECTION_SCHEME: gmwhybrid
+LOG: MINIMIZATION_TIME: 600
+LOG: ARGUMENTS: ['--all-variants']
+LOG: ====================================
+LOG: RERUN: 0
+LOG: Client load time: 38.2261
+LOG: Client exec time: 74.9752
+LOG: TOTAL: 74091.8
+LOG: SETUP: 2222.43
+LOG: ONLINE: 71869.4
+LOG: Time / Memory: 117.91 seconds 4612232 kB
+LOG: RERUN: 1
+LOG: Client load time: 38.2192
+LOG: Client exec time: 74.9338
+LOG: TOTAL: 74080.9
+LOG: SETUP: 2251.84
+LOG: ONLINE: 71829
+LOG: Time / Memory: 117.85 seconds 4612432 kB
+LOG: RERUN: 2
+LOG: Client load time: 37.9223
+LOG: Client exec time: 75.077
+LOG: TOTAL: 74049.6
+LOG: SETUP: 2221.72
+LOG: ONLINE: 71827.9
+LOG: Time / Memory: 117.70 seconds 4612176 kB
+LOG: RERUN: 3
+LOG: Client load time: 37.9828
+LOG: Client exec time: 75.4259
+LOG: TOTAL: 74235.4
+LOG: SETUP: 2207.19
+LOG: ONLINE: 72028.2
+LOG: Time / Memory: 118.09 seconds 4612252 kB
+LOG: RERUN: 4
+LOG: Client load time: 37.7441
+LOG: Client exec time: 75.3743
+LOG: TOTAL: 74098.2
+LOG: SETUP: 2113.44
+LOG: ONLINE: 71984.7
+LOG: Time / Memory: 117.80 seconds 4612420 kB
+LOG: RERUN: 5
+LOG: Client load time: 37.8616
+LOG: Client exec time: 75.2639
+LOG: TOTAL: 74110.9
+LOG: SETUP: 2234.44
+LOG: ONLINE: 71876.5
+LOG: Time / Memory: 117.83 seconds 4612244 kB
+LOG: RERUN: 6
+LOG: Client load time: 37.4184
+LOG: Client exec time: 76.0093
+LOG: TOTAL: 74189.1
+LOG: SETUP: 2379.38
+LOG: ONLINE: 71809.7
+LOG: Time / Memory: 118.11 seconds 4612440 kB
+LOG: RERUN: 7
+LOG: Client load time: 37.6824
+LOG: Client exec time: 75.2929
+LOG: TOTAL: 74021.4
+LOG: SETUP: 2227.94
+LOG: ONLINE: 71793.5
+LOG: Time / Memory: 117.70 seconds 4612164 kB
+LOG: RERUN: 8
+LOG: Client load time: 38.09
+LOG: Client exec time: 75.5038
+LOG: TOTAL: 74101
+LOG: SETUP: 2225.6
+LOG: ONLINE: 71875.4
+LOG: Time / Memory: 118.33 seconds 4612504 kB
+LOG: RERUN: 9
+LOG: Client load time: 38.4196
+LOG: Client exec time: 75.0638
+LOG: TOTAL: 74199
+LOG: SETUP: 2295.75
+LOG: ONLINE: 71903.2
+LOG: Time / Memory: 118.29 seconds 4612420 kB

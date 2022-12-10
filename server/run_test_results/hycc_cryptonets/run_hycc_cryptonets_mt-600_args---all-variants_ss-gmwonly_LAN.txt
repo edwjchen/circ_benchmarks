@@ -1,0 +1,52 @@
+
+LOG: ====================================
+
+LOG: Benchmarking HyCC
+
+LOG: ====================================
+
+LOG: TEST: cryptonets
+LOG: SELECTION_SCHEME: gmwonly
+LOG: MINIMIZATION_TIME: 600
+LOG: ARGUMENTS: ['--all-variants']
+
+LOG: ====================================
+
+LOG: RERUN: 0
+
+LOG: Error: Process returned with status code 137
+LOG: Error message: Command terminated by signal 9 201.21 seconds 31897712 kB Command exited with non-zero status 137 201.21 seconds 31897712 kB 
+LOG: retry: 0
+
+LOG: ====================================
+
+LOG: RERUN: 0
+
+LOG: Error: Process returned with status code 137
+LOG: Error message: Command terminated by signal 9 202.47 seconds 31898620 kB Command exited with non-zero status 137 202.47 seconds 31898620 kB 
+LOG: retry: 1
+
+LOG: ====================================
+
+LOG: RERUN: 0
+
+LOG: Error: Process returned with status code 137
+LOG: Error message: Command terminated by signal 9 202.09 seconds 31897940 kB Command exited with non-zero status 137 202.09 seconds 31897940 kB 
+LOG: retry: 2
+
+LOG: ====================================
+
+LOG: RERUN: 0
+
+LOG: Error: Process returned with status code 137
+LOG: Error message: Command terminated by signal 9 202.59 seconds 31899168 kB Command exited with non-zero status 137 202.59 seconds 31899168 kB 
+LOG: retry: 3
+
+LOG: ====================================
+
+LOG: RERUN: 0
+
+LOG: Error: Process returned with status code 137
+LOG: Error message: Command terminated by signal 9 202.08 seconds 31898632 kB Command exited with non-zero status 137 202.08 seconds 31898632 kB 
+LOG: retry: 4
+LOG: Failed gmwonly with args: --all-variants, exception: 

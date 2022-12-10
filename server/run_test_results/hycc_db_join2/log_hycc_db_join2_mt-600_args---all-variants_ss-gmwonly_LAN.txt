@@ -1,0 +1,78 @@
+LOG: ====================================
+LOG: Benchmarking HyCC
+LOG: ====================================
+LOG: TEST: db_join2
+LOG: SELECTION_SCHEME: gmwonly
+LOG: MINIMIZATION_TIME: 600
+LOG: ARGUMENTS: ['--all-variants']
+LOG: ====================================
+LOG: RERUN: 0
+LOG: Server load time: 62.6985
+LOG: Server exec time: 5.75446
+LOG: TOTAL: 2085.14
+LOG: SETUP: 253.831
+LOG: ONLINE: 1831.31
+LOG: Time / Memory: 72.86 seconds 4588216 kB
+LOG: RERUN: 1
+LOG: Server load time: 62.5015
+LOG: Server exec time: 6.31939
+LOG: TOTAL: 2087.04
+LOG: SETUP: 260.551
+LOG: ONLINE: 1826.49
+LOG: Time / Memory: 73.19 seconds 4588136 kB
+LOG: RERUN: 2
+LOG: Server load time: 62.1124
+LOG: Server exec time: 6.28174
+LOG: TOTAL: 2097.99
+LOG: SETUP: 255.858
+LOG: ONLINE: 1842.13
+LOG: Time / Memory: 72.72 seconds 4588384 kB
+LOG: RERUN: 3
+LOG: Server load time: 62.6208
+LOG: Server exec time: 6.87995
+LOG: TOTAL: 2546.31
+LOG: SETUP: 251.575
+LOG: ONLINE: 2294.73
+LOG: Time / Memory: 73.87 seconds 4588200 kB
+LOG: RERUN: 4
+LOG: Server load time: 62.6529
+LOG: Server exec time: 5.83157
+LOG: TOTAL: 2033.69
+LOG: SETUP: 243.549
+LOG: ONLINE: 1790.14
+LOG: Time / Memory: 72.88 seconds 4588136 kB
+LOG: RERUN: 5
+LOG: Server load time: 62.7294
+LOG: Server exec time: 6.45587
+LOG: TOTAL: 2134.27
+LOG: SETUP: 266.736
+LOG: ONLINE: 1867.53
+LOG: Time / Memory: 73.57 seconds 4588404 kB
+LOG: RERUN: 6
+LOG: Server load time: 63.1045
+LOG: Server exec time: 5.45459
+LOG: TOTAL: 2127.65
+LOG: SETUP: 251.948
+LOG: ONLINE: 1875.7
+LOG: Time / Memory: 72.92 seconds 4588404 kB
+LOG: RERUN: 7
+LOG: Server load time: 62.6443
+LOG: Server exec time: 5.86573
+LOG: TOTAL: 2065.49
+LOG: SETUP: 249.244
+LOG: ONLINE: 1816.24
+LOG: Time / Memory: 72.93 seconds 4588484 kB
+LOG: RERUN: 8
+LOG: Server load time: 62.8729
+LOG: Server exec time: 5.74833
+LOG: TOTAL: 2197.27
+LOG: SETUP: 248.449
+LOG: ONLINE: 1948.82
+LOG: Time / Memory: 72.97 seconds 4588392 kB
+LOG: RERUN: 9
+LOG: Server load time: 62.7846
+LOG: Server exec time: 6.27597
+LOG: TOTAL: 2114.9
+LOG: SETUP: 241.921
+LOG: ONLINE: 1872.98
+LOG: Time / Memory: 73.43 seconds 4588168 kB

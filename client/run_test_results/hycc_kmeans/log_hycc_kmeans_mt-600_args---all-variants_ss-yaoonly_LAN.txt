@@ -1,0 +1,33 @@
+LOG: ====================================
+LOG: Benchmarking HyCC
+LOG: ====================================
+LOG: TEST: kmeans
+LOG: SELECTION_SCHEME: yaoonly
+LOG: MINIMIZATION_TIME: 600
+LOG: ARGUMENTS: ['--all-variants']
+LOG: ====================================
+LOG: RERUN: 0
+LOG: Error: Process returned with status code 137
+LOG: Error message: Command terminated by signal 9 328.70 seconds 31898820 kB Command exited with non-zero status 137 328.70 seconds 31898820 kB
+LOG: retry: 0
+LOG: ====================================
+LOG: RERUN: 0
+LOG: Error: Process returned with status code 137
+LOG: Error message: Command terminated by signal 9 329.77 seconds 31898548 kB Command exited with non-zero status 137 329.77 seconds 31898548 kB
+LOG: retry: 1
+LOG: ====================================
+LOG: RERUN: 0
+LOG: Error: Process returned with status code 137
+LOG: Error message: Command terminated by signal 9 341.41 seconds 31898256 kB Command exited with non-zero status 137 341.41 seconds 31898256 kB
+LOG: retry: 2
+LOG: ====================================
+LOG: RERUN: 0
+LOG: Error: Process returned with status code 137
+LOG: Error message: Command terminated by signal 9 334.03 seconds 31897212 kB Command exited with non-zero status 137 334.03 seconds 31897212 kB
+LOG: retry: 3
+LOG: ====================================
+LOG: RERUN: 0
+LOG: Error: Process returned with status code 137
+LOG: Error message: Command terminated by signal 9 372.20 seconds 31896848 kB Command exited with non-zero status 137 372.20 seconds 31896848 kB
+LOG: retry: 4
+LOG: Failed yaoonly with args: --all-variants, exception:
