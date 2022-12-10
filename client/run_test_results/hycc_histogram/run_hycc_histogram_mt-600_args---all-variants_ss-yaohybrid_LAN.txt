@@ -116,14 +116,18 @@ Merging "map" into "mpc_main"
 Merging "map" into "mpc_main"
 Merging "map" into "mpc_main"
 Merging "map" into "mpc_main"
-LOG: Client load time: 6.81267
-LOG: Client exec time: 0.921476
-LOG: TOTAL: 562.152
-LOG: SETUP: 239.675
-LOG: ONLINE: 322.475
+LOG: Client load time: 6.73744
+LOG: Client exec time: 1.08328
+LOG: setup: 246.449
+LOG: online: 326.861
+LOG: total: 573.313
+LOG: init: 0.051
+LOG: circuit: 0.027
+LOG: network: 271.506
+LOG: base_ot: 238.453
 OUTPUT_res : int32 = 102
 
-LOG: Time / Memory: 8.63 seconds 1516040 kB
+LOG: Time / Memory: 8.71 seconds 1516296 kB
 LOG: RERUN: 1
 Using YAO protocol for boolean gates
 Loading mpc_main@bool_size.circ (using YAO for boolean gates)
@@ -228,14 +232,18 @@ Merging "map" into "mpc_main"
 Merging "map" into "mpc_main"
 Merging "map" into "mpc_main"
 Merging "map" into "mpc_main"
-LOG: Client load time: 6.81313
-LOG: Client exec time: 0.869345
-LOG: TOTAL: 573.076
-LOG: SETUP: 249.544
-LOG: ONLINE: 323.53
+LOG: Client load time: 6.70202
+LOG: Client exec time: 1.15099
+LOG: setup: 244.433
+LOG: online: 326.532
+LOG: total: 570.966
+LOG: init: 0.052
+LOG: circuit: 0.027
+LOG: network: 332.948
+LOG: base_ot: 247.072
 OUTPUT_res : int32 = 102
 
-LOG: Time / Memory: 8.58 seconds 1516296 kB
+LOG: Time / Memory: 8.75 seconds 1516364 kB
 LOG: RERUN: 2
 Using YAO protocol for boolean gates
 Loading mpc_main@bool_size.circ (using YAO for boolean gates)
@@ -340,14 +348,18 @@ Merging "map" into "mpc_main"
 Merging "map" into "mpc_main"
 Merging "map" into "mpc_main"
 Merging "map" into "mpc_main"
-LOG: Client load time: 7.00801
-LOG: Client exec time: 0.814721
-LOG: TOTAL: 557.368
-LOG: SETUP: 238.364
-LOG: ONLINE: 319.002
+LOG: Client load time: 6.70659
+LOG: Client exec time: 1.00999
+LOG: setup: 237.574
+LOG: online: 323.384
+LOG: total: 560.959
+LOG: init: 0.061
+LOG: circuit: 0.028
+LOG: network: 205.131
+LOG: base_ot: 243.897
 OUTPUT_res : int32 = 102
 
-LOG: Time / Memory: 8.73 seconds 1516056 kB
+LOG: Time / Memory: 8.61 seconds 1516324 kB
 LOG: RERUN: 3
 Using YAO protocol for boolean gates
 Loading mpc_main@bool_size.circ (using YAO for boolean gates)
@@ -452,14 +464,18 @@ Merging "map" into "mpc_main"
 Merging "map" into "mpc_main"
 Merging "map" into "mpc_main"
 Merging "map" into "mpc_main"
-LOG: Client load time: 6.96222
-LOG: Client exec time: 0.829715
-LOG: TOTAL: 563.434
-LOG: SETUP: 240.152
-LOG: ONLINE: 323.281
+LOG: Client load time: 6.79638
+LOG: Client exec time: 1.20851
+LOG: setup: 245.651
+LOG: online: 328.08
+LOG: total: 573.732
+LOG: init: 0.057
+LOG: circuit: 0.034
+LOG: network: 380.751
+LOG: base_ot: 254.025
 OUTPUT_res : int32 = 102
 
-LOG: Time / Memory: 8.69 seconds 1516160 kB
+LOG: Time / Memory: 8.89 seconds 1516448 kB
 LOG: RERUN: 4
 Using YAO protocol for boolean gates
 Loading mpc_main@bool_size.circ (using YAO for boolean gates)
@@ -564,14 +580,18 @@ Merging "map" into "mpc_main"
 Merging "map" into "mpc_main"
 Merging "map" into "mpc_main"
 Merging "map" into "mpc_main"
-LOG: Client load time: 6.72974
-LOG: Client exec time: 1.04985
-LOG: TOTAL: 562.342
-LOG: SETUP: 241.108
-LOG: ONLINE: 321.233
+LOG: Client load time: 6.79477
+LOG: Client exec time: 1.04934
+LOG: setup: 239.118
+LOG: online: 329.093
+LOG: total: 568.212
+LOG: init: 0.056
+LOG: circuit: 0.027
+LOG: network: 252.857
+LOG: base_ot: 228.272
 OUTPUT_res : int32 = 102
 
-LOG: Time / Memory: 8.69 seconds 1516388 kB
+LOG: Time / Memory: 8.74 seconds 1516488 kB
 LOG: RERUN: 5
 Using YAO protocol for boolean gates
 Loading mpc_main@bool_size.circ (using YAO for boolean gates)
@@ -676,14 +696,18 @@ Merging "map" into "mpc_main"
 Merging "map" into "mpc_main"
 Merging "map" into "mpc_main"
 Merging "map" into "mpc_main"
-LOG: Client load time: 6.76012
-LOG: Client exec time: 0.957956
-LOG: TOTAL: 567.316
-LOG: SETUP: 241.981
-LOG: ONLINE: 325.334
+LOG: Client load time: 6.75101
+LOG: Client exec time: 1.07964
+LOG: setup: 245.438
+LOG: online: 327.645
+LOG: total: 573.086
+LOG: init: 0.057
+LOG: circuit: 0.033
+LOG: network: 272.052
+LOG: base_ot: 234.502
 OUTPUT_res : int32 = 102
 
-LOG: Time / Memory: 8.61 seconds 1516260 kB
+LOG: Time / Memory: 8.74 seconds 1516452 kB
 LOG: RERUN: 6
 Using YAO protocol for boolean gates
 Loading mpc_main@bool_size.circ (using YAO for boolean gates)
@@ -788,14 +812,18 @@ Merging "map" into "mpc_main"
 Merging "map" into "mpc_main"
 Merging "map" into "mpc_main"
 Merging "map" into "mpc_main"
-LOG: Client load time: 6.77915
-LOG: Client exec time: 0.942619
-LOG: TOTAL: 571.625
-LOG: SETUP: 247.744
-LOG: ONLINE: 323.88
+LOG: Client load time: 6.74219
+LOG: Client exec time: 1.04152
+LOG: setup: 245.659
+LOG: online: 325.56
+LOG: total: 571.221
+LOG: init: 0.06
+LOG: circuit: 0.032
+LOG: network: 222.468
+LOG: base_ot: 247.831
 OUTPUT_res : int32 = 102
 
-LOG: Time / Memory: 8.63 seconds 1516296 kB
+LOG: Time / Memory: 8.69 seconds 1516184 kB
 LOG: RERUN: 7
 Using YAO protocol for boolean gates
 Loading mpc_main@bool_size.circ (using YAO for boolean gates)
@@ -900,14 +928,18 @@ Merging "map" into "mpc_main"
 Merging "map" into "mpc_main"
 Merging "map" into "mpc_main"
 Merging "map" into "mpc_main"
-LOG: Client load time: 6.8318
-LOG: Client exec time: 0.896299
-LOG: TOTAL: 560.328
-LOG: SETUP: 238.858
-LOG: ONLINE: 321.47
+LOG: Client load time: 6.68907
+LOG: Client exec time: 1.0906
+LOG: setup: 240.776
+LOG: online: 323.096
+LOG: total: 563.872
+LOG: init: 0.05
+LOG: circuit: 0.026
+LOG: network: 289.598
+LOG: base_ot: 237.128
 OUTPUT_res : int32 = 102
 
-LOG: Time / Memory: 8.63 seconds 1516244 kB
+LOG: Time / Memory: 8.70 seconds 1516108 kB
 LOG: RERUN: 8
 Using YAO protocol for boolean gates
 Loading mpc_main@bool_size.circ (using YAO for boolean gates)
@@ -1012,14 +1044,18 @@ Merging "map" into "mpc_main"
 Merging "map" into "mpc_main"
 Merging "map" into "mpc_main"
 Merging "map" into "mpc_main"
-LOG: Client load time: 6.8763
-LOG: Client exec time: 0.910538
-LOG: TOTAL: 561.92
-LOG: SETUP: 240.247
-LOG: ONLINE: 321.672
+LOG: Client load time: 6.78292
+LOG: Client exec time: 1.15858
+LOG: setup: 243.274
+LOG: online: 328.918
+LOG: total: 572.192
+LOG: init: 0.064
+LOG: circuit: 0.026
+LOG: network: 339.768
+LOG: base_ot: 246.612
 OUTPUT_res : int32 = 102
 
-LOG: Time / Memory: 8.72 seconds 1516184 kB
+LOG: Time / Memory: 8.84 seconds 1516356 kB
 LOG: RERUN: 9
 Using YAO protocol for boolean gates
 Loading mpc_main@bool_size.circ (using YAO for boolean gates)
@@ -1124,11 +1160,15 @@ Merging "map" into "mpc_main"
 Merging "map" into "mpc_main"
 Merging "map" into "mpc_main"
 Merging "map" into "mpc_main"
-LOG: Client load time: 6.79258
-LOG: Client exec time: 0.972106
-LOG: TOTAL: 565.157
-LOG: SETUP: 242.636
-LOG: ONLINE: 322.519
+LOG: Client load time: 6.79553
+LOG: Client exec time: 1.07213
+LOG: setup: 239.634
+LOG: online: 322.714
+LOG: total: 562.349
+LOG: init: 0.057
+LOG: circuit: 0.025
+LOG: network: 261.154
+LOG: base_ot: 248.617
 OUTPUT_res : int32 = 102
 
-LOG: Time / Memory: 8.67 seconds 1516076 kB
+LOG: Time / Memory: 8.77 seconds 1516324 kB

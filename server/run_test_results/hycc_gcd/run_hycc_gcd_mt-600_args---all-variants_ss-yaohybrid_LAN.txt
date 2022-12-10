@@ -15,130 +15,170 @@ LOG: ====================================
 LOG: RERUN: 0
 Using YAO protocol for boolean gates
 Loading mpc_main@bool_size.circ (using YAO for boolean gates)
-LOG: Server load time: 0.240348
-LOG: Server exec time: 0.267113
-LOG: TOTAL: 31.15
-LOG: SETUP: 17.651
-LOG: ONLINE: 13.497
+LOG: Server load time: 0.234346
+LOG: Server exec time: 0.244172
+LOG: setup: 17.742
+LOG: online: 12.837
+LOG: total: 30.581
+LOG: init: 0.054
+LOG: circuit: 0.029
+LOG: network: 5.184
+LOG: base_ot: 208.403
 INPUT_B : int32 = 150
 OUTPUT_res : int32 = 50
 return_value : int32 = 50
 
-LOG: Time / Memory: 0.54 seconds 96896 kB
+LOG: Time / Memory: 0.51 seconds 96940 kB
 LOG: RERUN: 1
 Using YAO protocol for boolean gates
 Loading mpc_main@bool_size.circ (using YAO for boolean gates)
-LOG: Server load time: 0.238841
-LOG: Server exec time: 0.255953
-LOG: TOTAL: 31.322
-LOG: SETUP: 17.8
-LOG: ONLINE: 13.52
+LOG: Server load time: 0.236807
+LOG: Server exec time: 0.249808
+LOG: setup: 17.974
+LOG: online: 13.197
+LOG: total: 31.171
+LOG: init: 0.052
+LOG: circuit: 0.029
+LOG: network: 3.898
+LOG: base_ot: 214.735
 INPUT_B : int32 = 150
 OUTPUT_res : int32 = 50
 return_value : int32 = 50
 
-LOG: Time / Memory: 0.53 seconds 97004 kB
+LOG: Time / Memory: 0.52 seconds 96640 kB
 LOG: RERUN: 2
 Using YAO protocol for boolean gates
 Loading mpc_main@bool_size.circ (using YAO for boolean gates)
-LOG: Server load time: 0.24843
-LOG: Server exec time: 0.245302
-LOG: TOTAL: 30.806
-LOG: SETUP: 17.484
-LOG: ONLINE: 13.319
+LOG: Server load time: 0.240296
+LOG: Server exec time: 0.250589
+LOG: setup: 17.696
+LOG: online: 13.08
+LOG: total: 30.776
+LOG: init: 0.045
+LOG: circuit: 0.024
+LOG: network: 11.652
+LOG: base_ot: 208.158
 INPUT_B : int32 = 150
 OUTPUT_res : int32 = 50
 return_value : int32 = 50
 
-LOG: Time / Memory: 0.53 seconds 96896 kB
+LOG: Time / Memory: 0.53 seconds 96772 kB
 LOG: RERUN: 3
 Using YAO protocol for boolean gates
 Loading mpc_main@bool_size.circ (using YAO for boolean gates)
-LOG: Server load time: 0.246524
-LOG: Server exec time: 0.252423
-LOG: TOTAL: 30.956
-LOG: SETUP: 17.592
-LOG: ONLINE: 13.363
+LOG: Server load time: 0.236676
+LOG: Server exec time: 0.254532
+LOG: setup: 18.012
+LOG: online: 12.921
+LOG: total: 30.934
+LOG: init: 0.053
+LOG: circuit: 0.031
+LOG: network: 15.29
+LOG: base_ot: 208.306
 INPUT_B : int32 = 150
 OUTPUT_res : int32 = 50
 return_value : int32 = 50
 
-LOG: Time / Memory: 0.54 seconds 96644 kB
+LOG: Time / Memory: 0.53 seconds 96784 kB
 LOG: RERUN: 4
 Using YAO protocol for boolean gates
 Loading mpc_main@bool_size.circ (using YAO for boolean gates)
-LOG: Server load time: 0.240597
-LOG: Server exec time: 0.258959
-LOG: TOTAL: 31.3
-LOG: SETUP: 18.099
-LOG: ONLINE: 13.201
+LOG: Server load time: 0.234
+LOG: Server exec time: 0.251146
+LOG: setup: 17.576
+LOG: online: 13.397
+LOG: total: 30.975
+LOG: init: 0.053
+LOG: circuit: 0.03
+LOG: network: 11.864
+LOG: base_ot: 208.304
 INPUT_B : int32 = 150
 OUTPUT_res : int32 = 50
 return_value : int32 = 50
 
-LOG: Time / Memory: 0.54 seconds 96808 kB
+LOG: Time / Memory: 0.52 seconds 96616 kB
 LOG: RERUN: 5
 Using YAO protocol for boolean gates
 Loading mpc_main@bool_size.circ (using YAO for boolean gates)
-LOG: Server load time: 0.242589
-LOG: Server exec time: 0.260495
-LOG: TOTAL: 30.991
-LOG: SETUP: 17.723
-LOG: ONLINE: 13.267
+LOG: Server load time: 0.243315
+LOG: Server exec time: 0.252088
+LOG: setup: 17.398
+LOG: online: 13.135
+LOG: total: 30.534
+LOG: init: 0.056
+LOG: circuit: 0.033
+LOG: network: 12.354
+LOG: base_ot: 209.197
 INPUT_B : int32 = 150
 OUTPUT_res : int32 = 50
 return_value : int32 = 50
 
-LOG: Time / Memory: 0.54 seconds 96868 kB
+LOG: Time / Memory: 0.53 seconds 96988 kB
 LOG: RERUN: 6
 Using YAO protocol for boolean gates
 Loading mpc_main@bool_size.circ (using YAO for boolean gates)
-LOG: Server load time: 0.235945
-LOG: Server exec time: 0.266179
-LOG: TOTAL: 31.519
-LOG: SETUP: 18.299
-LOG: ONLINE: 13.217
+LOG: Server load time: 0.233281
+LOG: Server exec time: 0.24372
+LOG: setup: 17.659
+LOG: online: 13.208
+LOG: total: 30.868
+LOG: init: 0.046
+LOG: circuit: 0.024
+LOG: network: 4.412
+LOG: base_ot: 208.437
 INPUT_B : int32 = 150
 OUTPUT_res : int32 = 50
 return_value : int32 = 50
 
-LOG: Time / Memory: 0.54 seconds 96960 kB
+LOG: Time / Memory: 0.51 seconds 97000 kB
 LOG: RERUN: 7
 Using YAO protocol for boolean gates
 Loading mpc_main@bool_size.circ (using YAO for boolean gates)
-LOG: Server load time: 0.236748
-LOG: Server exec time: 0.256374
-LOG: TOTAL: 31.003
-LOG: SETUP: 17.905
-LOG: ONLINE: 13.098
+LOG: Server load time: 0.240261
+LOG: Server exec time: 0.249781
+LOG: setup: 17.87
+LOG: online: 13.159
+LOG: total: 31.029
+LOG: init: 0.049
+LOG: circuit: 0.028
+LOG: network: 7.063
+LOG: base_ot: 211.685
 INPUT_B : int32 = 150
 OUTPUT_res : int32 = 50
 return_value : int32 = 50
 
-LOG: Time / Memory: 0.53 seconds 96752 kB
+LOG: Time / Memory: 0.53 seconds 96664 kB
 LOG: RERUN: 8
 Using YAO protocol for boolean gates
 Loading mpc_main@bool_size.circ (using YAO for boolean gates)
-LOG: Server load time: 0.24019
-LOG: Server exec time: 0.252954
-LOG: TOTAL: 30.866
-LOG: SETUP: 17.534
-LOG: ONLINE: 13.33
+LOG: Server load time: 0.237398
+LOG: Server exec time: 0.251248
+LOG: setup: 17.693
+LOG: online: 13.03
+LOG: total: 30.724
+LOG: init: 0.058
+LOG: circuit: 0.025
+LOG: network: 11.685
+LOG: base_ot: 208.836
 INPUT_B : int32 = 150
 OUTPUT_res : int32 = 50
 return_value : int32 = 50
 
-LOG: Time / Memory: 0.53 seconds 97000 kB
+LOG: Time / Memory: 0.52 seconds 96896 kB
 LOG: RERUN: 9
 Using YAO protocol for boolean gates
 Loading mpc_main@bool_size.circ (using YAO for boolean gates)
-LOG: Server load time: 0.243053
-LOG: Server exec time: 0.260302
-LOG: TOTAL: 31.54
-LOG: SETUP: 17.989
-LOG: ONLINE: 13.55
+LOG: Server load time: 0.245799
+LOG: Server exec time: 0.247757
+LOG: setup: 17.616
+LOG: online: 13.082
+LOG: total: 30.699
+LOG: init: 0.055
+LOG: circuit: 0.026
+LOG: network: 3.562
+LOG: base_ot: 213.492
 INPUT_B : int32 = 150
 OUTPUT_res : int32 = 50
 return_value : int32 = 50
 
-LOG: Time / Memory: 0.54 seconds 96896 kB
+LOG: Time / Memory: 0.53 seconds 96872 kB

@@ -123,9 +123,19 @@ def parse_hycc_log(log, setting):
             if "FAIL" not in data:
                 data["FAIL"] = []
             data["FAIL"].append(" ".join(line[1:]))
+        elif line[0] in ["setup", "online", "total", "init", "circuit", "network", "base_ot"]:
+            if line[0] not in data:
+                data[line[0]] = []
+            data[line[0]].append(float(line[1]))
         else:
             print(line)
             raise RuntimeError("Unknown key")
+
+    data["p_total"] = [0 for _ in range(10)]
+    for field in ["total", "init", "circuit", "base_ot"]:
+        if field in data:
+            for i, d in enumerate(data[field]):
+                data["p_total"][i] += d
     return data
 
 
@@ -174,7 +184,8 @@ def parse_hycc_logs(role):
         min_wan_times = []
 
         for ss in selection_schemes:
-            exec_times = "Server exec time" if "Server exec time" in df.columns else "Client exec time"
+            # exec_times = "Server exec time" if "Server exec time" in df.columns else "Client exec time"
+            exec_times = "p_total"
             server_exec_times = list(df[(df["TEST"] == test) & (
                 df["SELECTION_SCHEME"] == ss)][exec_times])
             if len(server_exec_times) >= 1:
@@ -275,18 +286,15 @@ for test in server_best.keys():
         if test in server_best and test in client_best and ss in server_best[test] and ss in client_best[test]:
             server_data = server_best[test][ss]
 
-            if test == "biomatch" or test == "gauss":
-                server_data = server_data[1:]
-            # client_data = client_best[test][ss]
-            # data = [item for sublist in zip(
-            #     server_data, client_data) for item in sublist]
+            # if test == "biomatch" or test == "gauss":
+            #     server_data = server_data[1:]
+            client_data = client_best[test][ss]
+            data = [item for sublist in zip(
+                server_data, client_data) for item in sublist]
             best_combined[test][ss] = server_data
 
 # print(server_df.head())
 # print(client_df.head())
-
-
-# print(server_df['gauss'].yaoonly_lan[0])
 
 best_only = {}
 
@@ -331,4 +339,4 @@ for test in best_combined.keys():
     #     assert(False)
 
 df = pd.DataFrame(best_only)
-df.to_csv(f"analysis/best_server_only.csv")
+df.to_csv(f"analysis/new_best_only.csv")

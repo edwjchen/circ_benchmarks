@@ -471,21 +471,21 @@ def run_hycc_test(params):
         "rsync -avz -e \"ssh -o StrictHostKeyChecking=no -i {}.pem\" --progress ./hycc_circuit_dir/{} ubuntu@{}:~/circ_benchmarks/hycc_circuit_dir".format(k2, version, ip2), shell=True)
 
     # run test case
-    pool = multiprocessing.Pool(len(ips))
-    pool.starmap(run_hycc, zip(ips, ks))
+    # pool = multiprocessing.Pool(len(ips))
+    # pool.starmap(run_hycc, zip(ips, ks))
 
     # get results
-    subprocess.call(
-        "rsync -avz -e \"ssh -o StrictHostKeyChecking=no -i {}.pem\" --progress ubuntu@{}:~/circ_benchmarks/run_test_results server/".format(k1, ip1), shell=True)
-    subprocess.call(
-        "rsync -avz -e \"ssh -o StrictHostKeyChecking=no -i {}.pem\" --progress ubuntu@{}:~/circ_benchmarks/run_test_results client/".format(k2, ip2), shell=True)
+    # subprocess.call(
+    #     "rsync -avz -e \"ssh -o StrictHostKeyChecking=no -i {}.pem\" --progress ubuntu@{}:~/circ_benchmarks/run_test_results server/".format(k1, ip1), shell=True)
+    # subprocess.call(
+    #     "rsync -avz -e \"ssh -o StrictHostKeyChecking=no -i {}.pem\" --progress ubuntu@{}:~/circ_benchmarks/run_test_results client/".format(k2, ip2), shell=True)
 
     # stop instances
     print("Stopping instance")
-    instance1.stop()
-    instance2.stop()
-    instance1.wait_until_stopped()
-    instance2.wait_until_stopped()
+    # instance1.stop()
+    # instance2.stop()
+    # instance1.wait_until_stopped()
+    # instance2.wait_until_stopped()
     print("Finished!")
 
 
@@ -607,18 +607,18 @@ test_compile_params = [
     #     "mt": 600,
     #     "a": ["--all-variants"],
     # },
-    # {
-    #     "name": "kmeans",
-    #     "path": "kmeans/kmeans.c",
-    #     "mt": 600,
-    #     "a": ["--all-variants"],
-    # },
     {
-        "name": "gauss",
-        "path": "gauss/gauss.c",
-        "mt": 9,
+        "name": "kmeans",
+        "path": "kmeans/kmeans.c",
+        "mt": 600,
         "a": ["--all-variants"],
     },
+    # {
+    #     "name": "gauss",
+    #     "path": "gauss/gauss.c",
+    #     "mt": 9,
+    #     "a": ["--all-variants"],
+    # },
     # {
     #     "name": "gcd",
     #     "path": "gcd/gcd.c",
@@ -691,34 +691,9 @@ test_select_wan_params = [
 
 
 test_run_lan_params = [
-    # {
-    #     "ss": "yaoonly",
-    # },
-    # {
-    #     "ss": "gmwonly",
-    # },
     {
-        "ss": "yaohybrid",
+        "ss": "yaoonly",
     },
-    {
-        "ss": "gmwhybrid",
-    },
-    # {
-    #     "ss": "lan_optimized",
-    # },
-]
-
-# for compile_params in test_compile_params:
-#     for select_params in test_select_lan_params:
-#         for run_params in test_run_lan_params:
-#             p = {**compile_params, **run_params}
-#             p = {**p, **select_params}
-#             run_hycc_test(p)
-
-test_run_wan_params = [
-    # {
-    #     "ss": "yaoonly",
-    # },
     # {
     #     "ss": "gmwonly",
     # },
@@ -728,14 +703,39 @@ test_run_wan_params = [
     # {
     #     "ss": "gmwhybrid",
     # },
-    {
-        "ss": "wan_optimized",
-    },
+    # {
+    #     "ss": "lan_optimized",
+    # },
 ]
 
 for compile_params in test_compile_params:
-    for select_params in test_select_wan_params:
-        for run_params in test_run_wan_params:
+    for select_params in test_select_lan_params:
+        for run_params in test_run_lan_params:
             p = {**compile_params, **run_params}
             p = {**p, **select_params}
             run_hycc_test(p)
+
+test_run_wan_params = [
+    # {
+    #     "ss": "yaoonly",
+    # },
+    # {
+    #     "ss": "gmwonly",
+    # },
+    {
+        "ss": "yaohybrid",
+    },
+    # {
+    #     "ss": "gmwhybrid",
+    # },
+    # {
+    #     "ss": "wan_optimized",
+    # },
+]
+
+# for compile_params in test_compile_params:
+#     for select_params in test_select_wan_params:
+#         for run_params in test_run_wan_params:
+#             p = {**compile_params, **run_params}
+#             p = {**p, **select_params}
+#             run_hycc_test(p)
