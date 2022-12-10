@@ -674,10 +674,10 @@ test_select_wan_params = [
     },
 ]
 
-# for compile_params in test_compile_params:
-#     for select_params in test_select_lan_params:
-#         p = {**compile_params, **select_params}
-#         bundle_hycc_test(p)
+for compile_params in test_compile_params:
+    for select_params in test_select_lan_params:
+        p = {**compile_params, **select_params}
+        bundle_hycc_test(p)
 
 # for compile_params in test_compile_params:
 #     for select_params in test_select_lan_params:
@@ -708,12 +708,12 @@ test_run_lan_params = [
     # },
 ]
 
-for compile_params in test_compile_params:
-    for select_params in test_select_lan_params:
-        for run_params in test_run_lan_params:
-            p = {**compile_params, **run_params}
-            p = {**p, **select_params}
-            run_hycc_test(p)
+# for compile_params in test_compile_params:
+#     for select_params in test_select_lan_params:
+#         for run_params in test_run_lan_params:
+#             p = {**compile_params, **run_params}
+#             p = {**p, **select_params}
+#             run_hycc_test(p)
 
 test_run_wan_params = [
     # {
