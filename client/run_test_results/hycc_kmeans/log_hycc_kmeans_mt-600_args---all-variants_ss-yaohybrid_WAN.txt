@@ -1,0 +1,78 @@
+LOG: ====================================
+LOG: Benchmarking HyCC
+LOG: ====================================
+LOG: TEST: kmeans
+LOG: SELECTION_SCHEME: yaohybrid
+LOG: MINIMIZATION_TIME: 600
+LOG: ARGUMENTS: ['--all-variants']
+LOG: ====================================
+LOG: RERUN: 0
+LOG: Client load time: 37.7273
+LOG: Client exec time: 4.73546
+LOG: TOTAL: 3875.87
+LOG: SETUP: 2256.58
+LOG: ONLINE: 1619.29
+LOG: Time / Memory: 46.94 seconds 4399348 kB
+LOG: RERUN: 1
+LOG: Client load time: 37.9631
+LOG: Client exec time: 4.62214
+LOG: TOTAL: 3770.99
+LOG: SETUP: 2151.17
+LOG: ONLINE: 1619.82
+LOG: Time / Memory: 47.05 seconds 4399004 kB
+LOG: RERUN: 2
+LOG: Client load time: 38.0029
+LOG: Client exec time: 4.67558
+LOG: TOTAL: 3815.6
+LOG: SETUP: 2180.23
+LOG: ONLINE: 1635.36
+LOG: Time / Memory: 47.20 seconds 4399324 kB
+LOG: RERUN: 3
+LOG: Client load time: 37.4814
+LOG: Client exec time: 5.07105
+LOG: TOTAL: 3793.92
+LOG: SETUP: 2192.23
+LOG: ONLINE: 1601.68
+LOG: Time / Memory: 47.00 seconds 4399408 kB
+LOG: RERUN: 4
+LOG: Client load time: 38.0183
+LOG: Client exec time: 4.62336
+LOG: TOTAL: 3773.78
+LOG: SETUP: 2149.57
+LOG: ONLINE: 1624.21
+LOG: Time / Memory: 47.19 seconds 4399284 kB
+LOG: RERUN: 5
+LOG: Client load time: 38.5875
+LOG: Client exec time: 4.69468
+LOG: TOTAL: 3858.75
+LOG: SETUP: 2224.4
+LOG: ONLINE: 1634.34
+LOG: Time / Memory: 47.89 seconds 4399488 kB
+LOG: RERUN: 6
+LOG: Client load time: 37.5514
+LOG: Client exec time: 4.76709
+LOG: TOTAL: 3867.16
+LOG: SETUP: 2249.42
+LOG: ONLINE: 1617.74
+LOG: Time / Memory: 46.80 seconds 4399388 kB
+LOG: RERUN: 7
+LOG: Client load time: 37.6526
+LOG: Client exec time: 4.53021
+LOG: TOTAL: 3684.61
+LOG: SETUP: 2109.74
+LOG: ONLINE: 1574.87
+LOG: Time / Memory: 46.65 seconds 4399284 kB
+LOG: RERUN: 8
+LOG: Client load time: 37.9749
+LOG: Client exec time: 4.78428
+LOG: TOTAL: 3920.65
+LOG: SETUP: 2292.45
+LOG: ONLINE: 1628.2
+LOG: Time / Memory: 47.36 seconds 4399284 kB
+LOG: RERUN: 9
+LOG: Client load time: 37.6311
+LOG: Client exec time: 4.57928
+LOG: TOTAL: 3733.48
+LOG: SETUP: 2125.4
+LOG: ONLINE: 1608.08
+LOG: Time / Memory: 46.63 seconds 4399312 kB

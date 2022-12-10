@@ -1,0 +1,118 @@
+LOG: ====================================
+LOG: Benchmarking HyCC
+LOG: ====================================
+LOG: TEST: gauss
+LOG: SELECTION_SCHEME: gmwhybrid
+LOG: MINIMIZATION_TIME: 9
+LOG: ARGUMENTS: ['--all-variants']
+LOG: ====================================
+LOG: RERUN: 0
+LOG: Server load time: 0.999714
+LOG: Server exec time: 1.3802
+LOG: setup: 51.954
+LOG: online: 1101.15
+LOG: total: 1153.11
+LOG: init: 0.048
+LOG: circuit: 4.694
+LOG: network: 12.691
+LOG: base_ot: 214.396
+LOG: Time / Memory: 2.48 seconds 255536 kB
+LOG: RERUN: 1
+LOG: Server load time: 0.958952
+LOG: Server exec time: 1.37126
+LOG: setup: 51.777
+LOG: online: 1055.76
+LOG: total: 1107.54
+LOG: init: 0.053
+LOG: circuit: 3.747
+LOG: network: 56.252
+LOG: base_ot: 207.471
+LOG: Time / Memory: 2.43 seconds 255536 kB
+LOG: RERUN: 2
+LOG: Server load time: 0.976538
+LOG: Server exec time: 1.36745
+LOG: setup: 52.013
+LOG: online: 1075.42
+LOG: total: 1127.44
+LOG: init: 0.047
+LOG: circuit: 4.646
+LOG: network: 33.451
+LOG: base_ot: 206.559
+LOG: Time / Memory: 2.45 seconds 255732 kB
+LOG: RERUN: 3
+LOG: Server load time: 0.968431
+LOG: Server exec time: 1.37273
+LOG: setup: 52.858
+LOG: online: 1066.99
+LOG: total: 1119.85
+LOG: init: 0.053
+LOG: circuit: 4.648
+LOG: network: 28.717
+LOG: base_ot: 224.159
+LOG: Time / Memory: 2.44 seconds 255604 kB
+LOG: RERUN: 4
+LOG: Server load time: 0.97551
+LOG: Server exec time: 1.43138
+LOG: setup: 52.577
+LOG: online: 1139.88
+LOG: total: 1192.46
+LOG: init: 0.054
+LOG: circuit: 4.472
+LOG: network: 32.764
+LOG: base_ot: 206.15
+LOG: Time / Memory: 2.51 seconds 255880 kB
+LOG: RERUN: 5
+LOG: Server load time: 0.987435
+LOG: Server exec time: 1.40785
+LOG: setup: 52.058
+LOG: online: 1128.85
+LOG: total: 1180.9
+LOG: init: 0.057
+LOG: circuit: 4.956
+LOG: network: 19.481
+LOG: base_ot: 207.464
+LOG: Time / Memory: 2.50 seconds 255796 kB
+LOG: RERUN: 6
+LOG: Server load time: 0.979773
+LOG: Server exec time: 1.42914
+LOG: setup: 53.349
+LOG: online: 1120.64
+LOG: total: 1173.99
+LOG: init: 0.057
+LOG: circuit: 4.173
+LOG: network: 47.341
+LOG: base_ot: 207.805
+LOG: Time / Memory: 2.51 seconds 255536 kB
+LOG: RERUN: 7
+LOG: Server load time: 0.978729
+LOG: Server exec time: 1.38007
+LOG: setup: 52.638
+LOG: online: 1090.93
+LOG: total: 1143.57
+LOG: init: 0.047
+LOG: circuit: 5.027
+LOG: network: 28.341
+LOG: base_ot: 208.153
+LOG: Time / Memory: 2.46 seconds 255488 kB
+LOG: RERUN: 8
+LOG: Server load time: 0.994756
+LOG: Server exec time: 1.35285
+LOG: setup: 52.081
+LOG: online: 1059.56
+LOG: total: 1111.65
+LOG: init: 0.055
+LOG: circuit: 4.839
+LOG: network: 25.113
+LOG: base_ot: 216.084
+LOG: Time / Memory: 2.45 seconds 255796 kB
+LOG: RERUN: 9
+LOG: Server load time: 0.979067
+LOG: Server exec time: 1.38613
+LOG: setup: 52.28
+LOG: online: 1076.3
+LOG: total: 1128.58
+LOG: init: 0.057
+LOG: circuit: 3.748
+LOG: network: 44.23
+LOG: base_ot: 213.321
+LOG: Time / Memory: 2.47 seconds 255908 kB

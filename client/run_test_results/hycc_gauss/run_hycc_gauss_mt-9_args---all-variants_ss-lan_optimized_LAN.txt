@@ -1,0 +1,574 @@
+
+LOG: ====================================
+
+LOG: Benchmarking HyCC
+
+LOG: ====================================
+
+LOG: TEST: gauss
+LOG: SELECTION_SCHEME: lan_optimized
+LOG: MINIMIZATION_TIME: 9
+LOG: ARGUMENTS: ['--all-variants']
+
+LOG: ====================================
+
+LOG: RERUN: 0
+Using YAO protocol for boolean gates
+Loading abs@bool_size.circ (using YAO for boolean gates)
+Loading fixedpt_div@bool_size.circ (using YAO for boolean gates)
+Loading fixedpt_mul@bool_size.circ (using YAO for boolean gates)
+Loading fixedpt_mul_inner@bool_size.circ (using YAO for boolean gates)
+Loading gaussj_D<int32[9],int32[3],int32[3]>@bool_size.circ (using YAO for boolean gates)
+Loading identity<int32[9]>@bool_size.circ (using YAO for boolean gates)
+Loading mpc_main@bool_size.circ (using YAO for boolean gates)
+Loading pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<0>,int32<3>>@bool_size.circ (using YAO for boolean gates)
+Loading pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<1>,int32<3>>@bool_size.circ (using YAO for boolean gates)
+Loading solve_backtracking<int32[9],int32[3],int32[3]>@bool_size.circ (using YAO for boolean gates)
+Loading swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<0>,int32<1>>@bool_size.circ (using YAO for boolean gates)
+Loading swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<0>,int32<2>>@bool_size.circ (using YAO for boolean gates)
+Loading swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<1>,int32<2>>@bool_size.circ (using YAO for boolean gates)
+Merging "identity<int32[9]>" into "gaussj_D<int32[9],int32[3],int32[3]>"
+Merging "swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<0>,int32<1>>" into "pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<0>,int32<3>>"
+Merging "swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<0>,int32<2>>" into "pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<0>,int32<3>>"
+Merging "pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<0>,int32<3>>" into "gaussj_D<int32[9],int32[3],int32[3]>"
+Merging "fixedpt_div" into "gaussj_D<int32[9],int32[3],int32[3]>"
+Merging "fixedpt_mul_inner" into "fixedpt_mul"
+Merging "fixedpt_mul" into "gaussj_D<int32[9],int32[3],int32[3]>"
+Merging "fixedpt_mul" into "gaussj_D<int32[9],int32[3],int32[3]>"
+Merging "fixedpt_mul" into "gaussj_D<int32[9],int32[3],int32[3]>"
+Merging "fixedpt_mul" into "gaussj_D<int32[9],int32[3],int32[3]>"
+Merging "fixedpt_div" into "gaussj_D<int32[9],int32[3],int32[3]>"
+Merging "fixedpt_mul" into "gaussj_D<int32[9],int32[3],int32[3]>"
+Merging "fixedpt_mul" into "gaussj_D<int32[9],int32[3],int32[3]>"
+Merging "fixedpt_mul" into "gaussj_D<int32[9],int32[3],int32[3]>"
+Merging "fixedpt_mul" into "gaussj_D<int32[9],int32[3],int32[3]>"
+Merging "swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<1>,int32<2>>" into "pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<1>,int32<3>>"
+Merging "pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<1>,int32<3>>" into "gaussj_D<int32[9],int32[3],int32[3]>"
+Merging "fixedpt_div" into "gaussj_D<int32[9],int32[3],int32[3]>"
+Merging "fixedpt_mul" into "gaussj_D<int32[9],int32[3],int32[3]>"
+Merging "fixedpt_mul" into "gaussj_D<int32[9],int32[3],int32[3]>"
+Merging "fixedpt_mul" into "gaussj_D<int32[9],int32[3],int32[3]>"
+Merging "fixedpt_div" into "solve_backtracking<int32[9],int32[3],int32[3]>"
+Merging "fixedpt_mul" into "solve_backtracking<int32[9],int32[3],int32[3]>"
+Merging "fixedpt_mul" into "solve_backtracking<int32[9],int32[3],int32[3]>"
+Merging "fixedpt_mul" into "solve_backtracking<int32[9],int32[3],int32[3]>"
+Merging "solve_backtracking<int32[9],int32[3],int32[3]>" into "gaussj_D<int32[9],int32[3],int32[3]>"
+Merging "gaussj_D<int32[9],int32[3],int32[3]>" into "mpc_main"
+LOG: Client load time: 0.95897
+LOG: Client exec time: 0.262987
+LOG: setup: 19.849
+LOG: online: 13.116
+LOG: total: 32.966
+LOG: init: 0.055
+LOG: circuit: 0.037
+LOG: network: 16.268
+LOG: base_ot: 213.749
+INPUT_A_m : {m: int32[9]; } = {m: [2, 1, 3, 3, 7, 9, 0, 3, 1]; }
+OUTPUT_res : {res: int32[3]; } = {res: [-1194, 0, 1536]; }
+return_value : {res: int32[3]; } = {res: [-1194, 0, 1536]; }
+
+LOG: Time / Memory: 1.32 seconds 206652 kB
+LOG: RERUN: 1
+Using YAO protocol for boolean gates
+Loading abs@bool_size.circ (using YAO for boolean gates)
+Loading fixedpt_div@bool_size.circ (using YAO for boolean gates)
+Loading fixedpt_mul@bool_size.circ (using YAO for boolean gates)
+Loading fixedpt_mul_inner@bool_size.circ (using YAO for boolean gates)
+Loading gaussj_D<int32[9],int32[3],int32[3]>@bool_size.circ (using YAO for boolean gates)
+Loading identity<int32[9]>@bool_size.circ (using YAO for boolean gates)
+Loading mpc_main@bool_size.circ (using YAO for boolean gates)
+Loading pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<0>,int32<3>>@bool_size.circ (using YAO for boolean gates)
+Loading pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<1>,int32<3>>@bool_size.circ (using YAO for boolean gates)
+Loading solve_backtracking<int32[9],int32[3],int32[3]>@bool_size.circ (using YAO for boolean gates)
+Loading swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<0>,int32<1>>@bool_size.circ (using YAO for boolean gates)
+Loading swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<0>,int32<2>>@bool_size.circ (using YAO for boolean gates)
+Loading swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<1>,int32<2>>@bool_size.circ (using YAO for boolean gates)
+Merging "identity<int32[9]>" into "gaussj_D<int32[9],int32[3],int32[3]>"
+Merging "swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<0>,int32<1>>" into "pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<0>,int32<3>>"
+Merging "swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<0>,int32<2>>" into "pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<0>,int32<3>>"
+Merging "pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<0>,int32<3>>" into "gaussj_D<int32[9],int32[3],int32[3]>"
+Merging "fixedpt_div" into "gaussj_D<int32[9],int32[3],int32[3]>"
+Merging "fixedpt_mul_inner" into "fixedpt_mul"
+Merging "fixedpt_mul" into "gaussj_D<int32[9],int32[3],int32[3]>"
+Merging "fixedpt_mul" into "gaussj_D<int32[9],int32[3],int32[3]>"
+Merging "fixedpt_mul" into "gaussj_D<int32[9],int32[3],int32[3]>"
+Merging "fixedpt_mul" into "gaussj_D<int32[9],int32[3],int32[3]>"
+Merging "fixedpt_div" into "gaussj_D<int32[9],int32[3],int32[3]>"
+Merging "fixedpt_mul" into "gaussj_D<int32[9],int32[3],int32[3]>"
+Merging "fixedpt_mul" into "gaussj_D<int32[9],int32[3],int32[3]>"
+Merging "fixedpt_mul" into "gaussj_D<int32[9],int32[3],int32[3]>"
+Merging "fixedpt_mul" into "gaussj_D<int32[9],int32[3],int32[3]>"
+Merging "swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<1>,int32<2>>" into "pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<1>,int32<3>>"
+Merging "pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<1>,int32<3>>" into "gaussj_D<int32[9],int32[3],int32[3]>"
+Merging "fixedpt_div" into "gaussj_D<int32[9],int32[3],int32[3]>"
+Merging "fixedpt_mul" into "gaussj_D<int32[9],int32[3],int32[3]>"
+Merging "fixedpt_mul" into "gaussj_D<int32[9],int32[3],int32[3]>"
+Merging "fixedpt_mul" into "gaussj_D<int32[9],int32[3],int32[3]>"
+Merging "fixedpt_div" into "solve_backtracking<int32[9],int32[3],int32[3]>"
+Merging "fixedpt_mul" into "solve_backtracking<int32[9],int32[3],int32[3]>"
+Merging "fixedpt_mul" into "solve_backtracking<int32[9],int32[3],int32[3]>"
+Merging "fixedpt_mul" into "solve_backtracking<int32[9],int32[3],int32[3]>"
+Merging "solve_backtracking<int32[9],int32[3],int32[3]>" into "gaussj_D<int32[9],int32[3],int32[3]>"
+Merging "gaussj_D<int32[9],int32[3],int32[3]>" into "mpc_main"
+LOG: Client load time: 0.962433
+LOG: Client exec time: 0.267559
+LOG: setup: 19.888
+LOG: online: 13.303
+LOG: total: 33.191
+LOG: init: 0.057
+LOG: circuit: 0.038
+LOG: network: 14.41
+LOG: base_ot: 219.954
+INPUT_A_m : {m: int32[9]; } = {m: [2, 1, 3, 3, 7, 9, 0, 3, 1]; }
+OUTPUT_res : {res: int32[3]; } = {res: [-1194, 0, 1536]; }
+return_value : {res: int32[3]; } = {res: [-1194, 0, 1536]; }
+
+LOG: Time / Memory: 1.32 seconds 206656 kB
+LOG: RERUN: 2
+Using YAO protocol for boolean gates
+Loading abs@bool_size.circ (using YAO for boolean gates)
+Loading fixedpt_div@bool_size.circ (using YAO for boolean gates)
+Loading fixedpt_mul@bool_size.circ (using YAO for boolean gates)
+Loading fixedpt_mul_inner@bool_size.circ (using YAO for boolean gates)
+Loading gaussj_D<int32[9],int32[3],int32[3]>@bool_size.circ (using YAO for boolean gates)
+Loading identity<int32[9]>@bool_size.circ (using YAO for boolean gates)
+Loading mpc_main@bool_size.circ (using YAO for boolean gates)
+Loading pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<0>,int32<3>>@bool_size.circ (using YAO for boolean gates)
+Loading pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<1>,int32<3>>@bool_size.circ (using YAO for boolean gates)
+Loading solve_backtracking<int32[9],int32[3],int32[3]>@bool_size.circ (using YAO for boolean gates)
+Loading swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<0>,int32<1>>@bool_size.circ (using YAO for boolean gates)
+Loading swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<0>,int32<2>>@bool_size.circ (using YAO for boolean gates)
+Loading swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<1>,int32<2>>@bool_size.circ (using YAO for boolean gates)
+Merging "identity<int32[9]>" into "gaussj_D<int32[9],int32[3],int32[3]>"
+Merging "swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<0>,int32<1>>" into "pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<0>,int32<3>>"
+Merging "swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<0>,int32<2>>" into "pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<0>,int32<3>>"
+Merging "pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<0>,int32<3>>" into "gaussj_D<int32[9],int32[3],int32[3]>"
+Merging "fixedpt_div" into "gaussj_D<int32[9],int32[3],int32[3]>"
+Merging "fixedpt_mul_inner" into "fixedpt_mul"
+Merging "fixedpt_mul" into "gaussj_D<int32[9],int32[3],int32[3]>"
+Merging "fixedpt_mul" into "gaussj_D<int32[9],int32[3],int32[3]>"
+Merging "fixedpt_mul" into "gaussj_D<int32[9],int32[3],int32[3]>"
+Merging "fixedpt_mul" into "gaussj_D<int32[9],int32[3],int32[3]>"
+Merging "fixedpt_div" into "gaussj_D<int32[9],int32[3],int32[3]>"
+Merging "fixedpt_mul" into "gaussj_D<int32[9],int32[3],int32[3]>"
+Merging "fixedpt_mul" into "gaussj_D<int32[9],int32[3],int32[3]>"
+Merging "fixedpt_mul" into "gaussj_D<int32[9],int32[3],int32[3]>"
+Merging "fixedpt_mul" into "gaussj_D<int32[9],int32[3],int32[3]>"
+Merging "swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<1>,int32<2>>" into "pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<1>,int32<3>>"
+Merging "pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<1>,int32<3>>" into "gaussj_D<int32[9],int32[3],int32[3]>"
+Merging "fixedpt_div" into "gaussj_D<int32[9],int32[3],int32[3]>"
+Merging "fixedpt_mul" into "gaussj_D<int32[9],int32[3],int32[3]>"
+Merging "fixedpt_mul" into "gaussj_D<int32[9],int32[3],int32[3]>"
+Merging "fixedpt_mul" into "gaussj_D<int32[9],int32[3],int32[3]>"
+Merging "fixedpt_div" into "solve_backtracking<int32[9],int32[3],int32[3]>"
+Merging "fixedpt_mul" into "solve_backtracking<int32[9],int32[3],int32[3]>"
+Merging "fixedpt_mul" into "solve_backtracking<int32[9],int32[3],int32[3]>"
+Merging "fixedpt_mul" into "solve_backtracking<int32[9],int32[3],int32[3]>"
+Merging "solve_backtracking<int32[9],int32[3],int32[3]>" into "gaussj_D<int32[9],int32[3],int32[3]>"
+Merging "gaussj_D<int32[9],int32[3],int32[3]>" into "mpc_main"
+LOG: Client load time: 0.964233
+LOG: Client exec time: 0.270906
+LOG: setup: 20.179
+LOG: online: 13.061
+LOG: total: 33.241
+LOG: init: 0.053
+LOG: circuit: 0.034
+LOG: network: 14.821
+LOG: base_ot: 222.841
+INPUT_A_m : {m: int32[9]; } = {m: [2, 1, 3, 3, 7, 9, 0, 3, 1]; }
+OUTPUT_res : {res: int32[3]; } = {res: [-1194, 0, 1536]; }
+return_value : {res: int32[3]; } = {res: [-1194, 0, 1536]; }
+
+LOG: Time / Memory: 1.33 seconds 206688 kB
+LOG: RERUN: 3
+Using YAO protocol for boolean gates
+Loading abs@bool_size.circ (using YAO for boolean gates)
+Loading fixedpt_div@bool_size.circ (using YAO for boolean gates)
+Loading fixedpt_mul@bool_size.circ (using YAO for boolean gates)
+Loading fixedpt_mul_inner@bool_size.circ (using YAO for boolean gates)
+Loading gaussj_D<int32[9],int32[3],int32[3]>@bool_size.circ (using YAO for boolean gates)
+Loading identity<int32[9]>@bool_size.circ (using YAO for boolean gates)
+Loading mpc_main@bool_size.circ (using YAO for boolean gates)
+Loading pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<0>,int32<3>>@bool_size.circ (using YAO for boolean gates)
+Loading pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<1>,int32<3>>@bool_size.circ (using YAO for boolean gates)
+Loading solve_backtracking<int32[9],int32[3],int32[3]>@bool_size.circ (using YAO for boolean gates)
+Loading swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<0>,int32<1>>@bool_size.circ (using YAO for boolean gates)
+Loading swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<0>,int32<2>>@bool_size.circ (using YAO for boolean gates)
+Loading swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<1>,int32<2>>@bool_size.circ (using YAO for boolean gates)
+Merging "identity<int32[9]>" into "gaussj_D<int32[9],int32[3],int32[3]>"
+Merging "swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<0>,int32<1>>" into "pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<0>,int32<3>>"
+Merging "swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<0>,int32<2>>" into "pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<0>,int32<3>>"
+Merging "pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<0>,int32<3>>" into "gaussj_D<int32[9],int32[3],int32[3]>"
+Merging "fixedpt_div" into "gaussj_D<int32[9],int32[3],int32[3]>"
+Merging "fixedpt_mul_inner" into "fixedpt_mul"
+Merging "fixedpt_mul" into "gaussj_D<int32[9],int32[3],int32[3]>"
+Merging "fixedpt_mul" into "gaussj_D<int32[9],int32[3],int32[3]>"
+Merging "fixedpt_mul" into "gaussj_D<int32[9],int32[3],int32[3]>"
+Merging "fixedpt_mul" into "gaussj_D<int32[9],int32[3],int32[3]>"
+Merging "fixedpt_div" into "gaussj_D<int32[9],int32[3],int32[3]>"
+Merging "fixedpt_mul" into "gaussj_D<int32[9],int32[3],int32[3]>"
+Merging "fixedpt_mul" into "gaussj_D<int32[9],int32[3],int32[3]>"
+Merging "fixedpt_mul" into "gaussj_D<int32[9],int32[3],int32[3]>"
+Merging "fixedpt_mul" into "gaussj_D<int32[9],int32[3],int32[3]>"
+Merging "swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<1>,int32<2>>" into "pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<1>,int32<3>>"
+Merging "pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<1>,int32<3>>" into "gaussj_D<int32[9],int32[3],int32[3]>"
+Merging "fixedpt_div" into "gaussj_D<int32[9],int32[3],int32[3]>"
+Merging "fixedpt_mul" into "gaussj_D<int32[9],int32[3],int32[3]>"
+Merging "fixedpt_mul" into "gaussj_D<int32[9],int32[3],int32[3]>"
+Merging "fixedpt_mul" into "gaussj_D<int32[9],int32[3],int32[3]>"
+Merging "fixedpt_div" into "solve_backtracking<int32[9],int32[3],int32[3]>"
+Merging "fixedpt_mul" into "solve_backtracking<int32[9],int32[3],int32[3]>"
+Merging "fixedpt_mul" into "solve_backtracking<int32[9],int32[3],int32[3]>"
+Merging "fixedpt_mul" into "solve_backtracking<int32[9],int32[3],int32[3]>"
+Merging "solve_backtracking<int32[9],int32[3],int32[3]>" into "gaussj_D<int32[9],int32[3],int32[3]>"
+Merging "gaussj_D<int32[9],int32[3],int32[3]>" into "mpc_main"
+LOG: Client load time: 0.963266
+LOG: Client exec time: 0.264353
+LOG: setup: 19.56
+LOG: online: 13.192
+LOG: total: 32.752
+LOG: init: 0.059
+LOG: circuit: 0.035
+LOG: network: 15.657
+LOG: base_ot: 215.939
+INPUT_A_m : {m: int32[9]; } = {m: [2, 1, 3, 3, 7, 9, 0, 3, 1]; }
+OUTPUT_res : {res: int32[3]; } = {res: [-1194, 0, 1536]; }
+return_value : {res: int32[3]; } = {res: [-1194, 0, 1536]; }
+
+LOG: Time / Memory: 1.32 seconds 206808 kB
+LOG: RERUN: 4
+Using YAO protocol for boolean gates
+Loading abs@bool_size.circ (using YAO for boolean gates)
+Loading fixedpt_div@bool_size.circ (using YAO for boolean gates)
+Loading fixedpt_mul@bool_size.circ (using YAO for boolean gates)
+Loading fixedpt_mul_inner@bool_size.circ (using YAO for boolean gates)
+Loading gaussj_D<int32[9],int32[3],int32[3]>@bool_size.circ (using YAO for boolean gates)
+Loading identity<int32[9]>@bool_size.circ (using YAO for boolean gates)
+Loading mpc_main@bool_size.circ (using YAO for boolean gates)
+Loading pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<0>,int32<3>>@bool_size.circ (using YAO for boolean gates)
+Loading pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<1>,int32<3>>@bool_size.circ (using YAO for boolean gates)
+Loading solve_backtracking<int32[9],int32[3],int32[3]>@bool_size.circ (using YAO for boolean gates)
+Loading swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<0>,int32<1>>@bool_size.circ (using YAO for boolean gates)
+Loading swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<0>,int32<2>>@bool_size.circ (using YAO for boolean gates)
+Loading swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<1>,int32<2>>@bool_size.circ (using YAO for boolean gates)
+Merging "identity<int32[9]>" into "gaussj_D<int32[9],int32[3],int32[3]>"
+Merging "swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<0>,int32<1>>" into "pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<0>,int32<3>>"
+Merging "swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<0>,int32<2>>" into "pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<0>,int32<3>>"
+Merging "pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<0>,int32<3>>" into "gaussj_D<int32[9],int32[3],int32[3]>"
+Merging "fixedpt_div" into "gaussj_D<int32[9],int32[3],int32[3]>"
+Merging "fixedpt_mul_inner" into "fixedpt_mul"
+Merging "fixedpt_mul" into "gaussj_D<int32[9],int32[3],int32[3]>"
+Merging "fixedpt_mul" into "gaussj_D<int32[9],int32[3],int32[3]>"
+Merging "fixedpt_mul" into "gaussj_D<int32[9],int32[3],int32[3]>"
+Merging "fixedpt_mul" into "gaussj_D<int32[9],int32[3],int32[3]>"
+Merging "fixedpt_div" into "gaussj_D<int32[9],int32[3],int32[3]>"
+Merging "fixedpt_mul" into "gaussj_D<int32[9],int32[3],int32[3]>"
+Merging "fixedpt_mul" into "gaussj_D<int32[9],int32[3],int32[3]>"
+Merging "fixedpt_mul" into "gaussj_D<int32[9],int32[3],int32[3]>"
+Merging "fixedpt_mul" into "gaussj_D<int32[9],int32[3],int32[3]>"
+Merging "swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<1>,int32<2>>" into "pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<1>,int32<3>>"
+Merging "pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<1>,int32<3>>" into "gaussj_D<int32[9],int32[3],int32[3]>"
+Merging "fixedpt_div" into "gaussj_D<int32[9],int32[3],int32[3]>"
+Merging "fixedpt_mul" into "gaussj_D<int32[9],int32[3],int32[3]>"
+Merging "fixedpt_mul" into "gaussj_D<int32[9],int32[3],int32[3]>"
+Merging "fixedpt_mul" into "gaussj_D<int32[9],int32[3],int32[3]>"
+Merging "fixedpt_div" into "solve_backtracking<int32[9],int32[3],int32[3]>"
+Merging "fixedpt_mul" into "solve_backtracking<int32[9],int32[3],int32[3]>"
+Merging "fixedpt_mul" into "solve_backtracking<int32[9],int32[3],int32[3]>"
+Merging "fixedpt_mul" into "solve_backtracking<int32[9],int32[3],int32[3]>"
+Merging "solve_backtracking<int32[9],int32[3],int32[3]>" into "gaussj_D<int32[9],int32[3],int32[3]>"
+Merging "gaussj_D<int32[9],int32[3],int32[3]>" into "mpc_main"
+LOG: Client load time: 0.988243
+LOG: Client exec time: 0.307862
+LOG: setup: 19.189
+LOG: online: 13.039
+LOG: total: 32.229
+LOG: init: 0.053
+LOG: circuit: 0.033
+LOG: network: 15.391
+LOG: base_ot: 260.236
+INPUT_A_m : {m: int32[9]; } = {m: [2, 1, 3, 3, 7, 9, 0, 3, 1]; }
+OUTPUT_res : {res: int32[3]; } = {res: [-1194, 0, 1536]; }
+return_value : {res: int32[3]; } = {res: [-1194, 0, 1536]; }
+
+LOG: Time / Memory: 1.39 seconds 206764 kB
+LOG: RERUN: 5
+Using YAO protocol for boolean gates
+Loading abs@bool_size.circ (using YAO for boolean gates)
+Loading fixedpt_div@bool_size.circ (using YAO for boolean gates)
+Loading fixedpt_mul@bool_size.circ (using YAO for boolean gates)
+Loading fixedpt_mul_inner@bool_size.circ (using YAO for boolean gates)
+Loading gaussj_D<int32[9],int32[3],int32[3]>@bool_size.circ (using YAO for boolean gates)
+Loading identity<int32[9]>@bool_size.circ (using YAO for boolean gates)
+Loading mpc_main@bool_size.circ (using YAO for boolean gates)
+Loading pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<0>,int32<3>>@bool_size.circ (using YAO for boolean gates)
+Loading pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<1>,int32<3>>@bool_size.circ (using YAO for boolean gates)
+Loading solve_backtracking<int32[9],int32[3],int32[3]>@bool_size.circ (using YAO for boolean gates)
+Loading swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<0>,int32<1>>@bool_size.circ (using YAO for boolean gates)
+Loading swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<0>,int32<2>>@bool_size.circ (using YAO for boolean gates)
+Loading swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<1>,int32<2>>@bool_size.circ (using YAO for boolean gates)
+Merging "identity<int32[9]>" into "gaussj_D<int32[9],int32[3],int32[3]>"
+Merging "swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<0>,int32<1>>" into "pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<0>,int32<3>>"
+Merging "swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<0>,int32<2>>" into "pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<0>,int32<3>>"
+Merging "pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<0>,int32<3>>" into "gaussj_D<int32[9],int32[3],int32[3]>"
+Merging "fixedpt_div" into "gaussj_D<int32[9],int32[3],int32[3]>"
+Merging "fixedpt_mul_inner" into "fixedpt_mul"
+Merging "fixedpt_mul" into "gaussj_D<int32[9],int32[3],int32[3]>"
+Merging "fixedpt_mul" into "gaussj_D<int32[9],int32[3],int32[3]>"
+Merging "fixedpt_mul" into "gaussj_D<int32[9],int32[3],int32[3]>"
+Merging "fixedpt_mul" into "gaussj_D<int32[9],int32[3],int32[3]>"
+Merging "fixedpt_div" into "gaussj_D<int32[9],int32[3],int32[3]>"
+Merging "fixedpt_mul" into "gaussj_D<int32[9],int32[3],int32[3]>"
+Merging "fixedpt_mul" into "gaussj_D<int32[9],int32[3],int32[3]>"
+Merging "fixedpt_mul" into "gaussj_D<int32[9],int32[3],int32[3]>"
+Merging "fixedpt_mul" into "gaussj_D<int32[9],int32[3],int32[3]>"
+Merging "swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<1>,int32<2>>" into "pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<1>,int32<3>>"
+Merging "pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<1>,int32<3>>" into "gaussj_D<int32[9],int32[3],int32[3]>"
+Merging "fixedpt_div" into "gaussj_D<int32[9],int32[3],int32[3]>"
+Merging "fixedpt_mul" into "gaussj_D<int32[9],int32[3],int32[3]>"
+Merging "fixedpt_mul" into "gaussj_D<int32[9],int32[3],int32[3]>"
+Merging "fixedpt_mul" into "gaussj_D<int32[9],int32[3],int32[3]>"
+Merging "fixedpt_div" into "solve_backtracking<int32[9],int32[3],int32[3]>"
+Merging "fixedpt_mul" into "solve_backtracking<int32[9],int32[3],int32[3]>"
+Merging "fixedpt_mul" into "solve_backtracking<int32[9],int32[3],int32[3]>"
+Merging "fixedpt_mul" into "solve_backtracking<int32[9],int32[3],int32[3]>"
+Merging "solve_backtracking<int32[9],int32[3],int32[3]>" into "gaussj_D<int32[9],int32[3],int32[3]>"
+Merging "gaussj_D<int32[9],int32[3],int32[3]>" into "mpc_main"
+LOG: Client load time: 0.959712
+LOG: Client exec time: 0.270457
+LOG: setup: 19.821
+LOG: online: 13.233
+LOG: total: 33.055
+LOG: init: 0.054
+LOG: circuit: 0.04
+LOG: network: 15.265
+LOG: base_ot: 222.13
+INPUT_A_m : {m: int32[9]; } = {m: [2, 1, 3, 3, 7, 9, 0, 3, 1]; }
+OUTPUT_res : {res: int32[3]; } = {res: [-1194, 0, 1536]; }
+return_value : {res: int32[3]; } = {res: [-1194, 0, 1536]; }
+
+LOG: Time / Memory: 1.33 seconds 206744 kB
+LOG: RERUN: 6
+Using YAO protocol for boolean gates
+Loading abs@bool_size.circ (using YAO for boolean gates)
+Loading fixedpt_div@bool_size.circ (using YAO for boolean gates)
+Loading fixedpt_mul@bool_size.circ (using YAO for boolean gates)
+Loading fixedpt_mul_inner@bool_size.circ (using YAO for boolean gates)
+Loading gaussj_D<int32[9],int32[3],int32[3]>@bool_size.circ (using YAO for boolean gates)
+Loading identity<int32[9]>@bool_size.circ (using YAO for boolean gates)
+Loading mpc_main@bool_size.circ (using YAO for boolean gates)
+Loading pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<0>,int32<3>>@bool_size.circ (using YAO for boolean gates)
+Loading pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<1>,int32<3>>@bool_size.circ (using YAO for boolean gates)
+Loading solve_backtracking<int32[9],int32[3],int32[3]>@bool_size.circ (using YAO for boolean gates)
+Loading swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<0>,int32<1>>@bool_size.circ (using YAO for boolean gates)
+Loading swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<0>,int32<2>>@bool_size.circ (using YAO for boolean gates)
+Loading swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<1>,int32<2>>@bool_size.circ (using YAO for boolean gates)
+Merging "identity<int32[9]>" into "gaussj_D<int32[9],int32[3],int32[3]>"
+Merging "swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<0>,int32<1>>" into "pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<0>,int32<3>>"
+Merging "swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<0>,int32<2>>" into "pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<0>,int32<3>>"
+Merging "pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<0>,int32<3>>" into "gaussj_D<int32[9],int32[3],int32[3]>"
+Merging "fixedpt_div" into "gaussj_D<int32[9],int32[3],int32[3]>"
+Merging "fixedpt_mul_inner" into "fixedpt_mul"
+Merging "fixedpt_mul" into "gaussj_D<int32[9],int32[3],int32[3]>"
+Merging "fixedpt_mul" into "gaussj_D<int32[9],int32[3],int32[3]>"
+Merging "fixedpt_mul" into "gaussj_D<int32[9],int32[3],int32[3]>"
+Merging "fixedpt_mul" into "gaussj_D<int32[9],int32[3],int32[3]>"
+Merging "fixedpt_div" into "gaussj_D<int32[9],int32[3],int32[3]>"
+Merging "fixedpt_mul" into "gaussj_D<int32[9],int32[3],int32[3]>"
+Merging "fixedpt_mul" into "gaussj_D<int32[9],int32[3],int32[3]>"
+Merging "fixedpt_mul" into "gaussj_D<int32[9],int32[3],int32[3]>"
+Merging "fixedpt_mul" into "gaussj_D<int32[9],int32[3],int32[3]>"
+Merging "swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<1>,int32<2>>" into "pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<1>,int32<3>>"
+Merging "pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<1>,int32<3>>" into "gaussj_D<int32[9],int32[3],int32[3]>"
+Merging "fixedpt_div" into "gaussj_D<int32[9],int32[3],int32[3]>"
+Merging "fixedpt_mul" into "gaussj_D<int32[9],int32[3],int32[3]>"
+Merging "fixedpt_mul" into "gaussj_D<int32[9],int32[3],int32[3]>"
+Merging "fixedpt_mul" into "gaussj_D<int32[9],int32[3],int32[3]>"
+Merging "fixedpt_div" into "solve_backtracking<int32[9],int32[3],int32[3]>"
+Merging "fixedpt_mul" into "solve_backtracking<int32[9],int32[3],int32[3]>"
+Merging "fixedpt_mul" into "solve_backtracking<int32[9],int32[3],int32[3]>"
+Merging "fixedpt_mul" into "solve_backtracking<int32[9],int32[3],int32[3]>"
+Merging "solve_backtracking<int32[9],int32[3],int32[3]>" into "gaussj_D<int32[9],int32[3],int32[3]>"
+Merging "gaussj_D<int32[9],int32[3],int32[3]>" into "mpc_main"
+LOG: Client load time: 0.983777
+LOG: Client exec time: 0.262631
+LOG: setup: 20.036
+LOG: online: 13.137
+LOG: total: 33.174
+LOG: init: 0.056
+LOG: circuit: 0.035
+LOG: network: 14.845
+LOG: base_ot: 214.605
+INPUT_A_m : {m: int32[9]; } = {m: [2, 1, 3, 3, 7, 9, 0, 3, 1]; }
+OUTPUT_res : {res: int32[3]; } = {res: [-1194, 0, 1536]; }
+return_value : {res: int32[3]; } = {res: [-1194, 0, 1536]; }
+
+LOG: Time / Memory: 1.34 seconds 206696 kB
+LOG: RERUN: 7
+Using YAO protocol for boolean gates
+Loading abs@bool_size.circ (using YAO for boolean gates)
+Loading fixedpt_div@bool_size.circ (using YAO for boolean gates)
+Loading fixedpt_mul@bool_size.circ (using YAO for boolean gates)
+Loading fixedpt_mul_inner@bool_size.circ (using YAO for boolean gates)
+Loading gaussj_D<int32[9],int32[3],int32[3]>@bool_size.circ (using YAO for boolean gates)
+Loading identity<int32[9]>@bool_size.circ (using YAO for boolean gates)
+Loading mpc_main@bool_size.circ (using YAO for boolean gates)
+Loading pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<0>,int32<3>>@bool_size.circ (using YAO for boolean gates)
+Loading pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<1>,int32<3>>@bool_size.circ (using YAO for boolean gates)
+Loading solve_backtracking<int32[9],int32[3],int32[3]>@bool_size.circ (using YAO for boolean gates)
+Loading swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<0>,int32<1>>@bool_size.circ (using YAO for boolean gates)
+Loading swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<0>,int32<2>>@bool_size.circ (using YAO for boolean gates)
+Loading swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<1>,int32<2>>@bool_size.circ (using YAO for boolean gates)
+Merging "identity<int32[9]>" into "gaussj_D<int32[9],int32[3],int32[3]>"
+Merging "swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<0>,int32<1>>" into "pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<0>,int32<3>>"
+Merging "swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<0>,int32<2>>" into "pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<0>,int32<3>>"
+Merging "pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<0>,int32<3>>" into "gaussj_D<int32[9],int32[3],int32[3]>"
+Merging "fixedpt_div" into "gaussj_D<int32[9],int32[3],int32[3]>"
+Merging "fixedpt_mul_inner" into "fixedpt_mul"
+Merging "fixedpt_mul" into "gaussj_D<int32[9],int32[3],int32[3]>"
+Merging "fixedpt_mul" into "gaussj_D<int32[9],int32[3],int32[3]>"
+Merging "fixedpt_mul" into "gaussj_D<int32[9],int32[3],int32[3]>"
+Merging "fixedpt_mul" into "gaussj_D<int32[9],int32[3],int32[3]>"
+Merging "fixedpt_div" into "gaussj_D<int32[9],int32[3],int32[3]>"
+Merging "fixedpt_mul" into "gaussj_D<int32[9],int32[3],int32[3]>"
+Merging "fixedpt_mul" into "gaussj_D<int32[9],int32[3],int32[3]>"
+Merging "fixedpt_mul" into "gaussj_D<int32[9],int32[3],int32[3]>"
+Merging "fixedpt_mul" into "gaussj_D<int32[9],int32[3],int32[3]>"
+Merging "swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<1>,int32<2>>" into "pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<1>,int32<3>>"
+Merging "pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<1>,int32<3>>" into "gaussj_D<int32[9],int32[3],int32[3]>"
+Merging "fixedpt_div" into "gaussj_D<int32[9],int32[3],int32[3]>"
+Merging "fixedpt_mul" into "gaussj_D<int32[9],int32[3],int32[3]>"
+Merging "fixedpt_mul" into "gaussj_D<int32[9],int32[3],int32[3]>"
+Merging "fixedpt_mul" into "gaussj_D<int32[9],int32[3],int32[3]>"
+Merging "fixedpt_div" into "solve_backtracking<int32[9],int32[3],int32[3]>"
+Merging "fixedpt_mul" into "solve_backtracking<int32[9],int32[3],int32[3]>"
+Merging "fixedpt_mul" into "solve_backtracking<int32[9],int32[3],int32[3]>"
+Merging "fixedpt_mul" into "solve_backtracking<int32[9],int32[3],int32[3]>"
+Merging "solve_backtracking<int32[9],int32[3],int32[3]>" into "gaussj_D<int32[9],int32[3],int32[3]>"
+Merging "gaussj_D<int32[9],int32[3],int32[3]>" into "mpc_main"
+LOG: Client load time: 0.968022
+LOG: Client exec time: 0.269257
+LOG: setup: 19.558
+LOG: online: 13.124
+LOG: total: 32.684
+LOG: init: 0.06
+LOG: circuit: 0.031
+LOG: network: 15.23
+LOG: base_ot: 221.339
+INPUT_A_m : {m: int32[9]; } = {m: [2, 1, 3, 3, 7, 9, 0, 3, 1]; }
+OUTPUT_res : {res: int32[3]; } = {res: [-1194, 0, 1536]; }
+return_value : {res: int32[3]; } = {res: [-1194, 0, 1536]; }
+
+LOG: Time / Memory: 1.33 seconds 206740 kB
+LOG: RERUN: 8
+Using YAO protocol for boolean gates
+Loading abs@bool_size.circ (using YAO for boolean gates)
+Loading fixedpt_div@bool_size.circ (using YAO for boolean gates)
+Loading fixedpt_mul@bool_size.circ (using YAO for boolean gates)
+Loading fixedpt_mul_inner@bool_size.circ (using YAO for boolean gates)
+Loading gaussj_D<int32[9],int32[3],int32[3]>@bool_size.circ (using YAO for boolean gates)
+Loading identity<int32[9]>@bool_size.circ (using YAO for boolean gates)
+Loading mpc_main@bool_size.circ (using YAO for boolean gates)
+Loading pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<0>,int32<3>>@bool_size.circ (using YAO for boolean gates)
+Loading pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<1>,int32<3>>@bool_size.circ (using YAO for boolean gates)
+Loading solve_backtracking<int32[9],int32[3],int32[3]>@bool_size.circ (using YAO for boolean gates)
+Loading swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<0>,int32<1>>@bool_size.circ (using YAO for boolean gates)
+Loading swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<0>,int32<2>>@bool_size.circ (using YAO for boolean gates)
+Loading swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<1>,int32<2>>@bool_size.circ (using YAO for boolean gates)
+Merging "identity<int32[9]>" into "gaussj_D<int32[9],int32[3],int32[3]>"
+Merging "swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<0>,int32<1>>" into "pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<0>,int32<3>>"
+Merging "swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<0>,int32<2>>" into "pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<0>,int32<3>>"
+Merging "pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<0>,int32<3>>" into "gaussj_D<int32[9],int32[3],int32[3]>"
+Merging "fixedpt_div" into "gaussj_D<int32[9],int32[3],int32[3]>"
+Merging "fixedpt_mul_inner" into "fixedpt_mul"
+Merging "fixedpt_mul" into "gaussj_D<int32[9],int32[3],int32[3]>"
+Merging "fixedpt_mul" into "gaussj_D<int32[9],int32[3],int32[3]>"
+Merging "fixedpt_mul" into "gaussj_D<int32[9],int32[3],int32[3]>"
+Merging "fixedpt_mul" into "gaussj_D<int32[9],int32[3],int32[3]>"
+Merging "fixedpt_div" into "gaussj_D<int32[9],int32[3],int32[3]>"
+Merging "fixedpt_mul" into "gaussj_D<int32[9],int32[3],int32[3]>"
+Merging "fixedpt_mul" into "gaussj_D<int32[9],int32[3],int32[3]>"
+Merging "fixedpt_mul" into "gaussj_D<int32[9],int32[3],int32[3]>"
+Merging "fixedpt_mul" into "gaussj_D<int32[9],int32[3],int32[3]>"
+Merging "swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<1>,int32<2>>" into "pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<1>,int32<3>>"
+Merging "pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<1>,int32<3>>" into "gaussj_D<int32[9],int32[3],int32[3]>"
+Merging "fixedpt_div" into "gaussj_D<int32[9],int32[3],int32[3]>"
+Merging "fixedpt_mul" into "gaussj_D<int32[9],int32[3],int32[3]>"
+Merging "fixedpt_mul" into "gaussj_D<int32[9],int32[3],int32[3]>"
+Merging "fixedpt_mul" into "gaussj_D<int32[9],int32[3],int32[3]>"
+Merging "fixedpt_div" into "solve_backtracking<int32[9],int32[3],int32[3]>"
+Merging "fixedpt_mul" into "solve_backtracking<int32[9],int32[3],int32[3]>"
+Merging "fixedpt_mul" into "solve_backtracking<int32[9],int32[3],int32[3]>"
+Merging "fixedpt_mul" into "solve_backtracking<int32[9],int32[3],int32[3]>"
+Merging "solve_backtracking<int32[9],int32[3],int32[3]>" into "gaussj_D<int32[9],int32[3],int32[3]>"
+Merging "gaussj_D<int32[9],int32[3],int32[3]>" into "mpc_main"
+LOG: Client load time: 0.987491
+LOG: Client exec time: 0.262449
+LOG: setup: 19.444
+LOG: online: 13.068
+LOG: total: 32.513
+LOG: init: 0.054
+LOG: circuit: 0.032
+LOG: network: 15.655
+LOG: base_ot: 214.278
+INPUT_A_m : {m: int32[9]; } = {m: [2, 1, 3, 3, 7, 9, 0, 3, 1]; }
+OUTPUT_res : {res: int32[3]; } = {res: [-1194, 0, 1536]; }
+return_value : {res: int32[3]; } = {res: [-1194, 0, 1536]; }
+
+LOG: Time / Memory: 1.34 seconds 206808 kB
+LOG: RERUN: 9
+Using YAO protocol for boolean gates
+Loading abs@bool_size.circ (using YAO for boolean gates)
+Loading fixedpt_div@bool_size.circ (using YAO for boolean gates)
+Loading fixedpt_mul@bool_size.circ (using YAO for boolean gates)
+Loading fixedpt_mul_inner@bool_size.circ (using YAO for boolean gates)
+Loading gaussj_D<int32[9],int32[3],int32[3]>@bool_size.circ (using YAO for boolean gates)
+Loading identity<int32[9]>@bool_size.circ (using YAO for boolean gates)
+Loading mpc_main@bool_size.circ (using YAO for boolean gates)
+Loading pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<0>,int32<3>>@bool_size.circ (using YAO for boolean gates)
+Loading pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<1>,int32<3>>@bool_size.circ (using YAO for boolean gates)
+Loading solve_backtracking<int32[9],int32[3],int32[3]>@bool_size.circ (using YAO for boolean gates)
+Loading swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<0>,int32<1>>@bool_size.circ (using YAO for boolean gates)
+Loading swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<0>,int32<2>>@bool_size.circ (using YAO for boolean gates)
+Loading swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<1>,int32<2>>@bool_size.circ (using YAO for boolean gates)
+Merging "identity<int32[9]>" into "gaussj_D<int32[9],int32[3],int32[3]>"
+Merging "swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<0>,int32<1>>" into "pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<0>,int32<3>>"
+Merging "swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<0>,int32<2>>" into "pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<0>,int32<3>>"
+Merging "pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<0>,int32<3>>" into "gaussj_D<int32[9],int32[3],int32[3]>"
+Merging "fixedpt_div" into "gaussj_D<int32[9],int32[3],int32[3]>"
+Merging "fixedpt_mul_inner" into "fixedpt_mul"
+Merging "fixedpt_mul" into "gaussj_D<int32[9],int32[3],int32[3]>"
+Merging "fixedpt_mul" into "gaussj_D<int32[9],int32[3],int32[3]>"
+Merging "fixedpt_mul" into "gaussj_D<int32[9],int32[3],int32[3]>"
+Merging "fixedpt_mul" into "gaussj_D<int32[9],int32[3],int32[3]>"
+Merging "fixedpt_div" into "gaussj_D<int32[9],int32[3],int32[3]>"
+Merging "fixedpt_mul" into "gaussj_D<int32[9],int32[3],int32[3]>"
+Merging "fixedpt_mul" into "gaussj_D<int32[9],int32[3],int32[3]>"
+Merging "fixedpt_mul" into "gaussj_D<int32[9],int32[3],int32[3]>"
+Merging "fixedpt_mul" into "gaussj_D<int32[9],int32[3],int32[3]>"
+Merging "swap<int32[9],int32[3],int32[9],int32[3],int32<3>,int32<1>,int32<2>>" into "pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<1>,int32<3>>"
+Merging "pivot_swap<int32[9],int32[3],int32[9],int32[3],int32<1>,int32<3>>" into "gaussj_D<int32[9],int32[3],int32[3]>"
+Merging "fixedpt_div" into "gaussj_D<int32[9],int32[3],int32[3]>"
+Merging "fixedpt_mul" into "gaussj_D<int32[9],int32[3],int32[3]>"
+Merging "fixedpt_mul" into "gaussj_D<int32[9],int32[3],int32[3]>"
+Merging "fixedpt_mul" into "gaussj_D<int32[9],int32[3],int32[3]>"
+Merging "fixedpt_div" into "solve_backtracking<int32[9],int32[3],int32[3]>"
+Merging "fixedpt_mul" into "solve_backtracking<int32[9],int32[3],int32[3]>"
+Merging "fixedpt_mul" into "solve_backtracking<int32[9],int32[3],int32[3]>"
+Merging "fixedpt_mul" into "solve_backtracking<int32[9],int32[3],int32[3]>"
+Merging "solve_backtracking<int32[9],int32[3],int32[3]>" into "gaussj_D<int32[9],int32[3],int32[3]>"
+Merging "gaussj_D<int32[9],int32[3],int32[3]>" into "mpc_main"
+LOG: Client load time: 0.96086
+LOG: Client exec time: 0.259691
+LOG: setup: 19.552
+LOG: online: 13.076
+LOG: total: 32.629
+LOG: init: 0.059
+LOG: circuit: 0.031
+LOG: network: 13.566
+LOG: base_ot: 213.487
+INPUT_A_m : {m: int32[9]; } = {m: [2, 1, 3, 3, 7, 9, 0, 3, 1]; }
+OUTPUT_res : {res: int32[3]; } = {res: [-1194, 0, 1536]; }
+return_value : {res: int32[3]; } = {res: [-1194, 0, 1536]; }
+
+LOG: Time / Memory: 1.31 seconds 206720 kB

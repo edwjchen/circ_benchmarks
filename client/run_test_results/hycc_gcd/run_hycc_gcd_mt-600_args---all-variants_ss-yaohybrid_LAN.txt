@@ -1,0 +1,144 @@
+
+LOG: ====================================
+
+LOG: Benchmarking HyCC
+
+LOG: ====================================
+
+LOG: TEST: gcd
+LOG: SELECTION_SCHEME: yaohybrid
+LOG: MINIMIZATION_TIME: 600
+LOG: ARGUMENTS: ['--all-variants']
+
+LOG: ====================================
+
+LOG: RERUN: 0
+Using YAO protocol for boolean gates
+Loading mpc_main@bool_size.circ (using YAO for boolean gates)
+LOG: Client load time: 0.248691
+LOG: Client exec time: 0.242605
+LOG: TOTAL: 31.276
+LOG: SETUP: 18.716
+LOG: ONLINE: 12.56
+INPUT_A : int32 = 250
+OUTPUT_res : int32 = 50
+return_value : int32 = 50
+
+LOG: Time / Memory: 0.53 seconds 98408 kB
+LOG: RERUN: 1
+Using YAO protocol for boolean gates
+Loading mpc_main@bool_size.circ (using YAO for boolean gates)
+LOG: Client load time: 0.250416
+LOG: Client exec time: 0.242809
+LOG: TOTAL: 31.262
+LOG: SETUP: 18.623
+LOG: ONLINE: 12.637
+INPUT_A : int32 = 250
+OUTPUT_res : int32 = 50
+return_value : int32 = 50
+
+LOG: Time / Memory: 0.53 seconds 98608 kB
+LOG: RERUN: 2
+Using YAO protocol for boolean gates
+Loading mpc_main@bool_size.circ (using YAO for boolean gates)
+LOG: Client load time: 0.248205
+LOG: Client exec time: 0.242022
+LOG: TOTAL: 31.036
+LOG: SETUP: 18.457
+LOG: ONLINE: 12.577
+INPUT_A : int32 = 250
+OUTPUT_res : int32 = 50
+return_value : int32 = 50
+
+LOG: Time / Memory: 0.53 seconds 98420 kB
+LOG: RERUN: 3
+Using YAO protocol for boolean gates
+Loading mpc_main@bool_size.circ (using YAO for boolean gates)
+LOG: Client load time: 0.256171
+LOG: Client exec time: 0.241714
+LOG: TOTAL: 31.097
+LOG: SETUP: 18.56
+LOG: ONLINE: 12.536
+INPUT_A : int32 = 250
+OUTPUT_res : int32 = 50
+return_value : int32 = 50
+
+LOG: Time / Memory: 0.54 seconds 98376 kB
+LOG: RERUN: 4
+Using YAO protocol for boolean gates
+Loading mpc_main@bool_size.circ (using YAO for boolean gates)
+LOG: Client load time: 0.245442
+LOG: Client exec time: 0.252834
+LOG: TOTAL: 31.529
+LOG: SETUP: 18.965
+LOG: ONLINE: 12.564
+INPUT_A : int32 = 250
+OUTPUT_res : int32 = 50
+return_value : int32 = 50
+
+LOG: Time / Memory: 0.54 seconds 98380 kB
+LOG: RERUN: 5
+Using YAO protocol for boolean gates
+Loading mpc_main@bool_size.circ (using YAO for boolean gates)
+LOG: Client load time: 0.260377
+LOG: Client exec time: 0.241857
+LOG: TOTAL: 31.03
+LOG: SETUP: 18.503
+LOG: ONLINE: 12.526
+INPUT_A : int32 = 250
+OUTPUT_res : int32 = 50
+return_value : int32 = 50
+
+LOG: Time / Memory: 0.54 seconds 98312 kB
+LOG: RERUN: 6
+Using YAO protocol for boolean gates
+Loading mpc_main@bool_size.circ (using YAO for boolean gates)
+LOG: Client load time: 0.259622
+LOG: Client exec time: 0.241542
+LOG: TOTAL: 31.446
+LOG: SETUP: 18.916
+LOG: ONLINE: 12.529
+INPUT_A : int32 = 250
+OUTPUT_res : int32 = 50
+return_value : int32 = 50
+
+LOG: Time / Memory: 0.54 seconds 98628 kB
+LOG: RERUN: 7
+Using YAO protocol for boolean gates
+Loading mpc_main@bool_size.circ (using YAO for boolean gates)
+LOG: Client load time: 0.249482
+LOG: Client exec time: 0.241541
+LOG: TOTAL: 30.892
+LOG: SETUP: 18.493
+LOG: ONLINE: 12.398
+INPUT_A : int32 = 250
+OUTPUT_res : int32 = 50
+return_value : int32 = 50
+
+LOG: Time / Memory: 0.53 seconds 98440 kB
+LOG: RERUN: 8
+Using YAO protocol for boolean gates
+Loading mpc_main@bool_size.circ (using YAO for boolean gates)
+LOG: Client load time: 0.248206
+LOG: Client exec time: 0.242647
+LOG: TOTAL: 31.025
+LOG: SETUP: 18.399
+LOG: ONLINE: 12.625
+INPUT_A : int32 = 250
+OUTPUT_res : int32 = 50
+return_value : int32 = 50
+
+LOG: Time / Memory: 0.53 seconds 98636 kB
+LOG: RERUN: 9
+Using YAO protocol for boolean gates
+Loading mpc_main@bool_size.circ (using YAO for boolean gates)
+LOG: Client load time: 0.258225
+LOG: Client exec time: 0.24327
+LOG: TOTAL: 31.509
+LOG: SETUP: 18.935
+LOG: ONLINE: 12.571
+INPUT_A : int32 = 250
+OUTPUT_res : int32 = 50
+return_value : int32 = 50
+
+LOG: Time / Memory: 0.54 seconds 98552 kB

@@ -613,12 +613,12 @@ test_compile_params = [
     #     "mt": 600,
     #     "a": ["--all-variants"],
     # },
-    # {
-    #     "name": "gauss",
-    #     "path": "gauss/gauss.c",
-    #     "mt": 9,
-    #     "a": ["--all-variants"],
-    # },
+    {
+        "name": "gauss",
+        "path": "gauss/gauss.c",
+        "mt": 9,
+        "a": ["--all-variants"],
+    },
     # {
     #     "name": "gcd",
     #     "path": "gcd/gcd.c",
@@ -643,12 +643,12 @@ test_compile_params = [
     #     "mt": 600,
     #     "a": ["--all-variants"],
     # },
-    {
-        "name": "mnist",
-        "path": "mnist/mnist.c",
-        "mt": 600,
-        "a": ["--all-variants"],
-    },
+    # {
+    #     "name": "mnist",
+    #     "path": "mnist/mnist.c",
+    #     "mt": 600,
+    #     "a": ["--all-variants"],
+    # },
     # {
     #     "name": "cryptonets",
     #     "path": "cryptonets/cryptonets.c",
@@ -700,20 +700,20 @@ test_run_lan_params = [
     {
         "ss": "yaohybrid",
     },
-    # {
-    #     "ss": "gmwhybrid",
-    # },
+    {
+        "ss": "gmwhybrid",
+    },
     # {
     #     "ss": "lan_optimized",
     # },
 ]
 
-for compile_params in test_compile_params:
-    for select_params in test_select_lan_params:
-        for run_params in test_run_lan_params:
-            p = {**compile_params, **run_params}
-            p = {**p, **select_params}
-            run_hycc_test(p)
+# for compile_params in test_compile_params:
+#     for select_params in test_select_lan_params:
+#         for run_params in test_run_lan_params:
+#             p = {**compile_params, **run_params}
+#             p = {**p, **select_params}
+#             run_hycc_test(p)
 
 test_run_wan_params = [
     # {
@@ -722,20 +722,20 @@ test_run_wan_params = [
     # {
     #     "ss": "gmwonly",
     # },
-    {
-        "ss": "yaohybrid",
-    },
+    # {
+    #     "ss": "yaohybrid",
+    # },
     # {
     #     "ss": "gmwhybrid",
     # },
-    # {
-    #     "ss": "wan_optimized",
-    # },
+    {
+        "ss": "wan_optimized",
+    },
 ]
 
-# for compile_params in test_compile_params:
-#     for select_params in test_select_wan_params:
-#         for run_params in test_run_wan_params:
-#             p = {**compile_params, **run_params}
-#             p = {**p, **select_params}
-#             run_hycc_test(p)
+for compile_params in test_compile_params:
+    for select_params in test_select_wan_params:
+        for run_params in test_run_wan_params:
+            p = {**compile_params, **run_params}
+            p = {**p, **select_params}
+            run_hycc_test(p)

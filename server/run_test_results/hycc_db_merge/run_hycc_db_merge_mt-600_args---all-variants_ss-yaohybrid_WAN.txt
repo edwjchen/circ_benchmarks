@@ -1,0 +1,264 @@
+
+LOG: ====================================
+
+LOG: Benchmarking HyCC
+
+LOG: ====================================
+
+LOG: TEST: db_merge
+LOG: SELECTION_SCHEME: yaohybrid
+LOG: MINIMIZATION_TIME: 600
+LOG: ARGUMENTS: ['--all-variants']
+
+LOG: ====================================
+
+LOG: RERUN: 0
+Using YAO protocol for boolean gates
+Loading mean<int32[200],uint32<200>>@bool_size.circ (using YAO for boolean gates)
+Loading mpc_main@arith.circ (using ARITH for boolean gates)
+Loading merge<int32[200],int32[100],int32[100],uint32<100>,uint32<100>>@arith.circ (using ARITH for boolean gates)
+Loading sum_tree<int32[200],int32<200>,int32<1>>@arith.circ (using ARITH for boolean gates)
+Loading variance<int32[200],uint32<200>>@bool_size.circ (using YAO for boolean gates)
+Merging "merge<int32[200],int32[100],int32[100],uint32<100>,uint32<100>>" into "mpc_main"
+Merging "mean<int32[200],uint32<200>>" into "mpc_main"
+Merging "sum_tree<int32[200],int32<200>,int32<1>>" into "variance<int32[200],uint32<200>>"
+Merging "variance<int32[200],uint32<200>>" into "mpc_main"
+Arithmetic bit-width: 32bit
+LOG: Server load time: 4.13821
+LOG: Server exec time: 1.63349
+LOG: setup: 759.078
+LOG: online: 320.877
+LOG: total: 1079.96
+LOG: init: 0.048
+LOG: circuit: 0.04
+LOG: network: 204.228
+LOG: base_ot: 349.303
+INPUT_B : {db: int32[100]; } = {db: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99]; }
+return_value : {analysis1: int32; analysis2: int32; joined: int32; } = {analysis1: 49; analysis2: 833; joined: 200; }
+
+LOG: Time / Memory: 6.43 seconds 730460 kB
+LOG: RERUN: 1
+Using YAO protocol for boolean gates
+Loading mean<int32[200],uint32<200>>@bool_size.circ (using YAO for boolean gates)
+Loading mpc_main@arith.circ (using ARITH for boolean gates)
+Loading merge<int32[200],int32[100],int32[100],uint32<100>,uint32<100>>@arith.circ (using ARITH for boolean gates)
+Loading sum_tree<int32[200],int32<200>,int32<1>>@arith.circ (using ARITH for boolean gates)
+Loading variance<int32[200],uint32<200>>@bool_size.circ (using YAO for boolean gates)
+Merging "merge<int32[200],int32[100],int32[100],uint32<100>,uint32<100>>" into "mpc_main"
+Merging "mean<int32[200],uint32<200>>" into "mpc_main"
+Merging "sum_tree<int32[200],int32<200>,int32<1>>" into "variance<int32[200],uint32<200>>"
+Merging "variance<int32[200],uint32<200>>" into "mpc_main"
+Arithmetic bit-width: 32bit
+LOG: Server load time: 4.08473
+LOG: Server exec time: 1.676
+LOG: setup: 710.67
+LOG: online: 411.255
+LOG: total: 1121.93
+LOG: init: 0.062
+LOG: circuit: 0.047
+LOG: network: 203.797
+LOG: base_ot: 350.268
+INPUT_B : {db: int32[100]; } = {db: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99]; }
+return_value : {analysis1: int32; analysis2: int32; joined: int32; } = {analysis1: 49; analysis2: 833; joined: 200; }
+
+LOG: Time / Memory: 6.41 seconds 730504 kB
+LOG: RERUN: 2
+Using YAO protocol for boolean gates
+Loading mean<int32[200],uint32<200>>@bool_size.circ (using YAO for boolean gates)
+Loading mpc_main@arith.circ (using ARITH for boolean gates)
+Loading merge<int32[200],int32[100],int32[100],uint32<100>,uint32<100>>@arith.circ (using ARITH for boolean gates)
+Loading sum_tree<int32[200],int32<200>,int32<1>>@arith.circ (using ARITH for boolean gates)
+Loading variance<int32[200],uint32<200>>@bool_size.circ (using YAO for boolean gates)
+Merging "merge<int32[200],int32[100],int32[100],uint32<100>,uint32<100>>" into "mpc_main"
+Merging "mean<int32[200],uint32<200>>" into "mpc_main"
+Merging "sum_tree<int32[200],int32<200>,int32<1>>" into "variance<int32[200],uint32<200>>"
+Merging "variance<int32[200],uint32<200>>" into "mpc_main"
+Arithmetic bit-width: 32bit
+LOG: Server load time: 4.06745
+LOG: Server exec time: 1.59651
+LOG: setup: 663.787
+LOG: online: 366.165
+LOG: total: 1029.95
+LOG: init: 0.059
+LOG: circuit: 0.042
+LOG: network: 218.036
+LOG: base_ot: 348.514
+INPUT_B : {db: int32[100]; } = {db: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99]; }
+return_value : {analysis1: int32; analysis2: int32; joined: int32; } = {analysis1: 49; analysis2: 833; joined: 200; }
+
+LOG: Time / Memory: 6.33 seconds 730484 kB
+LOG: RERUN: 3
+Using YAO protocol for boolean gates
+Loading mean<int32[200],uint32<200>>@bool_size.circ (using YAO for boolean gates)
+Loading mpc_main@arith.circ (using ARITH for boolean gates)
+Loading merge<int32[200],int32[100],int32[100],uint32<100>,uint32<100>>@arith.circ (using ARITH for boolean gates)
+Loading sum_tree<int32[200],int32<200>,int32<1>>@arith.circ (using ARITH for boolean gates)
+Loading variance<int32[200],uint32<200>>@bool_size.circ (using YAO for boolean gates)
+Merging "merge<int32[200],int32[100],int32[100],uint32<100>,uint32<100>>" into "mpc_main"
+Merging "mean<int32[200],uint32<200>>" into "mpc_main"
+Merging "sum_tree<int32[200],int32<200>,int32<1>>" into "variance<int32[200],uint32<200>>"
+Merging "variance<int32[200],uint32<200>>" into "mpc_main"
+Arithmetic bit-width: 32bit
+LOG: Server load time: 4.08521
+LOG: Server exec time: 1.61032
+LOG: setup: 758.28
+LOG: online: 319.499
+LOG: total: 1077.78
+LOG: init: 0.057
+LOG: circuit: 0.04
+LOG: network: 183.037
+LOG: base_ot: 349.495
+INPUT_B : {db: int32[100]; } = {db: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99]; }
+return_value : {analysis1: int32; analysis2: int32; joined: int32; } = {analysis1: 49; analysis2: 833; joined: 200; }
+
+LOG: Time / Memory: 6.35 seconds 730308 kB
+LOG: RERUN: 4
+Using YAO protocol for boolean gates
+Loading mean<int32[200],uint32<200>>@bool_size.circ (using YAO for boolean gates)
+Loading mpc_main@arith.circ (using ARITH for boolean gates)
+Loading merge<int32[200],int32[100],int32[100],uint32<100>,uint32<100>>@arith.circ (using ARITH for boolean gates)
+Loading sum_tree<int32[200],int32<200>,int32<1>>@arith.circ (using ARITH for boolean gates)
+Loading variance<int32[200],uint32<200>>@bool_size.circ (using YAO for boolean gates)
+Merging "merge<int32[200],int32[100],int32[100],uint32<100>,uint32<100>>" into "mpc_main"
+Merging "mean<int32[200],uint32<200>>" into "mpc_main"
+Merging "sum_tree<int32[200],int32<200>,int32<1>>" into "variance<int32[200],uint32<200>>"
+Merging "variance<int32[200],uint32<200>>" into "mpc_main"
+Arithmetic bit-width: 32bit
+LOG: Server load time: 4.03394
+LOG: Server exec time: 1.62707
+LOG: setup: 711.948
+LOG: online: 366.242
+LOG: total: 1078.19
+LOG: init: 0.055
+LOG: circuit: 0.039
+LOG: network: 200.707
+LOG: base_ot: 348.161
+INPUT_B : {db: int32[100]; } = {db: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99]; }
+return_value : {analysis1: int32; analysis2: int32; joined: int32; } = {analysis1: 49; analysis2: 833; joined: 200; }
+
+LOG: Time / Memory: 6.31 seconds 730264 kB
+LOG: RERUN: 5
+Using YAO protocol for boolean gates
+Loading mean<int32[200],uint32<200>>@bool_size.circ (using YAO for boolean gates)
+Loading mpc_main@arith.circ (using ARITH for boolean gates)
+Loading merge<int32[200],int32[100],int32[100],uint32<100>,uint32<100>>@arith.circ (using ARITH for boolean gates)
+Loading sum_tree<int32[200],int32<200>,int32<1>>@arith.circ (using ARITH for boolean gates)
+Loading variance<int32[200],uint32<200>>@bool_size.circ (using YAO for boolean gates)
+Merging "merge<int32[200],int32[100],int32[100],uint32<100>,uint32<100>>" into "mpc_main"
+Merging "mean<int32[200],uint32<200>>" into "mpc_main"
+Merging "sum_tree<int32[200],int32<200>,int32<1>>" into "variance<int32[200],uint32<200>>"
+Merging "variance<int32[200],uint32<200>>" into "mpc_main"
+Arithmetic bit-width: 32bit
+LOG: Server load time: 4.04649
+LOG: Server exec time: 1.69721
+LOG: setup: 711.909
+LOG: online: 411.39
+LOG: total: 1123.3
+LOG: init: 0.057
+LOG: circuit: 0.037
+LOG: network: 222.937
+LOG: base_ot: 350.967
+INPUT_B : {db: int32[100]; } = {db: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99]; }
+return_value : {analysis1: int32; analysis2: int32; joined: int32; } = {analysis1: 49; analysis2: 833; joined: 200; }
+
+LOG: Time / Memory: 6.39 seconds 730556 kB
+LOG: RERUN: 6
+Using YAO protocol for boolean gates
+Loading mean<int32[200],uint32<200>>@bool_size.circ (using YAO for boolean gates)
+Loading mpc_main@arith.circ (using ARITH for boolean gates)
+Loading merge<int32[200],int32[100],int32[100],uint32<100>,uint32<100>>@arith.circ (using ARITH for boolean gates)
+Loading sum_tree<int32[200],int32<200>,int32<1>>@arith.circ (using ARITH for boolean gates)
+Loading variance<int32[200],uint32<200>>@bool_size.circ (using YAO for boolean gates)
+Merging "merge<int32[200],int32[100],int32[100],uint32<100>,uint32<100>>" into "mpc_main"
+Merging "mean<int32[200],uint32<200>>" into "mpc_main"
+Merging "sum_tree<int32[200],int32<200>,int32<1>>" into "variance<int32[200],uint32<200>>"
+Merging "variance<int32[200],uint32<200>>" into "mpc_main"
+Arithmetic bit-width: 32bit
+LOG: Server load time: 4.04612
+LOG: Server exec time: 1.65178
+LOG: setup: 758.465
+LOG: online: 367.723
+LOG: total: 1126.19
+LOG: init: 0.062
+LOG: circuit: 0.039
+LOG: network: 174.9
+LOG: base_ot: 350.691
+INPUT_B : {db: int32[100]; } = {db: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99]; }
+return_value : {analysis1: int32; analysis2: int32; joined: int32; } = {analysis1: 49; analysis2: 833; joined: 200; }
+
+LOG: Time / Memory: 6.35 seconds 730260 kB
+LOG: RERUN: 7
+Using YAO protocol for boolean gates
+Loading mean<int32[200],uint32<200>>@bool_size.circ (using YAO for boolean gates)
+Loading mpc_main@arith.circ (using ARITH for boolean gates)
+Loading merge<int32[200],int32[100],int32[100],uint32<100>,uint32<100>>@arith.circ (using ARITH for boolean gates)
+Loading sum_tree<int32[200],int32<200>,int32<1>>@arith.circ (using ARITH for boolean gates)
+Loading variance<int32[200],uint32<200>>@bool_size.circ (using YAO for boolean gates)
+Merging "merge<int32[200],int32[100],int32[100],uint32<100>,uint32<100>>" into "mpc_main"
+Merging "mean<int32[200],uint32<200>>" into "mpc_main"
+Merging "sum_tree<int32[200],int32<200>,int32<1>>" into "variance<int32[200],uint32<200>>"
+Merging "variance<int32[200],uint32<200>>" into "mpc_main"
+Arithmetic bit-width: 32bit
+LOG: Server load time: 4.08402
+LOG: Server exec time: 1.6305
+LOG: setup: 714.293
+LOG: online: 365.6
+LOG: total: 1079.89
+LOG: init: 0.06
+LOG: circuit: 0.046
+LOG: network: 201.01
+LOG: base_ot: 349.59
+INPUT_B : {db: int32[100]; } = {db: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99]; }
+return_value : {analysis1: int32; analysis2: int32; joined: int32; } = {analysis1: 49; analysis2: 833; joined: 200; }
+
+LOG: Time / Memory: 6.36 seconds 730360 kB
+LOG: RERUN: 8
+Using YAO protocol for boolean gates
+Loading mean<int32[200],uint32<200>>@bool_size.circ (using YAO for boolean gates)
+Loading mpc_main@arith.circ (using ARITH for boolean gates)
+Loading merge<int32[200],int32[100],int32[100],uint32<100>,uint32<100>>@arith.circ (using ARITH for boolean gates)
+Loading sum_tree<int32[200],int32<200>,int32<1>>@arith.circ (using ARITH for boolean gates)
+Loading variance<int32[200],uint32<200>>@bool_size.circ (using YAO for boolean gates)
+Merging "merge<int32[200],int32[100],int32[100],uint32<100>,uint32<100>>" into "mpc_main"
+Merging "mean<int32[200],uint32<200>>" into "mpc_main"
+Merging "sum_tree<int32[200],int32<200>,int32<1>>" into "variance<int32[200],uint32<200>>"
+Merging "variance<int32[200],uint32<200>>" into "mpc_main"
+Arithmetic bit-width: 32bit
+LOG: Server load time: 4.05217
+LOG: Server exec time: 1.66567
+LOG: setup: 804.76
+LOG: online: 320.884
+LOG: total: 1125.64
+LOG: init: 0.058
+LOG: circuit: 0.041
+LOG: network: 188.641
+LOG: base_ot: 351.381
+INPUT_B : {db: int32[100]; } = {db: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99]; }
+return_value : {analysis1: int32; analysis2: int32; joined: int32; } = {analysis1: 49; analysis2: 833; joined: 200; }
+
+LOG: Time / Memory: 6.36 seconds 730540 kB
+LOG: RERUN: 9
+Using YAO protocol for boolean gates
+Loading mean<int32[200],uint32<200>>@bool_size.circ (using YAO for boolean gates)
+Loading mpc_main@arith.circ (using ARITH for boolean gates)
+Loading merge<int32[200],int32[100],int32[100],uint32<100>,uint32<100>>@arith.circ (using ARITH for boolean gates)
+Loading sum_tree<int32[200],int32<200>,int32<1>>@arith.circ (using ARITH for boolean gates)
+Loading variance<int32[200],uint32<200>>@bool_size.circ (using YAO for boolean gates)
+Merging "merge<int32[200],int32[100],int32[100],uint32<100>,uint32<100>>" into "mpc_main"
+Merging "mean<int32[200],uint32<200>>" into "mpc_main"
+Merging "sum_tree<int32[200],int32<200>,int32<1>>" into "variance<int32[200],uint32<200>>"
+Merging "variance<int32[200],uint32<200>>" into "mpc_main"
+Arithmetic bit-width: 32bit
+LOG: Server load time: 4.08934
+LOG: Server exec time: 1.60371
+LOG: setup: 663.945
+LOG: online: 366.968
+LOG: total: 1030.91
+LOG: init: 0.062
+LOG: circuit: 0.038
+LOG: network: 221.986
+LOG: base_ot: 350.807
+INPUT_B : {db: int32[100]; } = {db: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99]; }
+return_value : {analysis1: int32; analysis2: int32; joined: int32; } = {analysis1: 49; analysis2: 833; joined: 200; }
+
+LOG: Time / Memory: 6.34 seconds 730440 kB

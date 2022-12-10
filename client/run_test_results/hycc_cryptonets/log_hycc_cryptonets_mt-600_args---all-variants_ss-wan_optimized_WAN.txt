@@ -1,0 +1,118 @@
+LOG: ====================================
+LOG: Benchmarking HyCC
+LOG: ====================================
+LOG: TEST: cryptonets
+LOG: SELECTION_SCHEME: wan_optimized
+LOG: MINIMIZATION_TIME: 600
+LOG: ARGUMENTS: ['--all-variants']
+LOG: ====================================
+LOG: RERUN: 0
+LOG: Client load time: 2.19394
+LOG: Client exec time: 2.4316
+LOG: setup: 1649.58
+LOG: online: 290.677
+LOG: total: 1940.26
+LOG: init: 0.053
+LOG: circuit: 0.048
+LOG: network: 127.324
+LOG: base_ot: 364.015
+LOG: Time / Memory: 5.00 seconds 513224 kB
+LOG: RERUN: 1
+LOG: Client load time: 2.19053
+LOG: Client exec time: 2.3272
+LOG: setup: 1575.24
+LOG: online: 284.521
+LOG: total: 1859.77
+LOG: init: 0.054
+LOG: circuit: 0.054
+LOG: network: 103.025
+LOG: base_ot: 364.399
+LOG: Time / Memory: 4.88 seconds 510996 kB
+LOG: RERUN: 2
+LOG: Client load time: 2.25289
+LOG: Client exec time: 2.42452
+LOG: setup: 1665.3
+LOG: online: 290.138
+LOG: total: 1955.44
+LOG: init: 0.054
+LOG: circuit: 0.057
+LOG: network: 104.214
+LOG: base_ot: 364.853
+LOG: Time / Memory: 5.05 seconds 512188 kB
+LOG: RERUN: 3
+LOG: Client load time: 2.17213
+LOG: Client exec time: 2.40691
+LOG: setup: 1620.92
+LOG: online: 323.357
+LOG: total: 1944.28
+LOG: init: 0.057
+LOG: circuit: 0.047
+LOG: network: 102.958
+LOG: base_ot: 359.669
+LOG: Time / Memory: 4.94 seconds 515168 kB
+LOG: RERUN: 4
+LOG: Client load time: 2.26227
+LOG: Client exec time: 2.37565
+LOG: setup: 1619.09
+LOG: online: 285.211
+LOG: total: 1904.3
+LOG: init: 0.055
+LOG: circuit: 0.049
+LOG: network: 105.29
+LOG: base_ot: 366.057
+LOG: Time / Memory: 5.00 seconds 510928 kB
+LOG: RERUN: 5
+LOG: Client load time: 2.19633
+LOG: Client exec time: 2.50776
+LOG: setup: 1753.9
+LOG: online: 283.415
+LOG: total: 2037.32
+LOG: init: 0.045
+LOG: circuit: 0.053
+LOG: network: 106.505
+LOG: base_ot: 363.934
+LOG: Time / Memory: 5.06 seconds 510948 kB
+LOG: RERUN: 6
+LOG: Client load time: 2.1802
+LOG: Client exec time: 2.56592
+LOG: setup: 1809.02
+LOG: online: 291.486
+LOG: total: 2100.5
+LOG: init: 0.059
+LOG: circuit: 0.051
+LOG: network: 102.028
+LOG: base_ot: 363.381
+LOG: Time / Memory: 5.12 seconds 513320 kB
+LOG: RERUN: 7
+LOG: Client load time: 2.20259
+LOG: Client exec time: 2.48316
+LOG: setup: 1711.66
+LOG: online: 283.704
+LOG: total: 1995.37
+LOG: init: 0.062
+LOG: circuit: 0.046
+LOG: network: 127.403
+LOG: base_ot: 360.383
+LOG: Time / Memory: 5.06 seconds 513240 kB
+LOG: RERUN: 8
+LOG: Client load time: 2.15855
+LOG: Client exec time: 2.4226
+LOG: setup: 1666.07
+LOG: online: 291.631
+LOG: total: 1957.7
+LOG: init: 0.054
+LOG: circuit: 0.048
+LOG: network: 105.852
+LOG: base_ot: 359.041
+LOG: Time / Memory: 4.95 seconds 511224 kB
+LOG: RERUN: 9
+LOG: Client load time: 2.25641
+LOG: Client exec time: 2.4993
+LOG: setup: 1709.45
+LOG: online: 321.944
+LOG: total: 2031.4
+LOG: init: 0.055
+LOG: circuit: 0.05
+LOG: network: 106.029
+LOG: base_ot: 361.866
+LOG: Time / Memory: 5.12 seconds 513000 kB

@@ -1,0 +1,974 @@
+
+LOG: ====================================
+
+LOG: Benchmarking HyCC
+
+LOG: ====================================
+
+LOG: TEST: biomatch
+LOG: SELECTION_SCHEME: yaohybrid
+LOG: MINIMIZATION_TIME: 600
+LOG: ARGUMENTS: ['--all-variants']
+
+LOG: ====================================
+
+LOG: RERUN: 0
+Using YAO protocol for boolean gates
+Loading mpc_main@arith.circ (using ARITH for boolean gates)
+Loading match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>@arith.circ (using ARITH for boolean gates)
+Loading match_fix@arith.circ (using ARITH for boolean gates)
+Loading min_decomposed<int32[256],int32<256>>@arith.circ (using ARITH for boolean gates)
+Loading min<int32[64],int32<64>,int32<1>>@bool_size.circ (using YAO for boolean gates)
+Loading min<int32[4],int32<4>,int32<1>>@bool_size.circ (using YAO for boolean gates)
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>" into "mpc_main"
+Merging "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>" into "mpc_main"
+Merging "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>" into "mpc_main"
+Merging "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>" into "mpc_main"
+Merging "min<int32[64],int32<64>,int32<1>>" into "min_decomposed<int32[256],int32<256>>"
+Merging "min<int32[64],int32<64>,int32<1>>" into "min_decomposed<int32[256],int32<256>>"
+Merging "min<int32[64],int32<64>,int32<1>>" into "min_decomposed<int32[256],int32<256>>"
+Merging "min<int32[64],int32<64>,int32<1>>" into "min_decomposed<int32[256],int32<256>>"
+Merging "min<int32[4],int32<4>,int32<1>>" into "min_decomposed<int32[256],int32<256>>"
+Merging "min_decomposed<int32[256],int32<256>>" into "mpc_main"
+Arithmetic bit-width: 32bit
+LOG: Server load time: 0.360581
+LOG: Server exec time: 2.21166
+LOG: setup: 758.708
+LOG: online: 355.413
+LOG: total: 1114.12
+LOG: init: 0.048
+LOG: circuit: 0.038
+LOG: network: 744.511
+LOG: base_ot: 353.019
+INPUT_B_sample : int32[4] = [0, 1, 2, 3]
+OUTPUT_res : int32 = 0
+
+LOG: Time / Memory: 2.61 seconds 111548 kB
+LOG: RERUN: 1
+Using YAO protocol for boolean gates
+Loading mpc_main@arith.circ (using ARITH for boolean gates)
+Loading match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>@arith.circ (using ARITH for boolean gates)
+Loading match_fix@arith.circ (using ARITH for boolean gates)
+Loading min_decomposed<int32[256],int32<256>>@arith.circ (using ARITH for boolean gates)
+Loading min<int32[64],int32<64>,int32<1>>@bool_size.circ (using YAO for boolean gates)
+Loading min<int32[4],int32<4>,int32<1>>@bool_size.circ (using YAO for boolean gates)
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>" into "mpc_main"
+Merging "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>" into "mpc_main"
+Merging "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>" into "mpc_main"
+Merging "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>" into "mpc_main"
+Merging "min<int32[64],int32<64>,int32<1>>" into "min_decomposed<int32[256],int32<256>>"
+Merging "min<int32[64],int32<64>,int32<1>>" into "min_decomposed<int32[256],int32<256>>"
+Merging "min<int32[64],int32<64>,int32<1>>" into "min_decomposed<int32[256],int32<256>>"
+Merging "min<int32[64],int32<64>,int32<1>>" into "min_decomposed<int32[256],int32<256>>"
+Merging "min<int32[4],int32<4>,int32<1>>" into "min_decomposed<int32[256],int32<256>>"
+Merging "min_decomposed<int32[256],int32<256>>" into "mpc_main"
+Arithmetic bit-width: 32bit
+LOG: Server load time: 0.359773
+LOG: Server exec time: 1.51909
+LOG: setup: 564.041
+LOG: online: 403.137
+LOG: total: 967.179
+LOG: init: 0.055
+LOG: circuit: 0.039
+LOG: network: 200.865
+LOG: base_ot: 351.046
+INPUT_B_sample : int32[4] = [0, 1, 2, 3]
+OUTPUT_res : int32 = 0
+
+LOG: Time / Memory: 1.92 seconds 111360 kB
+LOG: RERUN: 2
+Using YAO protocol for boolean gates
+Loading mpc_main@arith.circ (using ARITH for boolean gates)
+Loading match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>@arith.circ (using ARITH for boolean gates)
+Loading match_fix@arith.circ (using ARITH for boolean gates)
+Loading min_decomposed<int32[256],int32<256>>@arith.circ (using ARITH for boolean gates)
+Loading min<int32[64],int32<64>,int32<1>>@bool_size.circ (using YAO for boolean gates)
+Loading min<int32[4],int32<4>,int32<1>>@bool_size.circ (using YAO for boolean gates)
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>" into "mpc_main"
+Merging "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>" into "mpc_main"
+Merging "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>" into "mpc_main"
+Merging "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>" into "mpc_main"
+Merging "min<int32[64],int32<64>,int32<1>>" into "min_decomposed<int32[256],int32<256>>"
+Merging "min<int32[64],int32<64>,int32<1>>" into "min_decomposed<int32[256],int32<256>>"
+Merging "min<int32[64],int32<64>,int32<1>>" into "min_decomposed<int32[256],int32<256>>"
+Merging "min<int32[64],int32<64>,int32<1>>" into "min_decomposed<int32[256],int32<256>>"
+Merging "min<int32[4],int32<4>,int32<1>>" into "min_decomposed<int32[256],int32<256>>"
+Merging "min_decomposed<int32[256],int32<256>>" into "mpc_main"
+Arithmetic bit-width: 32bit
+LOG: Server load time: 0.3588
+LOG: Server exec time: 1.53765
+LOG: setup: 620.148
+LOG: online: 355.668
+LOG: total: 975.817
+LOG: init: 0.06
+LOG: circuit: 0.03
+LOG: network: 211.332
+LOG: base_ot: 350.499
+INPUT_B_sample : int32[4] = [0, 1, 2, 3]
+OUTPUT_res : int32 = 0
+
+LOG: Time / Memory: 1.94 seconds 111440 kB
+LOG: RERUN: 3
+Using YAO protocol for boolean gates
+Loading mpc_main@arith.circ (using ARITH for boolean gates)
+Loading match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>@arith.circ (using ARITH for boolean gates)
+Loading match_fix@arith.circ (using ARITH for boolean gates)
+Loading min_decomposed<int32[256],int32<256>>@arith.circ (using ARITH for boolean gates)
+Loading min<int32[64],int32<64>,int32<1>>@bool_size.circ (using YAO for boolean gates)
+Loading min<int32[4],int32<4>,int32<1>>@bool_size.circ (using YAO for boolean gates)
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>" into "mpc_main"
+Merging "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>" into "mpc_main"
+Merging "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>" into "mpc_main"
+Merging "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>" into "mpc_main"
+Merging "min<int32[64],int32<64>,int32<1>>" into "min_decomposed<int32[256],int32<256>>"
+Merging "min<int32[64],int32<64>,int32<1>>" into "min_decomposed<int32[256],int32<256>>"
+Merging "min<int32[64],int32<64>,int32<1>>" into "min_decomposed<int32[256],int32<256>>"
+Merging "min<int32[64],int32<64>,int32<1>>" into "min_decomposed<int32[256],int32<256>>"
+Merging "min<int32[4],int32<4>,int32<1>>" into "min_decomposed<int32[256],int32<256>>"
+Merging "min_decomposed<int32[256],int32<256>>" into "mpc_main"
+Arithmetic bit-width: 32bit
+LOG: Server load time: 0.360438
+LOG: Server exec time: 1.52392
+LOG: setup: 563.678
+LOG: online: 403.068
+LOG: total: 966.746
+LOG: init: 0.058
+LOG: circuit: 0.032
+LOG: network: 205.233
+LOG: base_ot: 351.936
+INPUT_B_sample : int32[4] = [0, 1, 2, 3]
+OUTPUT_res : int32 = 0
+
+LOG: Time / Memory: 1.92 seconds 111556 kB
+LOG: RERUN: 4
+Using YAO protocol for boolean gates
+Loading mpc_main@arith.circ (using ARITH for boolean gates)
+Loading match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>@arith.circ (using ARITH for boolean gates)
+Loading match_fix@arith.circ (using ARITH for boolean gates)
+Loading min_decomposed<int32[256],int32<256>>@arith.circ (using ARITH for boolean gates)
+Loading min<int32[64],int32<64>,int32<1>>@bool_size.circ (using YAO for boolean gates)
+Loading min<int32[4],int32<4>,int32<1>>@bool_size.circ (using YAO for boolean gates)
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>" into "mpc_main"
+Merging "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>" into "mpc_main"
+Merging "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>" into "mpc_main"
+Merging "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>" into "mpc_main"
+Merging "min<int32[64],int32<64>,int32<1>>" into "min_decomposed<int32[256],int32<256>>"
+Merging "min<int32[64],int32<64>,int32<1>>" into "min_decomposed<int32[256],int32<256>>"
+Merging "min<int32[64],int32<64>,int32<1>>" into "min_decomposed<int32[256],int32<256>>"
+Merging "min<int32[64],int32<64>,int32<1>>" into "min_decomposed<int32[256],int32<256>>"
+Merging "min<int32[4],int32<4>,int32<1>>" into "min_decomposed<int32[256],int32<256>>"
+Merging "min_decomposed<int32[256],int32<256>>" into "mpc_main"
+Arithmetic bit-width: 32bit
+LOG: Server load time: 0.368622
+LOG: Server exec time: 1.45933
+LOG: setup: 520.24
+LOG: online: 402.635
+LOG: total: 922.876
+LOG: init: 0.057
+LOG: circuit: 0.035
+LOG: network: 185.604
+LOG: base_ot: 350.84
+INPUT_B_sample : int32[4] = [0, 1, 2, 3]
+OUTPUT_res : int32 = 0
+
+LOG: Time / Memory: 1.87 seconds 111432 kB
+LOG: RERUN: 5
+Using YAO protocol for boolean gates
+Loading mpc_main@arith.circ (using ARITH for boolean gates)
+Loading match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>@arith.circ (using ARITH for boolean gates)
+Loading match_fix@arith.circ (using ARITH for boolean gates)
+Loading min_decomposed<int32[256],int32<256>>@arith.circ (using ARITH for boolean gates)
+Loading min<int32[64],int32<64>,int32<1>>@bool_size.circ (using YAO for boolean gates)
+Loading min<int32[4],int32<4>,int32<1>>@bool_size.circ (using YAO for boolean gates)
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>" into "mpc_main"
+Merging "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>" into "mpc_main"
+Merging "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>" into "mpc_main"
+Merging "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>" into "mpc_main"
+Merging "min<int32[64],int32<64>,int32<1>>" into "min_decomposed<int32[256],int32<256>>"
+Merging "min<int32[64],int32<64>,int32<1>>" into "min_decomposed<int32[256],int32<256>>"
+Merging "min<int32[64],int32<64>,int32<1>>" into "min_decomposed<int32[256],int32<256>>"
+Merging "min<int32[64],int32<64>,int32<1>>" into "min_decomposed<int32[256],int32<256>>"
+Merging "min<int32[4],int32<4>,int32<1>>" into "min_decomposed<int32[256],int32<256>>"
+Merging "min_decomposed<int32[256],int32<256>>" into "mpc_main"
+Arithmetic bit-width: 32bit
+LOG: Server load time: 0.375069
+LOG: Server exec time: 1.56425
+LOG: setup: 614.167
+LOG: online: 402.937
+LOG: total: 1017.11
+LOG: init: 0.056
+LOG: circuit: 0.034
+LOG: network: 195.882
+LOG: base_ot: 351.261
+INPUT_B_sample : int32[4] = [0, 1, 2, 3]
+OUTPUT_res : int32 = 0
+
+LOG: Time / Memory: 1.98 seconds 111480 kB
+LOG: RERUN: 6
+Using YAO protocol for boolean gates
+Loading mpc_main@arith.circ (using ARITH for boolean gates)
+Loading match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>@arith.circ (using ARITH for boolean gates)
+Loading match_fix@arith.circ (using ARITH for boolean gates)
+Loading min_decomposed<int32[256],int32<256>>@arith.circ (using ARITH for boolean gates)
+Loading min<int32[64],int32<64>,int32<1>>@bool_size.circ (using YAO for boolean gates)
+Loading min<int32[4],int32<4>,int32<1>>@bool_size.circ (using YAO for boolean gates)
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>" into "mpc_main"
+Merging "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>" into "mpc_main"
+Merging "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>" into "mpc_main"
+Merging "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>" into "mpc_main"
+Merging "min<int32[64],int32<64>,int32<1>>" into "min_decomposed<int32[256],int32<256>>"
+Merging "min<int32[64],int32<64>,int32<1>>" into "min_decomposed<int32[256],int32<256>>"
+Merging "min<int32[64],int32<64>,int32<1>>" into "min_decomposed<int32[256],int32<256>>"
+Merging "min<int32[64],int32<64>,int32<1>>" into "min_decomposed<int32[256],int32<256>>"
+Merging "min<int32[4],int32<4>,int32<1>>" into "min_decomposed<int32[256],int32<256>>"
+Merging "min_decomposed<int32[256],int32<256>>" into "mpc_main"
+Arithmetic bit-width: 32bit
+LOG: Server load time: 0.365357
+LOG: Server exec time: 1.47527
+LOG: setup: 566.237
+LOG: online: 355.882
+LOG: total: 922.121
+LOG: init: 0.06
+LOG: circuit: 0.03
+LOG: network: 201.817
+LOG: base_ot: 351.325
+INPUT_B_sample : int32[4] = [0, 1, 2, 3]
+OUTPUT_res : int32 = 0
+
+LOG: Time / Memory: 1.88 seconds 111552 kB
+LOG: RERUN: 7
+Using YAO protocol for boolean gates
+Loading mpc_main@arith.circ (using ARITH for boolean gates)
+Loading match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>@arith.circ (using ARITH for boolean gates)
+Loading match_fix@arith.circ (using ARITH for boolean gates)
+Loading min_decomposed<int32[256],int32<256>>@arith.circ (using ARITH for boolean gates)
+Loading min<int32[64],int32<64>,int32<1>>@bool_size.circ (using YAO for boolean gates)
+Loading min<int32[4],int32<4>,int32<1>>@bool_size.circ (using YAO for boolean gates)
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>" into "mpc_main"
+Merging "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>" into "mpc_main"
+Merging "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>" into "mpc_main"
+Merging "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>" into "mpc_main"
+Merging "min<int32[64],int32<64>,int32<1>>" into "min_decomposed<int32[256],int32<256>>"
+Merging "min<int32[64],int32<64>,int32<1>>" into "min_decomposed<int32[256],int32<256>>"
+Merging "min<int32[64],int32<64>,int32<1>>" into "min_decomposed<int32[256],int32<256>>"
+Merging "min<int32[64],int32<64>,int32<1>>" into "min_decomposed<int32[256],int32<256>>"
+Merging "min<int32[4],int32<4>,int32<1>>" into "min_decomposed<int32[256],int32<256>>"
+Merging "min_decomposed<int32[256],int32<256>>" into "mpc_main"
+Arithmetic bit-width: 32bit
+LOG: Server load time: 0.386591
+LOG: Server exec time: 1.49949
+LOG: setup: 564.015
+LOG: online: 403.025
+LOG: total: 967.042
+LOG: init: 0.055
+LOG: circuit: 0.033
+LOG: network: 178.471
+LOG: base_ot: 353.973
+INPUT_B_sample : int32[4] = [0, 1, 2, 3]
+OUTPUT_res : int32 = 0
+
+LOG: Time / Memory: 1.93 seconds 111528 kB
+LOG: RERUN: 8
+Using YAO protocol for boolean gates
+Loading mpc_main@arith.circ (using ARITH for boolean gates)
+Loading match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>@arith.circ (using ARITH for boolean gates)
+Loading match_fix@arith.circ (using ARITH for boolean gates)
+Loading min_decomposed<int32[256],int32<256>>@arith.circ (using ARITH for boolean gates)
+Loading min<int32[64],int32<64>,int32<1>>@bool_size.circ (using YAO for boolean gates)
+Loading min<int32[4],int32<4>,int32<1>>@bool_size.circ (using YAO for boolean gates)
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>" into "mpc_main"
+Merging "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>" into "mpc_main"
+Merging "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>" into "mpc_main"
+Merging "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>" into "mpc_main"
+Merging "min<int32[64],int32<64>,int32<1>>" into "min_decomposed<int32[256],int32<256>>"
+Merging "min<int32[64],int32<64>,int32<1>>" into "min_decomposed<int32[256],int32<256>>"
+Merging "min<int32[64],int32<64>,int32<1>>" into "min_decomposed<int32[256],int32<256>>"
+Merging "min<int32[64],int32<64>,int32<1>>" into "min_decomposed<int32[256],int32<256>>"
+Merging "min<int32[4],int32<4>,int32<1>>" into "min_decomposed<int32[256],int32<256>>"
+Merging "min_decomposed<int32[256],int32<256>>" into "mpc_main"
+Arithmetic bit-width: 32bit
+LOG: Server load time: 0.356987
+LOG: Server exec time: 1.57897
+LOG: setup: 612.833
+LOG: online: 403.487
+LOG: total: 1016.32
+LOG: init: 0.048
+LOG: circuit: 0.032
+LOG: network: 210.278
+LOG: base_ot: 352.363
+INPUT_B_sample : int32[4] = [0, 1, 2, 3]
+OUTPUT_res : int32 = -2141356827
+
+LOG: Time / Memory: 1.98 seconds 111660 kB
+LOG: RERUN: 9
+Using YAO protocol for boolean gates
+Loading mpc_main@arith.circ (using ARITH for boolean gates)
+Loading match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>@arith.circ (using ARITH for boolean gates)
+Loading match_fix@arith.circ (using ARITH for boolean gates)
+Loading min_decomposed<int32[256],int32<256>>@arith.circ (using ARITH for boolean gates)
+Loading min<int32[64],int32<64>,int32<1>>@bool_size.circ (using YAO for boolean gates)
+Loading min<int32[4],int32<4>,int32<1>>@bool_size.circ (using YAO for boolean gates)
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_fix" into "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>"
+Merging "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>" into "mpc_main"
+Merging "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>" into "mpc_main"
+Merging "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>" into "mpc_main"
+Merging "match_decomposed<int32[256],int32[64],uint32<64>,int32[4]>" into "mpc_main"
+Merging "min<int32[64],int32<64>,int32<1>>" into "min_decomposed<int32[256],int32<256>>"
+Merging "min<int32[64],int32<64>,int32<1>>" into "min_decomposed<int32[256],int32<256>>"
+Merging "min<int32[64],int32<64>,int32<1>>" into "min_decomposed<int32[256],int32<256>>"
+Merging "min<int32[64],int32<64>,int32<1>>" into "min_decomposed<int32[256],int32<256>>"
+Merging "min<int32[4],int32<4>,int32<1>>" into "min_decomposed<int32[256],int32<256>>"
+Merging "min_decomposed<int32[256],int32<256>>" into "mpc_main"
+Arithmetic bit-width: 32bit
+LOG: Server load time: 0.373766
+LOG: Server exec time: 1.51947
+LOG: setup: 567.806
+LOG: online: 403.547
+LOG: total: 971.355
+LOG: init: 0.055
+LOG: circuit: 0.03
+LOG: network: 197.717
+LOG: base_ot: 350.394
+INPUT_B_sample : int32[4] = [0, 1, 2, 3]
+OUTPUT_res : int32 = 0
+
+LOG: Time / Memory: 1.93 seconds 111556 kB
